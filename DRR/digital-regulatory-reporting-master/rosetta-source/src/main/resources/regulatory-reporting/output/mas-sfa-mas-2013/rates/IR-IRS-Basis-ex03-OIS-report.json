@@ -1,0 +1,13 @@
+{
+  "cleared" : "False",
+  "clearedEntity" : "Out of scope",
+  "effectiveDate" : "2022-02-28",
+  "optionExpirationDate" : "N/A",
+  "optionPremium" : "N/A",
+  "optionType" : "N/A",
+  "priorUniqueTransactionIdentifier" : "IRIRSBASISEXOISXML01",
+  "reportingTimestamp" : "2022-02-28T09:35:21Z",
+  "terminationDate" : "2023-02-28",
+  "uniqueProductIdentifier" : "InterestRate_IRSwap_Basis_OIS",
+  "uniqueTransactionIdentifier" : "D8EBBAFF652BA228E0538CB0CC0A66F3"
+}

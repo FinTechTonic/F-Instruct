@@ -1,0 +1,58 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "CURR",
+  "callAmount" : 2325581.4,
+  "callCurrency" : "USD",
+  "cleared" : "N",
+  "contractType" : "OPTN",
+  "counterparty1" : "213800WWTABZ1GOJHH37",
+  "counterparty2" : "213800IV9PCAC364HN60",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "direction" : "BYER",
+  "effectiveDate" : "2019-01-07",
+  "eventTimestamp" : "2021-12-06T17:09:12Z",
+  "eventType" : "TRAD",
+  "exchangeRateBasis" : "USD/JPY",
+  "executionTimestamp" : "2021-12-06T17:09:12Z",
+  "expirationDate" : "2019-04-26",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "OptionExerciseStyle" : "EURO",
+          "OtherUnderlierID" : "USD",
+          "OtherUnderlierIDSource" : "CCY",
+          "UnderlierID" : "JPY",
+          "UnderlierIDSource" : "CCY"
+        },
+        "Header" : {
+          "AssetClass" : "Foreign_Exchange",
+          "InstrumentType" : "Option",
+          "Level" : "UPI",
+          "UseCase" : "Vanilla_Option"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "JPY",
+  "notionalCurrencyLeg2" : "USD",
+  "notionalLeg1" : 250000001,
+  "notionalLeg2" : 2325581.4,
+  "optionPremiumAmount" : 57000,
+  "optionPremiumCurrency" : "USD",
+  "putAmount" : 250000001,
+  "putCurrency" : "JPY",
+  "reportSubmittingEntityID" : "213800WWTABZ1GOJHH37",
+  "reportingEntity" : "213800WWTABZ1GOJHH37",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "secondaryTransactionIdentifier" : "FXVANILLAOPTIONEXE01",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "strikePrice" : {
+    "strikePriceCurrency" : "USD/JPY",
+    "strikePriceMonetary" : 107.5000000000000,
+    "strikePriceNotation" : "Monetary"
+  },
+  "uniqueTransactionIdentifier" : "FXVANILLAOPTIONEXE02"
+}

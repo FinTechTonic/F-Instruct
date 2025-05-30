@@ -1,0 +1,68 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "CURR",
+  "bookingLocation" : "GB",
+  "callAmount" : 10000000.00000000,
+  "callCurrency" : "BRL",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmationTimestamp" : "2020-12-01T13:13:08Z",
+  "confirmed" : "ECNF",
+  "contractType" : "OPTN",
+  "counterparty1" : "W22LROWP2IHZNBB6K528",
+  "counterparty2" : "MXKQVM4U1OHBQWFPG196",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "W22LROWP2IHZNBB6K528",
+  "deliveryType" : "CASH",
+  "direction" : "BYER",
+  "effectiveDate" : "2020-12-01",
+  "eventDate" : "2020-12-01",
+  "eventType" : "TRAD",
+  "exchangeRate" : 1.30000000,
+  "exchangeRateBasis" : "BRL/USD",
+  "executionTimestamp" : "2020-12-01T13:13:08Z",
+  "expirationDate" : "2021-01-12",
+  "finalContractualSettlementDate" : "2021-01-14",
+  "firstExerciseDate" : "2021-01-12",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "OptionExerciseStyle" : "EURO",
+          "OtherUnderlierID" : "USD",
+          "OtherUnderlierIDSource" : "CCY",
+          "UnderlierID" : "BRL",
+          "UnderlierIDSource" : "CCY"
+        },
+        "Header" : {
+          "AssetClass" : "Foreign_Exchange",
+          "InstrumentType" : "Option",
+          "Level" : "UPI",
+          "UseCase" : "Vanilla_Option"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfLeg2" : 13000000.00000000,
+  "notionalAmountOfTheContractOrLeg1" : 10000000.00000000,
+  "notionalCurrencyOfLeg2" : "USD",
+  "notionalCurrencyOfTheContractOrLeg1" : "BRL",
+  "optionPremiumAmount" : 60.00000000,
+  "optionPremiumCurrency" : "USD",
+  "optionStyle" : "EURO",
+  "optionType" : "OTHR",
+  "putAmount" : 13000000.00000000,
+  "putCurrency" : "USD",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "W22LROWP2IHZNBB6K528",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrency1" : "USD",
+  "strikePrice" : {
+    "strikePriceCurrency" : "BRL/USD",
+    "strikePriceMonetary" : 1.3000000000000,
+    "strikePriceNotation" : "Monetary"
+  },
+  "uniqueTransactionIdentifier" : "FXNDOEXEUROPEANXML02"
+}

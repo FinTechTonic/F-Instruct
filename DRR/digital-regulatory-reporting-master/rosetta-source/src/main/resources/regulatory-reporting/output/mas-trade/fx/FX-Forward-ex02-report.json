@@ -1,0 +1,52 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "CURR",
+  "bookingLocation" : "GB",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "FORW",
+  "counterparty1" : "E26EDV109X6EEPBKVH76",
+  "counterparty2" : "GGDZP1UYGU9STUHRDP48",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "E26EDV109X6EEPBKVH76",
+  "deliveryType" : "PHYS",
+  "directionOfLeg1" : "MAKE",
+  "directionOfLeg2" : "TAKE",
+  "effectiveDate" : "2019-01-31",
+  "eventDate" : "2019-01-31",
+  "eventType" : "TRAD",
+  "exchangeRate" : 0.815394,
+  "exchangeRateBasis" : "EUR/GBP",
+  "executionTimestamp" : "2019-01-31T10:10:31Z",
+  "expirationDate" : "2019-02-20",
+  "finalContractualSettlementDate" : "2019-02-20",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "OtherUnderlierID" : "GBP",
+          "OtherUnderlierIDSource" : "CCY",
+          "UnderlierID" : "EUR",
+          "UnderlierIDSource" : "CCY"
+        },
+        "Header" : {
+          "InstrumentType" : "Forward",
+          "Level" : "UPI",
+          "UseCase" : "Forward"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfLeg2" : 6000000.0,
+  "notionalAmountOfTheContractOrLeg1" : 793234.88,
+  "notionalCurrencyOfLeg2" : "GBP",
+  "notionalCurrencyOfTheContractOrLeg1" : "EUR",
+  "platformIdentifier" : "XOFF",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "E26EDV109X6EEPBKVH76",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "uniqueTransactionIdentifier" : "FXFORWARDEXXMLXXXX02"
+}

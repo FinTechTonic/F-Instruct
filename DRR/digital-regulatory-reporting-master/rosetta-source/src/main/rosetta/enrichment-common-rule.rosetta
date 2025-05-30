@@ -1,0 +1,22 @@
+namespace drr.enrichment.common
+version "${project.version}"
+
+import drr.regulation.common.*
+import drr.enrichment.upi.*
+
+reporting rule EnrichmentData from TransactionReportInstruction: <"Copy enrichment data from reportable information.">
+    extract reportableInformation -> enrichment
+        as "Enrichment Data"
+
+reporting rule CollateralEnrichmentData from CollateralReportInstruction: <"Copy enrichment data from reportable information.">
+    extract reportableInformation -> enrichment
+        as "Collateral Enrichment Data"
+
+reporting rule UpiPreEnrichmentData from TransactionReportInstruction: <"Copy pre-enrichment data from reportable event.">
+    extract Create_AnnaDsbUpiRequestFromReportableEvent(item)
+        as "Upi Pre-Enrichment Data"
+
+reporting rule UpiPostEnrichmentData from TransactionReportInstruction: <"Copy post-enrichment data from reportable event.">
+    extract
+        API_AnnaDsbRetrieveUpi(Create_AnnaDsbUpiRequestFromReportableEvent(item) -> request)
+        as "Upi Post-Enrichment Data"

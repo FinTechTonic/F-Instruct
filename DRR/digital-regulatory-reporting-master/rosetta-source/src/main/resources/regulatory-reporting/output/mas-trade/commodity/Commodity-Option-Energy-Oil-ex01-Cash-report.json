@@ -1,0 +1,63 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "COMM",
+  "callAmount" : 656560.0000000000,
+  "callCurrency" : "USD",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "OPTN",
+  "counterparty1" : "DUMMY0000000000LEI02",
+  "counterparty2" : "DUMMY0000000000LEI01",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "DUMMY0000000000LEI02",
+  "deliveryType" : "CASH",
+  "direction" : "BYER",
+  "effectiveDate" : "2022-01-01",
+  "eventDate" : "2021-12-03",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-12-03T18:12:12Z",
+  "expirationDate" : "2022-12-31",
+  "finalContractualSettlementDate" : "2022-12-31",
+  "firstExerciseDate" : "2022-12-31",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "OptionExerciseStyle" : "EURO",
+          "OptionType" : "CALL",
+          "UnderlierID" : "HEATING OIL - NEW YORK - NYMEX",
+          "UnderlierIDSource" : "COMM",
+          "ValuationMethodorTrigger" : "Vanilla"
+        },
+        "Header" : {
+          "AssetClass" : "Commodities",
+          "InstrumentType" : "Option",
+          "Level" : "UPI",
+          "UseCase" : "Option"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfTheContractOrLeg1" : 656560.0000000000,
+  "notionalCurrencyOfTheContractOrLeg1" : "USD",
+  "optionPremiumAmount" : 36224.00,
+  "optionPremiumCurrency" : "USD",
+  "optionStyle" : "EURO",
+  "optionType" : "CALL",
+  "quantityUnitOfMeasureForTheContractOrLeg1" : "USGA",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "DUMMY0000000000LEI02",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrency1" : "USD",
+  "strikePrice" : {
+    "strikePriceCurrency" : "USD",
+    "strikePriceMonetary" : 2.3200000000000,
+    "strikePriceNotation" : "Monetary"
+  },
+  "totalNotionalQuantityOfTheContractOrLeg1" : 283000.00,
+  "underlyingIdentificationType" : "O",
+  "uniqueTransactionIdentifier" : "COMMODITYOPTIONENE01"
+}

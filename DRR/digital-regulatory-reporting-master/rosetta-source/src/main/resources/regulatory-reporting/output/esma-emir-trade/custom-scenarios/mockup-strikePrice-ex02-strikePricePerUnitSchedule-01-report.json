@@ -1,0 +1,53 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "COMM",
+  "cleared" : "N",
+  "clearingObligation" : "FLSE",
+  "clearingThresholdOfCounterparty1" : true,
+  "clearingThresholdOfCounterparty2" : true,
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "OPTN",
+  "corporateSectorOfTheCounterparty1" : [ "CSDS" ],
+  "corporateSectorOfTheCounterparty2" : [ "CDTI" ],
+  "counterparty1" : "DUMMY0000000000LEI02",
+  "counterparty2" : "DUMMY0000000000LEI01",
+  "counterparty2IdentifierType" : true,
+  "deliveryType" : "CASH",
+  "direction" : "BYER",
+  "effectiveDate" : "2022-07-01",
+  "entityResponsibleForReporting" : "DUMMY0000000000LEI02",
+  "eventDate" : "2021-12-03",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-12-03T19:23:14Z",
+  "expirationDate" : "2022-08-31",
+  "finalContractualSettlementDate" : "2022-08-31",
+  "intragroup" : false,
+  "isCrypto" : false,
+  "level" : "TCTN",
+  "masterAgreementType" : "ISDA",
+  "masterAgreementVersion" : 2002,
+  "natureOfCounterparty1" : "F",
+  "natureOfCounterparty2" : "F",
+  "optionPremiumAmount" : 452500.00000,
+  "optionPremiumCurrency" : "USD",
+  "optionPremiumPaymentDate" : "2021-12-07",
+  "optionStyle" : "EURO",
+  "optionType" : "CALL",
+  "productClassification" : "HTOXVX",
+  "ptrr" : false,
+  "reportSubmittingEntityID" : "DUMMY0000000000LEI02",
+  "reportingObligationOfTheCounterparty2" : true,
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrency1" : "USD",
+  "strikePrice" : {
+    "strikePriceNotation" : "Decimal"
+  },
+  "strikePriceSchedule" : [ {
+    "effectiveDateStrikePrice" : "2022-07-01"
+  }, {
+    "effectiveDateStrikePrice" : "2022-08-01"
+  } ],
+  "totalNotionalQuantityLeg1" : 2000000.00000,
+  "uti" : "MOCKUPSTRIKEPRICEE01"
+}

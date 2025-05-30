@@ -1,0 +1,1047 @@
+{
+  "originatingWorkflowStep" : {
+    "businessEvent" : {
+      "intent" : "ContractFormation",
+      "eventDate" : "2020-11-09",
+      "instruction" : [ {
+        "primitiveInstruction" : {
+          "contractFormation" : {
+            "legalAgreement" : [ {
+              "legalAgreementIdentification" : {
+                "agreementName" : {
+                  "agreementType" : "MasterAgreement",
+                  "masterAgreementType" : {
+                    "value" : "ISDAMaster"
+                  }
+                },
+                "vintage" : 2002
+              },
+              "contractualParty" : [ {
+                "globalReference" : "fabf1c05",
+                "externalReference" : "Party1"
+              }, {
+                "globalReference" : "a4596716",
+                "externalReference" : "Party2"
+              } ],
+              "meta" : {
+                "globalKey" : "8241850c"
+              }
+            } ]
+          }
+        },
+        "before" : {
+          "value" : {
+            "trade" : {
+              "tradeIdentifier" : [ {
+                "issuer" : {
+                  "value" : "MXKQVM4U1OHBQWFPG196",
+                  "meta" : {
+                    "scheme" : "http://www.fpml.org/coding-scheme/external/issuer-identifier"
+                  }
+                },
+                "assignedIdentifier" : [ {
+                  "identifier" : {
+                    "value" : "FXFORWARDEXPARTYPA03",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/unique-transaction-identifier"
+                    }
+                  }
+                } ],
+                "meta" : {
+                  "globalKey" : "ebb773c"
+                },
+                "identifierType" : "UniqueTransactionIdentifier"
+              }, {
+                "issuer" : {
+                  "value" : "FOR8UP27PHTHYVLBNG30",
+                  "meta" : {
+                    "scheme" : "http://www.fpml.org/coding-scheme/external/issuer-identifier"
+                  }
+                },
+                "assignedIdentifier" : [ {
+                  "identifier" : {
+                    "value" : "FXFORWARDEXPARTYPA02",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/unique-transaction-identifier"
+                    }
+                  }
+                } ],
+                "meta" : {
+                  "globalKey" : "2e202189"
+                },
+                "identifierType" : "UniqueTransactionIdentifier"
+              }, {
+                "issuerReference" : {
+                  "globalReference" : "fabf1c05",
+                  "externalReference" : "Party1"
+                },
+                "assignedIdentifier" : [ {
+                  "identifier" : {
+                    "value" : "FXFORWARDEXPARTYPA01",
+                    "meta" : {
+                      "scheme" : "http://www.dtcc.com/internal-reference-id"
+                    }
+                  }
+                } ],
+                "meta" : {
+                  "globalKey" : "a56446a7"
+                }
+              } ],
+              "tradeDate" : {
+                "value" : "2020-11-09",
+                "meta" : {
+                  "globalKey" : "3f22c9"
+                }
+              },
+              "tradableProduct" : {
+                "product" : {
+                  "contractualProduct" : {
+                    "productTaxonomy" : [ {
+                      "primaryAssetClass" : {
+                        "value" : "ForeignExchange"
+                      }
+                    }, {
+                      "secondaryAssetClass" : [ {
+                        "value" : "ForeignExchange"
+                      } ]
+                    }, {
+                      "source" : "CFI",
+                      "value" : {
+                        "name" : {
+                          "value" : "JFTXFP",
+                          "meta" : {
+                            "scheme" : "http://www.fpml.org/coding-scheme/external/product-classification/iso10962"
+                          }
+                        }
+                      }
+                    }, {
+                      "source" : "ISDA",
+                      "productQualifier" : "ForeignExchange_Spot_Forward"
+                    } ],
+                    "productIdentifier" : [ {
+                      "value" : {
+                        "identifier" : {
+                          "value" : "ForeignExchange:Forward",
+                          "meta" : {
+                            "scheme" : "http://www.fpml.org/coding-scheme/product-taxonomy"
+                          }
+                        },
+                        "source" : "Other",
+                        "meta" : {
+                          "globalKey" : "db31a60e"
+                        }
+                      }
+                    } ],
+                    "economicTerms" : {
+                      "payout" : {
+                        "forwardPayout" : [ {
+                          "settlementTerms" : {
+                            "settlementDate" : {
+                              "valueDate" : "2020-12-23",
+                              "meta" : {
+                                "globalKey" : "3f2317"
+                              }
+                            },
+                            "meta" : {
+                              "globalKey" : "3f2317"
+                            }
+                          },
+                          "underlier" : {
+                            "foreignExchange" : {
+                              "exchangedCurrency1" : {
+                                "payerReceiver" : {
+                                  "payer" : "Party1",
+                                  "receiver" : "Party2"
+                                },
+                                "priceQuantity" : {
+                                  "quantitySchedule" : {
+                                    "address" : {
+                                      "scope" : "DOCUMENT",
+                                      "value" : "quantity-1"
+                                    }
+                                  },
+                                  "meta" : {
+                                    "globalKey" : "0"
+                                  }
+                                },
+                                "meta" : {
+                                  "globalKey" : "b141411f"
+                                }
+                              },
+                              "exchangedCurrency2" : {
+                                "payerReceiver" : {
+                                  "payer" : "Party2",
+                                  "receiver" : "Party1"
+                                },
+                                "priceQuantity" : {
+                                  "quantitySchedule" : {
+                                    "address" : {
+                                      "scope" : "DOCUMENT",
+                                      "value" : "quantity-2"
+                                    }
+                                  },
+                                  "meta" : {
+                                    "globalKey" : "0"
+                                  }
+                                },
+                                "meta" : {
+                                  "globalKey" : "b14144c1"
+                                }
+                              }
+                            },
+                            "meta" : {
+                              "globalKey" : "c086df02"
+                            }
+                          },
+                          "meta" : {
+                            "globalKey" : "b1ef1799"
+                          }
+                        } ],
+                        "meta" : {
+                          "globalKey" : "b1ef1799"
+                        }
+                      },
+                      "nonStandardisedTerms" : false
+                    },
+                    "meta" : {
+                      "globalKey" : "56fd802e"
+                    }
+                  },
+                  "meta" : {
+                    "globalKey" : "56fd802e"
+                  }
+                },
+                "tradeLot" : [ {
+                  "priceQuantity" : [ {
+                    "price" : [ {
+                      "value" : {
+                        "value" : 1.25000000,
+                        "unit" : {
+                          "currency" : {
+                            "value" : "EUR"
+                          }
+                        },
+                        "perUnitOf" : {
+                          "currency" : {
+                            "value" : "USD"
+                          }
+                        },
+                        "priceType" : "ExchangeRate"
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "price-1"
+                        } ]
+                      }
+                    } ],
+                    "quantity" : [ {
+                      "value" : {
+                        "value" : 100.00000000,
+                        "unit" : {
+                          "currency" : {
+                            "value" : "USD"
+                          }
+                        }
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "quantity-1"
+                        } ]
+                      }
+                    }, {
+                      "value" : {
+                        "value" : 125.00000000,
+                        "unit" : {
+                          "currency" : {
+                            "value" : "EUR"
+                          }
+                        }
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "quantity-2"
+                        } ]
+                      }
+                    } ],
+                    "meta" : {
+                      "globalKey" : "9ad0fc05"
+                    }
+                  } ]
+                } ],
+                "counterparty" : [ {
+                  "role" : "Party1",
+                  "partyReference" : {
+                    "globalReference" : "fabf1c05",
+                    "externalReference" : "Party1"
+                  }
+                }, {
+                  "role" : "Party2",
+                  "partyReference" : {
+                    "globalReference" : "a4596716",
+                    "externalReference" : "Party2"
+                  }
+                } ]
+              },
+              "party" : [ {
+                "partyId" : [ {
+                  "identifier" : {
+                    "value" : "W22LROWP2IHZNBB6K528",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                    }
+                  },
+                  "identifierType" : "LEI",
+                  "meta" : {
+                    "globalKey" : "1f80efa4"
+                  }
+                } ],
+                "contactInformation" : {
+                  "address" : [ {
+                    "street" : [ "Plumtree Court 25 Shoe Lane" ],
+                    "city" : "London",
+                    "state" : "EN1",
+                    "country" : {
+                      "value" : "GB"
+                    },
+                    "postalCode" : "EC4A 4AU"
+                  } ]
+                },
+                "meta" : {
+                  "globalKey" : "fabf1c05",
+                  "externalKey" : "Party1"
+                }
+              }, {
+                "partyId" : [ {
+                  "identifier" : {
+                    "value" : "MXKQVM4U1OHBQWFPG196",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                    }
+                  },
+                  "identifierType" : "LEI",
+                  "meta" : {
+                    "globalKey" : "2aaa5878"
+                  }
+                } ],
+                "contactInformation" : {
+                  "address" : [ {
+                    "country" : {
+                      "value" : "US"
+                    }
+                  } ]
+                },
+                "meta" : {
+                  "globalKey" : "a4596716",
+                  "externalKey" : "Party2"
+                }
+              }, {
+                "partyId" : [ {
+                  "identifier" : {
+                    "value" : "FOR8UP27PHTHYVLBNG30",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                    }
+                  },
+                  "identifierType" : "LEI",
+                  "meta" : {
+                    "globalKey" : "42fa58c"
+                  }
+                } ],
+                "meta" : {
+                  "globalKey" : "42fa58c",
+                  "externalKey" : "ExecutionAgent"
+                }
+              }, {
+                "partyId" : [ {
+                  "identifier" : {
+                    "value" : "OTHERS",
+                    "meta" : {
+                      "scheme" : "http://www.dtcc.com/free-format-text"
+                    }
+                  },
+                  "meta" : {
+                    "globalKey" : "8b905763"
+                  }
+                } ],
+                "meta" : {
+                  "globalKey" : "8b905763",
+                  "externalKey" : "ConfirmParty1"
+                }
+              } ],
+              "meta" : {
+                "globalKey" : "b34073c5"
+              }
+            },
+            "meta" : {
+              "globalKey" : "b34073c5"
+            }
+          }
+        }
+      } ],
+      "after" : [ {
+        "trade" : {
+          "tradeIdentifier" : [ {
+            "issuer" : {
+              "value" : "MXKQVM4U1OHBQWFPG196",
+              "meta" : {
+                "scheme" : "http://www.fpml.org/coding-scheme/external/issuer-identifier"
+              }
+            },
+            "assignedIdentifier" : [ {
+              "identifier" : {
+                "value" : "FXFORWARDEXPARTYPA03",
+                "meta" : {
+                  "scheme" : "http://www.fpml.org/coding-scheme/external/unique-transaction-identifier"
+                }
+              }
+            } ],
+            "meta" : {
+              "globalKey" : "ebb773c"
+            },
+            "identifierType" : "UniqueTransactionIdentifier"
+          }, {
+            "issuer" : {
+              "value" : "FOR8UP27PHTHYVLBNG30",
+              "meta" : {
+                "scheme" : "http://www.fpml.org/coding-scheme/external/issuer-identifier"
+              }
+            },
+            "assignedIdentifier" : [ {
+              "identifier" : {
+                "value" : "FXFORWARDEXPARTYPA02",
+                "meta" : {
+                  "scheme" : "http://www.fpml.org/coding-scheme/external/unique-transaction-identifier"
+                }
+              }
+            } ],
+            "meta" : {
+              "globalKey" : "2e202189"
+            },
+            "identifierType" : "UniqueTransactionIdentifier"
+          }, {
+            "issuerReference" : {
+              "globalReference" : "fabf1c05",
+              "externalReference" : "Party1"
+            },
+            "assignedIdentifier" : [ {
+              "identifier" : {
+                "value" : "FXFORWARDEXPARTYPA01",
+                "meta" : {
+                  "scheme" : "http://www.dtcc.com/internal-reference-id"
+                }
+              }
+            } ],
+            "meta" : {
+              "globalKey" : "a56446a7"
+            }
+          } ],
+          "tradeDate" : {
+            "value" : "2020-11-09",
+            "meta" : {
+              "globalKey" : "3f22c9"
+            }
+          },
+          "tradableProduct" : {
+            "product" : {
+              "contractualProduct" : {
+                "productTaxonomy" : [ {
+                  "primaryAssetClass" : {
+                    "value" : "ForeignExchange"
+                  }
+                }, {
+                  "secondaryAssetClass" : [ {
+                    "value" : "ForeignExchange"
+                  } ]
+                }, {
+                  "source" : "CFI",
+                  "value" : {
+                    "name" : {
+                      "value" : "JFTXFP",
+                      "meta" : {
+                        "scheme" : "http://www.fpml.org/coding-scheme/external/product-classification/iso10962"
+                      }
+                    }
+                  }
+                }, {
+                  "source" : "ISDA",
+                  "productQualifier" : "ForeignExchange_Spot_Forward"
+                } ],
+                "productIdentifier" : [ {
+                  "value" : {
+                    "identifier" : {
+                      "value" : "ForeignExchange:Forward",
+                      "meta" : {
+                        "scheme" : "http://www.fpml.org/coding-scheme/product-taxonomy"
+                      }
+                    },
+                    "source" : "Other",
+                    "meta" : {
+                      "globalKey" : "db31a60e"
+                    }
+                  }
+                } ],
+                "economicTerms" : {
+                  "payout" : {
+                    "forwardPayout" : [ {
+                      "settlementTerms" : {
+                        "settlementDate" : {
+                          "valueDate" : "2020-12-23",
+                          "meta" : {
+                            "globalKey" : "3f2317"
+                          }
+                        },
+                        "meta" : {
+                          "globalKey" : "3f2317"
+                        }
+                      },
+                      "underlier" : {
+                        "foreignExchange" : {
+                          "exchangedCurrency1" : {
+                            "payerReceiver" : {
+                              "payer" : "Party1",
+                              "receiver" : "Party2"
+                            },
+                            "priceQuantity" : {
+                              "quantitySchedule" : {
+                                "address" : {
+                                  "scope" : "DOCUMENT",
+                                  "value" : "quantity-1"
+                                }
+                              },
+                              "meta" : {
+                                "globalKey" : "0"
+                              }
+                            },
+                            "meta" : {
+                              "globalKey" : "b141411f"
+                            }
+                          },
+                          "exchangedCurrency2" : {
+                            "payerReceiver" : {
+                              "payer" : "Party2",
+                              "receiver" : "Party1"
+                            },
+                            "priceQuantity" : {
+                              "quantitySchedule" : {
+                                "address" : {
+                                  "scope" : "DOCUMENT",
+                                  "value" : "quantity-2"
+                                }
+                              },
+                              "meta" : {
+                                "globalKey" : "0"
+                              }
+                            },
+                            "meta" : {
+                              "globalKey" : "b14144c1"
+                            }
+                          }
+                        },
+                        "meta" : {
+                          "globalKey" : "c086df02"
+                        }
+                      },
+                      "meta" : {
+                        "globalKey" : "b1ef1799"
+                      }
+                    } ],
+                    "meta" : {
+                      "globalKey" : "b1ef1799"
+                    }
+                  },
+                  "nonStandardisedTerms" : false
+                },
+                "meta" : {
+                  "globalKey" : "56fd802e"
+                }
+              },
+              "meta" : {
+                "globalKey" : "56fd802e"
+              }
+            },
+            "tradeLot" : [ {
+              "priceQuantity" : [ {
+                "price" : [ {
+                  "value" : {
+                    "value" : 1.25000000,
+                    "unit" : {
+                      "currency" : {
+                        "value" : "EUR"
+                      }
+                    },
+                    "perUnitOf" : {
+                      "currency" : {
+                        "value" : "USD"
+                      }
+                    },
+                    "priceType" : "ExchangeRate"
+                  },
+                  "meta" : {
+                    "location" : [ {
+                      "scope" : "DOCUMENT",
+                      "value" : "price-1"
+                    } ]
+                  }
+                } ],
+                "quantity" : [ {
+                  "value" : {
+                    "value" : 100.00000000,
+                    "unit" : {
+                      "currency" : {
+                        "value" : "USD"
+                      }
+                    }
+                  },
+                  "meta" : {
+                    "location" : [ {
+                      "scope" : "DOCUMENT",
+                      "value" : "quantity-1"
+                    } ]
+                  }
+                }, {
+                  "value" : {
+                    "value" : 125.00000000,
+                    "unit" : {
+                      "currency" : {
+                        "value" : "EUR"
+                      }
+                    }
+                  },
+                  "meta" : {
+                    "location" : [ {
+                      "scope" : "DOCUMENT",
+                      "value" : "quantity-2"
+                    } ]
+                  }
+                } ],
+                "meta" : {
+                  "globalKey" : "9ad0fc05"
+                }
+              } ]
+            } ],
+            "counterparty" : [ {
+              "role" : "Party1",
+              "partyReference" : {
+                "globalReference" : "fabf1c05",
+                "externalReference" : "Party1"
+              }
+            }, {
+              "role" : "Party2",
+              "partyReference" : {
+                "globalReference" : "a4596716",
+                "externalReference" : "Party2"
+              }
+            } ]
+          },
+          "party" : [ {
+            "partyId" : [ {
+              "identifier" : {
+                "value" : "W22LROWP2IHZNBB6K528",
+                "meta" : {
+                  "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                }
+              },
+              "identifierType" : "LEI",
+              "meta" : {
+                "globalKey" : "1f80efa4"
+              }
+            } ],
+            "contactInformation" : {
+              "address" : [ {
+                "street" : [ "Plumtree Court 25 Shoe Lane" ],
+                "city" : "London",
+                "state" : "EN1",
+                "country" : {
+                  "value" : "GB"
+                },
+                "postalCode" : "EC4A 4AU"
+              } ]
+            },
+            "meta" : {
+              "globalKey" : "fabf1c05",
+              "externalKey" : "Party1"
+            }
+          }, {
+            "partyId" : [ {
+              "identifier" : {
+                "value" : "MXKQVM4U1OHBQWFPG196",
+                "meta" : {
+                  "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                }
+              },
+              "identifierType" : "LEI",
+              "meta" : {
+                "globalKey" : "2aaa5878"
+              }
+            } ],
+            "contactInformation" : {
+              "address" : [ {
+                "country" : {
+                  "value" : "US"
+                }
+              } ]
+            },
+            "meta" : {
+              "globalKey" : "a4596716",
+              "externalKey" : "Party2"
+            }
+          }, {
+            "partyId" : [ {
+              "identifier" : {
+                "value" : "FOR8UP27PHTHYVLBNG30",
+                "meta" : {
+                  "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                }
+              },
+              "identifierType" : "LEI",
+              "meta" : {
+                "globalKey" : "42fa58c"
+              }
+            } ],
+            "meta" : {
+              "globalKey" : "42fa58c",
+              "externalKey" : "ExecutionAgent"
+            }
+          }, {
+            "partyId" : [ {
+              "identifier" : {
+                "value" : "OTHERS",
+                "meta" : {
+                  "scheme" : "http://www.dtcc.com/free-format-text"
+                }
+              },
+              "meta" : {
+                "globalKey" : "8b905763"
+              }
+            } ],
+            "meta" : {
+              "globalKey" : "8b905763",
+              "externalKey" : "ConfirmParty1"
+            }
+          } ],
+          "contractDetails" : {
+            "documentation" : [ {
+              "legalAgreementIdentification" : {
+                "agreementName" : {
+                  "agreementType" : "MasterAgreement",
+                  "masterAgreementType" : {
+                    "value" : "ISDAMaster"
+                  }
+                },
+                "vintage" : 2002
+              },
+              "contractualParty" : [ {
+                "globalReference" : "fabf1c05",
+                "externalReference" : "Party1"
+              }, {
+                "globalReference" : "a4596716",
+                "externalReference" : "Party2"
+              } ],
+              "meta" : {
+                "globalKey" : "8241850c"
+              }
+            } ]
+          },
+          "meta" : {
+            "globalKey" : "b34073c5"
+          }
+        },
+        "state" : {
+          "positionState" : "Formed"
+        },
+        "meta" : {
+          "globalKey" : "b34073c5"
+        }
+      } ]
+    },
+    "previousWorkflowStep" : {
+      "globalReference" : "be8733be"
+    },
+    "messageInformation" : {
+      "messageId" : {
+        "value" : "envuatuatExt10f8072af860547f9b07204d954b089b2",
+        "meta" : {
+          "scheme" : "http://www.bankx.com/msg_id"
+        }
+      },
+      "sentBy" : {
+        "value" : "W22LROWP2IHZNBB6K528"
+      },
+      "sentTo" : [ {
+        "value" : "DTCCGTR"
+      } ]
+    },
+    "timestamp" : [ {
+      "dateTime" : "2020-11-09T04:28:05Z",
+      "qualification" : "eventCreationDateTime"
+    }, {
+      "dateTime" : "2020-11-09T16:28:05Z",
+      "qualification" : "executionDateTime"
+    }, {
+      "dateTime" : "2020-11-09T16:28:05Z",
+      "qualification" : "executionDateTime"
+    } ],
+    "eventIdentifier" : [ {
+      "assignedIdentifier" : [ {
+        "identifier" : {
+          "value" : "envuatuatExt10f8072af860547f9b07204d954b089b2"
+        }
+      } ],
+      "meta" : {
+        "globalKey" : "14ea36c4"
+      }
+    } ],
+    "action" : "New",
+    "party" : [ {
+      "partyId" : [ {
+        "identifier" : {
+          "value" : "W22LROWP2IHZNBB6K528",
+          "meta" : {
+            "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+          }
+        },
+        "identifierType" : "LEI",
+        "meta" : {
+          "globalKey" : "1f80efa4"
+        }
+      } ],
+      "contactInformation" : {
+        "address" : [ {
+          "street" : [ "Plumtree Court 25 Shoe Lane" ],
+          "city" : "London",
+          "state" : "EN1",
+          "country" : {
+            "value" : "GB"
+          },
+          "postalCode" : "EC4A 4AU"
+        } ]
+      },
+      "meta" : {
+        "globalKey" : "fabf1c05",
+        "externalKey" : "Party1"
+      }
+    }, {
+      "partyId" : [ {
+        "identifier" : {
+          "value" : "MXKQVM4U1OHBQWFPG196",
+          "meta" : {
+            "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+          }
+        },
+        "identifierType" : "LEI",
+        "meta" : {
+          "globalKey" : "2aaa5878"
+        }
+      } ],
+      "contactInformation" : {
+        "address" : [ {
+          "country" : {
+            "value" : "US"
+          }
+        } ]
+      },
+      "meta" : {
+        "globalKey" : "a4596716",
+        "externalKey" : "Party2"
+      }
+    }, {
+      "partyId" : [ {
+        "identifier" : {
+          "value" : "FOR8UP27PHTHYVLBNG30",
+          "meta" : {
+            "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+          }
+        },
+        "identifierType" : "LEI",
+        "meta" : {
+          "globalKey" : "42fa58c"
+        }
+      } ],
+      "meta" : {
+        "globalKey" : "42fa58c",
+        "externalKey" : "ExecutionAgent"
+      }
+    }, {
+      "partyId" : [ {
+        "identifier" : {
+          "value" : "OTHERS",
+          "meta" : {
+            "scheme" : "http://www.dtcc.com/free-format-text"
+          }
+        },
+        "meta" : {
+          "globalKey" : "8b905763"
+        }
+      } ],
+      "meta" : {
+        "globalKey" : "8b905763",
+        "externalKey" : "ConfirmParty1"
+      }
+    } ]
+  },
+  "reportableInformation" : {
+    "confirmationMethod" : "NotConfirmed",
+    "executionVenueType" : "OffFacility",
+    "intragroup" : false,
+    "partyInformation" : [ {
+      "partyReference" : {
+        "globalReference" : "fabf1c05",
+        "externalReference" : "Party1"
+      },
+      "relatedParty" : [ {
+        "partyReference" : {
+          "globalReference" : "fabf1c05",
+          "externalReference" : "Party1"
+        },
+        "role" : "Beneficiary"
+      }, {
+        "partyReference" : {
+          "globalReference" : "fabf1c05",
+          "externalReference" : "Party1"
+        }
+      }, {
+        "partyReference" : {
+          "globalReference" : "a4596716",
+          "externalReference" : "Party2"
+        }
+      }, {
+        "partyReference" : {
+          "globalReference" : "8b905763",
+          "externalReference" : "ConfirmParty1"
+        },
+        "role" : "ConfirmationPlatform"
+      } ],
+      "regimeInformation" : [ {
+        "supervisoryBody" : {
+          "value" : "CFTC"
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "EMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "ESMA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "esmaPartyInformation" : {
+          "natureOfParty" : "Financial",
+          "corporateSector" : {
+            "financialSector" : [ "AIFD" ]
+          },
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "UKEMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "FCA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "fcaPartyInformation" : {
+          "natureOfParty" : "Financial",
+          "corporateSector" : {
+            "financialSector" : [ "AIFD" ]
+          },
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "JFSA"
+        },
+        "supervisoryBody" : {
+          "value" : "JFSA"
+        },
+        "reportingRole" : "ReportingParty",
+        "technicalRecordId" : {
+          "value" : "envuatuatExt10f8072af860547f9b07204d954b089b2",
+          "meta" : {
+            "scheme" : "http://www.bankx.com/msg_id"
+          }
+        }
+      } ]
+    }, {
+      "partyReference" : {
+        "globalReference" : "a4596716",
+        "externalReference" : "Party2"
+      },
+      "relatedParty" : [ {
+        "partyReference" : {
+          "globalReference" : "42fa58c",
+          "externalReference" : "ExecutionAgent"
+        },
+        "role" : "ExecutionAgent"
+      }, {
+        "partyReference" : {
+          "globalReference" : "8b905763",
+          "externalReference" : "ConfirmParty1"
+        },
+        "role" : "ConfirmationPlatform"
+      } ],
+      "regimeInformation" : [ {
+        "regimeName" : {
+          "value" : "EMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "ESMA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "esmaPartyInformation" : {
+          "natureOfParty" : "Financial",
+          "corporateSector" : {
+            "financialSector" : [ "UCIT" ]
+          },
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "UKEMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "FCA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "fcaPartyInformation" : {
+          "natureOfParty" : "Financial",
+          "corporateSector" : {
+            "financialSector" : [ "UCIT" ]
+          },
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "JFSA"
+        },
+        "supervisoryBody" : {
+          "value" : "JFSA"
+        },
+        "reportingRole" : "ReportingParty",
+        "technicalRecordId" : {
+          "value" : "envuatuatExt10f8072af860547f9b07204d954b089b2",
+          "meta" : {
+            "scheme" : "http://www.bankx.com/msg_id"
+          }
+        }
+      } ]
+    } ],
+    "originalExecutionTimestamp" : "2020-11-09T16:28:05Z"
+  },
+  "reportingSide" : {
+    "reportingParty" : {
+      "globalReference" : "fabf1c05",
+      "externalReference" : "Party1"
+    },
+    "reportingCounterparty" : {
+      "globalReference" : "a4596716",
+      "externalReference" : "Party2"
+    }
+  }
+}

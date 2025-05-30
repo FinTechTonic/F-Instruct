@@ -1,0 +1,13 @@
+{
+  "cleared" : "False",
+  "clearedEntity" : "Out of scope",
+  "effectiveDate" : "2016-11-16",
+  "optionExpirationDate" : "N/A",
+  "optionPremium" : "N/A",
+  "optionType" : "N/A",
+  "priorUniqueTransactionIdentifier" : "IRCAPFLOOREXCAPXML01",
+  "reportingTimestamp" : "2021-12-06T17:09:12Z",
+  "terminationDate" : "2020-12-31",
+  "uniqueProductIdentifier" : "InterestRate_CapFloor",
+  "uniqueTransactionIdentifier" : "BDM-161157-144711"
+}

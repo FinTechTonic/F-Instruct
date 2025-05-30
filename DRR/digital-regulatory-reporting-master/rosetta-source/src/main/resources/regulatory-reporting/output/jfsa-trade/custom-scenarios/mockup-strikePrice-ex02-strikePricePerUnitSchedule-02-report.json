@@ -1,0 +1,45 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "OTHR",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "OPTN",
+  "counterparty1" : "DUMMY0000000000LEI02",
+  "counterparty2" : "DUMMY0000000000LEI01",
+  "counterparty2IdentifierType" : true,
+  "deliveryType" : "CASH",
+  "direction1" : "BYER",
+  "effectiveDate" : "2022-07-01",
+  "entityResponsibleForReporting" : "DUMMY0000000000LEI02",
+  "eventIdentifier" : "ac605bcecd0f45389a8c10ac65bdb78e",
+  "eventTimestamp" : "2021-12-04T04:51:01.797127Z",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-12-03T19:23:14Z",
+  "expirationDate" : "2022-08-31",
+  "finalContractualSettlementDate" : "2022-08-31",
+  "firstExerciseDate" : "2022-08-31",
+  "isCrypto" : false,
+  "optionPremiumAmount" : 452500.00,
+  "optionPremiumCurrency" : "USD",
+  "optionPremiumPaymentDate" : "2021-12-07",
+  "optionStyle" : "EURO",
+  "optionType" : "CALL",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrencyLeg1" : "USD",
+  "strikePrice" : {
+    "strikePriceNotation" : "Decimal"
+  },
+  "strikePriceNotation" : "3",
+  "strikePriceSchedule" : [ {
+    "effectiveDateStrikePrice" : "2022-07-01",
+    "strikePriceInEffectOnAssociatedEffectiveDateDecimal" : 2000
+  }, {
+    "effectiveDateStrikePrice" : "2022-08-01",
+    "strikePriceInEffectOnAssociatedEffectiveDateDecimal" : 3000
+  } ],
+  "submitterIdentifier" : "DUMMY0000000000LEI02",
+  "technicalRecordId" : "ac605bcecd0f45389a8c10ac65bdb78e",
+  "totalNotionalQuantityLeg1" : 2000000.00,
+  "uti" : "MOCKUPSTRIKEPRICEE01"
+}

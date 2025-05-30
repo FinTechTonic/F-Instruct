@@ -1,0 +1,55 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "INTR",
+  "bookingLocation" : "US",
+  "cleared" : "I",
+  "collateralPortfolioIndicator" : false,
+  "confirmationTimestamp" : "2020-12-09T19:19:04Z",
+  "confirmed" : "ECNF",
+  "contractType" : "FRAS",
+  "counterparty1" : "TESTCLIENTLEI0000009",
+  "counterparty2" : "TESTHOUSELEI00000001",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "TESTCLIENTLEI0000009",
+  "deliveryType" : "PHYS",
+  "directionOfLeg1" : "MAKE",
+  "directionOfLeg2" : "TAKE",
+  "effectiveDate" : "2020-12-09",
+  "eventDate" : "2020-12-09",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2020-12-09T19:19:04Z",
+  "expirationDate" : "2021-03-09",
+  "finalContractualSettlementDate" : "2021-03-11",
+  "fixedRateDayCountConventionOfLeg1" : "A004",
+  "fixedRateOfLeg2" : 1.25000000,
+  "floatingRateDayCountConventionOfLeg2" : "A004",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalCurrency" : "EUR",
+          "ReferenceRateTermUnit" : "MNTH",
+          "ReferenceRateTermValue" : 3,
+          "UnderlierID" : "EUR-EURIBOR-Reuters",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Forward",
+          "Level" : "UPI"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfLeg2" : 100,
+  "notionalAmountOfTheContractOrLeg1" : 100,
+  "notionalCurrencyOfLeg2" : "EUR",
+  "notionalCurrencyOfTheContractOrLeg1" : "EUR",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "TESTCLIENTLEI0000009",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "underlyingIdentificationType" : "X",
+  "uniqueTransactionIdentifier" : "IRFRAEXXMLXXXXXXXX00L9M8X7X6E5A4R3F2R1I0"
+}

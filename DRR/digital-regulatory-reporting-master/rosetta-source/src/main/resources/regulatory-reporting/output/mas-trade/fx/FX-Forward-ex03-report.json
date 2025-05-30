@@ -1,0 +1,52 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "CURR",
+  "bookingLocation" : "US",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmationTimestamp" : "2020-11-05T13:27:37Z",
+  "confirmed" : "ECNF",
+  "contractType" : "FORW",
+  "counterparty1" : "FOR8UP27PHTHYVLBNG30",
+  "counterparty2" : "W22LROWP2IHZNBB6K528",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "FOR8UP27PHTHYVLBNG30",
+  "deliveryType" : "PHYS",
+  "directionOfLeg1" : "TAKE",
+  "directionOfLeg2" : "MAKE",
+  "effectiveDate" : "2020-11-05",
+  "eventDate" : "2020-11-05",
+  "eventType" : "TRAD",
+  "exchangeRate" : 1.25000000,
+  "exchangeRateBasis" : "USD/EUR",
+  "executionTimestamp" : "2020-11-05T13:27:37Z",
+  "expirationDate" : "2020-12-21",
+  "finalContractualSettlementDate" : "2020-12-21",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "OtherUnderlierID" : "USD",
+          "OtherUnderlierIDSource" : "CCY",
+          "UnderlierID" : "EUR",
+          "UnderlierIDSource" : "CCY"
+        },
+        "Header" : {
+          "AssetClass" : "Foreign_Exchange",
+          "InstrumentType" : "Forward",
+          "Level" : "UPI",
+          "UseCase" : "Forward"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfLeg2" : 100.00000000,
+  "notionalAmountOfTheContractOrLeg1" : 125.00000000,
+  "notionalCurrencyOfLeg2" : "USD",
+  "notionalCurrencyOfTheContractOrLeg1" : "EUR",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "FOR8UP27PHTHYVLBNG30",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z"
+}

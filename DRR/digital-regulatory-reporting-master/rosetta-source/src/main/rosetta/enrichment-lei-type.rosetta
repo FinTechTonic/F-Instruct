@@ -1,0 +1,14 @@
+namespace drr.enrichment.lei
+version "${project.version}"
+
+type LeiData: <"LEI data from GLEIF.">
+
+    lei string (1..1) <"LEI identifier.">
+    entityName string (0..1) <"LEI legal entity name.">
+    entityCategory LeiCategoryEnum (1..1) <"LEI legal entity category.">
+    entityStatus LeiStatusEnum (1..1) <"LEI legal entity status.">
+    branchEntityStatus LeiStatusEnum (0..1) <"LEI branch entity status.">
+    generalCategory LeiGeneralCategoryEnum (0..1)
+    registrationStatus LeiRegistrationStatusEnum (1..1) <"LEI registration status.">
+    registrationDate zonedDateTime (1..1) <"LEI registration date.">
+    published boolean (1..1) <"The LEI is included in the LEI data as published by GLEIF.">

@@ -1,0 +1,617 @@
+{
+  "originatingWorkflowStep" : {
+    "proposedEvent" : {
+      "intent" : "ContractFormation",
+      "eventDate" : "2021-12-06",
+      "instruction" : [ {
+        "primitiveInstruction" : {
+          "contractFormation" : {
+            "legalAgreement" : [ {
+              "legalAgreementIdentification" : {
+                "agreementName" : {
+                  "agreementType" : "MasterAgreement",
+                  "masterAgreementType" : {
+                    "value" : "ISDAMaster"
+                  }
+                },
+                "vintage" : 2002
+              },
+              "contractualParty" : [ {
+                "globalReference" : "f0466d0f",
+                "externalReference" : "partyB"
+              }, {
+                "globalReference" : "10fb089c",
+                "externalReference" : "partyA"
+              } ],
+              "meta" : {
+                "globalKey" : "55a4032a"
+              }
+            }, {
+              "legalAgreementIdentification" : {
+                "agreementName" : {
+                  "agreementType" : "Confirmation",
+                  "contractualDefinitionsType" : [ {
+                    "value" : "ISDA2005Commodity"
+                  } ]
+                }
+              },
+              "contractualParty" : [ {
+                "globalReference" : "f0466d0f",
+                "externalReference" : "partyB"
+              }, {
+                "globalReference" : "10fb089c",
+                "externalReference" : "partyA"
+              } ],
+              "meta" : {
+                "globalKey" : "4f182a1d"
+              }
+            } ]
+          }
+        },
+        "before" : {
+          "value" : {
+            "trade" : {
+              "tradeIdentifier" : [ {
+                "issuerReference" : {
+                  "globalReference" : "10fb089c",
+                  "externalReference" : "partyA"
+                },
+                "assignedIdentifier" : [ {
+                  "identifier" : {
+                    "value" : "MOCKUPCOMEXGASVELE03E17L16E15V14S13A12G11X10E9M8O7C6",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/unique-transaction-identifier"
+                    }
+                  }
+                } ],
+                "meta" : {
+                  "globalKey" : "1d3e6411"
+                },
+                "identifierType" : "UniqueTransactionIdentifier"
+              }, {
+                "issuerReference" : {
+                  "globalReference" : "10fb089c",
+                  "externalReference" : "partyA"
+                },
+                "assignedIdentifier" : [ {
+                  "identifier" : {
+                    "value" : "MOCKUPCOMEXGASVELE02",
+                    "meta" : {
+                      "scheme" : "http://www.PartyA.com/com-trade-id"
+                    }
+                  }
+                } ],
+                "meta" : {
+                  "globalKey" : "25ff29f9"
+                }
+              }, {
+                "issuerReference" : {
+                  "globalReference" : "f0466d0f",
+                  "externalReference" : "partyB"
+                },
+                "assignedIdentifier" : [ {
+                  "identifier" : {
+                    "value" : "2345",
+                    "meta" : {
+                      "scheme" : "http://www.PartyB.com/com-trade-id"
+                    }
+                  }
+                } ],
+                "meta" : {
+                  "globalKey" : "9599b8e6"
+                }
+              } ],
+              "tradeDate" : {
+                "value" : "2008-06-11",
+                "meta" : {
+                  "globalKey" : "3ec18b"
+                }
+              },
+              "tradableProduct" : {
+                "product" : {
+                  "contractualProduct" : {
+                    "productTaxonomy" : [ {
+                      "primaryAssetClass" : {
+                        "value" : "Commodity"
+                      }
+                    }, {
+                      "source" : "CFI",
+                      "value" : {
+                        "name" : {
+                          "value" : "STJXXC",
+                          "meta" : {
+                            "scheme" : "http://www.fpml.org/coding-scheme/external/product-classification/iso10962"
+                          }
+                        }
+                      }
+                    } ],
+                    "productIdentifier" : [ {
+                      "value" : {
+                        "identifier" : {
+                          "value" : "Commodity:Energy:Oil:Swap:Cash",
+                          "meta" : {
+                            "scheme" : "http://www.fpml.org/coding-scheme/product-taxonomy"
+                          }
+                        },
+                        "source" : "Other",
+                        "meta" : {
+                          "globalKey" : "103c6a3"
+                        }
+                      }
+                    } ],
+                    "economicTerms" : {
+                      "effectiveDate" : {
+                        "adjustableDate" : {
+                          "unadjustedDate" : "2008-07-01",
+                          "dateAdjustments" : {
+                            "businessDayConvention" : "NotApplicable",
+                            "meta" : {
+                              "globalKey" : "3a4b88ab"
+                            }
+                          },
+                          "meta" : {
+                            "globalKey" : "25e0de2c"
+                          }
+                        },
+                        "meta" : {
+                          "globalKey" : "25e0de2c"
+                        }
+                      },
+                      "terminationDate" : {
+                        "adjustableDate" : {
+                          "unadjustedDate" : "2008-07-31",
+                          "dateAdjustments" : {
+                            "businessDayConvention" : "NotApplicable",
+                            "meta" : {
+                              "globalKey" : "3a4b88ab"
+                            }
+                          },
+                          "meta" : {
+                            "globalKey" : "25e14eca"
+                          }
+                        },
+                        "meta" : {
+                          "globalKey" : "25e14eca"
+                        }
+                      },
+                      "payout" : {
+                        "commodityPayout" : [ {
+                          "payerReceiver" : {
+                            "payer" : "Party1",
+                            "receiver" : "Party2"
+                          },
+                          "priceQuantity" : {
+                            "quantitySchedule" : {
+                              "address" : {
+                                "scope" : "DOCUMENT",
+                                "value" : "quantity-1"
+                              }
+                            },
+                            "meta" : {
+                              "globalKey" : "0"
+                            }
+                          },
+                          "settlementTerms" : {
+                            "settlementType" : "Cash",
+                            "settlementCurrency" : {
+                              "value" : "USD"
+                            },
+                            "meta" : {
+                              "globalKey" : "7610bbd9"
+                            }
+                          },
+                          "averagingFeature" : {
+                            "averagingMethod" : {
+                              "isWeighted" : false,
+                              "calculationMethod" : "Arithmetic"
+                            }
+                          },
+                          "commodityPriceReturnTerms" : {
+                            "conversionFactor" : 0.4913
+                          },
+                          "pricingDates" : {
+                            "parametricDates" : {
+                              "dayType" : "Calendar",
+                              "dayDistribution" : "All",
+                              "businessCenters" : {
+                                "commodityBusinessCalendar" : [ {
+                                  "value" : "DowJonesPower"
+                                } ],
+                                "meta" : {
+                                  "globalKey" : "e1cbae2a"
+                                }
+                              }
+                            }
+                          },
+                          "calculationPeriodDates" : {
+                            "calculationPeriodFrequency" : {
+                              "periodMultiplier" : 1,
+                              "period" : "M",
+                              "meta" : {
+                                "globalKey" : "11e9",
+                                "externalKey" : "floatingLeg1CalculationPeriods"
+                              },
+                              "balanceOfFirstPeriod" : false
+                            },
+                            "meta" : {
+                              "globalKey" : "11e9"
+                            }
+                          },
+                          "paymentDates" : {
+                            "payRelativeTo" : "CalculationPeriodEndDate",
+                            "paymentDaysOffset" : {
+                              "periodMultiplier" : 5,
+                              "period" : "D",
+                              "meta" : {
+                                "globalKey" : "ea4acac1"
+                              },
+                              "dayType" : "Business"
+                            },
+                            "paymentDatesAdjustments" : {
+                              "businessDayConvention" : "NotApplicable",
+                              "meta" : {
+                                "globalKey" : "3a4b88ab"
+                              }
+                            },
+                            "meta" : {
+                              "globalKey" : "2c4cb386"
+                            }
+                          },
+                          "underlier" : {
+                            "commodity" : {
+                              "address" : {
+                                "scope" : "DOCUMENT",
+                                "value" : "commodity-1"
+                              }
+                            },
+                            "meta" : {
+                              "globalKey" : "0"
+                            }
+                          },
+                          "meta" : {
+                            "globalKey" : "757926a6"
+                          }
+                        } ],
+                        "meta" : {
+                          "globalKey" : "757926a6"
+                        }
+                      },
+                      "nonStandardisedTerms" : false
+                    },
+                    "meta" : {
+                      "globalKey" : "403326ab"
+                    }
+                  },
+                  "meta" : {
+                    "globalKey" : "403326ab"
+                  }
+                },
+                "tradeLot" : [ {
+                  "priceQuantity" : [ {
+                    "quantity" : [ {
+                      "value" : {
+                        "value" : 15000.0,
+                        "unit" : {
+                          "capacityUnit" : "USMMBTU"
+                        },
+                        "frequency" : {
+                          "periodMultiplier" : 1,
+                          "period" : "D",
+                          "meta" : {
+                            "globalKey" : "63"
+                          }
+                        }
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "quantity-2"
+                        } ]
+                      }
+                    }, {
+                      "value" : {
+                        "value" : 465000.0,
+                        "unit" : {
+                          "capacityUnit" : "USMMBTU"
+                        }
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "quantity-1"
+                        } ]
+                      }
+                    } ],
+                    "observable" : {
+                      "commodity" : {
+                        "value" : {
+                          "productIdentifier" : [ {
+                            "value" : {
+                              "identifier" : {
+                                "value" : "ELECTRICITY-MID-COLUMBIA FIRM (ON-PEAK)-DOW JONES POWER",
+                                "meta" : {
+                                  "scheme" : "http://www.fpml.org/coding-scheme/commodity-reference-price-1-0"
+                                }
+                              },
+                              "source" : "ISDACRP",
+                              "meta" : {
+                                "globalKey" : "a8ce5740"
+                              }
+                            }
+                          } ],
+                          "priceQuoteType" : "MeanOfHighAndLow"
+                        },
+                        "meta" : {
+                          "location" : [ {
+                            "scope" : "DOCUMENT",
+                            "value" : "commodity-1"
+                          } ]
+                        }
+                      },
+                      "meta" : {
+                        "globalKey" : "35fc9ee3"
+                      }
+                    },
+                    "meta" : {
+                      "globalKey" : "98b5f033"
+                    }
+                  } ]
+                } ],
+                "counterparty" : [ {
+                  "role" : "Party1",
+                  "partyReference" : {
+                    "globalReference" : "f0466d0f",
+                    "externalReference" : "partyB"
+                  }
+                }, {
+                  "role" : "Party2",
+                  "partyReference" : {
+                    "globalReference" : "10fb089c",
+                    "externalReference" : "partyA"
+                  }
+                } ]
+              },
+              "party" : [ {
+                "partyId" : [ {
+                  "identifier" : {
+                    "value" : "549300KFSLY4U7N3LL12",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                    }
+                  },
+                  "identifierType" : "LEI",
+                  "meta" : {
+                    "globalKey" : "22ea1e40"
+                  }
+                } ],
+                "name" : {
+                  "value" : "Bank"
+                },
+                "meta" : {
+                  "globalKey" : "10fb089c",
+                  "externalKey" : "partyA"
+                }
+              }, {
+                "partyId" : [ {
+                  "identifier" : {
+                    "value" : "549300AJRHKBLY9GM262",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                    }
+                  },
+                  "identifierType" : "LEI",
+                  "meta" : {
+                    "globalKey" : "b2c862a5"
+                  }
+                } ],
+                "name" : {
+                  "value" : "Energy Co."
+                },
+                "meta" : {
+                  "globalKey" : "f0466d0f",
+                  "externalKey" : "partyB"
+                }
+              } ],
+              "executionDetails" : {
+                "packageReference" : {
+                  "listId" : {
+                    "issuer" : {
+                      "value" : "SEF999"
+                    },
+                    "assignedIdentifier" : [ {
+                      "identifier" : {
+                        "value" : "MOCKUPCOMEXGASVELEE17L16E15V14S13A1",
+                        "meta" : {
+                          "scheme" : "http://sefco.com/package_id"
+                        }
+                      }
+                    } ],
+                    "meta" : {
+                      "globalKey" : "96a92c78"
+                    }
+                  },
+                  "meta" : {
+                    "globalKey" : "96a92c78"
+                  }
+                },
+                "meta" : {
+                  "globalKey" : "96a92c78"
+                }
+              },
+              "meta" : {
+                "globalKey" : "8cf471e9"
+              }
+            },
+            "meta" : {
+              "globalKey" : "8cf471e9"
+            }
+          }
+        }
+      } ]
+    },
+    "messageInformation" : {
+      "messageId" : {
+        "value" : "4521280456b846d1a8d614816a050e6f",
+        "meta" : {
+          "scheme" : "http://www.bankx.com/msg_id"
+        }
+      },
+      "sentBy" : {
+        "value" : "549300KFSLY4U7N3LL12"
+      },
+      "sentTo" : [ {
+        "value" : "DTCCUS"
+      } ]
+    },
+    "timestamp" : [ {
+      "dateTime" : "2008-06-11T09:43:21Z",
+      "qualification" : "eventCreationDateTime"
+    }, {
+      "dateTime" : "2021-12-06T17:09:12Z",
+      "qualification" : "executionDateTime"
+    } ],
+    "eventIdentifier" : [ {
+      "assignedIdentifier" : [ {
+        "identifier" : {
+          "value" : "4521280456b846d1a8d614816a050e6f"
+        }
+      } ],
+      "meta" : {
+        "globalKey" : "5b12e0a"
+      }
+    } ],
+    "action" : "New",
+    "meta" : {
+      "globalKey" : "d955c72b"
+    }
+  },
+  "reportableInformation" : {
+    "confirmationMethod" : "NotConfirmed",
+    "executionVenueType" : "OffFacility",
+    "intragroup" : false,
+    "partyInformation" : [ {
+      "partyReference" : {
+        "globalReference" : "10fb089c",
+        "externalReference" : "partyA"
+      },
+      "relatedParty" : [ {
+        "partyReference" : {
+          "globalReference" : "10fb089c",
+          "externalReference" : "partyA"
+        }
+      }, {
+        "partyReference" : {
+          "globalReference" : "f0466d0f",
+          "externalReference" : "partyB"
+        },
+        "role" : "Buyer"
+      }, {
+        "partyReference" : {
+          "globalReference" : "10fb089c",
+          "externalReference" : "partyA"
+        },
+        "role" : "Seller"
+      }, {
+        "partyReference" : {
+          "globalReference" : "10fb089c",
+          "externalReference" : "partyA"
+        },
+        "role" : "Beneficiary"
+      } ],
+      "regimeInformation" : [ {
+        "supervisoryBody" : {
+          "value" : "CFTC"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "EMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "ESMA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "esmaPartyInformation" : {
+          "natureOfParty" : "Financial",
+          "corporateSector" : {
+            "financialSector" : [ "INUN" ]
+          },
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "UKEMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "FCA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "fcaPartyInformation" : {
+          "natureOfParty" : "Financial",
+          "corporateSector" : {
+            "financialSector" : [ "INUN" ]
+          },
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "JFSA"
+        },
+        "supervisoryBody" : {
+          "value" : "JFSA"
+        },
+        "reportingRole" : "ReportingParty"
+      } ]
+    }, {
+      "partyReference" : {
+        "globalReference" : "f0466d0f",
+        "externalReference" : "partyB"
+      },
+      "regimeInformation" : [ {
+        "regimeName" : {
+          "value" : "EMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "ESMA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "esmaPartyInformation" : {
+          "natureOfParty" : "Financial",
+          "corporateSector" : {
+            "financialSector" : [ "CSDS" ]
+          },
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "UKEMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "FCA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "fcaPartyInformation" : {
+          "natureOfParty" : "Financial",
+          "corporateSector" : {
+            "financialSector" : [ "CSDS" ]
+          },
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "JFSA"
+        },
+        "supervisoryBody" : {
+          "value" : "JFSA"
+        },
+        "reportingRole" : "ReportingParty"
+      } ]
+    } ],
+    "originalExecutionTimestamp" : "2021-12-06T17:09:12Z"
+  }
+}

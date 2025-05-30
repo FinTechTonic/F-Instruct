@@ -1,0 +1,146 @@
+{
+  "id" : "test-pack-projection-fca-uk-emir-trade-report-to-iso20022-credit",
+  "pipelineId" : "pipeline-projection-fca-uk-emir-trade-report-to-iso20022",
+  "name" : "Credit",
+  "samples" : [ {
+    "id" : "credit-basket-tranche-ex01",
+    "name" : "Credit Basket Tranche ex01",
+    "inputPath" : "regulatory-reporting/output/fca-ukemir-trade/credit/Credit-Basket-Tranche-ex01-report.json",
+    "outputPath" : "projection/iso-20022/output/fca-ukemir-trade/credit/Credit-Basket-Tranche-ex01-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 1,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-index-abx-he-ex01",
+    "name" : "Credit Index ABX HE ex01",
+    "inputPath" : "regulatory-reporting/output/fca-ukemir-trade/credit/Credit-Index-ABX-HE-ex01-report.json",
+    "outputPath" : "projection/iso-20022/output/fca-ukemir-trade/credit/Credit-Index-ABX-HE-ex01-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 1,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-index-cdx-ex01-index-factor",
+    "name" : "Credit Index CDX ex01 Index Factor",
+    "inputPath" : "regulatory-reporting/output/fca-ukemir-trade/credit/Credit-Index-CDX-ex01-Index-Factor-report.json",
+    "outputPath" : "projection/iso-20022/output/fca-ukemir-trade/credit/Credit-Index-CDX-ex01-Index-Factor-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 3,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-index-cdx-ex02",
+    "name" : "Credit Index CDX ex02",
+    "inputPath" : "regulatory-reporting/output/fca-ukemir-trade/credit/Credit-Index-CDX-ex02-report.json",
+    "outputPath" : "projection/iso-20022/output/fca-ukemir-trade/credit/Credit-Index-CDX-ex02-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 1,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-index-cdx-ex03-seniority-factor",
+    "name" : "Credit Index CDX ex03 Seniority Factor",
+    "inputPath" : "regulatory-reporting/output/fca-ukemir-trade/credit/Credit-Index-CDX-ex03-Seniority-Factor-report.json",
+    "outputPath" : "projection/iso-20022/output/fca-ukemir-trade/credit/Credit-Index-CDX-ex03-Seniority-Factor-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 3,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-index-cdx-ex04-usi",
+    "name" : "Credit Index CDX ex04 USI",
+    "inputPath" : "regulatory-reporting/output/fca-ukemir-trade/credit/Credit-Index-CDX-ex04-USI-report.json",
+    "outputPath" : "projection/iso-20022/output/fca-ukemir-trade/credit/Credit-Index-CDX-ex04-USI-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 1,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-index-tranche-cdx-ex01-index-factor",
+    "name" : "Credit Index Tranche CDX ex01 Index Factor",
+    "inputPath" : "regulatory-reporting/output/fca-ukemir-trade/credit/Credit-Index-Tranche-CDX-ex01-Index-Factor-report.json",
+    "outputPath" : "projection/iso-20022/output/fca-ukemir-trade/credit/Credit-Index-Tranche-CDX-ex01-Index-Factor-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 3,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-index-tranche-itraxx-ex01-asiaexjapan",
+    "name" : "Credit Index Tranche iTraxx ex01 AsiaExJapan",
+    "inputPath" : "regulatory-reporting/output/fca-ukemir-trade/credit/Credit-Index-Tranche-iTraxx-ex01-AsiaExJapan-report.json",
+    "outputPath" : "projection/iso-20022/output/fca-ukemir-trade/credit/Credit-Index-Tranche-iTraxx-ex01-AsiaExJapan-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 1,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-single-name-ex01",
+    "name" : "Credit Single Name ex01",
+    "inputPath" : "regulatory-reporting/output/fca-ukemir-trade/credit/Credit-Single-Name-ex01-report.json",
+    "outputPath" : "projection/iso-20022/output/fca-ukemir-trade/credit/Credit-Single-Name-ex01-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 1,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-swaption-cdx-ex01-index",
+    "name" : "Credit Swaption CDX ex01 Index",
+    "inputPath" : "regulatory-reporting/output/fca-ukemir-trade/credit/Credit-Swaption-CDX-ex01-Index-report.json",
+    "outputPath" : "projection/iso-20022/output/fca-ukemir-trade/credit/Credit-Swaption-CDX-ex01-Index-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 1,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-swaption-itraxx-ex01",
+    "name" : "Credit Swaption iTraxx ex01",
+    "inputPath" : "regulatory-reporting/output/fca-ukemir-trade/credit/Credit-Swaption-iTraxx-ex01-report.json",
+    "outputPath" : "projection/iso-20022/output/fca-ukemir-trade/credit/Credit-Swaption-iTraxx-ex01-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 1,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-swaption-itraxx-ex02-europe",
+    "name" : "Credit Swaption iTraxx ex02 Europe",
+    "inputPath" : "regulatory-reporting/output/fca-ukemir-trade/credit/Credit-Swaption-iTraxx-ex02-Europe-report.json",
+    "outputPath" : "projection/iso-20022/output/fca-ukemir-trade/credit/Credit-Swaption-iTraxx-ex02-Europe-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 1,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-swaption-itraxx-ex03-europe",
+    "name" : "Credit Swaption iTraxx ex03 Europe",
+    "inputPath" : "regulatory-reporting/output/fca-ukemir-trade/credit/Credit-Swaption-iTraxx-ex03-Europe-report.json",
+    "outputPath" : "projection/iso-20022/output/fca-ukemir-trade/credit/Credit-Swaption-iTraxx-ex03-Europe-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 1,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-swaption-single-name-ex01",
+    "name" : "Credit Swaption Single Name ex01",
+    "inputPath" : "regulatory-reporting/output/fca-ukemir-trade/credit/Credit-Swaption-Single-Name-ex01-report.json",
+    "outputPath" : "projection/iso-20022/output/fca-ukemir-trade/credit/Credit-Swaption-Single-Name-ex01-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 1,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  } ]
+}

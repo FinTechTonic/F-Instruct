@@ -1,0 +1,2406 @@
+namespace drr.standards.iosco.cde
+version "${project.version}"
+
+import cdm.base.staticdata.party.*
+import cdm.base.math.*
+import cdm.base.datetime.*
+import cdm.base.datetime.daycount.*
+import cdm.base.staticdata.identifier.*
+import cdm.base.staticdata.asset.common.*
+
+import cdm.base.*
+import cdm.observable.asset.*
+
+import cdm.product.template.*
+import cdm.product.common.settlement.*
+import cdm.product.asset.*
+import cdm.product.qualification.*
+import cdm.product.collateral.*
+
+import cdm.event.common.*
+import cdm.event.qualification.*
+import cdm.event.workflow.*
+
+import drr.regulation.common.*
+
+import drr.standards.iso.*
+
+import iso20022.auth030.esma.*
+
+body Authority BIS <"The Bank for International Settlements (BIS) is an international financial institution owned by central banks that fosters international monetary and financial cooperation and serves as a bank for central banks">
+
+body Authority CPMI <"The Committee on Payments and Market Infrastructures (CPMI) is an international standard setter that promotes, monitors and makes recommendations about the safety and efficiency of payment, clearing, settlement and related arrangements, thereby supporting financial stability and the wider economy. The CPMI also serves as a forum for central bank cooperation in related oversight, policy and operational matters, including the provision of central bank services.">
+
+body Authority IOSCO <"The International Organization of Securities Commissions (IOSCO) is the international body that brings together the world's securities regulators and is recognized as the global standard setter for the securities sector. IOSCO develops, implements and promotes adherence to internationally recognized standards for securities regulation. It works intensively with the G20 and the Financial Stability Board (FSB) on the global regulatory reform agenda.">
+
+body Authority CPMI_IOSCO <"IOSCO and the Committee on Payments and Market Infrastructures (CPMI) work together to enhance coordination of standard and policy development and implementation, regarding clearing, settlement and reporting arrangements including financial market infrastructures (FMIs) worldwide. FMIs, which include central counterparties (CCPs), trade repositories (TRs), central securities depositories (CSDs), securities settlement systems (SSSs), and payment systems (PSs), play an essential role in the global financial system. IOSCO and the CPMI monitor the implementation of the Principles for financial market infrastructures (PFMI), which are international standards for payment systems, central securities depositories, securities settlement systems, central counterparties and trade repositories. The PFMI are designed to help ensure the safety, efficiency and resilience of these infrastructures supporting global financial markets - so their full, timely and consistent implementation is fundamental. CPMI and IOSCO members have committed to adopting the principles and responsibilities contained in the PFMI in line with the G20 expectations.">
+
+corpus TechnicalGuidance "Harmonisation of Critical Data Elements (other than UTI and UPI)" CDE <"The G20 Leaders agreed in 2009 that all over-the-counter (OTC) derivative transactions should be reported to trade repositories (TRs) to further the goals of improving transparency, mitigating systemic risk and preventing market abuse.1 Aggregation of the data being reported across TRs will help authorities to obtain a comprehensive view of the OTC derivatives market and its activity. Such aggregation is feasible if the work on standardisation and harmonisation of important data elements [is] completed.2 Since November 2014, the CPMI and IOSCO working group for the harmonisation of key OTC derivatives data elements (Harmonisation Group) has worked to develop global guidance regarding the definition, format and usage of key OTC derivatives data elements reported to TRs, including the Unique Transaction Identifier (UTI), the Unique Product Identifier (UPI) and other critical data elements. Technical Guidance on the Harmonisation of the Unique Transaction Identifier (UTI) was published in February 20173 and Technical Guidance on the Harmonisation of the Unique Product Identifier (UPI) was published in September 2017.4 The CPMI and IOSCO also published consultative reports on a first, a second and a third batch of critical data elements other than UTI and UPI in September 2015, October 2016 and June 2017, respectively">
+
+corpus UPITechnicalGuidance "Harmonisation of the Unique Product Identifier" UPI <"This document (the Technical Guidance) provides authorities with technical guidance on a uniform global Unique Product Identifier (UPI). 1 A number of reports2 have identified OTC derivatives data elements  including the UPI  that are critical to many aspects of regulatory work. This report envisions a system under which a unique UPI code would be assigned to each distinct OTC derivative product and each UPI code would map to a set of data comprised of eference data elements with specific values that together describe the product. The collection of reference data elements and their values for each product would reside in a corresponding UPI reference data library.">
+
+reporting rule CDEEffectiveDate from TransactionReportInstruction: <"Effective Date">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "1"
+        provision "Unadjusted date at which obligations under the OTC derivative transaction come into effect, as included in the confirmation"]
+    [regulatoryReference ISDA ISDAWorkingGroup date "unknown"
+        provision "The rule does not report adjusted dates since CFTC explicity indicates that dates should be reported unadjusted"]
+    [regulatoryReference ISDA PeerReviewGroup date "20220811"
+        provision "Model should contain a fall back for unadjustedDate when adjustedDate is only available. If an adjusted date is only provided then fields requiring an unadjusted date are left blank which will result in a NACK from the TR.  Functional rules should be updated to fall back on adjusted date if available."]
+    [regulatoryReference ISDA PeerReviewGroup date "20230120"
+        provision "For options the obligations under the OTC Derivative Transaction come into effect on the Trade Date.  A fall back should be added to CDE Effective Date which handles effective date in this way when no specific effective date is specified."]
+    [regulatoryReference ISDA PeerReviewGroup date "20230426"
+        provision "Effective date should never be taken from the underlier of an option, neither from its product definition. For this kind of products, the effective date should be the trade date."]
+    extract
+        if EconomicTermsForProduct(ProductForEvent) -> effectiveDate -> adjustableDate exists
+        and IsProductOTC(ProductForEvent) //for ETDs, effective date is not in the product
+        then AdjustableDateResolution(
+                    ProductForEvent -> contractualProduct -> economicTerms -> effectiveDate -> adjustableDate
+                )
+        // interestRatePayout
+        else if ProductForEvent -> contractualProduct -> economicTerms -> payout -> interestRatePayout -> calculationPeriodDates -> effectiveDate -> adjustableDate exists
+        then (ProductForEvent -> contractualProduct -> economicTerms -> payout -> interestRatePayout -> calculationPeriodDates -> effectiveDate -> adjustableDate
+            extract AdjustableDateResolution
+            then min)
+        else if TradeForEvent exists
+        then TradeForEvent -> tradeDate
+        else if PositionForEvent exists
+        then PositionForEvent -> openDateTime -> date
+
+reporting rule CDEExpirationDate from Product: <"Expiration Date">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "2"
+        provision "Unadjusted date at which obligations under the OTC derivative transaction stop being effective, as included in the confirmation. Early termination does not affect this data element."]
+    [regulatoryReference ISDA ISDAWorkingGroup date "unknown"
+        provision "The rule does not report adjusted dates since CFTC explicity indicates that dates should be reported unadjusted"]
+    [regulatoryReference ISDA PeerReviewGroup date "20220811"
+        provision "Model should contain a fall back for unadjustedDate when adjustedDate is only available. If an adjusted date is only provided then fields requiring an unadjusted date are left blank which will result in a NACK from the TR.  Functional rules should be updated to fall back on adjusted date if available."]
+    extract product [
+        EconomicTermsForProduct(product)
+            then if terminationDate -> adjustableDate exists
+                then AdjustableDateResolution(terminationDate -> adjustableDate)
+                // interestRatePayout
+                else if payout -> interestRatePayout -> calculationPeriodDates -> terminationDate -> adjustableDate exists
+                then (payout -> interestRatePayout -> calculationPeriodDates -> terminationDate -> adjustableDate
+                    extract AdjustableDateResolution
+                    then max)
+                // option - european exercise
+                else if payout -> optionPayout -> exerciseTerms -> optionStyle -> europeanExercise -> expirationDate -> adjustableDate exists
+                then (payout -> optionPayout -> exerciseTerms -> optionStyle -> europeanExercise -> expirationDate -> adjustableDate
+                    extract AdjustableDateResolution
+                    then max)
+                // option - bermuda exercise
+                else if payout -> optionPayout -> exerciseTerms -> optionStyle -> bermudaExercise -> bermudaExerciseDates -> adjustableDates exists
+                then (payout -> optionPayout -> exerciseTerms -> optionStyle -> bermudaExercise -> bermudaExerciseDates -> adjustableDates
+                    extract AdjustableDatesResolution
+                    then flatten
+                    then max)
+                // option - american exercise
+                else if payout -> optionPayout -> exerciseTerms -> optionStyle -> americanExercise -> expirationDate -> adjustableDate exists
+                then (payout -> optionPayout -> exerciseTerms -> optionStyle -> americanExercise -> expirationDate -> adjustableDate
+                    extract AdjustableDateResolution
+                    then max)
+                else if payout -> forwardPayout -> settlementTerms -> settlementDate -> valueDate exists
+                then payout -> forwardPayout -> settlementTerms -> settlementDate -> valueDate max
+                else if payout -> optionPayout -> settlementTerms -> settlementDate -> valueDate exists
+                then payout -> optionPayout -> settlementTerms -> settlementDate -> valueDate max
+                else if payout -> performancePayout -> observationTerms -> observationDates -> periodicSchedule -> endDate -> adjustableDate exists
+                then (payout -> performancePayout -> observationTerms -> observationDates -> periodicSchedule -> endDate -> adjustableDate
+                    extract AdjustableDateResolution
+                    then max)
+                else if IsCommoditySwap(product) or IsCommodityFloatingPriceForward(product)
+                then payout -> commodityPayout -> schedule -> schedulePeriod -> fixingPeriod -> endDate max
+                else if IsCommodityFixedPriceForward(product)
+                then payout -> fixedPricePayout -> schedule -> schedulePeriod -> fixingPeriod -> endDate max
+                else if IsCommodityOption(product) or IsCommoditySwaption(product)
+                then payout -> optionPayout only-element -> schedule -> schedulePeriod -> fixingPeriod -> endDate max
+    ]
+
+reporting rule CDEEarlyTerminationDate from TransactionReportInstruction: <"Early termination date">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "3"
+        provision "Effective date of the early termination (expiry) of the reported transaction.
+        This data element is applicable if the termination of the transaction occurs prior to its maturity due to an ex-interim decision of a counterparty (or counterparties). Examples of early terminations (expiry) are: negotiated early termination; early termination under an optional early termination provision (mutual put); novation; offsetting (netting) transaction; option exercise; compression; early termination clause specified in the original contract which is a callable swap (bought embedded option); mutual credit break."]
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "3"//FIA FIAReportingBestPractice date "20240308"
+        provision "The approach chosen for flat counterpartyPosition (quantity = 0) before expiry, is to not report an early termination, so that the same position UTI can be used throughout the life of the contract."]
+    extract if QuantityDecreasedToZero(
+                    originatingWorkflowStep -> businessEvent -> instruction -> before,
+                    originatingWorkflowStep -> businessEvent -> after
+                )
+        then originatingWorkflowStep -> businessEvent -> effectiveDate
+
+reporting rule CDEReportingTimestamp from TransactionReportInstruction: <"Reporting Timestamp">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "4"
+        provision "Date and time of the submission of the report to the trade repository."]
+    Now
+
+reporting rule CDEExecutionTimestamp from TransactionReportInstruction: <"Execution Timestamp">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "5"
+        provision "Date and time a transaction was originally executed, resulting in the generation of a new UTI. This data element remains unchanged throughout the life of the UTI."]
+    [regulatoryReference ISDA PeerReviewGroup date "20230903"
+        provision "For post trade events the original execution timestamp needs to be used.  For new trades the execution timestamp can be taken directly from the WorkflowStep."]
+    extract GetExecutionTimestamp
+
+reporting rule CDECounterparty1 from TransactionReportInstruction: <"Counterparty 1 (reporting counterparty)">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "6"
+        provision "Identifier of the counterparty to an OTC derivative transaction who is fulfilling its reporting obligation via the report in question. In jurisdictions where both parties must report the transaction, the identifier of Counterparty 1 always identifies the reporting counterparty. In the case of an allocated derivative transaction executed by a fund manager on behalf of a fund, the fund and not the fund manager is reported as the counterparty."]
+    extract PartyLei(reportingSide -> reportingParty -> partyId)
+
+reporting rule CDECounterparty2 from TransactionReportInstruction: <"Counterparty 2">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "7"
+        provision "Identifier of the second counterparty to an OTC derivative transaction. In the case of an allocated derivative transaction executed by a fund manager on behalf of a fund, the fund and not the fund manager is reported as the counterparty."]
+    [regulatoryReference ISDA PeerReviewGroup date "20220703"
+        provision "Peer review recommended to detect private individual party representations (instead of LEI scheme). For natural persons who are acting as private individuals (not business entities): LEI of the reporting counterparty followed by a unique identifier assigned and maintained consistently by the reporting counterparty for that natural person(s) for regulatory reporting purpose."]
+    extract PartyLeiAndPersonByRoles(reportingSide -> reportingCounterparty)
+
+reporting rule CDECounterparty2IdentifierType from TransactionReportInstruction: <"Counterparty 2 Identifier Type">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "8"
+        provision "Indicator of whether LEI was used to identify the Counterparty 2"]
+    [regulatoryReference ISDA PeerReviewGroup date "20220703"
+        provision "Peer review recommended to detect private individual party representations (instead of LEI scheme). For natural persons who are acting as private individuals (not business entities): LEI of the reporting counterparty followed by a unique identifier assigned and maintained consistently by the reporting counterparty for that natural person(s) for regulatory reporting purpose."]
+    extract reportInstruction [
+        TradeForEvent -> tradableProduct -> counterparty -> partyReference
+            then filter item = reportInstruction -> reportingSide -> reportingCounterparty
+            then extract
+                if person exists
+                        and person -> personId -> identifierType any = PersonIdentifierTypeEnum -> NPID
+                then False
+                else if partyId -> identifierType any = PartyIdentifierTypeEnum -> LEI
+                        and person is absent
+                then True
+    ]
+
+reporting rule CDEBeneficiary1 from TransactionReportInstruction: <"Beneficiary 1">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "9"
+        provision "Identifier of the beneficiary of an OTC derivative transaction for Counterparty 1. For each transaction that is executed, this data element identifies the party that becomes subject to the rights and obligations arising from the contract, rather than any party who executes the transaction on behalf of or otherwise represents such party.
+        If a beneficiary is a structure such as trust or collective investment vehicle, this data element would identify the structure, rather than the entities that hold ownership interests in the structure."]
+    extract reportInstruction [
+        extract reportableInformation -> partyInformation
+        then filter partyReference = reportInstruction -> reportingSide -> reportingParty
+        then extract
+            ExtractPartyFromRelatedPartyByRole(relatedParty, PartyRoleEnum -> Beneficiary)
+        then extract PartyLeiAndPersonByRoles
+        then only-element
+    ]
+
+reporting rule CDEBeneficiary1IdentifierTypeIndicator from TransactionReportInstruction: <"Beneficiary 1 identifier type indicator">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "10"
+        provision "Indicator of whether LEI was used to identify the beneficiary 1."]
+    extract reportInstruction [
+        extract reportableInformation -> partyInformation
+        then filter
+            ExtractPartyFromRelatedPartyByRole(relatedParty, PartyRoleEnum -> Beneficiary) exists
+        then extract
+            if partyReference = reportInstruction -> reportingSide -> reportingParty
+            then ExtractPartyFromRelatedPartyByRole(
+                        relatedParty,
+                        PartyRoleEnum -> Beneficiary
+                    )
+        then only-element
+        then extract if PartyLei(partyId) exists and PartyLeiAndPersonByRoles = PartyLei(partyId)
+            then True
+        else False
+    ]
+
+reporting rule CDEBeneficiary2 from TransactionReportInstruction: <"Beneficiary 2">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "11"
+        provision "Identifier of the beneficiary on an OTC derivative transaction for the counterparty 2. For each transaction that is executed, this data element identifies the second party that becomes subject to the rights and obligations arising from the contract, rather than any party who executes the transaction on behalf of or otherwise represents such party.
+        If a beneficiary is a structure such as trust or collective investment vehicle, the beneficiary identifier would identify the structure, rather than the entities that hold ownership interests in the structure."]
+    extract reportInstruction [
+        extract reportableInformation -> partyInformation
+        then filter
+            partyReference = reportInstruction -> reportingSide -> reportingCounterparty
+        then extract
+            ExtractPartyFromRelatedPartyByRole(relatedParty, PartyRoleEnum -> Beneficiary)
+        then extract PartyLeiAndPersonByRoles
+        then only-element
+    ]
+    
+reporting rule CDEBeneficiary2IdentifierTypeIndicator from TransactionReportInstruction: <"Beneficiary 2">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "12"
+        provision "Indicator of whether LEI was used to identify the beneficiary 2"]
+    extract reportInstruction [
+        extract reportableInformation -> partyInformation
+        then filter
+            ExtractPartyFromRelatedPartyByRole(relatedParty, PartyRoleEnum -> Beneficiary) exists
+        then extract
+            if partyReference = reportInstruction -> reportingSide -> reportingCounterparty
+            then ExtractPartyFromRelatedPartyByRole(
+                        relatedParty,
+                        PartyRoleEnum -> Beneficiary
+                    )
+        then only-element
+        then extract if PartyLei(partyId) exists and PartyLeiAndPersonByRoles = PartyLei(partyId)
+            then True
+        else False
+    ]
+
+reporting rule CDEDirection1BuyerIdentifier from Trade: <"2.13 Direction. Reporting counterparties should use either:
+  	- the element Direction 1 or Buyer identifier and Seller identifier to identify the direction of the transaction for the reporting counterparty as Buyer or Seller (model 1); or
+  	- the element Direction 2 or Payer identifier and Receiver identifier to identify the payer and the receiver of each leg (model 2).
+ 	Reporting counterparties should NOT use both approaches, but adopt the appropriate one for the type of instrument concerned.">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "13" dataElement "1"
+        provision "Identifier of the counterparty that is the buyer and the counterparty that is the seller, as determined at the time of the transaction.
+			A non-exhaustive list of examples of instruments for which this data element could apply are:
+				- most forwards and forward-like contracts (except for foreign exchange forwards and foreign exchange non-deliverable forwards)
+				- most options and option-like contracts including swaptions, caps and floors
+				- credit default swaps (buyer/seller of protection)
+				- variance, volatility and correlation swaps
+				- contracts for difference and spreadbets
+			This data element is not applicable to instrument types covered by data elements Direction 2 or by Payer identifier and Receiver identifier."]
+    [regulatoryReference ISDA ISDAWorkingGroup date "unknown" //BNPP
+        provision "Splitting definition into separate rules for Buyer and Seller"]
+    [regulatoryReference ISDA USComplianceGroup date "20211123"
+        provision "Discussed on US Compliance WG - confirmed as per ISDA best practice for direction provided to CPMI-IOSCO best practice and CFTC tiebreaker logic  - Interest rate FRA  should be reported as payer/receiver."]
+    [regulatoryReference ISDA PeerReviewGroup date "20220703"
+        provision "Peer review recommended to detect private individual party representations (instead of LEI scheme)."]
+    [regulatoryReference ISDA USComplianceGroup date "20221011"
+        provision "As per market direction convention ISDA formed for CDE; ForeignExchange:SimpleExotic:Vol/Var follows buyer/seller direction convention. A variance buyer and a variance seller agree to exchange payments based on the difference b/w (i) an amount proportional to the observed level of variance (as defined under the terms of the variance swap) of the exchange rate for a specified currency pair realized over a known observation period and (ii) a fixed amount of variance that is agreed at execution."]
+    extract PartyLeiAndPersonByRoles(CDEDirection1BuyerParty)
+
+func CDEDirection1BuyerParty:
+    inputs:
+        trade Trade (1..1)
+    output:
+        party Party (0..1)
+
+    alias counterparty:
+        if trade -> tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> optionPayout exists
+        then ExtractCounterpartyByRole(
+                    trade -> tradableProduct -> counterparty,
+                    trade -> tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> optionPayout only-element -> buyerSeller -> buyer
+                )
+        else if IsCreditDefaultSwap(trade -> tradableProduct -> product)
+        then ExtractCounterpartyByRole(
+                    trade -> tradableProduct -> counterparty,
+                    trade -> tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> creditDefaultPayout -> payerReceiver -> receiver
+                )
+        else if IsVarianceSwap(trade -> tradableProduct -> product)
+                or IsVolatilitySwap(trade -> tradableProduct -> product)
+        then ExtractCounterpartyByRole(
+                    trade -> tradableProduct -> counterparty,
+                    trade -> tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> performancePayout only-element -> payerReceiver -> receiver
+                )
+        else if IsCapFloor(trade -> tradableProduct -> product)
+        then ExtractCounterpartyByRole(
+                    trade -> tradableProduct -> counterparty,
+                    trade -> tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> interestRatePayout only-element -> payerReceiver -> payer
+                )
+    set party: counterparty -> partyReference
+
+reporting rule CDEDirection1SellerIdentifier from Trade: <"2.13 Direction. Reporting counterparties should use either:
+  	- the element Direction 1 or Buyer identifier and Seller identifier to identify the direction of the transaction for the reporting counterparty as Buyer or Seller (model 1); or
+  	- the element Direction 2 or Payer identifier and Receiver identifier to identify the payer and the receiver of each leg (model 2).
+ 	Reporting counterparties should NOT use both approaches, but adopt the appropriate one for the type of instrument concerned.">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "13" dataElement "1"
+        provision "Identifier of the counterparty that is the buyer and the counterparty that is the seller, as determined at the time of the transaction.
+			A non-exhaustive list of examples of instruments for which this data element could apply are:
+				- most forwards and forward-like contracts (except for foreign exchange forwards and foreign exchange non-deliverable forwards)
+				- most options and option-like contracts including swaptions, caps and floors
+				- credit default swaps (buyer/seller of protection)
+				- variance, volatility and correlation swaps
+				- contracts for difference and spreadbets
+			This data element is not applicable to instrument types covered by data elements Direction 2 or by Payer identifier and Receiver identifier."]
+    [regulatoryReference ISDA ISDAWorkingGroup date "unknown" //BNPP
+        provision "Splitting definition into separate rules for Buyer and Seller"]
+    [regulatoryReference ISDA USComplianceGroup date "20211123"
+        provision "Discussed on US Compliance WG - confirmed as per ISDA best practice for direction provided to CPMI-IOSCO best practice and CFTC tiebreaker logic  - Interest rate FRA  should be reported as payer/receiver."]
+    [regulatoryReference ISDA PeerReviewGroup date "20220703"
+        provision "Peer review recommended to detect private individual party representations (instead of LEI scheme)."]
+    [regulatoryReference ISDA USComplianceGroup date "20221011"
+        provision "As per market direction convention ISDA formed for CDE; ForeignExchange:SimpleExotic:Vol/Var follows buyer/seller direction convention. A variance buyer and a variance seller agree to exchange payments based on the difference b/w (i) an amount proportional to the observed level of variance (as defined under the terms of the variance swap) of the exchange rate for a specified currency pair realized over a known observation period and (ii) a fixed amount of variance that is agreed at execution."]
+    extract PartyLeiAndPersonByRoles(CDEDirection1SellerParty)
+
+func CDEDirection1SellerParty:
+    inputs:
+        trade Trade (1..1)
+    output:
+        party Party (0..1)
+
+    alias counterparty:
+        if trade -> tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> optionPayout exists
+        then ExtractCounterpartyByRole(
+                    trade -> tradableProduct -> counterparty,
+                    trade -> tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> optionPayout only-element -> buyerSeller -> seller
+                )
+        else if IsCreditDefaultSwap(trade -> tradableProduct -> product)
+        then ExtractCounterpartyByRole(
+                    trade -> tradableProduct -> counterparty,
+                    trade -> tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> creditDefaultPayout -> payerReceiver -> payer
+                )
+        else if IsVarianceSwap(trade -> tradableProduct -> product)
+                or IsVolatilitySwap(trade -> tradableProduct -> product)
+        then ExtractCounterpartyByRole(
+                    trade -> tradableProduct -> counterparty,
+                    trade -> tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> performancePayout only-element -> payerReceiver -> payer
+                )
+        else if IsCapFloor(trade -> tradableProduct -> product)
+        then ExtractCounterpartyByRole(
+                    trade -> tradableProduct -> counterparty,
+                    trade -> tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> interestRatePayout only-element -> payerReceiver -> receiver
+                )
+    set party: counterparty -> partyReference
+
+
+func CDEDirection1: <"2.13 Direction. Reporting counterparties should use either:
+    - the element Direction 1 or Buyer identifier and Seller identifier to identify the direction of the transaction for the reporting counterparty as Buyer or Seller (model 1); or
+    - the element Direction 2 or Payer identifier and Receiver identifier to identify the payer and the receiver of each leg (model 2).
+    Reporting counterparties should NOT use both approaches, but adopt the appropriate one for the type of instrument concerned.">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "13" dataElement "1"
+        provision "Indicator of whether the counterparty 1 is the buyer or the seller as determined at the time of the transaction."]
+    inputs:
+        event TransactionReportInstruction (1..1)
+    output:
+        direction string (1..1)
+
+    alias tradableProduct: TradableProductForEvent(event)
+    alias reportingParty: CDECounterparty1(event)
+    alias buyer:
+        if EconomicTermsForProduct(tradableProduct -> product) -> payout -> optionPayout exists
+        then ExtractCounterpartyByRole(
+                    tradableProduct -> counterparty,
+                    EconomicTermsForProduct(tradableProduct -> product) -> payout -> optionPayout only-element -> buyerSeller -> buyer
+                )
+        else if IsCreditDefaultSwap(tradableProduct -> product)
+        then ExtractCounterpartyByRole(
+                    tradableProduct -> counterparty,
+                    EconomicTermsForProduct(tradableProduct -> product) -> payout -> creditDefaultPayout -> payerReceiver -> receiver
+                )
+        else if IsVarianceSwap(tradableProduct -> product)
+                or IsVolatilitySwap(tradableProduct -> product)
+        then ExtractCounterpartyByRole(
+                    tradableProduct -> counterparty,
+                    EconomicTermsForProduct(tradableProduct -> product) -> payout -> performancePayout only-element -> payerReceiver -> receiver
+                )
+        else if IsCapFloor(tradableProduct -> product)
+        then ExtractCounterpartyByRole(
+                    tradableProduct -> counterparty,
+                    EconomicTermsForProduct(tradableProduct -> product) -> payout -> interestRatePayout only-element -> payerReceiver -> payer
+                )
+        else if IsProductETD(tradableProduct -> product)
+            and EconomicTermsForProduct(tradableProduct -> product) -> payout -> forwardPayout exists
+        then ExtractCounterpartyByRole(
+                    tradableProduct -> counterparty,
+                    EconomicTermsForProduct(tradableProduct -> product) -> payout -> forwardPayout only-element -> payerReceiver -> payer
+                )
+        else if IsSingleCommodityPayoutProduct(tradableProduct -> product)
+        then ExtractCounterpartyByRole(
+                    tradableProduct -> counterparty,
+                    EconomicTermsForProduct(tradableProduct -> product) -> payout -> commodityPayout only-element -> payerReceiver -> payer
+                )
+        else if IsCommodityForward(tradableProduct -> product)
+        then ExtractCounterpartyByRole(
+                    tradableProduct -> counterparty,
+                    tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> forwardPayout only-element -> payerReceiver -> receiver
+                )
+        else if Qualify_InterestRate_Forward_Debt(
+                    tradableProduct -> product -> contractualProduct -> economicTerms
+                )
+        then ExtractCounterpartyByRole(
+                    tradableProduct -> counterparty,
+                    tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> forwardPayout only-element -> payerReceiver -> payer
+                )
+        else if IsTotalReturnSwapDebtUnderlier(tradableProduct -> product)
+        then ExtractCounterpartyByRole(
+                    tradableProduct -> counterparty,
+                    tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> performancePayout only-element -> payerReceiver -> payer
+                )
+    alias seller:
+        if EconomicTermsForProduct(tradableProduct -> product) -> payout -> optionPayout exists
+        then ExtractCounterpartyByRole(
+                    tradableProduct -> counterparty,
+                    EconomicTermsForProduct(tradableProduct -> product) -> payout -> optionPayout only-element -> buyerSeller -> seller
+                )
+        else if IsCreditDefaultSwap(tradableProduct -> product)
+        then ExtractCounterpartyByRole(
+                    tradableProduct -> counterparty,
+                    EconomicTermsForProduct(tradableProduct -> product) -> payout -> creditDefaultPayout -> payerReceiver -> payer
+                )
+        // TH Review -> should apply to all VOL/VAR/CORR swaps. Correlation pending
+        else if IsVarianceSwap(tradableProduct -> product)
+                or IsVolatilitySwap(tradableProduct -> product)
+        then ExtractCounterpartyByRole(
+                    tradableProduct -> counterparty,
+                    EconomicTermsForProduct(tradableProduct -> product) -> payout -> performancePayout only-element -> payerReceiver -> payer
+                )
+        else if IsCapFloor(tradableProduct -> product)
+        then ExtractCounterpartyByRole(
+                    tradableProduct -> counterparty,
+                    EconomicTermsForProduct(tradableProduct -> product) -> payout -> interestRatePayout only-element -> payerReceiver -> receiver
+                )
+        else if IsProductETD(tradableProduct -> product)
+            and EconomicTermsForProduct(tradableProduct -> product) -> payout -> forwardPayout exists
+        then ExtractCounterpartyByRole(
+                    tradableProduct -> counterparty,
+                    EconomicTermsForProduct(tradableProduct -> product) -> payout -> forwardPayout only-element -> payerReceiver -> receiver
+                )
+        else if IsSingleCommodityPayoutProduct(tradableProduct -> product)
+        then ExtractCounterpartyByRole(
+                    tradableProduct -> counterparty,
+                    EconomicTermsForProduct(tradableProduct -> product) -> payout -> commodityPayout only-element -> payerReceiver -> receiver
+                )
+        else if IsCommodityForward(tradableProduct -> product)
+        then ExtractCounterpartyByRole(
+                    tradableProduct -> counterparty,
+                    tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> forwardPayout only-element -> payerReceiver -> payer
+                )
+        else if Qualify_InterestRate_Forward_Debt(
+                    tradableProduct -> product -> contractualProduct -> economicTerms
+                )
+        then ExtractCounterpartyByRole(
+                    tradableProduct -> counterparty,
+                    tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> forwardPayout only-element -> payerReceiver -> receiver
+                )
+        else if IsTotalReturnSwapDebtUnderlier(tradableProduct -> product)
+        then ExtractCounterpartyByRole(
+                    tradableProduct -> counterparty,
+                    tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> performancePayout only-element -> payerReceiver -> receiver
+                )
+    set direction:
+        if reportingParty = PartyLei(buyer -> partyReference -> partyId)
+        then "BYER"
+        else if reportingParty = PartyLei(seller -> partyReference -> partyId)
+        then "SLLR"
+
+func CDEDirection2: <"2.13 Direction. Reporting counterparties should use either:
+    - the element Direction 1 or Buyer identifier and Seller identifier to identify the direction of the transaction for the reporting counterparty as Buyer or Seller (model 1); or
+    - the element Direction 2 or Payer identifier and Receiver identifier to identify the payer and the receiver of each leg (model 2).
+    Reporting counterparties should NOT use both approaches, but adopt the appropriate one for the type of instrument concerned.">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "13" dataElement "1"
+        provision "Indicator of whether the reporting counterparty is the payer or the receiver of the leg as determined at the time of the transaction."]
+    inputs:
+        event TransactionReportInstruction (1..1)
+        payerReceiver PayerReceiver (1..1)
+    output:
+        direction string (1..1)
+
+    alias reportingParty: CDECounterparty1(event)
+    alias counterparties: TradeForEvent(event) -> tradableProduct -> counterparty
+    alias payerParty: ExtractCounterpartyByRole(counterparties, payerReceiver -> payer)
+    alias receiverParty:
+        ExtractCounterpartyByRole(counterparties, payerReceiver -> receiver)
+
+    set direction:
+        if reportingParty = PartyLei(payerParty -> partyReference -> partyId)
+        then "MAKE"
+        else if reportingParty = PartyLei(receiverParty -> partyReference -> partyId)
+        then "TAKE"
+
+reporting rule CDECleared from TransactionReportInstruction: <"Cleared">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "14"
+        provision "Indicator of whether the transaction has been cleared, or is intended to be cleared, by a central counterparty."]
+    if IsCleared(originatingWorkflowStep)
+    then "Y"
+    else if originatingWorkflowStep -> nextEvent -> intent = EventIntentEnum -> Clearing
+    then "I"
+    else "N"
+        as "2.14 Cleared"
+
+reporting rule CDECentralCounterparty from TransactionReportInstruction: <"Central Counterparty">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "15"
+        provision "Identifier of the central counterparty (CCP) that cleared the transaction. This data element is not applicable if the value of the data element Cleared is N (No, not centrally cleared) or I (Intent to clear)."]
+    if IsCleared(originatingWorkflowStep)
+    then ExtractPartyFromRelatedPartyByRole(
+            reportableInformation -> partyInformation -> relatedParty,
+            PartyRoleEnum -> ClearingOrganization
+        )
+        extract PartyLei(partyId)
+        as "2.15 Central Counterparty"
+
+reporting rule CDEClearingMember from TransactionReportInstruction: <"Clearing Member">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "16"
+        provision "Identifier of the clearing member through which a derivative transaction was cleared at a central counterparty.
+		This data element is applicable to cleared transactions under both the agency clearing model and the principal clearing model.
+			- In the case of the principal clearing model, the clearing member is identified as clearing member and also as a counterparty in both transactions resulting from clearing: (i) in the transaction between the central counterparty and the clearing member; and (ii) in the transaction between the clearing member and the counterparty to the original alpha transaction.
+			- In the case of the agency clearing model, the clearing member is identified as clearing member but not as the counterparty to transactions resulting from clearing. Under this model, the counterparties are the central counterparty and the client.
+		This data element is not applicable if the value of the data element Cleared is N (No, not centrally cleared) or I (Intent to clear)."]
+    if IsCleared(originatingWorkflowStep)
+    then ExtractPartyFromRelatedPartyByRole(
+            reportableInformation -> partyInformation -> relatedParty,
+            PartyRoleEnum -> ClearingFirm
+        )
+        extract PartyLei(partyId)
+        as "2.16 Clearing member"
+
+reporting rule CDEPlatformIdentifier from TransactionReportInstruction: <"Platform Identifier">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "17"
+        provision "Identifier  of  the  trading  facility  (eg  exchange,  multilateral  trading  facility,  swap  execution facility) on which the transaction was executed."]
+    reportableInformation -> partyInformation -> relatedParty
+        filter role = PartyRoleEnum -> ExecutionFacility
+        then extract partyReference -> partyId
+        then flatten
+        then filter identifierType = PartyIdentifierTypeEnum -> MIC
+        then extract identifier
+        then first
+
+reporting rule CDEConfirmed from TransactionReportInstruction: <"Confirmed">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "18"
+        provision "For new reportable transactions (as defined by the CPMI-IOSCO Technical Guidance: Harmonisation of the Unique Transaction Identifier), whether the legally binding terms of an OTC derivatives contract were documented and agreed upon (confirmed) or not (unconfirmed). If documented and agreed, whether such confirmation was done:  via a shared confirmation facility or platform, or a private/bilateral electronic system (electronic);  via a human-readable written document, such as fax, paper or manually processed e-mails (non-electronic)."]
+    if originatingWorkflowStep -> timestamp -> qualification all <> EventTimestampQualificationEnum -> confirmationDateTime
+            or reportableInformation -> confirmationMethod = ConfirmationMethodEnum -> NotConfirmed
+    then "NCNF"
+    else extract
+        if reportableInformation -> confirmationMethod = ConfirmationMethodEnum -> Electronic
+        then "ECNF"
+        else if reportableInformation -> confirmationMethod = ConfirmationMethodEnum -> NonElectronic
+            then "YCNF"
+
+
+reporting rule CDEFinalContractualSettlementDate from Product: <"Final Contractual Settlement Date">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "19"
+        provision "Unadjusted date as per the contract, by which all transfer of cash or assets should take place and the counterparties should no longer have any outstanding obligations to each other under that contract. For products that may not have a final contractual settlement date (eg American options), this data element reflects the date by which the transfer of cash or asset would take place if termination were to occur on the expiration date."]
+    [regulatoryReference ISDA PeerReviewGroup date "20220811"
+        provision "Model should contain a fall back for unadjustedDate when adjustedDate is only available. If an adjusted date is only provided then fields requiring an unadjusted date are left blank which will result in a NACK from the TR.  Functional rules should be updated to fall back on adjusted date if available."]
+    [regulatoryReference ISDA PeerReviewGroup date "20230426"
+        provision "This rule must take into account the possibility of having a customizable schedule for commodity products"]
+    extract
+        // CO using schedule
+        if (IsCommoditySwap or IsCommodityFloatingPriceForward) and EconomicTermsForProduct -> payout -> commodityPayout -> schedule exists
+        then [EconomicTermsForProduct -> payout -> commodityPayout -> schedule -> schedulePeriod -> paymentDate max,
+        AdjustableDateResolution(
+                    EconomicTermsForProduct -> terminationDate -> adjustableDate
+                )] max
+        else if IsCommodityFixedPriceForward and EconomicTermsForProduct -> payout -> fixedPricePayout -> schedule exists
+        then ([(EconomicTermsForProduct -> payout -> fixedPricePayout -> schedule -> schedulePeriod -> paymentDate max), (EconomicTermsForProduct -> payout -> fixedPricePayout -> schedule -> schedulePeriod -> fixingPeriod -> endDate max), AdjustableDateResolution(
+                    EconomicTermsForProduct -> terminationDate -> adjustableDate
+                )] max)
+        else if IsCommodityOption or IsCommoditySwaption and EconomicTermsForProduct -> payout -> optionPayout -> schedule exists
+        then [EconomicTermsForProduct -> payout -> optionPayout -> schedule -> schedulePeriod -> paymentDate max, EconomicTermsForProduct -> payout -> optionPayout only-element -> schedule -> schedulePeriod -> fixingPeriod -> endDate max, AdjustableDateResolution(
+                    EconomicTermsForProduct -> terminationDate -> adjustableDate
+                )] max
+        else if Qualify_Commodity_Swaption(EconomicTermsForProduct)
+                and EconomicTermsForProduct(UnderlierForProduct) -> payout -> commodityPayout -> schedule exists
+        then [EconomicTermsForProduct(UnderlierForProduct) -> payout -> commodityPayout -> schedule -> schedulePeriod -> paymentDate max,
+        AdjustableDateResolution(
+                    EconomicTermsForProduct -> terminationDate -> adjustableDate
+                )] max
+        // CO without schedule
+        else if (IsCommoditySwap or IsCommodityFloatingPriceForward)
+        then [EconomicTermsForProduct -> payout -> commodityPayout -> paymentDates first -> lastRegularPaymentDate,
+        AdjustableDateResolution(
+                    EconomicTermsForProduct -> terminationDate -> adjustableDate
+                )] max
+        else if IsCommodityFixedPriceForward
+        then [EconomicTermsForProduct -> payout -> fixedPricePayout only-element -> paymentDates -> lastRegularPaymentDate,
+        AdjustableDateResolution(
+                    EconomicTermsForProduct -> terminationDate -> adjustableDate
+                )] max
+        // Swaption
+        else if EconomicTermsForProduct(UnderlierForProduct) -> terminationDate exists
+        then [(EconomicTermsForProduct(UnderlierForProduct) -> terminationDate -> adjustableDate
+            extract AdjustableDateResolution),
+        AdjustableDateResolution(
+                    EconomicTermsForProduct -> terminationDate -> adjustableDate
+                )] max
+        // IRS
+        else if EconomicTermsForProduct -> payout -> interestRatePayout -> calculationPeriodDates -> terminationDate -> adjustableDate exists
+        then [EconomicTermsForProduct -> payout -> interestRatePayout -> calculationPeriodDates -> terminationDate -> adjustableDate
+            extract AdjustableDateResolution
+            then max,
+        AdjustableDateResolution(
+                    EconomicTermsForProduct -> terminationDate -> adjustableDate
+                )] max
+        // CO Basis
+        else if IsCommoditySwapFloatFloat
+        then [(EconomicTermsForProduct -> payout -> commodityPayout -> calculationPeriodDates -> terminationDate -> adjustableDate
+            extract AdjustableDateResolution
+            then max),
+        AdjustableDateResolution(
+                    EconomicTermsForProduct -> terminationDate -> adjustableDate
+                )] max
+        // option - european exercise
+        else if EconomicTermsForProduct -> payout -> optionPayout -> exerciseTerms -> optionStyle -> europeanExercise -> expirationDate -> adjustableDate exists
+        then ([(EconomicTermsForProduct -> payout -> optionPayout -> exerciseTerms -> optionStyle -> europeanExercise -> expirationDate -> adjustableDate
+            extract AdjustableDateResolution
+            then max), EconomicTermsForProduct -> payout -> optionPayout -> settlementTerms -> settlementDate -> valueDate max, 
+            EconomicTermsForProduct(UnderlierForProduct) -> payout -> interestRatePayout -> calculationPeriodDates -> terminationDate -> adjustableDate
+            extract AdjustableDateResolution
+            then max,
+            AdjustableDateResolution(
+                    EconomicTermsForProduct -> terminationDate -> adjustableDate
+                )] max)
+        // option - bermuda exercise
+        else if EconomicTermsForProduct -> payout -> optionPayout -> exerciseTerms -> optionStyle -> bermudaExercise -> bermudaExerciseDates -> adjustableDates exists
+        then ([(EconomicTermsForProduct -> payout -> optionPayout -> exerciseTerms -> optionStyle -> bermudaExercise -> bermudaExerciseDates -> adjustableDates
+            extract AdjustableDatesResolution
+            then flatten
+            then max), EconomicTermsForProduct -> payout -> optionPayout -> settlementTerms -> settlementDate -> valueDate max, 
+            EconomicTermsForProduct(UnderlierForProduct) -> payout -> interestRatePayout -> calculationPeriodDates -> terminationDate -> adjustableDate
+            extract AdjustableDateResolution
+            then max,
+            AdjustableDateResolution(
+                    EconomicTermsForProduct -> terminationDate -> adjustableDate
+                )] max) 
+        // option - american exercise
+        else if EconomicTermsForProduct -> payout -> optionPayout -> exerciseTerms -> optionStyle -> americanExercise -> expirationDate -> adjustableDate exists
+        then ([(EconomicTermsForProduct -> payout -> optionPayout -> exerciseTerms -> optionStyle -> americanExercise -> expirationDate -> adjustableDate
+            extract AdjustableDateResolution
+            then max), EconomicTermsForProduct -> payout -> optionPayout -> settlementTerms -> settlementDate -> valueDate max,
+            EconomicTermsForProduct(UnderlierForProduct) -> payout -> interestRatePayout -> calculationPeriodDates -> terminationDate -> adjustableDate
+            extract AdjustableDateResolution
+            then max,
+            AdjustableDateResolution(
+                    EconomicTermsForProduct -> terminationDate -> adjustableDate
+                )] max)
+        // EQ Swaps
+        else if EconomicTermsForProduct -> payout -> performancePayout count = 1
+                and EconomicTermsForProduct -> payout -> interestRatePayout count = 1
+        then ([MaxTerminationDate(
+                    EconomicTermsForProduct -> payout -> performancePayout -> valuationDates -> valuationDatesFinal -> valuationDate -> adjustableDate only-element,
+                    EconomicTermsForProduct -> payout -> interestRatePayout -> calculationPeriodDates -> terminationDate -> adjustableDate only-element
+                ), (EconomicTermsForProduct -> payout -> performancePayout -> observationTerms -> observationDates -> periodicSchedule -> endDate -> adjustableDate
+            extract AdjustableDateResolution
+            then max), AdjustableDateResolution(
+                    EconomicTermsForProduct -> terminationDate -> adjustableDate
+                ) ] then max)
+        //FX
+        else if EconomicTermsForProduct -> payout -> forwardPayout -> settlementTerms -> settlementDate -> valueDate exists
+                then [EconomicTermsForProduct -> payout -> forwardPayout -> settlementTerms -> settlementDate -> valueDate max,
+        AdjustableDateResolution(
+                    EconomicTermsForProduct -> terminationDate -> adjustableDate
+                )] max
+        // Futures
+        else if IsProductETD
+                and EconomicTermsForProduct -> payout -> forwardPayout only exists
+        then [EconomicTermsForProduct -> payout -> forwardPayout only-element -> settlementTerms -> settlementDate -> valueDate,
+        AdjustableDateResolution(
+                    EconomicTermsForProduct -> terminationDate -> adjustableDate
+                )] max
+        else if EconomicTermsForProduct -> terminationDate exists
+        then AdjustableDateResolution(
+                    EconomicTermsForProduct -> terminationDate -> adjustableDate
+                )
+
+reporting rule CDESettlementCurrency from SettlementTerms: <"Settlement Currency">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "20"
+        provision "Currency for the cash settlement of the transaction when applicable. For multicurrency products that do not net, the settlement currency of each leg. This data element is not applicable for physically settled products (eg physically settled swaptions)."]
+    extract
+        if settlementType = SettlementTypeEnum -> Cash or cashSettlementTerms exists
+        then settlementCurrency
+    then extract ConvertNonISOToISOCurrency
+
+reporting rule CDESettlementLocationLeg1 from TransactionReportInstruction: <"Settlement Location Leg 1">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "21"
+        provision "Place of settlement of the transaction as stipulated in the contract. This data element is only applicable for transactions that involve an offshore currency (i.e. a currency which is not included in the ISO 4217 currency list, for example CNH)."]
+    extract ProductForEvent
+    then extract SettlementTermsLeg1
+    then extract
+        if (settlementType = SettlementTypeEnum -> Cash or cashSettlementTerms exists)
+                and settlementCurrency = "CNH"
+        then "HK"
+
+reporting rule CDESettlementLocationLeg2 from TransactionReportInstruction: <"Settlement Location Leg 2">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "21"
+        provision "Place of settlement of the transaction as stipulated in the contract. This data element is only applicable for transactions that involve an offshore currency (i.e. a currency which is not included in the ISO 4217 currency list, for example CNH)."]
+    extract ProductForEvent
+    then extract SettlementTermsLeg2
+    then extract
+        if (settlementType = SettlementTypeEnum -> Cash or cashSettlementTerms exists)
+                and settlementCurrency = "CNH"
+        then "HK"
+
+reporting rule CDEDayCountConvention from InterestRatePayout: <"Day Count Convention">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "22"
+        provision "For each leg of the transaction, where applicable: day count convention (often also referred to as day count fraction or day count basis or day count method) that determines how interest payments are calculated. It is used to compute the year fraction of the calculation period, and indicates the number of days in the calculation period divided by the number of days in the year.
+        A001 = IC30360ISDAor30360AmericanBasicRule;
+        A002 = IC30365;
+        A003 = IC30Actual;
+        A004 = Actual360;
+        A005 = Actual365Fixed;
+        A006 = ActualActualICMA;
+        A007 = IC30E360orEuroBondBasismodel1;
+        A008 = ActualActualISDA;
+        A009 = Actual365LorActuActubasisRule; 
+        A010 = ActualActualAFB; 
+        A011 = IC30360ICMAor30360basicrule;
+        A012 = IC30E2360orEurobondbasismodel2;
+        A013 = IC30E3360orEurobondbasismodel3;
+        A014 = Actual365NL;
+        A015 = ActualActualUltimo;
+        A016 = IC30EPlus360;
+        A017 = Actual364;
+        A018 = Business252;
+        A019 = Actual360NL;
+        A020 = 1/1;
+        NARR = Narrative"]
+    [regulatoryReference ISDA PeerReviewGroup date "unknown"
+        provision "Additional Day Count Fractions commented out will be inserted back in the model and in the reporting logic once evidence of business use cases and corresponding test data is made available"]
+    [regulatoryReference ISDA PeerReviewGroup date "07202402"
+        provision "It is not an issue to have unrecognizable codes in ISO (i.e. codes we cannot infer from the CDM enum). This is because we do not have a use case for that scenarios. They do not exist, so we will not report them."]
+    if dayCountFraction = DayCountFractionEnum -> _30_360
+    then InterestComputationMethod4Code -> A001
+    else if dayCountFraction = DayCountFractionEnum -> ACT_360
+    then InterestComputationMethod4Code -> A004
+    else if dayCountFraction = DayCountFractionEnum -> ACT_365_FIXED
+    then InterestComputationMethod4Code -> A005
+    else if dayCountFraction = DayCountFractionEnum -> ACT_ACT_ICMA
+    then InterestComputationMethod4Code -> A006
+    else if dayCountFraction = DayCountFractionEnum -> _30E_360_ISDA
+    then InterestComputationMethod4Code -> A007
+    else if dayCountFraction = DayCountFractionEnum -> ACT_ACT_ISDA
+    then InterestComputationMethod4Code -> A008
+    else if dayCountFraction = DayCountFractionEnum -> ACT_365L
+    then InterestComputationMethod4Code -> A009
+    else if dayCountFraction = DayCountFractionEnum -> ACT_ACT_AFB
+    then InterestComputationMethod4Code -> A010
+    else if dayCountFraction = DayCountFractionEnum -> _30E_360
+    then InterestComputationMethod4Code -> A011
+    else if dayCountFraction = DayCountFractionEnum -> ACT_ACT_ISMA
+    then InterestComputationMethod4Code -> A015
+    else if dayCountFraction = DayCountFractionEnum -> ACT_364
+    then InterestComputationMethod4Code -> A017
+    else if dayCountFraction = DayCountFractionEnum -> CAL_252
+    then InterestComputationMethod4Code -> A018
+    else if dayCountFraction = DayCountFractionEnum -> _1_1
+    then InterestComputationMethod4Code -> A020
+    else if dayCountFraction exists
+    then InterestComputationMethod4Code -> NARR
+
+reporting rule CDEPaymentFrequencyPeriod from InterestRatePayout: <"Payment Frequency Period">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "23"
+        provision "For each leg of the transaction, where applicable: time unit associated with the frequency of payments, eg day, week, month, year or term of the stream"]
+    if paymentDates -> paymentFrequency -> period exists
+    then (if paymentDates -> paymentFrequency -> period = PeriodExtendedEnum -> C
+        then MapCDEFrequencyPeriod(
+                    calculationPeriodDates -> calculationPeriodFrequency -> period
+                )
+        else MapCDEFrequencyPeriod(paymentDates -> paymentFrequency -> period))
+    else if paymentDates -> paymentFrequency is absent
+            and paymentDates -> paymentDateSchedule exists
+    then "ADHO"
+
+func MapCDEFrequencyPeriod:
+    inputs:
+        period PeriodExtendedEnum (0..1)
+    output:
+        periodValue string (0..1)
+    set periodValue:
+        if period = PeriodExtendedEnum -> D
+        then "DAIL"
+        else if period = PeriodExtendedEnum -> W
+        then "WEEK"
+        else if period = PeriodExtendedEnum -> M
+        then "MNTH"
+        else if period = PeriodExtendedEnum -> Y
+        then "YEAR"
+        else if period = PeriodExtendedEnum -> T
+        then "EXPI"
+
+reporting rule CDEPaymentFrequencyPeriodMultiplier from InterestRatePayout: <"Payment Frequency Period Multiplier">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "24"
+        provision "For each leg of the transaction, where applicable: number of time units (as expressed by the payment frequency period) that determines the frequency at which periodic payment dates occur. For example, a transaction with payments occurring every two months is represented with a payment frequency period of MNTH (monthly) and a payment frequency period multiplier of 2. This data element is not applicable if the payment frequency period is ADHO. If payment frequency period is EXPI, then the payment frequency period multiplier is 1. If the payment frequency is intraday, then the payment frequency period is DAIL and the payment frequency multiplier is 0."]
+    extract paymentDates -> paymentFrequency -> periodMultiplier
+
+reporting rule CDEValuationAmount from TransactionReportInstruction: <"Valuation amount">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "25"
+        provision "Current value of the outstanding contract. without applying any valuation adjustments (some examples include XVA adjustment such as CVA, DVA, etc).
+        Valuation amount is expressed as the exit cost of the contract or components of the contract, ie the price that would be received to sell the contract (in the market in an orderly transaction at the valuation date)."]
+    GetValuation -> amount -> value
+    then extract RoundToPrecision(item, 5,RoundingDirectionEnum -> Nearest)
+        as "2.21 Valuation amount"
+
+reporting rule CDEValuationCurrency from TransactionReportInstruction: <"Valuation currency">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "26"
+        provision "Currency in which the valuation amount is denominated."]
+    GetValuation -> amount -> unit -> currency
+    then extract ConvertNonISOToISOCurrency
+        as "2.22 Valuation currency"
+
+reporting rule CDEValuationTimestamp from TransactionReportInstruction: <"Valuation Timestamp">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "27"
+        provision "Date and time of the last valuation marked to market, provided by the central counterparty (CCP) or calculated using the current or last available market price of the inputs. If for example a currency exchange rate is the basis for a transactions valuation, then the valuation timestamp reflects the moment in time that exchange rate was current."]
+    extract GetValuation(item) -> timestamp
+
+reporting rule CDEValuationMethod from Valuation: <"Valuation Method">
+    [regulatoryReference CPMI_IOSCO CDE table "2" field "28"
+        provision "Source and method used for the valuation of the transaction by the reporting counterparty.
+            If at least one valuation input is used that is classified as mark-to-model in the below table, then the whole valuation is classified as mark-to-model.
+            If only inputs are used that are classified as mark-to-market in the table below, then the whole valuation is classified as mark-to-market."]
+    if source exists and source = ValuationSourceEnum -> CentralCounterparty
+        then ValuationType1Code -> CCPV
+    else if method exists and method = ValuationTypeEnum -> MarkToMarket
+        then ValuationType1Code -> MTMA
+    else if method exists and method = ValuationTypeEnum -> MarkToModel
+        then ValuationType1Code -> MTMO
+
+reporting rule CDECollateralPortfolioIndicator from TransactionReportInstruction: <"Collateral Portfolio Indicator">
+    [regulatoryReference CPMI_IOSCO CDE table "2" field "29"
+        provision "Indicator of whether the collateralisation was performed on a portfolio basis. By on a portfolio basis, it is meant a set of transactions that are margined together (either on a net or a gross basis) contrary to the scenario where the margin is calculated and posted for each individual transaction separately."]
+    extract TradeForEvent -> collateral -> portfolioIdentifier exists
+    or PositionForEvent -> collateral -> portfolioIdentifier exists
+
+reporting rule CDECollateralPortfolioCode from TransactionReportInstruction: <"Collateral Portfolio Code">
+    [regulatoryReference CPMI_IOSCO CDE table "2" field "30"
+        provision "If collateral is reported on a portfolio basis, unique code assigned by counterparty 1 to the portfolio. This data element is not applicable if the collateralisation was performed on a transaction level basis, or if there is no collateral agreement or if no collateral is posted or received."]
+    extract if PositionForEvent -> collateral -> portfolioIdentifier -> assignedIdentifier exists
+        then PositionForEvent -> collateral -> portfolioIdentifier -> assignedIdentifier
+    else if TradeForEvent -> collateral -> portfolioIdentifier -> assignedIdentifier exists
+        then TradeForEvent -> collateral -> portfolioIdentifier -> assignedIdentifier
+    then distinct only-element
+    then extract identifier
+
+func GetCollateralBalancesForMarginType: <"'GetCollateralBalancesForMarginType' is a custom function that fetches Collateral Balances for required Margin Type.">
+    inputs:
+        reportableCollateral ReportableCollateral (1..1)
+        marginType CollateralMarginTypeEnum (1..1)
+    output:
+        collateralBalances CollateralBalance (0..*)
+
+    add collateralBalances:
+        reportableCollateral -> collateralDetails -> collateral -> collateralPortfolio
+            filter
+                legalAgreement -> legalAgreementIdentification -> agreementName -> creditSupportAgreementMarginType = marginType
+            then extract collateralBalance
+            then flatten
+
+func GetMarginValue: <"'GetMarginValue' is a custom function that fetches Collateral Margin values for the required Margin Type.">
+    inputs:
+        partyCollateralBalances CollateralBalance (0..*)
+        haircutType HaircutIndicatorEnum (1..1)
+    output:
+        marginValue Money (0..1)
+
+    set marginValue:
+        partyCollateralBalances
+            filter haircutIndicator = haircutType
+            then filter collateralBalanceStatus = CollateralStatusEnum -> FullAmount
+            then extract amountBaseCurrency
+            then only-element
+
+func GetMarginCurrency: <"'GetMarginCurrency' is a custom function that fetches Collateral Margin currency for the required Margin Type.">
+    inputs:
+        partyCollateralBalances CollateralBalance (0..*)
+    output:
+        marginCurrency ISOCurrencyCodeEnum (0..1)
+
+    /*
+     * Rationale Reference: The rationale for the following code snippet is discussed in ISDA DRR Technical Execution Working Group on July 27' 2023.
+     * Rationale: Current structure of CDM Collateral Object allows margin currency to be posted for each type of Haircut (Pre or Post). ESMA EMIR regulatory Rules does not specify the type of haircut to be considered for margin currency. This code snippet ensures and checks for both pre and post currency to be same.
+     */
+    set marginCurrency:
+        if (GetMarginValue(partyCollateralBalances, HaircutIndicatorEnum -> PreHaircut) -> unit -> currency = GetMarginValue(
+                    partyCollateralBalances,
+                    HaircutIndicatorEnum -> PostHaircut
+                ) -> unit -> currency)
+        then (GetMarginValue(partyCollateralBalances, HaircutIndicatorEnum -> PreHaircut) -> unit -> currency
+            then extract ConvertNonISOToISOCurrency)
+
+func CDEInitialMarginPostedByReportingCounterpartyPreHaircut: <"Initial margin collected by the reporting counterparty (pre-haircut)">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "31"
+        provision "Monetary value of initial margin that has been posted by the reporting counterparty, including any margin that is in transit and pending settlement unless inclusion of such margin is not allowed under the jurisdictional requirements.
+        If the collateralisation is performed at portfolio level, the initial margin posted relates to the whole portfolio; if the collateralisation is performed for single transactions, the initial margin posted relates to such single transaction.
+        This refers to the total current value of the initial margin, rather than to its daily change. The data element refers both to uncleared and centrally cleared transactions.
+        For centrally cleared transactions, the data element does not include default fund contributions, nor collateral posted against liquidity provisions to the central counterparty, ie committed
+        credit lines. If the initial margin posted is denominated in more than one currency, those amounts are converted into a single currency chosen by the reporting counterparty and reported as one total value."]
+    inputs:
+        reportableCollateral ReportableCollateral (1..1)
+        reportingCounterparty Party (1..1)
+    output:
+        marginValue number (0..1)
+
+    set marginValue:
+        GetMarginValue(
+                GetCollateralBalancesForMarginType(
+                        reportableCollateral,
+                        CollateralMarginTypeEnum -> InitialMargin
+                    )
+                    filter payerReceiver -> payerPartyReference = reportingCounterparty,
+                HaircutIndicatorEnum -> PreHaircut
+            ) -> value
+
+func CDEInitialMarginPostedByReportingCounterpartyPostHaircut: <"Initial margin collected by the reporting counterparty (post-haircut)">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "32"
+        provision "Monetary value of initial margin that has been posted by the reporting counterparty, including any margin that is in transit and pending settlement unless inclusion of such margin is not allowed under the jurisdictional requirements.
+        If the collateralisation is performed at portfolio level, the initial margin posted relates to the whole portfolio; if the collateralisation is performed for single transactions, the initial margin posted relates to such single transaction.
+        This refers to the total current value of the initial margin after application of the haircut (if applicable), rather than to its daily change.
+        The data element refers both to uncleared and centrally cleared transactions. For centrally cleared transactions, the data element does not include default fund contributions, nor collateral posted against liquidity provisions to the central counterparty, ie committed credit lines.
+        If the initial margin posted is denominated in more than one currency, those amounts are converted into a single currency chosen by the reporting counterparty and reported as one total value"]
+    inputs:
+        reportableCollateral ReportableCollateral (1..1)
+        reportingCounterparty Party (1..1)
+    output:
+        marginValue number (0..1)
+
+    set marginValue:
+        GetMarginValue(
+                GetCollateralBalancesForMarginType(
+                        reportableCollateral,
+                        CollateralMarginTypeEnum -> InitialMargin
+                    )
+                    filter payerReceiver -> payerPartyReference = reportingCounterparty,
+                HaircutIndicatorEnum -> PostHaircut
+            ) -> value
+
+func CDEInitialMarginPostedByReportingCounterpartyCurrency: <"Currency of initial margin collected">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "33"
+        provision "Currency in which the initial margin posted is denominated.
+        If the initial margin posted is denominated in more than one currency, this data element reflects one of those currencies into which the reporting counterparty has chosen to convert all the values of posted initial margins."]
+    inputs:
+        reportableCollateral ReportableCollateral (1..1)
+        reportingCounterparty Party (1..1)
+    output:
+        marginCurrency ISOCurrencyCodeEnum (0..1)
+
+    set marginCurrency:
+        GetMarginCurrency(
+                GetCollateralBalancesForMarginType(
+                        reportableCollateral,
+                        CollateralMarginTypeEnum -> InitialMargin
+                    )
+                    filter payerReceiver -> payerPartyReference = reportingCounterparty
+            )
+
+func CDEInitialMarginCollectedByReportingCounterpartyPreHaircut: <"Initial margin collected by the reporting counterparty (pre-haircut)">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "34"
+        provision "Monetary value of initial margin that has been collected by the reporting counterparty, including any margin that is in transit and pending settlement unless inclusion of such margin is not allowed under the jurisdictional requirements.
+            If the collateralisation is performed at portfolio level, the initial margin collected relates to the whole portfolio; if the collateralisation is performed for single transactions, the initial margin collected relates to such single transaction.
+            This refers to the total current value of the initial margin, rather than to its daily change.
+            The data element refers both to uncleared and centrally cleared transactions. For centrally cleared transactions, the data element does not include collateral collected by the central counterparty as part of its investment activity.
+            If the initial margin collected is denominated in more than one currency, those amounts are converted into a single currency chosen by the reporting counterparty and reported as one total value"]
+    inputs:
+        reportableCollateral ReportableCollateral (1..1)
+        reportingCounterparty Party (1..1)
+    output:
+        marginValue number (0..1)
+
+    set marginValue:
+        GetMarginValue(
+                GetCollateralBalancesForMarginType(
+                        reportableCollateral,
+                        CollateralMarginTypeEnum -> InitialMargin
+                    )
+                    filter payerReceiver -> receiverPartyReference = reportingCounterparty,
+                HaircutIndicatorEnum -> PreHaircut
+            ) -> value
+
+func CDEInitialMarginCollectedByReportingCounterpartyPostHaircut: <"Initial margin collected by the reporting counterparty (post-haircut)">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "35"
+        provision "Monetary value of initial margin that has been collected by the reporting counterparty, including any margin that is in transit and pending settlement unless inclusion of such margin is not allowed under the jurisdictional requirements.
+            If the collateralisation is performed at portfolio level, the initial margin collected relates to the whole portfolio; if the collateralisation is performed for single transactions, the initial margin collected relates to such single transaction.
+            This refers to the total current value of the initial margin after application of the haircut (if applicable), rather than to its daily change.
+            The data element refers both to uncleared and centrally cleared transactions. For centrally cleared transactions, the data element does not include collateral collected by the central counterparty as part of its investment activity.
+            If the initial margin collected is denominated in more than one currency, those amounts are converted into a single currency chosen by the reporting counterparty and reported as one total value"]
+    inputs:
+        reportableCollateral ReportableCollateral (1..1)
+        reportingCounterparty Party (1..1)
+    output:
+        marginValue number (0..1)
+
+    set marginValue:
+        GetMarginValue(
+                GetCollateralBalancesForMarginType(
+                        reportableCollateral,
+                        CollateralMarginTypeEnum -> InitialMargin
+                    )
+                    filter payerReceiver -> receiverPartyReference = reportingCounterparty,
+                HaircutIndicatorEnum -> PostHaircut
+            ) -> value
+
+func CDEInitialMarginCollectedByReportingCounterpartyCurrency: <"Currency of initial margin collected">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "36"
+        provision "Currency in which the initial margin collected is denominated. If the initial margin collected is denominated in more than one currency, this data element reflects one of those currencies into which the reporting counterparty has chosen to convert all the values of collected initial margins."]
+    inputs:
+        reportableCollateral ReportableCollateral (1..1)
+        reportingCounterparty Party (1..1)
+    output:
+        marginCurrency ISOCurrencyCodeEnum (0..1)
+
+    set marginCurrency:
+        GetMarginCurrency(
+                GetCollateralBalancesForMarginType(
+                        reportableCollateral,
+                        CollateralMarginTypeEnum -> InitialMargin
+                    )
+                    filter payerReceiver -> receiverPartyReference = reportingCounterparty
+            )
+
+func CDEVariationMarginPostedByReportingCounterpartyPreHaircut: <"Variation margin posted by the counterparty 1 (pre-haircut)">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "37"
+        provision "Monetary value of the variation margin posted by the reporting counterparty (including the cash-settled one), and including any margin that is in transit and pending settlement unless inclusion of such margin is not allowed under the jurisdictional requirements.
+            Contingent variation margin is not included.
+            If the collateralisation is performed at portfolio level, the variation margin posted relates to the whole portfolio; if the collateralisation is performed for single transactions, the variation margin posted relates to such single transaction.
+            This data element refers to the total current value of the variation margin, cumulated since the first reporting of variation margins posted for the portfolio/transaction.
+            If the variation margin posted is denominated in more than one currency, those amounts are converted into a single currency chosen by the reporting counterparty and reported as one total value."]
+    inputs:
+        reportableCollateral ReportableCollateral (1..1)
+        reportingCounterparty Party (1..1)
+    output:
+        marginValue number (0..1)
+
+    set marginValue:
+        GetMarginValue(
+                GetCollateralBalancesForMarginType(
+                        reportableCollateral,
+                        CollateralMarginTypeEnum -> VariationMargin
+                    )
+                    filter payerReceiver -> payerPartyReference = reportingCounterparty,
+                HaircutIndicatorEnum -> PreHaircut
+            ) -> value
+
+func CDEVariationMarginPostedByReportingCounterpartyPostHaircut: <"Variation margin posted by the counterparty 1 (post-haircut)">
+    [regulatoryReference CPMI_IOSCO CDE table "2" field "38"
+        provision "Monetary value of the variation margin posted by the reporting counterparty (including the cash-settled one), and including any margin that is in transit and pending settlement unless inclusion of such margin is not allowed under the jurisdictional requirements.
+            Contingent variation margin is not included.
+            If the collateralisation is performed at portfolio level, the variation margin posted relates to the whole portfolio; if the collateralisation is performed for single transactions, the variation margin posted relates to such single transaction.
+            This data element refers to the total current value of the variation margin after application of the haircut (if applicable), cumulated since the first reporting of posted variation margins for the portfolio /transaction.
+            If the variation margin posted is denominated in more than one currency, those amounts are converted into a single currency chosen by the reporting counterparty and reported as one total value."]
+    inputs:
+        reportableCollateral ReportableCollateral (1..1)
+        reportingCounterparty Party (1..1)
+    output:
+        marginValue number (0..1)
+
+    set marginValue:
+        GetMarginValue(
+                GetCollateralBalancesForMarginType(
+                        reportableCollateral,
+                        CollateralMarginTypeEnum -> VariationMargin
+                    )
+                    filter payerReceiver -> payerPartyReference = reportingCounterparty,
+                HaircutIndicatorEnum -> PostHaircut
+            ) -> value
+
+func CDEVariationMarginPostedByReportingCounterpartyCurrency: <"Currency of the variation margin posted">
+    [regulatoryReference CPMI_IOSCO CDE table "2" field "39"
+        provision "Currency in which the variation margin posted is denominated.
+            If the variation margin posted is denominated in more than one currency, this data element reflects one of those currencies into which the reporting counterparty has chosen to convert all the values of posted variation margins."]
+    inputs:
+        reportableCollateral ReportableCollateral (1..1)
+        reportingCounterparty Party (1..1)
+    output:
+        marginCurrency ISOCurrencyCodeEnum (0..1)
+
+    set marginCurrency:
+        GetMarginCurrency(
+                GetCollateralBalancesForMarginType(
+                        reportableCollateral,
+                        CollateralMarginTypeEnum -> VariationMargin
+                    )
+                    filter payerReceiver -> payerPartyReference = reportingCounterparty
+            )
+
+func CDEVariationMarginCollectedByReportingCounterpartyPreHaircut: <"Variation margin collected by the reporting counterparty (pre-haircut)">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "40"
+        provision "Monetary value of the variation margin collected by the reporting counterparty (including the cash-settled one), and including any margin that is in transit and pending settlement unless inclusion of such margin is not allowed under the jurisdictional requirements.
+        Contingent variation margin is not included.
+        If the collateralisation is performed at portfolio level, the variation margin collected relates to the whole portfolio; if the collateralisation is performed for single transactions, the variation margin collected relates to such single transaction.
+        This refers to the total current value of the variation margin, cumulated since the first reporting of collected variation margins for the portfolio/transaction.
+        If the variation margin collected is denominated in more than one currency, those amounts are converted into a single currency chosen by the reporting counterparty and reported as one total value."]
+    inputs:
+        reportableCollateral ReportableCollateral (1..1)
+        reportingCounterparty Party (1..1)
+    output:
+        marginValue number (0..1)
+
+    set marginValue:
+        GetMarginValue(
+                GetCollateralBalancesForMarginType(
+                        reportableCollateral,
+                        CollateralMarginTypeEnum -> VariationMargin
+                    )
+                    filter payerReceiver -> receiverPartyReference = reportingCounterparty,
+                HaircutIndicatorEnum -> PreHaircut
+            ) -> value
+
+func CDEVariationMarginCollectedByReportingCounterpartyPostHaircut: <"Variation margin collected by the reporting counterparty (post-haircut)">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "41"
+        provision "Monetary value of the variation margin collected by the reporting counterparty (including the cash-settled one), and including any margin that is in transit and pending settlement unless inclusion of such margin is not allowed under the jurisdictional requirements.
+        Contingent variation margin is not included.
+        If the collateralisation is performed at portfolio level, the variation margin collected relates to the whole portfolio; if the collateralisation is performed for single transactions, the variation margin collected relates to such single transaction.
+        This refers to the total current value of the variation margin collected after application of the haircut (if applicable), cumulated since the first reporting of collected variation margins for the portfolio/transaction.
+        If the variation margin collected is denominated in more than one currency, those amounts are converted into a single currency chosen by the reporting counterparty and reported as one total value."]
+    inputs:
+        reportableCollateral ReportableCollateral (1..1)
+        reportingCounterparty Party (1..1)
+    output:
+        marginValue number (0..1)
+
+    set marginValue:
+        GetMarginValue(
+                GetCollateralBalancesForMarginType(
+                        reportableCollateral,
+                        CollateralMarginTypeEnum -> VariationMargin
+                    )
+                    filter payerReceiver -> receiverPartyReference = reportingCounterparty,
+                HaircutIndicatorEnum -> PreHaircut
+            ) -> value
+
+func CDEVariationMarginCollectedByReportingCounterpartyCurrency: <"Currency of variation margin collected">
+    [regulatoryReference CPMI_IOSCO CDE table "2" field "42"
+        provision "Currency in which the variation margin collected is denominated.
+        If the variation margin collected is denominated in more than one currency, this data element reflects one of those currencies into which the reporting counterparty has chosen to convert all the values of collected variation margins."]
+    inputs:
+        reportableCollateral ReportableCollateral (1..1)
+        reportingCounterparty Party (1..1)
+    output:
+        marginCurrency ISOCurrencyCodeEnum (0..1)
+
+    set marginCurrency:
+        GetMarginCurrency(
+                GetCollateralBalancesForMarginType(
+                        reportableCollateral,
+                        CollateralMarginTypeEnum -> InitialMargin
+                    )
+                    filter payerReceiver -> receiverPartyReference = reportingCounterparty
+            )
+
+reporting rule CDEExcessCollateralPostedByTheReportingCounterparty from CollateralReportInstruction: <"Excess collateral posted by the reporting counterparty">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "43"
+        provision "Monetary value of any additional collateral posted by the reporting counterparty separate and independent from initial and variation margin. This refers to the total current value of the excess collateral before application of the haircut (if applicable), rather than to its daily change.
+          Any initial or variation margin amount posted that exceeds the required initial margin or required variation margin, is reported as part of the initial margin posted or variation margin posted respectively rather than included as excess collateral posted.
+          For centrally cleared transactions, excess collateral is reported only to the extent it can be assigned to a specific portfolio or transaction."]
+    [regulatoryReference ISDA EMEADataAndReporting date "20230206"
+        provision "No scenarios identified, this field will not be populated until further guidance from the ROC and/or ESMA."]
+    0
+
+reporting rule CDECurrencyOfExcessCollateralPosted from CollateralReportInstruction: <"Currency of excess collateral posted">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "44"
+        provision "Currency in which the excess collateral posted is denominated.
+          If the excess collateral posted is denominated in more than one currency, this data element reflects one of those currencies into which the reporting counterparty has chosen to convert all the values of posted excess collateral."]
+    [regulatoryReference ISDA EMEADataAndReporting date "20230206"
+        provision "No scenarios identified, this field will not be populated until further guidance from the ROC and/or ESMA."]
+    ""
+
+reporting rule CDEExcessCollateralCollectedByTheReportingCounterparty from CollateralReportInstruction: <"Excess collateral collected by the reporting counterparty">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "45"
+        provision "Monetary value of any additional collateral collected by the reporting counterparty separate and independent from initial and variation margin. This data element refers to the total current value of the excess collateral before application of the haircut (if applicable), rather than to its daily change.
+          Any initial or variation margin amount collected that exceeds the required initial margin or required variation margin, is reported as part of the initial margin collected or variation margin collected respectively, rather than included as excess collateral collected.
+          For centrally cleared transactions excess collateral is reported only to the extent it can be assigned to a specific portfolio or transaction."]
+    [regulatoryReference ISDA EMEADataAndReporting date "20230206"
+        provision "No scenarios identified, this field will not be populated until further guidance from the ROC and/or ESMA."]
+    0
+
+reporting rule CDECurrencyOfExcessCollateralCollected from CollateralReportInstruction: <"Currency of excess collateral posted">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "46"
+        provision "Currency in which the excess collateral collected is denominated.
+          If the excess collateral is denominated in more than one currency, this data element reflects one of those currencies into which the reporting counterparty has chosen to convert all the values of collected excess collateral"]
+    [regulatoryReference ISDA EMEADataAndReporting date "20230206"
+        provision "No scenarios identified, this field will not be populated until further guidance from the ROC and/or ESMA."]
+    ""
+
+reporting rule CDECollateralisationCategory from CollateralReportInstruction: <"Collateralisation category">
+    [regulatoryReference CPMI_IOSCO CDE section "2" dataElement "47" field "Collateralisation category"
+        provision "Indicator of whether a collateral agreement (or collateral agreements) between the counterparties exists (uncollateralised/partially collateralised/one-way collateralised/fully collateralised). This data element is provided for each transaction or each portfolio, depending on whether the collateralisation is performed at the transaction or portfolio level, and is applicable to both cleared and uncleared transactions."]
+    collateralDetails -> collateralisationCategory
+
+reporting rule CDEPrice from TransactionReportInstruction: <"Price">
+    [regulatoryReference CPMI_IOSCO CDE section "2" dataElement "50" field "Price"
+        provision "Price specified in the OTC derivative transaction. It does not include fees, taxes or commissions.
+        For commodity fixed/float swaps and similar products with periodic payments, this data element refers to the fixed price of the fixed leg(s).
+        For commodity and equity forwards and similar products, this data element refers to the forward price of the underlying or reference asset.
+        For equity swaps, portfolios swaps, and similar products, this data element refers to the initial price of the underlying or reference asset.
+        For contracts for difference and similar products, this data element refers to the initial price of the underlier.
+        This data element is not applicable to:
+            - Interest rate swaps and forward rate agreements, as it is understood that the information included in the data elements Fixed rate and Spread may be interpreted as the price of the transaction.
+            - Interest rate options and interest rate swaptions, as it is understood that the information included in the data elements Strike price and Option premium may be interpreted as the price of the transaction.
+            - Commodity basis swaps and the floating leg of commodity fixed/float swaps, as it is understood that the information included in the data element Spread may be interpreted as the price of the transaction.
+            - Foreign exchange swaps, forwards and options, as it is understood that the information included in the data elements Exchange rate, Strike price, and Option premium may be interpreted as the price of the transaction.
+            - Equity options, as it is understood that the information included in the data elements Strike price and Option premium may be interpreted as the price of the transaction.
+            - Credit default swaps and credit total return swaps, as it is understood that the information included in the data elements Fixed rate, Spread and Upfront payment (Other payment type: Upfront payment) may be interpreted as the price of the transaction.
+            - Commodity options, as it is understood that the information included in the data elements Strike price and Option premium may be interpreted as the price of the transaction. Where the price is not known when a new transaction is reported, the price is updated as it becomes available.
+        For transactions that are part of a package, this data element contains the price of the component transaction where applicable."]
+    [regulatoryReference ISDA ISDAWorkingGroup date "20221117"
+        provision "For Zero Coupon Swaps with a Known Amount, the Known Amount is reported as a Price. The Known Amount is not the notional, as it includes a rolled up interest component by definition."]
+    // IR Zero Coupon Swaps
+    if IsFixedFloatZeroCouponSwapKnownAmount(ProductForEvent)
+        then (PriceOfZeroCouponSwaps
+            then extract value
+            then only-element)
+    else PriceOfEvent
+
+reporting rule CDEPriceCurrency from TransactionReportInstruction: <"Price Currency">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "51"
+        provision "Currency in which the price is denominated. Price currency is only applicable if Price notation = 1."]
+    [regulatoryReference ISDA ISDAWorkingGroup date "20221117"
+        provision "For Zero Coupon Swaps with a Known Amount, the Known Amount is reported as a Price. The Known Amount is not the notional, as it includes a rolled up interest component by definition."]
+    // IR Zero Coupon Swaps
+    (if IsFixedFloatZeroCouponSwapKnownAmount(ProductForEvent)
+    then (PriceOfZeroCouponSwaps
+        then extract unit -> currency)
+    else Contract_Price_Monetary
+        extract unit -> currency)
+        then only-element
+
+reporting rule CDEPriceNotationEnum from ReportableEvent: <"CDE Price Notation Enum">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "52"
+        provision "Manner in which the price is expressed."]
+    [regulatoryReference ISDA ISDAWorkingGroup date "20221117"
+        provision "For Zero Coupon Swaps with a Known Amount, the Known Amount is reported as a Price. The Known Amount is not the notional, as it includes a rolled up interest component by definition."]
+    // IR Zero Coupon Swaps
+    if IsFixedFloatZeroCouponSwapKnownAmount(ProductForEvent)
+    then (PriceOfZeroCouponSwaps
+        then
+            if unit -> currency exists
+            then PriceNotationEnum -> Monetary
+            else PriceNotationEnum -> Decimal)
+    else (Contract_Price_Monetary only-element extract GetPriceNotation)
+
+reporting rule CDEPriceNotation from TransactionReportInstruction: <"Price Notation">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "52"
+        provision "Manner in which the price is expressed."]
+    GetNotationString(CDEPriceNotationEnum)
+
+reporting rule CDEPriceUnitOfMeasure from TransactionReportInstruction: <"Price Unit Of Measure">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "53"
+        provision "Unit of measure in which the price is expressed."]
+    extract Contract_Price_Monetary
+    then only-element
+    then extract
+        if perUnitOf -> capacityUnit exists
+        then CapacityUnitToISO20022UnitOfMeasure(perUnitOf -> capacityUnit)
+        else if perUnitOf -> weatherUnit exists
+        then WeatherUnitToISO20022UnitOfMeasure(perUnitOf -> weatherUnit)
+        else if perUnitOf -> financialUnit exists
+        then FinancialUnitToISO20022UnitOfMeasure(perUnitOf -> financialUnit)
+        else if priceType = PriceTypeEnum -> InterestRate
+        then empty
+
+reporting rule CDEPriceScheduleEffectiveDate from PriceReportablePeriod: <"Effective date of the price">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "54.1"
+        provision "Unadjusted effective date of the price"]
+    extract periodEffectiveDate
+        as "Effective date of the price"
+
+reporting rule CDEPriceScheduleEndDate from PriceReportablePeriod: <"End date of the price">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "54.2"
+        provision "Unadjusted end date of the price (not applicable if the unadjusted end date of a given schedules period is back-to-back with the unadjusted effective date of the subsequent period)"]
+    extract periodEndDate
+        as "End date of the price"
+
+reporting rule CDEPriceScheduleAmountFormatMonetary from PriceReportablePeriod: <"Price in effect between the unadjusted effective date and unadjusted end date">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "54.3"
+        provision "Price in effect between the unadjusted effective date and unadjusted end date inclusive.
+        Price schedule is only applicable if the price varies per schedule.
+        The currency, notation, and unit of measure for the varying prices in the schedule are reported in Price
+        currency, Price notation, and Price unit of measure data elements."]
+    extract periodValue
+    then if priceNotation = PriceNotationEnum -> Monetary
+        then MultiplyPrice(priceMonetary, priceNotation)
+        as "Price in effect between the unadjusted effective date and unadjusted end date (Monetary)"
+
+reporting rule CDEPriceScheduleAmountFormatPercentage from PriceReportablePeriod: <"Price in effect between the unadjusted effective date and unadjusted end date">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "54.3"
+        provision "Price in effect between the unadjusted effective date and unadjusted end date inclusive.
+        Price schedule is only applicable if the price varies per schedule.
+        The currency, notation, and unit of measure for the varying prices in the schedule are reported in Price
+        currency, Price notation, and Price unit of measure data elements."]
+    extract periodValue
+    then if priceNotation = PriceNotationEnum -> Percentage
+        then MultiplyPrice(pricePercentage, priceNotation)
+        as "Price in effect between the unadjusted effective date and unadjusted end date (Percentage)"
+
+reporting rule CDEPriceScheduleAmountFormatDecimal from PriceReportablePeriod: <"Price in effect between the unadjusted effective date and unadjusted end date">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "54.3"
+        provision "Price in effect between the unadjusted effective date and unadjusted end date inclusive.
+        Price schedule is only applicable if the price varies per schedule.
+        The currency, notation, and unit of measure for the varying prices in the schedule are reported in Price
+        currency, Price notation, and Price unit of measure data elements."]
+    extract periodValue
+    then if priceNotation = PriceNotationEnum -> Decimal
+        then pricePercentage
+        as "Price in effect between the unadjusted effective date and unadjusted end date (Decimal)"
+
+reporting rule CDEInterestRateFixedRate from InterestRatePayout: <"Fixed Rate for Interest Rates">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "55"
+        provision "For each leg of the transaction, where applicable: for OTC derivative transactions with periodic payments, per annum rate of the fixed leg(s)."]
+    rateSpecification -> fixedRate -> rateSchedule -> price -> value
+
+reporting rule CDESpreadLeg1 from TransactionReportInstruction: <"Spread of Leg 1">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "57a"
+        provision "For each leg of the transaction, where applicable: for OTC derivative transactions with periodic payments (eg interest rate fixed/float swaps, interest rate basis swaps         commodity swaps), spread on the individual floating leg(s) index reference price, in the case where there is a spread on a floating leg(s).
+    For example, USD-LIBOR-BBA plus .03 or WTI minus USD 14.65;
+    or
+    difference between the reference prices of the two floating leg indexes. For example, the 9.00 USD Spread for a WCS vs. WTI basis swap where WCS is priced at 43 USD and WTI is priced at 52 US
+    "]
+    TradeForEvent
+        then extract ProductForTrade
+        then extract
+            if IsCommoditySwapFloatFloat
+            then CommodityLeg1 -> commodityPriceReturnTerms -> spread
+            else if IsSingleCommodityPayoutProduct
+            then EconomicTermsForProduct -> payout -> commodityPayout only-element -> commodityPriceReturnTerms -> spread
+            else if IsCommodityFloatingPriceForward
+            then EconomicTermsForProduct -> payout -> commodityPayout only-element -> commodityPriceReturnTerms -> spread
+            else if IsIRSwaption or IsCreditSwaption
+            then InterestRateLeg1(UnderlierForProduct) -> rateSpecification -> floatingRate -> spreadSchedule
+            else InterestRateLeg1 -> rateSpecification -> floatingRate -> spreadSchedule
+        then extract price
+
+reporting rule CDESpreadLeg1NotationEnum from TransactionReportInstruction: <"Spread of Leg 1 Notation Enum">
+    CDESpreadLeg1 then extract if value exists then GetPriceNotation
+
+reporting rule CDESpreadLeg1Notation from TransactionReportInstruction: <"Spread of Leg 1 Notation">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "59a"
+        provision "For each leg of the transaction, where applicable: manner in which the spread is expressed."]
+    CDESpreadLeg1NotationEnum then GetNotationString
+
+reporting rule CDESpreadLeg1Currency from TransactionReportInstruction: <"Spread of Leg 1 Currency">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "58a"
+        provision "For each leg of the transaction, where applicable: currency in which the spread is denominated.
+                    This data element is only applicable if Spread notation = 1."]
+    CDESpreadLeg1
+        then extract 
+            if GetPriceNotation = PriceNotationEnum -> Monetary
+                then unit -> currency
+
+reporting rule CDESpreadLeg2 from TransactionReportInstruction: <"Spread of Leg 2">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "57b"
+        provision "For each leg of the transaction, where applicable: for OTC derivative transactions with periodic payments (eg interest rate fixed/float swaps, interest rate basis swaps commodity swaps), spread on the individual floating leg(s) index reference price, in the case where there is a spread on a floating leg(s).
+    For example, USD-LIBOR-BBA plus .03 or WTI minus USD 14.65;
+    or
+    difference between the reference prices of the two floating leg indexes. For example, the 9.00 USD Spread for a WCS vs. WTI basis swap where WCS is priced at 43 USD and WTI is priced at 52 US
+    "]
+    TradeForEvent
+        then extract ProductForTrade
+        then extract
+            if IsIRSwaption
+            then InterestRateLeg2(UnderlierForProduct) -> rateSpecification -> floatingRate -> spreadSchedule
+            else if IsCommoditySwap
+            then CommodityLeg2 -> commodityPriceReturnTerms -> spread
+            else InterestRateLeg2 -> rateSpecification -> floatingRate -> spreadSchedule
+        then extract price
+
+reporting rule CDESpreadLeg2NotationEnum from TransactionReportInstruction: <"Spread of Leg 2 Notation Enum">
+    CDESpreadLeg2 then extract if value exists then GetPriceNotation
+
+reporting rule CDESpreadLeg2Notation from TransactionReportInstruction: <"Spread of Leg 2 Notation">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "57b"
+        provision "For each leg of the transaction, where applicable: manner in which the spread is expressed."]
+    GetNotationString(CDESpreadLeg2NotationEnum)
+
+reporting rule CDESpreadLeg2Currency from TransactionReportInstruction: <"Spread of Leg 2 Currency">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "58a"
+        provision "For each leg of the transaction, where applicable: currency in which the spread is denominated.
+                    This data element is only applicable if Spread notation = 1."]
+    CDESpreadLeg2
+        then extract
+            if GetPriceNotation = PriceNotationEnum -> Monetary
+            then unit -> currency
+
+reporting rule CDESpread_InterestRate from InterestRatePayout: <"Spread (from InterestRatePayout)">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "57"
+        provision "For each leg of the transaction, where applicable: for OTC derivative transactions with periodic payments (eg interest rate fixed/float swaps, interest rate basis swaps, commodity swaps), spread on the individual floating leg(s) index reference price, in the case where there is a spread on a floating leg(s). For example, USD-LIBOR-BBA plus .03 or WTI minus USD 14.65; or difference between the reference prices of the two floating leg indexes. For example, the 9.00 USD Spread for a WCS vs. WTI basis swap where WCS is priced at 43 USD and WTI is priced at 52 USD."]
+    rateSpecification -> floatingRate -> spreadSchedule
+
+reporting rule CDESpread_Commodity from CommodityPayout: <"Spread (from CommodityPayout)">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "57"
+        provision "For each leg of the transaction, where applicable: for OTC derivative transactions with periodic payments (eg interest rate fixed/float swaps, interest rate basis swaps, commodity swaps), spread on the individual floating leg(s) index reference price, in the case where there is a spread on a floating leg(s). For example, USD-LIBOR-BBA plus .03 or WTI minus USD 14.65; or difference between the reference prices of the two floating leg indexes. For example, the 9.00 USD Spread for a WCS vs. WTI basis swap where WCS is priced at 43 USD and WTI is priced at 52 USD."]
+    commodityPriceReturnTerms -> spread
+
+reporting rule CDEStrikePrice from TransactionReportInstruction: <"Strike Price">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "60"
+        provision "For options other than FX options, swaptions and similar products, price at which the owner of an option can buy or sell the underlying asset of the option. For foreign exchange options, exchange rate at which the option can be exercised, expressed as the rate of exchange from converting the unit currency into the quoted currency. In the example 0.9426 USD/EUR, USD is the unit currency and EUR is the quoted currency; USD 1 = EUR 0.9426.Where the strike price is not known when a new transaction is reported, the strike price is updated as it becomes available.  For volatility and variance swaps and similar products the volatility strike price is reported in this data element."]
+    [regulatoryReference ISDA PeerReviewGroup date "20220615"
+        provision "For variance swaps, the volatility strike price can be included as part of the product in CDM. The assumption in DRR is that volatility strike price must be reported for variance swaps."]
+    Contract_StrikePrice -> value only-element
+
+reporting rule CDEStrikePriceNotationEnum from TransactionReportInstruction: <"CDE Strike Price NotationEnum">
+    Contract_StrikePrice only-element extract GetPriceNotation
+
+reporting rule CDEStrikePriceNotation from TransactionReportInstruction: <"Strike Price Notation">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "62"
+        provision "Manner in which the Strike price is expressed."]
+    CDEStrikePriceNotationEnum then GetNotationString
+
+reporting rule CDEStrikePriceCurrency from TransactionReportInstruction: <"Strike price currency/currency pair">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "61"
+        provision "For equity options, commodity options, and similar products, currency in which the strike price is denominated. For foreign exchange options: Currency pair and order in which the strike price is expressed. It is expressed as unit currency/quoted currency. In the example 0.9426 USD/EUR, USD is the unit currency and EUR is the quoted currency, USD 1 = EUR 0.9426 Strike price currency/currency pair is only applicable if Strike price notation = 1."]
+    extract Contract_StrikePrice
+    then only-element
+    then extract
+        if IsPriceMonetary
+        then (if priceType = PriceTypeEnum -> ExchangeRate
+                    and perUnitOf -> currency exists
+                    and unit -> currency exists
+            then ConvertNonISOToISOCurrency(perUnitOf -> currency) to-string + "/" + 
+                    ConvertNonISOToISOCurrency(unit -> currency)  to-string 
+            else ConvertNonISOToISOCurrency(unit -> currency)  to-string 
+            )
+
+reporting rule CDEStrikePriceScheduleEffectiveDate from PriceReportablePeriod: <"Effective date of the strike price">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "63.1"
+        provision "Unadjusted effective date of the strike price"]
+    extract periodEffectiveDate
+        as "Effective date of the strike price"
+
+reporting rule CDEStrikePriceScheduleEndDate from PriceReportablePeriod: <"End date of the strike price">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "63.2"
+        provision "Unadjusted end date of the strike price (not applicable if the unadjusted end date of a given schedules period is back-to-back with the unadjusted effective date of the subsequent period)"]
+    extract periodEndDate
+        as "End date of the strike price"
+
+reporting rule CDEStrikePriceScheduleAmountFormatMonetary from PriceReportablePeriod: <"Strike Price in effect between the unadjusted effective date and unadjusted end date">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "63.3"
+        provision "Strike price in effect between the unadjusted effective date and unadjusted end date inclusive.
+        Strike price schedule is only applicable if the strike price varies per schedule.
+        The currency for the varying strike prices in the schedule is reported in Strike price currency data element"]
+    extract periodValue
+    then if priceNotation = PriceNotationEnum -> Monetary
+        then MultiplyPrice(priceMonetary, priceNotation)
+        as "Strike Price in effect between the unadjusted effective date and unadjusted end date (Monetary)"
+
+reporting rule CDEStrikePriceScheduleAmountFormatPercentage from PriceReportablePeriod: <"Strike Price in effect between the unadjusted effective date and unadjusted end date">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "63.3"
+        provision "Strike price in effect between the unadjusted effective date and unadjusted end date inclusive.
+        Strike price schedule is only applicable if the strike price varies per schedule.
+        The currency for the varying strike prices in the schedule is reported in Strike price currency data element"]
+    extract periodValue
+    then if priceNotation = PriceNotationEnum -> Percentage
+        then MultiplyPrice(pricePercentage, priceNotation)
+        as "Strike Price in effect between the unadjusted effective date and unadjusted end date (Percentage)"
+
+reporting rule CDEStrikePriceScheduleAmountFormatDecimal from PriceReportablePeriod: <"Strike Price in effect between the unadjusted effective date and unadjusted end date">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "63.3"
+        provision "Strike price in effect between the unadjusted effective date and unadjusted end date inclusive.
+        Strike price schedule is only applicable if the strike price varies per schedule.
+        The currency for the varying strike prices in the schedule is reported in Strike price currency data element"]
+    extract periodValue
+    then if priceNotation = PriceNotationEnum -> Decimal
+        then pricePercentage
+        as "Strike Price in effect between the unadjusted effective date and unadjusted end date (Decimal)"
+
+reporting rule CDEOptionPremiumAmount from TransactionReportInstruction: <"Option Premium Amount">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "64"
+        provision "For options and swaptions of all asset classes, monetary amount paid by the option buyer. This data element is not applicable if the instrument is not an option or does not embed any optionality."]
+    [regulatoryReference ISDA PeerReviewGroup date "20230717"
+        provision "Members agreed to report the premium specific to each event, but for lifecycle events unrelated to a change in premium, the previously reported premium and payment date will be persisted."]
+    Get_OptionPremiumOnEventDate -> quantity -> value
+
+reporting rule CDEOptionPremiumCurrency from TransactionReportInstruction: <"Option Premium Currency">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "65"
+        provision "For options and swaptions of all asset classes, currency in which the option premium amount is denominated. This data element is not applicable if the instrument is not an option or does not embed any optionality."]
+    [regulatoryReference ISDA PeerReviewGroup date "20230717"
+        provision "Members agreed to report the premium specific to each event, but for lifecycle events unrelated to a change in premium, the previously reported premium and payment date will be persisted."]
+    Get_OptionPremiumOnEventDate -> quantity -> unit -> currency
+    then extract ConvertNonISOToISOCurrency
+    
+reporting rule CDEOptionPremiumPaymentDate from TransactionReportInstruction: <"Option Premium Payment Date">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "66"
+        provision "Unadjusted date on which the option premium is paid."]
+    [regulatoryReference ISDA PeerReviewGroup date "20220811"
+        provision "Model should contain a fall back for unadjustedDate when adjustedDate is only available. If an adjusted date is only provided then fields requiring an unadjusted date are left blank which will result in a NACK from the TR.  Functional rules should be updated to fall back on adjusted date if available."]
+    [regulatoryReference ISDA PeerReviewGroup date "20230717"
+        provision "Members agreed to report the premium specific to each event, but for lifecycle events unrelated to a change in premium, the previously reported premium and payment date will be persisted."]
+    AdjustableOrAdjustedOrRelativeDateResolution(Get_OptionPremiumOnEventDate -> settlementDate)
+
+reporting rule CDEFirstExerciseDate from Trade: <"First Exercise Date">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "67"
+        provision "First unadjusted date during the exercise period in which an option can be exercised.
+			For European-style options, this date is same as the Expiration date. For American-style options,
+			the first possible exercise date is the unadjusted date included in the execution timestamp.
+			For knock-in options, where the first exercise date is not known when a new transaction is
+			reported, the first exercise date is updated as it becomes available.
+			This data element is not applicable if the instrument is not an option or does not embed any
+			optionality."]
+    [regulatoryReference ISDA PeerReviewGroup date "20220811"
+        provision "Model should contain a fall back for unadjustedDate when adjustedDate is only available. If an adjusted date is only provided then fields requiring an unadjusted date are left blank which will result in a NACK from the TR.  Functional rules should be updated to fall back on adjusted date if available."]
+    extract trade [
+        ProductForTrade(trade) -> contractualProduct -> economicTerms -> payout -> optionPayout only-element -> exerciseTerms -> optionStyle
+            extract [
+                if americanExercise exists
+                then if AdjustableDateResolution(
+                            americanExercise -> commencementDate -> adjustableDate
+                        )
+                        exists
+                    then AdjustableDateResolution(
+                                americanExercise -> commencementDate -> adjustableDate
+                            )
+                    else trade -> tradeDate
+                else if europeanExercise exists
+                then if MinAdjustableDateResolution(
+                            europeanExercise -> expirationDate -> adjustableDate
+                        )
+                        exists
+                    then MinAdjustableDateResolution(
+                                europeanExercise -> expirationDate -> adjustableDate
+                            )
+                    else AdjustableDateResolution(
+                            ProductForTrade(trade) -> contractualProduct -> economicTerms -> terminationDate -> adjustableDate
+                        )
+                else if bermudaExercise exists
+                then AdjustableDatesResolution(
+                        bermudaExercise -> bermudaExerciseDates -> adjustableDates
+                    )
+                    min
+            ]
+    ]
+
+reporting rule CDEExchangeRate from TransactionReportInstruction: <"Exchange Rate">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "68"
+        provision "Exchange rate between the two different currencies specified in the OTC derivative transaction agreed by the counterparties at the inception of the transaction, expressed as the rate of exchange from converting the unit currency into the quoted currency. In the example 0.9426 USD/EUR, USD is the unit currency and EUR is the quoted currency; USD 1 = EUR 0.9426."]
+    [Contract_Price, Contract_StrikePrice]
+        filter priceType = PriceTypeEnum -> ExchangeRate and arithmeticOperator is absent
+        then last
+        as "2.68 Exchange Rate Price"
+
+reporting rule CDEExchangeRateBasis from PriceSchedule: <"Exchange Rate Basis">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "69"
+        provision "Currency pair and order in which the exchange rate is denominated, expressed as unit currency/quoted currency. In the example 0.9426 USD/EUR, USD is the unit currency and EUR is the quoted currency, USD 1 = EUR 0.9426."]
+    [regulatoryReference ISDA ISDAWorkingGroup date "unknown"
+        provision "Per CDE definition 0.9426 EUR (CDM unitOfAmount) per 1 USD (CDM perUnitOfAmount) should be expressed as USD/EUR"]
+    if perUnitOf -> currency to-enum ISOCurrencyCodeEnum exists
+            and unit -> currency to-enum ISOCurrencyCodeEnum exists
+    then perUnitOf -> currency + "/" + unit -> currency
+        as "2.69 Exchange Rate Basis"
+
+reporting rule CDENotional from Trade: <"Notional">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "70"
+        provision "For each leg of the transaction, where applicable: - for OTC derivative transactions negotiated in monetary amounts, amount specified in the contract. - for OTC derivative transactions negotiated in non-monetary amounts:"]
+    [regulatoryReference ISDA ISDAWorkingGroup date "20210728" //Nigel
+        provision "See separate CDEInterestRateNotional and CDEFXNotional which is required due to jurisdictional specific leg level ordering.  When ordering rules are harmonised they could be combined with CDE rules"]
+    extract ProductForTrade
+    then extract product [
+        contractualProduct -> economicTerms
+            then extract
+                if payout -> optionPayout -> underlier -> contractualProduct -> economicTerms -> payout -> creditDefaultPayout exists
+                then payout -> optionPayout only-element -> underlier -> contractualProduct -> economicTerms -> payout -> creditDefaultPayout -> priceQuantity -> quantitySchedule -> value
+                else if payout -> creditDefaultPayout exists
+                then payout -> creditDefaultPayout -> priceQuantity -> quantitySchedule -> value
+                else if Qualify_Commodity_Swap_FixedFloat
+                then CommodityLeg2(product) -> priceQuantity -> quantitySchedule -> value * FixedPriceLeg1(
+                            product
+                        ) -> fixedPrice -> price -> value
+                else if Qualify_Commodity_Option
+                then payout -> optionPayout only-element -> exerciseTerms -> strike -> strikePrice -> value * payout -> optionPayout -> priceQuantity -> quantitySchedule -> value
+                else if IsEquityOption(product)
+                then payout -> optionPayout only-element -> exerciseTerms -> strike -> strikePrice -> value * payout -> optionPayout -> priceQuantity -> quantitySchedule -> value
+    ]
+
+func CDECommodityNotional: <"Commodity Notional">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "70"
+        provision "For each leg of the transaction, where applicable: - for OTC derivative transactions negotiated in monetary amounts, amount specified in the contract. - for OTC derivative transactions negotiated in non-monetary amounts:
+            - Commodity fixed/float swaps and similar products: Product of the fixed price and the total notional quantity.
+            - Commodity basis swaps and similar products: Product of the last available spot price at the time of the transaction of the underlying asset of the leg with no spread and the total notional quantity of the leg with no spread."]
+    inputs:
+        quantitySchedule NonNegativeQuantitySchedule (0..1)
+        price PriceSchedule (0..1)
+    output:
+        amount number (0..1)
+    set amount:
+        if price -> datedValue -> value exists
+        then VectorOperation(
+                ArithmeticOperationEnum -> Multiply,
+                price -> datedValue -> value,
+                quantitySchedule -> datedValue -> value
+            )
+            sum
+        else if price -> value exists
+        then if quantitySchedule -> value exists
+            then price -> value * quantitySchedule -> value
+            else if quantitySchedule -> datedValue exists
+            then price -> value * quantitySchedule -> datedValue -> value sum
+
+
+func CDEEquityOptionNotional: <"Equity Option Notional">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "70"
+        provision "For each leg of the transaction, where applicable: - for OTC derivative transactions negotiated in monetary amounts, amount specified in the contract. - for OTC derivative transactions negotiated in non-monetary amounts:
+				- Equity options and similar products: Product of the strike price and the number of shares or index units."]
+    inputs:
+        optionPayout OptionPayout (0..*)
+    output:
+        amount number (0..1)
+    alias quantity:
+        optionPayout only-element -> priceQuantity -> quantitySchedule
+    alias multipliedQuantity:
+        if quantity -> multiplier exists
+        then quantity -> value * quantity -> multiplier -> value
+        else quantity -> value
+    set amount:
+        // Monetary schedule
+        if quantity -> unit -> currency exists
+        then multipliedQuantity
+        // Non-monetary quantity schedule
+        else if quantity -> unit -> financialUnit exists
+        then multipliedQuantity * optionPayout -> exerciseTerms -> strike -> strikePrice -> value
+
+func CDEEquityForwardNotional: <"Equity Forward Notional">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "70"
+        provision "For each leg of the transaction, where applicable: - for OTC derivative transactions negotiated in monetary amounts, amount specified in the contract. - for OTC derivative transactions negotiated in non-monetary amounts:
+                - Equity forwards and similar products: Product of the forward price and the number of shares or index units"]
+    inputs:
+        forwardPayout ForwardPayout (0..*)
+    output:
+        amount number (0..1)
+    alias quantity:
+        forwardPayout only-element -> priceQuantity -> quantitySchedule
+    alias multipliedQuantity:
+        if quantity -> multiplier exists
+        then quantity -> value * quantity -> multiplier -> value
+        else quantity -> value
+    set amount:
+        // Monetary schedule
+        if quantity -> unit -> currency exists
+        then multipliedQuantity
+        // Non-monetary quantity schedule
+        else if quantity -> unit -> financialUnit exists
+        then multipliedQuantity * forwardPayout -> priceQuantity -> priceSchedule only-element -> value
+
+reporting rule CDEOptionNotional from OptionPayout: <"Option Notional">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "70"
+        provision "For each leg of the transaction, where applicable: - for OTC derivative transactions negotiated in monetary amounts, amount specified in the contract. - for OTC derivative transactions negotiated in non-monetary amounts:
+                - Equity options and similar products: Product of the strike price and the number of shares or index units.
+                - Commodity options and similar products: Product of the strike price, and the total notional quantity."]
+    priceQuantity -> quantitySchedule -> value
+
+reporting rule CDECommodityOptionNotional from OptionPayout: <"Commodity Option Notional">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "70"
+        provision "For each leg of the transaction, where applicable: - for OTC derivative transactions negotiated in monetary amounts, amount specified in the contract. - for OTC derivative transactions negotiated in non-monetary amounts:
+            - Equity options and similar products: Product of the strike price and the number of shares or index units.
+            - Commodity options and similar products: Product of the strike price, and the total notional quantity."]
+    if exerciseTerms -> strike -> strikePrice -> value exists
+    then if priceQuantity -> quantitySchedule -> value exists
+        then exerciseTerms -> strike -> strikePrice -> value * priceQuantity -> quantitySchedule -> value
+        else if priceQuantity -> quantitySchedule -> datedValue exists
+        then exerciseTerms -> strike -> strikePrice -> value * priceQuantity -> quantitySchedule -> datedValue -> value sum
+
+func CDEPerformanceNotional: <"Performance Notional">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "70"
+        provision "For each leg of the transaction, where applicable: - for OTC derivative transactions negotiated in monetary amounts, amount specified in the contract. - for OTC derivative transactions negotiated in non-monetary amounts:
+				- Equity variance swaps and similar products: Variance amount."]
+    inputs:
+        performancePayout PerformancePayout (0..*)
+    output:
+        amount number (0..1)
+    alias quantity:
+        performancePayout only-element -> priceQuantity -> quantitySchedule
+    alias multipliedQuantity:
+        if quantity -> multiplier exists
+        then quantity -> value * quantity -> multiplier -> value
+        else quantity -> value
+    set amount:
+        // Monetary schedule
+        if quantity -> unit -> currency exists
+        then multipliedQuantity
+
+reporting rule CDECreditNotional from CreditDefaultPayout: <"Credit Notional">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "70"
+        provision "For each leg of the transaction, where applicable: - for OTC derivative transactions negotiated in monetary amounts, amount specified in the contract. - for OTC derivative transactions negotiated in non-monetary amounts:"]
+    priceQuantity -> quantitySchedule -> value
+
+reporting rule CDEInterestRateNotional from InterestRatePayout: <"Interest Rate Notional">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "70"
+        provision "For each leg of the transaction, where applicable: - for OTC derivative transactions negotiated in monetary amounts, amount specified in the contract. - for OTC derivative transactions negotiated in non-monetary amounts:"]
+    [regulatoryReference ISDA ISDAWorkingGroup date "20210728" //Nigel
+        provision "CDEInterestRateNotional is required due to jurisdictional specific leg level ordering.  When ordering rules are harmonised they could be combined with CDE rules"]
+    if priceQuantity -> quantitySchedule exists and priceQuantity -> quantitySchedule -> unit -> currency exists
+    then (
+        if priceQuantity -> quantitySchedule -> multiplier exists
+        then priceQuantity -> quantitySchedule -> value * priceQuantity -> quantitySchedule -> multiplier -> value
+        else priceQuantity -> quantitySchedule -> value
+    )
+
+reporting rule CDEForwardNotional from ForwardPayout: <"Forward Notional">
+   	[regulatoryReference CPMI_IOSCO CDE section "2" field "70"
+   		provision "For each leg of the transaction, where applicable: - for OTC derivative transactions negotiated in monetary amounts, amount specified in the contract. - for OTC derivative transactions negotiated in non-monetary amounts:"]
+    [regulatoryReference ISDA ISDAWorkingGroup date "20210728" //Nigel
+        provision "CDEForwardNotional is required due to jurisdictional specific leg level ordering.  When ordering rules are harmonised they could be combined with CDE rules"]
+    if priceQuantity -> quantitySchedule exists
+    then priceQuantity -> quantitySchedule -> value
+
+reporting rule CDEFXNotional from Cashflow: <"FX Notional">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "70"
+        provision "For each leg of the transaction, where applicable: - for OTC derivative transactions negotiated in monetary amounts, amount specified in the contract. - for OTC derivative transactions negotiated in non-monetary amounts:"]
+    [regulatoryReference ISDA ISDAWorkingGroup date "20210728" //Nigel
+        provision "CDEFXNotional is required due to jurisdictional specific leg level ordering.  When ordering rules are harmonised they could be combined with CDE rules"]
+    priceQuantity -> quantitySchedule -> value
+
+reporting rule CDEDelta from ReportableEvent: <"Delta">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "71"
+        provision "The ratio of the absolute change in price of an OTC derivative transaction to the change in price of the underlier, at the time a new transaction is reported or when a change in the notional amount is reported."]
+    extract GetValuation -> delta
+
+reporting rule CDECallAmount from Trade: <"Call Amount">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "72"
+        provision "For foreign exchange options, the monetary amount that the option gives the right to buy."]
+    [regulatoryReference ISDA ISDAWorkingGroup date "20210728" //BlackRock
+        provision "The Call Amount can be determined as the currency amount being received by the buyer of the option"]
+    extract ProductForTrade
+    then extract
+        if IsCallOption
+        then if Qualify_Commodity_Option(contractualProduct -> economicTerms)
+            then CDECommodityOptionNotional(
+                        contractualProduct -> economicTerms -> payout -> optionPayout only-element
+                    )
+            else if Qualify_Commodity_Swaption(contractualProduct -> economicTerms)
+            then CDECommodityNotional(
+                        FixedPriceLeg1(UnderlierForProduct) -> priceQuantity -> quantitySchedule,
+                        FixedPriceLeg1(UnderlierForProduct) -> fixedPrice -> price
+                    )
+            // Equity options with monetary quantity schedule
+            else if IsEquityOption and contractualProduct -> economicTerms -> payout -> optionPayout -> priceQuantity -> quantitySchedule -> unit -> currency exists
+            then contractualProduct -> economicTerms -> payout -> optionPayout only-element -> priceQuantity -> quantitySchedule -> value
+            // Equity options with non-monetary quantity schedule
+            else if IsEquityOption and contractualProduct -> economicTerms -> payout -> optionPayout -> priceQuantity -> quantitySchedule -> unit -> financialUnit exists
+            then contractualProduct -> economicTerms -> payout -> optionPayout -> priceQuantity -> quantitySchedule -> value * contractualProduct -> economicTerms -> payout -> optionPayout -> exerciseTerms -> strike -> strikePrice -> value
+            else CDECallQuantity -> value
+        else CDECallQuantity -> value
+
+reporting rule CDEPutAmount from Trade: <"Put Amount">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "73"
+        provision "For foreign exchange options, the monetary amount that the option gives the right to sell."]
+    [regulatoryReference ISDA ISDAWorkingGroup date "20210728" //REGnosys
+        provision "The Call Amount can be determined as the currency amount being received by the buyer of the option"]
+    extract ProductForTrade
+    then extract
+        if IsPutOption
+        then if Qualify_Commodity_Option(contractualProduct -> economicTerms)
+            then CDECommodityOptionNotional(
+                        contractualProduct -> economicTerms -> payout -> optionPayout only-element
+                    )
+            else if Qualify_Commodity_Swaption(contractualProduct -> economicTerms)
+            then CDECommodityNotional(
+                        FixedPriceLeg1(UnderlierForProduct) -> priceQuantity -> quantitySchedule,
+                        FixedPriceLeg1(UnderlierForProduct) -> fixedPrice -> price
+                    )
+            // Equity options with monetary quantity schedule
+            else if IsEquityOption and contractualProduct -> economicTerms -> payout -> optionPayout -> priceQuantity -> quantitySchedule -> unit -> currency exists
+            then contractualProduct -> economicTerms -> payout -> optionPayout -> priceQuantity -> quantitySchedule -> value
+            // Equity options with non-monetary quantity schedule
+            else if IsEquityOption and contractualProduct -> economicTerms -> payout -> optionPayout -> priceQuantity -> quantitySchedule -> unit -> financialUnit exists
+            then contractualProduct -> economicTerms -> payout -> optionPayout -> priceQuantity -> quantitySchedule -> value * contractualProduct -> economicTerms -> payout -> optionPayout -> exerciseTerms -> strike -> strikePrice -> value
+            else CDEPutQuantity -> value
+        else CDEPutQuantity -> value
+
+reporting rule CDENotionalCurrency from Trade: <"Notional Currency">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "74"
+        provision "For each leg of the transaction, where applicable: currency in which the notional amount is denominated."]
+    [regulatoryReference ISDA ISDAWorkingGroup date "20210728" //Nigel
+        provision "See separate CDEInterestRateNotionalCurrency and CDEFXNotionalCurrency which is required due to jurisdictional specific leg level ordering.  When ordering rules are harmonised they could be combined with CDE rules"]
+    extract ProductForTrade
+    then extract product [
+        contractualProduct -> economicTerms
+            then extract
+                if payout -> optionPayout -> underlier -> contractualProduct -> economicTerms -> payout -> creditDefaultPayout exists
+                then payout -> optionPayout only-element -> underlier -> contractualProduct -> economicTerms -> payout -> creditDefaultPayout -> priceQuantity -> quantitySchedule -> unit -> currency
+                else if payout -> creditDefaultPayout exists
+                then payout -> creditDefaultPayout -> priceQuantity -> quantitySchedule -> unit -> currency
+                else if payout -> performancePayout count = 1
+                then payout -> performancePayout only-element -> priceQuantity -> quantitySchedule -> unit -> currency
+                else if Qualify_Commodity_Swap_FixedFloat
+                then FixedPriceLeg1(product) -> fixedPrice -> price -> unit -> currency
+                else if Qualify_Commodity_Option
+                then product -> contractualProduct -> economicTerms -> payout -> optionPayout only-element -> exerciseTerms -> strike -> strikePrice -> unit -> currency
+                else if IsEquityOption(product)
+                then payout -> optionPayout only-element -> exerciseTerms -> strike -> strikePrice -> unit -> currency
+    ]
+
+reporting rule CDECommodityNotionalCurrency from PriceSchedule: <"Commodity Notional Currency">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "74"
+        provision "For each leg of the transaction, where applicable: currency in which the notional amount is denominated."]
+    unit -> currency
+
+reporting rule CDEOptionNotionalCurrency from OptionPayout: <"Option Notional Currency">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "74"
+        provision "For each leg of the transaction, where applicable: currency in which the notional amount is denominated."]
+    exerciseTerms -> strike -> strikePrice -> unit -> currency
+
+func CDEPerformanceNotionalCurrency: <"Performance Notional Currency">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "74"
+        provision "For each leg of the transaction, where applicable: currency in which the notional amount is denominated."]
+    inputs:
+        performancePayout PerformancePayout (0..*)
+    output:
+        currency string (0..1)
+    set currency:
+        if performancePayout count = 1
+        then performancePayout only-element -> priceQuantity -> quantitySchedule -> unit -> currency
+
+reporting rule CDECreditNotionalCurrency from CreditDefaultPayout: <"Credit Notional Currency">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "74"
+        provision "For each leg of the transaction, where applicable: currency in which the notional amount is denominated."]
+    priceQuantity -> quantitySchedule -> unit -> currency
+
+reporting rule CDEInterestRateNotionalCurrency from InterestRatePayout: <"Interest Rate Notional Currency">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "74"
+        provision "For each leg of the transaction, where applicable: currency in which the notional amount is denominated."]
+    [regulatoryReference ISDA ISDAWorkingGroup date "20210728" //Nigel
+        provision "CDEInterestRateNotionalCurrency is required due to jurisdictional specific leg level ordering.  When ordering rules are harmonised they could be combined with CDE rules"]
+    if priceQuantity -> quantitySchedule exists
+    then priceQuantity -> quantitySchedule -> unit -> currency
+    else if priceQuantity -> quantityReference exists
+    then priceQuantity -> quantityReference -> quantitySchedule -> unit -> currency
+
+reporting rule CDEForwardNotionalCurrency from ForwardPayout: <"Forward Notional Currency">
+   	[regulatoryReference CPMI_IOSCO CDE section "2" field "70"
+		provision "For each leg of the transaction, where applicable: - for OTC derivative transactions negotiated in monetary amounts, amount specified in the contract. - for OTC derivative transactions negotiated in non-monetary amounts:"]
+    [regulatoryReference ISDA ISDAWorkingGroup date "20210728" //Nigel
+        provision "CDEForwardNotionalCurrency is required due to jurisdictional specific leg level ordering.  When ordering rules are harmonised they could be combined with CDE rules"]
+    if priceQuantity -> quantitySchedule exists
+    then priceQuantity -> quantitySchedule -> unit -> currency
+
+reporting rule CDEFXNotionalCurrency from Cashflow: <"FX Notional Currency">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "74"
+        provision "For each leg of the transaction, where applicable: currency in which the notional amount is denominated."]
+    [regulatoryReference ISDA ISDAWorkingGroup date "20210728" //Nigel
+        provision "CDEFXNotionalCurrency is required due to jurisdictional specific leg level ordering.  When ordering rules are harmonised they could be combined with CDE rules"]
+    if priceQuantity -> quantitySchedule exists
+    then priceQuantity -> quantitySchedule -> unit -> currency
+    else if priceQuantity -> quantityReference exists
+    then priceQuantity -> quantityReference -> quantitySchedule -> unit -> currency
+
+reporting rule CDECallCurrency from TransactionReportInstruction: <"Call Currency">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "75"
+        provision "For foreign exchange options, the currency in which the Call amount is denominated."]
+    [regulatoryReference ISDA ISDAWorkingGroup date "unknown" //REGnosys-Saeid
+        provision "The call currency is determined by a validation rule which determines who is the buyer of the option."]
+    extract
+        if IsActionTypeTERM
+        then BeforeTradeForEvent
+        else TradeForEvent
+    then extract ProductForTrade
+    then extract
+        if IsCallOption
+        then if Qualify_Commodity_Option(contractualProduct -> economicTerms)
+            then contractualProduct -> economicTerms -> payout -> optionPayout -> exerciseTerms -> strike -> strikePrice -> unit -> currency
+            else if Qualify_Commodity_Swaption(contractualProduct -> economicTerms)
+            then FixedPriceLeg1(UnderlierForProduct) -> fixedPrice -> price -> unit -> currency
+            // Equity option with monetary quantity schedule
+            else if IsEquityOption and contractualProduct -> economicTerms -> payout -> optionPayout -> priceQuantity -> quantitySchedule -> unit -> currency exists
+            then contractualProduct -> economicTerms -> payout -> optionPayout -> priceQuantity -> quantitySchedule -> unit -> currency
+            // Equity option with non-monetary quantity schedule
+            else if IsEquityOption and contractualProduct -> economicTerms -> payout -> optionPayout -> priceQuantity -> quantitySchedule -> unit -> financialUnit exists
+            then contractualProduct -> economicTerms -> payout -> optionPayout -> exerciseTerms -> strike -> strikePrice -> unit -> currency
+            else CDECallQuantity -> unit -> currency
+        else CDECallQuantity -> unit -> currency
+
+reporting rule CDEPutCurrency from TransactionReportInstruction: <"Put Currency">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "76"
+        provision "For foreign exchange options, the currency in which the Put amount is denominated."]
+    [regulatoryReference ISDA ISDAWorkingGroup date "unknown" //REGnosys-Saeid
+        provision "The put currency is determined by a validation rule which determines who is the buyer of the option."]
+    extract
+        if IsActionTypeTERM
+        then BeforeTradeForEvent
+        else TradeForEvent
+    then extract ProductForTrade
+    then extract
+        if IsPutOption
+        then if Qualify_Commodity_Option(contractualProduct -> economicTerms)
+            then contractualProduct -> economicTerms -> payout -> optionPayout -> exerciseTerms -> strike -> strikePrice -> unit -> currency
+            else if Qualify_Commodity_Swaption(contractualProduct -> economicTerms)
+            then FixedPriceLeg1(UnderlierForProduct) -> fixedPrice -> price -> unit -> currency
+            // Equity option with monetary quantity schedule
+            else if IsEquityOption and contractualProduct -> economicTerms -> payout -> optionPayout -> priceQuantity -> quantitySchedule -> unit -> currency exists
+            then contractualProduct -> economicTerms -> payout -> optionPayout -> priceQuantity -> quantitySchedule -> unit -> currency
+            // Equity option with non-monetary quantity schedule
+            else if IsEquityOption and contractualProduct -> economicTerms -> payout -> optionPayout -> priceQuantity -> quantitySchedule -> unit -> financialUnit exists
+            then contractualProduct -> economicTerms -> payout -> optionPayout -> exerciseTerms -> strike -> strikePrice -> unit -> currency
+            else CDEPutQuantity -> unit -> currency
+        else CDEPutQuantity -> unit -> currency
+
+reporting rule CDEQuantityUnitOfMeasure from NonNegativeQuantitySchedule: <"Quantity unit of measure">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "77"
+        provision "For each leg of the transaction, where applicable: unit of measure in which the Total notional quantity and the Notional quantity schedules are expressed."]
+    extract
+        if multiplier exists then multiplier -> unit
+        else unit
+    then extract
+        if capacityUnit exists
+        then CapacityUnitToISO20022UnitOfMeasure(capacityUnit)
+        else if weatherUnit exists
+        then WeatherUnitToISO20022UnitOfMeasure(weatherUnit)
+        else if financialUnit exists
+        then FinancialUnitToISO20022UnitOfMeasure(financialUnit)
+
+reporting rule CDENotionalAmountScheduleEffectiveDate from DatedValue: <"Effective date of the notional amount">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "78.1"
+        provision "Unadjusted date on which the associated notional amount of becomes effective."]
+    [regulatoryReference ISDA PeerReviewGroup date "20220811"
+        provision "Model should contain a fall back for unadjustedDate when adjustedDate is only available. If an adjusted date is only provided then fields requiring an unadjusted date are left blank which will result in a NACK from the TR.  Functional rules should be updated to fall back on adjusted date if available."]
+    extract date
+        as "Effective date of the notional amount"
+
+reporting rule CDENotionalAmountScheduleEndDate from TransactionReportInstruction: <"End date of the notional amount">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "78.2"
+        provision "Unadjusted end date of the notional amount (not applicable if the unadjusted end date of a given schedules period is back-to-back with the unadjusted effective date of the subsequent period)."]
+    "-"
+        as "End date of the notional amount"
+
+reporting rule CDENotionalAmountScheduleAmount from DatedValue: <"Notional amount in effect on associated effective date">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "78.3"
+        provision "Notional amount which becomes effective on the associated unadjusted effective date."]
+    extract value
+        as "Notional amount in effect on associated effective date"
+
+reporting rule CDEEquityTotalNotionalQuantity from TradableProduct: <"Equity Total Notional Quantity">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "79"
+        provision "For each leg of the transaction, where applicable: aggregate Notional quantity of the underlying asset for the term of the transaction. Where the Total notional quantity is not known when a new transaction is reported, the Total notional quantity is updated as it becomes available."]
+    extract
+        if IsEquityOption(product)
+                and EconomicTermsForProduct(product) -> payout -> optionPayout -> priceQuantity -> quantitySchedule -> unit -> financialUnit exists
+        then EconomicTermsForProduct(product) -> payout -> optionPayout only-element -> priceQuantity -> quantitySchedule
+        else if IsEquityForward(product) and EconomicTermsForProduct(product) -> payout -> forwardPayout only-element -> priceQuantity -> quantitySchedule -> unit -> financialUnit exists
+        then EconomicTermsForProduct(product) -> payout -> forwardPayout only-element -> priceQuantity -> quantitySchedule
+        else if EconomicTermsForProduct(product) -> payout -> performancePayout only-element -> priceQuantity -> quantitySchedule -> unit -> financialUnit exists
+        then EconomicTermsForProduct(product) -> payout -> performancePayout only-element -> priceQuantity -> quantitySchedule
+    then extract
+        if multiplier exists
+        then value * multiplier -> value
+        else value
+
+reporting rule CDECommodityTotalNotionalQuantity from CommodityPayout: <"Commodity Total Notional Quantity">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "79"
+        provision "For each leg of the transaction, where applicable: aggregate Notional quantity of the underlying asset for the term of the transaction. Where the Total notional quantity is not known when a new transaction is reported, the Total notional quantity is updated as it becomes available."]
+    if priceQuantity -> quantitySchedule -> value exists
+    then priceQuantity -> quantitySchedule -> value
+    else if priceQuantity -> quantitySchedule -> datedValue exists
+    then priceQuantity -> quantitySchedule -> datedValue -> value sum
+
+reporting rule CDEFixedPriceTotalNotionalQuantity from FixedPricePayout: <"Fixed Price Total Notional Quantity">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "79"
+        provision "For each leg of the transaction, where applicable: aggregate Notional quantity of the underlying asset for the term of the transaction. Where the Total notional quantity is not known when a new transaction is reported, the Total notional quantity is updated as it becomes available."]
+    if priceQuantity -> quantitySchedule -> value exists
+    then priceQuantity -> quantitySchedule -> value
+    else if priceQuantity -> quantitySchedule -> datedValue exists
+    then priceQuantity -> quantitySchedule -> datedValue -> value sum
+
+reporting rule CDEOptionTotalNotionalQuantity from OptionPayout: <"Option Total Notional Quantity">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "79"
+        provision "For each leg of the transaction, where applicable: aggregate Notional quantity of the underlying asset for the term of the transaction. Where the Total notional quantity is not known when a new transaction is reported, the Total notional quantity is updated as it becomes available."]
+    if priceQuantity -> quantitySchedule -> value exists
+    then priceQuantity -> quantitySchedule -> value
+    else if priceQuantity -> quantitySchedule -> datedValue exists
+    then priceQuantity -> quantitySchedule -> datedValue -> value sum
+
+func CDECallQuantity: <"Call Quantity - Utility function">
+    inputs:
+        product Product (1..1)
+    output:
+        quantitySchedule NonNegativeQuantitySchedule (0..1)
+
+    alias optionPayout:
+        product -> contractualProduct -> economicTerms -> payout -> optionPayout only-element
+
+    alias resolvablePriceQuantity:
+        if IsFXOption(product)
+        then if optionPayout -> buyerSeller -> buyer = optionPayout -> underlier -> foreignExchange -> exchangedCurrency1 -> payerReceiver -> receiver
+            then optionPayout -> underlier -> foreignExchange -> exchangedCurrency1 -> priceQuantity
+            else optionPayout -> underlier -> foreignExchange -> exchangedCurrency2 -> priceQuantity
+        else if optionPayout -> underlier -> foreignExchange exists
+        then if optionPayout -> buyerSeller -> buyer = optionPayout -> underlier -> foreignExchange -> exchangedCurrency1 -> payerReceiver -> receiver
+            then optionPayout -> underlier -> foreignExchange -> exchangedCurrency1 -> priceQuantity
+            else optionPayout -> underlier -> foreignExchange -> exchangedCurrency2 -> priceQuantity
+        else if IsCallOption(product)
+                and Qualify_CreditDefaultSwaption(
+                        product -> contractualProduct -> economicTerms
+                    ) = True
+        then UnderlierForProduct(product)
+            extract
+                contractualProduct -> economicTerms -> payout -> creditDefaultPayout -> priceQuantity
+        else if IsPutOption(product)
+                and Qualify_CreditDefaultSwaption(
+                        product -> contractualProduct -> economicTerms
+                    ) = True
+        then (UnderlierForProduct(product)
+            extract
+                contractualProduct -> economicTerms -> payout -> interestRatePayout -> priceQuantity
+            then only-element)
+        else if Qualify_InterestRate_Option_Swaption(
+                    product -> contractualProduct -> economicTerms
+                ) = True
+        then (optionPayout -> underlier -> contractualProduct -> economicTerms -> payout -> interestRatePayout
+            filter rateSpecification -> fixedRate exists
+            then filter payerReceiver -> receiver = optionPayout -> buyerSeller -> buyer
+            then only-element
+            then extract priceQuantity)
+        else if IsCap(product)
+        then product -> contractualProduct -> economicTerms -> payout -> interestRatePayout only-element -> priceQuantity
+        else if IsCallOption(product)
+                and Qualify_Commodity_Swaption(
+                        product -> contractualProduct -> economicTerms
+                    ) = True
+        then product -> contractualProduct -> economicTerms -> payout -> fixedPricePayout only-element -> priceQuantity
+
+    // added support for cases where put/call amount is unknown and so modelled as zero]
+    set quantitySchedule:
+        if resolvablePriceQuantity -> quantitySchedule exists and resolvablePriceQuantity -> quantitySchedule -> value > 0
+        then resolvablePriceQuantity -> quantitySchedule
+        else if resolvablePriceQuantity -> quantityReference exists and resolvablePriceQuantity -> quantityReference -> quantitySchedule -> value > 0
+        then resolvablePriceQuantity -> quantityReference -> quantitySchedule
+
+func CDEPutQuantity: <"Put Quantity - Utility function">
+    inputs:
+        product Product (1..1)
+    output:
+        quantitySchedule NonNegativeQuantitySchedule (0..1)
+
+    alias optionPayout:
+        product -> contractualProduct -> economicTerms -> payout -> optionPayout only-element
+
+    alias resolvablePriceQuantity:
+        if IsFXOption(product)
+        then if optionPayout -> buyerSeller -> buyer = optionPayout -> underlier -> foreignExchange -> exchangedCurrency1 -> payerReceiver -> receiver
+            then optionPayout -> underlier -> foreignExchange -> exchangedCurrency2 -> priceQuantity
+            else optionPayout -> underlier -> foreignExchange -> exchangedCurrency1 -> priceQuantity
+        else if optionPayout -> underlier -> foreignExchange exists
+        then if optionPayout -> buyerSeller -> buyer = optionPayout -> underlier -> foreignExchange -> exchangedCurrency1 -> payerReceiver -> receiver
+            then optionPayout -> underlier -> foreignExchange -> exchangedCurrency2 -> priceQuantity
+            else optionPayout -> underlier -> foreignExchange -> exchangedCurrency1 -> priceQuantity
+        else if IsPutOption(product)
+                and Qualify_CreditDefaultSwaption(
+                        product -> contractualProduct -> economicTerms
+                    ) = True
+        then UnderlierForProduct(product)
+            extract
+                contractualProduct -> economicTerms -> payout -> creditDefaultPayout -> priceQuantity
+        else if IsCallOption(product)
+                and Qualify_CreditDefaultSwaption(
+                        product -> contractualProduct -> economicTerms
+                    ) = True
+        then (UnderlierForProduct(product)
+            extract
+                contractualProduct -> economicTerms -> payout -> interestRatePayout -> priceQuantity
+            then only-element)
+        else if Qualify_InterestRate_Option_Swaption(
+                    product -> contractualProduct -> economicTerms
+                ) = True
+        then (optionPayout -> underlier -> contractualProduct -> economicTerms -> payout -> interestRatePayout
+            filter rateSpecification -> fixedRate exists
+            then filter payerReceiver -> payer = optionPayout -> buyerSeller -> buyer
+            then only-element
+            then extract priceQuantity)
+        else if IsFloor(product)
+        then product -> contractualProduct -> economicTerms -> payout -> interestRatePayout only-element -> priceQuantity
+        else if IsPutOption(product)
+                and Qualify_Commodity_Swaption(
+                        product -> contractualProduct -> economicTerms
+                    ) = True
+        then product -> contractualProduct -> economicTerms -> payout -> fixedPricePayout only-element -> priceQuantity
+
+    // added support for cases where put/call amount is unknown and so modelled as zero]
+    set quantitySchedule:
+        if resolvablePriceQuantity -> quantitySchedule exists and resolvablePriceQuantity -> quantitySchedule -> value > 0
+        then resolvablePriceQuantity -> quantitySchedule
+        else if resolvablePriceQuantity -> quantityReference exists and resolvablePriceQuantity -> quantityReference -> quantitySchedule -> value > 0
+        then resolvablePriceQuantity -> quantityReference -> quantitySchedule
+
+reporting rule CDENotionalQuantityScheduleEffectiveDate from QuantityReportablePeriod: <"Effective date of the notional quantity">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "80.1"
+        provision "Unadjusted date on which the associated notional quantity of becomes effective."]
+    extract periodEffectiveDate
+        as "Effective date of the notional quantity"
+
+reporting rule CDENotionalQuantityScheduleEndDate from QuantityReportablePeriod: <"End date of the notional quantity">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "80.2"
+        provision "Unadjusted end date of the notional quantity (not applicable if the unadjusted end date of a given schedules period is back-to-back with the unadjusted effective date of the subsequent period)."]
+    extract periodEndDate
+        as "End date of the notional quantity"
+
+reporting rule CDENotionalQuantityScheduleValue from QuantityReportablePeriod: <"Notional quantity in effect on associated effective date">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "80.3"
+        provision "Notional quantity which becomes effective on the associated unadjusted effective date."]
+    extract periodValue
+        as "Notional quantity in effect on associated effective date"
+
+reporting rule CDECDSIndexAttachmentPoint from TransactionReportInstruction: <"CDS Index Attachment Point">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "81"
+        provision "Defined lower point at which the level of losses in the underlying portfolio reduces the notional of a tranche. For example, the notional in a tranche with an attachment point of 3% will be reduced after 3% of losses in the portfolio have occurred. This data element is not applicable if the transaction is not a CDS tranche transaction (index or custom basket)."]
+    extract TradeForEvent
+    then extract
+        tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> creditDefaultPayout -> generalTerms
+    then extract
+        if indexReferenceInformation -> tranche exists
+        then indexReferenceInformation -> tranche -> attachmentPoint
+        else if basketReferenceInformation -> tranche exists
+        then basketReferenceInformation -> tranche -> attachmentPoint
+        as "2.81 CDS Index Attachment Point"
+
+reporting rule CDECDSIndexDetachmentPoint from TransactionReportInstruction: <"CDS Index Detachment Point">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "82"
+        provision "Defined point beyond which losses in the underlying portfolio no longer reduce the notional of a tranche. For example, the notional in a tranche with an attachment point of 3% and a detachment point of 6% will be reduced after there have been 3% of losses in the portfolio. 6% losses in the portfolio deplete the notional of the tranche. This data element is not applicable if the transaction is not a CDS tranche transaction (index or custom basket)."]
+    extract TradeForEvent
+    then extract
+        tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> creditDefaultPayout -> generalTerms
+    then extract
+        if indexReferenceInformation -> tranche exists
+        then indexReferenceInformation -> tranche -> exhaustionPoint
+        else if basketReferenceInformation -> tranche exists
+        then basketReferenceInformation -> tranche -> exhaustionPoint
+        as "2.82 CDS Index Detachment Point"
+
+reporting rule CDEOtherPaymentAmount from TransferState: <"Other Payment Amount">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "83"
+        provision "Payment  amounts  with  corresponding  payment  types  to  accommodate  requirements  of transaction descriptions from different asset classes."]
+    extract transfer -> quantity -> value
+        as "2.83 Other Payment Amount"
+
+reporting rule CDEOtherPaymentType from TransferState: <"Other Payment Type">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "84"
+        provision "Type of Other payment amount. Option  premium  payment  is  not  included  as  a  payment  type  as  premiums  for  option  are reported using the option premium dedicated data element.
+			UFRO = Upfront Payment, ie the initial payment made by one of the counterparties either to bring a transaction to fair value or for any other reason that may be the cause of an off-market transaction.
+			UWIN = Unwind or Full termination, ie the final settlement payment made when a transaction is unwound prior to its end date; Payments that may result due to full termination of derivative transaction(s)
+			PEXH = Principal Exchange, ie Exchange of notional values for cross-currency swaps"]
+    extract transfer -> transferExpression
+    then extract
+        if priceTransfer = FeeTypeEnum -> Upfront
+        then "UFRO"
+        else if priceTransfer = FeeTypeEnum -> Termination
+        then "UWIN"
+        else if scheduledTransfer -> transferType = ScheduledTransferEnum -> PrincipalPayment
+        then "PEXH"
+        as "2.84 Other Payment Type"
+
+reporting rule CDEOtherPaymentCurrency from TransferState: <"Other Payment Currency">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "85"
+        provision "Currency in which Other payment amount is denominated."]
+    extract transfer -> quantity -> unit -> currency
+    then extract ConvertNonISOToISOCurrency
+        as "2.85 Other Payment Currency"
+
+reporting rule CDEOtherPaymentDate from TransferState: <"Other Payment Date">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "86"
+        provision "Unadjusted date on which the other payment amount is paid."]
+    [regulatoryReference ISDA PeerReviewGroup date "20220811"
+        provision "Model should contain a fall back for unadjustedDate when adjustedDate is only available. If an adjusted date is only provided then fields requiring an unadjusted date are left blank which will result in a NACK from the TR.  Functional rules should be updated to fall back on adjusted date if available."]
+    extract AdjustableOrAdjustedOrRelativeDateResolution(transfer -> settlementDate)
+        as "2.86 Other Payment Date"
+
+reporting rule CDEOtherPaymentPayer from TransferState: <"Other Payment Payer">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "87"
+        provision "Identifier of the payer of Other payment amount."]
+    extract transfer -> payerReceiver -> payerPartyReference
+    then extract PartyLeiAndPersonByRoles
+        as "2.87 Other Payment Payer"
+
+reporting rule CDEOtherPaymentPayerFormat from TransferState: <"Other Payment Payer Format - LEI, or LEI and Person.">
+    extract transfer -> payerReceiver -> payerPartyReference
+    then extract PartyIdentifierFormat
+        as "Other Payment Payer Format (non-reportable)"
+
+reporting rule CDEOtherPaymentReceiver from TransferState: <"Other Payment Receiver">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "88"
+        provision "Identifier of the receiver of Other payment amount."]
+    extract transfer -> payerReceiver -> receiverPartyReference
+    then extract PartyLeiAndPersonByRoles
+        as "2.88 Other Payment Receiver"
+
+reporting rule CDEOtherPaymentReceiverFormat from TransferState: <"Other Payment Receiver Format - LEI, or LEI and Person.">
+    extract transfer -> payerReceiver -> receiverPartyReference
+    then extract PartyIdentifierFormat
+        as "Other Payment Receiver Format (non-reportable)"
+
+reporting rule CDEPackageIdentifier from IdentifiedList: <"Package Identifier">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "89"
+        provision "Identifier (determined by the reporting counterparty) in order to connect two or more transactions that are reported separately by the reporting counterparty, but that are negotiated together as the product of a single economic agreement, two or more reports pertaining to the same transaction whenever jurisdictional reporting requirement does not allow the transaction to be reported with a single report to TRs. A package may include reportable and non-reportable transactions. This data element is not applicable if no package is involved, or to allocations. Where the package identifier is not known when a new transaction is reported, the package identifier is updated as it becomes available."]
+    extract listId -> assignedIdentifier -> identifier
+
+reporting rule CDEPackageTransactionPrice from TransactionReportInstruction: <"Packages Price">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "90"
+        provision "Traded price of the entire package in which the reported derivative transaction is a component. This data element is not applicable if no package is involved, or package transaction spread is used. Prices and related data elements of the transactions (P Price currency, Price notation, Price unit of measure) that represent individual components of the package are reported when available. The package transaction price may not be known when a new transaction is reported but may be updated later."]
+    GetPackageInformation -> price
+        then extract if arithmeticOperator is absent then value
+
+reporting rule CDEPackageTransactionPriceCurrency from TransactionReportInstruction: <"Packages Price Currency">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "91"
+        provision "Currency in which the Package transaction price is denominated. This data element is not applicable if no package is involved, or Package transaction spread is used, or Package transaction price notation = 2 , or = 3"]
+    GetPackageInformation -> price
+        then extract
+            if arithmeticOperator is absent
+            then unit -> currency
+        then extract ConvertNonISOToISOCurrency
+
+reporting rule CDEPackageTransactionPriceNotationEnum from TransactionReportInstruction: <"Packages Price Notation Enum">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "92"
+        provision "Manner in which the Package transaction price is expressed. This data element is not applicable if no package is involved, or Package transaction spread is used"]
+    GetPackageInformation -> price
+        then extract
+            if arithmeticOperator is absent then GetPriceNotation
+
+reporting rule CDEPackageTransactionPriceNotation from TransactionReportInstruction: <"Packages Price Notation">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "92"
+        provision "Manner in which the Package transaction price is expressed. This data element is not applicable if no package is involved, or Package transaction spread is used"]
+    CDEPackageTransactionPriceNotationEnum then GetNotationString
+
+reporting rule CDEPackageTransactionSpread from TransactionReportInstruction: <"Packages Spread">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "93"
+        provision "Traded price of the entire package in which the reported derivative transaction is a component of a package transaction. Package transaction price when the price of the package is expressed as a spread, difference between two reference prices. This data element is not applicable if no package is involved, or Package transaction price is used. Spread and related data elements of the transactions (spread currency, Spread notation) that represent individual components of the package are reported when available. Package transaction spread may not be known when a new transaction is reported but may be updated later."]
+    GetPackageInformation -> price
+        then extract
+            if arithmeticOperator = ArithmeticOperationEnum -> Add
+            then value
+
+reporting rule CDEPackageTransactionSpreadCurrency from TransactionReportInstruction: <"Packages Spread Currency">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "94"
+        provision "Currency in which the Package transaction spread is denominated. This data element is not applicable if no package is involved, or Package transaction price is used, or Package transaction spread notation = 2, or = 3 or = 4"]
+    if CDEPackageTransactionSpreadNotationEnum <> PriceNotationEnum -> Basis
+    then (GetPackageInformation -> price
+        then extract
+            if arithmeticOperator = ArithmeticOperationEnum -> Add
+            then unit -> currency)
+        then extract ConvertNonISOToISOCurrency
+
+reporting rule CDEPackageTransactionSpreadNotationEnum from TransactionReportInstruction: <"Packages Price Notation Enum">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "95"
+        provision "Manner in which the Package transaction price is expressed. This data element is not applicable if no package is involved, or Package transaction spread is used"]
+    GetPackageInformation -> price
+        then extract
+            if arithmeticOperator = ArithmeticOperationEnum -> Add
+            then GetPriceNotation
+
+reporting rule CDEPackageTransactionSpreadNotation from TransactionReportInstruction: <"Packages Price Notation">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "95"
+        provision "Manner in which the Package transaction price is expressed. This data element is not applicable if no package is involved, or Package transaction spread is used"]
+    CDEPackageTransactionSpreadNotationEnum then GetNotationString
+
+reporting rule CDEPriorUTI from TransactionReportInstruction: <"Prior UTI">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "96"
+        provision "UTI assigned to the predecessor transaction that has given rise to the reported transaction due to a lifecycle event, in a one-to-one relation between transactions (eg in the case of a novation, when transaction is terminated, and a new transaction is generated) or in a one-to-many relation between transactions (eg in clearing or if a transaction is split into several different transactions). This data element is not applicable when reporting many-to-one and many-to-many relations between transactions (eg in the case of a compression)."]
+    [regulatoryReference ISDA TechnicalExecutionGroup date "20231214"
+        provision "CounterpartyPositionBusinessEvent does not support before State (no primitive instruction yet), as temporary solution a new field under ReportableInformation is added: subsequentPositionUTI of type PositionIdentifier"]
+    extract
+        if originatingWorkflowStep -> counterpartyPositionBusinessEvent exists
+                and (originatingWorkflowStep -> counterpartyPositionBusinessEvent -> intent = PositionEventIntentEnum -> CorporateActionAdjustment
+                    or originatingWorkflowStep -> counterpartyPositionBusinessEvent -> intent = PositionEventIntentEnum -> Transfer
+                )
+                and reportablePosition -> counterpartyPosition -> positionBase -> tradeLot -> priceQuantity -> quantity -> value all <> 0
+        then (extract reportableInformation -> counterpartyPositionPriorUTI
+        then filter identifierType = TradeIdentifierTypeEnum -> UniqueTransactionIdentifier
+        then extract assignedIdentifier -> identifier
+        then only-element)
+        else if TradeForEvent -> tradeIdentifier -> assignedIdentifier -> identifier <> BeforeTradeForEvent -> tradeIdentifier -> assignedIdentifier -> identifier
+                and Qualify_Compression(originatingWorkflowStep -> businessEvent) = False
+        then (BeforeTradeForEvent
+            then extract tradeIdentifier
+            then filter
+                identifierType = TradeIdentifierTypeEnum -> UniqueTransactionIdentifier
+            then extract assignedIdentifier -> identifier
+            then flatten
+            then distinct
+            then only-element)
+        as "2.96 Prior UTI"
+
+reporting rule CDECustomBasketCode from ReportableEvent: <"Custom basket code">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "97"
+        provision "If the OTC derivative transaction is based on a custom basket, unique code assigned by the structurer of the custom basket to link its constituents. This data element is not applicable if no custom basket is involved or no unique code has been assigned to it."]
+    extract ProductForEvent
+    then extract contractualProduct -> economicTerms -> payout
+    then extract
+        (if forwardPayout exists
+        then forwardPayout -> underlier -> basket -> productIdentifier -> identifier first
+        else if optionPayout -> underlier -> basket exists
+        then optionPayout -> underlier -> basket -> productIdentifier -> identifier first
+        else if performancePayout exists
+        then performancePayout -> underlier -> basket -> productIdentifier -> identifier first
+        else if optionPayout -> underlier -> contractualProduct -> economicTerms -> payout -> creditDefaultPayout -> generalTerms -> basketReferenceInformation exists
+        then optionPayout -> underlier -> contractualProduct -> economicTerms -> payout -> creditDefaultPayout -> generalTerms -> basketReferenceInformation -> basketId first
+        else if creditDefaultPayout -> generalTerms -> basketReferenceInformation exists
+        then creditDefaultPayout -> generalTerms -> basketReferenceInformation -> basketId first)
+
+reporting rule CDEIdentifierOfBasketConstituents from ReportableEvent: <"Identifier of the basket's constituents">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "98"
+        provision "Underliers that represent the constituents of a custom basket, in line with the underlier ID within the UPI reference data elements, as defined by the CPMI-IOSCO Technical Guidance: Harmonisation of the Unique Product Identifier. This data element is not applicable if no custom basket is involved."]
+    extract TradeForEvent
+    then extract GetBasketConstituentsProductIdentifier -> identifier
+
+reporting rule CDESourceOfTheIdentifierOfTheBasketConstituents from ReportableEvent: <"Source of the identifier of the basket constituents">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "101"
+        provision "Source of the underliers identifiers that represent the constituents of a custom basket, in line
+        with the underlier ID source within the UPI reference data elements, as defined by the CPMIIOSCO Technical Guidance: Harmonisation of the Unique Product Identifier. This data element is
+        not applicable if no custom basket is involved."]
+    extract TradeForEvent
+    then extract GetBasketConstituentsProductIdentifier -> source
+
+reporting rule CDEActionType from TransactionReportInstruction: <"Action Type">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "107"
+        provision "Type of action taken on the transaction or type of end-of-day reporting."]
+    //ToDo: MARU action type
+    extract if IsActionTypePRTO then
+        ActionTypeEnum -> PRTO to-string
+    else GetActionType
+
+reporting rule EventType from TransactionReportInstruction: <"Event Type">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "108"
+        provision "Explanation or reason for the action being taken on the transaction."]
+    filter (IsActionTypeNEWT or IsActionTypeMODI or IsActionTypePositionMODI or IsActionTypeTERM)
+    then extract reportableEvent [
+        if (IsActionTypeCORR = False and
+            IsActionTypeEROR = False and
+            IsActionTypeREVI = False and
+            IsActionTypePOSC = False and
+            IsActionTypeVALU = False)
+        then originatingWorkflowStep
+             extract workflowStep [
+                if workflowStep -> businessEvent exists
+                then
+                    workflowStep -> businessEvent
+                    extract
+                        (if IsEventTypeUPDT(reportableEvent)
+                        then EventTypeEnum -> UPDT to-string
+                        else if Qualify_Novation
+                                or Qualify_PartialNovation
+                                or intent = EventIntentEnum -> Novation
+                        then EventTypeEnum -> NOVA to-string
+                        else if Qualify_Allocation
+                                or Qualify_Reallocation
+                                or intent = EventIntentEnum -> Allocation
+                        then EventTypeEnum -> ALOC to-string
+                        else if Qualify_Exercise
+                                or intent = EventIntentEnum -> OptionExercise
+                        then EventTypeEnum -> EXER to-string
+                        else if Qualify_ClearedTrade
+                            or reportableEvent -> originatingWorkflowStep -> workflowState -> workflowStatus = WorkflowStatusEnum -> Cleared
+                                or intent = EventIntentEnum -> Clearing
+                        then EventTypeEnum -> CLRG to-string
+                        else if Qualify_Compression or intent = EventIntentEnum -> Compression
+                        then EventTypeEnum -> COMP to-string
+                        else if Qualify_Termination or intent = EventIntentEnum -> EarlyTerminationProvision or Qualify_PartialTermination
+                        then EventTypeEnum -> ETRM to-string
+                        else if Qualify_CreditEventDetermined or intent = EventIntentEnum -> CreditEvent
+                        then EventTypeEnum -> CREV to-string
+                        else if Qualify_CorporateActionDetermined or intent = EventIntentEnum -> CorporateActionAdjustment
+                        then EventTypeEnum -> CORP to-string
+                        else if Qualify_ContractFormation
+                                or Qualify_Increase
+                                or Qualify_Renegotiation
+                                or Qualify_IndexTransition
+                                or Qualify_FullReturn
+                                or instruction -> primitiveInstruction -> quantityChange exists
+                                or instruction -> primitiveInstruction -> transfer exists
+                                or intent = EventIntentEnum -> ContractTermsAmendment
+                        then EventTypeEnum -> TRAD to-string
+                        else "ToDo")
+                    else if workflowStep -> counterpartyPositionBusinessEvent exists
+                        then
+                            if workflowStep -> counterpartyPositionBusinessEvent -> intent = PositionEventIntentEnum -> OptionExercise
+                            then EventTypeEnum -> EXER to-string
+                            else if workflowStep -> counterpartyPositionBusinessEvent -> intent = PositionEventIntentEnum -> Transfer
+                            then EventTypeEnum -> NOVA to-string
+                            else if workflowStep -> counterpartyPositionBusinessEvent -> intent = PositionEventIntentEnum -> CorporateActionAdjustment
+                            then EventTypeEnum -> CORP to-string
+                            else EventTypeEnum -> INCP to-string
+        ]
+     ]
+
+reporting rule CDEEventTimestamp from TransactionReportInstruction: <"Event Timestamp">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "109"
+        provision "Date and time of occurrence of the event. as determined by the reporting counterparty or a service provider.
+        In the case of a modification agreed for a future date, this data element should reflect the date, when the modification occurs (becomes effective) and not when it was negotiated.
+        In the case of a correction, this data element should reflect the date and time as of when the correction is applicable.
+        In the case of a clearing event, this data element should reflect the recorded date and time when the alpha transaction is accepted by the central counterparty (CCP) for clearing.
+        In the case of collateral update, the date and time for which the information contained in the report is provided."]
+    extract originatingWorkflowStep -> timestamp
+    then filter qualification = EventTimestampQualificationEnum -> eventCreationDateTime
+    then distinct only-element
+    then extract dateTime
+
+reporting rule CDEEventIdentifier from TransactionReportInstruction: <"Event identifier">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "110"
+        provision "Unique identifier to link transactions entering into and resulting from an event, which may be, but is not limited to, compression or other post trade risk reduction exercises, credit event, etc. The unique identifier may be assigned by the reporting counterparty or a service provider or CCP providing the service."]
+    extract originatingWorkflowStep -> eventIdentifier -> assignedIdentifier -> identifier only-element
+
+reporting rule CDELevel from ReportableEvent: <"Level">
+    [regulatoryReference CPMI_IOSCO CDE section "2" field "112"
+        provision "Indication whether the report is done at trade or position level. Position level report can be used as a supplement to trade level reporting to report post trade events and if individual trades have been replaced by the position."]
+    if TradeForEvent exists
+    then extract "TCTN"
+    else if PositionForEvent exists then extract "PSTN"
+
+//UPI reporting rule
+reporting rule UPIOptionType from Product: <"Option Type">
+    [regulatoryReference CPMI_IOSCO UPI section "4.2.1" field "Option Type"
+        provision "Specifies whether an option gives the buyer the right to buy the underlying, ie Call, the right to sell the underlying, ie Put, or the right to choose whether to buy or sell the underlying at the time of exercise, ie Chooser."]
+    extract
+        if IsPutOption or IsFloor
+        then "PUTO"
+        else if IsCallOption or IsCap
+        then "CALL"
+        else if IsOption
+        then "OTHR"
+        as "4.2.1 Option Type"

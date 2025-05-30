@@ -1,0 +1,61 @@
+{
+  "actionType" : "CORR",
+  "assetClass" : "OTHR",
+  "cleared" : "N",
+  "contractType" : "SWAP",
+  "counterparty1" : "213800WWTABZ1GOJHH37",
+  "counterparty2" : "213800IV9PCAC364HN60",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "direction2OfLeg1" : "TAKE",
+  "direction2OfLeg2" : "MAKE",
+  "effectiveDate" : "2014-01-01",
+  "eventIdentifier" : "001229414555123459991234569BR777123456789",
+  "eventTimestamp" : "2020-11-16T00:00:00Z",
+  "executionTimestamp" : "2022-03-17T14:44:58Z",
+  "expirationDate" : "2014-12-31",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "ReturnorPayoutTrigger" : "Total Return",
+          "UnderlierID" : "NATURAL GAS-AECO C/NIT (US$/MMBTU)-CANADIAN GAS REPORTER",
+          "UnderlierIDSource" : "COMM"
+        },
+        "Header" : {
+          "AssetClass" : "Commodities",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Swap"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "CAD",
+  "notionalCurrencyLeg2" : "CAD",
+  "notionalLeg1" : 1074560.000000,
+  "notionalLeg2" : 1074560.000000,
+  "notionalQuantityLeg1" : 800.00000,
+  "notionalQuantityLeg2" : 800.00000,
+  "price" : {
+    "priceCurrency" : "CAD",
+    "priceMonetary" : 3.6800000000000,
+    "priceNotation" : "Monetary"
+  },
+  "priceCurrency" : "CAD",
+  "reportSubmittingEntityID" : "213800WWTABZ1GOJHH37",
+  "reportingEntity" : "213800WWTABZ1GOJHH37",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "secondaryTransactionIdentifier" : "COMMODITYSWAPENERG01",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "spreadCurrencyLeg2" : "CAD",
+  "spreadLeg2" : {
+    "spreadLeg2Monetary" : 10.0000000000000,
+    "spreadLeg2Notation" : "Monetary"
+  },
+  "spreadNotationLeg2" : "1",
+  "totalNotionalQuantityLeg1" : 292000,
+  "totalNotionalQuantityLeg2" : 292000,
+  "uniqueTransactionIdentifier" : "COMMODITYSWAPENERG02"
+}

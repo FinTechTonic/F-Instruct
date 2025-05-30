@@ -1,0 +1,41 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "EQUI",
+  "cleared" : "N",
+  "contractType" : "SWAP",
+  "counterparty1" : "DUMMYLEI123456789002",
+  "counterparty2" : "DUMMYLEI123456789001",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "direction" : "SLLR",
+  "effectiveDate" : "2022-02-07",
+  "eventIdentifier" : "DTDApproved2407119003DFCFTCRiskNewNewEquity",
+  "eventTimestamp" : "2022-02-07T10:42:17Z",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2022-02-07T10:36:37Z",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH"
+        },
+        "Header" : {
+          "InstrumentType" : "Swap",
+          "Level" : "UPI"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "GBP",
+  "notionalLeg1" : 1000.00,
+  "reportSubmittingEntityID" : "DUMMYLEI123456789002",
+  "reportingEntity" : "DUMMYLEI123456789002",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "secondaryTransactionIdentifier" : "MOCKUPVOLATILITYSW01",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "strikePrice" : {
+    "strikePriceNotation" : "Decimal"
+  },
+  "underlyingIdentification" : "IE00B60SWT88",
+  "uniqueTransactionIdentifier" : "MOCKUPVOLATILITYSW02"
+}

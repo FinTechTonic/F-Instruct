@@ -1,0 +1,196 @@
+{
+  "id" : "test-pack-projection-jfsa-rewrite-trade-report-to-iso20022-events",
+  "pipelineId" : "pipeline-projection-jfsa-rewrite-trade-report-to-iso20022",
+  "name" : "Events",
+  "samples" : [ {
+    "id" : "clearing-cleared-alpha-trade-03",
+    "name" : "Clearing cleared alpha Trade 03",
+    "inputPath" : "regulatory-reporting/output/jfsa-trade/events/Clearing-cleared-alpha-Trade-03-report.json",
+    "outputPath" : "projection/iso-20022/output/jfsa-trade/events/Clearing-cleared-alpha-Trade-03-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 3,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "clearing-cleared-beta-trade-04",
+    "name" : "Clearing cleared beta Trade 04",
+    "inputPath" : "regulatory-reporting/output/jfsa-trade/events/Clearing-cleared-beta-Trade-04-report.json",
+    "outputPath" : "projection/iso-20022/output/jfsa-trade/events/Clearing-cleared-beta-Trade-04-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 3,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "clearing-new-alpha-trade-02",
+    "name" : "Clearing new alpha Trade 02",
+    "inputPath" : "regulatory-reporting/output/jfsa-trade/events/Clearing-new-alpha-Trade-02-report.json",
+    "outputPath" : "projection/iso-20022/output/jfsa-trade/events/Clearing-new-alpha-Trade-02-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 3,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "msg-ex69-execution-advice-commodity-swap-classification-new-trade-esma-emir-refit",
+    "name" : "msg ex69 execution advice commodity swap classification new trade esma emir refit",
+    "inputPath" : "regulatory-reporting/output/jfsa-trade/events/msg-ex69-execution-advice-commodity-swap-classification-new-trade-esma-emir-refit-report.json",
+    "outputPath" : "projection/iso-20022/output/jfsa-trade/events/msg-ex69-execution-advice-commodity-swap-classification-new-trade-esma-emir-refit-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 2,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "msg-ex70-execution-advice-commodity-swap-classification-termination-esma-emir-refit",
+    "name" : "msg ex70 execution advice commodity swap classification termination esma emir refit",
+    "inputPath" : "regulatory-reporting/output/jfsa-trade/events/msg-ex70-execution-advice-commodity-swap-classification-termination-esma-emir-refit-report.json",
+    "outputPath" : "projection/iso-20022/output/jfsa-trade/events/msg-ex70-execution-advice-commodity-swap-classification-termination-esma-emir-refit-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 2,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "new-trade-01",
+    "name" : "New Trade 01",
+    "inputPath" : "regulatory-reporting/output/jfsa-trade/events/New-Trade-01-report.json",
+    "outputPath" : "projection/iso-20022/output/jfsa-trade/events/New-Trade-01-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 3,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "new-trade-portfolio-rebalancing-record-ex212-new-trade-esma-emir-refit-commodity-swap",
+    "name" : "New Trade Portfolio Rebalancing record ex212 new trade esma emir refit commodity swap",
+    "inputPath" : "regulatory-reporting/output/jfsa-trade/events/New-Trade-Portfolio-Rebalancing-record-ex212-new-trade-esma-emir-refit-commodity-swap-report.json",
+    "outputPath" : "projection/iso-20022/output/jfsa-trade/events/New-Trade-Portfolio-Rebalancing-record-ex212-new-trade-esma-emir-refit-commodity-swap-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 2,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "partial-novation-new-trade",
+    "name" : "partial novation new trade",
+    "inputPath" : "regulatory-reporting/output/jfsa-trade/events/partial-novation-new-trade-report.json",
+    "outputPath" : "projection/iso-20022/output/jfsa-trade/events/partial-novation-new-trade-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 2,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "partial-novation-old-trade",
+    "name" : "partial novation old trade",
+    "inputPath" : "regulatory-reporting/output/jfsa-trade/events/partial-novation-old-trade-report.json",
+    "outputPath" : "projection/iso-20022/output/jfsa-trade/events/partial-novation-old-trade-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "schemaValidationFailure" : true,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "trade-allocation",
+    "name" : "Trade Allocation",
+    "inputPath" : "regulatory-reporting/output/jfsa-trade/events/Trade-Allocation-report.json",
+    "outputPath" : "projection/iso-20022/output/jfsa-trade/events/Trade-Allocation-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 1,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "trade-correction-ex01",
+    "name" : "Trade Correction ex01",
+    "inputPath" : "regulatory-reporting/output/jfsa-trade/events/Trade-Correction-ex01-report.json",
+    "outputPath" : "projection/iso-20022/output/jfsa-trade/events/Trade-Correction-ex01-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 2,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "trade-correction-ex02",
+    "name" : "Trade Correction ex02",
+    "inputPath" : "regulatory-reporting/output/jfsa-trade/events/Trade-Correction-ex02-report.json",
+    "outputPath" : "projection/iso-20022/output/jfsa-trade/events/Trade-Correction-ex02-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 1,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "trade-modify-amendment",
+    "name" : "Trade Modify Amendment",
+    "inputPath" : "regulatory-reporting/output/jfsa-trade/events/Trade-Modify-Amendment-report.json",
+    "outputPath" : "projection/iso-20022/output/jfsa-trade/events/Trade-Modify-Amendment-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "schemaValidationFailure" : true,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "trade-modify-partial-termination-ex-01",
+    "name" : "Trade Modify Partial Termination ex 01",
+    "inputPath" : "regulatory-reporting/output/jfsa-trade/events/Trade-Modify-Partial-Termination-ex-01-report.json",
+    "outputPath" : "projection/iso-20022/output/jfsa-trade/events/Trade-Modify-Partial-Termination-ex-01-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "schemaValidationFailure" : true,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "trade-modify-partial-termination-ex-02",
+    "name" : "Trade Modify Partial Termination ex 02",
+    "inputPath" : "regulatory-reporting/output/jfsa-trade/events/Trade-Modify-Partial-Termination-ex-02-report.json",
+    "outputPath" : "projection/iso-20022/output/jfsa-trade/events/Trade-Modify-Partial-Termination-ex-02-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 1,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "trade-modify-partial-termination-ex-03",
+    "name" : "Trade Modify Partial Termination ex 03",
+    "inputPath" : "regulatory-reporting/output/jfsa-trade/events/Trade-Modify-Partial-Termination-ex-03-report.json",
+    "outputPath" : "projection/iso-20022/output/jfsa-trade/events/Trade-Modify-Partial-Termination-ex-03-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "schemaValidationFailure" : true,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "withdrawal-error-ex01",
+    "name" : "Withdrawal Error ex01",
+    "inputPath" : "regulatory-reporting/output/jfsa-trade/events/Withdrawal-Error-ex01-report.json",
+    "outputPath" : "projection/iso-20022/output/jfsa-trade/events/Withdrawal-Error-ex01-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 4,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "withdrawal-error-ex02",
+    "name" : "Withdrawal Error ex02",
+    "inputPath" : "regulatory-reporting/output/jfsa-trade/events/Withdrawal-Error-ex02-report.json",
+    "outputPath" : "projection/iso-20022/output/jfsa-trade/events/Withdrawal-Error-ex02-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 4,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "withdrawal-termination",
+    "name" : "Withdrawal Termination",
+    "inputPath" : "regulatory-reporting/output/jfsa-trade/events/Withdrawal-Termination-report.json",
+    "outputPath" : "projection/iso-20022/output/jfsa-trade/events/Withdrawal-Termination-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 10,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  } ]
+}

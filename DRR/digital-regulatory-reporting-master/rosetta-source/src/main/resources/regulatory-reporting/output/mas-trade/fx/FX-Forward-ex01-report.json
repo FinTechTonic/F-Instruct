@@ -1,0 +1,51 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "CURR",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : true,
+  "confirmed" : "NCNF",
+  "contractType" : "FORW",
+  "counterparty1" : "GGDZP1UYGU9STUHRDP48",
+  "counterparty2" : "4PQUHN3JPFGFNF3BB653",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "GGDZP1UYGU9STUHRDP48",
+  "deliveryType" : "PHYS",
+  "directionOfLeg1" : "MAKE",
+  "directionOfLeg2" : "TAKE",
+  "effectiveDate" : "2019-02-01",
+  "eventDate" : "2019-02-01",
+  "eventType" : "TRAD",
+  "exchangeRate" : 108.833,
+  "exchangeRateBasis" : "USD/JPY",
+  "executionTimestamp" : "2019-02-01T08:14:05Z",
+  "expirationDate" : "2019-02-19",
+  "finalContractualSettlementDate" : "2019-02-19",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "OtherUnderlierID" : "USD",
+          "OtherUnderlierIDSource" : "CCY",
+          "UnderlierID" : "JPY",
+          "UnderlierIDSource" : "CCY"
+        },
+        "Header" : {
+          "InstrumentType" : "Forward",
+          "Level" : "UPI",
+          "UseCase" : "Forward"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfLeg2" : 900000.0,
+  "notionalAmountOfTheContractOrLeg1" : 40009999000.0,
+  "notionalCurrencyOfLeg2" : "USD",
+  "notionalCurrencyOfTheContractOrLeg1" : "JPY",
+  "platformIdentifier" : "XOFF",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "GGDZP1UYGU9STUHRDP48",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "uniqueTransactionIdentifier" : "FXFORWARDEXXMLXXXX02"
+}

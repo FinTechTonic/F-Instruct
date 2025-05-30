@@ -1,0 +1,20 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "OTHR",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "OTHR",
+  "counterparty1" : "DUMMY0000000000LEI01",
+  "counterparty2" : "DUMMY0000000000LEI02",
+  "effectiveDate" : "2021-12-03",
+  "entityResponsibleForReporting" : "DUMMY0000000000LEI01",
+  "eventIdentifier" : "123453212",
+  "eventTimestamp" : "1994-12-12T09:57:00Z",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-12-03T19:23:14Z",
+  "isCrypto" : false,
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "submitterIdentifier" : "DUMMY0000000000LEI01",
+  "uti" : "MOCKUPSTRIKEPRICEE01"
+}

@@ -1,0 +1,54 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "INTR",
+  "beneficiary1" : "549300V2LQD6SX1WIG70",
+  "beneficiary1IdentifierTypeIndicator" : true,
+  "cleared" : "N",
+  "contractType" : "SWAP",
+  "counterparty1" : "549300V2LQD6SX1WIG70",
+  "counterparty2" : "549300CWK6F65W566G32",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "dayCountConventionLeg1" : "A005",
+  "dayCountConventionLeg2" : "A001",
+  "direction2OfLeg1" : "MAKE",
+  "direction2OfLeg2" : "TAKE",
+  "effectiveDate" : "2022-02-24",
+  "eventIdentifier" : "D886530B9D286A80E0538CB0CC0AC653",
+  "eventTimestamp" : "2022-02-22T13:41:21Z",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2022-02-22T13:40:50Z",
+  "expirationDate" : "2026-02-24",
+  "fixedRateLeg1" : 2.00,
+  "fixedRateLeg2" : 0.300,
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalCurrency" : "GBP",
+          "NotionalSchedule" : "Constant",
+          "OtherNotionalCurrency" : "USD"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Cross_Currency_Fixed_Fixed"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "GBP",
+  "notionalCurrencyLeg2" : "USD",
+  "notionalLeg1" : 1000000,
+  "notionalLeg2" : 0,
+  "paymentFrequencyPeriodLeg1" : "MNTH",
+  "paymentFrequencyPeriodLeg2" : "MNTH",
+  "paymentFrequencyPeriodMultiplierLeg1" : 6,
+  "paymentFrequencyPeriodMultiplierLeg2" : 6,
+  "reportSubmittingEntityID" : "549300V2LQD6SX1WIG70",
+  "reportingEntity" : "549300V2LQD6SX1WIG70",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrencyLeg2" : "Not Modelled"
+}

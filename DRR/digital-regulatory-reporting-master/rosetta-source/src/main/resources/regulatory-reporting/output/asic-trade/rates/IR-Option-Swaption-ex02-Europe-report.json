@@ -1,0 +1,67 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "INTR",
+  "beneficiary1" : "213800IV9PCAC364HN60",
+  "beneficiary1IdentifierTypeIndicator" : true,
+  "cleared" : "N",
+  "contractType" : "SWPT",
+  "counterparty1" : "213800IV9PCAC364HN60",
+  "counterparty2" : "213800WWTABZ1GOJHH37",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "dayCountConventionLeg1" : "A001",
+  "dayCountConventionLeg2" : "A004",
+  "direction" : "BYER",
+  "effectiveDate" : "2021-12-06",
+  "eventTimestamp" : "2021-12-06T17:09:11Z",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-12-06T17:09:11Z",
+  "expirationDate" : "2029-04-04",
+  "floatingRateReferencePeriodOfLeg2Multiplier" : 3,
+  "floatingRateReferencePeriodOfLeg2TimePeriod" : "MNTH",
+  "maturityDateOfTheUnderlying" : "2019-04-04",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalCurrency" : "USD",
+          "NotionalSchedule" : "Constant",
+          "ReferenceRateTermUnit" : "MNTH",
+          "ReferenceRateTermValue" : 6,
+          "UnderlierID" : "USD-LIBOR-BBA",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Fixed_Float"
+        }
+      },
+      "requestType" : "UnderlyingProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "USD",
+  "notionalCurrencyLeg2" : "USD",
+  "notionalLeg1" : 50000000,
+  "notionalLeg2" : 50000000,
+  "optionPremiumAmount" : 1145000,
+  "optionPremiumCurrency" : "USD",
+  "paymentFrequencyPeriodLeg1" : "MNTH",
+  "paymentFrequencyPeriodLeg2" : "MNTH",
+  "paymentFrequencyPeriodMultiplierLeg1" : 6,
+  "paymentFrequencyPeriodMultiplierLeg2" : 3,
+  "platformIdentifier" : "BGCD",
+  "putAmount" : 50000000,
+  "putCurrency" : "USD",
+  "reportSubmittingEntityID" : "213800IV9PCAC364HN60",
+  "reportingEntity" : "213800IV9PCAC364HN60",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "secondaryTransactionIdentifier" : "IROPTIONSWAPTIONEX01",
+  "settlementCurrencyLeg1" : "CNY",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "strikePrice" : {
+    "strikePriceNotation" : "Decimal"
+  },
+  "uniqueTransactionIdentifier" : "IROPTIONSWAPTIONEX02"
+}

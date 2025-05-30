@@ -1,0 +1,132 @@
+{
+  "id" : "test-pack-report-jfsa-trade-credit",
+  "pipelineId" : "pipeline-report-jfsa-trade",
+  "name" : "Credit",
+  "samples" : [ {
+    "id" : "credit-basket-tranche-ex01",
+    "name" : "Credit Basket Tranche ex01",
+    "inputPath" : "regulatory-reporting/input/credit/Credit-Basket-Tranche-ex01.json",
+    "outputPath" : "regulatory-reporting/output/jfsa-trade/credit/Credit-Basket-Tranche-ex01-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 1,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-index-abx-he-ex01",
+    "name" : "Credit Index ABX HE ex01",
+    "inputPath" : "regulatory-reporting/input/credit/Credit-Index-ABX-HE-ex01.json",
+    "outputPath" : "regulatory-reporting/output/jfsa-trade/credit/Credit-Index-ABX-HE-ex01-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 1,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-index-cdx-ex01-index-factor",
+    "name" : "Credit Index CDX ex01 Index Factor",
+    "inputPath" : "regulatory-reporting/input/credit/Credit-Index-CDX-ex01-Index-Factor.json",
+    "outputPath" : "regulatory-reporting/output/jfsa-trade/credit/Credit-Index-CDX-ex01-Index-Factor-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-index-cdx-ex02",
+    "name" : "Credit Index CDX ex02",
+    "inputPath" : "regulatory-reporting/input/credit/Credit-Index-CDX-ex02.json",
+    "outputPath" : "regulatory-reporting/output/jfsa-trade/credit/Credit-Index-CDX-ex02-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 1,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-index-cdx-ex03-seniority-factor",
+    "name" : "Credit Index CDX ex03 Seniority Factor",
+    "inputPath" : "regulatory-reporting/input/credit/Credit-Index-CDX-ex03-Seniority-Factor.json",
+    "outputPath" : "regulatory-reporting/output/jfsa-trade/credit/Credit-Index-CDX-ex03-Seniority-Factor-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-index-cdx-ex04-usi",
+    "name" : "Credit Index CDX ex04 USI",
+    "inputPath" : "regulatory-reporting/input/credit/Credit-Index-CDX-ex04-USI.json",
+    "outputPath" : "regulatory-reporting/output/jfsa-trade/credit/Credit-Index-CDX-ex04-USI-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 1,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-index-tranche-cdx-ex01-index-factor",
+    "name" : "Credit Index Tranche CDX ex01 Index Factor",
+    "inputPath" : "regulatory-reporting/input/credit/Credit-Index-Tranche-CDX-ex01-Index-Factor.json",
+    "outputPath" : "regulatory-reporting/output/jfsa-trade/credit/Credit-Index-Tranche-CDX-ex01-Index-Factor-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-index-tranche-itraxx-ex01-asiaexjapan",
+    "name" : "Credit Index Tranche iTraxx ex01 AsiaExJapan",
+    "inputPath" : "regulatory-reporting/input/credit/Credit-Index-Tranche-iTraxx-ex01-AsiaExJapan.json",
+    "outputPath" : "regulatory-reporting/output/jfsa-trade/credit/Credit-Index-Tranche-iTraxx-ex01-AsiaExJapan-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 1,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-single-name-ex01",
+    "name" : "Credit Single Name ex01",
+    "inputPath" : "regulatory-reporting/input/credit/Credit-Single-Name-ex01.json",
+    "outputPath" : "regulatory-reporting/output/jfsa-trade/credit/Credit-Single-Name-ex01-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-swaption-cdx-ex01-index",
+    "name" : "Credit Swaption CDX ex01 Index",
+    "inputPath" : "regulatory-reporting/input/credit/Credit-Swaption-CDX-ex01-Index.json",
+    "outputPath" : "regulatory-reporting/output/jfsa-trade/credit/Credit-Swaption-CDX-ex01-Index-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 1,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-swaption-itraxx-ex01",
+    "name" : "Credit Swaption iTraxx ex01",
+    "inputPath" : "regulatory-reporting/input/credit/Credit-Swaption-iTraxx-ex01.json",
+    "outputPath" : "regulatory-reporting/output/jfsa-trade/credit/Credit-Swaption-iTraxx-ex01-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 2,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-swaption-itraxx-ex02-europe",
+    "name" : "Credit Swaption iTraxx ex02 Europe",
+    "inputPath" : "regulatory-reporting/input/credit/Credit-Swaption-iTraxx-ex02-Europe.json",
+    "outputPath" : "regulatory-reporting/output/jfsa-trade/credit/Credit-Swaption-iTraxx-ex02-Europe-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 2,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-swaption-itraxx-ex03-europe",
+    "name" : "Credit Swaption iTraxx ex03 Europe",
+    "inputPath" : "regulatory-reporting/input/credit/Credit-Swaption-iTraxx-ex03-Europe.json",
+    "outputPath" : "regulatory-reporting/output/jfsa-trade/credit/Credit-Swaption-iTraxx-ex03-Europe-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 2,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "credit-swaption-single-name-ex01",
+    "name" : "Credit Swaption Single Name ex01",
+    "inputPath" : "regulatory-reporting/input/credit/Credit-Swaption-Single-Name-ex01.json",
+    "outputPath" : "regulatory-reporting/output/jfsa-trade/credit/Credit-Swaption-Single-Name-ex01-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 4,
+      "runtimeError" : false
+    }
+  } ]
+}

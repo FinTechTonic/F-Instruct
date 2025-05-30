@@ -1,0 +1,24 @@
+{
+  "actionType" : "EROR",
+  "cleared" : "N",
+  "counterparty1" : "549300K7EEOSKRJDRI19",
+  "counterparty2" : "549300O5MFEP1XJ40B46",
+  "dataSubmitter" : "549300K7EEOSKRJDRI19",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH"
+        },
+        "Header" : {
+          "Level" : "UPI"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "549300K7EEOSKRJDRI19",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "uniqueTransactionIdentifier" : "WITHDRAWALERROREXX01"
+}

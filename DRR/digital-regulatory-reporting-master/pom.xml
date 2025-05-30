@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.regnosys</groupId>
+    <artifactId>drr</artifactId>
+    <packaging>pom</packaging>
+    <version>0.0.0.master</version>
+    <modules>
+        <module>distribution</module>
+        <module>examples</module>
+        <module>rosetta-source</module>
+        <module>tests</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <finos.cdm.version>5.11.1</finos.cdm.version>
+        <iso20022.version>1.1.0</iso20022.version>
+        <rosetta.bundle.version>11.3.0</rosetta.bundle.version>
+        <rosetta.dsl.version>9.8.0</rosetta.dsl.version>
+
+        <xtext.version>2.27.0</xtext.version>
+        <apache.commons.lang3.version>3.13.0</apache.commons.lang3.version>
+        <commons-csv.version>1.10.0</commons-csv.version>
+        <!-- set jackson version to resolve conflicts -->
+        <jackson.version>2.15.2</jackson.version>
+
+        <guava.version>32.0.1-jre</guava.version>
+        <junit.version>5.9.1</junit.version>
+        <junit-platform-commons.version>1.9.1</junit-platform-commons.version>
+        <mockito.version>5.1.1</mockito.version>
+        <hamcrest.version>2.2</hamcrest.version>
+
+        <java.version>11</java.version>
+        <maven.compiler.release>11</maven.compiler.release>
+        <kotlin.version>1.7.21</kotlin.version>
+
+        <!-- Plugins -->
+        <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
+        <maven-assembly-plugin.version>3.1.0</maven-assembly-plugin.version>
+        <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <maven-dependency-plugin.version>3.6.1</maven-dependency-plugin.version>
+        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+        <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
+        <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <maven-core.version>3.2.5</maven-core.version>
+
+        <!-- Rosetta -->
+        <rosetta.parent.common-domain-model.groupId>org.finos.cdm</rosetta.parent.common-domain-model.groupId>
+        <rosetta.parent.common-domain-model.artifactId>cdm-parent</rosetta.parent.common-domain-model.artifactId>
+        <rosetta.parent.common-domain-model.version>${finos.cdm.version}</rosetta.parent.common-domain-model.version>
+        <rosetta.parent.iso-20022.groupId>org.iso20022</rosetta.parent.iso-20022.groupId>
+        <rosetta.parent.iso-20022.artifactId>parent</rosetta.parent.iso-20022.artifactId>
+        <rosetta.parent.iso-20022.version>${iso20022.version}</rosetta.parent.iso-20022.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- xtext START -->
+            <dependency>
+                <groupId>org.eclipse.xtext</groupId>
+                <artifactId>xtext-dev-bom</artifactId>
+                <version>${xtext.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- xtext END -->
+            <!-- rosetta START -->
+            <dependency>
+                <groupId>com.regnosys.rosetta</groupId>
+                <artifactId>com.regnosys.rosetta</artifactId>
+                <version>${rosetta.dsl.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.regnosys.rosetta</groupId>
+                        <artifactId>com.regnosys.rosetta.xcore</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.regnosys.rosetta</groupId>
+                <artifactId>com.regnosys.rosetta.lib</artifactId>
+                <version>${rosetta.dsl.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.regnosys</groupId>
+                <artifactId>rosetta-common</artifactId>
+                <version>${rosetta.bundle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.finos.cdm</groupId>
+                <artifactId>cdm-java</artifactId>
+                <version>${finos.cdm.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.iso20022</groupId>
+                <artifactId>rosetta-source</artifactId>
+                <version>${iso20022.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.regnosys</groupId>
+                <artifactId>rosetta-testing</artifactId>
+                <version>${rosetta.bundle.version}</version>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.regnosys.rosetta</groupId>
+                        <artifactId>com.regnosys.rosetta.xcore</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.osgi</groupId>
+                        <artifactId>org.osgi.service.prefs</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- rosetta END -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-stdlib-jdk8</artifactId>
+                <version>${kotlin.version}</version>
+            </dependency>
+            <!-- test -->
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-bom</artifactId>
+                <version>${mockito.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest</artifactId>
+                <version>${hamcrest.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-test-junit</artifactId>
+                <version>${kotlin.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <forkCount>2</forkCount>
+                    <reuseForks>false</reuseForks>
+                    <argLine>-Xss16m -Xmx1G</argLine>
+                    <trimStackTrace>false</trimStackTrace>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven-source-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>regnosys-artifactory-releases</id>
+            <name>REGnosys Public Releases</name>
+            <url>https://regnosys.jfrog.io/regnosys/libs-release</url>
+        </repository>
+        <repository>
+            <id>regnosys-artifactory-snapshots</id>
+            <name>REGnosys Public Snapshots</name>
+            <url>https://regnosys.jfrog.io/regnosys/libs-snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>regnosys-artifactory-releases</id>
+            <name>REGnosys Public Releases</name>
+            <url>https://regnosys.jfrog.io/regnosys/libs-release</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>regnosys-artifactory-snapshots</id>
+            <name>REGnosys Public Snapshots</name>
+            <url>https://regnosys.jfrog.io/regnosys/libs-snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <distributionManagement>
+        <repository>
+            <id>snapshots</id>
+            <name>libs-snapshots</name>
+            <url>https://regnosys.jfrog.io/regnosys/libs-snapshot-local</url>
+        </repository>
+    </distributionManagement>
+</project>

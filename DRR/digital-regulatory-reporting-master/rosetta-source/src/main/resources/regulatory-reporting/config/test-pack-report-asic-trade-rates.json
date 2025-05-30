@@ -1,0 +1,420 @@
+{
+  "id" : "test-pack-report-asic-trade-rates",
+  "pipelineId" : "pipeline-report-asic-trade",
+  "name" : "Rates",
+  "samples" : [ {
+    "id" : "ir-capfloor-ex01-cap-premium",
+    "name" : "IR CapFloor ex01 Cap Premium",
+    "inputPath" : "regulatory-reporting/input/rates/IR-CapFloor-ex01-Cap-Premium.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-CapFloor-ex01-Cap-Premium-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 16,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-capfloor-ex02-cap-spread",
+    "name" : "IR CapFloor ex02 Cap Spread",
+    "inputPath" : "regulatory-reporting/input/rates/IR-CapFloor-ex02-Cap-Spread.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-CapFloor-ex02-Cap-Spread-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 11,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-capfloor-ex03-cap",
+    "name" : "IR CapFloor ex03 Cap",
+    "inputPath" : "regulatory-reporting/input/rates/IR-CapFloor-ex03-Cap.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-CapFloor-ex03-Cap-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 19,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-ccs-fixed-fixed-ex01",
+    "name" : "IR CCS Fixed Fixed ex01",
+    "inputPath" : "regulatory-reporting/input/rates/IR-CCS-Fixed-Fixed-ex01.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-CCS-Fixed-Fixed-ex01-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 14,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-ccs-fixed-fixed-ex02",
+    "name" : "IR CCS Fixed Fixed ex02",
+    "inputPath" : "regulatory-reporting/input/rates/IR-CCS-Fixed-Fixed-ex02.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-CCS-Fixed-Fixed-ex02-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 17,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-ccs-fixed-float-ex02",
+    "name" : "IR CCS Fixed Float ex02",
+    "inputPath" : "regulatory-reporting/input/rates/IR-CCS-Fixed-Float-ex02.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-CCS-Fixed-Float-ex02-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 12,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-ccs-fixed-float-ex03-nds",
+    "name" : "IR CCS Fixed Float ex03 NDS",
+    "inputPath" : "regulatory-reporting/input/rates/IR-CCS-Fixed-Float-ex03-NDS.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-CCS-Fixed-Float-ex03-NDS-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 13,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-ccs-fixed-float-ex04",
+    "name" : "IR CCS Fixed Float ex04",
+    "inputPath" : "regulatory-reporting/input/rates/IR-CCS-Fixed-Float-ex04.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-CCS-Fixed-Float-ex04-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 17,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-forward-debt-ex01",
+    "name" : "IR Forward Debt ex01",
+    "inputPath" : "regulatory-reporting/input/rates/IR-Forward-Debt-ex01.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-Forward-Debt-ex01-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 18,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-forward-debt-ex02",
+    "name" : "IR Forward Debt ex02",
+    "inputPath" : "regulatory-reporting/input/rates/IR-Forward-Debt-ex02.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-Forward-Debt-ex02-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 19,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-fra-ex01",
+    "name" : "IR FRA ex01",
+    "inputPath" : "regulatory-reporting/input/rates/IR-FRA-ex01.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-FRA-ex01-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 17,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-fra-ex02",
+    "name" : "IR FRA ex02",
+    "inputPath" : "regulatory-reporting/input/rates/IR-FRA-ex02.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-FRA-ex02-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 17,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-inflation-fixed-float-ex01-yoy",
+    "name" : "IR Inflation Fixed Float ex01 YoY",
+    "inputPath" : "regulatory-reporting/input/rates/IR-Inflation-Fixed-Float-ex01-YoY.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-Inflation-Fixed-Float-ex01-YoY-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 13,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-inflation-fixed-float-ex02-zc-fixedamt",
+    "name" : "IR Inflation Fixed Float ex02 ZC FixedAmt",
+    "inputPath" : "regulatory-reporting/input/rates/IR-Inflation-Fixed-Float-ex02-ZC-FixedAmt.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-Inflation-Fixed-Float-ex02-ZC-FixedAmt-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 20,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-inflation-fixed-float-zc-notionalamt",
+    "name" : "IR Inflation Fixed Float ZC NotionalAmt",
+    "inputPath" : "regulatory-reporting/input/rates/IR-Inflation-Fixed-Float-ZC-NotionalAmt.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-Inflation-Fixed-Float-ZC-NotionalAmt-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 17,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-basis-ex01",
+    "name" : "IR IRS Basis ex01",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-Basis-ex01.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-Basis-ex01-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 11,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-basis-ex02",
+    "name" : "IR IRS Basis ex02",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-Basis-ex02.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-Basis-ex02-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 21,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-basis-ex03",
+    "name" : "IR IRS Basis ex03",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-Basis-ex03.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-Basis-ex03-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 12,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-basis-ex03-ois",
+    "name" : "IR IRS Basis ex03 OIS",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-Basis-ex03-OIS.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-Basis-ex03-OIS-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 14,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-fixed-float-dcf-1-1-a020",
+    "name" : "IR IRS Fixed Float DCF 1 1 A020",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-Fixed-Float-DCF-1-1-A020.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-Fixed-Float-DCF-1-1-A020-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 15,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-fixed-float-dcf-30e-360-isda-a007",
+    "name" : "IR IRS Fixed Float DCF 30E 360 ISDA A007",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-Fixed-Float-DCF-30E-360-ISDA-A007.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-Fixed-Float-DCF-30E-360-ISDA-A007-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 15,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-fixed-float-dcf-act-365l-a009",
+    "name" : "IR IRS Fixed Float DCF ACT 365L A009",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-Fixed-Float-DCF-ACT-365L-A009.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-Fixed-Float-DCF-ACT-365L-A009-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 15,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-fixed-float-dcf-act-act-afb-a010",
+    "name" : "IR IRS Fixed Float DCF ACT ACT AFB A010",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-Fixed-Float-DCF-ACT-ACT-AFB-A010.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-Fixed-Float-DCF-ACT-ACT-AFB-A010-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 15,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-fixed-float-dcf-act-act-icma-a006",
+    "name" : "IR IRS Fixed Float DCF ACT ACT ICMA A006",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-Fixed-Float-DCF-ACT-ACT-ICMA-A006.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-Fixed-Float-DCF-ACT-ACT-ICMA-A006-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 15,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-fixed-float-dcf-act-act-isda-a008",
+    "name" : "IR IRS Fixed Float DCF ACT ACT ISDA A008",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-Fixed-Float-DCF-ACT-ACT-ISDA-A008.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-Fixed-Float-DCF-ACT-ACT-ISDA-A008-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 15,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-fixed-float-ex01",
+    "name" : "IR IRS Fixed Float ex01",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-Fixed-Float-ex01.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-Fixed-Float-ex01-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 15,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-fixed-float-ex01-compensation-ois",
+    "name" : "IR IRS Fixed Float ex01 Compensation OIS",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-Fixed-Float-ex01-Compensation-OIS.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-Fixed-Float-ex01-Compensation-OIS-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 17,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-fixed-float-ex01-conversion-ois",
+    "name" : "IR IRS Fixed Float ex01 Conversion OIS",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-Fixed-Float-ex01-Conversion-OIS.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-Fixed-Float-ex01-Conversion-OIS-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 12,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-fixed-float-ex01-week",
+    "name" : "IR IRS Fixed Float ex01 Week",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-Fixed-Float-ex01-Week.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-Fixed-Float-ex01-Week-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 15,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-fixed-float-ex02",
+    "name" : "IR IRS Fixed Float ex02",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-Fixed-Float-ex02.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-Fixed-Float-ex02-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 15,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-fixed-float-ex02-zc",
+    "name" : "IR IRS Fixed Float ex02 ZC",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-Fixed-Float-ex02-ZC.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-Fixed-Float-ex02-ZC-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 17,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-fixed-float-ex03",
+    "name" : "IR IRS Fixed Float ex03",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-Fixed-Float-ex03.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-Fixed-Float-ex03-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 15,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-fixed-float-ex04-spread",
+    "name" : "IR IRS Fixed Float ex04 Spread",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-Fixed-Float-ex04-Spread.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-Fixed-Float-ex04-Spread-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 11,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-fixed-float-ex05",
+    "name" : "IR IRS Fixed Float ex05",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-Fixed-Float-ex05.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-Fixed-Float-ex05-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 16,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-fixed-float-ex06-ois",
+    "name" : "IR IRS Fixed Float ex06 OIS",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-Fixed-Float-ex06-OIS.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-Fixed-Float-ex06-OIS-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 11,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-fixed-float-ex07",
+    "name" : "IR IRS Fixed Float ex07",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-Fixed-Float-ex07.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-Fixed-Float-ex07-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 15,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-fixed-float-ex08",
+    "name" : "IR IRS Fixed Float ex08",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-Fixed-Float-ex08.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-Fixed-Float-ex08-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 15,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-fixed-float-submitter-id-1",
+    "name" : "IR IRS Fixed Float Submitter ID 1",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-Fixed-Float-Submitter-ID-1.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-Fixed-Float-Submitter-ID-1-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 15,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-fixed-float-submitter-id-2",
+    "name" : "IR IRS Fixed Float Submitter ID 2",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-Fixed-Float-Submitter-ID-2.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-Fixed-Float-Submitter-ID-2-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 15,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-fixed-float-submitter-id-3",
+    "name" : "IR IRS Fixed Float Submitter ID 3",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-Fixed-Float-Submitter-ID-3.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-Fixed-Float-Submitter-ID-3-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 15,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-irs-fixedfloat-zc-knownamount",
+    "name" : "IR IRS FixedFloat ZC KnownAmount",
+    "inputPath" : "regulatory-reporting/input/rates/IR-IRS-FixedFloat-ZC-KnownAmount.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-IRS-FixedFloat-ZC-KnownAmount-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 20,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-option-debt-option-ex01",
+    "name" : "IR Option Debt Option ex01",
+    "inputPath" : "regulatory-reporting/input/rates/IR-Option-Debt-Option-ex01.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-Option-Debt-Option-ex01-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 19,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-option-swaption-ex01-bermuda",
+    "name" : "IR Option Swaption ex01 Bermuda",
+    "inputPath" : "regulatory-reporting/input/rates/IR-Option-Swaption-ex01-Bermuda.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-Option-Swaption-ex01-Bermuda-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 10,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-option-swaption-ex02-europe",
+    "name" : "IR Option Swaption ex02 Europe",
+    "inputPath" : "regulatory-reporting/input/rates/IR-Option-Swaption-ex02-Europe.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-Option-Swaption-ex02-Europe-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 18,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-package-price",
+    "name" : "IR Package Price",
+    "inputPath" : "regulatory-reporting/input/rates/IR-Package-Price.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-Package-Price-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 16,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "ir-package-spread",
+    "name" : "IR Package Spread",
+    "inputPath" : "regulatory-reporting/input/rates/IR-Package-Spread.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/rates/IR-Package-Spread-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 15,
+      "runtimeError" : false
+    }
+  } ]
+}

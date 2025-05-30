@@ -1,0 +1,46 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "OTHR",
+  "beneficiary1" : "549300KFSLY4U7N3LL12",
+  "beneficiary1IdentifierTypeIndicator" : true,
+  "cleared" : "N",
+  "contractType" : "OTHR",
+  "counterparty1" : "549300KFSLY4U7N3LL12",
+  "counterparty2" : "549300AJRHKBLY9GM262",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "direction" : "BYER",
+  "effectiveDate" : "2008-07-01",
+  "eventIdentifier" : "4521280456b846d1a8d614816a050e6f",
+  "eventTimestamp" : "2008-06-11T09:43:21Z",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-12-06T17:09:12Z",
+  "expirationDate" : "2008-07-31",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "SettlementCurrency" : "USD"
+        },
+        "Header" : {
+          "AssetClass" : "Commodities",
+          "Level" : "UPI"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "packageIdentifier" : "MOCKUPCOMEXGASVELEE17L16E15V14S13A1",
+  "reportSubmittingEntityID" : "549300KFSLY4U7N3LL12",
+  "reportingEntity" : "549300KFSLY4U7N3LL12",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrencyLeg1" : "USD",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "spreadCurrencyLeg1" : "USD",
+  "spreadLeg1" : {
+    "spreadLeg1Monetary" : -1.4500000000000,
+    "spreadLeg1Notation" : "Monetary"
+  },
+  "spreadNotationLeg1" : "1",
+  "uniqueTransactionIdentifier" : "MOCKUPCOMEXGASVELE03E17L16E15V14S13A12G11X10E9M8O7C6"
+}

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nonpublicExecutionReport xmlns="http://www.fpml.org/FpML-5/recordkeeping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" fpmlVersion="5-10" xsi:schemaLocation="http://www.fpml.org/FpML-5/recordkeeping /schemas/fpml-5-10/recordkeeping/fpml-main-5-10.xsd">
+    <header>
+        <messageId messageIdScheme="http://www.bankx.com/msg_id">envuatuatExt1b45f8f29f8024fcf882f22f0287de1bc</messageId>
+        <sentBy messageAddressScheme="http://www.fpml.org/coding-scheme/external/iso17442">W22LROWP2IHZNBB6K528</sentBy>
+        <sendTo>DTCCGTR</sendTo>
+        <creationTimestamp>2020-11-10T20:15:45Z</creationTimestamp>
+        <implementationSpecification>
+            <version implementationSpecificationVersionScheme="http://www.dtcc.com">CA3.0FX1.4</version>
+        </implementationSpecification>
+    </header>
+    <isCorrection>false</isCorrection>
+    <onBehalfOf>
+        <partyReference href="Party1"/>
+    </onBehalfOf>
+    <asOfDate>2020-11-10</asOfDate>
+    <asOfTime>20:15:57Z</asOfTime>
+    <originatingEvent>Trade</originatingEvent>
+    <trade>
+        <tradeHeader>
+            <partyTradeIdentifier>
+                <issuer issuerIdScheme="http://www.fpml.org/coding-scheme/external/issuer-identifier">MXKQVM4U1OHBQWFPG196</issuer>
+                <tradeId tradeIdScheme="http://www.fpml.org/coding-scheme/external/unique-transaction-identifier">FXVANILLAOPTIONEXE02</tradeId>
+            </partyTradeIdentifier>
+            <partyTradeIdentifier>
+                <partyReference href="Party1"/>
+                <tradeId tradeIdScheme="http://www.dtcc.com/internal-reference-id">FXVANILLAOPTIONEXE01</tradeId>
+            </partyTradeIdentifier>
+            <partyTradeInformation>
+                <partyReference href="Party1"/>
+                <relatedParty>
+                    <partyReference href="Party1"/>
+                    <role>Beneficiary</role>
+                </relatedParty>
+                <relatedParty>
+                    <partyReference href="Party1"/>
+                    <role>NOTAPPLICABLE</role>
+                </relatedParty>
+                <relatedParty>
+                    <partyReference href="Party2"/>
+                    <role>NOTAPPLICABLE</role>
+                </relatedParty>
+                <relatedParty>
+                    <partyReference href="ConfirmParty1"/>
+                    <role>ConfirmationPlatform</role>
+                </relatedParty>
+                <category categoryScheme="http://www.dtcc.com/trading_capacity">Principal</category>
+                <category categoryScheme="http://www.dtcc.com/intragroup">false</category>
+                <category categoryScheme="http://www.dtcc.com/compressed_trade">false</category>
+                <category categoryScheme="http://www.dtcc.com/coding-scheme/external/trade-details/gtr-settlement-type">Physical</category>
+                <executionDateTime>2020-07-06T03:58:14Z</executionDateTime>
+                <timestamps>
+                    <confirmed>2020-07-06T03:58:14Z</confirmed>
+                </timestamps>
+                <intentToClear>false</intentToClear>
+                <clearingStatus>false</clearingStatus>
+                <collateralizationType>Partially</collateralizationType>
+                <reportingRegime>
+                    <name>EMIR</name>
+                    <supervisorRegistration>
+                        <supervisoryBody>ESMA</supervisoryBody>
+                    </supervisorRegistration>
+                    <reportingRole>ReportingParty</reportingRole>
+                    <reportingPurpose>Snapshot</reportingPurpose>
+                    <mandatorilyClearable>false</mandatorilyClearable>
+                    <exceedsClearingThreshold>true</exceedsClearingThreshold>
+                    <entityClassification entityClassificationScheme="http://www.fpml.org/coding-scheme/esma-entity-classification">Financial</entityClassification>
+                    <actionType actionTypeScheme="http://www.fpml.org/coding-scheme/action-type">N</actionType>
+                </reportingRegime>
+                <reportingRegime>
+                    <name>UKEMIR</name>
+                    <supervisorRegistration>
+                        <supervisoryBody>FCA</supervisoryBody>
+                    </supervisorRegistration>
+                    <reportingRole>ReportingParty</reportingRole>
+                    <reportingPurpose>PrimaryEconomicTerms</reportingPurpose>
+                    <mandatorilyClearable>false</mandatorilyClearable>
+                    <exceedsClearingThreshold>true</exceedsClearingThreshold>
+                    <entityClassification entityClassificationScheme="http://www.fpml.org/coding-scheme/esma-entity-classification">Financial</entityClassification>
+                </reportingRegime>
+                <reportingRegime>
+                    <name>JFSA</name>
+                    <supervisorRegistration>
+                        <supervisoryBody>JFSA</supervisoryBody>
+                    </supervisorRegistration>
+                    <reportingRole>ReportingParty</reportingRole>
+                </reportingRegime>
+                <nonStandardTerms>false</nonStandardTerms>
+                <executionType>Electronic</executionType>
+                <executionVenueType>OffFacility</executionVenueType>
+                <verificationMethod>Electronic</verificationMethod>
+                <confirmationMethod>Electronic</confirmationMethod>
+            </partyTradeInformation>
+            <partyTradeInformation>
+                <partyReference href="Party2"/>
+                <executionDateTime>2020-07-06T03:58:14Z</executionDateTime>
+                <reportingRegime>
+                    <name>EMIR</name>
+                    <supervisorRegistration>
+                        <supervisoryBody>ESMA</supervisoryBody>
+                    </supervisorRegistration>
+                    <reportingRole>ReportingParty</reportingRole>
+                    <reportingPurpose>PrimaryEconomicTerms</reportingPurpose>
+                    <mandatorilyClearable>false</mandatorilyClearable>
+                    <exceedsClearingThreshold>true</exceedsClearingThreshold>
+                    <entityClassification entityClassificationScheme="http://www.fpml.org/coding-scheme/esma-entity-classification">Financial</entityClassification>
+                </reportingRegime>
+                <reportingRegime>
+                    <name>UKEMIR</name>
+                    <supervisorRegistration>
+                        <supervisoryBody>FCA</supervisoryBody>
+                    </supervisorRegistration>
+                    <reportingRole>ReportingParty</reportingRole>
+                    <reportingPurpose>PrimaryEconomicTerms</reportingPurpose>
+                    <mandatorilyClearable>false</mandatorilyClearable>
+                    <exceedsClearingThreshold>true</exceedsClearingThreshold>
+                    <entityClassification entityClassificationScheme="http://www.fpml.org/coding-scheme/esma-entity-classification">Financial</entityClassification>
+                </reportingRegime>
+                <reportingRegime>
+                    <name>JFSA</name>
+                    <supervisorRegistration>
+                        <supervisoryBody>JFSA</supervisoryBody>
+                    </supervisorRegistration>
+                    <reportingRole>ReportingParty</reportingRole>
+                </reportingRegime>
+            </partyTradeInformation>
+            <tradeDate>2020-07-06</tradeDate>
+        </tradeHeader>
+        <fxOption>
+            <primaryAssetClass>ForeignExchange</primaryAssetClass>
+            <secondaryAssetClass>ForeignExchange</secondaryAssetClass>
+            <productType productTypeScheme="http://www.fpml.org/coding-scheme/external/product-classification/iso10962">HFTXVP</productType>
+            <productId productIdScheme="http://www.fpml.org/coding-scheme/product-taxonomy">ForeignExchange:VanillaOption</productId>
+            <buyerPartyReference href="Party1"/>
+            <sellerPartyReference href="Party2"/>
+            <effectiveDate>
+                <adjustableDate>
+                    <unadjustedDate>2020-07-06</unadjustedDate>
+                </adjustableDate>
+            </effectiveDate>
+            <europeanExercise>
+                <expiryDate>2020-09-29</expiryDate>
+                <expiryTime>
+                    <hourMinuteTime>15:00:00</hourMinuteTime>
+                    <businessCenter>JPTO</businessCenter>
+                </expiryTime>
+                <valueDate>2020-10-09</valueDate>
+            </europeanExercise>
+            <putCurrencyAmount>
+                <currency>USD</currency>
+                <amount>3000000.00000000</amount>
+            </putCurrencyAmount>
+            <callCurrencyAmount>
+                <currency>CNY</currency>
+                <amount>20827500.00000000</amount>
+            </callCurrencyAmount>
+            <soldAs>Put</soldAs>
+            <strike>
+                <rate>6.94250000</rate>
+                <strikeQuoteBasis>CallCurrencyPerPutCurrency</strikeQuoteBasis>
+            </strike>
+            <premium>
+                <payerPartyReference href="Party1"/>
+                <receiverPartyReference href="Party2"/>
+                <paymentDate>
+                    <adjustableDate>
+                        <unadjustedDate>2020-07-08</unadjustedDate>
+                    </adjustableDate>
+                </paymentDate>
+                <paymentAmount>
+                    <currency>CNY</currency>
+                    <amount>40723.80000000</amount>
+                </paymentAmount>
+                <quote>
+                    <value>40723.80000000</value>
+                    <quoteBasis>Explicit</quoteBasis>
+                </quote>
+            </premium>
+        </fxOption>
+        <documentation>
+            <masterAgreement>
+                <masterAgreementType>ISDA</masterAgreementType>
+                <masterAgreementVersion>2002</masterAgreementVersion>
+            </masterAgreement>
+        </documentation>
+    </trade>
+    <tradingEvent>
+        <eventType>Trade</eventType>
+        <agreementDate>2020-07-06</agreementDate>
+    </tradingEvent>
+    <quote>
+        <value>40723.80000000</value>
+        <measureType>PriceNotation</measureType>
+        <quoteUnits>AMOUNT</quoteUnits>
+    </quote>
+    <quote>
+        <value>6.94250000</value>
+        <measureType>StrikePrice</measureType>
+    </quote>
+    <quote id="PriceNotationEMIR1">
+        <value>40723.80000000</value>
+        <measureType>PriceNotationEMIR</measureType>
+        <quoteUnits>Units</quoteUnits>
+        <currency>CNY</currency>
+    </quote>
+    <party id="Party1">
+        <partyId partyIdScheme="http://www.fpml.org/coding-scheme/external/iso17442">W22LROWP2IHZNBB6K528</partyId>
+        <classification industryClassificationScheme="http://www.fpml.org/coding-scheme/regulatory-corporate-sector">InvestmentFirm</classification>
+        <classification industryClassificationScheme="http://www.fpml.org/coding-scheme/esma-emir-refit-regulatory-corporate-sector">CDTI</classification>
+        <country>NonUSA</country>
+        <region>EEA</region>
+        <organizationType>SD</organizationType>
+        <contactInfo>
+            <address>
+                <streetAddress>
+                    <streetLine>Plumtree Court 25 Shoe Lane</streetLine>
+                </streetAddress>
+                <city>London</city>
+                <state>EN1</state>
+                <country>GB</country>
+                <postalCode>EC4A 4AU</postalCode>
+            </address>
+        </contactInfo>
+    </party>
+    <party id="Party2">
+        <partyId partyIdScheme="http://www.fpml.org/coding-scheme/external/iso17442">MXKQVM4U1OHBQWFPG196</partyId>
+        <classification industryClassificationScheme="http://www.fpml.org/coding-scheme/esma-emir-refit-regulatory-corporate-sector">AIFD</classification>
+        <country>US</country>
+        <region>nonEEA</region>
+        <organizationType>SD</organizationType>
+    </party>
+    <party id="ConfirmParty1">
+        <partyId partyIdScheme="http://www.dtcc.com/free-format-text">OTHERS</partyId>
+    </party>
+</nonpublicExecutionReport>

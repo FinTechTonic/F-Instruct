@@ -1,0 +1,58 @@
+{
+  "options": {
+    "FpML_5_RecordKeeping_To_ReportableEvent": {
+      "name": "FpML_5_RecordKeeping_To_ReportableEvent",
+      "modelId": "DIGITAL-REGULATORY-REPORTING",
+      "modelClasspath": [
+        "model",
+        "drr/rosetta",
+        "cdm/rosetta"
+      ],
+      "modelFileDirIncludeRegex": ".*\\.rosetta",
+      "modelFileDirExcludeRegex": null,
+      "rosettaClasses": [
+        "ReportableEvent"
+      ],
+      "generatedPackage": "drr.regulation.common",
+      "generatedFactoryName": "Fpml51RecordKeepingToReportableEventXmlHandlerFactory",
+      "xsdFilePaths": {
+        "ReportableEvent": "schemas/fpml-5-13/recordkeeping/fpml-main-5-13.xsd"
+      },
+      "synonymSources": {
+        "ReportableEvent": [
+          "FpML_5_RecordKeeping_To_ReportableEvent"
+        ]
+      },
+      "topLevelTags": {
+        "ReportableEvent": [
+          "nonpublicExecutionReport",
+          "nonpublicExecutionReportRetracted",
+          "nonpublicExecutionReportAcknowledgement",
+          "valuationReport",
+          "valuationReportRetracted",
+          "creditEventNotification",
+          "verificationStatusNotification",
+          "dataDocument"
+        ]
+      },
+      "verbose": false,
+      "clean": false,
+      "json": false,
+      "xmlExclusionsFilePath": "config/FpML.excluded-paths.txt",
+      "cdmClassesDir": "",
+      "integrationTestRoots": {
+        "ReportableEvent": [
+          "cdm-sample-files/fpml-5-10/record-keeping",
+          "cdm-sample-files/fpml-5-13/record-keeping"
+        ]
+      },
+      "default": false,
+      "childPackageName": {
+        "ReportableEvent": "reportableEvent"
+      },
+      "fullClassnames": {
+        "ReportableEvent": "drr.regulation.common.ReportableEvent"
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+namespace drr.regulation.common.util
+version "${project.version}"
+
+func StringLength: <"Returns number of characters in the given string.">
+    inputs:
+        str string (0..1)
+    output:
+        result int (1..1)
+
+func StringContains:
+    inputs:
+        input string (1..1)
+        regex string (1..1)
+    output:
+        result boolean (1..1)
+
+func SubString: <"Function that returns a characters from the given string from the start index for the specified length.">
+    inputs:
+        text string (1..1)
+        startIndex int (0..1) <"Position of the first character you want to extract. The first character is index 1.">
+        length int (1..1) <"The number of characters to extract.">
+    output:
+        subString string (1..1)
+
+    condition StartIndexNonZero: <"Minimum start index should be 1.">
+        startIndex <> 0
+
+/*
+ * TH Review: Date comparison results:
+ *.    - result is empty if date is empty
+ *     - result < 0 -> date is lesser than;
+ *     - result > 0 -> date is greater than;
+ *     - result = 0 -> date is equal
+ */
+func CompareDateTo:
+    inputs:
+        date date (0..1)
+        year int (1..1)
+        month int (1..1)
+        day int (1..1)
+    output:
+        result int (0..1)
+
+    set result:
+        if date is absent
+        then empty
+        else if date -> year <> year
+        then date -> year - year
+        else if date -> month <> month
+        then date -> month - month
+        else if date -> day <> day
+        then date -> day - day
+        else 0
+
+func EmptyOrAllMatch: <"Checks that the list of booleans is either empty or all match the expected result.">
+    inputs:
+        list boolean (0..*)
+        expectedResult boolean (1..1)
+    output:
+        result boolean (1..1)
+
+    set result:
+        if list is absent then True else list all = expectedResult
+
+func ReplaceAll:
+    inputs:
+        input string (1..1)
+        regex string (1..1)
+        replacement string (1..1)
+    output:
+        result string (1..1)

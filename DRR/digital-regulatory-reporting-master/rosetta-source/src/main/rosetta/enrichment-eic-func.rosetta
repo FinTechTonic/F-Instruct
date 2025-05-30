@@ -1,0 +1,19 @@
+namespace drr.enrichment.eic
+version "${project.version}"
+
+func GetAcceptedEicCodes: <"Delivery points or zones (DPoZ) in the format of energy Identification Codes (EIC codes) accepted in the reported contracts for the supply of electricity and gas. This functions returns the list of accepted EIC codes published by European Union Agency for the Cooperation of Energy Regulators downloaded from https://www.acer.europa.eu/remit-documents/remit-reporting-guidance > List of accepted EICs (10/10/2023).">
+    output:
+        acceptedEicCodes string (0..*)
+
+func IsAcceptedEicCode: <"Checks whether the EIC code is present in the list of accepted EIC codes published by European Union Agency for the Cooperation of Energy Regulators.">
+    inputs:
+        eicCode string (0..*)
+    output:
+        result boolean (1..1)
+
+    set result:
+        if eicCode exists
+        then (eicCode
+            then extract ec [ GetAcceptedEicCodes contains ec ]
+            then all = True)
+        else False

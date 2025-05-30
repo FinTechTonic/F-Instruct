@@ -1,0 +1,71 @@
+{
+  "actionType" : "CORR",
+  "assetClass" : "COMM",
+  "bookingLocation" : "US",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmationTimestamp" : "2022-11-17T06:51:43Z",
+  "confirmed" : "YCNF",
+  "contractType" : "SWAP",
+  "counterparty1" : "7H6GLXDRUGQFU57RNE97",
+  "counterparty2" : "549300I0XDZ4K7PDSS04",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "7H6GLXDRUGQFU57RNE97",
+  "deliveryType" : "CASH",
+  "directionOfLeg1" : "TAKE",
+  "directionOfLeg2" : "MAKE",
+  "effectiveDate" : "2023-10-01",
+  "eventDate" : "2022-11-15",
+  "executionTimestamp" : "2022-11-15T03:41:10Z",
+  "expirationDate" : "2023-10-31",
+  "finalContractualSettlementDate" : "2023-10-31",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "ReturnorPayoutTrigger" : "Total Return",
+          "UnderlierID" : "FO_180CST_SING_CARGOES",
+          "UnderlierIDSource" : "COMM"
+        },
+        "Header" : {
+          "AssetClass" : "Commodities",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Swap"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfLeg2" : 1000000.0000000000,
+  "notionalAmountOfTheContractOrLeg1" : 1000000.0000000000,
+  "notionalCurrencyOfLeg2" : "USD",
+  "notionalCurrencyOfTheContractOrLeg1" : "USD",
+  "notionalQuantityOfLeg2" : 10000.00000,
+  "notionalQuantityOfTheContractOrLeg1" : 10000.00000,
+  "price" : {
+    "priceCurrency" : "USD",
+    "priceMonetary" : 100.0000000000000,
+    "priceNotation" : "Monetary"
+  },
+  "priceCurrency" : "USD",
+  "priceUnitOfMeasure" : "TONE",
+  "quantityFrequencyOfLeg2" : "ADHO",
+  "quantityFrequencyOfTheContractOrLeg1" : "ADHO",
+  "quantityUnitOfMeasureForTheContractOrLeg1" : "TONE",
+  "quantityUnitOfMeasureLeg2" : "TONE",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "7H6GLXDRUGQFU57RNE97",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrency2" : "USD",
+  "spreadOfLeg2" : {
+    "spreadCurrencyOfLeg2" : "USD",
+    "spreadNotationOfLeg2" : "Monetary",
+    "spreadOfLeg2Monetary" : 0.0000000000000
+  },
+  "totalNotionalQuantityLeg2" : 10000.00000,
+  "totalNotionalQuantityOfTheContractOrLeg1" : 10000.00000,
+  "underlyingIdentificationType" : "O",
+  "uniqueTransactionIdentifier" : "COMMODITYCFDENERGY02"
+}

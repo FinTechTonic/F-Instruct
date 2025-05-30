@@ -1,0 +1,62 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "CURR",
+  "beneficiary1" : "W22LROWP2IHZNBB6K528",
+  "beneficiary1IdentifierTypeIndicator" : true,
+  "callAmount" : 20827500.00000000,
+  "callCurrency" : "CNY",
+  "cleared" : "N",
+  "contractType" : "OPTN",
+  "counterparty1" : "W22LROWP2IHZNBB6K528",
+  "counterparty2" : "MXKQVM4U1OHBQWFPG196",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "direction" : "BYER",
+  "effectiveDate" : "2020-07-06",
+  "eventIdentifier" : "envuatuatExt1b45f8f29f8024fcf882f22f0287de1bc",
+  "eventTimestamp" : "2020-11-10T20:15:45Z",
+  "eventType" : "TRAD",
+  "exchangeRateBasis" : "USD/CNY",
+  "executionTimestamp" : "2020-07-06T03:58:14Z",
+  "expirationDate" : "2020-09-29",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "OptionExerciseStyle" : "EURO",
+          "OtherUnderlierID" : "USD",
+          "OtherUnderlierIDSource" : "CCY",
+          "UnderlierID" : "CNY",
+          "UnderlierIDSource" : "CCY"
+        },
+        "Header" : {
+          "AssetClass" : "Foreign_Exchange",
+          "InstrumentType" : "Option",
+          "Level" : "UPI",
+          "UseCase" : "Vanilla_Option"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "CNY",
+  "notionalCurrencyLeg2" : "USD",
+  "notionalLeg1" : 20827500.00000000,
+  "notionalLeg2" : 3000000.00000000,
+  "optionPremiumAmount" : 40723.80000000,
+  "optionPremiumCurrency" : "CNY",
+  "optionPremiumPaymentDate" : "2020-07-08",
+  "putAmount" : 3000000.00000000,
+  "putCurrency" : "USD",
+  "reportSubmittingEntityID" : "W22LROWP2IHZNBB6K528",
+  "reportingEntity" : "W22LROWP2IHZNBB6K528",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "secondaryTransactionIdentifier" : "FXVANILLAOPTIONEXE01",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "strikePrice" : {
+    "strikePriceCurrency" : "USD/CNY",
+    "strikePriceMonetary" : 6.9425000000000,
+    "strikePriceNotation" : "Monetary"
+  },
+  "uniqueTransactionIdentifier" : "FXVANILLAOPTIONEXE02"
+}

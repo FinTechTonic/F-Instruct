@@ -1,0 +1,16 @@
+{
+  "id" : "test-pack-projection-esma-emir-margin-report-to-iso20022-collateral",
+  "pipelineId" : "pipeline-projection-esma-emir-margin-report-to-iso20022",
+  "name" : "Collateral",
+  "samples" : [ {
+    "id" : "collateral-ex01",
+    "name" : "Collateral ex01",
+    "inputPath" : "regulatory-reporting/output/esma-emir-margin/collateral/Collateral-ex01-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-margin/collateral/Collateral-ex01-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 5,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  } ]
+}

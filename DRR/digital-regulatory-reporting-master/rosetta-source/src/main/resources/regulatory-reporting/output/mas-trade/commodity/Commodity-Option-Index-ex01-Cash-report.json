@@ -1,0 +1,65 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "COMM",
+  "bookingLocation" : "US",
+  "callAmount" : 1400001.2858,
+  "callCurrency" : "USD",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "OPTN",
+  "counterparty1" : "DUMMY0000000000LEI02",
+  "counterparty2" : "DUMMY0000000000LEI01",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "DUMMY0000000000LEI02",
+  "deliveryType" : "CASH",
+  "direction" : "BYER",
+  "effectiveDate" : "2021-06-21",
+  "eventDate" : "2021-06-21",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-06-21T21:26:47Z",
+  "expirationDate" : "2023-06-21",
+  "finalContractualSettlementDate" : "2023-06-21",
+  "firstExerciseDate" : "2023-06-21",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "OptionExerciseStyle" : "EURO",
+          "OptionType" : "CALL",
+          "UnderlierID" : "ELECTRICITY PJM-EASTERN HUB-REAL TIME",
+          "UnderlierIDSource" : "COMM",
+          "ValuationMethodorTrigger" : "Vanilla"
+        },
+        "Header" : {
+          "AssetClass" : "Commodities",
+          "InstrumentType" : "Option",
+          "Level" : "UPI",
+          "UseCase" : "Option"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfTheContractOrLeg1" : 1400001.2858,
+  "notionalCurrencyOfTheContractOrLeg1" : "USD",
+  "notionalQuantityOfTheContractOrLeg1" : 5347.19,
+  "optionPremiumAmount" : 57960.00,
+  "optionPremiumCurrency" : "USD",
+  "optionStyle" : "EURO",
+  "optionType" : "CALL",
+  "quantityFrequencyOfTheContractOrLeg1" : "EXPI",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "DUMMY0000000000LEI02",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrency1" : "USD",
+  "strikePrice" : {
+    "strikePriceCurrency" : "USD",
+    "strikePriceMonetary" : 261.8200000000000,
+    "strikePriceNotation" : "Monetary"
+  },
+  "totalNotionalQuantityOfTheContractOrLeg1" : 5347.19,
+  "underlyingIdentificationType" : "O",
+  "uniqueTransactionIdentifier" : "COMMODITYOPTIONIND01"
+}

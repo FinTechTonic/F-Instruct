@@ -1,0 +1,55 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "CRDT",
+  "bookingLocation" : "NonUSA",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "SWAP",
+  "counterparty1" : "549300V2LQD6SX1WIG70",
+  "counterparty2" : "549300CWK6F65W566G32",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "549300V2LQD6SX1WIG70",
+  "deliveryType" : "OPTL",
+  "direction" : "SLLR",
+  "effectiveDate" : "2020-09-21",
+  "eventDate" : "2022-03-08",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2022-03-08T11:59:08Z",
+  "expirationDate" : "2025-12-20",
+  "finalContractualSettlementDate" : "2025-12-20",
+  "fixedRateDayCountConventionOfLeg1" : "A004",
+  "fixedRateOfLeg1" : 1.00,
+  "fixedRatePaymentFrequencyPeriodMultiplierOfLeg1" : 3,
+  "fixedRatePaymentFrequencyPeriodOfLeg1" : "MNTH",
+  "nameOfTheUnderlyingIndex" : "iTraxx Asia ex-Japan IG Series 34 Version 1",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "OPTL",
+          "Underlying" : {
+            "UnderlierIDSource" : "CRIDX",
+            "UnderlyingInstrumentIndexTermUnit" : "YEAR"
+          },
+          "UnderlyingIssuerType" : "Corporate"
+        },
+        "Header" : {
+          "AssetClass" : "Credit",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Index_Tranche"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfTheContractOrLeg1" : 1000000,
+  "notionalCurrencyOfTheContractOrLeg1" : "USD",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "549300V2LQD6SX1WIG70",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "underlying" : "4ABCAMBE5",
+  "underlyingIdentificationType" : "X",
+  "uniqueTransactionIdentifier" : "CREDITINDEXTRANCHE04"
+}

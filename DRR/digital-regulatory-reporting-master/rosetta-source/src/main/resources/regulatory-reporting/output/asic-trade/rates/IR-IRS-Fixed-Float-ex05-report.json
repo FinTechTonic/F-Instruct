@@ -1,0 +1,59 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "INTR",
+  "beneficiary1" : "213800IV9PCAC364HN60",
+  "beneficiary1IdentifierTypeIndicator" : true,
+  "cleared" : "N",
+  "contractType" : "SWAP",
+  "counterparty1" : "213800IV9PCAC364HN60",
+  "counterparty2" : "213800WWTABZ1GOJHH37",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "dayCountConventionLeg1" : "A004",
+  "dayCountConventionLeg2" : "A004",
+  "direction2OfLeg1" : "MAKE",
+  "direction2OfLeg2" : "TAKE",
+  "effectiveDate" : "2018-12-19",
+  "eventTimestamp" : "2021-12-06T17:09:11Z",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-12-06T17:09:11Z",
+  "expirationDate" : "2024-03-20",
+  "fixedRateLeg1" : 319.500,
+  "floatingRateReferencePeriodOfLeg2Multiplier" : 3,
+  "floatingRateReferencePeriodOfLeg2TimePeriod" : "MNTH",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalCurrency" : "USD",
+          "NotionalSchedule" : "Constant",
+          "ReferenceRateTermUnit" : "MNTH",
+          "ReferenceRateTermValue" : 3,
+          "UnderlierID" : "USD-LIBOR-BBA",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Fixed_Float_Zero_Coupon"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "USD",
+  "notionalCurrencyLeg2" : "USD",
+  "notionalLeg1" : 100000000,
+  "notionalLeg2" : 100000000,
+  "paymentFrequencyPeriodLeg1" : "EXPI",
+  "paymentFrequencyPeriodLeg2" : "EXPI",
+  "paymentFrequencyPeriodMultiplierLeg1" : 1,
+  "paymentFrequencyPeriodMultiplierLeg2" : 1,
+  "reportSubmittingEntityID" : "213800IV9PCAC364HN60",
+  "reportingEntity" : "213800IV9PCAC364HN60",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "secondaryTransactionIdentifier" : "IRIRSFIXEDFLOATEXX01",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "uniqueTransactionIdentifier" : "IRIRSFIXEDFLOATEXX02"
+}

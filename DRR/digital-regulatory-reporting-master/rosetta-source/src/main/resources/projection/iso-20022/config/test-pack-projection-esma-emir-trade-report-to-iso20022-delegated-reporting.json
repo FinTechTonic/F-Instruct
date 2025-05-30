@@ -1,0 +1,76 @@
+{
+  "id" : "test-pack-projection-esma-emir-trade-report-to-iso20022-delegated-reporting",
+  "pipelineId" : "pipeline-projection-esma-emir-trade-report-to-iso20022",
+  "name" : "Delegated Reporting",
+  "samples" : [ {
+    "id" : "dr-ex01-cftc-partya-self",
+    "name" : "dr ex01 cftc partyA self",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/delegated-reporting/dr-ex01-cftc-partyA-self-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/delegated-reporting/dr-ex01-cftc-partyA-self-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 2,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "dr-ex01-emir-partya-self",
+    "name" : "dr ex01 emir partyA self",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/delegated-reporting/dr-ex01-emir-partyA-self-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/delegated-reporting/dr-ex01-emir-partyA-self-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 2,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "dr-ex01-emir-partyb-self",
+    "name" : "dr ex01 emir partyB self",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/delegated-reporting/dr-ex01-emir-partyB-self-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/delegated-reporting/dr-ex01-emir-partyB-self-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 2,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "dr-ex02-emir-partya-mandatory-delegated",
+    "name" : "dr ex02 emir partyA mandatory delegated",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/delegated-reporting/dr-ex02-emir-partyA-mandatory-delegated-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/delegated-reporting/dr-ex02-emir-partyA-mandatory-delegated-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 3,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "dr-ex02-emir-partya-self",
+    "name" : "dr ex02 emir partyA self",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/delegated-reporting/dr-ex02-emir-partyA-self-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/delegated-reporting/dr-ex02-emir-partyA-self-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 3,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "dr-ex03-emir-partya-self",
+    "name" : "dr ex03 emir partyA self",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/delegated-reporting/dr-ex03-emir-partyA-self-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/delegated-reporting/dr-ex03-emir-partyA-self-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 3,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "dr-ex03-emir-partya-voluntary-delegated",
+    "name" : "dr ex03 emir partyA voluntary delegated",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/delegated-reporting/dr-ex03-emir-partyA-voluntary-delegated-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/delegated-reporting/dr-ex03-emir-partyA-voluntary-delegated-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 3,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  } ]
+}

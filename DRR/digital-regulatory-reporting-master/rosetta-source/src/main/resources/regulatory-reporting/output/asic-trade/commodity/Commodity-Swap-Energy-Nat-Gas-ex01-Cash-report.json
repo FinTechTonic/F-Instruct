@@ -1,0 +1,55 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "OTHR",
+  "cleared" : "N",
+  "contractType" : "SWAP",
+  "counterparty1" : "DUMMY0000000000LEI02",
+  "counterparty2" : "DUMMY0000000000LEI01",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "direction2OfLeg1" : "TAKE",
+  "direction2OfLeg2" : "MAKE",
+  "effectiveDate" : "2022-02-01",
+  "eventIdentifier" : "f4fff8876cbf47eb8538033b3069a281",
+  "eventTimestamp" : "2021-11-19T21:53:36.2241368Z",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-11-01T14:32:02Z",
+  "expirationDate" : "2022-02-28",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "ReturnorPayoutTrigger" : "Total Return",
+          "UnderlierID" : "NATURAL GAS-HENRY HUB-NYMEX",
+          "UnderlierIDSource" : "COMM"
+        },
+        "Header" : {
+          "AssetClass" : "Commodities",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Swap"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "USD",
+  "notionalCurrencyLeg2" : "USD",
+  "notionalLeg1" : 7020000.000,
+  "notionalLeg2" : 7020000.000,
+  "notionalQuantityLeg1" : 1300000,
+  "notionalQuantityLeg2" : 1300000,
+  "price" : {
+    "priceCurrency" : "USD",
+    "priceMonetary" : 5.4000000000000,
+    "priceNotation" : "Monetary"
+  },
+  "priceCurrency" : "USD",
+  "reportSubmittingEntityID" : "DUMMY0000000000LEI02",
+  "reportingEntity" : "DUMMY0000000000LEI02",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "totalNotionalQuantityLeg1" : 1300000.00,
+  "totalNotionalQuantityLeg2" : 1300000.00,
+  "uniqueTransactionIdentifier" : "COMMODITYSWAPENERG01"
+}

@@ -1,0 +1,58 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "OTHR",
+  "cleared" : "N",
+  "contractType" : "SWAP",
+  "counterparty1" : "DUMMY0000000000LEI02",
+  "counterparty2" : "DUMMY0000000000LEI01",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "direction2OfLeg1" : "TAKE",
+  "direction2OfLeg2" : "MAKE",
+  "effectiveDate" : "2021-12-22",
+  "eventIdentifier" : "05c417e2a1bf48839568a8606b6f64c2",
+  "eventTimestamp" : "2021-10-19T22:34:57.3418443Z",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-02-26T19:19:47Z",
+  "expirationDate" : "2021-12-22",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "ReturnorPayoutTrigger" : "Total Return",
+          "UnderlierID" : "SOYABEAN MEAL-CBOT",
+          "UnderlierIDSource" : "COMM"
+        },
+        "Header" : {
+          "AssetClass" : "Commodities",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Swap"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "USD",
+  "notionalCurrencyLeg2" : "USD",
+  "notionalLeg1" : 75000.00,
+  "notionalLeg2" : 75000.00,
+  "notionalQuantityLeg1" : 200,
+  "notionalQuantityLeg2" : 200,
+  "price" : {
+    "priceCurrency" : "USD",
+    "priceMonetary" : 375.0000000000000,
+    "priceNotation" : "Monetary"
+  },
+  "priceCurrency" : "USD",
+  "priceUnitOfMeasure" : "GBTN",
+  "quantityUnitOfMeasureLeg1" : "GBTN",
+  "quantityUnitOfMeasureLeg2" : "GBTN",
+  "reportSubmittingEntityID" : "DUMMY0000000000LEI02",
+  "reportingEntity" : "DUMMY0000000000LEI02",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "totalNotionalQuantityLeg1" : 200.00,
+  "totalNotionalQuantityLeg2" : 200.00,
+  "uniqueTransactionIdentifier" : "COMMODITYSWAPAGRAI01"
+}

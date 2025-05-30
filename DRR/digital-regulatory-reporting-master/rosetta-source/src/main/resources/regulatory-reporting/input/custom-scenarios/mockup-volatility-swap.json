@@ -1,0 +1,965 @@
+{
+  "originatingWorkflowStep" : {
+    "businessEvent" : {
+      "intent" : "ContractFormation",
+      "eventDate" : "2022-02-07",
+      "instruction" : [ {
+        "primitiveInstruction" : {
+          "contractFormation" : {
+            "legalAgreement" : [ {
+              "legalAgreementIdentification" : {
+                "agreementName" : {
+                  "agreementType" : "MasterAgreement",
+                  "masterAgreementType" : {
+                    "value" : "ISDAMaster"
+                  }
+                },
+                "vintage" : 2002
+              },
+              "contractualParty" : [ {
+                "globalReference" : "90f3b9d1",
+                "externalReference" : "PARTY1"
+              }, {
+                "globalReference" : "d126b0ca",
+                "externalReference" : "PARTY2"
+              } ],
+              "meta" : {
+                "globalKey" : "4802850c"
+              }
+            } ]
+          }
+        },
+        "before" : {
+          "value" : {
+            "trade" : {
+              "tradeIdentifier" : [ {
+                "issuer" : {
+                  "value" : "DUMMYLEI123456789001",
+                  "meta" : {
+                    "scheme" : "http://www.fpml.org/coding-scheme/external/issuer-identifier"
+                  }
+                },
+                "assignedIdentifier" : [ {
+                  "identifier" : {
+                    "value" : "MOCKUPVOLATILITYSW02",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/unique-transaction-identifier"
+                    }
+                  }
+                } ],
+                "meta" : {
+                  "globalKey" : "af99bd4c"
+                },
+                "identifierType" : "UniqueTransactionIdentifier"
+              }, {
+                "issuerReference" : {
+                  "globalReference" : "d126b0ca",
+                  "externalReference" : "PARTY2"
+                },
+                "assignedIdentifier" : [ {
+                  "identifier" : {
+                    "value" : "MOCKUPVOLATILITYSW01",
+                    "meta" : {
+                      "scheme" : "CS-Id"
+                    }
+                  }
+                } ],
+                "meta" : {
+                  "globalKey" : "ef164443"
+                }
+              } ],
+              "tradeDate" : {
+                "value" : "2022-02-07",
+                "meta" : {
+                  "globalKey" : "3f3087"
+                }
+              },
+              "tradableProduct" : {
+                "product" : {
+                  "contractualProduct" : {
+                    "productTaxonomy" : [ {
+                      "source" : "CFI",
+                      "value" : {
+                        "name" : {
+                          "value" : "SEILXX",
+                          "meta" : {
+                            "scheme" : "http://www.fpml.org/coding-scheme/external/product-classification/iso10962"
+                          }
+                        }
+                      }
+                    }, {
+                      "source" : "ISDA",
+                      "productQualifier" : "EquitySwap_ParameterReturnVolatility_Index"
+                    } ],
+                    "economicTerms" : {
+                      "payout" : {
+                        "performancePayout" : [ {
+                          "payerReceiver" : {
+                            "payer" : "Party1",
+                            "receiver" : "Party2"
+                          },
+                          "priceQuantity" : {
+                            "quantitySchedule" : {
+                              "address" : {
+                                "scope" : "DOCUMENT",
+                                "value" : "quantity-1"
+                              }
+                            },
+                            "meta" : {
+                              "globalKey" : "0"
+                            }
+                          },
+                          "settlementTerms" : {
+                            "settlementCurrency" : {
+                              "value" : "GBP"
+                            },
+                            "meta" : {
+                              "globalKey" : "112d5"
+                            }
+                          },
+                          "observationTerms" : {
+                            "observationDates" : {
+                              "periodicSchedule" : {
+                                "startDate" : {
+                                  "adjustableDate" : {
+                                    "unadjustedDate" : "2015-03-30",
+                                    "dateAdjustments" : {
+                                      "businessDayConvention" : "NotApplicable",
+                                      "meta" : {
+                                        "globalKey" : "3a4b88ab"
+                                      }
+                                    },
+                                    "meta" : {
+                                      "globalKey" : "26afc209"
+                                    }
+                                  },
+                                  "meta" : {
+                                    "globalKey" : "26afc209"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "valuationDates" : {
+                            "valuationDatesFinal" : {
+                              "valuationDate" : {
+                                "adjustableDate" : {
+                                  "unadjustedDate" : "2015-04-07",
+                                  "dateAdjustments" : {
+                                    "businessDayConvention" : "NotApplicable",
+                                    "meta" : {
+                                      "globalKey" : "3a4b88ab"
+                                    }
+                                  },
+                                  "meta" : {
+                                    "globalKey" : "26b05bf2"
+                                  }
+                                },
+                                "meta" : {
+                                  "globalKey" : "26b05bf2"
+                                }
+                              },
+                              "meta" : {
+                                "globalKey" : "26b05bf2"
+                              }
+                            }
+                          },
+                          "underlier" : {
+                            "index" : {
+                              "productIdentifier" : [ {
+                                "address" : {
+                                  "scope" : "DOCUMENT",
+                                  "value" : "productIdentifier-2"
+                                }
+                              }, {
+                                "address" : {
+                                  "scope" : "DOCUMENT",
+                                  "value" : "productIdentifier-1"
+                                }
+                              } ]
+                            },
+                            "meta" : {
+                              "globalKey" : "0"
+                            }
+                          },
+                          "returnTerms" : {
+                            "volatilityReturnTerms" : {
+                              "expectedN" : 5,
+                              "volatilityStrikePrice" : {
+                                "value" : 299.00,
+                                "priceType" : "Volatility"
+                              },
+                              "volatilityCapFloor" : {
+                                "applicable" : true,
+                                "totalVolatilityCap" : 897,
+                                "volatilityCapFactor" : 3.0
+                              }
+                            }
+                          },
+                          "meta" : {
+                            "globalKey" : "9877fe4d"
+                          }
+                        } ],
+                        "meta" : {
+                          "globalKey" : "9877fe4d"
+                        }
+                      },
+                      "nonStandardisedTerms" : false
+                    },
+                    "meta" : {
+                      "globalKey" : "29798b97"
+                    }
+                  },
+                  "meta" : {
+                    "globalKey" : "29798b97"
+                  }
+                },
+                "tradeLot" : [ {
+                  "priceQuantity" : [ {
+                    "quantity" : [ {
+                      "value" : {
+                        "value" : 1000.00,
+                        "unit" : {
+                          "currency" : {
+                            "value" : "GBP"
+                          }
+                        }
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "quantity-1"
+                        } ]
+                      }
+                    } ],
+                    "observable" : {
+                      "productIdentifier" : [ {
+                        "value" : {
+                          "identifier" : {
+                            "value" : ".FTSE",
+                            "meta" : {
+                              "scheme" : "http://www.fpml.org/coding-scheme/external/instrument-id-Reuters-RIC"
+                            }
+                          },
+                          "source" : "RIC",
+                          "meta" : {
+                            "globalKey" : "528205de"
+                          }
+                        },
+                        "meta" : {
+                          "location" : [ {
+                            "scope" : "DOCUMENT",
+                            "value" : "productIdentifier-2"
+                          } ]
+                        }
+                      }, {
+                        "value" : {
+                          "identifier" : {
+                            "value" : "IE00B60SWT88",
+                            "meta" : {
+                              "scheme" : "http://www.fpml.org/coding-scheme/external/instrument-id-ISIN"
+                            }
+                          },
+                          "source" : "ISIN",
+                          "meta" : {
+                            "globalKey" : "6fea093f"
+                          }
+                        },
+                        "meta" : {
+                          "location" : [ {
+                            "scope" : "DOCUMENT",
+                            "value" : "productIdentifier-1"
+                          } ]
+                        }
+                      } ],
+                      "meta" : {
+                        "globalKey" : "d528c5ff"
+                      }
+                    },
+                    "meta" : {
+                      "globalKey" : "b35da995"
+                    }
+                  } ]
+                } ],
+                "counterparty" : [ {
+                  "role" : "Party1",
+                  "partyReference" : {
+                    "globalReference" : "90f3b9d1",
+                    "externalReference" : "PARTY1"
+                  }
+                }, {
+                  "role" : "Party2",
+                  "partyReference" : {
+                    "globalReference" : "d126b0ca",
+                    "externalReference" : "PARTY2"
+                  }
+                } ]
+              },
+              "party" : [ {
+                "partyId" : [ {
+                  "identifier" : {
+                    "value" : "DUMMYLEI123456789002",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                    }
+                  },
+                  "identifierType" : "LEI",
+                  "meta" : {
+                    "globalKey" : "ac689c4b"
+                  }
+                } ],
+                "businessUnit" : [ {
+                  "contactInformation" : {
+                    "address" : [ {
+                      "country" : {
+                        "value" : "CA"
+                      }
+                    } ]
+                  },
+                  "meta" : {
+                    "globalKey" : "85e"
+                  }
+                } ],
+                "contactInformation" : {
+                  "address" : [ {
+                    "country" : {
+                      "value" : "CA"
+                    }
+                  } ]
+                },
+                "meta" : {
+                  "globalKey" : "90f3b9d1",
+                  "externalKey" : "PARTY1"
+                }
+              }, {
+                "partyId" : [ {
+                  "identifier" : {
+                    "value" : "DUMMYLEI123456789001",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                    }
+                  },
+                  "identifierType" : "LEI",
+                  "meta" : {
+                    "globalKey" : "ac689c2c"
+                  }
+                } ],
+                "contactInformation" : {
+                  "address" : [ {
+                    "country" : {
+                      "value" : "US"
+                    }
+                  } ]
+                },
+                "meta" : {
+                  "globalKey" : "d126b0ca",
+                  "externalKey" : "PARTY2"
+                }
+              } ],
+              "meta" : {
+                "globalKey" : "f01dfd36"
+              }
+            },
+            "meta" : {
+              "globalKey" : "f01dfd36"
+            }
+          }
+        }
+      } ],
+      "after" : [ {
+        "trade" : {
+          "tradeIdentifier" : [ {
+            "issuer" : {
+              "value" : "DUMMYLEI123456789001",
+              "meta" : {
+                "scheme" : "http://www.fpml.org/coding-scheme/external/issuer-identifier"
+              }
+            },
+            "assignedIdentifier" : [ {
+              "identifier" : {
+                "value" : "MOCKUPVOLATILITYSW02",
+                "meta" : {
+                  "scheme" : "http://www.fpml.org/coding-scheme/external/unique-transaction-identifier"
+                }
+              }
+            } ],
+            "meta" : {
+              "globalKey" : "af99bd4c"
+            },
+            "identifierType" : "UniqueTransactionIdentifier"
+          }, {
+            "issuerReference" : {
+              "globalReference" : "d126b0ca",
+              "externalReference" : "PARTY2"
+            },
+            "assignedIdentifier" : [ {
+              "identifier" : {
+                "value" : "MOCKUPVOLATILITYSW01",
+                "meta" : {
+                  "scheme" : "CS-Id"
+                }
+              }
+            } ],
+            "meta" : {
+              "globalKey" : "ef164443"
+            }
+          } ],
+          "tradeDate" : {
+            "value" : "2022-02-07",
+            "meta" : {
+              "globalKey" : "3f3087"
+            }
+          },
+          "tradableProduct" : {
+            "product" : {
+              "contractualProduct" : {
+                "productTaxonomy" : [ {
+                  "source" : "CFI",
+                  "value" : {
+                    "name" : {
+                      "value" : "SEILXX",
+                      "meta" : {
+                        "scheme" : "http://www.fpml.org/coding-scheme/external/product-classification/iso10962"
+                      }
+                    }
+                  }
+                }, {
+                  "source" : "ISDA",
+                  "productQualifier" : "EquitySwap_ParameterReturnVolatility_Index"
+                } ],
+                "economicTerms" : {
+                  "payout" : {
+                    "performancePayout" : [ {
+                      "payerReceiver" : {
+                        "payer" : "Party1",
+                        "receiver" : "Party2"
+                      },
+                      "priceQuantity" : {
+                        "quantitySchedule" : {
+                          "address" : {
+                            "scope" : "DOCUMENT",
+                            "value" : "quantity-1"
+                          }
+                        },
+                        "meta" : {
+                          "globalKey" : "0"
+                        }
+                      },
+                      "settlementTerms" : {
+                        "settlementCurrency" : {
+                          "value" : "GBP"
+                        },
+                        "meta" : {
+                          "globalKey" : "112d5"
+                        }
+                      },
+                      "observationTerms" : {
+                        "observationDates" : {
+                          "periodicSchedule" : {
+                            "startDate" : {
+                              "adjustableDate" : {
+                                "unadjustedDate" : "2015-03-30",
+                                "dateAdjustments" : {
+                                  "businessDayConvention" : "NotApplicable",
+                                  "meta" : {
+                                    "globalKey" : "3a4b88ab"
+                                  }
+                                },
+                                "meta" : {
+                                  "globalKey" : "26afc209"
+                                }
+                              },
+                              "meta" : {
+                                "globalKey" : "26afc209"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "valuationDates" : {
+                        "valuationDatesFinal" : {
+                          "valuationDate" : {
+                            "adjustableDate" : {
+                              "unadjustedDate" : "2015-04-07",
+                              "dateAdjustments" : {
+                                "businessDayConvention" : "NotApplicable",
+                                "meta" : {
+                                  "globalKey" : "3a4b88ab"
+                                }
+                              },
+                              "meta" : {
+                                "globalKey" : "26b05bf2"
+                              }
+                            },
+                            "meta" : {
+                              "globalKey" : "26b05bf2"
+                            }
+                          },
+                          "meta" : {
+                            "globalKey" : "26b05bf2"
+                          }
+                        }
+                      },
+                      "underlier" : {
+                        "index" : {
+                          "productIdentifier" : [ {
+                            "address" : {
+                              "scope" : "DOCUMENT",
+                              "value" : "productIdentifier-2"
+                            }
+                          }, {
+                            "address" : {
+                              "scope" : "DOCUMENT",
+                              "value" : "productIdentifier-1"
+                            }
+                          } ]
+                        },
+                        "meta" : {
+                          "globalKey" : "0"
+                        }
+                      },
+                      "returnTerms" : {
+                        "volatilityReturnTerms" : {
+                          "expectedN" : 5,
+                          "volatilityStrikePrice" : {
+                            "value" : 299.00,
+                            "priceType" : "Volatility"
+                          },
+                          "volatilityCapFloor" : {
+                            "applicable" : true,
+                            "totalVolatilityCap" : 897,
+                            "volatilityCapFactor" : 3.0
+                          }
+                        }
+                      },
+                      "meta" : {
+                        "globalKey" : "9877fe4d"
+                      }
+                    } ],
+                    "meta" : {
+                      "globalKey" : "9877fe4d"
+                    }
+                  },
+                  "nonStandardisedTerms" : false
+                },
+                "meta" : {
+                  "globalKey" : "29798b97"
+                }
+              },
+              "meta" : {
+                "globalKey" : "29798b97"
+              }
+            },
+            "tradeLot" : [ {
+              "priceQuantity" : [ {
+                "quantity" : [ {
+                  "value" : {
+                    "value" : 1000.00,
+                    "unit" : {
+                      "currency" : {
+                        "value" : "GBP"
+                      }
+                    }
+                  },
+                  "meta" : {
+                    "location" : [ {
+                      "scope" : "DOCUMENT",
+                      "value" : "quantity-1"
+                    } ]
+                  }
+                } ],
+                "observable" : {
+                  "productIdentifier" : [ {
+                    "value" : {
+                      "identifier" : {
+                        "value" : ".FTSE",
+                        "meta" : {
+                          "scheme" : "http://www.fpml.org/coding-scheme/external/instrument-id-Reuters-RIC"
+                        }
+                      },
+                      "source" : "RIC",
+                      "meta" : {
+                        "globalKey" : "528205de"
+                      }
+                    },
+                    "meta" : {
+                      "location" : [ {
+                        "scope" : "DOCUMENT",
+                        "value" : "productIdentifier-2"
+                      } ]
+                    }
+                  }, {
+                    "value" : {
+                      "identifier" : {
+                        "value" : "IE00B60SWT88",
+                        "meta" : {
+                          "scheme" : "http://www.fpml.org/coding-scheme/external/instrument-id-ISIN"
+                        }
+                      },
+                      "source" : "ISIN",
+                      "meta" : {
+                        "globalKey" : "6fea093f"
+                      }
+                    },
+                    "meta" : {
+                      "location" : [ {
+                        "scope" : "DOCUMENT",
+                        "value" : "productIdentifier-1"
+                      } ]
+                    }
+                  } ],
+                  "meta" : {
+                    "globalKey" : "d528c5ff"
+                  }
+                },
+                "meta" : {
+                  "globalKey" : "b35da995"
+                }
+              } ]
+            } ],
+            "counterparty" : [ {
+              "role" : "Party1",
+              "partyReference" : {
+                "globalReference" : "90f3b9d1",
+                "externalReference" : "PARTY1"
+              }
+            }, {
+              "role" : "Party2",
+              "partyReference" : {
+                "globalReference" : "d126b0ca",
+                "externalReference" : "PARTY2"
+              }
+            } ]
+          },
+          "party" : [ {
+            "partyId" : [ {
+              "identifier" : {
+                "value" : "DUMMYLEI123456789002",
+                "meta" : {
+                  "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                }
+              },
+              "identifierType" : "LEI",
+              "meta" : {
+                "globalKey" : "ac689c4b"
+              }
+            } ],
+            "businessUnit" : [ {
+              "contactInformation" : {
+                "address" : [ {
+                  "country" : {
+                    "value" : "CA"
+                  }
+                } ]
+              },
+              "meta" : {
+                "globalKey" : "85e"
+              }
+            } ],
+            "contactInformation" : {
+              "address" : [ {
+                "country" : {
+                  "value" : "CA"
+                }
+              } ]
+            },
+            "meta" : {
+              "globalKey" : "90f3b9d1",
+              "externalKey" : "PARTY1"
+            }
+          }, {
+            "partyId" : [ {
+              "identifier" : {
+                "value" : "DUMMYLEI123456789001",
+                "meta" : {
+                  "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                }
+              },
+              "identifierType" : "LEI",
+              "meta" : {
+                "globalKey" : "ac689c2c"
+              }
+            } ],
+            "contactInformation" : {
+              "address" : [ {
+                "country" : {
+                  "value" : "US"
+                }
+              } ]
+            },
+            "meta" : {
+              "globalKey" : "d126b0ca",
+              "externalKey" : "PARTY2"
+            }
+          } ],
+          "contractDetails" : {
+            "documentation" : [ {
+              "legalAgreementIdentification" : {
+                "agreementName" : {
+                  "agreementType" : "MasterAgreement",
+                  "masterAgreementType" : {
+                    "value" : "ISDAMaster"
+                  }
+                },
+                "vintage" : 2002
+              },
+              "contractualParty" : [ {
+                "globalReference" : "90f3b9d1",
+                "externalReference" : "PARTY1"
+              }, {
+                "globalReference" : "d126b0ca",
+                "externalReference" : "PARTY2"
+              } ],
+              "meta" : {
+                "globalKey" : "4802850c"
+              }
+            } ]
+          },
+          "meta" : {
+            "globalKey" : "f01dfd36"
+          }
+        },
+        "state" : {
+          "positionState" : "Formed"
+        },
+        "meta" : {
+          "globalKey" : "f01dfd36"
+        }
+      } ]
+    },
+    "previousWorkflowStep" : {
+      "globalReference" : "235b40a0"
+    },
+    "messageInformation" : {
+      "messageId" : {
+        "value" : "DTDApproved2407119003DFCFTCRiskNewNewEquity",
+        "meta" : {
+          "scheme" : "http://www.bankx.com/msg_id"
+        }
+      },
+      "sentBy" : {
+        "value" : "DUMMYLEI123456789001"
+      },
+      "sentTo" : [ {
+        "value" : "DTCCUS"
+      } ]
+    },
+    "timestamp" : [ {
+      "dateTime" : "2022-02-07T10:42:17Z",
+      "qualification" : "eventCreationDateTime"
+    }, {
+      "dateTime" : "2022-02-07T10:36:37Z",
+      "qualification" : "executionDateTime"
+    } ],
+    "eventIdentifier" : [ {
+      "assignedIdentifier" : [ {
+        "identifier" : {
+          "value" : "DTDApproved2407119003DFCFTCRiskNewNewEquity"
+        }
+      } ],
+      "meta" : {
+        "globalKey" : "13aa23b6"
+      }
+    } ],
+    "action" : "New",
+    "party" : [ {
+      "partyId" : [ {
+        "identifier" : {
+          "value" : "DUMMYLEI123456789002",
+          "meta" : {
+            "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+          }
+        },
+        "identifierType" : "LEI",
+        "meta" : {
+          "globalKey" : "ac689c4b"
+        }
+      } ],
+      "businessUnit" : [ {
+        "contactInformation" : {
+          "address" : [ {
+            "country" : {
+              "value" : "CA"
+            }
+          } ]
+        },
+        "meta" : {
+          "globalKey" : "85e"
+        }
+      } ],
+      "contactInformation" : {
+        "address" : [ {
+          "country" : {
+            "value" : "CA"
+          }
+        } ]
+      },
+      "meta" : {
+        "globalKey" : "90f3b9d1",
+        "externalKey" : "PARTY1"
+      }
+    }, {
+      "partyId" : [ {
+        "identifier" : {
+          "value" : "DUMMYLEI123456789001",
+          "meta" : {
+            "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+          }
+        },
+        "identifierType" : "LEI",
+        "meta" : {
+          "globalKey" : "ac689c2c"
+        }
+      } ],
+      "contactInformation" : {
+        "address" : [ {
+          "country" : {
+            "value" : "US"
+          }
+        } ]
+      },
+      "meta" : {
+        "globalKey" : "d126b0ca",
+        "externalKey" : "PARTY2"
+      }
+    } ]
+  },
+  "reportableInformation" : {
+    "confirmationMethod" : "NotConfirmed",
+    "executionVenueType" : "OffFacility",
+    "intragroup" : false,
+    "largeSizeTrade" : false,
+    "partyInformation" : [ {
+      "partyReference" : {
+        "globalReference" : "d126b0ca",
+        "externalReference" : "PARTY2"
+      },
+      "relatedParty" : [ {
+        "partyReference" : {
+          "globalReference" : "d126b0ca",
+          "externalReference" : "PARTY2"
+        },
+        "role" : "Beneficiary"
+      } ],
+      "regimeInformation" : [ {
+        "regimeName" : {
+          "value" : "DoddFrankAct"
+        },
+        "supervisoryBody" : {
+          "value" : "CFTC"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "EMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "ESMA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "esmaPartyInformation" : {
+          "natureOfParty" : "Financial",
+          "corporateSector" : {
+            "financialSector" : [ "INVF" ]
+          },
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "UKEMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "FCA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "fcaPartyInformation" : {
+          "natureOfParty" : "Financial",
+          "corporateSector" : {
+            "financialSector" : [ "INVF" ]
+          },
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "JFSA"
+        },
+        "supervisoryBody" : {
+          "value" : "JFSA"
+        },
+        "reportingRole" : "ReportingParty",
+        "technicalRecordId" : {
+          "value" : "DTDApproved2407119003DFCFTCRiskNewNewEquity",
+          "meta" : {
+            "scheme" : "http://www.bankx.com/msg_id"
+          }
+        }
+      } ]
+    }, {
+      "partyReference" : {
+        "globalReference" : "90f3b9d1",
+        "externalReference" : "PARTY1"
+      },
+      "regimeInformation" : [ {
+        "regimeName" : {
+          "value" : "EMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "ESMA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "esmaPartyInformation" : {
+          "natureOfParty" : "Financial",
+          "corporateSector" : {
+            "financialSector" : [ "INUN" ]
+          },
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "UKEMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "FCA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "fcaPartyInformation" : {
+          "natureOfParty" : "Financial",
+          "corporateSector" : {
+            "financialSector" : [ "INUN" ]
+          },
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "JFSA"
+        },
+        "supervisoryBody" : {
+          "value" : "JFSA"
+        },
+        "reportingRole" : "ReportingParty",
+        "technicalRecordId" : {
+          "value" : "DTDApproved2407119003DFCFTCRiskNewNewEquity",
+          "meta" : {
+            "scheme" : "http://www.bankx.com/msg_id"
+          }
+        }
+      } ]
+    } ],
+    "originalExecutionTimestamp" : "2022-02-07T10:36:37Z"
+  },
+  "reportingSide" : {
+    "reportingParty" : {
+      "globalReference" : "90f3b9d1",
+      "externalReference" : "PARTY1"
+    },
+    "reportingCounterparty" : {
+      "globalReference" : "d126b0ca",
+      "externalReference" : "PARTY2"
+    }
+  }
+}

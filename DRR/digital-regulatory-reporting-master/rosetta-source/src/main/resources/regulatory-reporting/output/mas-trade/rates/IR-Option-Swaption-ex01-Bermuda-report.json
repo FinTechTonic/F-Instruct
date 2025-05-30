@@ -1,0 +1,76 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "INTR",
+  "bookingLocation" : "GB",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "SWPT",
+  "counterparty1" : "213800WWTABZ1GOJHH37",
+  "counterparty2" : "213800IV9PCAC364HN60",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "213800WWTABZ1GOJHH37",
+  "deliveryType" : "PHYS",
+  "direction" : "BYER",
+  "effectiveDate" : "2021-12-06",
+  "eventDate" : "2021-12-06",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-12-06T17:09:17Z",
+  "expirationDate" : "2022-07-13",
+  "finalContractualSettlementDate" : "2032-01-13",
+  "firstExerciseDate" : "2022-07-13",
+  "fixedRateDayCountConventionOfLeg1" : "A001",
+  "fixedRatePaymentFrequencyPeriodMultiplierOfLeg1" : 6,
+  "fixedRatePaymentFrequencyPeriodOfLeg1" : "MNTH",
+  "floatingRateDayCountConventionOfLeg2" : "A004",
+  "floatingRatePaymentFrequencyPeriodMultiplierOfLeg2" : 3,
+  "floatingRatePaymentFrequencyPeriodOfLeg2" : "MNTH",
+  "floatingRateResetFrequencyPeriodMultiplierOfLeg2" : 3,
+  "floatingRateResetFrequencyPeriodOfLeg2" : "MNTH",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalCurrency" : "USD",
+          "NotionalSchedule" : "Constant",
+          "ReferenceRateTermUnit" : "MNTH",
+          "ReferenceRateTermValue" : 6,
+          "UnderlierID" : "USD-LIBOR-BBA",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Fixed_Float"
+        }
+      },
+      "requestType" : "UnderlyingProductRequest"
+    }
+  },
+  "notionalAmountOfLeg2" : 100000000,
+  "notionalAmountOfTheContractOrLeg1" : 100000000,
+  "notionalCurrencyOfLeg2" : "USD",
+  "notionalCurrencyOfTheContractOrLeg1" : "USD",
+  "optionPremiumAmount" : 1244096.653,
+  "optionPremiumCurrency" : "USD",
+  "optionStyle" : "BERM",
+  "optionType" : "CALL",
+  "platformIdentifier" : "XXXX",
+  "putAmount" : 100000000,
+  "putCurrency" : "USD",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "213800WWTABZ1GOJHH37",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "spreadOfLeg2" : {
+    "spreadNotationOfLeg2" : "Basis",
+    "spreadOfLeg2Basis" : 0
+  },
+  "strikePrice" : {
+    "strikePriceDecimal" : 0.0300000000000,
+    "strikePriceNotation" : "Decimal"
+  },
+  "underlyingIdentificationType" : "O",
+  "uniqueTransactionIdentifier" : "IROPTIONSWAPTIONEX02"
+}

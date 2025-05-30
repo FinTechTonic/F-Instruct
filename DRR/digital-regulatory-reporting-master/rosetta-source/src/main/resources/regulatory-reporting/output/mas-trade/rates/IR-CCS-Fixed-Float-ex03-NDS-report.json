@@ -1,0 +1,68 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "INTR",
+  "bookingLocation" : "ES",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : true,
+  "confirmed" : "NCNF",
+  "contractType" : "SWAP",
+  "counterparty1" : "DUMMY0000000000LEI01",
+  "counterparty2" : "DUMMY0000000000LEI02",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "DUMMY0000000000LEI01",
+  "deliveryType" : "PHYS",
+  "directionOfLeg1" : "TAKE",
+  "directionOfLeg2" : "MAKE",
+  "effectiveDate" : "2021-03-10",
+  "eventDate" : "2021-03-09",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-03-09T13:32:20Z",
+  "expirationDate" : "2028-02-11",
+  "finalContractualSettlementDate" : "2028-02-11",
+  "fixedRateDayCountConventionOfLeg2" : "A005",
+  "fixedRateOfLeg2" : 15.00,
+  "fixedRatePaymentFrequencyPeriodMultiplierOfLeg2" : 6,
+  "fixedRatePaymentFrequencyPeriodOfLeg2" : "MNTH",
+  "floatingRateDayCountConventionOfLeg1" : "A005",
+  "floatingRatePaymentFrequencyPeriodMultiplierOfLeg1" : 6,
+  "floatingRatePaymentFrequencyPeriodOfLeg1" : "MNTH",
+  "floatingRateResetFrequencyPeriodMultiplierOfLeg1" : 6,
+  "floatingRateResetFrequencyPeriodOfLeg1" : "MNTH",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalCurrency" : "GBP",
+          "NotionalSchedule" : "Constant",
+          "OtherNotionalCurrency" : "KRW",
+          "ReferenceRateTermUnit" : "MNTH",
+          "ReferenceRateTermValue" : 6,
+          "UnderlierID" : "GBP-LIBOR-BBA",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Cross_Currency_Fixed_Float"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfLeg2" : 15000000,
+  "notionalAmountOfTheContractOrLeg1" : 15000000,
+  "notionalCurrencyOfLeg2" : "KRW",
+  "notionalCurrencyOfTheContractOrLeg1" : "GBP",
+  "platformIdentifier" : "XXXX",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "DUMMY0000000000LEI01",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "spreadOfLeg1" : {
+    "spreadNotationOfLeg1" : "Basis",
+    "spreadOfLeg1Basis" : 12
+  },
+  "underlyingIdentificationType" : "O",
+  "uniqueTransactionIdentifier" : "IRCCSFIXEDFLOATEXN03"
+}

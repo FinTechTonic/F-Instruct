@@ -1,0 +1,68 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "COMM",
+  "bookingLocation" : "GB",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "SWAP",
+  "counterparty1" : "213800IV9PCAC364HN60",
+  "counterparty2" : "213800WWTABZ1GOJHH37",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "213800IV9PCAC364HN60",
+  "deliveryType" : "CASH",
+  "directionOfLeg1" : "MAKE",
+  "directionOfLeg2" : "TAKE",
+  "effectiveDate" : "2014-02-01",
+  "eventDate" : "2022-03-17",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2022-03-17T14:44:58Z",
+  "expirationDate" : "2014-05-21",
+  "finalContractualSettlementDate" : "2014-05-21",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "ReturnorPayoutTrigger" : "Total Return",
+          "UnderlierID" : "OIL-WTI-PLATTS MARKETWIRE",
+          "UnderlierIDSource" : "COMM"
+        },
+        "Header" : {
+          "AssetClass" : "Commodities",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Swap"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalQuantityOfLeg2" : 3744.5710,
+  "notionalQuantityOfTheContractOrLeg1" : 3744.5710,
+  "platformIdentifier" : "XXXX",
+  "quantityFrequencyMultiplierOfLeg2" : 1,
+  "quantityFrequencyMultiplierOfTheContractOrLeg1" : 1,
+  "quantityFrequencyOfLeg2" : "MNTH",
+  "quantityFrequencyOfTheContractOrLeg1" : "MNTH",
+  "quantityUnitOfMeasureForTheContractOrLeg1" : "TONE",
+  "quantityUnitOfMeasureLeg2" : "TONE",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "213800IV9PCAC364HN60",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrency1" : "USD",
+  "spreadOfLeg1" : {
+    "spreadCurrencyOfLeg1" : "USD",
+    "spreadNotationOfLeg1" : "Monetary",
+    "spreadOfLeg1Monetary" : 326.4000000000000
+  },
+  "spreadOfLeg2" : {
+    "spreadCurrencyOfLeg2" : "USD",
+    "spreadNotationOfLeg2" : "Monetary",
+    "spreadOfLeg2Monetary" : 0.0000000000000
+  },
+  "totalNotionalQuantityLeg2" : 3744.57,
+  "totalNotionalQuantityOfTheContractOrLeg1" : 3744.57,
+  "underlyingIdentificationType" : "O",
+  "uniqueTransactionIdentifier" : "COMMODITYSWAPMETAL02"
+}

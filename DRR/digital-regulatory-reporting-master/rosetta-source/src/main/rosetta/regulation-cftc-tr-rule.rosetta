@@ -1,0 +1,311 @@
+namespace drr.regulation.cftc.tr
+version "${project.version}"
+
+import cdm.base.*
+import cdm.base.staticdata.asset.common.*
+
+import cdm.product.common.settlement.*
+import cdm.product.qualification.*
+
+import drr.regulation.common.*
+import drr.regulation.common.tr.*
+import drr.regulation.cftc.rewrite.*
+import drr.regulation.esma.*
+import drr.regulation.esma.emir.*
+import drr.standards.iosco.cde.*
+
+corpus Guidance "CFTC Guidebook" Guidebook_Extension <"Document to specify additional fields required by TR for Part 45">
+
+corpus Specifications "DTCC Specs" DTCC_Specs <"Document providing the message specifications required for inbound message for DTCC for CFTC rewrite">
+corpus Specifications "CME Specs" CME_Specs <"Document providing the message specifications required for inbound message for CME for CFTC rewrite">
+
+reporting rule OptionType from TransactionReportInstruction:
+    [regulatoryReference CFTC Guidebook_Extension table "Table_Ref1" field "Option Type"
+        provision "TBC with SDR: Indication as to whether the derivative contract is a call (right to purchase a specific underlying asset) or a put (right to sell a specific underlying asset) or whether it cannot be determined whether it is a call or a put at the time of execution of the derivative contract.
+            In case of swaptions it shall be:
+                - Put, in case of receiver swaption, in which the buyer has the right to enter into a swap as a fixed-rate receiver.
+                -Call, in case of payer swaption, in which the buyer has the right to enter into a swap as a fixed-rate payer.
+            In case of Caps and Floors it shall be:
+                -Put, in case of a Floor.
+                -Call, in case of a Cap"]
+    [regulatoryReference CFTC DTCC_Specs table "Table_Ref1" field "Option Type"
+        provision "The type of option reported."]
+    [regulatoryReference CFTC CME_Specs table "Table_Ref1" field "Option type"
+        provision "Specifies whether an option gives the buyer the right to buy the underlying, ie Call, the right to sell the underlying, ie Sell, or the right to choose whether to buy or sell the underlying at the time of exercise, ie Chooser "]
+    extract ProductForEvent
+    then extract UPIOptionType
+        as "TR Option type"
+
+reporting rule OptionStyle from TransactionReportInstruction: <"Option Style">
+    [regulatoryReference CFTC Guidebook_Extension table "Table_Ref1" field "Option Style"
+        provision "TBC with SDR: - Indicates whether the option may be exercised only at a fixed date (European), a series of pre-specified dates (Bermudan) or at any time during the life of the contract (American)."]
+    [regulatoryReference CFTC DTCC_Specs table "Table_Ref1" field "Option Style"
+        provision "Need field to determine exercise dates. "]
+    [regulatoryReference CFTC CME_Specs table "Table_Ref1" field "Option style"
+        provision "Specifies when an option can be exercised. The value European specifies that an option can only be exercised on the expiration date; American specifies that an option can be exercised any time up to and including on the expiration date; and Bermudan specifies that an option can be exercised only at specified times during the life of the contract. Bermudan-style options include variations such as Canary- and Verde-style options."]
+    [regulatoryReference ISDA EMIRReportingBestPractice table "2" field "79"
+        provision "For Caps and Floors, populated with E(European). Reasoning for CapFloors to be reported as E is that such products would report field 2.1  (Contract Type) as OP and therefore it is required to populate the Option exercise style. While a CapFloor would not have an exercise style, there is no option to report Other. Therefore, best practice is be to report as European E."]
+    extract TradeForEvent
+    then extract tradableProduct -> product
+    then extract
+        if IsFloor or IsCap
+        then "EURO"
+        else if IsOption
+        then (contractualProduct -> economicTerms -> payout -> optionPayout only-element -> exerciseTerms -> optionStyle
+            extract
+                if item -> americanExercise exists
+                then "AMER"
+                else if item -> europeanExercise exists
+                then "EURO"
+                else if item -> bermudaExercise exists
+                then "BERM")
+        as "TR Option Style"
+
+reporting rule AssetClass from TransactionReportInstruction: <"Asset Class">
+    [regulatoryReference CFTC Guidebook_Extension table "TBC" field "Asset Class"
+        provision "COMM = Commodity and emission allowancesCRDT = CreditCURR = CurrencyEQUI = EquityINTR = Interest Rate"]
+    [regulatoryReference ESMA QandA_On_EMIR_Reporting section "TR" question "1"
+        provision "TR Question 1 [last update 24 September 2020] How should the following financial instruments be classified for reporting and other purposes under EMIR? (b) Cross-currency swaps, swaptions, Caps and Floors? (c) Total Return Swaps
+                TR Answer 1 (b) These financial instruments should be classified as interest rates, in line with current market practice. On the sections to be reported, ESMA finds that where both sections are relevant having in mind the terms of the contract being reported, both sections of reporting fields are to be reported i.e.option and interest rate for swaption, Caps and Floors, and FX and interest rate or crosscurrency swaps. The contract type (Field 1 of Table 2) should be populated with the value ST for swaption.There are two fields for the notional amount currency and one for the notional amount. To avoid that one counterparty reports the notional amount in CCY1 (Field 9 of Table 2) while the other would report in CCY2 (Field 10 of Table 2), which would create a reconciliation problem, the Field Notional Amount (Field 20 of Table 2) should be denominated in the currency reported in Notional currency 1 (Field 9 of Table 2).
+            (c) Total Return Swaps should be classified based on the underlying. For example, a Total Return Swap on an equity index should be reported with value EQ in field Asset class (Table 2 field 2), whereas a Total Return Swap on a bond or loan should be reported with value CR in field Asset class (Table 2 field 2)."]
+    [regulatoryReference DTCC DTCC_Specs table "Table_Ref1" field "Primary Asset Class"
+        provision "Needed for GTR processing to derive validation based on ISDA taxonomy "]
+    [regulatoryReference CME CME_Specs table "Table_Ref1" field "Asset Class"
+        provision "Indicates whether the asset, benchmark or another derivatives contract underlying a derivatives contract is, or references, an equity, rate, credit, commodity or foreign exchange asset."]
+    extract TradeForEvent
+    then extract tradableProduct -> product -> contractualProduct -> economicTerms
+    then extract
+        if Qualify_AssetClass_InterestRate
+        then "InterestRate"
+        else if payout -> forwardPayout -> underlier -> foreignExchange only exists
+                or payout -> optionPayout -> underlier -> foreignExchange exists
+        then "ForeignExchange"
+        else if Qualify_AssetClass_Credit or (payout -> optionPayout -> underlier -> security exists
+                and payout -> optionPayout -> underlier -> security -> securityType all = SecurityTypeEnum -> Debt)
+        then "Credit"
+        else if payout -> commodityPayout exists
+                or payout -> optionPayout -> underlier -> contractualProduct -> economicTerms -> payout -> commodityPayout exists
+                or payout -> optionPayout -> underlier -> commodity exists
+        then "Commodity"
+        else if Qualify_AssetClass_Equity
+        then "Equity"
+        as "TR Asset Class"
+
+reporting rule MandatoryClearingIndicator from TransactionReportInstruction:
+    [regulatoryReference CFTC Guidebook_Extension table "Table_Ref1" field "Mandatory Clearing Indicator"
+        provision "TBC with SDR: "]
+    [regulatoryReference CFTC DTCC_Specs table "Table_Ref1" field "Mandatory Clearing Indicator"
+        provision "An indicator of whether the transaction is subject to mandatory clearing."]
+    [regulatoryReference CFTC CME_Specs table "Table_Ref1" field "Mandatory Clearing Indicator"
+        provision "An indicator of whether the transaction is subject to mandatory clearing "]
+    extract reportableInformation -> partyInformation -> regimeInformation
+    then filter supervisoryBody = SupervisoryBodyEnum -> CFTC
+    then only-element
+    then extract
+        if mandatorilyClearable = MandatorilyClearableEnum -> ProductAndCptyMandatory
+        then True
+        else if mandatorilyClearable = MandatorilyClearableEnum -> ProductMandatoryButNotCpty
+        then False
+        as "TR Mandatory Clearing Indicator"
+
+reporting rule MaturityDateOfTheUnderlier from TransactionReportInstruction: <"Maturity Date of the Underlier">
+    [regulatoryReference CFTC Guidebook_Extension table "Table_Ref1" field "***"
+        provision "TBC with SDR: - ***."]
+    [regulatoryReference CFTC DTCC_Specs table "Table_Ref1" field "Maturity Date of the Underlying"
+        provision "The date on which the underlying transaction settles if the option is exercised."]
+    [regulatoryReference CFTC CME_Specs table "Table_Ref1" field "Maturity Date of the Underlier"
+        provision "Necessary to fully describe a swaption."]
+    extract ProductForEvent
+    then extract
+        if IsIRSwaption or IsCreditSwaption or IsCommoditySwaption
+        then UnderlierForProduct
+    then extract CDEExpirationDate
+        as "TR Maturity Date of the Underlier"
+
+reporting rule LargeNotionalOffFacilitySwapElectionIndicator from TransactionReportInstruction: <"Large notional off-facility swap election indicator">
+    [regulatoryReference CFTC Guidebook_Extension table "Table_Ref1" field "Large notional off-facility swap election indicator"
+        provision "***"]
+    [regulatoryReference CFTC DTCC_Specs table "Table_Ref1" field "Large notional off-facility swap election indicator"
+        rationale_author "DTCC - 28/04/22"
+        rationale "Interpretation is that this field can be calculated based on the Block Trade Indicator and Execution venue not being SEF or DCM"
+        provision "Indicator of whether an election has been made to report the swap transaction as a Large Notional Off-facility Swap by the reporting counterparty or as calculated by either the swap data repository acting on behalf of the reporting counterparty or by using a third party."]
+    [regulatoryReference CFTC CME_Specs table "Table_Ref1" field "Large notional off-facility swap election indicator"
+        provision "Indicator of whether an election has been made to report the swap transaction as a Large Notional Off-facility Swap by the reporting counterparty or as calculated by either the swap data repository acting on behalf of the reporting counterparty or by using a third party"]
+    extract reportableInformation
+    then filter
+        partyInformation -> regimeInformation -> supervisoryBody any = SupervisoryBodyEnum -> CFTC
+    then extract
+        if largeSizeTrade = True
+                and (executionVenueType <> ExecutionVenueTypeEnum -> SEF
+                    and executionVenueType <> ExecutionVenueTypeEnum -> DCM)
+        then True
+        else False
+        as "TR Large notional off-facility swap election indicator"
+
+reporting rule SettlementType from TransactionReportInstruction: <"Settlement Type">
+    [regulatoryReference CFTC Guidebook_Extension table "Table_Ref1" field "***"
+        provision "TBC with SDR: - ***."]
+    [regulatoryReference CFTC DTCC_Specs table "Table_Ref1" field "Settlement Type"
+        provision "Needed to satisfy conditionality for Settlement Currency."]
+    [regulatoryReference CFTC CME_Specs table "Table_Ref1" field "Delivery type"
+        provision "Indicates whether a derivatives contract will deliver a physical asset or a cash equivalent at settlement."]
+    extract ProductForEvent
+    then extract
+        if SettlementTermsLeg1 exists
+        then SettlementTermsLeg1
+        else SettlementTermsLeg2
+    then extract
+        if (settlementType = SettlementTypeEnum -> Cash or cashSettlementTerms exists)
+        then "CASH"
+        else if (settlementType = SettlementTypeEnum -> Physical
+                or physicalSettlementTerms exists)
+        then "PHYS"
+        else if (settlementType = SettlementTypeEnum -> CashOrPhysical or settlementType = SettlementTypeEnum -> Election)
+        then "OPTL"
+        as "TR Settlement Type"
+
+reporting rule SefOrDcmIndicator from TransactionReportInstruction: <"SEF or DCM Indicator">
+    [regulatoryReference CFTC Guidebook_Extension table "Table_Ref1" field "SEF or DCM indicator"
+        rationale "filtering on CFTC as supervisoryBody is not required as the field will only be present in the CFTC report invoked for eligible transactions"
+        rationale "and will not be included in SEC or Canada  Report Types"
+        rationale_author "BNPP OM 6/10/22"
+        provision "***"]
+    [regulatoryReference CFTC DTCC_Specs table "Table_Ref1" field "SEF or DCM Indicator"
+        provision "An indication of whether the swap was executed on or pursuant to the rules of a swap execution facility or designated contract market."]
+    [regulatoryReference CFTC CME_Specs table "Table_Ref1" field "SEF or DCM Identification"
+        provision "An indication of whether the swap was executed on or pursuant to the rules of a swap execution facility or designated contract market."]
+    extract reportableInformation
+    then extract
+        if (executionVenueType = ExecutionVenueTypeEnum -> SEF
+                or executionVenueType = ExecutionVenueTypeEnum -> DCM)
+        then True
+        else False
+        as "TR SEF or DCM indicator"
+
+reporting rule SefOrDcmAnonymousExecutionIndicator from TransactionReportInstruction: <"SEF or DCM Anonymous Execution Indicator">
+    [regulatoryReference CFTC Guidebook_Extension table "Table_Ref1" field "SEF or DCM Anonymous Execution Indicator"
+        rationale "filtering on CFTC as supervisoryBody is not required as the field will only be present in the CFTC report invoked for eligible transactions"
+        rationale "and will not be included in SEC or Canada  Report Types"
+        rationale_author "BNPP OM 6/10/22"
+        provision "Indicator of whether the swap was executed anonymously on a SEF or DCM. When set to true, counterparty details will be masked on reporting."]
+    [regulatoryReference CFTC DTCC_Specs table "Table_Ref1" field "SEF or DCM Anonymous Execution Indicator"
+        provision "Indicator of whether the swap was executed anonymously on a SEF or DCM. When set to true, counterparty details will be masked on reporting."]
+    [regulatoryReference CFTC CME_Specs table "Table_Ref1" field "AnonymousExecutionIndicator"
+        provision "An indicator of whether the swap was executed anonymously on a SEF or DCM"]
+    extract reportableInformation
+    then extract
+        if ((partyInformation
+                filter regimeInformation -> supervisoryBody any = SupervisoryBodyEnum -> CFTC
+                then exists
+                )
+                and (executionVenueType = ExecutionVenueTypeEnum -> SEF or executionVenueType = ExecutionVenueTypeEnum -> DCM))
+        then if sefOrDcmAnonymousIndicator exists
+            then sefOrDcmAnonymousIndicator
+            else False
+        else False
+        as "TR SEF or DCM Anonymous Execution Indicator"
+
+reporting rule MessageTypeTradeState from TransactionReportInstruction: <"Message type is Trade State">
+    [regulatoryReference CFTC Guidebook_Extension table "Table_Ref1" field "Message Type"
+        provision "***"]
+    [regulatoryReference CFTC DTCC_Specs table "Table_Ref1" field "Message Type"
+        provision "Need to indicate what message is being submitted to GTR"]
+    [regulatoryReference CFTC CME_Specs table "Table_Ref1" field "Submission type"
+        provision "An indication of whether the submission meets the requirements of Part 43 or Part 45"]
+    "Trade State"
+        as "TR Message Type"
+
+reporting rule MessageTypeRealTime from TransactionReportInstruction: <"Message type is Trade State">
+    [regulatoryReference CFTC Guidebook_Extension table "Table_Ref1" field "Message Type"
+        provision "***"]
+    [regulatoryReference CFTC DTCC_Specs table "Table_Ref1" field "Message Type"
+        provision "Need to indicate what message is being submitted to GTR"]
+    [regulatoryReference CFTC CME_Specs table "Table_Ref1" field "Submission type"
+        provision "An indication of whether the submission meets the requirements of Part 43 or Part 45"]
+    "RT"
+        as "TR Message Type"
+
+reporting rule MessageTypeValuation from TransactionReportInstruction: <"Message type is Trade State">
+    [regulatoryReference CFTC Guidebook_Extension table "Table_Ref1" field "Message Type"
+        provision "***"]
+    [regulatoryReference CFTC DTCC_Specs table "Table_Ref1" field "Message Type"
+        provision "Need to indicate what message is being submitted to GTR"]
+    [regulatoryReference CFTC CME_Specs table "Table_Ref1" field "Submission type"
+        provision "An indication of whether the submission meets the requirements of Part 43 or Part 45"]
+    "Valuation"
+        as "TR Message Type"
+
+reporting rule MessageTypeCollateral from TransactionReportInstruction: <"Message type is Trade State">
+    [regulatoryReference CFTC Guidebook_Extension table "Table_Ref1" field "Message Type"
+        provision "***"]
+    [regulatoryReference CFTC DTCC_Specs table "Table_Ref1" field "Message Type"
+        provision "Need to indicate what message is being submitted to GTR"]
+    [regulatoryReference CFTC CME_Specs table "Table_Ref1" field "Submission type"
+        provision "An indication of whether the submission meets the requirements of Part 43 or Part 45"]
+    "CollateralValue"
+        as "TR Message Type"
+
+reporting rule SdMspIndicatorParty1 from TransactionReportInstruction: <"Indicator of whether counterparty 1 is SD or MSP.">
+    [regulatoryReference CFTC Guidebook_Extension table "Table_Ref1" field "SD MSP indicator - Counterparty 1"
+        provision "***"]
+    [regulatoryReference CFTC DTCC_Specs table "Table_Ref1" field "SD MSP indicator - Counterparty 1"
+        provision "Indicator of whether counteparty 1 is SD or MSP."]
+    [regulatoryReference CFTC CME_Specs table "Table_Ref1" field "SD MSP Indicator Counterparty 1"
+        provision "Indicator RP is SD or MSP"]
+    extract reportInstruction [
+        reportInstruction -> reportableInformation -> partyInformation
+            filter partyReference = reportInstruction -> reportingSide -> reportingParty
+            then filter regimeInformation -> cftcPartyInformation -> organizationType exists
+            then extract regimeInformation
+            then flatten
+            then filter supervisoryBody = SupervisoryBodyEnum -> CFTC
+            then only-element
+            then extract
+                if (cftcPartyInformation -> organizationType = CFTCEntityClassificationEnum -> SD
+                        or cftcPartyInformation -> organizationType = CFTCEntityClassificationEnum -> MSP)
+                then True
+                else False
+    ]
+        as "TR SD MSP Indicator - Counterparty 1"
+
+reporting rule SdMspIndicatorParty2 from TransactionReportInstruction: <"Indicator of whether counteparty 2 is SD or MSP.">
+    [regulatoryReference CFTC Guidebook_Extension table "Table_Ref1" field "SD MSP indicator - Counterparty 2"
+        provision "***"]
+    [regulatoryReference CFTC DTCC_Specs table "Table_Ref1" field "SD MSP indicator - Counterparty 2"
+        provision "Indicator of whether counteparty 2 is SD or MSP."]
+    [regulatoryReference CFTC CME_Specs table "Table_Ref1" field "SD MSP Indicator Counterparty 2"
+        provision "Indicator Non-RP is SD or MSP"]
+    extract reportInstruction [
+        reportInstruction -> reportableInformation -> partyInformation
+            filter
+                partyReference = reportInstruction -> reportingSide -> reportingCounterparty
+            then filter regimeInformation -> cftcPartyInformation -> organizationType exists
+            then extract regimeInformation
+            then flatten
+            then filter supervisoryBody = SupervisoryBodyEnum -> CFTC
+            then only-element
+            then extract
+                if cftcPartyInformation -> organizationType = CFTCEntityClassificationEnum -> SD
+                        or cftcPartyInformation -> organizationType = CFTCEntityClassificationEnum -> MSP
+                then True
+                else False
+    ]
+        as "TR SD MSP Indicator - Counterparty 2"
+
+reporting rule PhysicalCommodityIndicator from TransactionReportInstruction: <"Indicator of whether the trade is a physical commodity.">
+    [regulatoryReference CFTC Guidebook_Extension table "Table_Ref1" field "Physical commodity contract indicator"
+        provision "***"]
+    [regulatoryReference CFTC DTCC_Specs table "Table_Ref1" field "Physical commodity contract indicator"
+        provision "An indication of whether or not the trade being submitted: (1) references one of the contracts described in Appendix B to part 43; or (2) is economically related to one of the contracts described in Appendix B to part 43"]
+    [regulatoryReference CFTC CME_Specs table "Table_Ref1" field "Physical commodity contract indicator"
+        provision "Indicates whether or not the trade being submitted (1) references one of the contracts described in appendix B to part 43; or (2) is economically related to one of the contracts described in appendix B to part 43"]
+    extract reportInstruction [
+        reportInstruction -> reportableInformation -> partyInformation
+            filter partyReference = reportInstruction -> reportingSide -> reportingParty
+            then only-element
+            then extract
+                if regimeInformation -> cftcPartyInformation -> physicalCommodityContractIndicator exists
+                then regimeInformation -> cftcPartyInformation -> physicalCommodityContractIndicator only-element
+                else False
+    ]
+        as "TR Physical commodity contract indicator"

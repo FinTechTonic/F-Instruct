@@ -1,0 +1,14 @@
+{
+  "actionType" : "EROR",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "counterparty1" : "213800IV9PCAC364HN60",
+  "counterparty2" : "213800WWTABZ1GOJHH37",
+  "entityResponsibleForReporting" : "213800IV9PCAC364HN60",
+  "eventIdentifier" : "022030984555123459991234569BR777123456789",
+  "eventTimestamp" : "2021-12-06T17:09:11Z",
+  "isCrypto" : false,
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "submitterIdentifier" : "213800IV9PCAC364HN60",
+  "uti" : "WITHDRAWALERROREXX03"
+}

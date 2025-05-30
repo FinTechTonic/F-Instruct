@@ -1,0 +1,14 @@
+{
+  "cleared" : "False",
+  "clearedEntity" : "Out of scope",
+  "effectiveDate" : "2022-02-28",
+  "interestRateRateLeg1" : 7000000,
+  "optionExpirationDate" : "N/A",
+  "optionPremium" : "N/A",
+  "optionType" : "N/A",
+  "priorUniqueTransactionIdentifier" : "IRIRSFIXEDFLOATZCK01",
+  "reportingTimestamp" : "2022-02-28T09:23:51Z",
+  "terminationDate" : "2026-02-28",
+  "uniqueProductIdentifier" : "InterestRate_IRSwap_FixedFloat_ZeroCoupon",
+  "uniqueTransactionIdentifier" : "D8EBBB353F13A317E0538CB0CC0A5693"
+}

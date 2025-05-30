@@ -1,0 +1,11 @@
+{
+  "actionType" : "EROR",
+  "counterparty1" : "549300K7EEOSKRJDRI19",
+  "counterparty2" : "549300O5MFEP1XJ40B46",
+  "entityResponsibleForReporting" : "549300K7EEOSKRJDRI19",
+  "isCrypto" : false,
+  "level" : "TCTN",
+  "reportSubmittingEntityID" : "549300K7EEOSKRJDRI19",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "uti" : "WITHDRAWALERROREXX01"
+}

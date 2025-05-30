@@ -1,0 +1,16 @@
+{
+  "actionType" : "NEWT",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "counterparty1" : "213800IV9PCAC364HN60",
+  "counterparty2" : "213800WWTABZ1GOJHH37",
+  "entityResponsibleForReporting" : "213800IV9PCAC364HN60",
+  "eventType" : "ToDo",
+  "isCrypto" : false,
+  "level" : "TCTN",
+  "ptrr" : false,
+  "reportSubmittingEntityID" : "213800IV9PCAC364HN60",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "uti" : "WITHDRAWALTERMINAT02"
+}

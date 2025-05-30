@@ -1,0 +1,13 @@
+{
+  "cleared" : "False",
+  "clearedEntity" : "Out of scope",
+  "effectiveDate" : "2021-03-11",
+  "optionExpirationDate" : "N/A",
+  "optionPremium" : "N/A",
+  "optionType" : "N/A",
+  "priorUniqueTransactionIdentifier" : "IRIRSBASISEXXMLXXX01",
+  "reportingTimestamp" : "2021-03-09T13:13:23Z",
+  "terminationDate" : "2031-03-11",
+  "uniqueProductIdentifier" : "InterestRate_IRSwap_Basis",
+  "uniqueTransactionIdentifier" : "DTDApproved2380083603EMIRRiskNewNewInterest"
+}

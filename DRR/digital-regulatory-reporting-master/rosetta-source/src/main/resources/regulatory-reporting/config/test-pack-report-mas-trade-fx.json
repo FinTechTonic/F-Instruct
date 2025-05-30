@@ -1,0 +1,231 @@
+{
+  "id" : "test-pack-report-mas-trade-fx",
+  "pipelineId" : "pipeline-report-mas-trade",
+  "name" : "FX",
+  "samples" : [ {
+    "id" : "fx-forward-ex01",
+    "name" : "FX Forward ex01",
+    "inputPath" : "regulatory-reporting/input/fx/FX-Forward-ex01.json",
+    "outputPath" : "regulatory-reporting/output/mas-trade/fx/FX-Forward-ex01-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 14,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "fx-forward-ex02",
+    "name" : "FX Forward ex02",
+    "inputPath" : "regulatory-reporting/input/fx/FX-Forward-ex02.json",
+    "outputPath" : "regulatory-reporting/output/mas-trade/fx/FX-Forward-ex02-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 13,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "fx-forward-ex03",
+    "name" : "FX Forward ex03",
+    "inputPath" : "regulatory-reporting/input/fx/FX-Forward-ex03.json",
+    "outputPath" : "regulatory-reporting/output/mas-trade/fx/FX-Forward-ex03-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 14,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "fx-forward-ex04-party1-pays-eur",
+    "name" : "FX Forward ex04 Party1 pays EUR",
+    "inputPath" : "regulatory-reporting/input/fx/FX-Forward-ex04-Party1-pays-EUR.json",
+    "outputPath" : "regulatory-reporting/output/mas-trade/fx/FX-Forward-ex04-Party1-pays-EUR-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 14,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "fx-forward-ex05-party1-pays-usd",
+    "name" : "FX Forward ex05 Party1 pays USD",
+    "inputPath" : "regulatory-reporting/input/fx/FX-Forward-ex05-Party1-pays-USD.json",
+    "outputPath" : "regulatory-reporting/output/mas-trade/fx/FX-Forward-ex05-Party1-pays-USD-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 13,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "fx-forward-ex06",
+    "name" : "FX Forward ex06",
+    "inputPath" : "regulatory-reporting/input/fx/FX-Forward-ex06.json",
+    "outputPath" : "regulatory-reporting/output/mas-trade/fx/FX-Forward-ex06-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 15,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "fx-ndf-ex01",
+    "name" : "FX NDF ex01",
+    "inputPath" : "regulatory-reporting/input/fx/FX-NDF-ex01.json",
+    "outputPath" : "regulatory-reporting/output/mas-trade/fx/FX-NDF-ex01-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 13,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "fx-ndf-ex02",
+    "name" : "FX NDF ex02",
+    "inputPath" : "regulatory-reporting/input/fx/FX-NDF-ex02.json",
+    "outputPath" : "regulatory-reporting/output/mas-trade/fx/FX-NDF-ex02-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 15,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "fx-ndf-ex03-bilateral",
+    "name" : "FX NDF ex03 Bilateral",
+    "inputPath" : "regulatory-reporting/input/fx/FX-NDF-ex03-Bilateral.json",
+    "outputPath" : "regulatory-reporting/output/mas-trade/fx/FX-NDF-ex03-Bilateral-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 15,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "fx-ndf-ex04",
+    "name" : "FX NDF ex04",
+    "inputPath" : "regulatory-reporting/input/fx/FX-NDF-ex04.json",
+    "outputPath" : "regulatory-reporting/output/mas-trade/fx/FX-NDF-ex04-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 15,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "fx-ndf-ex05-cleared",
+    "name" : "FX NDF ex05 Cleared",
+    "inputPath" : "regulatory-reporting/input/fx/FX-NDF-ex05-Cleared.json",
+    "outputPath" : "regulatory-reporting/output/mas-trade/fx/FX-NDF-ex05-Cleared-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 15,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "fx-ndf-ex06",
+    "name" : "FX NDF ex06",
+    "inputPath" : "regulatory-reporting/input/fx/FX-NDF-ex06.json",
+    "outputPath" : "regulatory-reporting/output/mas-trade/fx/FX-NDF-ex06-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 12,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "fx-ndf-ex07-beta",
+    "name" : "FX NDF ex07 Beta",
+    "inputPath" : "regulatory-reporting/input/fx/FX-NDF-ex07-Beta.json",
+    "outputPath" : "regulatory-reporting/output/mas-trade/fx/FX-NDF-ex07-Beta-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 13,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "fx-ndf-ex08-gamma",
+    "name" : "FX NDF ex08 Gamma",
+    "inputPath" : "regulatory-reporting/input/fx/FX-NDF-ex08-Gamma.json",
+    "outputPath" : "regulatory-reporting/output/mas-trade/fx/FX-NDF-ex08-Gamma-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 13,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "fx-ndf-ex09-confirmation",
+    "name" : "FX NDF ex09 Confirmation",
+    "inputPath" : "regulatory-reporting/input/fx/FX-NDF-ex09-Confirmation.json",
+    "outputPath" : "regulatory-reporting/output/mas-trade/fx/FX-NDF-ex09-Confirmation-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 16,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "fx-ndo-ex01-european",
+    "name" : "FX NDO ex01 European",
+    "inputPath" : "regulatory-reporting/input/fx/FX-NDO-ex01-European.json",
+    "outputPath" : "regulatory-reporting/output/mas-trade/fx/FX-NDO-ex01-European-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 11,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "fx-ndo-ex02-european",
+    "name" : "FX NDO ex02 European",
+    "inputPath" : "regulatory-reporting/input/fx/FX-NDO-ex02-European.json",
+    "outputPath" : "regulatory-reporting/output/mas-trade/fx/FX-NDO-ex02-European-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 11,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "fx-vanillaoption-ex01-european",
+    "name" : "FX VanillaOption ex01 European",
+    "inputPath" : "regulatory-reporting/input/fx/FX-VanillaOption-ex01-European.json",
+    "outputPath" : "regulatory-reporting/output/mas-trade/fx/FX-VanillaOption-ex01-European-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 13,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "fx-vanillaoption-ex02-european",
+    "name" : "FX VanillaOption ex02 European",
+    "inputPath" : "regulatory-reporting/input/fx/FX-VanillaOption-ex02-European.json",
+    "outputPath" : "regulatory-reporting/output/mas-trade/fx/FX-VanillaOption-ex02-European-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 11,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "fx-vanillaoption-ex03-european",
+    "name" : "FX VanillaOption ex03 European",
+    "inputPath" : "regulatory-reporting/input/fx/FX-VanillaOption-ex03-European.json",
+    "outputPath" : "regulatory-reporting/output/mas-trade/fx/FX-VanillaOption-ex03-European-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 13,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "fx-vanillaoption-ex04-european",
+    "name" : "FX VanillaOption ex04 European",
+    "inputPath" : "regulatory-reporting/input/fx/FX-VanillaOption-ex04-European.json",
+    "outputPath" : "regulatory-reporting/output/mas-trade/fx/FX-VanillaOption-ex04-European-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 11,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "fx-vanillaoption-ex05-american",
+    "name" : "FX VanillaOption ex05 American",
+    "inputPath" : "regulatory-reporting/input/fx/FX-VanillaOption-ex05-American.json",
+    "outputPath" : "regulatory-reporting/output/mas-trade/fx/FX-VanillaOption-ex05-American-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 12,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "fx-vanillaoption-ex06-european",
+    "name" : "FX VanillaOption ex06 European",
+    "inputPath" : "regulatory-reporting/input/fx/FX-VanillaOption-ex06-European.json",
+    "outputPath" : "regulatory-reporting/output/mas-trade/fx/FX-VanillaOption-ex06-European-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 11,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "fx-vanillaoption-ex07-european",
+    "name" : "FX VanillaOption ex07 European",
+    "inputPath" : "regulatory-reporting/input/fx/FX-VanillaOption-ex07-European.json",
+    "outputPath" : "regulatory-reporting/output/mas-trade/fx/FX-VanillaOption-ex07-European-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 14,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "fx-vanillaoption-ex08-european",
+    "name" : "FX VanillaOption ex08 European",
+    "inputPath" : "regulatory-reporting/input/fx/FX-VanillaOption-ex08-European.json",
+    "outputPath" : "regulatory-reporting/output/mas-trade/fx/FX-VanillaOption-ex08-European-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 11,
+      "runtimeError" : false
+    }
+  } ]
+}

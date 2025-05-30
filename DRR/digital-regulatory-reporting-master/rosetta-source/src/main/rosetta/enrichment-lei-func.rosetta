@@ -1,0 +1,65 @@
+namespace drr.enrichment.lei
+version "${project.version}"
+
+import cdm.base.datetime.*
+
+func API_GetLeiData: <"Function that calls the GLEIF API to look up data for the provided LEI.">
+    // external_api GET https://api.gleif.org/api/v1/lei-records/:lei
+    inputs:
+        lei string (0..1)
+    output:
+        leiData LeiData (0..1)
+
+func GetOrFetchLeiData: <"Return pre-enriched LEI data if present, otherwise attempt to fetch LEI data from API.">
+    inputs:
+        preEnriched LeiData (0..*) <"Pre-enriched LEI data.">
+        lei string (0..1) <"LEI to be fetched from API.">
+    output:
+        leiData LeiData (0..1)
+
+    alias preEnrichedLeiData:
+        preEnriched
+            filter item -> lei = lei
+            then only-element
+    set leiData:
+        if lei is absent
+        then empty
+        else if preEnrichedLeiData exists
+        then preEnrichedLeiData
+        else API_GetLeiData(lei)
+
+func LeiRegistrationStatusIsValid:
+    inputs:
+        leiData LeiData (0..*)
+        partyLei string (0..1)
+        eventDate date (0..1)
+        reportingDate date (0..1)
+    output:
+        valid boolean (0..1)
+
+    set valid:
+        if GetOrFetchLeiData(leiData, partyLei) exists and DateDifference(
+                    AddBusinessDays(eventDate, 1, empty),
+                    reportingDate
+                ) <= 0
+        then [LeiRegistrationStatusEnum -> Issued, LeiRegistrationStatusEnum -> Lapsed, LeiRegistrationStatusEnum -> PendingTransfer, LeiRegistrationStatusEnum -> PendingArchival] any = GetOrFetchLeiData(
+                    leiData,
+                    partyLei
+                ) -> registrationStatus
+
+func LeiRegistrationStatusIsValidForStatus:
+    inputs:
+        leiData LeiData (0..*)
+        partyLei string (0..1)
+        eventDate date (0..1)
+        reportingDate date (0..1)
+        statuses LeiRegistrationStatusEnum (0..*)
+    output:
+        valid boolean (0..1)
+
+    set valid:
+        if GetOrFetchLeiData(leiData, partyLei) exists and DateDifference(
+                    AddBusinessDays(eventDate, 1, empty),
+                    reportingDate
+                ) <= 0
+        then statuses any = GetOrFetchLeiData(leiData, partyLei) -> registrationStatus

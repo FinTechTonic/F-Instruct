@@ -1,0 +1,53 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "OTHR",
+  "callAmount" : 5391200.000000,
+  "callCurrency" : "USD",
+  "cleared" : "N",
+  "contractType" : "SWPT",
+  "counterparty1" : "213800IV9PCAC364HN60",
+  "counterparty2" : "DUMMY0000000000LEI01",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "direction" : "BYER",
+  "effectiveDate" : "2022-03-17",
+  "eventIdentifier" : "001229414555123459991234569BR777123456789",
+  "eventTimestamp" : "2019-11-16T00:00:00Z",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2022-03-17T14:44:58Z",
+  "expirationDate" : "2018-06-27",
+  "maturityDateOfTheUnderlying" : "2018-12-31",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "OptionExerciseStyle" : "EURO",
+          "OptionType" : "CALL",
+          "ValuationMethodorTrigger" : "Vanilla"
+        },
+        "Header" : {
+          "AssetClass" : "Commodities",
+          "InstrumentType" : "Option",
+          "Level" : "UPI",
+          "UseCase" : "Swaption"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "USD",
+  "notionalLeg1" : 5391200.000000,
+  "notionalQuantityLeg1" : 10000.00000,
+  "reportSubmittingEntityID" : "213800IV9PCAC364HN60",
+  "reportingEntity" : "213800IV9PCAC364HN60",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "secondaryTransactionIdentifier" : "COMMODITYOPTIONENE01",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "strikePrice" : {
+    "strikePriceCurrency" : "USD",
+    "strikePriceMonetary" : 2.9300000000000,
+    "strikePriceNotation" : "Monetary"
+  },
+  "totalNotionalQuantityLeg1" : 1840000,
+  "uniqueTransactionIdentifier" : "COMMODITYOPTIONENE02"
+}

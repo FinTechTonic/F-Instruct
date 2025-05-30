@@ -1,0 +1,87 @@
+{
+  "actionType" : "MODI",
+  "assetClass" : "INTR",
+  "broker" : "549300OL8KL0WCQ34V31",
+  "cleared" : "N",
+  "contractType" : "SWAP",
+  "counterparty1" : "5493001RKR55V4X61F71",
+  "counterparty2" : "549300O5MFEP1XJ40B46",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "dayCountConventionLeg1" : "A011",
+  "dayCountConventionLeg2" : "A004",
+  "direction2OfLeg1" : "TAKE",
+  "direction2OfLeg2" : "MAKE",
+  "effectiveDate" : "2011-02-06",
+  "eventIdentifier" : "SEF005",
+  "eventTimestamp" : "2011-06-01T10:13:07Z",
+  "eventType" : "ETRM",
+  "executionTimestamp" : "2011-02-04T16:20:47Z",
+  "expirationDate" : "2015-02-06",
+  "fixedRateLeg1" : 6.00,
+  "floatingRateReferencePeriodOfLeg2Multiplier" : 6,
+  "floatingRateReferencePeriodOfLeg2TimePeriod" : "MNTH",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalCurrency" : "JPY",
+          "NotionalSchedule" : "Constant",
+          "OtherNotionalCurrency" : "USD",
+          "ReferenceRateTermUnit" : "YEAR",
+          "ReferenceRateTermValue" : 1,
+          "UnderlierID" : "USD-LIBOR-BBA",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Cross_Currency_Fixed_Float"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "JPY",
+  "notionalCurrencyLeg2" : "USD",
+  "notionalLeg1" : 400000000,
+  "notionalLeg2" : 4000000,
+  "otherPayment" : [ {
+    "amount" : 6000000.00,
+    "currency" : "USD",
+    "date" : "2011-06-03",
+    "payer" : "549300O5MFEP1XJ40B46",
+    "payerFormat" : "Lei",
+    "paymentType" : "UFRO",
+    "receiver" : "549300O5MFEP1XJ40B46",
+    "receiverFormat" : "Lei"
+  }, {
+    "amount" : 600000000.00,
+    "currency" : "JPY",
+    "date" : "2011-06-03",
+    "payer" : "5493001RKR55V4X61F71",
+    "payerFormat" : "Lei",
+    "paymentType" : "UFRO",
+    "receiver" : "5493001RKR55V4X61F71",
+    "receiverFormat" : "Lei"
+  }, {
+    "amount" : 12345.00,
+    "currency" : "USD",
+    "date" : "2011-06-03",
+    "payer" : "549300O5MFEP1XJ40B46",
+    "payerFormat" : "Lei",
+    "paymentType" : "UWIN",
+    "receiver" : "549300O5MFEP1XJ40B46",
+    "receiverFormat" : "Lei"
+  } ],
+  "paymentFrequencyPeriodLeg1" : "YEAR",
+  "paymentFrequencyPeriodLeg2" : "MNTH",
+  "paymentFrequencyPeriodMultiplierLeg1" : 1,
+  "paymentFrequencyPeriodMultiplierLeg2" : 6,
+  "reportSubmittingEntityID" : "5493001RKR55V4X61F71",
+  "reportingEntity" : "5493001RKR55V4X61F71",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "uniqueTransactionIdentifier" : "TRADEMODIFYPARTIAL01"
+}

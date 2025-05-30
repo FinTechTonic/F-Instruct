@@ -1,0 +1,43 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "EQUI",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "SWAP",
+  "counterparty1" : "DUMMY0000000000LEI02",
+  "counterparty2" : "DUMMY0000000000LEI01",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "DUMMY0000000000LEI02",
+  "directionOfLeg1" : "TAKE",
+  "directionOfLeg2" : "MAKE",
+  "effectiveDate" : "2021-12-31",
+  "eventDate" : "2020-03-17",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2020-03-17T08:03:27Z",
+  "expirationDate" : "2022-12-31",
+  "finalContractualSettlementDate" : "2022-12-31",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH"
+        },
+        "Header" : {
+          "AssetClass" : "Equity",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "quantityUnitOfMeasureForTheContractOrLeg1" : "SHAS",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "DUMMY0000000000LEI02",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "totalNotionalQuantityOfTheContractOrLeg1" : 656000.00,
+  "underlying" : "CA56501R1064",
+  "underlyingIdentificationType" : "I",
+  "uniqueTransactionIdentifier" : "EQUITYSWAPPARAMETE01"
+}

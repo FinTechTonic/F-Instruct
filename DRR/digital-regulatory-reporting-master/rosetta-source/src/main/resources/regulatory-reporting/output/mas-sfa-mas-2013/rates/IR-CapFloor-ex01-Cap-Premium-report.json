@@ -1,0 +1,13 @@
+{
+  "cleared" : "False",
+  "clearedEntity" : "Out of scope",
+  "effectiveDate" : "2020-12-23",
+  "optionExpirationDate" : "N/A",
+  "optionPremium" : "N/A",
+  "optionType" : "N/A",
+  "priorUniqueTransactionIdentifier" : "IRCAPFLOOREXCAPPRE01",
+  "reportingTimestamp" : "2020-12-21T10:27:53.064Z",
+  "terminationDate" : "2023-12-21",
+  "uniqueProductIdentifier" : "InterestRate_CapFloor",
+  "uniqueTransactionIdentifier" : "envuatuatExt1a94bbf8749c744c58c9ca350ae26ea0d"
+}

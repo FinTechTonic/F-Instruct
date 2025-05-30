@@ -1,0 +1,39 @@
+{
+  "actionType" : "NEWT",
+  "blockTradeElectionIndicator" : false,
+  "cftcGuidebook" : {
+    "assetClass" : "ForeignExchange",
+    "largeNotionalOffFacilitySwapElectionIndicator" : false,
+    "messageType" : "RT",
+    "physicalCommodityIndicator" : false,
+    "sefOrDcmAnonymousExecutionIndicator" : false,
+    "sefOrDcmIndicator" : false,
+    "settlementType" : "CASH"
+  },
+  "cleared" : "I",
+  "counterparty1" : "FOR8UP27PHTHYVLBNG30",
+  "counterparty2" : "W22LROWP2IHZNBB6K528",
+  "counterparty2IdentifierSource" : "LEID",
+  "customBasketIndicator" : false,
+  "effectiveDate" : "2020-12-01",
+  "eventTimestamp" : "2020-12-01T10:04:06Z",
+  "eventType" : "TRAD",
+  "exchangeRateBasis" : "USD/RUB",
+  "exchangeRateLeg1" : 36.29000000,
+  "executionTimestamp" : "2020-12-01T10:04:06Z",
+  "expirationDate" : "2021-01-25",
+  "nonReportable" : {
+    "counterparty1Format" : "Lei",
+    "counterparty2Format" : "Lei"
+  },
+  "notionalAmountLeg1" : 36290.00000000,
+  "notionalAmountLeg2" : 1000.00000000,
+  "notionalCurrencyLeg1" : "RUB",
+  "notionalCurrencyLeg2" : "USD",
+  "packageIndicator" : false,
+  "postPricedSwapIndicator" : false,
+  "primeBrokerageTransactionIndicator" : false,
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrencyLeg1" : "USD",
+  "submitterIdentifier" : "FOR8UP27PHTHYVLBNG30"
+}

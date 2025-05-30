@@ -1,0 +1,226 @@
+{
+  "id" : "test-pack-projection-esma-emir-trade-report-to-iso20022-commodity",
+  "pipelineId" : "pipeline-projection-esma-emir-trade-report-to-iso20022",
+  "name" : "Commodity",
+  "samples" : [ {
+    "id" : "commodity-cfd-energy-oil-ex01-cash",
+    "name" : "Commodity CFD Energy Oil ex01 Cash",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/commodity/Commodity-CFD-Energy-Oil-ex01-Cash-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/commodity/Commodity-CFD-Energy-Oil-ex01-Cash-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "schemaValidationFailure" : true,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "commodity-cfd-energy-oil-ex02-cash",
+    "name" : "Commodity CFD Energy Oil ex02 Cash",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/commodity/Commodity-CFD-Energy-Oil-ex02-Cash-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/commodity/Commodity-CFD-Energy-Oil-ex02-Cash-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "schemaValidationFailure" : true,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "commodity-option-energy-nat-gas-ex01-cash",
+    "name" : "Commodity Option Energy Nat Gas ex01 Cash",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/commodity/Commodity-Option-Energy-Nat-Gas-ex01-Cash-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/commodity/Commodity-Option-Energy-Nat-Gas-ex01-Cash-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "schemaValidationFailure" : true,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "commodity-option-energy-nat-gas-ex02-cash",
+    "name" : "Commodity Option Energy Nat Gas ex02 Cash",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/commodity/Commodity-Option-Energy-Nat-Gas-ex02-Cash-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/commodity/Commodity-Option-Energy-Nat-Gas-ex02-Cash-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "schemaValidationFailure" : true,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "commodity-option-energy-nat-gas-ex03-cash",
+    "name" : "Commodity Option Energy Nat Gas ex03 Cash",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/commodity/Commodity-Option-Energy-Nat-Gas-ex03-Cash-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/commodity/Commodity-Option-Energy-Nat-Gas-ex03-Cash-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "schemaValidationFailure" : true,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "commodity-option-energy-oil-ex01-cash",
+    "name" : "Commodity Option Energy Oil ex01 Cash",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/commodity/Commodity-Option-Energy-Oil-ex01-Cash-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/commodity/Commodity-Option-Energy-Oil-ex01-Cash-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "schemaValidationFailure" : true,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "commodity-option-index-ex01-cash",
+    "name" : "Commodity Option Index ex01 Cash",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/commodity/Commodity-Option-Index-ex01-Cash-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/commodity/Commodity-Option-Index-ex01-Cash-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "schemaValidationFailure" : true,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "commodity-option-metals-non-precious-ex01-cash",
+    "name" : "Commodity Option Metals Non Precious ex01 Cash",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/commodity/Commodity-Option-Metals-Non-Precious-ex01-Cash-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/commodity/Commodity-Option-Metals-Non-Precious-ex01-Cash-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "schemaValidationFailure" : true,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "commodity-option-metals-precious-ex01-cash",
+    "name" : "Commodity Option Metals Precious ex01 Cash",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/commodity/Commodity-Option-Metals-Precious-ex01-Cash-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/commodity/Commodity-Option-Metals-Precious-ex01-Cash-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "schemaValidationFailure" : true,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "commodity-swap-agrains-oilseeds-ex01-cash",
+    "name" : "Commodity Swap AGrains OilSeeds ex01 Cash",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/commodity/Commodity-Swap-AGrains-OilSeeds-ex01-Cash-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/commodity/Commodity-Swap-AGrains-OilSeeds-ex01-Cash-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "schemaValidationFailure" : true,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "commodity-swap-energy-elec-ex01-cash",
+    "name" : "Commodity Swap Energy Elec ex01 Cash",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/commodity/Commodity-Swap-Energy-Elec-ex01-Cash-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/commodity/Commodity-Swap-Energy-Elec-ex01-Cash-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 1,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "commodity-swap-energy-interenergy-ex01-cash",
+    "name" : "Commodity Swap Energy InterEnergy ex01 Cash",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/commodity/Commodity-Swap-Energy-InterEnergy-ex01-Cash-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/commodity/Commodity-Swap-Energy-InterEnergy-ex01-Cash-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "schemaValidationFailure" : true,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "commodity-swap-energy-nat-gas-ex01-cash",
+    "name" : "Commodity Swap Energy Nat Gas ex01 Cash",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/commodity/Commodity-Swap-Energy-Nat-Gas-ex01-Cash-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/commodity/Commodity-Swap-Energy-Nat-Gas-ex01-Cash-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "schemaValidationFailure" : true,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "commodity-swap-energy-nat-gas-ex02-cash",
+    "name" : "Commodity Swap Energy Nat Gas ex02 Cash",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/commodity/Commodity-Swap-Energy-Nat-Gas-ex02-Cash-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/commodity/Commodity-Swap-Energy-Nat-Gas-ex02-Cash-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "schemaValidationFailure" : true,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "commodity-swap-energy-nat-gas-ex03-cash",
+    "name" : "Commodity Swap Energy Nat Gas ex03 Cash",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/commodity/Commodity-Swap-Energy-Nat-Gas-ex03-Cash-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/commodity/Commodity-Swap-Energy-Nat-Gas-ex03-Cash-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "schemaValidationFailure" : true,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "commodity-swap-energy-oil-ex01-cash",
+    "name" : "Commodity Swap Energy Oil ex01 Cash",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/commodity/Commodity-Swap-Energy-Oil-ex01-Cash-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/commodity/Commodity-Swap-Energy-Oil-ex01-Cash-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 2,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "commodity-swap-energy-oil-ex02-cash",
+    "name" : "Commodity Swap Energy Oil ex02 Cash",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/commodity/Commodity-Swap-Energy-Oil-ex02-Cash-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/commodity/Commodity-Swap-Energy-Oil-ex02-Cash-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "schemaValidationFailure" : true,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "commodity-swap-index-ex01-cash",
+    "name" : "Commodity Swap Index ex01 Cash",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/commodity/Commodity-Swap-Index-ex01-Cash-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/commodity/Commodity-Swap-Index-ex01-Cash-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "schemaValidationFailure" : true,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "commodity-swap-index-ex02-cash",
+    "name" : "Commodity Swap Index ex02 Cash",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/commodity/Commodity-Swap-Index-ex02-Cash-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/commodity/Commodity-Swap-Index-ex02-Cash-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 1,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "commodity-swap-metals-non-precious-ex01-cash",
+    "name" : "Commodity Swap Metals Non Precious ex01 Cash",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/commodity/Commodity-Swap-Metals-Non-Precious-ex01-Cash-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/commodity/Commodity-Swap-Metals-Non-Precious-ex01-Cash-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "schemaValidationFailure" : true,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "commodity-swap-metals-non-precious-ex02-cash",
+    "name" : "Commodity Swap Metals Non Precious ex02 Cash",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/commodity/Commodity-Swap-Metals-Non-Precious-ex02-Cash-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/commodity/Commodity-Swap-Metals-Non-Precious-ex02-Cash-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 1,
+      "schemaValidationFailure" : false,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "commodity-swap-metals-precious-ex01-cash",
+    "name" : "Commodity Swap Metals Precious ex01 Cash",
+    "inputPath" : "regulatory-reporting/output/esma-emir-trade/commodity/Commodity-Swap-Metals-Precious-ex01-Cash-report.json",
+    "outputPath" : "projection/iso-20022/output/esma-emir-trade/commodity/Commodity-Swap-Metals-Precious-ex01-Cash-report-output.xml",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "schemaValidationFailure" : true,
+      "runtimeError" : false
+    }
+  } ]
+}

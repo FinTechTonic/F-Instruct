@@ -1,0 +1,957 @@
+{
+  "originatingWorkflowStep" : {
+    "businessEvent" : {
+      "intent" : "ContractFormation",
+      "eventDate" : "2023-07-19",
+      "instruction" : [ {
+        "primitiveInstruction" : {
+          "contractFormation" : {
+            "legalAgreement" : [ {
+              "legalAgreementIdentification" : {
+                "agreementName" : {
+                  "agreementType" : "MasterAgreement",
+                  "masterAgreementType" : {
+                    "value" : "ISDAMaster"
+                  }
+                },
+                "vintage" : 2002
+              },
+              "meta" : {
+                "globalKey" : "c6cc4d2b"
+              }
+            } ]
+          }
+        },
+        "before" : {
+          "value" : {
+            "trade" : {
+              "tradeIdentifier" : [ {
+                "issuerReference" : {
+                  "globalReference" : "85947d9",
+                  "externalReference" : "party1"
+                },
+                "assignedIdentifier" : [ {
+                  "identifier" : {
+                    "value" : "MOCKUPETDXMLXXXXXX00L11M10X9D8T7E6P5U4K3C2O1M0",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/unique-transaction-identifier"
+                    }
+                  }
+                } ],
+                "meta" : {
+                  "globalKey" : "e7352e3a"
+                },
+                "identifierType" : "UniqueTransactionIdentifier"
+              }, {
+                "issuer" : {
+                  "value" : "9991234569",
+                  "meta" : {
+                    "scheme" : "http://www.fpml.org/coding-scheme/external/issuer-identifier"
+                  }
+                },
+                "assignedIdentifier" : [ {
+                  "identifier" : {
+                    "value" : "100071",
+                    "meta" : {
+                      "scheme" : "https://www.cmegroup.com/confluence/display/EPICSANDBOX/CME+STP+-+FIXML+Message+Samples#CMESTPFIXMLMessageSamples-FutureSample-Pit"
+                    }
+                  }
+                } ],
+                "meta" : {
+                  "globalKey" : "d48e835c"
+                }
+              } ],
+              "tradeDate" : {
+                "value" : "2023-07-19",
+                "meta" : {
+                  "globalKey" : "3f39d3"
+                }
+              },
+              "tradableProduct" : {
+                "product" : {
+                  "security" : {
+                    "productTaxonomy" : [ {
+                      "primaryAssetClass" : {
+                        "value" : "Commodity"
+                      }
+                    }, {
+                      "source" : "CFI",
+                      "value" : {
+                        "name" : {
+                          "value" : "OMXXXX"
+                        }
+                      }
+                    } ],
+                    "productIdentifier" : [ {
+                      "value" : {
+                        "identifier" : {
+                          "value" : "BCOMCC:IND",
+                          "meta" : {
+                            "scheme" : "https://www.bloomberg.com/quote/BCOMCC:IND#xj4y7vzkg"
+                          }
+                        },
+                        "source" : "BBGTICKER",
+                        "meta" : {
+                          "globalKey" : "e0f9520d"
+                        }
+                      }
+                    }, {
+                      "value" : {
+                        "identifier" : {
+                          "value" : "CCZ23"
+                        },
+                        "source" : "Name",
+                        "meta" : {
+                          "globalKey" : "7652f630"
+                        }
+                      }
+                    } ],
+                    "securityType" : "ListedDerivative",
+                    "economicTerms" : {
+                      "payout" : {
+                        "optionPayout" : [ {
+                          "payerReceiver" : {
+                            "payer" : "Party1",
+                            "receiver" : "Party2"
+                          },
+                          "buyerSeller" : {
+                            "buyer" : "Party1",
+                            "seller" : "Party2"
+                          },
+                          "optionType" : "Put",
+                          "exerciseTerms" : {
+                            "optionStyle" : {
+                              "americanExercise" : {
+                                "commencementDate" : {
+                                  "adjustableDate" : {
+                                    "adjustedDate" : {
+                                      "value" : "2023-09-15",
+                                      "meta" : {
+                                        "globalKey" : "3f3a4f"
+                                      }
+                                    },
+                                    "meta" : {
+                                      "globalKey" : "0"
+                                    }
+                                  },
+                                  "meta" : {
+                                    "globalKey" : "0"
+                                  }
+                                },
+                                "expirationDate" : {
+                                  "adjustableDate" : {
+                                    "adjustedDate" : {
+                                      "value" : "2023-12-25",
+                                      "meta" : {
+                                        "globalKey" : "3f3b19"
+                                      }
+                                    },
+                                    "meta" : {
+                                      "globalKey" : "0"
+                                    }
+                                  },
+                                  "meta" : {
+                                    "globalKey" : "0"
+                                  }
+                                },
+                                "expirationTime" : {
+                                  "hourMinuteTime" : "23:59:00",
+                                  "businessCenter" : {
+                                    "value" : "NYSE"
+                                  }
+                                },
+                                "meta" : {
+                                  "globalKey" : "76cd2a63"
+                                }
+                              }
+                            },
+                            "strike" : {
+                              "strikePrice" : {
+                                "value" : 3500.0,
+                                "unit" : {
+                                  "currency" : {
+                                    "value" : "USD"
+                                  }
+                                },
+                                "perUnitOf" : {
+                                  "capacityUnit" : "MT"
+                                },
+                                "priceType" : "CashPrice"
+                              }
+                            }
+                          },
+                          "underlier" : {
+                            "security" : {
+                              "productIdentifier" : [ {
+                                "value" : {
+                                  "identifier" : {
+                                    "value" : "CJZ3",
+                                    "meta" : {
+                                      "scheme" : "https://www.bloomberg.com/energy"
+                                    }
+                                  },
+                                  "source" : "Name",
+                                  "meta" : {
+                                    "globalKey" : "3f794cb"
+                                  }
+                                }
+                              } ],
+                              "securityType" : "ListedDerivative",
+                              "economicTerms" : {
+                                "payout" : {
+                                  "forwardPayout" : [ {
+                                    "payerReceiver" : {
+                                      "payer" : "Party1",
+                                      "receiver" : "Party2"
+                                    },
+                                    "underlier" : {
+                                      "commodity" : {
+                                        "value" : {
+                                          "productIdentifier" : [ {
+                                            "value" : {
+                                              "identifier" : {
+                                                "value" : "CJ",
+                                                "meta" : {
+                                                  "scheme" : "https://www.cmegroup.com/markets/interest-rates/stirs/euro-short-term-rate.contractSpecs.html"
+                                                }
+                                              },
+                                              "source" : "BBGTICKER",
+                                              "meta" : {
+                                                "globalKey" : "4109024a"
+                                              }
+                                            }
+                                          } ],
+                                          "priceQuoteType" : "Closing",
+                                          "description" : "Cocoa Contract"
+                                        }
+                                      },
+                                      "meta" : {
+                                        "globalKey" : "9dc5ffde"
+                                      }
+                                    },
+                                    "deliveryTerm" : "Z23",
+                                    "meta" : {
+                                      "globalKey" : "810fa5c"
+                                    }
+                                  } ],
+                                  "meta" : {
+                                    "globalKey" : "810fa5c"
+                                  }
+                                }
+                              }
+                            },
+                            "meta" : {
+                              "globalKey" : "7be9c3e"
+                            }
+                          },
+                          "meta" : {
+                            "globalKey" : "be5f1c60"
+                          }
+                        } ],
+                        "meta" : {
+                          "globalKey" : "be5f1c60"
+                        }
+                      }
+                    }
+                  },
+                  "meta" : {
+                    "globalKey" : "4be325d9"
+                  }
+                },
+                "tradeLot" : [ {
+                  "priceQuantity" : [ {
+                    "price" : [ {
+                      "value" : {
+                        "value" : 287.0,
+                        "unit" : {
+                          "currency" : {
+                            "value" : "USD"
+                          }
+                        },
+                        "perUnitOf" : {
+                          "financialUnit" : "Share"
+                        },
+                        "priceType" : "CashPrice"
+                      }
+                    } ],
+                    "quantity" : [ {
+                      "value" : {
+                        "value" : 8.0,
+                        "unit" : {
+                          "financialUnit" : "Contract"
+                        }
+                      }
+                    } ],
+                    "buyerSeller" : {
+                      "buyer" : "Party1",
+                      "seller" : "Party2"
+                    },
+                    "settlementTerms" : {
+                      "settlementType" : "Cash",
+                      "settlementCurrency" : {
+                        "value" : "USD"
+                      },
+                      "settlementDate" : {
+                        "valueDate" : "2023-12-26",
+                        "meta" : {
+                          "globalKey" : "3f3b1a"
+                        }
+                      },
+                      "meta" : {
+                        "globalKey" : "351064b3"
+                      }
+                    },
+                    "meta" : {
+                      "globalKey" : "f42b6733"
+                    }
+                  } ]
+                } ],
+                "counterparty" : [ {
+                  "role" : "Party1",
+                  "partyReference" : {
+                    "globalReference" : "85947d9",
+                    "externalReference" : "party1"
+                  }
+                }, {
+                  "role" : "Party2",
+                  "partyReference" : {
+                    "globalReference" : "aca2bce8",
+                    "externalReference" : "party2"
+                  }
+                } ]
+              },
+              "party" : [ {
+                "partyId" : [ {
+                  "identifier" : {
+                    "value" : "213800IV9PCAC364HN60",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                    }
+                  },
+                  "identifierType" : "LEI",
+                  "meta" : {
+                    "globalKey" : "365954bc"
+                  }
+                } ],
+                "name" : {
+                  "value" : "Test Firm 1"
+                },
+                "meta" : {
+                  "globalKey" : "85947d9",
+                  "externalKey" : "party1"
+                }
+              }, {
+                "partyId" : [ {
+                  "identifier" : {
+                    "value" : "XCBT",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/exchange-id-MIC"
+                    }
+                  },
+                  "identifierType" : "MIC",
+                  "meta" : {
+                    "globalKey" : "4f8b54a"
+                  }
+                } ],
+                "name" : {
+                  "value" : "Test Firm 2"
+                },
+                "meta" : {
+                  "globalKey" : "aca2bce8",
+                  "externalKey" : "party2"
+                }
+              }, {
+                "partyId" : [ {
+                  "identifier" : {
+                    "value" : "XOFF",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/mifir/extension-iso10383"
+                    }
+                  },
+                  "identifierType" : "MIC",
+                  "meta" : {
+                    "globalKey" : "4fe3710"
+                  }
+                } ],
+                "meta" : {
+                  "globalKey" : "4fe3710",
+                  "externalKey" : "executionVenue"
+                }
+              } ],
+              "partyRole" : [ {
+                "partyReference" : {
+                  "globalReference" : "4fe3710",
+                  "externalReference" : "executionVenue"
+                },
+                "role" : "ExecutionFacility"
+              } ],
+              "meta" : {
+                "globalKey" : "22a9c190"
+              }
+            },
+            "meta" : {
+              "globalKey" : "22a9c190"
+            }
+          }
+        }
+      } ],
+      "after" : [ {
+        "trade" : {
+          "tradeIdentifier" : [ {
+            "issuerReference" : {
+              "globalReference" : "85947d9",
+              "externalReference" : "party1"
+            },
+            "assignedIdentifier" : [ {
+              "identifier" : {
+                "value" : "MOCKUPETDXMLXXXXXX00L11M10X9D8T7E6P5U4K3C2O1M0",
+                "meta" : {
+                  "scheme" : "http://www.fpml.org/coding-scheme/external/unique-transaction-identifier"
+                }
+              }
+            } ],
+            "meta" : {
+              "globalKey" : "e7352e3a"
+            },
+            "identifierType" : "UniqueTransactionIdentifier"
+          }, {
+            "issuer" : {
+              "value" : "9991234569",
+              "meta" : {
+                "scheme" : "http://www.fpml.org/coding-scheme/external/issuer-identifier"
+              }
+            },
+            "assignedIdentifier" : [ {
+              "identifier" : {
+                "value" : "100071",
+                "meta" : {
+                  "scheme" : "https://www.cmegroup.com/confluence/display/EPICSANDBOX/CME+STP+-+FIXML+Message+Samples#CMESTPFIXMLMessageSamples-FutureSample-Pit"
+                }
+              }
+            } ],
+            "meta" : {
+              "globalKey" : "d48e835c"
+            }
+          } ],
+          "tradeDate" : {
+            "value" : "2023-07-19",
+            "meta" : {
+              "globalKey" : "3f39d3"
+            }
+          },
+          "tradableProduct" : {
+            "product" : {
+              "security" : {
+                "productTaxonomy" : [ {
+                  "primaryAssetClass" : {
+                    "value" : "Commodity"
+                  }
+                }, {
+                  "source" : "CFI",
+                  "value" : {
+                    "name" : {
+                      "value" : "OMXXXX"
+                    }
+                  }
+                } ],
+                "productIdentifier" : [ {
+                  "value" : {
+                    "identifier" : {
+                      "value" : "BCOMCC:IND",
+                      "meta" : {
+                        "scheme" : "https://www.bloomberg.com/quote/BCOMCC:IND#xj4y7vzkg"
+                      }
+                    },
+                    "source" : "BBGTICKER",
+                    "meta" : {
+                      "globalKey" : "e0f9520d"
+                    }
+                  }
+                }, {
+                  "value" : {
+                    "identifier" : {
+                      "value" : "CCZ23"
+                    },
+                    "source" : "Name",
+                    "meta" : {
+                      "globalKey" : "7652f630"
+                    }
+                  }
+                } ],
+                "securityType" : "ListedDerivative",
+                "economicTerms" : {
+                  "payout" : {
+                    "optionPayout" : [ {
+                      "payerReceiver" : {
+                        "payer" : "Party1",
+                        "receiver" : "Party2"
+                      },
+                      "buyerSeller" : {
+                        "buyer" : "Party1",
+                        "seller" : "Party2"
+                      },
+                      "optionType" : "Put",
+                      "exerciseTerms" : {
+                        "optionStyle" : {
+                          "americanExercise" : {
+                            "commencementDate" : {
+                              "adjustableDate" : {
+                                "adjustedDate" : {
+                                  "value" : "2023-09-15",
+                                  "meta" : {
+                                    "globalKey" : "3f3a4f"
+                                  }
+                                },
+                                "meta" : {
+                                  "globalKey" : "0"
+                                }
+                              },
+                              "meta" : {
+                                "globalKey" : "0"
+                              }
+                            },
+                            "expirationDate" : {
+                              "adjustableDate" : {
+                                "adjustedDate" : {
+                                  "value" : "2023-12-25",
+                                  "meta" : {
+                                    "globalKey" : "3f3b19"
+                                  }
+                                },
+                                "meta" : {
+                                  "globalKey" : "0"
+                                }
+                              },
+                              "meta" : {
+                                "globalKey" : "0"
+                              }
+                            },
+                            "expirationTime" : {
+                              "hourMinuteTime" : "23:59:00",
+                              "businessCenter" : {
+                                "value" : "NYSE"
+                              }
+                            },
+                            "meta" : {
+                              "globalKey" : "76cd2a63"
+                            }
+                          }
+                        },
+                        "strike" : {
+                          "strikePrice" : {
+                            "value" : 3500.0,
+                            "unit" : {
+                              "currency" : {
+                                "value" : "USD"
+                              }
+                            },
+                            "perUnitOf" : {
+                              "capacityUnit" : "MT"
+                            },
+                            "priceType" : "CashPrice"
+                          }
+                        }
+                      },
+                      "underlier" : {
+                        "security" : {
+                          "productIdentifier" : [ {
+                            "value" : {
+                              "identifier" : {
+                                "value" : "CJZ3",
+                                "meta" : {
+                                  "scheme" : "https://www.bloomberg.com/energy"
+                                }
+                              },
+                              "source" : "Name",
+                              "meta" : {
+                                "globalKey" : "3f794cb"
+                              }
+                            }
+                          } ],
+                          "securityType" : "ListedDerivative",
+                          "economicTerms" : {
+                            "payout" : {
+                              "forwardPayout" : [ {
+                                "payerReceiver" : {
+                                  "payer" : "Party1",
+                                  "receiver" : "Party2"
+                                },
+                                "underlier" : {
+                                  "commodity" : {
+                                    "value" : {
+                                      "productIdentifier" : [ {
+                                        "value" : {
+                                          "identifier" : {
+                                            "value" : "CJ",
+                                            "meta" : {
+                                              "scheme" : "https://www.cmegroup.com/markets/interest-rates/stirs/euro-short-term-rate.contractSpecs.html"
+                                            }
+                                          },
+                                          "source" : "BBGTICKER",
+                                          "meta" : {
+                                            "globalKey" : "4109024a"
+                                          }
+                                        }
+                                      } ],
+                                      "priceQuoteType" : "Closing",
+                                      "description" : "Cocoa Contract"
+                                    }
+                                  },
+                                  "meta" : {
+                                    "globalKey" : "9dc5ffde"
+                                  }
+                                },
+                                "deliveryTerm" : "Z23",
+                                "meta" : {
+                                  "globalKey" : "810fa5c"
+                                }
+                              } ],
+                              "meta" : {
+                                "globalKey" : "810fa5c"
+                              }
+                            }
+                          }
+                        },
+                        "meta" : {
+                          "globalKey" : "7be9c3e"
+                        }
+                      },
+                      "meta" : {
+                        "globalKey" : "be5f1c60"
+                      }
+                    } ],
+                    "meta" : {
+                      "globalKey" : "be5f1c60"
+                    }
+                  }
+                }
+              },
+              "meta" : {
+                "globalKey" : "4be325d9"
+              }
+            },
+            "tradeLot" : [ {
+              "priceQuantity" : [ {
+                "price" : [ {
+                  "value" : {
+                    "value" : 287.0,
+                    "unit" : {
+                      "currency" : {
+                        "value" : "USD"
+                      }
+                    },
+                    "perUnitOf" : {
+                      "financialUnit" : "Share"
+                    },
+                    "priceType" : "CashPrice"
+                  }
+                } ],
+                "quantity" : [ {
+                  "value" : {
+                    "value" : 8.0,
+                    "unit" : {
+                      "financialUnit" : "Contract"
+                    }
+                  }
+                } ],
+                "buyerSeller" : {
+                  "buyer" : "Party1",
+                  "seller" : "Party2"
+                },
+                "settlementTerms" : {
+                  "settlementType" : "Cash",
+                  "settlementCurrency" : {
+                    "value" : "USD"
+                  },
+                  "settlementDate" : {
+                    "valueDate" : "2023-12-26",
+                    "meta" : {
+                      "globalKey" : "3f3b1a"
+                    }
+                  },
+                  "meta" : {
+                    "globalKey" : "351064b3"
+                  }
+                },
+                "meta" : {
+                  "globalKey" : "f42b6733"
+                }
+              } ]
+            } ],
+            "counterparty" : [ {
+              "role" : "Party1",
+              "partyReference" : {
+                "globalReference" : "85947d9",
+                "externalReference" : "party1"
+              }
+            }, {
+              "role" : "Party2",
+              "partyReference" : {
+                "globalReference" : "aca2bce8",
+                "externalReference" : "party2"
+              }
+            } ]
+          },
+          "party" : [ {
+            "partyId" : [ {
+              "identifier" : {
+                "value" : "213800IV9PCAC364HN60",
+                "meta" : {
+                  "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                }
+              },
+              "identifierType" : "LEI",
+              "meta" : {
+                "globalKey" : "365954bc"
+              }
+            } ],
+            "name" : {
+              "value" : "Test Firm 1"
+            },
+            "meta" : {
+              "globalKey" : "85947d9",
+              "externalKey" : "party1"
+            }
+          }, {
+            "partyId" : [ {
+              "identifier" : {
+                "value" : "XCBT",
+                "meta" : {
+                  "scheme" : "http://www.fpml.org/coding-scheme/external/exchange-id-MIC"
+                }
+              },
+              "identifierType" : "MIC",
+              "meta" : {
+                "globalKey" : "4f8b54a"
+              }
+            } ],
+            "name" : {
+              "value" : "Test Firm 2"
+            },
+            "meta" : {
+              "globalKey" : "aca2bce8",
+              "externalKey" : "party2"
+            }
+          }, {
+            "partyId" : [ {
+              "identifier" : {
+                "value" : "XOFF",
+                "meta" : {
+                  "scheme" : "http://www.fpml.org/coding-scheme/external/mifir/extension-iso10383"
+                }
+              },
+              "identifierType" : "MIC",
+              "meta" : {
+                "globalKey" : "4fe3710"
+              }
+            } ],
+            "meta" : {
+              "globalKey" : "4fe3710",
+              "externalKey" : "executionVenue"
+            }
+          } ],
+          "partyRole" : [ {
+            "partyReference" : {
+              "globalReference" : "4fe3710",
+              "externalReference" : "executionVenue"
+            },
+            "role" : "ExecutionFacility"
+          } ],
+          "contractDetails" : {
+            "documentation" : [ {
+              "legalAgreementIdentification" : {
+                "agreementName" : {
+                  "agreementType" : "MasterAgreement",
+                  "masterAgreementType" : {
+                    "value" : "ISDAMaster"
+                  }
+                },
+                "vintage" : 2002
+              },
+              "meta" : {
+                "globalKey" : "c6cc4d2b"
+              }
+            } ]
+          },
+          "meta" : {
+            "globalKey" : "22a9c190"
+          }
+        },
+        "state" : {
+          "positionState" : "Formed"
+        },
+        "meta" : {
+          "globalKey" : "22a9c190"
+        }
+      } ]
+    },
+    "previousWorkflowStep" : {
+      "globalReference" : "3613d32b"
+    },
+    "messageInformation" : {
+      "messageId" : {
+        "value" : "00122941455512345BR777123456789",
+        "meta" : {
+          "scheme" : "http://www.bankx.com/msg_id"
+        }
+      },
+      "sentBy" : {
+        "value" : "213800IV9PCAC364HN60"
+      },
+      "sentTo" : [ {
+        "value" : "IFEU"
+      } ]
+    },
+    "timestamp" : [ {
+      "dateTime" : "2023-07-19T14:44:58Z",
+      "qualification" : "eventCreationDateTime"
+    }, {
+      "dateTime" : "2023-07-19T14:44:58Z",
+      "qualification" : "executionDateTime"
+    } ],
+    "eventIdentifier" : [ {
+      "assignedIdentifier" : [ {
+        "identifier" : {
+          "value" : "00122941455512345BR777123456789"
+        }
+      } ],
+      "meta" : {
+        "globalKey" : "bc542d3b"
+      }
+    } ],
+    "action" : "New",
+    "party" : [ {
+      "partyId" : [ {
+        "identifier" : {
+          "value" : "213800IV9PCAC364HN60",
+          "meta" : {
+            "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+          }
+        },
+        "identifierType" : "LEI",
+        "meta" : {
+          "globalKey" : "365954bc"
+        }
+      } ],
+      "name" : {
+        "value" : "Test Firm 1"
+      },
+      "meta" : {
+        "globalKey" : "85947d9",
+        "externalKey" : "party1"
+      }
+    }, {
+      "partyId" : [ {
+        "identifier" : {
+          "value" : "XCBT",
+          "meta" : {
+            "scheme" : "http://www.fpml.org/coding-scheme/external/exchange-id-MIC"
+          }
+        },
+        "identifierType" : "MIC",
+        "meta" : {
+          "globalKey" : "4f8b54a"
+        }
+      } ],
+      "name" : {
+        "value" : "Test Firm 2"
+      },
+      "meta" : {
+        "globalKey" : "aca2bce8",
+        "externalKey" : "party2"
+      }
+    }, {
+      "partyId" : [ {
+        "identifier" : {
+          "value" : "XOFF",
+          "meta" : {
+            "scheme" : "http://www.fpml.org/coding-scheme/external/mifir/extension-iso10383"
+          }
+        },
+        "identifierType" : "MIC",
+        "meta" : {
+          "globalKey" : "4fe3710"
+        }
+      } ],
+      "meta" : {
+        "globalKey" : "4fe3710",
+        "externalKey" : "executionVenue"
+      }
+    } ]
+  },
+  "reportableInformation" : {
+    "confirmationMethod" : "NotConfirmed",
+    "executionVenueType" : "OffFacility",
+    "intragroup" : false,
+    "partyInformation" : [ {
+      "partyReference" : {
+        "globalReference" : "85947d9",
+        "externalReference" : "party1"
+      },
+      "relatedParty" : [ {
+        "partyReference" : {
+          "globalReference" : "aca2bce8",
+          "externalReference" : "party2"
+        },
+        "role" : "Beneficiary"
+      }, {
+        "partyReference" : {
+          "globalReference" : "4fe3710",
+          "externalReference" : "executionVenue"
+        },
+        "role" : "ExecutionFacility"
+      } ],
+      "regimeInformation" : [ {
+        "regimeName" : {
+          "value" : "EMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "ESMA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "esmaPartyInformation" : {
+          "natureOfParty" : "Financial",
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "ReportingParty"
+      } ]
+    }, {
+      "partyReference" : {
+        "globalReference" : "aca2bce8",
+        "externalReference" : "party2"
+      },
+      "relatedParty" : [ {
+        "partyReference" : {
+          "globalReference" : "aca2bce8",
+          "externalReference" : "party2"
+        },
+        "role" : "Beneficiary"
+      } ],
+      "regimeInformation" : [ {
+        "regimeName" : {
+          "value" : "EMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "ESMA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "esmaPartyInformation" : {
+          "natureOfParty" : "NonFinancial",
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "Counterparty"
+      } ]
+    } ],
+    "originalExecutionTimestamp" : "2023-07-19T14:44:58Z"
+  },
+  "reportingSide" : {
+    "reportingParty" : {
+      "globalReference" : "85947d9",
+      "externalReference" : "party1"
+    },
+    "reportingCounterparty" : {
+      "globalReference" : "aca2bce8",
+      "externalReference" : "party2"
+    }
+  }
+}

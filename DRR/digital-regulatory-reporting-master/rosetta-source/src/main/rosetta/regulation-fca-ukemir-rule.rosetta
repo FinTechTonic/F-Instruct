@@ -1,0 +1,7 @@
+namespace drr.regulation.fca.ukemir
+version "${project.version}"
+
+corpus QandAOnEMIRReporting "ESMA70-1861941480-52" QandA_On_EMIR_Reporting <"Questions and Answers. Implementation of the Regulation (EU) No 648/2012 on OTC derivatives, central counterparties and trade repositories (EMIR)">
+//This is Pre-Refit, but absent future post-Refit guidelines, may also be applied in some circumstances to Refit.
+
+corpus FCA_BoEPolicyStatement "PS23/2" UKEMIR <"Policy Statement PS23/2: Changes to reporting requirements, procedures for data quality and registration of Trade Repositories under UK EMIR  feedback on CP21/31 and our final rules and guidance">

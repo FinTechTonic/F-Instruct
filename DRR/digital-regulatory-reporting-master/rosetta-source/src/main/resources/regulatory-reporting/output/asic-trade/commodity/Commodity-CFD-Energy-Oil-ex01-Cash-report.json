@@ -1,0 +1,61 @@
+{
+  "actionType" : "CORR",
+  "assetClass" : "OTHR",
+  "cleared" : "N",
+  "contractType" : "SWAP",
+  "counterparty1" : "7H6GLXDRUGQFU57RNE97",
+  "counterparty2" : "5U0XI89JRFVHWIBS4F54",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "direction2OfLeg1" : "TAKE",
+  "direction2OfLeg2" : "MAKE",
+  "effectiveDate" : "2022-03-01",
+  "eventIdentifier" : "D2F9D3C7AEF97KMZ92S",
+  "eventTimestamp" : "2021-08-18T14:17:08Z",
+  "executionTimestamp" : "2021-08-12T07:32:01Z",
+  "expirationDate" : "2023-10-31",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "ReturnorPayoutTrigger" : "Total Return",
+          "UnderlierID" : "DUBAI",
+          "UnderlierIDSource" : "COMM"
+        },
+        "Header" : {
+          "AssetClass" : "Commodities",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Swap"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "JPY",
+  "notionalCurrencyLeg2" : "JPY",
+  "notionalLeg1" : 30000000.0000000000,
+  "notionalLeg2" : 30000000.0000000000,
+  "notionalQuantityLeg1" : 150.00000,
+  "notionalQuantityLeg2" : 150.00000,
+  "price" : {
+    "priceCurrency" : "JPY",
+    "priceMonetary" : 10000.0000000000000,
+    "priceNotation" : "Monetary"
+  },
+  "priceCurrency" : "JPY",
+  "reportSubmittingEntityID" : "7H6GLXDRUGQFU57RNE97",
+  "reportingEntity" : "7H6GLXDRUGQFU57RNE97",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "secondaryTransactionIdentifier" : "COMMODITYCFDENERGY01",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "spreadCurrencyLeg2" : "USD",
+  "spreadLeg2" : {
+    "spreadLeg2Monetary" : 0.0000000000000,
+    "spreadLeg2Notation" : "Monetary"
+  },
+  "spreadNotationLeg2" : "1",
+  "totalNotionalQuantityLeg1" : 3000.00000,
+  "totalNotionalQuantityLeg2" : 3000.00000,
+  "uniqueTransactionIdentifier" : "COMMODITYCFDENERGY02"
+}

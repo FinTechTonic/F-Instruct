@@ -1,0 +1,369 @@
+{
+  "collateralDetails" : {
+    "collateralTimestamp" : "2021-03-13T06:32:49Z",
+    "collateral" : {
+      "portfolioIdentifier" : [ {
+        "assignedIdentifier" : [ {
+          "identifier" : {
+            "value" : "COLL123"
+          }
+        } ],
+        "meta" : {
+          "globalKey" : "63629fc6"
+        }
+      } ],
+      "collateralPortfolio" : [ {
+        "value" : {
+          "collateralBalance" : [ {
+            "collateralBalanceStatus" : "FullAmount",
+            "haircutIndicator" : "PreHaircut",
+            "amountBaseCurrency" : {
+              "value" : 190,
+              "unit" : {
+                "currency" : {
+                  "value" : "GBP"
+                }
+              },
+              "meta" : {
+                "globalKey" : "56d796cd"
+              }
+            },
+            "payerReceiver" : {
+              "payerPartyReference" : {
+                "globalReference" : "6ed88044",
+                "externalReference" : "party1"
+              },
+              "receiverPartyReference" : {
+                "globalReference" : "bb49950e",
+                "externalReference" : "party2"
+              }
+            }
+          }, {
+            "collateralBalanceStatus" : "FullAmount",
+            "haircutIndicator" : "PostHaircut",
+            "amountBaseCurrency" : {
+              "value" : 170,
+              "unit" : {
+                "currency" : {
+                  "value" : "GBP"
+                }
+              },
+              "meta" : {
+                "globalKey" : "56bb67cb"
+              }
+            },
+            "payerReceiver" : {
+              "payerPartyReference" : {
+                "globalReference" : "6ed88044",
+                "externalReference" : "party1"
+              },
+              "receiverPartyReference" : {
+                "globalReference" : "bb49950e",
+                "externalReference" : "party2"
+              }
+            }
+          } ],
+          "legalAgreement" : {
+            "value" : {
+              "legalAgreementIdentification" : {
+                "agreementName" : {
+                  "creditSupportAgreementMarginType" : "InitialMargin"
+                }
+              },
+              "meta" : {
+                "globalKey" : "6e978329"
+              }
+            }
+          },
+          "meta" : {
+            "globalKey" : "7349729e"
+          }
+        }
+      }, {
+        "value" : {
+          "collateralBalance" : [ {
+            "collateralBalanceStatus" : "FullAmount",
+            "haircutIndicator" : "PreHaircut",
+            "amountBaseCurrency" : {
+              "value" : 175,
+              "unit" : {
+                "currency" : {
+                  "value" : "GBP"
+                }
+              },
+              "meta" : {
+                "globalKey" : "56bdada6"
+              }
+            },
+            "payerReceiver" : {
+              "payerPartyReference" : {
+                "globalReference" : "bb49950e",
+                "externalReference" : "party2"
+              },
+              "receiverPartyReference" : {
+                "globalReference" : "6ed88044",
+                "externalReference" : "party1"
+              }
+            }
+          }, {
+            "collateralBalanceStatus" : "FullAmount",
+            "haircutIndicator" : "PostHaircut",
+            "amountBaseCurrency" : {
+              "value" : 165,
+              "unit" : {
+                "currency" : {
+                  "value" : "GBP"
+                }
+              },
+              "meta" : {
+                "globalKey" : "56af9625"
+              }
+            },
+            "payerReceiver" : {
+              "payerPartyReference" : {
+                "globalReference" : "bb49950e",
+                "externalReference" : "party2"
+              },
+              "receiverPartyReference" : {
+                "globalReference" : "6ed88044",
+                "externalReference" : "party1"
+              }
+            }
+          } ],
+          "legalAgreement" : {
+            "value" : {
+              "legalAgreementIdentification" : {
+                "agreementName" : {
+                  "creditSupportAgreementMarginType" : "InitialMargin"
+                }
+              },
+              "meta" : {
+                "globalKey" : "6e978329"
+              }
+            }
+          },
+          "meta" : {
+            "globalKey" : "ecd083ad"
+          }
+        }
+      }, {
+        "value" : {
+          "collateralBalance" : [ {
+            "collateralBalanceStatus" : "FullAmount",
+            "haircutIndicator" : "PreHaircut",
+            "amountBaseCurrency" : {
+              "value" : 50,
+              "meta" : {
+                "globalKey" : "69b"
+              }
+            },
+            "payerReceiver" : {
+              "payerPartyReference" : {
+                "globalReference" : "6ed88044",
+                "externalReference" : "party1"
+              },
+              "receiverPartyReference" : {
+                "globalReference" : "bb49950e",
+                "externalReference" : "party2"
+              }
+            }
+          }, {
+            "collateralBalanceStatus" : "FullAmount",
+            "haircutIndicator" : "PostHaircut",
+            "amountBaseCurrency" : {
+              "value" : 40,
+              "meta" : {
+                "globalKey" : "67c"
+              }
+            },
+            "payerReceiver" : {
+              "payerPartyReference" : {
+                "globalReference" : "6ed88044",
+                "externalReference" : "party1"
+              },
+              "receiverPartyReference" : {
+                "globalReference" : "bb49950e",
+                "externalReference" : "party2"
+              }
+            }
+          } ],
+          "legalAgreement" : {
+            "value" : {
+              "legalAgreementIdentification" : {
+                "agreementName" : {
+                  "creditSupportAgreementMarginType" : "VariationMargin"
+                }
+              },
+              "meta" : {
+                "globalKey" : "fc7e3d7a"
+              }
+            }
+          },
+          "meta" : {
+            "globalKey" : "cc8990b8"
+          }
+        }
+      }, {
+        "value" : {
+          "collateralBalance" : [ {
+            "collateralBalanceStatus" : "FullAmount",
+            "haircutIndicator" : "PreHaircut",
+            "amountBaseCurrency" : {
+              "value" : 25,
+              "unit" : {
+                "currency" : {
+                  "value" : "GBP"
+                }
+              },
+              "meta" : {
+                "globalKey" : "2d9c1b2"
+              }
+            },
+            "payerReceiver" : {
+              "payerPartyReference" : {
+                "globalReference" : "bb49950e",
+                "externalReference" : "party2"
+              },
+              "receiverPartyReference" : {
+                "globalReference" : "6ed88044",
+                "externalReference" : "party1"
+              }
+            }
+          }, {
+            "collateralBalanceStatus" : "FullAmount",
+            "haircutIndicator" : "PostHaircut",
+            "amountBaseCurrency" : {
+              "value" : 20,
+              "unit" : {
+                "currency" : {
+                  "value" : "GBP"
+                }
+              },
+              "meta" : {
+                "globalKey" : "2d77bd7"
+              }
+            },
+            "payerReceiver" : {
+              "payerPartyReference" : {
+                "globalReference" : "bb49950e",
+                "externalReference" : "party2"
+              },
+              "receiverPartyReference" : {
+                "globalReference" : "6ed88044",
+                "externalReference" : "party1"
+              }
+            }
+          } ],
+          "legalAgreement" : {
+            "value" : {
+              "legalAgreementIdentification" : {
+                "agreementName" : {
+                  "creditSupportAgreementMarginType" : "VariationMargin"
+                }
+              },
+              "meta" : {
+                "globalKey" : "fc7e3d7a"
+              }
+            }
+          },
+          "meta" : {
+            "globalKey" : "5c04d13c"
+          }
+        }
+      } ],
+      "meta" : {
+        "globalKey" : "4410a9c5"
+      }
+    },
+    "uniqueTradeIdentifier" : {
+      "issuer" : {
+        "value" : "9991234569",
+        "meta" : {
+          "scheme" : "http://www.fpml.org/coding-scheme/external/issuer-identifier"
+        }
+      },
+      "assignedIdentifier" : [ {
+        "identifier" : {
+          "value" : "DTD380513903T7YHJ898COLLATERALEX01UNIQUETRANSACTION1",
+          "meta" : {
+            "scheme" : "http://www.fpml.org/coding-scheme/external/unique-transaction-identifier"
+          }
+        }
+      } ],
+      "meta" : {
+        "globalKey" : "acf64e79"
+      },
+      "identifierType" : "UniqueTransactionIdentifier"
+    },
+    "action" : "CORR",
+    "collateralisationCategory" : "FLCL"
+  },
+  "reportableInformation" : {
+    "partyInformation" : [ {
+      "partyReference" : {
+        "value" : {
+          "partyId" : [ {
+            "identifier" : {
+              "value" : "5493001RKR55V4X61F71",
+              "meta" : {
+                "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+              }
+            },
+            "identifierType" : "LEI",
+            "meta" : {
+              "globalKey" : "c87765a4"
+            }
+          } ],
+          "name" : {
+            "value" : "asdasfsFsdf"
+          },
+          "meta" : {
+            "globalKey" : "6ed88044",
+            "externalKey" : "party1"
+          }
+        }
+      },
+      "regimeInformation" : [ {
+        "supervisoryBody" : {
+          "value" : "ESMA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "esmaPartyInformation" : {
+          "natureOfParty" : "Financial"
+        },
+        "reportingRole" : "ReportingParty"
+      } ]
+    }, {
+      "partyReference" : {
+        "value" : {
+          "partyId" : [ {
+            "identifier" : {
+              "value" : "5U0XI89JRFVHWIBS4F54",
+              "meta" : {
+                "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+              }
+            },
+            "identifierType" : "LEI",
+            "meta" : {
+              "globalKey" : "bb49950e"
+            }
+          } ],
+          "meta" : {
+            "globalKey" : "bb49950e",
+            "externalKey" : "party2"
+          }
+        }
+      }
+    } ]
+  },
+  "reportingSide" : {
+    "reportingParty" : {
+      "globalReference" : "6ed88044",
+      "externalReference" : "party1"
+    },
+    "reportingCounterparty" : {
+      "globalReference" : "bb49950e",
+      "externalReference" : "party2"
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "actionType" : "CORR",
+  "assetClass" : "COMM",
+  "bookingLocation" : "GB",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "SWAP",
+  "counterparty1" : "213800IV9PCAC364HN60",
+  "counterparty2" : "213800WWTABZ1GOJHH37",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "213800IV9PCAC364HN60",
+  "deliveryType" : "CASH",
+  "directionOfLeg1" : "TAKE",
+  "directionOfLeg2" : "MAKE",
+  "effectiveDate" : "2017-01-01",
+  "eventDate" : "2022-03-17",
+  "executionTimestamp" : "2022-03-17T14:44:58Z",
+  "expirationDate" : "2017-12-31",
+  "finalContractualSettlementDate" : "2017-12-31",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "ReturnorPayoutTrigger" : "Total Return",
+          "UnderlierID" : "OIL-WTI-PLATTS MARKETWIRE",
+          "UnderlierIDSource" : "COMM"
+        },
+        "Header" : {
+          "AssetClass" : "Commodities",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Swap"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfLeg2" : 3184100.000000,
+  "notionalAmountOfTheContractOrLeg1" : 3184100.000000,
+  "notionalCurrencyOfLeg2" : "USD",
+  "notionalCurrencyOfTheContractOrLeg1" : "USD",
+  "notionalQuantityOfLeg2" : 84000.00000,
+  "notionalQuantityOfTheContractOrLeg1" : 84000.00000,
+  "price" : {
+    "priceCurrency" : "USD",
+    "priceMonetary" : 1.8730000000000,
+    "priceNotation" : "Monetary"
+  },
+  "priceCurrency" : "USD",
+  "priceUnitOfMeasure" : "BARL",
+  "quantityFrequencyMultiplierOfLeg2" : 1,
+  "quantityFrequencyMultiplierOfTheContractOrLeg1" : 1,
+  "quantityFrequencyOfLeg2" : "MNTH",
+  "quantityFrequencyOfTheContractOrLeg1" : "MNTH",
+  "quantityUnitOfMeasureForTheContractOrLeg1" : "BARL",
+  "quantityUnitOfMeasureLeg2" : "BARL",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "213800IV9PCAC364HN60",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrency2" : "USD",
+  "spreadOfLeg2" : {
+    "spreadCurrencyOfLeg2" : "USD",
+    "spreadNotationOfLeg2" : "Monetary",
+    "spreadOfLeg2Monetary" : 0.0000000000000
+  },
+  "totalNotionalQuantityLeg2" : 1700000,
+  "totalNotionalQuantityOfTheContractOrLeg1" : 1700000,
+  "underlyingIdentificationType" : "O",
+  "uniqueTransactionIdentifier" : "COMMODITYSWAPENERG02"
+}

@@ -1,0 +1,66 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "COMM",
+  "bookingLocation" : "CA",
+  "callAmount" : 3850000.0000000000,
+  "callCurrency" : "USD",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "OPTN",
+  "counterparty1" : "DUMMY0000000000LEI02",
+  "counterparty2" : "DUMMY0000000000LEI01",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "DUMMY0000000000LEI02",
+  "deliveryType" : "CASH",
+  "direction" : "BYER",
+  "effectiveDate" : "2022-07-01",
+  "eventDate" : "2021-12-03",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-12-03T19:23:14Z",
+  "expirationDate" : "2022-07-31",
+  "finalContractualSettlementDate" : "2022-07-31",
+  "firstExerciseDate" : "2022-07-31",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "OptionExerciseStyle" : "EURO",
+          "OptionType" : "CALL",
+          "UnderlierID" : "NATURAL GAS-HENRY HUB-NYMEX",
+          "UnderlierIDSource" : "COMM",
+          "ValuationMethodorTrigger" : "Vanilla"
+        },
+        "Header" : {
+          "AssetClass" : "Commodities",
+          "InstrumentType" : "Option",
+          "Level" : "UPI",
+          "UseCase" : "Option"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfTheContractOrLeg1" : 3850000.0000000000,
+  "notionalCurrencyOfTheContractOrLeg1" : "USD",
+  "notionalQuantityOfTheContractOrLeg1" : 1000000,
+  "optionPremiumAmount" : 452500.00,
+  "optionPremiumCurrency" : "USD",
+  "optionStyle" : "EURO",
+  "optionType" : "CALL",
+  "quantityFrequencyMultiplierOfTheContractOrLeg1" : 1,
+  "quantityFrequencyOfTheContractOrLeg1" : "MNTH",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "DUMMY0000000000LEI02",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrency1" : "USD",
+  "strikePrice" : {
+    "strikePriceCurrency" : "USD",
+    "strikePriceMonetary" : 3.8500000000000,
+    "strikePriceNotation" : "Monetary"
+  },
+  "totalNotionalQuantityOfTheContractOrLeg1" : 1000000.00,
+  "underlyingIdentificationType" : "O",
+  "uniqueTransactionIdentifier" : "COMMODITYOPTIONENE01"
+}

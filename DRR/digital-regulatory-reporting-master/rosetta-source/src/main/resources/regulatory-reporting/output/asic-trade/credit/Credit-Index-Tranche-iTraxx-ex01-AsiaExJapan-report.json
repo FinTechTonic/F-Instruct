@@ -1,0 +1,53 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "CRDT",
+  "beneficiary1" : "549300V2LQD6SX1WIG70",
+  "beneficiary1IdentifierTypeIndicator" : true,
+  "cdSIndexAttachmentPoint" : 0.009,
+  "cdSIndexDetachmentPoint" : 0.0095,
+  "cleared" : "N",
+  "contractType" : "SWAP",
+  "counterparty1" : "549300V2LQD6SX1WIG70",
+  "counterparty2" : "549300CWK6F65W566G32",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "dayCountConventionLeg1" : "A004",
+  "direction" : "SLLR",
+  "effectiveDate" : "2020-09-21",
+  "eventIdentifier" : "D93BC8A8583F58E1E0538CB0CC0A58AF",
+  "eventTimestamp" : "2022-03-08T13:46:01Z",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2022-03-08T11:59:08Z",
+  "expirationDate" : "2025-12-20",
+  "fixedRateLeg1" : 1.00,
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "OPTL",
+          "Underlying" : {
+            "UnderlierIDSource" : "CRIDX",
+            "UnderlyingInstrumentIndexTermUnit" : "YEAR"
+          },
+          "UnderlyingIssuerType" : "Corporate"
+        },
+        "Header" : {
+          "AssetClass" : "Credit",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Index_Tranche"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "USD",
+  "notionalLeg1" : 1000000,
+  "paymentFrequencyPeriodLeg1" : "MNTH",
+  "paymentFrequencyPeriodMultiplierLeg1" : 3,
+  "reportSubmittingEntityID" : "549300V2LQD6SX1WIG70",
+  "reportingEntity" : "549300V2LQD6SX1WIG70",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "underlyingIdentification" : "4ABCAMBE5",
+  "uniqueTransactionIdentifier" : "CREDITINDEXTRANCHE04"
+}

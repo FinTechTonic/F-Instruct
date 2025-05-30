@@ -1,0 +1,1519 @@
+{
+  "originatingWorkflowStep" : {
+    "businessEvent" : {
+      "intent" : "ContractFormation",
+      "eventDate" : "2015-01-24",
+      "instruction" : [ {
+        "primitiveInstruction" : {
+          "contractFormation" : {
+            "legalAgreement" : [ {
+              "agreementDate" : "2014-09-20",
+              "legalAgreementIdentification" : {
+                "agreementName" : {
+                  "agreementType" : "MasterAgreement",
+                  "masterAgreementType" : {
+                    "value" : "ISDAMaster",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/master-agreement-type"
+                    }
+                  }
+                },
+                "vintage" : 1992
+              },
+              "contractualParty" : [ {
+                "globalReference" : "e2d93f4e",
+                "externalReference" : "party1"
+              }, {
+                "globalReference" : "bd5fdd34",
+                "externalReference" : "party2"
+              } ],
+              "meta" : {
+                "globalKey" : "abda2f56"
+              }
+            }, {
+              "legalAgreementIdentification" : {
+                "agreementName" : {
+                  "agreementType" : "Confirmation",
+                  "contractualDefinitionsType" : [ {
+                    "value" : "ISDA2003CreditDerivatives"
+                  } ],
+                  "contractualTermsSupplement" : [ {
+                    "contractualTermsSupplementType" : {
+                      "value" : "ISDA2003CreditMay2003"
+                    }
+                  } ]
+                }
+              },
+              "contractualParty" : [ {
+                "globalReference" : "e2d93f4e",
+                "externalReference" : "party1"
+              }, {
+                "globalReference" : "bd5fdd34",
+                "externalReference" : "party2"
+              } ],
+              "meta" : {
+                "globalKey" : "efb567db"
+              }
+            } ]
+          }
+        },
+        "before" : {
+          "value" : {
+            "trade" : {
+              "tradeIdentifier" : [ {
+                "issuer" : {
+                  "value" : "213800H14XVWOV87OI72",
+                  "meta" : {
+                    "scheme" : "http://www.fpml.org/coding-scheme/external/issuer-identifier"
+                  }
+                },
+                "assignedIdentifier" : [ {
+                  "identifier" : {
+                    "value" : "CREDITBASKETTRANCH01",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/unique-transaction-identifier"
+                    }
+                  }
+                } ],
+                "meta" : {
+                  "globalKey" : "117dceb5"
+                },
+                "identifierType" : "UniqueTransactionIdentifier"
+              } ],
+              "tradeDate" : {
+                "value" : "2004-01-24",
+                "meta" : {
+                  "globalKey" : "3ea058"
+                }
+              },
+              "tradableProduct" : {
+                "product" : {
+                  "contractualProduct" : {
+                    "productTaxonomy" : [ {
+                      "primaryAssetClass" : {
+                        "value" : "Credit"
+                      }
+                    }, {
+                      "source" : "CFI",
+                      "value" : {
+                        "name" : {
+                          "value" : "SCDXCC",
+                          "meta" : {
+                            "scheme" : "http://www.fpml.org/coding-scheme/external/product-classification/iso10962"
+                          }
+                        }
+                      }
+                    }, {
+                      "source" : "ISDA",
+                      "productQualifier" : "CreditDefaultSwap_Basket"
+                    } ],
+                    "economicTerms" : {
+                      "effectiveDate" : {
+                        "adjustableDate" : {
+                          "unadjustedDate" : "2004-03-23",
+                          "dateAdjustments" : {
+                            "businessDayConvention" : "NONE",
+                            "meta" : {
+                              "globalKey" : "24a738"
+                            }
+                          },
+                          "meta" : {
+                            "globalKey" : "eb3e6e4f"
+                          }
+                        },
+                        "meta" : {
+                          "globalKey" : "eb3e6e4f"
+                        }
+                      },
+                      "terminationDate" : {
+                        "adjustableDate" : {
+                          "unadjustedDate" : "2014-03-20",
+                          "dateAdjustments" : {
+                            "businessDayConvention" : "NONE",
+                            "meta" : {
+                              "globalKey" : "24a738"
+                            }
+                          },
+                          "meta" : {
+                            "globalKey" : "ec6ab30c"
+                          }
+                        },
+                        "meta" : {
+                          "globalKey" : "ec6ab30c"
+                        }
+                      },
+                      "payout" : {
+                        "interestRatePayout" : [ {
+                          "payerReceiver" : {
+                            "payer" : "Party2",
+                            "receiver" : "Party1"
+                          },
+                          "priceQuantity" : {
+                            "quantitySchedule" : {
+                              "address" : {
+                                "scope" : "DOCUMENT",
+                                "value" : "quantity-1"
+                              }
+                            },
+                            "meta" : {
+                              "globalKey" : "0"
+                            }
+                          },
+                          "rateSpecification" : {
+                            "fixedRate" : {
+                              "rateSchedule" : {
+                                "price" : {
+                                  "address" : {
+                                    "scope" : "DOCUMENT",
+                                    "value" : "price-1"
+                                  }
+                                }
+                              },
+                              "meta" : {
+                                "globalKey" : "0"
+                              }
+                            }
+                          },
+                          "dayCountFraction" : {
+                            "value" : "ACT/ACT.ISDA"
+                          },
+                          "calculationPeriodDates" : {
+                            "calculationPeriodFrequency" : {
+                              "periodMultiplier" : 1,
+                              "period" : "M",
+                              "meta" : {
+                                "globalKey" : "6c"
+                              }
+                            },
+                            "meta" : {
+                              "globalKey" : "6c"
+                            }
+                          },
+                          "paymentDates" : {
+                            "paymentFrequency" : {
+                              "periodMultiplier" : 1,
+                              "period" : "M",
+                              "meta" : {
+                                "globalKey" : "6c"
+                              }
+                            },
+                            "meta" : {
+                              "globalKey" : "6c"
+                            }
+                          },
+                          "meta" : {
+                            "globalKey" : "d536ceb8"
+                          }
+                        } ],
+                        "creditDefaultPayout" : {
+                          "payerReceiver" : {
+                            "payer" : "Party1",
+                            "receiver" : "Party2"
+                          },
+                          "priceQuantity" : {
+                            "quantitySchedule" : {
+                              "address" : {
+                                "scope" : "DOCUMENT",
+                                "value" : "quantity-2"
+                              }
+                            },
+                            "meta" : {
+                              "globalKey" : "0"
+                            }
+                          },
+                          "settlementTerms" : {
+                            "settlementType" : "Cash",
+                            "settlementCurrency" : {
+                              "value" : "USD"
+                            },
+                            "meta" : {
+                              "globalKey" : "7610bbd9"
+                            }
+                          },
+                          "generalTerms" : {
+                            "basketReferenceInformation" : {
+                              "basketName" : {
+                                "value" : "CDS Basket Sample",
+                                "meta" : {
+                                  "scheme" : "http://www.barclaysglobal.com/partners/coding-scheme/indexId"
+                                }
+                              },
+                              "basketId" : [ {
+                                "value" : "CDSBASKETSAMPLE08912",
+                                "meta" : {
+                                  "scheme" : "http://www.barclaysglobal.com/partners/coding-scheme/indexId"
+                                }
+                              } ],
+                              "referencePool" : {
+                                "referencePoolItem" : [ {
+                                  "referencePair" : {
+                                    "referenceEntity" : {
+                                      "entityId" : [ {
+                                        "value" : "008HA7",
+                                        "meta" : {
+                                          "scheme" : "http://www.fpml.org/coding-scheme/external/entity-id-RED"
+                                        }
+                                      } ],
+                                      "name" : {
+                                        "value" : "Agrium Inc."
+                                      },
+                                      "meta" : {
+                                        "globalKey" : "6b99b4c1",
+                                        "externalKey" : "agriumEntity"
+                                      }
+                                    },
+                                    "referenceObligation" : {
+                                      "security" : {
+                                        "productIdentifier" : [ {
+                                          "value" : {
+                                            "identifier" : {
+                                              "value" : "US0089ABC985",
+                                              "meta" : {
+                                                "scheme" : "http://www.fpml.org/coding-scheme/external/instrument-id-ISIN"
+                                              }
+                                            },
+                                            "source" : "ISIN",
+                                            "meta" : {
+                                              "globalKey" : "dbde035c"
+                                            }
+                                          }
+                                        } ],
+                                        "securityType" : "Debt"
+                                      },
+                                      "primaryObligorReference" : {
+                                        "globalReference" : "6b99b4c1",
+                                        "externalReference" : "agriumEntity"
+                                      }
+                                    },
+                                    "entityType" : {
+                                      "value" : "NorthAmericanInvestmentGrade"
+                                    }
+                                  }
+                                }, {
+                                  "referencePair" : {
+                                    "referenceEntity" : {
+                                      "entityId" : [ {
+                                        "value" : "8G836J",
+                                        "meta" : {
+                                          "scheme" : "http://www.fpml.org/coding-scheme/external/entity-id-RED"
+                                        }
+                                      } ],
+                                      "name" : {
+                                        "value" : "Tenet Healthcare Corporation"
+                                      },
+                                      "meta" : {
+                                        "globalKey" : "92cc27",
+                                        "externalKey" : "tenetEntity"
+                                      }
+                                    },
+                                    "referenceObligation" : {
+                                      "security" : {
+                                        "productIdentifier" : [ {
+                                          "value" : {
+                                            "identifier" : {
+                                              "value" : "US0089ABC985",
+                                              "meta" : {
+                                                "scheme" : "http://www.fpml.org/coding-scheme/external/instrument-id-ISIN"
+                                              }
+                                            },
+                                            "source" : "ISIN",
+                                            "meta" : {
+                                              "globalKey" : "dbde035c"
+                                            }
+                                          }
+                                        } ],
+                                        "securityType" : "Debt"
+                                      },
+                                      "primaryObligorReference" : {
+                                        "globalReference" : "92cc27",
+                                        "externalReference" : "tenetEntity"
+                                      }
+                                    },
+                                    "entityType" : {
+                                      "value" : "NorthAmericanInvestmentGrade"
+                                    }
+                                  }
+                                } ]
+                              },
+                              "tranche" : {
+                                "attachmentPoint" : 0.03,
+                                "exhaustionPoint" : 0.07
+                              }
+                            }
+                          },
+                          "protectionTerms" : [ {
+                            "creditEvents" : {
+                              "bankruptcy" : true,
+                              "failureToPay" : {
+                                "applicable" : true,
+                                "gracePeriodExtension" : {
+                                  "applicable" : true,
+                                  "gracePeriod" : {
+                                    "periodMultiplier" : 0,
+                                    "period" : "D",
+                                    "meta" : {
+                                      "globalKey" : "44"
+                                    }
+                                  }
+                                },
+                                "paymentRequirement" : {
+                                  "value" : 1000000.00,
+                                  "unit" : {
+                                    "currency" : {
+                                      "value" : "GBP"
+                                    }
+                                  },
+                                  "meta" : {
+                                    "globalKey" : "48eae7c4"
+                                  }
+                                }
+                              },
+                              "creditEventNotice" : {
+                                "notifyingParty" : [ "Party2", "Party1" ],
+                                "publiclyAvailableInformation" : {
+                                  "standardPublicSources" : true,
+                                  "specifiedNumber" : 2
+                                }
+                              },
+                              "meta" : {
+                                "globalKey" : "f8d2401"
+                              }
+                            },
+                            "obligations" : {
+                              "category" : "BondOrLoan"
+                            },
+                            "meta" : {
+                              "globalKey" : "90a9b011"
+                            }
+                          } ],
+                          "meta" : {
+                            "globalKey" : "611bf2ec"
+                          }
+                        },
+                        "meta" : {
+                          "globalKey" : "54bc91a4"
+                        }
+                      },
+                      "nonStandardisedTerms" : false
+                    },
+                    "meta" : {
+                      "globalKey" : "5135dbb7"
+                    }
+                  },
+                  "meta" : {
+                    "globalKey" : "5135dbb7"
+                  }
+                },
+                "tradeLot" : [ {
+                  "priceQuantity" : [ {
+                    "price" : [ {
+                      "value" : {
+                        "value" : 0.0060,
+                        "unit" : {
+                          "currency" : {
+                            "value" : "USD"
+                          }
+                        },
+                        "perUnitOf" : {
+                          "currency" : {
+                            "value" : "USD"
+                          }
+                        },
+                        "priceType" : "InterestRate"
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "price-1"
+                        } ]
+                      }
+                    } ],
+                    "quantity" : [ {
+                      "value" : {
+                        "value" : 25000000,
+                        "unit" : {
+                          "currency" : {
+                            "value" : "USD"
+                          }
+                        }
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "quantity-1"
+                        } ]
+                      }
+                    } ],
+                    "meta" : {
+                      "globalKey" : "28ce4efa"
+                    }
+                  }, {
+                    "quantity" : [ {
+                      "value" : {
+                        "value" : 25000000,
+                        "unit" : {
+                          "currency" : {
+                            "value" : "USD"
+                          }
+                        }
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "quantity-2"
+                        } ]
+                      }
+                    } ],
+                    "meta" : {
+                      "globalKey" : "a8bdc3dd"
+                    }
+                  } ]
+                } ],
+                "counterparty" : [ {
+                  "role" : "Party1",
+                  "partyReference" : {
+                    "globalReference" : "e2d93f4e",
+                    "externalReference" : "party1"
+                  }
+                }, {
+                  "role" : "Party2",
+                  "partyReference" : {
+                    "globalReference" : "bd5fdd34",
+                    "externalReference" : "party2"
+                  }
+                } ]
+              },
+              "party" : [ {
+                "partyId" : [ {
+                  "identifier" : {
+                    "value" : "I7331LVCZKQKX5T7XV54",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                    }
+                  },
+                  "identifierType" : "LEI",
+                  "meta" : {
+                    "globalKey" : "327f6572"
+                  }
+                } ],
+                "name" : {
+                  "value" : "Morgan Stanley Captial Services"
+                },
+                "businessUnit" : [ {
+                  "contactInformation" : {
+                    "address" : [ {
+                      "country" : {
+                        "value" : "GB"
+                      }
+                    } ]
+                  },
+                  "meta" : {
+                    "globalKey" : "8db"
+                  }
+                } ],
+                "contactInformation" : {
+                  "address" : [ {
+                    "country" : {
+                      "value" : "GB",
+                      "meta" : {
+                        "scheme" : "http://www.fpml.org/coding-scheme/external/iso3166"
+                      }
+                    }
+                  } ]
+                },
+                "meta" : {
+                  "globalKey" : "e2d93f4e",
+                  "externalKey" : "party1"
+                }
+              }, {
+                "partyId" : [ {
+                  "identifier" : {
+                    "value" : "213800H14XVWOV87OI72",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                    }
+                  },
+                  "identifierType" : "LEI",
+                  "meta" : {
+                    "globalKey" : "6e008783"
+                  }
+                } ],
+                "name" : {
+                  "value" : "Barclays Global Investors"
+                },
+                "businessUnit" : [ {
+                  "contactInformation" : {
+                    "address" : [ {
+                      "country" : {
+                        "value" : "GB"
+                      }
+                    } ]
+                  },
+                  "meta" : {
+                    "globalKey" : "8db"
+                  }
+                } ],
+                "contactInformation" : {
+                  "address" : [ {
+                    "country" : {
+                      "value" : "GB",
+                      "meta" : {
+                        "scheme" : "http://www.fpml.org/coding-scheme/external/iso3166"
+                      }
+                    }
+                  } ]
+                },
+                "meta" : {
+                  "globalKey" : "bd5fdd34",
+                  "externalKey" : "party2"
+                }
+              }, {
+                "partyId" : [ {
+                  "identifier" : {
+                    "value" : "549300IB5Q45JGNPND11",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                    }
+                  },
+                  "identifierType" : "LEI",
+                  "meta" : {
+                    "globalKey" : "dacc550c"
+                  }
+                }, {
+                  "identifier" : {
+                    "value" : "XNAS",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/exchange-id-MIC"
+                    }
+                  },
+                  "identifierType" : "MIC",
+                  "meta" : {
+                    "globalKey" : "4fdb17f"
+                  }
+                } ],
+                "name" : {
+                  "value" : "SEFCo LLC"
+                },
+                "meta" : {
+                  "globalKey" : "e2c81e96",
+                  "externalKey" : "venue"
+                }
+              } ],
+              "partyRole" : [ {
+                "partyReference" : {
+                  "globalReference" : "e2c81e96",
+                  "externalReference" : "venue"
+                },
+                "role" : "ExecutionFacility"
+              } ],
+              "meta" : {
+                "globalKey" : "a9d166e6"
+              }
+            },
+            "meta" : {
+              "globalKey" : "a9d166e6"
+            }
+          }
+        }
+      } ],
+      "after" : [ {
+        "trade" : {
+          "tradeIdentifier" : [ {
+            "issuer" : {
+              "value" : "213800H14XVWOV87OI72",
+              "meta" : {
+                "scheme" : "http://www.fpml.org/coding-scheme/external/issuer-identifier"
+              }
+            },
+            "assignedIdentifier" : [ {
+              "identifier" : {
+                "value" : "CREDITBASKETTRANCH01",
+                "meta" : {
+                  "scheme" : "http://www.fpml.org/coding-scheme/external/unique-transaction-identifier"
+                }
+              }
+            } ],
+            "meta" : {
+              "globalKey" : "117dceb5"
+            },
+            "identifierType" : "UniqueTransactionIdentifier"
+          } ],
+          "tradeDate" : {
+            "value" : "2004-01-24",
+            "meta" : {
+              "globalKey" : "3ea058"
+            }
+          },
+          "tradableProduct" : {
+            "product" : {
+              "contractualProduct" : {
+                "productTaxonomy" : [ {
+                  "primaryAssetClass" : {
+                    "value" : "Credit"
+                  }
+                }, {
+                  "source" : "CFI",
+                  "value" : {
+                    "name" : {
+                      "value" : "SCDXCC",
+                      "meta" : {
+                        "scheme" : "http://www.fpml.org/coding-scheme/external/product-classification/iso10962"
+                      }
+                    }
+                  }
+                }, {
+                  "source" : "ISDA",
+                  "productQualifier" : "CreditDefaultSwap_Basket"
+                } ],
+                "economicTerms" : {
+                  "effectiveDate" : {
+                    "adjustableDate" : {
+                      "unadjustedDate" : "2004-03-23",
+                      "dateAdjustments" : {
+                        "businessDayConvention" : "NONE",
+                        "meta" : {
+                          "globalKey" : "24a738"
+                        }
+                      },
+                      "meta" : {
+                        "globalKey" : "eb3e6e4f"
+                      }
+                    },
+                    "meta" : {
+                      "globalKey" : "eb3e6e4f"
+                    }
+                  },
+                  "terminationDate" : {
+                    "adjustableDate" : {
+                      "unadjustedDate" : "2014-03-20",
+                      "dateAdjustments" : {
+                        "businessDayConvention" : "NONE",
+                        "meta" : {
+                          "globalKey" : "24a738"
+                        }
+                      },
+                      "meta" : {
+                        "globalKey" : "ec6ab30c"
+                      }
+                    },
+                    "meta" : {
+                      "globalKey" : "ec6ab30c"
+                    }
+                  },
+                  "payout" : {
+                    "interestRatePayout" : [ {
+                      "payerReceiver" : {
+                        "payer" : "Party2",
+                        "receiver" : "Party1"
+                      },
+                      "priceQuantity" : {
+                        "quantitySchedule" : {
+                          "address" : {
+                            "scope" : "DOCUMENT",
+                            "value" : "quantity-1"
+                          }
+                        },
+                        "meta" : {
+                          "globalKey" : "0"
+                        }
+                      },
+                      "rateSpecification" : {
+                        "fixedRate" : {
+                          "rateSchedule" : {
+                            "price" : {
+                              "address" : {
+                                "scope" : "DOCUMENT",
+                                "value" : "price-1"
+                              }
+                            }
+                          },
+                          "meta" : {
+                            "globalKey" : "0"
+                          }
+                        }
+                      },
+                      "dayCountFraction" : {
+                        "value" : "ACT/ACT.ISDA"
+                      },
+                      "calculationPeriodDates" : {
+                        "calculationPeriodFrequency" : {
+                          "periodMultiplier" : 1,
+                          "period" : "M",
+                          "meta" : {
+                            "globalKey" : "6c"
+                          }
+                        },
+                        "meta" : {
+                          "globalKey" : "6c"
+                        }
+                      },
+                      "paymentDates" : {
+                        "paymentFrequency" : {
+                          "periodMultiplier" : 1,
+                          "period" : "M",
+                          "meta" : {
+                            "globalKey" : "6c"
+                          }
+                        },
+                        "meta" : {
+                          "globalKey" : "6c"
+                        }
+                      },
+                      "meta" : {
+                        "globalKey" : "d536ceb8"
+                      }
+                    } ],
+                    "creditDefaultPayout" : {
+                      "payerReceiver" : {
+                        "payer" : "Party1",
+                        "receiver" : "Party2"
+                      },
+                      "priceQuantity" : {
+                        "quantitySchedule" : {
+                          "address" : {
+                            "scope" : "DOCUMENT",
+                            "value" : "quantity-2"
+                          }
+                        },
+                        "meta" : {
+                          "globalKey" : "0"
+                        }
+                      },
+                      "settlementTerms" : {
+                        "settlementType" : "Cash",
+                        "settlementCurrency" : {
+                          "value" : "USD"
+                        },
+                        "meta" : {
+                          "globalKey" : "7610bbd9"
+                        }
+                      },
+                      "generalTerms" : {
+                        "basketReferenceInformation" : {
+                          "basketName" : {
+                            "value" : "CDS Basket Sample",
+                            "meta" : {
+                              "scheme" : "http://www.barclaysglobal.com/partners/coding-scheme/indexId"
+                            }
+                          },
+                          "basketId" : [ {
+                            "value" : "CDSBASKETSAMPLE08912",
+                            "meta" : {
+                              "scheme" : "http://www.barclaysglobal.com/partners/coding-scheme/indexId"
+                            }
+                          } ],
+                          "referencePool" : {
+                            "referencePoolItem" : [ {
+                              "referencePair" : {
+                                "referenceEntity" : {
+                                  "entityId" : [ {
+                                    "value" : "008HA7",
+                                    "meta" : {
+                                      "scheme" : "http://www.fpml.org/coding-scheme/external/entity-id-RED"
+                                    }
+                                  } ],
+                                  "name" : {
+                                    "value" : "Agrium Inc."
+                                  },
+                                  "meta" : {
+                                    "globalKey" : "6b99b4c1",
+                                    "externalKey" : "agriumEntity"
+                                  }
+                                },
+                                "referenceObligation" : {
+                                  "security" : {
+                                    "productIdentifier" : [ {
+                                      "value" : {
+                                        "identifier" : {
+                                          "value" : "US0089ABC985",
+                                          "meta" : {
+                                            "scheme" : "http://www.fpml.org/coding-scheme/external/instrument-id-ISIN"
+                                          }
+                                        },
+                                        "source" : "ISIN",
+                                        "meta" : {
+                                          "globalKey" : "dbde035c"
+                                        }
+                                      }
+                                    } ],
+                                    "securityType" : "Debt"
+                                  },
+                                  "primaryObligorReference" : {
+                                    "globalReference" : "6b99b4c1",
+                                    "externalReference" : "agriumEntity"
+                                  }
+                                },
+                                "entityType" : {
+                                  "value" : "NorthAmericanInvestmentGrade"
+                                }
+                              }
+                            }, {
+                              "referencePair" : {
+                                "referenceEntity" : {
+                                  "entityId" : [ {
+                                    "value" : "8G836J",
+                                    "meta" : {
+                                      "scheme" : "http://www.fpml.org/coding-scheme/external/entity-id-RED"
+                                    }
+                                  } ],
+                                  "name" : {
+                                    "value" : "Tenet Healthcare Corporation"
+                                  },
+                                  "meta" : {
+                                    "globalKey" : "92cc27",
+                                    "externalKey" : "tenetEntity"
+                                  }
+                                },
+                                "referenceObligation" : {
+                                  "security" : {
+                                    "productIdentifier" : [ {
+                                      "value" : {
+                                        "identifier" : {
+                                          "value" : "US0089ABC985",
+                                          "meta" : {
+                                            "scheme" : "http://www.fpml.org/coding-scheme/external/instrument-id-ISIN"
+                                          }
+                                        },
+                                        "source" : "ISIN",
+                                        "meta" : {
+                                          "globalKey" : "dbde035c"
+                                        }
+                                      }
+                                    } ],
+                                    "securityType" : "Debt"
+                                  },
+                                  "primaryObligorReference" : {
+                                    "globalReference" : "92cc27",
+                                    "externalReference" : "tenetEntity"
+                                  }
+                                },
+                                "entityType" : {
+                                  "value" : "NorthAmericanInvestmentGrade"
+                                }
+                              }
+                            } ]
+                          },
+                          "tranche" : {
+                            "attachmentPoint" : 0.03,
+                            "exhaustionPoint" : 0.07
+                          }
+                        }
+                      },
+                      "protectionTerms" : [ {
+                        "creditEvents" : {
+                          "bankruptcy" : true,
+                          "failureToPay" : {
+                            "applicable" : true,
+                            "gracePeriodExtension" : {
+                              "applicable" : true,
+                              "gracePeriod" : {
+                                "periodMultiplier" : 0,
+                                "period" : "D",
+                                "meta" : {
+                                  "globalKey" : "44"
+                                }
+                              }
+                            },
+                            "paymentRequirement" : {
+                              "value" : 1000000.00,
+                              "unit" : {
+                                "currency" : {
+                                  "value" : "GBP"
+                                }
+                              },
+                              "meta" : {
+                                "globalKey" : "48eae7c4"
+                              }
+                            }
+                          },
+                          "creditEventNotice" : {
+                            "notifyingParty" : [ "Party2", "Party1" ],
+                            "publiclyAvailableInformation" : {
+                              "standardPublicSources" : true,
+                              "specifiedNumber" : 2
+                            }
+                          },
+                          "meta" : {
+                            "globalKey" : "f8d2401"
+                          }
+                        },
+                        "obligations" : {
+                          "category" : "BondOrLoan"
+                        },
+                        "meta" : {
+                          "globalKey" : "90a9b011"
+                        }
+                      } ],
+                      "meta" : {
+                        "globalKey" : "611bf2ec"
+                      }
+                    },
+                    "meta" : {
+                      "globalKey" : "54bc91a4"
+                    }
+                  },
+                  "nonStandardisedTerms" : false
+                },
+                "meta" : {
+                  "globalKey" : "5135dbb7"
+                }
+              },
+              "meta" : {
+                "globalKey" : "5135dbb7"
+              }
+            },
+            "tradeLot" : [ {
+              "priceQuantity" : [ {
+                "price" : [ {
+                  "value" : {
+                    "value" : 0.0060,
+                    "unit" : {
+                      "currency" : {
+                        "value" : "USD"
+                      }
+                    },
+                    "perUnitOf" : {
+                      "currency" : {
+                        "value" : "USD"
+                      }
+                    },
+                    "priceType" : "InterestRate"
+                  },
+                  "meta" : {
+                    "location" : [ {
+                      "scope" : "DOCUMENT",
+                      "value" : "price-1"
+                    } ]
+                  }
+                } ],
+                "quantity" : [ {
+                  "value" : {
+                    "value" : 25000000,
+                    "unit" : {
+                      "currency" : {
+                        "value" : "USD"
+                      }
+                    }
+                  },
+                  "meta" : {
+                    "location" : [ {
+                      "scope" : "DOCUMENT",
+                      "value" : "quantity-1"
+                    } ]
+                  }
+                } ],
+                "meta" : {
+                  "globalKey" : "28ce4efa"
+                }
+              }, {
+                "quantity" : [ {
+                  "value" : {
+                    "value" : 25000000,
+                    "unit" : {
+                      "currency" : {
+                        "value" : "USD"
+                      }
+                    }
+                  },
+                  "meta" : {
+                    "location" : [ {
+                      "scope" : "DOCUMENT",
+                      "value" : "quantity-2"
+                    } ]
+                  }
+                } ],
+                "meta" : {
+                  "globalKey" : "a8bdc3dd"
+                }
+              } ]
+            } ],
+            "counterparty" : [ {
+              "role" : "Party1",
+              "partyReference" : {
+                "globalReference" : "e2d93f4e",
+                "externalReference" : "party1"
+              }
+            }, {
+              "role" : "Party2",
+              "partyReference" : {
+                "globalReference" : "bd5fdd34",
+                "externalReference" : "party2"
+              }
+            } ]
+          },
+          "party" : [ {
+            "partyId" : [ {
+              "identifier" : {
+                "value" : "I7331LVCZKQKX5T7XV54",
+                "meta" : {
+                  "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                }
+              },
+              "identifierType" : "LEI",
+              "meta" : {
+                "globalKey" : "327f6572"
+              }
+            } ],
+            "name" : {
+              "value" : "Morgan Stanley Captial Services"
+            },
+            "businessUnit" : [ {
+              "contactInformation" : {
+                "address" : [ {
+                  "country" : {
+                    "value" : "GB"
+                  }
+                } ]
+              },
+              "meta" : {
+                "globalKey" : "8db"
+              }
+            } ],
+            "contactInformation" : {
+              "address" : [ {
+                "country" : {
+                  "value" : "GB",
+                  "meta" : {
+                    "scheme" : "http://www.fpml.org/coding-scheme/external/iso3166"
+                  }
+                }
+              } ]
+            },
+            "meta" : {
+              "globalKey" : "e2d93f4e",
+              "externalKey" : "party1"
+            }
+          }, {
+            "partyId" : [ {
+              "identifier" : {
+                "value" : "213800H14XVWOV87OI72",
+                "meta" : {
+                  "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                }
+              },
+              "identifierType" : "LEI",
+              "meta" : {
+                "globalKey" : "6e008783"
+              }
+            } ],
+            "name" : {
+              "value" : "Barclays Global Investors"
+            },
+            "businessUnit" : [ {
+              "contactInformation" : {
+                "address" : [ {
+                  "country" : {
+                    "value" : "GB"
+                  }
+                } ]
+              },
+              "meta" : {
+                "globalKey" : "8db"
+              }
+            } ],
+            "contactInformation" : {
+              "address" : [ {
+                "country" : {
+                  "value" : "GB",
+                  "meta" : {
+                    "scheme" : "http://www.fpml.org/coding-scheme/external/iso3166"
+                  }
+                }
+              } ]
+            },
+            "meta" : {
+              "globalKey" : "bd5fdd34",
+              "externalKey" : "party2"
+            }
+          }, {
+            "partyId" : [ {
+              "identifier" : {
+                "value" : "549300IB5Q45JGNPND11",
+                "meta" : {
+                  "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                }
+              },
+              "identifierType" : "LEI",
+              "meta" : {
+                "globalKey" : "dacc550c"
+              }
+            }, {
+              "identifier" : {
+                "value" : "XNAS",
+                "meta" : {
+                  "scheme" : "http://www.fpml.org/coding-scheme/external/exchange-id-MIC"
+                }
+              },
+              "identifierType" : "MIC",
+              "meta" : {
+                "globalKey" : "4fdb17f"
+              }
+            } ],
+            "name" : {
+              "value" : "SEFCo LLC"
+            },
+            "meta" : {
+              "globalKey" : "e2c81e96",
+              "externalKey" : "venue"
+            }
+          } ],
+          "partyRole" : [ {
+            "partyReference" : {
+              "globalReference" : "e2c81e96",
+              "externalReference" : "venue"
+            },
+            "role" : "ExecutionFacility"
+          } ],
+          "contractDetails" : {
+            "documentation" : [ {
+              "agreementDate" : "2014-09-20",
+              "legalAgreementIdentification" : {
+                "agreementName" : {
+                  "agreementType" : "MasterAgreement",
+                  "masterAgreementType" : {
+                    "value" : "ISDAMaster",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/master-agreement-type"
+                    }
+                  }
+                },
+                "vintage" : 1992
+              },
+              "contractualParty" : [ {
+                "globalReference" : "e2d93f4e",
+                "externalReference" : "party1"
+              }, {
+                "globalReference" : "bd5fdd34",
+                "externalReference" : "party2"
+              } ],
+              "meta" : {
+                "globalKey" : "abda2f56"
+              }
+            }, {
+              "legalAgreementIdentification" : {
+                "agreementName" : {
+                  "agreementType" : "Confirmation",
+                  "contractualDefinitionsType" : [ {
+                    "value" : "ISDA2003CreditDerivatives"
+                  } ],
+                  "contractualTermsSupplement" : [ {
+                    "contractualTermsSupplementType" : {
+                      "value" : "ISDA2003CreditMay2003"
+                    }
+                  } ]
+                }
+              },
+              "contractualParty" : [ {
+                "globalReference" : "e2d93f4e",
+                "externalReference" : "party1"
+              }, {
+                "globalReference" : "bd5fdd34",
+                "externalReference" : "party2"
+              } ],
+              "meta" : {
+                "globalKey" : "efb567db"
+              }
+            } ]
+          },
+          "meta" : {
+            "globalKey" : "a9d166e6"
+          }
+        },
+        "state" : {
+          "positionState" : "Formed"
+        },
+        "meta" : {
+          "globalKey" : "a9d166e6"
+        }
+      } ]
+    },
+    "previousWorkflowStep" : {
+      "globalReference" : "4667f2d3"
+    },
+    "messageInformation" : {
+      "messageId" : {
+        "value" : "GW0EB40A0q",
+        "meta" : {
+          "scheme" : "http://www.bankx.com/msg_id"
+        }
+      },
+      "sentBy" : {
+        "value" : "BGIAGB2L"
+      },
+      "sentTo" : [ {
+        "value" : "WSSOGB2L"
+      } ]
+    },
+    "timestamp" : [ {
+      "dateTime" : "2004-01-24T04:36:35-08:00",
+      "qualification" : "eventCreationDateTime"
+    }, {
+      "dateTime" : "2015-01-24T16:20:47Z",
+      "qualification" : "executionDateTime"
+    }, {
+      "dateTime" : "2019-11-11T15:50:51Z",
+      "qualification" : "confirmationDateTime"
+    } ],
+    "eventIdentifier" : [ {
+      "assignedIdentifier" : [ {
+        "identifier" : {
+          "value" : "GW0EB40A0q"
+        }
+      } ],
+      "meta" : {
+        "globalKey" : "5379e689"
+      }
+    } ],
+    "action" : "New",
+    "party" : [ {
+      "partyId" : [ {
+        "identifier" : {
+          "value" : "I7331LVCZKQKX5T7XV54",
+          "meta" : {
+            "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+          }
+        },
+        "identifierType" : "LEI",
+        "meta" : {
+          "globalKey" : "327f6572"
+        }
+      } ],
+      "name" : {
+        "value" : "Morgan Stanley Captial Services"
+      },
+      "businessUnit" : [ {
+        "contactInformation" : {
+          "address" : [ {
+            "country" : {
+              "value" : "GB"
+            }
+          } ]
+        },
+        "meta" : {
+          "globalKey" : "8db"
+        }
+      } ],
+      "contactInformation" : {
+        "address" : [ {
+          "country" : {
+            "value" : "GB",
+            "meta" : {
+              "scheme" : "http://www.fpml.org/coding-scheme/external/iso3166"
+            }
+          }
+        } ]
+      },
+      "meta" : {
+        "globalKey" : "e2d93f4e",
+        "externalKey" : "party1"
+      }
+    }, {
+      "partyId" : [ {
+        "identifier" : {
+          "value" : "213800H14XVWOV87OI72",
+          "meta" : {
+            "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+          }
+        },
+        "identifierType" : "LEI",
+        "meta" : {
+          "globalKey" : "6e008783"
+        }
+      } ],
+      "name" : {
+        "value" : "Barclays Global Investors"
+      },
+      "businessUnit" : [ {
+        "contactInformation" : {
+          "address" : [ {
+            "country" : {
+              "value" : "GB"
+            }
+          } ]
+        },
+        "meta" : {
+          "globalKey" : "8db"
+        }
+      } ],
+      "contactInformation" : {
+        "address" : [ {
+          "country" : {
+            "value" : "GB",
+            "meta" : {
+              "scheme" : "http://www.fpml.org/coding-scheme/external/iso3166"
+            }
+          }
+        } ]
+      },
+      "meta" : {
+        "globalKey" : "bd5fdd34",
+        "externalKey" : "party2"
+      }
+    }, {
+      "partyId" : [ {
+        "identifier" : {
+          "value" : "549300IB5Q45JGNPND11",
+          "meta" : {
+            "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+          }
+        },
+        "identifierType" : "LEI",
+        "meta" : {
+          "globalKey" : "dacc550c"
+        }
+      }, {
+        "identifier" : {
+          "value" : "XNAS",
+          "meta" : {
+            "scheme" : "http://www.fpml.org/coding-scheme/external/exchange-id-MIC"
+          }
+        },
+        "identifierType" : "MIC",
+        "meta" : {
+          "globalKey" : "4fdb17f"
+        }
+      } ],
+      "name" : {
+        "value" : "SEFCo LLC"
+      },
+      "meta" : {
+        "globalKey" : "e2c81e96",
+        "externalKey" : "venue"
+      }
+    } ]
+  },
+  "reportableInformation" : {
+    "confirmationMethod" : "Electronic",
+    "executionVenueType" : "SEF",
+    "largeSizeTrade" : false,
+    "partyInformation" : [ {
+      "partyReference" : {
+        "globalReference" : "bd5fdd34",
+        "externalReference" : "party2"
+      },
+      "relatedParty" : [ {
+        "partyReference" : {
+          "globalReference" : "e2c81e96",
+          "externalReference" : "venue"
+        },
+        "role" : "ExecutionFacility"
+      } ],
+      "regimeInformation" : [ {
+        "supervisoryBody" : {
+          "value" : "CFTC"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "EMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "ESMA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "esmaPartyInformation" : {
+          "natureOfParty" : "Financial",
+          "corporateSector" : {
+            "financialSector" : [ "INVF" ]
+          },
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "UKEMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "FCA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "fcaPartyInformation" : {
+          "natureOfParty" : "Financial",
+          "corporateSector" : {
+            "financialSector" : [ "INVF" ]
+          },
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "JFSA"
+        },
+        "supervisoryBody" : {
+          "value" : "JFSA"
+        },
+        "reportingRole" : "ReportingParty",
+        "technicalRecordId" : {
+          "value" : "GW0EB40A0q",
+          "meta" : {
+            "scheme" : "http://www.bankx.com/msg_id"
+          }
+        }
+      } ]
+    }, {
+      "partyReference" : {
+        "globalReference" : "e2d93f4e",
+        "externalReference" : "party1"
+      },
+      "regimeInformation" : [ {
+        "regimeName" : {
+          "value" : "EMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "ESMA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "esmaPartyInformation" : {
+          "natureOfParty" : "Financial",
+          "corporateSector" : {
+            "financialSector" : [ "INVF" ]
+          },
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "Counterparty"
+      }, {
+        "regimeName" : {
+          "value" : "UKEMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "FCA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "fcaPartyInformation" : {
+          "natureOfParty" : "Financial",
+          "corporateSector" : {
+            "financialSector" : [ "INVF" ]
+          },
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "JFSA"
+        },
+        "supervisoryBody" : {
+          "value" : "JFSA"
+        },
+        "reportingRole" : "ReportingParty",
+        "technicalRecordId" : {
+          "value" : "GW0EB40A0q",
+          "meta" : {
+            "scheme" : "http://www.bankx.com/msg_id"
+          }
+        }
+      } ]
+    } ],
+    "originalExecutionTimestamp" : "2015-01-24T16:20:47Z"
+  },
+  "reportingSide" : {
+    "reportingParty" : {
+      "globalReference" : "bd5fdd34",
+      "externalReference" : "party2"
+    },
+    "reportingCounterparty" : {
+      "globalReference" : "e2d93f4e",
+      "externalReference" : "party1"
+    }
+  }
+}

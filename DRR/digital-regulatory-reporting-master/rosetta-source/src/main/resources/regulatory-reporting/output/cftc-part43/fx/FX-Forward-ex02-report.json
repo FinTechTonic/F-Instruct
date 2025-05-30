@@ -1,0 +1,39 @@
+{
+  "actionType" : "NEWT",
+  "blockTradeElectionIndicator" : false,
+  "cftcGuidebook" : {
+    "assetClass" : "ForeignExchange",
+    "messageType" : "RT",
+    "physicalCommodityIndicator" : false,
+    "sefOrDcmAnonymousExecutionIndicator" : false,
+    "sefOrDcmIndicator" : false
+  },
+  "cleared" : "N",
+  "counterparty1" : "E26EDV109X6EEPBKVH76",
+  "counterparty2" : "GGDZP1UYGU9STUHRDP48",
+  "counterparty2IdentifierSource" : "LEID",
+  "customBasketIndicator" : false,
+  "effectiveDate" : "2019-01-31",
+  "eventTimestamp" : "2019-01-31T10:10:31Z",
+  "eventType" : "TRAD",
+  "exchangeRateBasis" : "EUR/GBP",
+  "exchangeRateLeg1" : 0.815394,
+  "executionTimestamp" : "2019-01-31T10:10:31Z",
+  "expirationDate" : "2019-02-20",
+  "nonReportable" : {
+    "counterparty1Format" : "Lei",
+    "counterparty2Format" : "Lei"
+  },
+  "nonStandardizedTermIndicator" : false,
+  "notionalAmountLeg1" : 793234.88,
+  "notionalAmountLeg2" : 6000000.0,
+  "notionalCurrencyLeg1" : "EUR",
+  "notionalCurrencyLeg2" : "GBP",
+  "packageIndicator" : false,
+  "platformIdentifier" : "XOFF",
+  "postPricedSwapIndicator" : false,
+  "primeBrokerageTransactionIndicator" : false,
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "submitterIdentifier" : "E26EDV109X6EEPBKVH76",
+  "uniqueTransactionIdentifier" : "FXFORWARDEXXMLXXXX02"
+}

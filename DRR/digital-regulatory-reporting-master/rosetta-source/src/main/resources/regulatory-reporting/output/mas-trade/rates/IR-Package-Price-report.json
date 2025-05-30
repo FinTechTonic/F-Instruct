@@ -1,0 +1,62 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "INTR",
+  "cleared" : "I",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "SWAP",
+  "counterparty1" : "DUMMY0000000000LEI01",
+  "counterparty2" : "969500A1DO2476C1ZL52",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "DUMMY0000000000LEI01",
+  "deliveryType" : "PHYS",
+  "directionOfLeg1" : "TAKE",
+  "directionOfLeg2" : "MAKE",
+  "effectiveDate" : "2014-01-17",
+  "eventDate" : "2011-02-04",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2011-02-04T16:20:47Z",
+  "expirationDate" : "2024-01-17",
+  "finalContractualSettlementDate" : "2024-01-17",
+  "fixedRateDayCountConventionOfLeg1" : "A011",
+  "fixedRateOfLeg1" : 2.23200,
+  "fixedRatePaymentFrequencyPeriodMultiplierOfLeg1" : 6,
+  "fixedRatePaymentFrequencyPeriodOfLeg1" : "MNTH",
+  "floatingRateDayCountConventionOfLeg2" : "A005",
+  "floatingRatePaymentFrequencyPeriodMultiplierOfLeg2" : 3,
+  "floatingRatePaymentFrequencyPeriodOfLeg2" : "MNTH",
+  "floatingRateResetFrequencyPeriodMultiplierOfLeg2" : 3,
+  "floatingRateResetFrequencyPeriodOfLeg2" : "MNTH",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalCurrency" : "USD",
+          "NotionalSchedule" : "Constant",
+          "ReferenceRateTermUnit" : "MNTH",
+          "ReferenceRateTermValue" : 6,
+          "UnderlierID" : "USD-LIBOR-ISDA",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Fixed_Float"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfLeg2" : 25000000.00,
+  "notionalAmountOfTheContractOrLeg1" : 25000000.00,
+  "notionalCurrencyOfLeg2" : "USD",
+  "notionalCurrencyOfTheContractOrLeg1" : "USD",
+  "packageIdentifier" : "123",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "DUMMY0000000000LEI01",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "underlyingIdentificationType" : "O",
+  "uniqueTransactionIdentifier" : "IRPACKAGEPRICEXMLX02L16M15X14E13C12I11R10P9E8G7A6K5C"
+}

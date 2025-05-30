@@ -1,0 +1,65 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "INTR",
+  "broker" : "549300OL8KL0WCQ34V31",
+  "cleared" : "N",
+  "contractType" : "SWPT",
+  "counterparty1" : "DUMMY0000000000LEI01",
+  "counterparty2" : "DUMMY0000000000LEI02",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "dayCountConventionLeg1" : "A001",
+  "dayCountConventionLeg2" : "A004",
+  "direction" : "BYER",
+  "effectiveDate" : "2018-04-01",
+  "eventIdentifier" : "SEF123",
+  "eventTimestamp" : "2018-04-01T14:15:36Z",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2018-04-01T14:15:36Z",
+  "expirationDate" : "2019-04-01",
+  "floatingRateReferencePeriodOfLeg2Multiplier" : 6,
+  "floatingRateReferencePeriodOfLeg2TimePeriod" : "MNTH",
+  "maturityDateOfTheUnderlying" : "2024-04-03",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalCurrency" : "EUR",
+          "NotionalSchedule" : "Constant",
+          "ReferenceRateTermUnit" : "YEAR",
+          "ReferenceRateTermValue" : 1,
+          "UnderlierID" : "EUR-EURIBOR-Telerate",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Fixed_Float"
+        }
+      },
+      "requestType" : "UnderlyingProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "EUR",
+  "notionalCurrencyLeg2" : "EUR",
+  "notionalLeg1" : 13000,
+  "notionalLeg2" : 13000,
+  "optionPremiumAmount" : 100000,
+  "optionPremiumCurrency" : "EUR",
+  "optionPremiumPaymentDate" : "2018-04-01",
+  "paymentFrequencyPeriodLeg1" : "YEAR",
+  "paymentFrequencyPeriodLeg2" : "MNTH",
+  "paymentFrequencyPeriodMultiplierLeg1" : 1,
+  "paymentFrequencyPeriodMultiplierLeg2" : 6,
+  "putAmount" : 13000,
+  "putCurrency" : "EUR",
+  "reportSubmittingEntityID" : "DUMMY0000000000LEI01",
+  "reportingEntity" : "DUMMY0000000000LEI01",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "strikePrice" : {
+    "strikePriceNotation" : "Decimal"
+  },
+  "uniqueTransactionIdentifier" : "MOCKUPNATURALPERSO01"
+}

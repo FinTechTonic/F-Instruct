@@ -1,0 +1,47 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "CURR",
+  "cleared" : "N",
+  "contractType" : "FORW",
+  "counterparty1" : "F226TOH6YD6XJB17KS62",
+  "counterparty2" : "SDR6T61FGE31QCJGSK66",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "direction2OfLeg1" : "MAKE",
+  "direction2OfLeg2" : "TAKE",
+  "effectiveDate" : "2022-02-23",
+  "eventIdentifier" : "dee6f9f537994c02a7177d80e6ffe5ae",
+  "eventTimestamp" : "2022-02-23T09:43:21Z",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2022-02-23T12:51:31Z",
+  "expirationDate" : "2022-03-18",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "OtherUnderlierID" : "USD",
+          "OtherUnderlierIDSource" : "CCY",
+          "SettlementCurrency" : "USD",
+          "UnderlierID" : "BRL",
+          "UnderlierIDSource" : "CCY"
+        },
+        "Header" : {
+          "AssetClass" : "Foreign_Exchange",
+          "InstrumentType" : "Forward",
+          "Level" : "UPI",
+          "UseCase" : "NDF"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "BRL",
+  "notionalCurrencyLeg2" : "USD",
+  "notionalLeg1" : 1800,
+  "notionalLeg2" : 356.90796,
+  "reportSubmittingEntityID" : "F226TOH6YD6XJB17KS62",
+  "reportingEntity" : "F226TOH6YD6XJB17KS62",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrencyLeg1" : "USD",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "uniqueTransactionIdentifier" : "FXNDFEXBETAXMLXXXX03"
+}

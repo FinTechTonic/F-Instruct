@@ -1,0 +1,13 @@
+{
+  "cleared" : "False",
+  "clearedEntity" : "Out of scope",
+  "effectiveDate" : "2023-11-15",
+  "optionExpirationDate" : "N/A",
+  "optionPremium" : "N/A",
+  "optionType" : "N/A",
+  "priorUniqueTransactionIdentifier" : "IRFORWARDDEBTEXXML01",
+  "reportingTimestamp" : "2023-11-15T01:48:51Z",
+  "terminationDate" : "2029-11-15",
+  "uniqueProductIdentifier" : "InterestRate_Forward_Debt",
+  "uniqueTransactionIdentifier" : "BANKX0001"
+}

@@ -1,0 +1,13 @@
+{
+  "cleared" : "False",
+  "clearedEntity" : "Out of scope",
+  "effectiveDate" : "2022-02-24",
+  "optionExpirationDate" : "N/A",
+  "optionPremium" : "N/A",
+  "optionType" : "N/A",
+  "priorUniqueTransactionIdentifier" : "IRCCSFIXEDFIXEDEXX01",
+  "reportingTimestamp" : "2022-02-22T13:41:21Z",
+  "terminationDate" : "2026-02-24",
+  "uniqueProductIdentifier" : "InterestRate_CrossCurrency_FixedFixed",
+  "uniqueTransactionIdentifier" : "D886530B9D286A80E0538CB0CC0AC653"
+}

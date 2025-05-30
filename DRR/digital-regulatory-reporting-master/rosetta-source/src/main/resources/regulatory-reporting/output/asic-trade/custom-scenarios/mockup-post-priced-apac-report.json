@@ -1,0 +1,52 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "EQUI",
+  "broker" : "549300OL8KL0WCQ34V31",
+  "cleared" : "N",
+  "contractType" : "SWAP",
+  "counterparty1" : "5493001RKR55V4X61F71",
+  "counterparty2" : "549300O5MFEP1XJ40B46",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "dayCountConventionLeg2" : "A004",
+  "direction2OfLeg1" : "TAKE",
+  "direction2OfLeg2" : "MAKE",
+  "effectiveDate" : "2008-06-02",
+  "eventIdentifier" : "BANKX0001",
+  "eventTimestamp" : "2011-02-04T16:42:16Z",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2011-02-04T16:20:47Z",
+  "expirationDate" : "2008-06-04",
+  "floatingRateReferencePeriodOfLeg2Multiplier" : 1,
+  "floatingRateReferencePeriodOfLeg2TimePeriod" : "MNTH",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "SettlementCurrency" : "SGD",
+          "UnderlierID" : "SGD-SIBOR-Reuters"
+        },
+        "Header" : {
+          "AssetClass" : "Equity",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "SGD",
+  "notionalCurrencyLeg2" : "SGD",
+  "notionalLeg1" : 300000.0,
+  "notionalLeg2" : 300000.0,
+  "paymentFrequencyPeriodLeg2" : "ADHO",
+  "platformIdentifier" : "XNAS",
+  "reportSubmittingEntityID" : "5493001RKR55V4X61F71",
+  "reportingEntity" : "5493001RKR55V4X61F71",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrencyLeg1" : "SGD",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "technicalRecordId" : "BANKX0001",
+  "underlyingIdentification" : "NL0000009322",
+  "uniqueTransactionIdentifier" : "MOCKUPPOSTPRICEDXM01"
+}

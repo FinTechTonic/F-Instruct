@@ -1,0 +1,287 @@
+namespace drr.regulation.mas.rewrite.margin
+version "${project.version}"
+
+import cdm.base.datetime.*
+import cdm.base.staticdata.party.*
+import cdm.product.collateral.*
+import drr.regulation.common.*
+import drr.regulation.mas.*
+import drr.standards.iosco.cde.*
+import iso20022.auth108.mas.*
+
+corpus Dissemination Margin
+
+report MAS Margin in T+1
+    from CollateralReportInstruction
+    when ReportableProduct
+    with type MASMarginReport
+
+//eligibility rules
+eligibility rule ReportableProduct from CollateralReportInstruction:
+    [regulatoryReference MAS Margin
+        provision "Demonstrative eligibility rule for display"]
+    True
+
+//ReportingRules
+reporting rule Counterparty1 from CollateralReportInstruction: <"Counterparty 1">
+    [regulatoryReference MAS Margin dataElement "1" field "Counterparty 1"
+        provision "Identifier of Counterparty 1."]
+    extract reportingSide -> reportingParty
+    then extract partyId -> identifier only-element
+        as "1 Counterparty 1"
+
+reporting rule Counterparty2 from CollateralReportInstruction: <"Counterparty 2">
+    [regulatoryReference MAS Margin dataElement "2" field "Counterparty 2"
+        provision "Identifier of Counterparty 2"]
+    extract reportingSide -> reportingCounterparty
+    then extract partyId -> identifier only-element
+        as "2 Counterparty 2"
+
+reporting rule Counterparty2IdentifierType from CollateralReportInstruction: <"Counterparty 2 Identifier Type">
+    [regulatoryReference MAS Margin dataElement "3" field "Counterparty 2 Identifier Type"
+        provision "Indicator of whether LEI (including pre-LEI) was used to identify Counterparty 2."]
+    extract reportingSide -> reportingCounterparty
+    then extract
+        if partyId -> identifierType only-element = PartyIdentifierTypeEnum -> LEI
+        then True
+        else False
+        as "3 Counterparty 2 Identifier Type"
+
+reporting rule ReportingSpecifiedPerson from CollateralReportInstruction: <"Reporting specified person">
+    [regulatoryReference MAS Margin dataElement "8" field "Reporting specified person"
+        provision "Identifier of the specified person with the reporting obligation in respect of the contract."]
+    extract ExtractPartyResponsibleForReportingIdentifier(reportingSide)
+        as "8 Reporting specified person"
+
+reporting rule DataSubmitter from CollateralReportInstruction: <"Data submitter">
+    [regulatoryReference MAS Margin dataElement "9" field "Data submitter"
+        provision "Identifier of the entity submitting information on the contract, which is reported to a licensed trade repository or licensed foreign trade repository."]
+    extract ExtractReportSubmittingPartyIdentifier(reportingSide)
+        as "9 Data submitter"
+
+reporting rule UniqueTransactionIdentifier from CollateralReportInstruction: <"Unique Transaction Identifier (UTI)">
+    [regulatoryReference MAS Margin dataElement "10" field "Unique Transaction Identifier (UTI)"
+        provision "Unique identifier to denote the contract."]
+    extract
+        item -> collateralDetails -> uniqueTradeIdentifier -> assignedIdentifier -> identifier only-element
+        as "10 Unique Transaction Identifier (UTI)"
+
+reporting rule ReportingTimestamp from CollateralReportInstruction: <"Reporting Timestamp">
+    [regulatoryReference MAS Margin dataElement "50" field "Reporting timestamp"
+        provision "Date and time when the contract was reported to the trade repository."]
+    Now
+        as "50 Reporting Timestamp"
+
+reporting rule CollateralTimestamp from CollateralReportInstruction: <"Collateral Timestamp">
+    [regulatoryReference MAS Margin dataElement "50_1" field "Collateral Timestamp"
+        provision "Date and time as of which the values of the margins are reported."]
+    extract collateralDetails -> collateralTimestamp
+        as "50_0 Collateral timestamp"
+
+reporting rule CollateralPortfolioIndicator from CollateralReportInstruction: <"Collateral Portfolio Indicator">
+    [regulatoryReference MAS Margin dataElement "57" field "Collateral Portfolio Indicator"
+        provision "Indicator of whether the collateralisation was performed on a portfolio basis."]
+    extract collateralDetails -> collateral -> portfolioIdentifier exists
+        as "57 Collateral Portfolio Indicator"
+
+reporting rule InitialMarginCollateralPortfolioCodeDTCC from CollateralReportInstruction: <"Initial margin collateral portfolio code (DTCC)">
+    [regulatoryReference MAS Margin dataElement "58" field "Initial margin collateral portfolio code (DTCC)"
+        provision "Unique code assigned by Counterparty 1 to the portfolio when collateral is reported on a portfolio basis, where applicable."]
+    extract collateralDetails -> collateral -> collateralPortfolio
+    then filter
+        legalAgreement -> legalAgreementIdentification -> agreementName -> creditSupportAgreementMarginType = CollateralMarginTypeEnum -> InitialMargin
+    then only-element
+    then portfolioIdentifier -> assignedIdentifier -> identifier last
+        as "58.1 Initial margin collateral portfolio code (DTCC)"
+
+reporting rule VariationMarginCollateralPortfolioCodeDTCC from CollateralReportInstruction: <"Variation margin collateral portfolio code (DTCC)">
+    [regulatoryReference MAS Margin dataElement "58" field "Initial margin collateral portfolio code (DTCC)"
+        provision "Unique code assigned by Counterparty 1 to the portfolio when collateral is reported on a portfolio basis, where applicable."]
+    extract collateralDetails -> collateral -> collateralPortfolio
+    then filter
+        legalAgreement -> legalAgreementIdentification -> agreementName -> creditSupportAgreementMarginType = CollateralMarginTypeEnum -> VariationMargin
+    then only-element
+    then portfolioIdentifier -> assignedIdentifier -> identifier last
+        as "58.2 Variation margin collateral portfolio code (DTCC)"
+
+reporting rule InitialMarginPostedByCounterparty1PreHaircut from CollateralReportInstruction: <"Initial margin posted by Counterparty 1 (pre-haircut)">
+    [regulatoryReference MAS Margin dataElement "59" field "Initial margin posted by Counterparty 1 (pre-haircut)"
+        provision "Monetary value of initial margin that has been posted by Counterparty 1, where applicable."]
+    extract
+        CDEInitialMarginPostedByReportingCounterpartyPreHaircut(
+                item,
+                reportingSide -> reportingParty
+            )
+        as "59 Initial margin posted by Counterparty 1 (pre-haircut)"
+
+reporting rule InitialMarginPostedByCounterparty1PostHaircut from CollateralReportInstruction: <"Initial margin posted by Counterparty 1 (post-haircut)">
+    [regulatoryReference MAS Margin dataElement "60" field "Initial margin posted by Counterparty 1 (post-haircut)"
+        provision "Monetary value of initial margin that has been posted by Counterparty 1 after application of the haircut, where applicable."]
+    extract
+        CDEInitialMarginPostedByReportingCounterpartyPostHaircut(
+                item,
+                reportingSide -> reportingParty
+            )
+        as "60 Initial margin posted by Counterparty 1 (post-haircut)"
+
+reporting rule InitialMarginPostedByCounterparty1Currency from CollateralReportInstruction: <"Currency of initial margin posted">
+    [regulatoryReference MAS Margin dataElement "61" field "Currency of initial margin posted"
+        provision "Currency in which the initial margin (both pre-haircut and post-haircut) posted by Counterparty 1 is denominated, where applicable."]
+    extract
+        CDEInitialMarginPostedByReportingCounterpartyCurrency(
+                item,
+                reportingSide -> reportingParty
+            )
+        as "61 Currency of initial margin posted"
+
+reporting rule InitialMarginCollectedByCounterparty1PreHaircut from CollateralReportInstruction: <"Initial margin collected by Counterparty 1 (pre-haircut)">
+    [regulatoryReference MAS Margin dataElement "62" field "Initial margin collected by Counterparty 1 (pre-haircut)"
+        provision "Monetary value of initial margin that has been collected by Counterparty 1, where applicable."]
+    extract
+        CDEInitialMarginCollectedByReportingCounterpartyPreHaircut(
+                item,
+                reportingSide -> reportingParty
+            )
+        as "62 Initial margin collected by Counterparty 1 (pre-haircut)"
+
+reporting rule InitialMarginCollectedByCounterparty1PostHaircut from CollateralReportInstruction: <"Initial margin collected by the counterparty 1 (post-haircut)">
+    [regulatoryReference MAS Margin dataElement "63" field "Initial margin collected by the counterparty 1 (post-haircut)"
+        provision "Monetary value of initial margin that has been collected by Counterparty 1 after application of the haircut, where applicable."]
+    CDEInitialMarginCollectedByReportingCounterpartyPostHaircut(
+            item,
+            reportingSide -> reportingParty
+        )
+        as "63 Initial margin collected by the counterparty 1 (post-haircut)"
+
+reporting rule InitialMarginCollectedByCounterparty1Currency from CollateralReportInstruction: <"Currency of initial margin collected">
+    [regulatoryReference MAS Margin dataElement "64" field "Currency of initial margin collected"
+        provision "Currency in which the initial margin (both pre-haircut and post-haircut) collected by Counterparty 1is denominated, where applicable."]
+    extract
+        CDEInitialMarginCollectedByReportingCounterpartyCurrency(
+                item,
+                reportingSide -> reportingParty
+            )
+        as "64 Currency of initial margin collected"
+
+reporting rule VariationMarginPostedByCounterparty1PreHaircut from CollateralReportInstruction: <"Variation margin posted by Counterparty 1 (pre-haircut)">
+    [regulatoryReference MAS Margin dataElement "65" field "Variation margin posted by Counterparty 1 (pre-haircut)"
+        provision "Monetary value of the variation margin posted by Counterparty 1, where applicable."]
+    extract
+        CDEVariationMarginPostedByReportingCounterpartyPreHaircut(
+                item,
+                reportingSide -> reportingParty
+            )
+        as "65 Variation margin posted by Counterparty 1 (pre-haircut)"
+
+reporting rule VariationMarginPostedByCounterparty1PostHaircut from CollateralReportInstruction: <"Variation margin posted by Counterparty 1 (post-haircut)">
+    [regulatoryReference MAS Margin dataElement "66" field "Variation margin posted by Counterparty 1 (post-haircut)"
+        provision "Monetary value of the variation margin posted by Counterparty 1 after application of the haircut, where applicable."]
+    extract
+        CDEVariationMarginPostedByReportingCounterpartyPostHaircut(
+                item,
+                reportingSide -> reportingParty
+            )
+        as "66 Variation margin posted by Counterparty 1 (post-haircut)"
+
+reporting rule VariationMarginPostedByCounterparty1Currency from CollateralReportInstruction: <"Currency of variation margin posted">
+    [regulatoryReference MAS Margin dataElement "67" field "Currency of variation margin posted"
+        provision "Currency in which the variation margin (both pre-haircut and post-haircut) posted is denominated, where applicable."]
+    extract
+        CDEVariationMarginPostedByReportingCounterpartyCurrency(
+                item,
+                reportingSide -> reportingParty
+            )
+        as "67 Currency of variation margin posted"
+
+reporting rule VariationMarginCollectedByCounterparty1PreHaircut from CollateralReportInstruction: <"VVariation margin collected by Counterparty 1 (pre-haircut)">
+    [regulatoryReference MAS Margin dataElement "68" field "Variation margin collected by Counterparty 1 (pre-haircut)"
+        provision "Monetary value of the variation margin collected by Counterparty 1, where applicable."]
+    extract
+        CDEVariationMarginCollectedByReportingCounterpartyPreHaircut(
+                item,
+                reportingSide -> reportingParty
+            )
+        as "68 Variation margin collected by Counterparty 1 (pre-haircut)"
+
+reporting rule VariationMarginCollectedByCounterparty1PostHaircut from CollateralReportInstruction: <"Variation margin collected by Counterparty 1 (post-haircut)">
+    [regulatoryReference MAS Margin dataElement "69" field "Variation margin collected by Counterparty 1 (post-haircut)"
+        provision "Monetary value of the variation margin collected by Counterparty 1 after application of the haircut, where applicable."]
+    extract
+        CDEVariationMarginCollectedByReportingCounterpartyPostHaircut(
+                item,
+                reportingSide -> reportingParty
+            )
+        as "69 Variation margin collected by Counterparty 1 (post-haircut)"
+
+reporting rule VariationMarginCollectedByCounterparty1Currency from CollateralReportInstruction: <"Currency of variation margin collected">
+    [regulatoryReference MAS Margin dataElement "70" field "Currency of variation margin collected"
+        provision "Currency in which the variation margin (both pre-haircut and post-haircut) collected by Counterparty 1 is denominated, where applicable."]
+    extract
+        CDEVariationMarginCollectedByReportingCounterpartyCurrency(
+                item,
+                reportingSide -> reportingParty
+            )
+        as "70 Currency of variation margin collected"
+
+reporting rule ExcessCollateralPostedByCounterparty1 from CollateralReportInstruction: <"Excess collateral posted by Counterparty 1">
+    [regulatoryReference MAS Margin dataElement "71" field "Excess collateral posted by Counterparty 1"
+        provision "Monetary value of any additional collateral posted by Counterparty 1 which is separate and independent from initial and variation margin, where applicable."]
+    CDEExcessCollateralPostedByTheReportingCounterparty
+        as "71 Excess collateral posted by Counterparty 1"
+
+reporting rule CurrencyOfExcessCollateralPosted from CollateralReportInstruction: <"Currency of excess collateral posted">
+    [regulatoryReference MAS Margin dataElement "72" field "CCurrency of excess collateral posted"
+        provision "Currency in which Excess collateral posted by Counterparty 1 is denominated, where applicable."]
+    CDECurrencyOfExcessCollateralPosted
+        as "72 Currency of excess collateral posted"
+
+reporting rule ExcessCollateralCollectedByCounterparty1 from CollateralReportInstruction: <"Excess collateral collected by Counterparty 1">
+    [regulatoryReference MAS Margin dataElement "73" field "Excess collateral collected by Counterparty 1"
+        provision "Monetary value of any additional collateral collected by Counterparty 1 which is separate and independent from initial margin and variation margin, where applicable."]
+    CDEExcessCollateralCollectedByTheReportingCounterparty
+        as "73 Excess collateral collected by Counterparty 1"
+
+reporting rule CurrencyOfExcessCollateralCollected from CollateralReportInstruction: <"Currency Of Excess Collateral Collected">
+    [regulatoryReference MAS Margin dataElement "74" field "Currency of excess collateral collected"
+        provision "Currency in which Excess collateral collected by Counterparty 1 is denominated, where applicable."]
+    CDECurrencyOfExcessCollateralCollected
+        as "74 Currency of excess collateral collected"
+
+reporting rule CollateralisationCategory from CollateralReportInstruction: <"Collateralisation category">
+    [regulatoryReference MAS Margin dataElement "75" field "Collateralisation category"
+        provision "Indicator of whether a collateral agreement (or collateral agreements) between the counterparties exists (uncollateralised/partially collateralised/one-way collateralised/fully collateralised) , where applicable."]
+    extract item -> collateralDetails -> collateralisationCategory
+    to-string to-enum CollateralisationType3Code
+        as "75 Collateralisation category"
+
+reporting rule ActionType from CollateralReportInstruction: <"Action Type">
+    [regulatoryReference MAS Margin dataElement "132" field "Action type"
+        provision "Type of action taken on the contract."]
+    extract collateralDetails -> action
+        as "132 Action Type"
+
+reporting rule EventDate from CollateralReportInstruction: <"Event date">
+    [regulatoryReference MAS Margin dataElement "134" field "Event date"
+        provision "Date of occurrence of the event"]
+    extract ExtractDateFromDateTime(collateralDetails -> collateralTimestamp)
+        as "134 Event date"
+
+reporting rule TechnicalRecordId from CollateralReportInstruction: <"Technical Record Id (ISO)">
+    [regulatoryReference MAS Margin dataElement "[Internal]" field "Technical Record Id (ISO)"
+        provision "Unique technical identification of the original data for which the status is provided for the BDR."]
+    extract reportableInformation -> partyInformation -> regimeInformation
+    then filter reportingRole = ReportingRoleEnum -> ReportingParty and regimeName = RegimeNameEnum -> MAS
+    then extract technicalRecordId
+    then distinct only-element
+        as "[Internal] Technical Record Id (ISO)"
+
+reporting rule ExecutionAgentOfTheCounterparty1DTCC from CollateralReportInstruction: <"Execution agent of the Counterparty 1 (DTCC)">
+    [regulatoryReference MAS Margin dataElement "[Not in regulation]" field "Execution agent of the Counterparty 1"
+        provision "LEI of the entity that entered into the Reportable Transaction as agent for the Reporting Entity without becoming a counterparty themselves."]
+    extract
+        ExtractPartyFromRelatedPartyByRole(
+                reportableInformation -> partyInformation -> relatedParty,
+                PartyRoleEnum -> ExecutionAgent
+            )
+    then extract PartyLei(partyId)
+        as "[Not in regulation] Execution agent of the Counterparty 1 (DTCC)"

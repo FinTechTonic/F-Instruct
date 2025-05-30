@@ -1,0 +1,550 @@
+namespace drr.regulation.techsprint.g20.mas
+
+import cdm.base.staticdata.identifier.*
+import cdm.base.staticdata.party.*
+import cdm.event.common.*
+import cdm.event.workflow.*
+import cdm.observable.asset.*
+import cdm.product.asset.*
+
+import drr.regulation.common.*
+
+// https://www.mas.gov.sg/
+body Authority MAS <"The Monetary Authority of Singapore (MAS) is Singapores central bank and integrated financial regulator. MAS also works with the financial industry to develop Singapore as a dynamic international financial centre.">
+
+// https://sso.agc.gov.sg/Act/SFA2001
+corpus Act "289" SFA <"The Securities And Futures Act relates to the regulation of activities and institutions in the securities and derivatives industry, including leveraged foreign exchange trading, of financial benchmarks and of clearing facilities, and for matters connected therewith.">
+
+// https://sso.agc.gov.sg/SL/SFA2001-S668-2013
+corpus Regulations "SFA2001-S668-2013" MAS_2013 <"The Securities And Futures (Reporting Of Derivatives Contracts) Regulations 2013 contain Regulations setting out reporting requirements for OTC counterparties for OTC derivatives.">
+
+corpus FAQ "13May2020|FAQ" FAQ <"These FAQs are to aid implementation of the reporting obligations and elaborate on MAS intent for some of the requirements set out under the SF(RDC)R.">
+
+report MAS SFA MAS_2013 in T+2
+    from TransactionReportInstruction
+    when ReportableProduct // and NexusCompliant
+    with type MASSFATransactionReport
+
+eligibility rule ReportableProduct from TransactionReportInstruction:
+    [regulatoryReference MAS SFA MAS_2013 part "2" article "Specified derivatives contract" section "5"
+        provision "The following derivatives contracts are prescribed, under the definition of specified derivatives contract in section 124 of the Act, as specified derivatives contracts:
+                (a)	any interest rate derivatives contract which is traded in Singapore or booked in Singapore;
+                (b)	any credit derivatives contract which is traded in Singapore or booked in Singapore;
+                (c)	any foreign exchange derivatives contract which is traded in Singapore or booked in Singapore;
+                (d)	any commodity derivatives contract which is traded in Singapore or booked in Singapore;
+                (e)	any equity derivatives contract which is traded in Singapore or booked in Singapore."]
+    filter HasDerivativesContract
+
+eligibility rule NexusCompliant from TransactionReportInstruction:
+    [regulatoryReference MAS SFA MAS_2013 part "1 " section "Citation and commencement"
+        provision "In these Regulations, unless the context otherwise requires; Booked in Singapore, Traded in Singapore"]
+    [BookedInSingapore, TradedInSingapore] last
+
+eligibility rule BookedInSingapore from TransactionReportInstruction:
+    [regulatoryReference MAS SFA MAS_2013 part "1" definitions "2.1" section "Booked in Singapore"
+        provision "In relation to a derivatives contract, means the entry of the derivatives contract on the balance sheet or the profit and loss accounts of a person where 
+                    (a)	the person is a party to the derivatives contract;
+                    (b)	the persons place of business is in Singapore; and
+                    (c)	the balance sheet or the profit and loss accounts relates to the persons business in Singapore"]
+    filter ReportingPartyIsInSingapore
+
+eligibility rule TradedInSingapore from TransactionReportInstruction:
+    [regulatoryReference MAS SFA MAS_2013 part "1" definitions "2.1" section "Traded in Singapore"
+        provision "In relation to a derivatives contract, means the execution of the derivatives contract by a trader 
+                    (a)	whose place of employment is located in Singapore and who conducts, on behalf of a specified person, activities relating to the execution of derivatives contracts in Singapore; or
+                    (b)	who 
+                        (i)	for a period of not less than 30 days immediately before the date of the execution of the derivatives contract, conducts or is authorised to conduct, on behalf of a specified person, activities relating to the execution of derivatives contracts in Singapore; and
+                        (ii)	is physically in Singapore at the time of the execution of the derivatives contract."]
+    filter TraderIsInSingapore
+
+eligibility rule TraderIsInSingapore from TransactionReportInstruction:
+    TraderAddressForUTI
+        then extract placeOfEmployment
+        then extract IsAddressInSingapore
+
+eligibility rule ReportingPartyIsInSingapore from TransactionReportInstruction:
+    BookingLocationAddress then extract IsAddressInSingapore
+
+eligibility rule BookingLocationAddress from TransactionReportInstruction:
+    extract
+        ExtractPartyFromRelatedPartyByRole(
+                reportableInformation -> partyInformation -> relatedParty,
+                PartyRoleEnum -> ReportingParty
+            )
+    then extract LookupBookingLocation
+
+func LookupBookingLocation:
+    inputs:
+        party Party (1..1)
+    output:
+        bookingLocation Address (0..1)
+
+eligibility rule TraderAddressForUTI from TransactionReportInstruction:
+    extract originatingWorkflowStep -> eventIdentifier -> assignedIdentifier
+    then extract LookupTraderDetails
+    then last // cardinality mismatch - see DRR ISSUE-624
+
+func LookupTraderDetails:
+    inputs:
+        id AssignedIdentifier (1..1)
+    output:
+        traderDetails Trader (0..1)
+
+eligibility rule HasDerivativesContract from TransactionReportInstruction:
+    ContractForEvent then extract tradableProduct -> product -> contractualProduct exists
+
+eligibility rule IsAddressInSingapore from Address:
+    extract country = "SG"
+
+reporting rule ContractForEvent from TransactionReportInstruction:
+    extract originatingWorkflowStep -> businessEvent -> after only-element -> trade
+        as "Contract"
+
+reporting rule IsInterestRatePayout from TransactionReportInstruction:
+    ContractForEvent
+        then extract
+            tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> interestRatePayout only exists
+
+reporting rule IsFixedFloat from Trade:
+    extract tradableProduct -> product -> contractualProduct -> economicTerms -> payout
+    then extract
+        interestRatePayout -> rateSpecification -> fixedRate count = 1
+            and interestRatePayout -> rateSpecification -> floatingRate count = 1
+
+reporting rule InterestRatePayoutPayer from TransactionReportInstruction:
+    ContractForEvent
+        then filter IsFixedFloat
+        then extract
+            ExtractCounterpartyByRole(
+                    tradableProduct -> counterparty,
+                    ExtractFixedLeg(
+                            tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> interestRatePayout
+                        ) -> payerReceiver -> payer
+                ) -> partyReference
+
+reporting rule InterestRatePayoutReceiver from TransactionReportInstruction:
+    ContractForEvent
+        then filter IsFixedFloat
+        then extract
+            ExtractCounterpartyByRole(
+                    tradableProduct -> counterparty,
+                    ExtractFixedLeg(
+                            tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> interestRatePayout
+                        ) -> payerReceiver -> receiver
+                ) -> partyReference
+
+reporting rule FixedFloatLeg1 from TransactionReportInstruction: <"Fixed Float Leg 1">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "II"
+        rationale "In case of fixed float swaps leg 1 is the fixed rate."
+        structured_provision "Leg 1 of a Fixed Float swap is by definition the Fixed leg"
+        provision ""]
+    ContractForEvent
+        then filter IsFixedFloat
+        then extract
+            tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> interestRatePayout
+        then filter rateSpecification -> fixedRate exists
+        then only-element
+
+reporting rule FixedFloatRateLeg1 from TransactionReportInstruction: <"Fixed Float Price">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "II" field "1.9"
+        provision "The rate used in leg 1, where applicable. Field value: Any valid number."]
+    filter IsInterestRatePayout
+    then extract ContractForEvent
+    then extract SingleTradeLot
+    then extract priceQuantity
+    then filter observable -> rateOption is absent
+    then extract price
+    then flatten
+    then filter IsFixedInterestRate
+    then only-element
+    then extract value
+        as "II.1.9 Rate leg 1"
+
+reporting rule FixedFloatLeg2 from TransactionReportInstruction: <"Fixed Float Leg 1">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "II"
+        rationale "In case of fixed float swaps leg 2 is the floating rate."
+        structured_provision "Leg 2 of a Fixed Float swap is by definition the Floating leg"
+        provision ""]
+    ContractForEvent
+        then filter IsFixedFloat
+        then extract
+            tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> interestRatePayout
+        then filter rateSpecification -> floatingRate exists
+        then only-element
+
+reporting rule FixedFloatRateLeg2 from TransactionReportInstruction:
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "II" field "1.10"
+        rationale "In case of fixed float the Price is the initial floating rate."
+        structured_provision "The Price of a Fixed Float swap is by definition the Floating leg"
+        provision "The rate used in leg 2, where applicable. Field value: Any valid number."]
+    filter IsInterestRatePayout
+    then extract ContractForEvent
+    then extract SingleTradeLot
+    then extract priceQuantity
+    then filter observable -> rateOption is absent
+    then extract price
+    then flatten
+    then filter IsInterestRateSpread
+    then only-element
+    then extract value
+        as "II.1.10 Rate of leg 2"
+
+reporting rule IsFixedFixed from Trade:
+    extract
+        tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> interestRatePayout -> rateSpecification -> fixedRate count = 2
+
+reporting rule IsIRSwapBasis from Trade:
+    extract
+        tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> interestRatePayout -> rateSpecification -> floatingRate count = 2
+
+reporting rule IsCreditDefaultPayout from TransactionReportInstruction:
+    ContractForEvent
+        then extract
+            tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> creditDefaultPayout exists
+
+reporting rule IsFxPayout from TransactionReportInstruction:
+    ContractForEvent
+        then extract
+            tradableProduct -> product -> contractualProduct -> economicTerms -> payout -> forwardPayout only exists
+
+reporting rule UniqueTransactionIdentifier from TransactionReportInstruction: <"Unique transaction identifier (UTI)">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "I" field "1.1"
+        provision "An identifier to denote the transaction. For an uncleared contract that is not electronically confirmed, the specified person must report a UTI to be agreed on with the counterparty to the contract or a UTI that is internally generated. For all other contracts, the specified person must report the UTI to be agreed on with the counterparty to the contract. Field value: Alphanumeric string."]
+    extract originatingWorkflowStep -> eventIdentifier -> assignedIdentifier -> identifier
+    then last // cardinality mismatch - see DRR ISSUE-624
+        as "I.1.1 UTI"
+
+reporting rule UniqueProductIdentifier from TransactionReportInstruction: <"Unique product identifier (UPI)">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "I" field "1.2"
+        provision "An identifier to denote the product type (e.g. ISDA product taxonomy).  Field value: Alphanumeric string."]
+    ContractForEvent
+        then extract
+            GetProductQualifier(
+                    tradableProduct -> product -> contractualProduct -> productTaxonomy
+                )
+        as "I.1.2 UPI"
+
+reporting rule PriorUniqueTransactionIdentifier from TransactionReportInstruction: <"Previous UTI (where applicable)">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "I" field "1.3"
+        provision "To denote the previous UTI relating to this contract. Field value: Alphanumeric string."]
+    PriorVersion
+        then extract tradeIdentifier -> assignedIdentifier -> identifier
+        then flatten
+        then last // cardinality mismatch - see DRR ISSUE-624
+        as "I.1.3 Prior UTI"
+
+reporting rule PriorVersion from TransactionReportInstruction:
+    extract originatingWorkflowStep -> businessEvent -> after -> trade
+
+reporting rule Counterparty1 from TransactionReportInstruction: <"Identifier of reporting entity">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "I" field "2.1"
+        provision "An identifier of counterparty 1. Where counterparty 1 is a specified person, to use LEI or preLEI if LEI is not available. Where counterparty 1 is not a specified person, to use LEI or preLEI if LEI is not available or, if counterparty 1 does not have any LEI or preLEI, to use SWIFT BIC code, AVOX ID, any identifier issued by a licensed trade repository or licensed foreign trade repository, or client code. In the case of individuals, to use a client code. Field value: Alphanumeric string."]
+    InterestRatePayoutPayer then extract partyId only-element -> identifier
+        as "I.2.1 Counterparty 1"
+
+reporting rule Counterparty2 from TransactionReportInstruction: <"Identifier of reporting entity">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "I" field "2.2"
+        provision "An identifier of counterparty 2. Where counterparty 2 is a specified person, to use LEI or preLEI if LEI is not available. Where counterparty 2 is not a specified person, to use LEI or preLEI if LEI is not available or, if counterparty 2 does not have any LEI or preLEI, to use SWIFT BIC code, AVOX ID, any identifier issued by a licensed trade repository or licensed foreign trade repository, or client code. In the case of individuals, to use a client code. Field value: Alphanumeric string."]
+    InterestRatePayoutReceiver then extract partyId only-element -> identifier
+        as "I.2.2 Counterparty 2"
+
+reporting rule ReportingEntity from TransactionReportInstruction: <"Identifier of reporting entity">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "I" field "2.3"
+        provision "To denote the identity of the reporting entity.  To use LEI or preLEI if LEI is not available.  Field value: Alphanumeric string."]
+    ReportingParty then extract partyId only-element -> identifier
+        as "I.2.3 Reporting Counterparty ID"
+
+reporting rule ReportingParty from TransactionReportInstruction: <"Identifier of reporting entity">
+    extract
+        ExtractPartyFromRelatedPartyByRole(
+                reportableInformation -> partyInformation -> relatedParty,
+                PartyRoleEnum -> ReportingParty
+            )
+
+reporting rule Cleared from TransactionReportInstruction: <"Whether the contract has been cleared">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "I" field "3.1"
+        provision "To denote if the contract has been cleared. Field value: True or False."]
+    extract
+        if originatingWorkflowStep -> businessEvent -> eventQualifier = "ClearedTrade"
+        then "True"
+        else if originatingWorkflowStep -> businessEvent -> eventQualifier <> "ClearedTrade"
+        then "False"
+        else ""
+        as "I.3.1 Cleared"
+
+reporting rule ClearedEntity from TransactionReportInstruction: <"Identifier of clearing entity (where applicable)">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "I" field "3.2"
+        provision "To denote the identity of the clearing entity. To use LEI or preLEI if LEI is not available. Field value: Alphanumeric string."]
+    "Out of scope"
+        as "I.3.2 Identifier of Clearing Entity"
+
+//only works for InterestRate, Credit Default
+reporting rule EffectiveDate from TransactionReportInstruction: <"Effective date or start date of contract">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "I" field "4.1"
+        provision "The date under which the obligations under the contract come into effect.  Field value: ISO 8601 date format, UTC time."]
+    ContractForEvent
+        then extract tradableProduct -> product -> contractualProduct -> economicTerms
+        then extract
+            if payout -> interestRatePayout only exists
+            then payout -> interestRatePayout -> calculationPeriodDates -> effectiveDate -> adjustableDate -> unadjustedDate
+            else if payout -> creditDefaultPayout exists
+            then effectiveDate -> adjustableDate -> unadjustedDate
+            else effectiveDate -> adjustableDate -> unadjustedDate
+        then distinct only-element
+        as "I.4.1 Effective Date"
+
+//only works for InterestRate, Credit Default
+reporting rule TerminationDate from TransactionReportInstruction: <"Maturity, termination or end date of contract">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "I" field "4.2"
+        provision "The date of expiry of the contract.  Field value: ISO 8601 date format, UTC time."]
+    ContractForEvent
+        then extract tradableProduct -> product -> contractualProduct -> economicTerms
+        then extract
+            if payout -> interestRatePayout only exists
+            then payout -> interestRatePayout -> calculationPeriodDates -> terminationDate -> adjustableDate -> unadjustedDate
+            else if payout -> creditDefaultPayout exists
+            then terminationDate -> adjustableDate -> unadjustedDate
+            else terminationDate -> adjustableDate -> unadjustedDate
+        then distinct only-element
+        as "I.4.1 Termination Date"
+
+reporting rule ReportingTimestamp from TransactionReportInstruction: <"Reporting timestamp">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "I" field "5"
+        provision "The date and time when the contract was reported to a LTR or LFTR.  Field value: ISO 8601 date format, UTC time."]
+    extract originatingWorkflowStep -> timestamp
+    then filter qualification = EventTimestampQualificationEnum -> eventCreationDateTime
+    then only-element
+    then extract dateTime
+        as "I.5 Reporting Timestamp"
+
+reporting rule OptionType from TransactionReportInstruction: <"Option Type">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "I" field "6.1"
+        provision "To denote the type of option. Field value: Call or Put."]
+    "N/A"
+        as "I.6.1 Option Type"
+
+reporting rule OptionExpirationDate from TransactionReportInstruction: <"Option expiration date">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "I" field "6.2"
+        provision "The expiry date of the option. Field value: ISO 8601 date format, UTC time."]
+    "N/A"
+        as "I.6.2 Option Expiration Date"
+
+reporting rule OptionPremium from TransactionReportInstruction: <"Option premium">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "I" field "6.3"
+        provision "The amount of option premium paid by the buyer to the seller for the reported contract. Field value: Any valid number."]
+    "N/A"
+        as "I.6.3 Option Premium"
+
+reporting rule BookingLocation from TransactionReportInstruction: <"Booking location">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "IA" field "6.1"
+        provision "Where the contract is booked in Singapore, to use country code for Singapore SG. Where the contract is not booked in Singapore, to denote the country where the contract was booked. Field value: ISO 31661 alpha2 country code."]
+    BookingLocationAddress then extract country
+        as "IA.6.1 Booking Location"
+
+reporting rule TraderLocation from TransactionReportInstruction: <"Trader location">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "IA" field "6.2"
+        provision "Where the contract is traded in Singapore, to use country code for Singapore SG. Where the contract is not traded in Singapore, to denote the country where the trader which executed the contract is located. Field value: ISO 31661 alpha2 country code.."]
+    TraderAddressForUTI then extract currentLocation -> country
+        as "IA.6.2 Trader Location"
+
+// //how to associate the right quantity/price/currency with the right leg?
+reporting rule InterestRateNotionalAmountLeg1 from TransactionReportInstruction: <"Notional amount for leg 1">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "II" field "1.1"
+        provision "The notional amount of leg 1 of the contract. Field value: Any valid number."]
+    FixedFloatLeg1
+        then filter rateSpecification -> fixedRate exists
+        then extract priceQuantity -> resolvedQuantity -> value
+        as "II.1.1 Notional amount leg 1"
+
+//how to associate the right quantity/price/currency with the right leg?
+reporting rule InterestRateNotionalCurrencyLeg1 from TransactionReportInstruction: <"Notional currency for leg 1">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "II" field "1.2"
+        provision "The notional currency of leg 1 of the contract. Field value: Any valid number."]
+    FixedFloatLeg1
+        then filter rateSpecification -> fixedRate exists
+        then extract priceQuantity -> resolvedQuantity -> unit -> currency
+        as "II.1.2 Notional currency leg 1"
+
+reporting rule InterestRateNotionalAmountLeg2 from TransactionReportInstruction: <"Notional amount for leg 2">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "II" field "1.3"
+        provision "The notional amount of leg 2 of the contract. Field value: Any valid number."]
+    FixedFloatLeg2
+        then filter rateSpecification -> floatingRate exists
+        then extract priceQuantity -> resolvedQuantity -> value
+        as "II.1.3 Notional amount leg 2"
+
+reporting rule InterestRateNotionalCurrencyLeg2 from TransactionReportInstruction: <"Notional currency for leg 2">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "II" field "1.4"
+        provision "The notional currency of leg 2 of the contract. Field value: Any valid number."]
+    FixedFloatLeg2
+        then filter rateSpecification -> floatingRate exists
+        then extract priceQuantity -> resolvedQuantity -> unit -> currency
+        as "II.1.4 Notional currency leg 2"
+
+reporting rule InterestRatePayerLeg1 from TransactionReportInstruction: <"Payer of leg 1">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "II" field "1.7"
+        provision "LEI of counterparty paying leg 1. Field value: Alphanumeric string."]
+    filter IsInterestRatePayout
+    then extract InterestRatePayoutPayer
+    then extract partyId -> identifier
+    then last // cardinality mismatch - see DRR ISSUE-624
+        as "II.1.7 Payer leg 1"
+
+reporting rule InterestRatePayerLeg2 from TransactionReportInstruction: <"Payer of leg 2">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "II" field "1.8"
+        provision "LEI of counterparty paying leg 2. Field value: Alphanumeric string."]
+    filter IsInterestRatePayout
+    then extract InterestRatePayoutReceiver
+    then extract partyId -> identifier
+    then last // cardinality mismatch - see DRR ISSUE-624
+        as "II.1.8 Payer leg 2"
+
+reporting rule InterestRateRateLeg1 from TransactionReportInstruction: <"Rate of leg 1">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "II" field "1.9"
+        provision "The rate used in leg 1, where applicable. Field value: Any valid number."]
+    FixedFloatRateLeg1
+        as "II.1.9 Rate leg 1"
+
+reporting rule InterestRateRateLeg2 from TransactionReportInstruction: <"Rate of leg 2">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "II" field "1.10"
+        provision "The rate used in leg 2, where applicable. Field value: Any valid number."]
+    FixedFloatRateLeg2
+        as "II.1.10 Rate of leg 2"
+
+reporting rule InterestRatePaymentFrequencyPeriodLeg1 from TransactionReportInstruction: <"Payment frequency period of leg 1 (where applicable)">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "II" field "1.11"
+        provision "The frequency period of payments for leg 1. Field value: D (day), M (month), W (week), Y (year) or T (term)."]
+    FixedFloatLeg1
+        then filter rateSpecification -> fixedRate exists
+        then extract paymentDates -> paymentFrequency -> period
+        as "II.1.11 Payment frequency period leg 1"
+
+reporting rule InterestRatePaymentFrequencyMultiplierLeg1 from TransactionReportInstruction: <"Payment frequency multiplier of leg 1 (where applicable)">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "II" field "1.20"
+        provision "An integer number of the payment frequency period of leg 2. Field value: Any valid number."]
+    filter IsInterestRatePayout
+    then extract FixedFloatLeg1
+    then filter rateSpecification -> fixedRate exists
+    then extract paymentDates -> paymentFrequency -> periodMultiplier
+        as "II.1.12 Payment frequency multiplier leg 1"
+
+reporting rule InterestRatePaymentFrequencyPeriodLeg2 from TransactionReportInstruction: <"Payment frequency period of leg 2 (where applicable)">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "II" field "1.13"
+        provision "The frequency period of payments for leg 2. Field value: D (day), M (month), W (week), Y (year) or T (term)."]
+    filter IsInterestRatePayout
+    then extract FixedFloatLeg2
+    then filter rateSpecification -> floatingRate exists
+    then extract paymentDates -> paymentFrequency -> period
+        as "II.1.13 Payment frequency period leg 2"
+
+reporting rule InterestRatePaymentFrequencyMultiplierLeg2 from TransactionReportInstruction: <"Payment frequency multiplier of leg 2 (where applicable)">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "II" field "1.14"
+        provision "An integer number of the payment frequency period of leg 2. Field value: Any valid number."]
+    filter IsInterestRatePayout
+    then extract FixedFloatLeg2
+    then filter rateSpecification -> floatingRate exists
+    then extract paymentDates -> paymentFrequency -> periodMultiplier
+        as "II.1.14 Payment frequency multiplier leg 2"
+
+reporting rule InterestRateDayCountLeg1 from TransactionReportInstruction: <"Day count of leg 1 (where applicable)">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "II" field "1.15"
+        provision "The actual number of days in the calculation period for leg 1. Field value: 1/1, 30/360, 30E/360.ISDA, 30E/360, ACT/360, ACT/365.FIXED, ACT/365L, ACT/ACT.AFB, ACT/ACT.ICMA, ACT/ACT.ISDA, ACT/ACT.ISMA, BUS/252 or Other."]
+    FixedFloatLeg1
+        then filter rateSpecification -> fixedRate exists
+        then extract dayCountFraction
+        as "II.1.15 Day count leg 1"
+
+reporting rule InterestRateDayCountLeg2 from TransactionReportInstruction: <"Day count of leg 2 (where applicable)">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "II" field "1.16"
+        provision "The actual number of days in the calculation period for leg 1. Field value: 1/1, 30/360, 30E/360.ISDA, 30E/360, ACT/360, ACT/365.FIXED, ACT/365L, ACT/ACT.AFB, ACT/ACT.ICMA, ACT/ACT.ISDA, ACT/ACT.ISMA, BUS/252 or Other."]
+    FixedFloatLeg2
+        then filter rateSpecification -> floatingRate exists
+        then extract dayCountFraction
+        as "II.1.16 Day count leg 2"
+
+reporting rule InterestRateResetFrequencyPeriodLeg1 from TransactionReportInstruction: <"Reset frequency period of leg 1 (where applicable)">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "II" field "1.17"
+        provision "The frequency period of resets for leg 1. Field value: D (day), M (month), W (week), Y (year) or T (term)."]
+    filter IsInterestRatePayout
+    then extract FixedFloatLeg1
+    then filter rateSpecification -> fixedRate exists
+    then extract calculationPeriodDates -> calculationPeriodFrequency -> period
+        as "II.1.17 Reset frequency period leg 1"
+
+reporting rule InterestRateResetFrequencyMultiplierLeg1 from TransactionReportInstruction: <"Reset frequency multiplier of leg 1 (where applicable)">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "II" field "1.18"
+        provision "An integer number of the reset frequency period of leg 1. Field value: Any valid number."]
+    filter IsInterestRatePayout
+    then extract FixedFloatLeg1
+    then filter rateSpecification -> fixedRate exists
+    then extract calculationPeriodDates -> calculationPeriodFrequency -> periodMultiplier
+        as "II.1.18 Reset frequency multiplier leg 1"
+
+reporting rule InterestRateResetFrequencyPeriodLeg2 from TransactionReportInstruction: <"Reset frequency period of leg 2 (where applicable)">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "II" field "1.19"
+        provision "The frequency period of resets for leg 2. Field value: D (day), M (month), W (week), Y (year) or T (term)."]
+    filter IsInterestRatePayout
+    then extract FixedFloatLeg2
+    then filter rateSpecification -> floatingRate exists
+    then extract calculationPeriodDates -> calculationPeriodFrequency -> period
+        as "II.1.19 Reset frequency period leg 2"
+
+reporting rule InterestRateResetFrequencyMultiplierLeg2 from TransactionReportInstruction: <"Reset frequency multiplier of leg 2 (where applicable)">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "II" field "1.20"
+        provision "An integer number of the reset frequency period of leg 2. Field value: Any valid number."]
+    filter IsInterestRatePayout
+    then extract FixedFloatLeg2
+    then filter rateSpecification -> floatingRate exists
+    then extract calculationPeriodDates -> calculationPeriodFrequency -> periodMultiplier
+        as "II.1.20 Reset frequency multiplier leg 2"
+
+reporting rule InterestRatePrice from TransactionReportInstruction: <"Price/spread (where applicable)">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "II" field "1.21"
+        provision "Transacted price/spread. Field value: Any valid number."]
+    filter IsInterestRatePayout
+    then extract ContractForEvent
+    then extract SingleTradeLot
+    then extract priceQuantity
+    then filter observable -> rateOption exists
+    then extract price
+    then flatten
+    then filter IsInterestRateSpread
+    then only-element
+    then extract value
+        as "II.1.21 Price/spread"
+
+reporting rule FXCurrency1 from TransactionReportInstruction: <"Currency 1">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "IV" field "1.2"
+        provision "The notional currency payable by specified person. Field value: ISO currency code."]
+    filter IsFxPayout
+    then extract ContractForEvent
+    then extract SingleTradeLot
+    then extract priceQuantity -> price
+    then filter priceType = PriceTypeEnum -> ExchangeRate
+    then extract unit -> currency
+    then last // cardinality mismatch - see DRR ISSUE-624
+        as "IV.1.2 Currency 1"
+
+reporting rule FXCurrency2 from TransactionReportInstruction: <"Currency 2">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "IV" field "1.4"
+        provision "The notional currency payable by the counterparty. Field value: ISO currency code."]
+    filter IsFxPayout
+    then extract ContractForEvent
+    then extract SingleTradeLot
+    then extract priceQuantity -> price
+    then filter priceType = PriceTypeEnum -> ExchangeRate
+    then extract perUnitOf -> currency
+    then last // cardinality mismatch - see DRR ISSUE-624
+        as "IV.1.4 Currency 2"
+
+reporting rule FXExchangeRate from TransactionReportInstruction: <"Exchange Rate">
+    [regulatoryReference MAS SFA MAS_2013 annex "1" table "IV" field "1.5"
+        provision "The exchange rate of the currencies of the contract. Field value: Any valid number. "]
+    filter IsFxPayout
+    then extract ContractForEvent
+    then extract SingleTradeLot
+    then extract priceQuantity -> price
+    then filter priceType = PriceTypeEnum -> ExchangeRate
+    then extract value
+    then last // cardinality mismatch - see DRR ISSUE-624
+        as "IV.1.5 Exchange Rate"

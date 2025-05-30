@@ -1,0 +1,63 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "INTR",
+  "cleared" : "N",
+  "contractType" : "SWAP",
+  "counterparty1" : "DUMMYLEI012345678906",
+  "counterparty2" : "DUMMYLEI012345678905",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "dayCountConventionLeg1" : "A004",
+  "dayCountConventionLeg2" : "A004",
+  "direction2OfLeg1" : "TAKE",
+  "direction2OfLeg2" : "MAKE",
+  "effectiveDate" : "2021-03-15",
+  "eventIdentifier" : "DTDApproved2380442703EMIRRiskNewNewInterest",
+  "eventTimestamp" : "2021-03-12T09:45:08Z",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-03-12T09:43:47Z",
+  "expirationDate" : "2021-12-10",
+  "fixedRateLeg1" : 5.00,
+  "floatingRateReferencePeriodOfLeg2Multiplier" : 1,
+  "floatingRateReferencePeriodOfLeg2TimePeriod" : "DAIL",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalCurrency" : "USD",
+          "NotionalSchedule" : "Constant",
+          "ReferenceRateTermUnit" : "DAYS",
+          "ReferenceRateTermValue" : 1,
+          "UnderlierID" : "USD-Federal Funds-H.15-OIS-COMPOUND",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Fixed_Float_OIS"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "USD",
+  "notionalCurrencyLeg2" : "USD",
+  "notionalLeg1" : 33000000,
+  "notionalLeg2" : 33000000,
+  "paymentFrequencyPeriodLeg1" : "YEAR",
+  "paymentFrequencyPeriodLeg2" : "YEAR",
+  "paymentFrequencyPeriodMultiplierLeg1" : 1,
+  "paymentFrequencyPeriodMultiplierLeg2" : 1,
+  "platformIdentifier" : "XXXX",
+  "reportSubmittingEntityID" : "DUMMYLEI012345678906",
+  "reportingEntity" : "DUMMYLEI012345678906",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "spreadLeg2" : {
+    "spreadLeg2Basis" : 1,
+    "spreadLeg2Notation" : "Basis"
+  },
+  "spreadNotationLeg2" : "4",
+  "uniqueTransactionIdentifier" : "IRIRSFIXEDFLOATEXO03"
+}

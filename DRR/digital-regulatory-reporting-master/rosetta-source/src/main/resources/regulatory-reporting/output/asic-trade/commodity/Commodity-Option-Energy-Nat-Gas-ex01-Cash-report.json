@@ -1,0 +1,57 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "OTHR",
+  "callAmount" : 3850000.0000000000,
+  "callCurrency" : "USD",
+  "cleared" : "N",
+  "contractType" : "OPTN",
+  "counterparty1" : "DUMMY0000000000LEI02",
+  "counterparty2" : "DUMMY0000000000LEI01",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "direction" : "BYER",
+  "effectiveDate" : "2022-07-01",
+  "eventIdentifier" : "ac605bcecd0f45389a8c10ac65bdb78e",
+  "eventTimestamp" : "2021-12-04T04:51:01.797127Z",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-12-03T19:23:14Z",
+  "expirationDate" : "2022-07-31",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "OptionExerciseStyle" : "EURO",
+          "OptionType" : "CALL",
+          "UnderlierID" : "NATURAL GAS-HENRY HUB-NYMEX",
+          "UnderlierIDSource" : "COMM",
+          "ValuationMethodorTrigger" : "Vanilla"
+        },
+        "Header" : {
+          "AssetClass" : "Commodities",
+          "InstrumentType" : "Option",
+          "Level" : "UPI",
+          "UseCase" : "Option"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "USD",
+  "notionalLeg1" : 3850000.0000000000,
+  "notionalQuantityLeg1" : 1000000,
+  "optionPremiumAmount" : 452500.00,
+  "optionPremiumCurrency" : "USD",
+  "optionPremiumPaymentDate" : "2021-12-07",
+  "reportSubmittingEntityID" : "DUMMY0000000000LEI02",
+  "reportingEntity" : "DUMMY0000000000LEI02",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrencyLeg1" : "USD",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "strikePrice" : {
+    "strikePriceCurrency" : "USD",
+    "strikePriceMonetary" : 3.8500000000000,
+    "strikePriceNotation" : "Monetary"
+  },
+  "totalNotionalQuantityLeg1" : 1000000.00,
+  "uniqueTransactionIdentifier" : "COMMODITYOPTIONENE01"
+}

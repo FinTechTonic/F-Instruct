@@ -1,0 +1,865 @@
+namespace drr.standards.iso.upi
+version "${project.version}"
+
+enum AnnaDsbISOCurrencyCodeEnum:
+    AED <"UAE Dirham">
+    AFN <"Afghani">
+    ALL <"Lek">
+    AMD <"Armenian Dram">
+    ANG <"Netherlands Antillean Guilder">
+    AOA <"Kwanza">
+    ARS <"Argentine Peso">
+    AUD <"Australian Dollar">
+    AWG <"Aruban Florin">
+    AZN <"Azerbaijanian Manat">
+    BAM <"Convertible Mark">
+    BBD <"Barbados Dollar">
+    BDT <"Taka">
+    BGN <"Bulgarian Lev">
+    BHD <"Bahraini Dinar">
+    BIF <"Burundi Franc">
+    BMD <"Bermudian Dollar">
+    BND <"Brunei Dollar">
+    BOB <"Boliviano">
+    BOV <"Mvdol">
+    BRL <"Brazilian Real">
+    BSD <"Bahamian Dollar">
+    BTN <"Ngultrum">
+    BWP <"Pula">
+    BYN <"Belarusian Ruble">
+    BYR <"Belarusian Ruble">
+    BZD <"Belize Dollar">
+    CAD <"Canadian Dollar">
+    CDF <"Congolese Franc">
+    CHE <"WIR Euro">
+    CHF <"Swiss Franc">
+    CHW <"WIR Franc">
+    CLF <"Unidad de Fomento">
+    CLP <"Chilean Peso">
+    CNY <"Yuan Renminbi">
+    COP <"Colombian Peso">
+    COU <"Unidad de Valor Real">
+    CRC <"Costa Rican Colon">
+    CUC <"Peso Convertible">
+    CUP <"Cuban Peso">
+    CVE <"Cabo Verde Escudo">
+    CZK <"Czech Koruna">
+    DJF <"Djibouti Franc">
+    DKK <"Danish Krone">
+    DOP <"Dominican Peso">
+    DZD <"Algerian Dinar">
+    EGP <"Egyptian Pound">
+    ERN <"Nakfa">
+    ETB <"Ethiopian Birr">
+    EUR <"Euro">
+    FJD <"Fiji Dollar">
+    FKP <"Falkland Islands Pound">
+    GBP <"Pound Sterling">
+    GEL <"Lari">
+    GHS <"Ghana Cedi">
+    GIP <"Gibraltar Pound">
+    GMD <"Dalasi">
+    GNF <"Guinea Franc">
+    GTQ <"Quetzal">
+    GYD <"Guyana Dollar">
+    HKD <"Hong Kong Dollar">
+    HNL <"Lempira">
+    HRK <"Kuna">
+    HTG <"Gourde">
+    HUF <"Forint">
+    IDR <"Rupiah">
+    ILS <"New Israeli Sheqel">
+    INR <"Indian Rupee">
+    IQD <"Iraqi Dinar">
+    IRR <"Iranian Rial">
+    ISK <"Iceland Krona">
+    JMD <"Jamaican Dollar">
+    JOD <"Jordanian Dinar">
+    JPY <"Yen">
+    KES <"Kenyan Shilling">
+    KGS <"Som">
+    KHR <"Riel">
+    KMF <"Comoro Franc">
+    KPW <"North Korean Won">
+    KRW <"Won">
+    KWD <"Kuwaiti Dinar">
+    KYD <"Cayman Islands Dollar">
+    KZT <"Tenge">
+    LAK <"Kip">
+    LBP <"Lebanese Pound">
+    LKR <"Sri Lanka Rupee">
+    LRD <"Liberian Dollar">
+    LSL <"Loti">
+    LYD <"Libyan Dinar">
+    MAD <"Moroccan Dirham">
+    MDL <"Moldovan Leu">
+    MGA <"Malagasy Ariary">
+    MKD <"Denar">
+    MMK <"Kyat">
+    MNT <"Tugrik">
+    MOP <"Pataca">
+    MRO <"Ouguiya">
+    MRU <"Ouguiya">
+    MUR <"Mauritius Rupee">
+    MVR <"Rufiyaa">
+    MWK <"Malawi Kwacha">
+    MXN <"Mexican Peso">
+    MXV <"Mexican Unidad de Inversion (UDI)">
+    MYR <"Malaysian Ringgit">
+    MZN <"Mozambique Metical">
+    NAD <"Namibia Dollar">
+    NGN <"Naira">
+    NIO <"Cordoba Oro">
+    NOK <"Norwegian Krone">
+    NPR <"Nepalese Rupee">
+    NZD <"New Zealand Dollar">
+    OMR <"Rial Omani">
+    PAB <"Balboa">
+    PEN <"Sol">
+    PGK <"Kina">
+    PHP <"Philippine Peso">
+    PKR <"Pakistan Rupee">
+    PLN <"Zloty">
+    PYG <"Guarani">
+    QAR <"Qatari Rial">
+    RON <"Romanian Leu">
+    RSD <"Serbian Dinar">
+    RUB <"Russian Ruble">
+    RWF <"Rwanda Franc">
+    SAR <"Saudi Riyal">
+    SBD <"Solomon Islands Dollar">
+    SCR <"Seychelles Rupee">
+    SDG <"Sudanese Pound">
+    SEK <"Swedish Krona">
+    SGD <"Singapore Dollar">
+    SHP <"Saint Helena Pound">
+    SLL <"Leone">
+    SOS <"Somali Shilling">
+    SRD <"Surinam Dollar">
+    SSP <"South Sudanese Pound">
+    STD <"Dobra">
+    STN <"Dobra">
+    SVC <"El Salvador Colon">
+    SYP <"Syrian Pound">
+    SZL <"Lilangeni">
+    THB <"Baht">
+    TJS <"Somoni">
+    TMT <"Turkmenistan New Manat">
+    TND <"Tunisian Dinar">
+    TOP <"Pa'anga">
+    TRY <"Turkish Lira">
+    TTD <"Trinidad and Tobago Dollar">
+    TWD <"New Taiwan Dollar">
+    TZS <"Tanzanian Shilling">
+    UAH <"Hryvnia">
+    UGX <"Uganda Shilling">
+    USD <"US Dollar">
+    USN <"US Dollar (Next day)">
+    UYI <"Uruguay Peso en Unidades Indexadas (URUIURUI)">
+    UYU <"Peso Uruguayo">
+    UZS <"Uzbekistan Sum">
+    VEF <"Bolivar">
+    VES <"Bolivar Soberano">
+    VND <"Dong">
+    VUV <"Vatu">
+    WST <"Tala">
+    XAF <"CFA Franc BEAC">
+    XAG <"Silver">
+    XAU <"Gold">
+    XBA <"Bond Markets Unit European Composite Unit (EURCO)">
+    XBB <"Bond Markets Unit European Monetary Unit (E.M.U.-6)">
+    XBC <"Bond Markets Unit European Unit of Account 9 (E.U.A.-9)">
+    XBD <"Bond Markets Unit European Unit of Account 17 (E.U.A.-17)">
+    XCD <"East Caribbean Dollar">
+    XDR <"SDR (Special Drawing Right)">
+    XOF <"CFA Franc BCEAO">
+    XPD <"Palladium">
+    XPF <"CFP Franc">
+    XPT <"Platinum">
+    XSU <"Sucre">
+    XTS <"Codes specifically reserved for testing purposes">
+    XUA <"ADB Unit of Account">
+    XXX <"The codes assigned for transactions where no currency is involved">
+    YER <"Yemeni Rial">
+    ZAR <"Rand">
+    ZMW <"Zambian Kwacha">
+    ZWL <"Zimbabwe Dollar">
+
+enum AnnaDsbAssetClassEnum:
+    Commodities displayName "Commodities"
+    Credit displayName "Credit"
+    Equity displayName "Equity"
+    Foreign_Exchange displayName "Foreign_Exchange"
+    Other displayName "Other"
+    Rates displayName "Rates"
+
+enum AnnaDsbInstrumentTypeEnum:
+    Forward displayName "Forward"
+    Option displayName "Option"
+    Other displayName "Other"
+    Swap displayName "Swap"
+
+enum AnnaDsbUseCaseEnum:
+    ABS
+    Barrier_Option displayName "Barrier_Option"
+    Basis displayName "Basis"
+    Basis_OIS displayName "Basis_OIS"
+    Basis_Swap displayName "Basis_Swap"
+    Basket displayName "Basket"
+    CapFloor displayName "CapFloor"
+    Contract_For_Difference displayName "Contract_For_Difference"
+    Corporate displayName "Corporate"
+    Cross_Currency_Basis displayName "Cross_Currency_Basis"
+    Cross_Currency_Fixed_Fixed displayName "Cross_Currency_Fixed_Fixed"
+    Cross_Currency_Fixed_Float displayName "Cross_Currency_Fixed_Float"
+    Cross_Currency_Fixed_Float_NDS displayName "Cross_Currency_Fixed_Float_NDS"
+    Cross_Currency_Inflation_Swap displayName "Cross_Currency_Inflation_Swap"
+    Cross_Currency_Zero_Coupon displayName "Cross_Currency_Zero_Coupon"
+    Debt displayName "Debt"
+    Debt_Option displayName "Debt_Option"
+    Digital_Option displayName "Digital_Option"
+    Fixed_Fixed displayName "Fixed_Fixed"
+    Fixed_Float displayName "Fixed_Float"
+    Fixed_Float_OIS displayName "Fixed_Float_OIS"
+    Fixed_Float_Zero_Coupon displayName "Fixed_Float_Zero_Coupon"
+    Forward displayName "Forward"
+    Forward_Vol_Agreement displayName "Forward_Vol_Agreement"
+    FRA_Index displayName "FRA_Index"
+    FRA_Other displayName "FRA_Other"
+    FX_Swap displayName "FX_Swap"
+    Index displayName "Index"
+    Index_Swaption displayName "Index_Swaption"
+    Index_Tranche displayName "Index_Tranche"
+    Inflation_Basis displayName "Inflation_Basis"
+    Inflation_Basis_YoY displayName "Inflation_Basis_YoY"
+    Inflation_Basis_Zero_Coupon displayName "Inflation_Basis_Zero_Coupon"
+    Inflation_CapFloor displayName "Inflation_CapFloor"
+    Inflation_Fixed_Float_YoY displayName "Inflation_Fixed_Float_YoY"
+    Inflation_Fixed_Float_Zero_Coupon displayName "Inflation_Fixed_Float_Zero_Coupon"
+    Inflation_Swap displayName "Inflation_Swap"
+    Loan displayName "Loan"
+    Multi_Exotic_Forward displayName "Multi_Exotic_Forward"
+    Multi_Exotic_Option displayName "Multi_Exotic_Option"
+    Multi_Exotic_Swap displayName "Multi_Exotic_Swap"
+    Municipal displayName "Municipal"
+    NDF
+    NDO
+    Non_Deliverable_FX_Swap displayName "Non_Deliverable_FX_Swap"
+    Non_Standard displayName "Non_Standard"
+    Option displayName "Option"
+    Parameter_Return_Dividend_Basket displayName "Parameter_Return_Dividend_Basket"
+    Parameter_Return_Dividend_Single_Index displayName "Parameter_Return_Dividend_Single_Index"
+    Parameter_Return_Dividend_Single_Name displayName "Parameter_Return_Dividend_Single_Name"
+    Parameter_Return_Variance_Basket displayName "Parameter_Return_Variance_Basket"
+    Parameter_Return_Variance_Single_Index displayName "Parameter_Return_Variance_Single_Index"
+    Parameter_Return_Variance_Single_Name displayName "Parameter_Return_Variance_Single_Name"
+    Parameter_Return_Volatility_Basket displayName "Parameter_Return_Volatility_Basket"
+    Parameter_Return_Volatility_Single_Index displayName "Parameter_Return_Volatility_Single_Index"
+    Parameter_Return_Volatility_Single_Name displayName "Parameter_Return_Volatility_Single_Name"
+    Portfolio_Swap displayName "Portfolio_Swap"
+    Portfolio_Swap_Other displayName "Portfolio_Swap_Other"
+    Portfolio_Swap_Single_Index displayName "Portfolio_Swap_Single_Index"
+    Portfolio_Swap_Single_Name displayName "Portfolio_Swap_Single_Name"
+    Price_Return_Basic_Performance_Basket displayName "Price_Return_Basic_Performance_Basket"
+    Price_Return_Basic_Performance_Basket_CFD displayName "Price_Return_Basic_Performance_Basket_CFD"
+    Price_Return_Basic_Performance_Single_Index displayName "Price_Return_Basic_Performance_Single_Index"
+    Price_Return_Basic_Performance_Single_Index_CFD displayName "Price_Return_Basic_Performance_Single_Index_CFD"
+    Price_Return_Basic_Performance_Single_Name displayName "Price_Return_Basic_Performance_Single_Name"
+    Price_Return_Basic_Performance_Single_Name_CFD displayName "Price_Return_Basic_Performance_Single_Name_CFD"
+    Rolling_Spot displayName "Rolling_Spot"
+    Single_Index displayName "Single_Index"
+    Single_Name displayName "Single_Name"
+    Single_Name_Swaption displayName "Single_Name_Swaption"
+    Sovereign displayName "Sovereign"
+    Spreadbet displayName "Spreadbet"
+    Swap displayName "Swap"
+    Swaption displayName "Swaption"
+    Target_Option displayName "Target_Option"
+    Total_Return_Swap displayName "Total_Return_Swap"
+    Vanilla_Option displayName "Vanilla_Option"
+    Vol_Var displayName "Vol_Var"
+
+enum AnnaDsbLevelEnum:
+    UPI
+
+enum AnnaDsbUnderlierIDSourceEnum:
+    CCY <"CCY">
+    COIDX <"Commodity Index">
+    COMM <"Commodity Reference Price">
+    CRIDX <"Credit Index">
+    CUSIP <"CUSIP code of the underlying instrument">
+    EQIDX <"Equity Index">
+    FIGI <"FIGI code of the underlying instrument">
+    FPML <"FPML">
+    ISIN <"ISIN code of the underlying instrument">
+    LEI <"In case the instrument is referring to an issuer, rather than to one single instrument, the LEI code of the Issuer">
+    PROP <"Underlying Instrument Index Prop">
+    RIC <"RIC of the underlying instrument">
+    SEDOL <"SEDOL code of the underlying instrument">
+    UPI <"Unique Product Identifier as defined by ISO 4914">
+
+enum AnnaDsbAdditionalSubProductEnum:
+    ALUA
+    ALUM
+    BAKK
+    BDSL
+    BRNT
+    BRNX
+    BRWN
+    BSLD
+    CBLT
+    CCOA
+    CERE
+    CNDA
+    COND
+    COPR
+    CORN
+    DBCR
+    DSEL
+    DUBA
+    ERUE
+    ESPO
+    ETHA
+    EUAA
+    EUAE
+    FITR
+    FOIL
+    FUEL
+    FWHT
+    GASP
+    GOIL
+    GOLD
+    GSLN
+    HEAT
+    IRON
+    JTFL
+    KERO
+    LAMP
+    LEAD
+    LLSO
+    LNGG
+    MARS
+    MOLY
+    MWHT
+    NAPH
+    NASC
+    NBPG
+    NCGG
+    NGLO
+    NICK
+    OFFP
+    OTHR
+    PKLD
+    PLDM
+    PTNM
+    RICE
+    ROBU
+    RPSD
+    SLVR
+    SOYB
+    STEL
+    TAPI
+    TINN
+    TNKR
+    TTFG
+    URAL
+    WHSG
+    WTIO
+    ZINC
+
+enum AnnaDsbReturnorPayoutTriggerEnum:
+    Contract_for_Difference_CFD_ displayName "Contract for Difference (CFD)" <"a cash settled total return swap or forward where the parties agree to exchange on the maturity of the contract the difference between the opening price and closing price of the underlying">
+    Credit_Default displayName "Credit Default" <"Credit Default">
+    Dividend displayName "Dividend" <"a fixed-term contract between two parties where one party will make an interest rate payment for each interval and the other party will pay the total dividends received as pay-out by a selected underlying asset">
+    Forward_price_of_underlying_instrument displayName "Forward price of underlying instrument" <"Forward price of underlying instrument">
+    Other displayName "Other" <"Miscellaneous">
+    Price displayName "Price" <"price return equity swap, similar to a total return swap, except that dividends are not passed through to the buyer">
+    Spreadbets displayName "Spreadbets" <"the payout is determined by the movement in the reference price of the underlying instrument to its price at expiry (or the price when the holder wishes to close out) multiplied by an agreed amount per point movement">
+    Total_Return displayName "Total Return" <"the total economic return of an underlying asset is transferred from one party (total return buyer) to another (total return seller); total return seller takes on the risk of negative changes in market value of the reference asset, and pays any positive cash flow to the buyer such as coupon, capital gains or dividends of the reference asset">
+    Variance displayName "Variance" <"a forward swap that uses the variance (being the volatility squared) of an underlying's price movement over a period as the basis for the payoff calculation">
+    Volatility displayName "Volatility" <"the variability of movements in a security or underlying instrument's price; it is a measure of the amount by which an asset's price is expected to fluctuate over a given period of time; it is normally measured by the annual standard deviation of daily price changes">
+
+enum AnnaDsbDeliveryTypeEnum:
+    Auction displayName "Auction" <"an independently administered synthetic auction process on a set of defined deliverable obligations that sets a reference final price that can be used to facilitate cash settlement of all covered transactions following a credit event">
+    CASH <"the discharge of an obligation by payment or receipt of a net cash amount instead of payment or delivery by both parties">
+    Elect_at_Exercise displayName "Elect at Exercise" <"the method of delivery of the underlying instrument when the option is exercised shall be determined at the time of exercise">
+    Elect_at_Settlement displayName "Elect at Settlement" <"determined at the time of settlement">
+    Non_Deliverable displayName "Non-Deliverable" <"as defined by CFI code: ISO 10962 (2015)">
+    OPTL <"the method of delivery of the underlying instrument when the option is exercised shall be determined at the time of exercise">
+    PHYS <"the meeting of a settlement obligation under a derivative contract through the receipt or delivery of the actual underlying instrument(s) instead of through cash settlement">
+    Physical displayName "Physical" <"the meeting of a settlement obligation under a derivative contract through the receipt or delivery of the actual underlying instrument(s) instead of through cash settlement">
+
+enum AnnaDsbBaseProductEnum:
+    AGRI
+    ENVR
+    FRGT
+    FRTL
+    INDP
+    INFL
+    MCEX
+    METL
+    NRGY
+    OEST
+    OTHC
+    OTHR
+    PAPR
+    POLY
+
+enum AnnaDsbOptionTypeEnum:
+    CALL <"An option on a contract which allows its holder (buyer) to exercise the right to buy specified assets (product)">
+    OPTL <"An option on a contract which allows its holder (buyer) to exercise the right to buy (call) or sell (put) specified assets (product); The buyer does not have to decide whether the contract will be a put or a call until an agreed future date, prior to expiration">
+    PUTO <"An option on a contract which allows its holder (buyer) to exercise the right to sell specified assets (product)">
+
+enum AnnaDsbOptionExerciseStyleEnum:
+    AMER <"An option on a contract which allows its holder (buyer) to exercise the right to buy (call) or sell (put) specified assets (product) at a fixed price at any time during the term of the put option, up to and including the expiration date of the contract">
+    BERM <"An option on a contract which allows its holder (buyer) to exercise the right to buy (call) or sell (put) specified assets (product) at a fixed price on a number of specific dates within the exercise period of the contract">
+    EURO <"An option on a contract which allows its holder (buyer) to exercise the right to buy (call) or sell (put) specified assets (product) at a fixed price, only on the contract's expiration date">
+
+enum AnnaDsbValuationMethodorTriggerEnum:
+    Asian displayName "Asian" <"an option where either the strike price or the settlement price is the average level of an underlying instrument over a predetermined period; the averaging can be either a geometric or arithmetic average">
+    Barrier displayName "Barrier" <"an option whose final exercise depends upon the path taken by the price of an underlying instrument; for a knockout barrier option, the option is cancelled if the underlying price crosses a predetermined barrier level; for a knock-in barrier option, the option becomes available-for-exercise if the underlying price crosses a predetermined barrier level">
+    Digital_Binary displayName "Digital (Binary)" <"an option that has a pre-determined payout if the option is in-the-money and the payoff condition is satisfied; also referred to as a 'binary option' or an 'all-or-nothing option'">
+    Digital_Barrier displayName "Digital Barrier" <"a digital option embedded with a barrier option; there are different variations of this type of option; as an example, a down-and-out digital call option will pay a fixed payoff, or the underlying, at any time before maturity that the underlying price is equal to or greater than the barrier level; it will pay zero if the underlying price is less than the barrier level">
+    Lookback displayName "Lookback" <"an option that minimizes the uncertainties related to the timing of market entry; there are two types of lookback options: fixed and floating; the fixed option strike is determined at purchase, and the floating option strike is determined at maturity">
+    Other displayName "Other" <"Miscellaneous">
+    Other_Path_Dependent displayName "Other Path Dependent" <"an option on a contract whose payoff is directly related to the price pattern the underlying asset follows during the life of the contract">
+    Vanilla displayName "Vanilla" <"an option for which all terms are standardized">
+
+enum AnnaDsbOtherUnderlierIDSourceEnum:
+    CCY <"CCY">
+    COMM <"Commodity Reference Price">
+
+enum AnnaDsbDebtSeniorityEnum:
+    JUND <"Junior Debt">
+    MZZD <"Mezzanine">
+    SBOD <"Subordinated Debt">
+    SNDB <"Senior Debt">
+
+enum AnnaDsbUnderlyingInstrumentIndexTermUnitEnum:
+    DAYS <"Rate is reported in days">
+    MNTH <"Rate is reported in months">
+    WEEK <"Rate is reported in weeks">
+    YEAR <"Rate is reported in years">
+
+enum AnnaDsbUnderlyingAssetTypeEnum:
+    Agriculture displayName "Agriculture" <"Agriculture">
+    Basis_Swap_Float_Float_ displayName "Basis Swap (Float - Float)" <"Basis Swap (Float - Float)">
+    Basket displayName "Basket" <"In case the product has multiple underliers">
+    CDS_on_Index displayName "CDS on Index" <"family of standardized credit derivative indices, where the underlying reference entities are a defined basket of credit from a particular geographic region (for instance, Asia, North America, Europe, etc.), and/or credit rating level (for instance Emerging Markets, high yield, investment grade, etc.); credit default indices trade in standard maturities, and the reference entities are typically the most liquid; the reference portfolio is reassessed periodically to maintain this">
+    CDS_on_Index_Tranche displayName "CDS on Index Tranche" <"a synthetic CDO based on a CDS index where each tranche references a different segment of the loss distribution of the underlying CDS index; each tranche has a different priority of claims on the principal and interest flows from the collateral pool, and are traditionally portioned into rising levels of seniority">
+    CDS_on_Single_Name displayName "CDS on Single Name" <"a CDS where the underlying risk is a single reference entity or single reference obligation">
+    Energy displayName "Energy" <"Energy">
+    Environmental displayName "Environmental" <"Environmental">
+    Fertilizer displayName "Fertilizer" <"Fertilizer">
+    Fixed_Fixed displayName "Fixed - Fixed" <"Fixed - Fixed">
+    Fixed_Floating displayName "Fixed - Floating" <"Fixed - Floating">
+    Forward displayName "Forward" <"Forward">
+    Forwards displayName "Forwards" <"Forwards">
+    Freight displayName "Freight" <"Freight">
+    Futures displayName "Futures" <"Futures">
+    Index displayName "Index" <"Index">
+    Index_Tranche displayName "Index Tranche" <"a synthetic Collaterized Debt Obligation (CDO) based on a CDS index where each tranche references a different segment of the loss distribution of the underlying CDS index; each tranche has a different priority of claims on the principal and interest flows from the collateral pool, and are traditionally portioned into rising levels of seniority">
+    Inflation_Rate_Index displayName "Inflation Rate Index" <"Inflation rate index">
+    Interest_Rate_Index displayName "Interest Rate Index" <"Interest Rate Index">
+    Metals displayName "Metals" <"Metals">
+    Multi_Commodity displayName "Multi Commodity" <"Multi Commodity">
+    Options displayName "Options" <"Options">
+    Other displayName "Other"
+    Overnight_Index_Swap_OIS_ displayName "Overnight Index Swap (OIS)" <"Overnight Index Swap (OIS)">
+    Paper displayName "Paper" <"Paper">
+    Polypropylene_Products displayName "Polypropylene Products" <"Polypropylene Products">
+    Single_Name displayName "Single Name" <"the underlying risk is a single reference entity or reference obligation">
+    Single_Stock displayName "Single Stock" <"single equity stock">
+    Spot displayName "Spot" <"a forward on an FX transaction in which two parties agree to buy one currency against selling another currency at an agreed price for settlement on the spot date">
+    Swap displayName "Swap" <"Swap">
+    Swaps displayName "Swaps"
+    Volatility displayName "Volatility" <"the variability of movements in a security or underlying instrument's price; it is a measure of the amount by which an asset's price is expected to fluctuate over a given period of time; it is normally measured by the annual standard deviation of daily price changes">
+    Zero_Coupon displayName "Zero Coupon" <"an interest rate swap in which the fixed rate cash flows are compounded and paid once on the expiration data, rather than periodically; the payments on the other side (which can be based on a floating rate or a fixed rate) follow typical swap payment schedules">
+
+enum AnnaDsbUnderlyingIssuerTypeEnum:
+    Corporate displayName "Corporate"
+    Local displayName "Local"
+    Sovereign displayName "Sovereign"
+
+enum AnnaDsbContractSpecificationEnum:
+    AsiaCorporate displayName "AsiaCorporate" <"Matrix Transaction Type of ASIA CORPORATE.">
+    AsiaFinancialCorporate displayName "AsiaFinancialCorporate" <"Matrix Transaction Type of ASIA FINANCIAL CORPORATE.">
+    AsiaSovereign displayName "AsiaSovereign" <"Matrix Transaction Type of ASIA SOVEREIGN.">
+    AustraliaCorporate displayName "AustraliaCorporate" <"Matrix Transaction Type of AUSTRALIA CORPORATE.">
+    AustraliaFinancialCorporate displayName "AustraliaFinancialCorporate" <"Matrix Transaction Type of AUSTRALIA FINANCIAL CORPORATE.">
+    AustraliaSovereign displayName "AustraliaSovereign" <"Matrix Transaction Type of AUSTRALIA SOVEREIGN.">
+    EmergingEuropeanAndMiddleEasternSovereign displayName "EmergingEuropeanAndMiddleEasternSovereign" <"Matrix Transaction Type of EMERGING EUROPEAN AND MIDDLE EASTERN SOVEREIGN.">
+    EmergingEuropeanCorporate displayName "EmergingEuropeanCorporate" <"Matrix Transaction Type of EMERGING EUROPEAN CORPORATE.">
+    EmergingEuropeanCorporateLPN displayName "EmergingEuropeanCorporateLPN" <"Matrix Transaction Type of EMERGING EUROPEAN CORPORATE LPN.">
+    EmergingEuropeanFinancialCorporate displayName "EmergingEuropeanFinancialCorporate" <"Matrix Transaction Type of EMERGING EUROPEAN FINANCIAL CORPORATE.">
+    EmergingEuropeanFinancialCorporateLPN displayName "EmergingEuropeanFinancialCorporateLPN" <"Matrix Transaction Type of EMERGING EUROPEAN FINANCIAL CORPORATE LPN.">
+    EuropeanCoCoFinancialCorporate displayName "EuropeanCoCoFinancialCorporate" <"Matrix Transaction Type of EUROPEAN COCO FINANCIAL CORPORATE.">
+    EuropeanCorporate displayName "EuropeanCorporate" <"Matrix Transaction Type of EUROPEAN CORPORATE.">
+    EuropeanFinancialCorporate displayName "EuropeanFinancialCorporate" <"Matrix Transaction Type of EUROPEAN FINANCIAL CORPORATE.">
+    EuropeanLimitedRecourseCorporate displayName "EuropeanLimitedRecourseCorporate" <"Matrix Transaction Type of EUROPEAN LIMITED RECOURSE CORPORATE.">
+    EuropeanSeniorNonPreferredFinancialCorporate displayName "EuropeanSeniorNonPreferredFinancialCorporate" <"Matrix Transaction Type of EUROPEAN SENIOR NON PREFERRED FINANCIAL CORPORATE.">
+    JapanCorporate displayName "JapanCorporate" <"Matrix Transaction Type of JAPAN CORPORATE.">
+    JapanFinancialCorporate displayName "JapanFinancialCorporate" <"Matrix Transaction Type of JAPAN FINANCIAL CORPORATE.">
+    JapanSovereign displayName "JapanSovereign" <"Matrix Transaction Type of JAPAN SOVEREIGN.">
+    LatinAmericaCorporate displayName "LatinAmericaCorporate" <"Matrix Transaction Type of LATIN AMERICA CORPORATE.">
+    LatinAmericaCorporateBond displayName "LatinAmericaCorporateBond" <"Matrix Transaction Type of LATIN AMERICA CORPORATE B.">
+    LatinAmericaCorporateBondOrLoan displayName "LatinAmericaCorporateBondOrLoan" <"Matrix Transaction Type of LATIN AMERICA CORPORATE BL.">
+    LatinAmericaFinancialCorporateBond displayName "LatinAmericaFinancialCorporateBond" <"Matrix Transaction Type of LATIN AMERICA FINANCIAL CORPORATE B.">
+    LatinAmericaFinancialCorporateBondOrLoan displayName "LatinAmericaFinancialCorporateBondOrLoan" <"Matrix Transaction Type of LATIN AMERICA FINANCIAL CORPORATE BL.">
+    LatinAmericaSovereign displayName "LatinAmericaSovereign" <"Matrix Transaction Type of LATIN AMERICA SOVEREIGN.">
+    NewZealandCorporate displayName "NewZealandCorporate" <"Matrix Transaction Type of NEW ZEALAND CORPORATE.">
+    NewZealandFinancialCorporate displayName "NewZealandFinancialCorporate" <"Matrix Transaction Type of NEW ZEALAND FINANCIAL CORPORATE.">
+    NewZealandSovereign displayName "NewZealandSovereign" <"Matrix Transaction Type of NEW ZEALAND SOVEREIGN.">
+    NorthAmericanCorporate displayName "NorthAmericanCorporate" <"Matrix Transaction Type of NORTH AMERICAN CORPORATE.">
+    NorthAmericanFinancialCorporate displayName "NorthAmericanFinancialCorporate" <"Matrix Transaction Type of NORTH AMERICAN FINANCIAL CORPORATE.">
+    SingaporeCorporate displayName "SingaporeCorporate" <"Matrix Transaction Type of SINGAPORE CORPORATE.">
+    SingaporeFinancialCorporate displayName "SingaporeFinancialCorporate" <"Matrix Transaction Type of SINGAPORE FINANCIAL CORPORATE.">
+    SingaporeSovereign displayName "SingaporeSovereign" <"Matrix Transaction Type of SINGAPORE SOVEREIGN.">
+    StandardAsiaCorporate displayName "StandardAsiaCorporate" <"Matrix Transaction Type of STANDARD ASIA CORPORATE.">
+    StandardAsiaFinancialCorporate displayName "StandardAsiaFinancialCorporate" <"Matrix Transaction Type of STANDARD ASIA FINANCIAL CORPORATE.">
+    StandardAsiaSovereign displayName "StandardAsiaSovereign" <"Matrix Transaction Type of STANDARD ASIA SOVEREIGN.">
+    StandardAustraliaCorporate displayName "StandardAustraliaCorporate" <"Matrix Transaction Type of STANDARD AUSTRALIA CORPORATE.">
+    StandardAustraliaFinancialCorporate displayName "StandardAustraliaFinancialCorporate" <"Matrix Transaction Type of STANDARD AUSTRALIA FINANCIAL CORPORATE.">
+    StandardAustraliaSovereign displayName "StandardAustraliaSovereign" <"Matrix Transaction Type of STANDARD AUSTRALIA SOVEREIGN.">
+    StandardEmergingEuropeanAndMiddleEasternSovereign displayName "StandardEmergingEuropeanAndMiddleEasternSovereign" <"Matrix Transaction Type of STANDARD EMERGING EUROPEAN AND MIDDLE EASTERN SOVEREIGN.">
+    StandardEmergingEuropeanCorporate displayName "StandardEmergingEuropeanCorporate" <"Matrix Transaction Type of STANDARD EMERGING EUROPEAN CORPORATE.">
+    StandardEmergingEuropeanCorporateLPN displayName "StandardEmergingEuropeanCorporateLPN" <"Matrix Transaction Type of STANDARD EMERGING EUROPEAN CORPORATE LPN.">
+    StandardEmergingEuropeanFinancialCorporate displayName "StandardEmergingEuropeanFinancialCorporate" <"Matrix Transaction Type of STANDARD EMERGING EUROPEAN FINANCIAL CORPORATE.">
+    StandardEmergingEuropeanFinancialCorporateLPN displayName "StandardEmergingEuropeanFinancialCorporateLPN" <"Matrix Transaction Type of STANDARD EMERGING EUROPEAN FINANCIAL CORPORATE LPN.">
+    StandardEuropeanCoCoFinancialCorporate displayName "StandardEuropeanCoCoFinancialCorporate" <"Matrix Transaction Type of STANDARD EUROPEAN COCO FINANCIAL CORPORATE.">
+    StandardEuropeanCorporate displayName "StandardEuropeanCorporate" <"Matrix Transaction Type of STANDARD EUROPEAN CORPORATE.">
+    StandardEuropeanFinancialCorporate displayName "StandardEuropeanFinancialCorporate" <"Matrix Transaction Type of STANDARD EUROPEAN FINANCIAL CORPORATE.">
+    StandardEuropeanLimitedRecourseCorporate displayName "StandardEuropeanLimitedRecourseCorporate" <"Matrix Transaction Type of STANDARD EUROPEAN LIMITED RECOURSE CORPORATE.">
+    StandardEuropeanSeniorNonPreferredFinancialCorporate displayName "StandardEuropeanSeniorNonPreferredFinancialCorporate" <"Matrix Transaction Type of STANDARD EUROPEAN SENIOR NON PREFERRED FINANCIAL CORPORATE.">
+    StandardJapanCorporate displayName "StandardJapanCorporate" <"Matrix Transaction Type of STANDARD JAPAN CORPORATE.">
+    StandardJapanFinancialCorporate displayName "StandardJapanFinancialCorporate" <"Matrix Transaction Type of STANDARD JAPAN FINANCIAL CORPORATE.">
+    StandardJapanSovereign displayName "StandardJapanSovereign" <"Matrix Transaction Type of STANDARD JAPAN SOVEREIGN.">
+    StandardLatinAmericaCorporateBond displayName "StandardLatinAmericaCorporateBond" <"Matrix Transaction Type of STANDARD LATIN AMERICA CORPORATE B.">
+    StandardLatinAmericaCorporateBondOrLoan displayName "StandardLatinAmericaCorporateBondOrLoan" <"Matrix Transaction Type of STANDARD LATIN AMERICA CORPORATE BL.">
+    StandardLatinAmericaFinancialCorporateBond displayName "StandardLatinAmericaFinancialCorporateBond" <"Matrix Transaction Type of STANDARD LATIN AMERICA FINANCIAL CORPORATE B.">
+    StandardLatinAmericaFinancialCorporateBondOrLoan displayName "StandardLatinAmericaFinancialCorporateBondOrLoan" <"Matrix Transaction Type of STANDARD LATIN AMERICA FINANCIAL CORPORATE BL.">
+    StandardLatinAmericaSovereign displayName "StandardLatinAmericaSovereign" <"Matrix Transaction Type of STANDARD LATIN AMERICA SOVEREIGN.">
+    StandardNewZealandCorporate displayName "StandardNewZealandCorporate" <"Matrix Transaction Type of STANDARD NEW ZEALAND CORPORATE.">
+    StandardNewZealandFinancialCorporate displayName "StandardNewZealandFinancialCorporate" <"Matrix Transaction Type of STANDARD NEW ZEALAND FINANCIAL CORPORATE.">
+    StandardNewZealandSovereign displayName "StandardNewZealandSovereign" <"Matrix Transaction Type of STANDARD NEW ZEALAND SOVEREIGN.">
+    StandardNorthAmericanCorporate displayName "StandardNorthAmericanCorporate" <"Matrix Transaction Type of STANDARD NORTH AMERICAN CORPORATE.">
+    StandardNorthAmericanFinancialCorporate displayName "StandardNorthAmericanFinancialCorporate" <"Matrix Transaction Type of STANDARD NORTH AMERICAN FINANCIAL CORPORATE.">
+    StandardSingaporeCorporate displayName "StandardSingaporeCorporate" <"Matrix Transaction Type of STANDARD SINGAPORE CORPORATE.">
+    StandardSingaporeFinancialCorporate displayName "StandardSingaporeFinancialCorporate" <"Matrix Transaction Type of STANDARD SINGAPORE FINANCIAL CORPORATE.">
+    StandardSingaporeSovereign displayName "StandardSingaporeSovereign" <"Matrix Transaction Type of STANDARD SINGAPORE SOVEREIGN.">
+    StandardSubordinatedEuropeanInsuranceCorporate displayName "StandardSubordinatedEuropeanInsuranceCorporate" <"Transaction Type of STANDARD SUBORDINATED EUROPEAN INSURANCE CORPORATE.">
+    StandardSukukFinancialCorporate displayName "StandardSukukFinancialCorporate" <"Matrix Transaction Type of STANDARD SUKUK FINANCIAL CORPORATE.">
+    StandardUSMunicipalFullFaithAndCredit displayName "StandardUSMunicipalFullFaithAndCredit" <"Matrix Transaction Type of STANDARD U.S. MUNICIPAL FULL FAITH AND CREDIT.">
+    StandardUSMunicipalGeneralFund displayName "StandardUSMunicipalGeneralFund" <"Matrix Transaction Type of STANDARD U.S. MUNICIPAL GENERAL FUND.">
+    StandardUSMunicipalRevenue displayName "StandardUSMunicipalRevenue" <"Matrix Transaction Type of STANDARD U.S. MUNICIPAL REVENUE.">
+    StandardWesternEuropeanSovereign displayName "StandardWesternEuropeanSovereign" <"Matrix Transaction Type of STANDARD WESTERN EUROPEAN SOVEREIGN.">
+    SubordinatedEuropeanInsuranceCorporate displayName "SubordinatedEuropeanInsuranceCorporate" <"Matrix Transaction Type of SUBORDINATED EUROPEAN INSURANCE CORPORATE.">
+    SukukCorporate displayName "SukukCorporate" <"Matrix Transaction Type of SUKUK CORPORATE.">
+    SukukFinancialCorporate displayName "SukukFinancialCorporate" <"Matrix Transaction Type of SUKUK FINANCIAL CORPORATE.">
+    SukukSovereign displayName "SukukSovereign" <"Matrix Transaction Type of SUKUK SOVEREIGN.">
+    USMunicipalFullFaithAndCredit displayName "USMunicipalFullFaithAndCredit" <"Matrix Transaction Type of U.S. MUNICIPAL FULL FAITH AND CREDIT.">
+    USMunicipalGeneralFund displayName "USMunicipalGeneralFund" <"Matrix Transaction Type of U.S. MUNICIPAL GENERAL FUND.">
+    USMunicipalRevenue displayName "USMunicipalRevenue" <"Matrix Transaction Type of U.S. MUNICIPAL REVENUE.">
+    WesternEuropeanSovereign displayName "WesternEuropeanSovereign" <"Matrix Transaction Type of WESTERN EUROPEAN SOVEREIGN.">
+
+enum AnnaDsbUnderlyingInstrumentIndexTermValueEnum:
+    _0 displayName "0"
+
+enum AnnaDsbPlaceofSettlementEnum:
+    Afghanistan displayName "Afghanistan" <"Afghanistan">
+    Aland_Islands displayName "Aland Islands" <"Aland Islands">
+    Albania displayName "Albania" <"Albania">
+    Algeria displayName "Algeria" <"Algeria">
+    American_Samoa displayName "American Samoa" <"American Samoa">
+    Andorra displayName "Andorra" <"Andorra">
+    Angola displayName "Angola" <"Angola">
+    Anguilla displayName "Anguilla" <"Anguilla">
+    Antarctica displayName "Antarctica" <"Antarctica">
+    Antigua_and_Barbuda displayName "Antigua and Barbuda" <"Antigua and Barbuda">
+    Argentina displayName "Argentina" <"Argentina">
+    Armenia displayName "Armenia" <"Armenia">
+    Aruba displayName "Aruba" <"Aruba">
+    Australia displayName "Australia" <"Australia">
+    Austria displayName "Austria" <"Austria">
+    Azerbaijan displayName "Azerbaijan" <"Azerbaijan">
+    Bahamas displayName "Bahamas" <"Bahamas">
+    Bahrain displayName "Bahrain" <"Bahrain">
+    Bangladesh displayName "Bangladesh" <"Bangladesh">
+    Barbados displayName "Barbados" <"Barbados">
+    Belarus displayName "Belarus" <"Belarus">
+    Belgium displayName "Belgium" <"Belgium">
+    Belize displayName "Belize" <"Belize">
+    Benin displayName "Benin" <"Benin">
+    Bermuda displayName "Bermuda" <"Bermuda">
+    Bhutan displayName "Bhutan" <"Bhutan">
+    Bolivia_Plurinational_State_of displayName "Bolivia, Plurinational State of" <"Bolivia, Plurinational State of">
+    Bonaire_Sint_Eustatius_and_Saba displayName "Bonaire, Sint Eustatius and Saba" <"Bonaire, Sint Eustatius and Saba">
+    Bosnia_and_Herzegovina displayName "Bosnia and Herzegovina" <"Bosnia and Herzegovina">
+    Botswana displayName "Botswana" <"Botswana">
+    Bouvet_Island displayName "Bouvet Island" <"Bouvet Island">
+    Brazil displayName "Brazil" <"Brazil">
+    British_Indian_Ocean_Territory displayName "British Indian Ocean Territory" <"British Indian Ocean Territory">
+    Brunei_Darussalam displayName "Brunei Darussalam" <"Brunei Darussalam">
+    Bulgaria displayName "Bulgaria" <"Bulgaria">
+    Burkina_Faso displayName "Burkina Faso" <"Burkina Faso">
+    Burundi displayName "Burundi" <"Burundi">
+    Cambodia displayName "Cambodia" <"Cambodia">
+    Cameroon displayName "Cameroon" <"Cameroon">
+    Canada displayName "Canada" <"Canada">
+    Cape_Verde displayName "Cape Verde" <"Cape Verde">
+    Cayman_Islands displayName "Cayman Islands" <"Cayman Islands">
+    Central_African_Republic displayName "Central African Republic" <"Central African Republic">
+    Chad displayName "Chad" <"Chad">
+    Chile displayName "Chile" <"Chile">
+    China displayName "China" <"China">
+    Christmas_Island displayName "Christmas Island" <"Christmas Island">
+    Cocos_Keeling_Islands displayName "Cocos (Keeling) Islands" <"Cocos (Keeling) Islands">
+    Colombia displayName "Colombia" <"Colombia">
+    Comoros displayName "Comoros" <"Comoros">
+    Congo displayName "Congo" <"Congo">
+    Congo_the_Democratic_Republic_of_the displayName "Congo, the Democratic Republic of the" <"Congo, the Democratic Republic of the">
+    Cook_Islands displayName "Cook Islands" <"Cook Islands">
+    Costa_Rica displayName "Costa Rica" <"Costa Rica">
+    Cote_d_Ivoire displayName "Cote d'Ivoire" <"Cote d'Ivoire">
+    Croatia displayName "Croatia" <"Croatia">
+    Cuba displayName "Cuba" <"Cuba">
+    Curacao displayName "Curacao" <"Curacao">
+    Cyprus displayName "Cyprus" <"Cyprus">
+    Czech_Republic displayName "Czech Republic" <"Czech Republic">
+    Denmark displayName "Denmark" <"Denmark">
+    Djibouti displayName "Djibouti" <"Djibouti">
+    Dominica displayName "Dominica" <"Dominica">
+    Dominican_Republic displayName "Dominican Republic" <"Dominican Republic">
+    Ecuador displayName "Ecuador" <"Ecuador">
+    Egypt displayName "Egypt" <"Egypt">
+    El_Salvador displayName "El Salvador" <"El Salvador">
+    Equatorial_Guinea displayName "Equatorial Guinea" <"Equatorial Guinea">
+    Eritrea displayName "Eritrea" <"Eritrea">
+    Estonia displayName "Estonia" <"Estonia">
+    Ethiopia displayName "Ethiopia" <"Ethiopia">
+    Falkland_Islands_Malvinas_ displayName "Falkland Islands (Malvinas)" <"Falkland Islands (Malvinas)">
+    Faroe_Islands displayName "Faroe Islands" <"Faroe Islands">
+    Fiji displayName "Fiji" <"Fiji">
+    Finland displayName "Finland" <"Finland">
+    France displayName "France" <"France">
+    French_Guiana displayName "French Guiana" <"French Guiana">
+    French_Polynesia displayName "French Polynesia" <"French Polynesia">
+    French_Southern_Territories displayName "French Southern Territories" <"French Southern Territories">
+    Gabon displayName "Gabon" <"Gabon">
+    Gambia displayName "Gambia" <"Gambia">
+    Georgia displayName "Georgia" <"Georgia">
+    Germany displayName "Germany" <"Germany">
+    Ghana displayName "Ghana" <"Ghana">
+    Gibraltar displayName "Gibraltar" <"Gibraltar">
+    Greece displayName "Greece" <"Greece">
+    Greenland displayName "Greenland" <"Greenland">
+    Grenada displayName "Grenada" <"Grenada">
+    Guadeloupe displayName "Guadeloupe" <"Guadeloupe">
+    Guam displayName "Guam" <"Guam">
+    Guatemala displayName "Guatemala" <"Guatemala">
+    Guernsey displayName "Guernsey" <"Guernsey">
+    Guinea displayName "Guinea" <"Guinea">
+    Guinea_Bissau displayName "Guinea-Bissau" <"Guinea-Bissau">
+    Guyana displayName "Guyana" <"Guyana">
+    Haiti displayName "Haiti" <"Haiti">
+    Heard_Island_and_McDonald_Islands displayName "Heard Island and McDonald Islands" <"Heard Island and McDonald Islands">
+    Holy_See_Vatican_City_State_ displayName "Holy See (Vatican City State)" <"Holy See (Vatican City State)">
+    Honduras displayName "Honduras" <"Honduras">
+    Hong_Kong displayName "Hong Kong" <"Hong Kong">
+    Hungary displayName "Hungary" <"Hungary">
+    Iceland displayName "Iceland" <"Iceland">
+    India displayName "India" <"India">
+    Indonesia displayName "Indonesia" <"Indonesia">
+    Iran_Islamic_Republic_of displayName "Iran, Islamic Republic of" <"Iran, Islamic Republic of">
+    Iraq displayName "Iraq" <"Iraq">
+    Ireland displayName "Ireland" <"Ireland">
+    Isle_of_Man displayName "Isle of Man" <"Isle of Man">
+    Israel displayName "Israel" <"Israel">
+    Italy displayName "Italy" <"Italy">
+    Jamaica displayName "Jamaica" <"Jamaica">
+    Japan displayName "Japan" <"Japan">
+    Jersey displayName "Jersey" <"Jersey">
+    Jordan displayName "Jordan" <"Jordan">
+    Kazakhstan displayName "Kazakhstan" <"Kazakhstan">
+    Kenya displayName "Kenya" <"Kenya">
+    Kiribati displayName "Kiribati" <"Kiribati">
+    Korea_Democratic_People_s_Republic_of displayName "Korea, Democratic People's Republic of" <"Korea, Democratic People's Republic of">
+    Korea_Republic_of displayName "Korea, Republic of" <"Korea, Republic of">
+    Kuwait displayName "Kuwait" <"Kuwait">
+    Kyrgyzstan displayName "Kyrgyzstan" <"Kyrgyzstan">
+    Lao_People_s_Democratic_Republic displayName "Lao People's Democratic Republic" <"Lao People's Democratic Republic">
+    Latvia displayName "Latvia" <"Latvia">
+    Lebanon displayName "Lebanon" <"Lebanon">
+    Lesotho displayName "Lesotho" <"Lesotho">
+    Liberia displayName "Liberia" <"Liberia">
+    Libya displayName "Libya" <"Libya">
+    Liechtenstein displayName "Liechtenstein" <"Liechtenstein">
+    Lithuania displayName "Lithuania" <"Lithuania">
+    Luxembourg displayName "Luxembourg" <"Luxembourg">
+    Macao displayName "Macao" <"Macao">
+    Macedonia_the_Former_Yugoslav_Republic_of displayName "Macedonia, the Former Yugoslav Republic of" <"Macedonia, the Former Yugoslav Republic of">
+    Madagascar displayName "Madagascar" <"Madagascar">
+    Malawi displayName "Malawi" <"Malawi">
+    Malaysia displayName "Malaysia" <"Malaysia">
+    Maldives displayName "Maldives" <"Maldives">
+    Mali displayName "Mali" <"Mali">
+    Malta displayName "Malta" <"Malta">
+    Marshall_Islands displayName "Marshall Islands" <"Marshall Islands">
+    Martinique displayName "Martinique" <"Martinique">
+    Mauritania displayName "Mauritania" <"Mauritania">
+    Mauritius displayName "Mauritius" <"Mauritius">
+    Mayotte displayName "Mayotte" <"Mayotte">
+    Mexico displayName "Mexico" <"Mexico">
+    Micronesia_Federated_States_of displayName "Micronesia, Federated States of" <"Micronesia, Federated States of">
+    Moldova_Republic_of displayName "Moldova, Republic of" <"Moldova, Republic of">
+    Monaco displayName "Monaco" <"Monaco">
+    Mongolia displayName "Mongolia" <"Mongolia">
+    Montenegro displayName "Montenegro" <"Montenegro">
+    Montserrat displayName "Montserrat" <"Montserrat">
+    Morocco displayName "Morocco" <"Morocco">
+    Mozambique displayName "Mozambique" <"Mozambique">
+    Myanmar displayName "Myanmar" <"Myanmar">
+    Namibia displayName "Namibia" <"Namibia">
+    Nauru displayName "Nauru" <"Nauru">
+    Nepal displayName "Nepal" <"Nepal">
+    Netherlands displayName "Netherlands" <"Netherlands">
+    New_Caledonia displayName "New Caledonia" <"New Caledonia">
+    New_Zealand displayName "New Zealand" <"New Zealand">
+    Nicaragua displayName "Nicaragua" <"Nicaragua">
+    Niger displayName "Niger" <"Niger">
+    Nigeria displayName "Nigeria" <"Nigeria">
+    Niue displayName "Niue" <"Niue">
+    Norfolk_Island displayName "Norfolk Island" <"Norfolk Island">
+    Northern_Mariana_Islands displayName "Northern Mariana Islands" <"Northern Mariana Islands">
+    Norway displayName "Norway" <"Norway">
+    Oman displayName "Oman" <"Oman">
+    Pakistan displayName "Pakistan" <"Pakistan">
+    Palau displayName "Palau" <"Palau">
+    Palestine_State_of displayName "Palestine, State of" <"Palestine, State of">
+    Panama displayName "Panama" <"Panama">
+    Papua_New_Guinea displayName "Papua New Guinea" <"Papua New Guinea">
+    Paraguay displayName "Paraguay" <"Paraguay">
+    Peru displayName "Peru" <"Peru">
+    Philippines displayName "Philippines" <"Philippines">
+    Pitcairn displayName "Pitcairn" <"Pitcairn">
+    Poland displayName "Poland" <"Poland">
+    Portugal displayName "Portugal" <"Portugal">
+    Puerto_Rico displayName "Puerto Rico" <"Puerto Rico">
+    Qatar displayName "Qatar" <"Qatar">
+    Reunion displayName "Reunion" <"Reunion">
+    Romania displayName "Romania" <"Romania">
+    Russian_Federation displayName "Russian Federation" <"Russian Federation">
+    Rwanda displayName "Rwanda" <"Rwanda">
+    Saint_Barthelemy displayName "Saint Barthelemy" <"Saint Barthelemy">
+    Saint_Helena_Ascension_and_Tristan_da_Cunha displayName "Saint Helena, Ascension and Tristan da Cunha" <"Saint Helena, Ascension and Tristan da Cunha">
+    Saint_Kitts_and_Nevis displayName "Saint Kitts and Nevis" <"Saint Kitts and Nevis">
+    Saint_Lucia displayName "Saint Lucia" <"Saint Lucia">
+    Saint_Martin_French_part_ displayName "Saint Martin (French part)" <"Saint Martin (French part)">
+    Saint_Pierre_and_Miquelon displayName "Saint Pierre and Miquelon" <"Saint Pierre and Miquelon">
+    Saint_Vincent_and_the_Grenadines displayName "Saint Vincent and the Grenadines" <"Saint Vincent and the Grenadines">
+    Samoa displayName "Samoa" <"Samoa">
+    San_Marino displayName "San Marino" <"San Marino">
+    Sao_Tome_and_Principe displayName "Sao Tome and Principe" <"Sao Tome and Principe">
+    Saudi_Arabia displayName "Saudi Arabia" <"Saudi Arabia">
+    Senegal displayName "Senegal" <"Senegal">
+    Serbia displayName "Serbia" <"Serbia">
+    Seychelles displayName "Seychelles" <"Seychelles">
+    Sierra_Leone displayName "Sierra Leone" <"Sierra Leone">
+    Singapore displayName "Singapore" <"Singapore">
+    Sint_Maarten_Dutch_part_ displayName "Sint Maarten (Dutch part)" <"Sint Maarten (Dutch part)">
+    Slovakia displayName "Slovakia" <"Slovakia">
+    Slovenia displayName "Slovenia" <"Slovenia">
+    Solomon_Islands displayName "Solomon Islands" <"Solomon Islands">
+    Somalia displayName "Somalia" <"Somalia">
+    South_Africa displayName "South Africa" <"South Africa">
+    South_Georgia_and_the_South_Sandwich_Islands displayName "South Georgia and the South Sandwich Islands" <"South Georgia and the South Sandwich Islands">
+    South_Sudan displayName "South Sudan" <"South Sudan">
+    Spain displayName "Spain" <"Spain">
+    Sri_Lanka displayName "Sri Lanka" <"Sri Lanka">
+    Sudan displayName "Sudan" <"Sudan">
+    Suriname displayName "Suriname" <"Suriname">
+    Svalbard_and_Jan_Mayen displayName "Svalbard and Jan Mayen" <"Svalbard and Jan Mayen">
+    Swaziland displayName "Swaziland" <"Swaziland">
+    Sweden displayName "Sweden" <"Sweden">
+    Switzerland displayName "Switzerland" <"Switzerland">
+    Syrian_Arab_Republic displayName "Syrian Arab Republic" <"Syrian Arab Republic">
+    Taiwan_Province_of_China displayName "Taiwan, Province of China" <"Taiwan, Province of China">
+    Tajikistan displayName "Tajikistan" <"Tajikistan">
+    Tanzania_United_Republic_of displayName "Tanzania, United Republic of" <"Tanzania, United Republic of">
+    Thailand displayName "Thailand" <"Thailand">
+    Timor_Leste displayName "Timor-Leste" <"Timor-Leste">
+    Togo displayName "Togo" <"Togo">
+    Tokelau displayName "Tokelau" <"Tokelau">
+    Tonga displayName "Tonga" <"Tonga">
+    Trinidad_and_Tobago displayName "Trinidad and Tobago" <"Trinidad and Tobago">
+    Tunisia displayName "Tunisia" <"Tunisia">
+    Turkey displayName "Turkey" <"Turkey">
+    Turkmenistan displayName "Turkmenistan" <"Turkmenistan">
+    Turks_and_Caicos_Islands displayName "Turks and Caicos Islands" <"Turks and Caicos Islands">
+    Tuvalu displayName "Tuvalu" <"Tuvalu">
+    Uganda displayName "Uganda" <"Uganda">
+    Ukraine displayName "Ukraine" <"Ukraine">
+    United_Arab_Emirates displayName "United Arab Emirates" <"United Arab Emirates">
+    United_Kingdom displayName "United Kingdom" <"United Kingdom">
+    United_States displayName "United States" <"United States">
+    United_States_Minor_Outlying_Islands displayName "United States Minor Outlying Islands" <"United States Minor Outlying Islands">
+    Uruguay displayName "Uruguay" <"Uruguay">
+    Uzbekistan displayName "Uzbekistan" <"Uzbekistan">
+    Vanuatu displayName "Vanuatu" <"Vanuatu">
+    Venezuela_Bolivarian_Republic_of displayName "Venezuela, Bolivarian Republic of" <"Venezuela, Bolivarian Republic of">
+    Viet_Nam displayName "Viet Nam" <"Viet Nam">
+    Virgin_Islands_British displayName "Virgin Islands, British" <"Virgin Islands, British">
+    Virgin_Islands_U_S_ displayName "Virgin Islands, U.S." <"Virgin Islands, U.S.">
+    Wallis_and_Futuna displayName "Wallis and Futuna" <"Wallis and Futuna">
+    Western_Sahara displayName "Western Sahara" <"Western Sahara">
+    Yemen displayName "Yemen" <"Yemen">
+    Zambia displayName "Zambia" <"Zambia">
+    Zimbabwe displayName "Zimbabwe" <"Zimbabwe">
+
+enum AnnaDsbOtherLegUnderlierIDSourceEnum:
+    FPML <"FPML">
+
+enum AnnaDsbNotionalScheduleEnum:
+    Accreting displayName "Accreting" <"the notional amount increases through the life of the contract">
+    Amortizing displayName "Amortizing" <"the notional amount decreases through the life of the contract">
+    Constant displayName "Constant" <"the notional amount is constant through the life of the contract">
+    Custom displayName "Custom" <"customized notional step schedule">
+
+enum AnnaDsbStatusEnum:
+    Deleted displayName "Deleted" <"The identifier is deleted and no longer active">
+    Deprecated displayName "Deprecated" <"The record does not meet the requirements of the product template">
+    New displayName "New" <"New record added to the database">
+    Updated displayName "Updated" <"One/several of the fields in the record is/are updated">
+
+enum AnnaDsbCFIDeliveryTypeEnum:
+    Auction displayName "Auction" <"As defined by CFI Code: ISO 10962">
+    Cash displayName "Cash" <"As defined by CFI Code: ISO 10962">
+    Elect_at_Exercise displayName "Elect at Exercise" <"As defined by CFI Code: ISO 10962">
+    Elect_at_Settlement displayName "Elect at Settlement" <"As defined by CFI Code: ISO 10962">
+    Non_Deliverable displayName "Non-Deliverable" <"As defined by CFI Code: ISO 10962">
+    Physical displayName "Physical" <"As defined by CFI Code: ISO 10962">
+
+enum AnnaDsbUnderlierCharacteristicEnum:
+    Basket displayName "Basket" <"In case the product has multiple underliers">
+    Single displayName "Single" <"In case the product has single underlier">
+
+enum AnnaDsbCFIOptionStyleandTypeEnum:
+    American_Call displayName "American-Call" <"As defined by CFI Code: ISO 10962">
+    American_Chooser displayName "American-Chooser" <"As defined by CFI Code: ISO 10962">
+    American_Put displayName "American-Put" <"As defined by CFI Code: ISO 10962">
+    Bermudan_Call displayName "Bermudan-Call" <"As defined by CFI Code: ISO 10962">
+    Bermudan_Chooser displayName "Bermudan-Chooser" <"As defined by CFI Code: ISO 10962">
+    Bermudan_Put displayName "Bermudan-Put" <"As defined by CFI Code: ISO 10962">
+    European_Call displayName "European-Call" <"As defined by CFI Code: ISO 10962">
+    European_Chooser displayName "European-Chooser" <"As defined by CFI Code: ISO 10962">
+    European_Put displayName "European-Put" <"As defined by CFI Code: ISO 10962">
+
+enum AnnaDsbReturnUnderlierIDSourceEnum:
+    CUSIP
+    FIGI
+    RIC
+    SEDOL
+
+enum AnnaDsbSingleorMultiCurrencyEnum:
+    Cross_Currency displayName "Cross Currency" <"Cross Currency (multi curency)">
+    Single_Currency displayName "Single Currency" <"Single Currency">

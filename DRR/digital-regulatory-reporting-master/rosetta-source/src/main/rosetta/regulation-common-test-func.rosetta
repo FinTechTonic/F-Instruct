@@ -1,0 +1,25 @@
+namespace drr.regulation.common.test
+version "${project.version}"
+
+import cdm.base.staticdata.party.*
+import cdm.event.workflow.*
+import drr.regulation.common.*
+
+func Create_TransactionReportInstructionFromInstructionDefault: <"Creates a TransactionReportInstruction with the reportingSide attributes defaulted from an originatingWorkflowStep containing an instruction, reportableInformation.">
+    inputs:
+        originatingWorkflowStep WorkflowStep (1..1)
+        reportableInformation ReportableInformation (1..1)
+    output:
+        transactionReportInstruction TransactionReportInstruction (1..1)
+    set transactionReportInstruction:
+        Create_TransactionReportInstructionFromInstruction(
+                ReportableEvent {
+                    originatingWorkflowStep: originatingWorkflowStep,
+                    reportableInformation: reportableInformation,
+                    ...
+                },
+                CounterpartyRoleEnum -> Party1,
+                CounterpartyRoleEnum -> Party2,
+                empty,
+                empty
+            )

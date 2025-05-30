@@ -1,0 +1,489 @@
+{
+  "originatingWorkflowStep" : {
+    "businessEvent" : {
+      "instruction" : [ {
+        "before" : {
+          "value" : {
+            "trade" : {
+              "tradeIdentifier" : [ {
+                "issuer" : {
+                  "value" : "213800IV9PCAC364HN60",
+                  "meta" : {
+                    "scheme" : "http://www.fpml.org/coding-scheme/external/issuer-identifier"
+                  }
+                },
+                "assignedIdentifier" : [ {
+                  "identifier" : {
+                    "value" : "WITHDRAWALERROREXX03",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/unique-transaction-identifier"
+                    }
+                  }
+                } ],
+                "meta" : {
+                  "globalKey" : "c58df8f7"
+                },
+                "identifierType" : "UniqueTransactionIdentifier"
+              }, {
+                "issuerReference" : {
+                  "globalReference" : "ab6fd453",
+                  "externalReference" : "party1"
+                },
+                "assignedIdentifier" : [ {
+                  "identifier" : {
+                    "value" : "WITHDRAWALERROREXX02",
+                    "meta" : {
+                      "scheme" : "http://www.dtcc.com/internal_Referenceid"
+                    }
+                  }
+                } ],
+                "meta" : {
+                  "globalKey" : "e45a0669"
+                }
+              }, {
+                "issuerReference" : {
+                  "globalReference" : "ab6fd453",
+                  "externalReference" : "party1"
+                },
+                "assignedIdentifier" : [ {
+                  "identifier" : {
+                    "value" : "393340N",
+                    "meta" : {
+                      "scheme" : "http://www.dtcc.com/coding-scheme/external/transaction-reference-number"
+                    }
+                  }
+                } ],
+                "meta" : {
+                  "globalKey" : "83832e61"
+                }
+              } ],
+              "party" : [ {
+                "partyId" : [ {
+                  "identifier" : {
+                    "value" : "213800IV9PCAC364HN60",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                    }
+                  },
+                  "identifierType" : "LEI",
+                  "meta" : {
+                    "globalKey" : "365954bc"
+                  }
+                } ],
+                "name" : {
+                  "value" : "Broadridge MessageAutomation"
+                },
+                "businessUnit" : [ {
+                  "contactInformation" : {
+                    "address" : [ {
+                      "country" : {
+                        "value" : "GB"
+                      }
+                    } ]
+                  },
+                  "meta" : {
+                    "globalKey" : "8db"
+                  }
+                } ],
+                "contactInformation" : {
+                  "address" : [ {
+                    "country" : {
+                      "value" : "GB",
+                      "meta" : {
+                        "scheme" : "http://www.fpml.org/coding-scheme/external/iso3166"
+                      }
+                    }
+                  } ]
+                },
+                "meta" : {
+                  "globalKey" : "ab6fd453",
+                  "externalKey" : "party1"
+                }
+              }, {
+                "partyId" : [ {
+                  "identifier" : {
+                    "value" : "213800WWTABZ1GOJHH37",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                    }
+                  },
+                  "identifierType" : "LEI",
+                  "meta" : {
+                    "globalKey" : "fdb29bf2"
+                  }
+                } ],
+                "name" : {
+                  "value" : "Broadridge Financial Solutions Limited"
+                },
+                "businessUnit" : [ {
+                  "contactInformation" : {
+                    "address" : [ {
+                      "country" : {
+                        "value" : "GB"
+                      }
+                    } ]
+                  },
+                  "meta" : {
+                    "globalKey" : "8db"
+                  }
+                } ],
+                "contactInformation" : {
+                  "address" : [ {
+                    "country" : {
+                      "value" : "GB",
+                      "meta" : {
+                        "scheme" : "http://www.fpml.org/coding-scheme/external/iso3166"
+                      }
+                    }
+                  } ]
+                },
+                "meta" : {
+                  "globalKey" : "63bc007e",
+                  "externalKey" : "party2"
+                }
+              } ],
+              "meta" : {
+                "globalKey" : "45abd19a"
+              }
+            },
+            "meta" : {
+              "globalKey" : "45abd19a"
+            }
+          }
+        }
+      } ],
+      "after" : [ {
+        "trade" : {
+          "tradeIdentifier" : [ {
+            "issuer" : {
+              "value" : "213800IV9PCAC364HN60",
+              "meta" : {
+                "scheme" : "http://www.fpml.org/coding-scheme/external/issuer-identifier"
+              }
+            },
+            "assignedIdentifier" : [ {
+              "identifier" : {
+                "value" : "WITHDRAWALERROREXX03",
+                "meta" : {
+                  "scheme" : "http://www.fpml.org/coding-scheme/external/unique-transaction-identifier"
+                }
+              }
+            } ],
+            "meta" : {
+              "globalKey" : "c58df8f7"
+            },
+            "identifierType" : "UniqueTransactionIdentifier"
+          }, {
+            "issuerReference" : {
+              "globalReference" : "ab6fd453",
+              "externalReference" : "party1"
+            },
+            "assignedIdentifier" : [ {
+              "identifier" : {
+                "value" : "WITHDRAWALERROREXX02",
+                "meta" : {
+                  "scheme" : "http://www.dtcc.com/internal_Referenceid"
+                }
+              }
+            } ],
+            "meta" : {
+              "globalKey" : "e45a0669"
+            }
+          }, {
+            "issuerReference" : {
+              "globalReference" : "ab6fd453",
+              "externalReference" : "party1"
+            },
+            "assignedIdentifier" : [ {
+              "identifier" : {
+                "value" : "393340N",
+                "meta" : {
+                  "scheme" : "http://www.dtcc.com/coding-scheme/external/transaction-reference-number"
+                }
+              }
+            } ],
+            "meta" : {
+              "globalKey" : "83832e61"
+            }
+          } ],
+          "party" : [ {
+            "partyId" : [ {
+              "identifier" : {
+                "value" : "213800IV9PCAC364HN60",
+                "meta" : {
+                  "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                }
+              },
+              "identifierType" : "LEI",
+              "meta" : {
+                "globalKey" : "365954bc"
+              }
+            } ],
+            "name" : {
+              "value" : "Broadridge MessageAutomation"
+            },
+            "businessUnit" : [ {
+              "contactInformation" : {
+                "address" : [ {
+                  "country" : {
+                    "value" : "GB"
+                  }
+                } ]
+              },
+              "meta" : {
+                "globalKey" : "8db"
+              }
+            } ],
+            "contactInformation" : {
+              "address" : [ {
+                "country" : {
+                  "value" : "GB",
+                  "meta" : {
+                    "scheme" : "http://www.fpml.org/coding-scheme/external/iso3166"
+                  }
+                }
+              } ]
+            },
+            "meta" : {
+              "globalKey" : "ab6fd453",
+              "externalKey" : "party1"
+            }
+          }, {
+            "partyId" : [ {
+              "identifier" : {
+                "value" : "213800WWTABZ1GOJHH37",
+                "meta" : {
+                  "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                }
+              },
+              "identifierType" : "LEI",
+              "meta" : {
+                "globalKey" : "fdb29bf2"
+              }
+            } ],
+            "name" : {
+              "value" : "Broadridge Financial Solutions Limited"
+            },
+            "businessUnit" : [ {
+              "contactInformation" : {
+                "address" : [ {
+                  "country" : {
+                    "value" : "GB"
+                  }
+                } ]
+              },
+              "meta" : {
+                "globalKey" : "8db"
+              }
+            } ],
+            "contactInformation" : {
+              "address" : [ {
+                "country" : {
+                  "value" : "GB",
+                  "meta" : {
+                    "scheme" : "http://www.fpml.org/coding-scheme/external/iso3166"
+                  }
+                }
+              } ]
+            },
+            "meta" : {
+              "globalKey" : "63bc007e",
+              "externalKey" : "party2"
+            }
+          } ],
+          "meta" : {
+            "globalKey" : "45abd19a"
+          }
+        },
+        "state" : {
+          "positionState" : "Formed"
+        },
+        "meta" : {
+          "globalKey" : "45abd19a"
+        }
+      } ]
+    },
+    "previousWorkflowStep" : {
+      "globalReference" : "45828561"
+    },
+    "messageInformation" : {
+      "messageId" : {
+        "value" : "022030984555123459991234569BR777123456789",
+        "meta" : {
+          "scheme" : "http://www.bankx.com/msg_id"
+        }
+      },
+      "sentBy" : {
+        "value" : "213800IV9PCAC364HN60"
+      },
+      "sentTo" : [ {
+        "value" : "DTCCUS3"
+      } ]
+    },
+    "timestamp" : [ {
+      "dateTime" : "2021-12-06T17:09:11Z",
+      "qualification" : "eventCreationDateTime"
+    } ],
+    "eventIdentifier" : [ {
+      "assignedIdentifier" : [ {
+        "identifier" : {
+          "value" : "022030984555123459991234569BR777123456789"
+        }
+      } ],
+      "meta" : {
+        "globalKey" : "f18f58c1"
+      }
+    } ],
+    "action" : "Cancel",
+    "party" : [ {
+      "partyId" : [ {
+        "identifier" : {
+          "value" : "213800IV9PCAC364HN60",
+          "meta" : {
+            "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+          }
+        },
+        "identifierType" : "LEI",
+        "meta" : {
+          "globalKey" : "365954bc"
+        }
+      } ],
+      "name" : {
+        "value" : "Broadridge MessageAutomation"
+      },
+      "businessUnit" : [ {
+        "contactInformation" : {
+          "address" : [ {
+            "country" : {
+              "value" : "GB"
+            }
+          } ]
+        },
+        "meta" : {
+          "globalKey" : "8db"
+        }
+      } ],
+      "contactInformation" : {
+        "address" : [ {
+          "country" : {
+            "value" : "GB",
+            "meta" : {
+              "scheme" : "http://www.fpml.org/coding-scheme/external/iso3166"
+            }
+          }
+        } ]
+      },
+      "meta" : {
+        "globalKey" : "ab6fd453",
+        "externalKey" : "party1"
+      }
+    }, {
+      "partyId" : [ {
+        "identifier" : {
+          "value" : "213800WWTABZ1GOJHH37",
+          "meta" : {
+            "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+          }
+        },
+        "identifierType" : "LEI",
+        "meta" : {
+          "globalKey" : "fdb29bf2"
+        }
+      } ],
+      "name" : {
+        "value" : "Broadridge Financial Solutions Limited"
+      },
+      "businessUnit" : [ {
+        "contactInformation" : {
+          "address" : [ {
+            "country" : {
+              "value" : "GB"
+            }
+          } ]
+        },
+        "meta" : {
+          "globalKey" : "8db"
+        }
+      } ],
+      "contactInformation" : {
+        "address" : [ {
+          "country" : {
+            "value" : "GB",
+            "meta" : {
+              "scheme" : "http://www.fpml.org/coding-scheme/external/iso3166"
+            }
+          }
+        } ]
+      },
+      "meta" : {
+        "globalKey" : "63bc007e",
+        "externalKey" : "party2"
+      }
+    } ]
+  },
+  "reportableInformation" : {
+    "partyInformation" : [ {
+      "partyReference" : {
+        "globalReference" : "ab6fd453",
+        "externalReference" : "party1"
+      },
+      "relatedParty" : [ {
+        "partyReference" : {
+          "globalReference" : "ab6fd453",
+          "externalReference" : "party1"
+        }
+      }, {
+        "partyReference" : {
+          "globalReference" : "63bc007e",
+          "externalReference" : "party2"
+        },
+        "role" : "Counterparty"
+      }, {
+        "partyReference" : {
+          "globalReference" : "ab6fd453",
+          "externalReference" : "party1"
+        },
+        "role" : "ReportingParty"
+      }, {
+        "partyReference" : {
+          "globalReference" : "ab6fd453",
+          "externalReference" : "party1"
+        },
+        "role" : "Buyer"
+      }, {
+        "partyReference" : {
+          "globalReference" : "63bc007e",
+          "externalReference" : "party2"
+        },
+        "role" : "Seller"
+      }, {
+        "partyReference" : {
+          "globalReference" : "ab6fd453",
+          "externalReference" : "party1"
+        },
+        "role" : "Beneficiary"
+      } ],
+      "regimeInformation" : [ {
+        "supervisoryBody" : {
+          "value" : "CFTC"
+        },
+        "reportingRole" : "ReportingParty"
+      } ]
+    }, {
+      "partyReference" : {
+        "globalReference" : "63bc007e",
+        "externalReference" : "party2"
+      }
+    } ]
+  },
+  "reportingSide" : {
+    "reportingParty" : {
+      "globalReference" : "ab6fd453",
+      "externalReference" : "party1"
+    },
+    "reportingCounterparty" : {
+      "globalReference" : "63bc007e",
+      "externalReference" : "party2"
+    }
+  }
+}

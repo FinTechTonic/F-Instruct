@@ -1,0 +1,38 @@
+{
+  "actionType" : "NEWT",
+  "blockTradeElectionIndicator" : false,
+  "cftcGuidebook" : {
+    "assetClass" : "ForeignExchange",
+    "largeNotionalOffFacilitySwapElectionIndicator" : false,
+    "messageType" : "RT",
+    "physicalCommodityIndicator" : false,
+    "sefOrDcmAnonymousExecutionIndicator" : false,
+    "sefOrDcmIndicator" : false
+  },
+  "cleared" : "N",
+  "counterparty1" : "FOR8UP27PHTHYVLBNG30",
+  "counterparty2" : "W22LROWP2IHZNBB6K528",
+  "counterparty2IdentifierSource" : "LEID",
+  "customBasketIndicator" : false,
+  "effectiveDate" : "2020-11-05",
+  "eventTimestamp" : "2020-11-05T01:27:37Z",
+  "eventType" : "TRAD",
+  "exchangeRateBasis" : "USD/EUR",
+  "exchangeRateLeg1" : 1.25000000,
+  "executionTimestamp" : "2020-11-05T13:27:37Z",
+  "expirationDate" : "2020-12-21",
+  "nonReportable" : {
+    "counterparty1Format" : "Lei",
+    "counterparty2Format" : "Lei"
+  },
+  "nonStandardizedTermIndicator" : false,
+  "notionalAmountLeg1" : 125.00000000,
+  "notionalAmountLeg2" : 100.00000000,
+  "notionalCurrencyLeg1" : "EUR",
+  "notionalCurrencyLeg2" : "USD",
+  "packageIndicator" : false,
+  "postPricedSwapIndicator" : false,
+  "primeBrokerageTransactionIndicator" : false,
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "submitterIdentifier" : "FOR8UP27PHTHYVLBNG30"
+}

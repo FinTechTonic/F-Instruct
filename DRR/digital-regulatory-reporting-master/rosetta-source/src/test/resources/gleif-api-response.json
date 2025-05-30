@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "goldenCopy": {
+      "publishDate": "2022-10-11T08:00:00Z"
+    }
+  },
+  "data": {
+    "type": "lei-records",
+    "id": "529900W18LQJJN6SJ336",
+    "attributes": {
+      "lei": "529900W18LQJJN6SJ336",
+      "entity": {
+        "legalName": {
+          "name": "Soci\u00e9t\u00e9 G\u00e9n\u00e9rale Effekten GmbH",
+          "language": "de-DE"
+        },
+        "otherNames": [],
+        "transliteratedOtherNames": [],
+        "legalAddress": {
+          "language": "de-DE",
+          "addressLines": [
+            "Neue Mainzer Stra\u00dfe 46-50"
+          ],
+          "addressNumber": null,
+          "addressNumberWithinBuilding": null,
+          "mailRouting": null,
+          "city": "Frankfurt am Main",
+          "region": "DE-HE",
+          "country": "DE",
+          "postalCode": "60311"
+        },
+        "headquartersAddress": {
+          "language": "de-DE",
+          "addressLines": [
+            "Neue Mainzer Stra\u00dfe 46-50"
+          ],
+          "addressNumber": null,
+          "addressNumberWithinBuilding": null,
+          "mailRouting": null,
+          "city": "Frankfurt am Main",
+          "region": "DE-HE",
+          "country": "DE",
+          "postalCode": "60311"
+        },
+        "registeredAt": {
+          "id": "RA000242",
+          "other": null
+        },
+        "registeredAs": "HRB 32283",
+        "jurisdiction": "DE",
+        "category": "GENERAL",
+        "legalForm": {
+          "id": "2HBR",
+          "other": null
+        },
+        "associatedEntity": {
+          "lei": null,
+          "name": null
+        },
+        "status": "ACTIVE",
+        "expiration": {
+          "date": null,
+          "reason": null
+        },
+        "successorEntity": {
+          "lei": null,
+          "name": null
+        },
+        "successorEntities": [],
+        "creationDate": "2004-11-28T23:00:00Z",
+        "subCategory": null,
+        "otherAddresses": [],
+        "eventGroups": []
+      },
+      "registration": {
+        "initialRegistrationDate": "2014-01-27T07:37:54Z",
+        "lastUpdateDate": "2022-09-08T11:32:26Z",
+        "status": "ISSUED",
+        "nextRenewalDate": "2023-10-17T22:00:00Z",
+        "managingLou": "5299000J2N45DDNE4Y28",
+        "corroborationLevel": "FULLY_CORROBORATED",
+        "validatedAt": {
+          "id": "RA000242",
+          "other": null
+        },
+        "validatedAs": "HRB 32283",
+        "otherValidationAuthorities": []
+      },
+      "bic": [
+        "SGEFDEFFXXX",
+        "SGEGDEF1XXX"
+      ]
+    },
+    "relationships": {
+      "managing-lou": {
+        "links": {
+          "related": "https:\/\/api.gleif.org\/api\/v1\/lei-records\/529900W18LQJJN6SJ336\/managing-lou"
+        }
+      },
+      "lei-issuer": {
+        "links": {
+          "related": "https:\/\/api.gleif.org\/api\/v1\/lei-records\/529900W18LQJJN6SJ336\/lei-issuer"
+        }
+      },
+      "field-modifications": {
+        "links": {
+          "related": "https:\/\/api.gleif.org\/api\/v1\/lei-records\/529900W18LQJJN6SJ336\/field-modifications"
+        }
+      },
+      "direct-parent": {
+        "links": {
+          "relationship-record": "https:\/\/api.gleif.org\/api\/v1\/lei-records\/529900W18LQJJN6SJ336\/direct-parent-relationship",
+          "lei-record": "https:\/\/api.gleif.org\/api\/v1\/lei-records\/529900W18LQJJN6SJ336\/direct-parent"
+        }
+      },
+      "ultimate-parent": {
+        "links": {
+          "relationship-record": "https:\/\/api.gleif.org\/api\/v1\/lei-records\/529900W18LQJJN6SJ336\/ultimate-parent-relationship",
+          "lei-record": "https:\/\/api.gleif.org\/api\/v1\/lei-records\/529900W18LQJJN6SJ336\/ultimate-parent"
+        }
+      },
+      "direct-children": {
+        "links": {
+          "relationship-records": "https:\/\/api.gleif.org\/api\/v1\/lei-records\/529900W18LQJJN6SJ336\/direct-child-relationships",
+          "related": "https:\/\/api.gleif.org\/api\/v1\/lei-records\/529900W18LQJJN6SJ336\/direct-children"
+        }
+      },
+      "isins": {
+        "links": {
+          "related": "https:\/\/api.gleif.org\/api\/v1\/lei-records\/529900W18LQJJN6SJ336\/isins"
+        }
+      }
+    },
+    "links": {
+      "self": "https:\/\/api.gleif.org\/api\/v1\/lei-records\/529900W18LQJJN6SJ336"
+    }
+  }
+}

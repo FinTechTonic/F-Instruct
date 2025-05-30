@@ -1,0 +1,60 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "CRDT",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "SWAP",
+  "counterparty1" : "HPFHU0OQ28E4N0NFVK49",
+  "counterparty2" : "254900O1WT2BXINL9612",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "HPFHU0OQ28E4N0NFVK49",
+  "deliveryType" : "OPTL",
+  "direction" : "SLLR",
+  "effectiveDate" : "2004-03-23",
+  "eventDate" : "2005-01-24",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2005-01-24T00:00:00Z",
+  "expirationDate" : "2009-03-20",
+  "finalContractualSettlementDate" : "2009-03-20",
+  "fixedRateOfLeg1" : 0.6000,
+  "nameOfTheUnderlyingIndex" : "Dow Jones CDX NA IG.2",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "OPTL",
+          "Underlying" : {
+            "UnderlierIDSource" : "CRIDX",
+            "UnderlyingCreditIndexSeries" : 2,
+            "UnderlyingInstrumentIndexTermUnit" : "YEAR"
+          },
+          "UnderlyingIssuerType" : "Corporate"
+        },
+        "Header" : {
+          "AssetClass" : "Credit",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Index"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfTheContractOrLeg1" : 25000000,
+  "notionalCurrencyOfTheContractOrLeg1" : "USD",
+  "otherPayment" : [ {
+    "amount" : 16000,
+    "currency" : "USD",
+    "payer" : "HPFHU0OQ28E4N0NFVK49",
+    "payerFormat" : "Lei",
+    "paymentType" : "UFRO",
+    "receiver" : "254900O1WT2BXINL9612",
+    "receiverFormat" : "Lei"
+  } ],
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "HPFHU0OQ28E4N0NFVK49",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "underlyingIdentificationType" : "X",
+  "uniqueTransactionIdentifier" : "CREDITINDEXCDXEXIN03N17I16X15E14X13D12C11X10E9D8N7I6"
+}

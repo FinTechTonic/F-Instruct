@@ -1,0 +1,62 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "INTR",
+  "bookingLocation" : "GB",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : true,
+  "confirmed" : "NCNF",
+  "contractType" : "SWAP",
+  "counterparty1" : "DUMMYLEI012345678901",
+  "counterparty2" : "DUMMYLEI012345678903",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "DUMMYLEI012345678901",
+  "deliveryType" : "PHYS",
+  "directionOfLeg1" : "TAKE",
+  "directionOfLeg2" : "MAKE",
+  "effectiveDate" : "2020-07-29",
+  "eventDate" : "2021-03-31",
+  "eventType" : "TRAD",
+  "executionAgentOfTheCounterparty1" : "DUMMYLEI012345678905",
+  "executionTimestamp" : "2021-03-31T07:39:42Z",
+  "expirationDate" : "2028-07-29",
+  "finalContractualSettlementDate" : "2028-07-29",
+  "fixedRateDayCountConventionOfLeg1" : "A020",
+  "fixedRateOfLeg1" : 2.08500,
+  "fixedRatePaymentFrequencyPeriodMultiplierOfLeg1" : 1,
+  "fixedRatePaymentFrequencyPeriodOfLeg1" : "YEAR",
+  "floatingRatePaymentFrequencyPeriodMultiplierOfLeg2" : 1,
+  "floatingRatePaymentFrequencyPeriodOfLeg2" : "YEAR",
+  "floatingRateResetFrequencyPeriodMultiplierOfLeg2" : 1,
+  "floatingRateResetFrequencyPeriodOfLeg2" : "YEAR",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalCurrency" : "USD",
+          "NotionalSchedule" : "Constant",
+          "ReferenceRateTermUnit" : "YEAR",
+          "UnderlierID" : "USA-CPI-U",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Inflation_Fixed_Float_YoY"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfLeg2" : 30000000,
+  "notionalAmountOfTheContractOrLeg1" : 30000000,
+  "notionalCurrencyOfLeg2" : "USD",
+  "notionalCurrencyOfTheContractOrLeg1" : "USD",
+  "platformIdentifier" : "XXXX",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "DUMMYLEI012345678901",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "underlyingIdentificationType" : "O",
+  "uniqueTransactionIdentifier" : "IRINFLATIONFIXEDFL03"
+}

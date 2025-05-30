@@ -1,0 +1,61 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "COMM",
+  "bookingLocation" : "GB",
+  "callAmount" : 5391200.000000,
+  "callCurrency" : "USD",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "SWPT",
+  "counterparty1" : "213800IV9PCAC364HN60",
+  "counterparty2" : "DUMMY0000000000LEI01",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "213800IV9PCAC364HN60",
+  "deliveryType" : "PHYS",
+  "direction" : "BYER",
+  "effectiveDate" : "2022-03-17",
+  "eventDate" : "2022-03-17",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2022-03-17T14:44:58Z",
+  "expirationDate" : "2018-06-27",
+  "finalContractualSettlementDate" : "2018-12-31",
+  "firstExerciseDate" : "2018-06-27",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "OptionExerciseStyle" : "EURO",
+          "OptionType" : "CALL",
+          "ValuationMethodorTrigger" : "Vanilla"
+        },
+        "Header" : {
+          "AssetClass" : "Commodities",
+          "InstrumentType" : "Option",
+          "Level" : "UPI",
+          "UseCase" : "Swaption"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfTheContractOrLeg1" : 5391200.000000,
+  "notionalCurrencyOfTheContractOrLeg1" : "USD",
+  "notionalQuantityOfTheContractOrLeg1" : 10000.00000,
+  "optionStyle" : "EURO",
+  "optionType" : "CALL",
+  "quantityFrequencyMultiplierOfTheContractOrLeg1" : 1,
+  "quantityFrequencyOfTheContractOrLeg1" : "DAIL",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "213800IV9PCAC364HN60",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "strikePrice" : {
+    "strikePriceCurrency" : "USD",
+    "strikePriceMonetary" : 2.9300000000000,
+    "strikePriceNotation" : "Monetary"
+  },
+  "totalNotionalQuantityOfTheContractOrLeg1" : 1840000,
+  "underlyingIdentificationType" : "O",
+  "uniqueTransactionIdentifier" : "COMMODITYOPTIONENE02"
+}

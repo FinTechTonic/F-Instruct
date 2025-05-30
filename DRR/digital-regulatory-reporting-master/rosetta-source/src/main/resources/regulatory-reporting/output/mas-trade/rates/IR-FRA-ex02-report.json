@@ -1,0 +1,55 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "INTR",
+  "bookingLocation" : "ES",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : true,
+  "confirmed" : "NCNF",
+  "contractType" : "FRAS",
+  "counterparty1" : "DUMMYLEI012345678902",
+  "counterparty2" : "DUMMYLEI012345678907",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "DUMMYLEI012345678902",
+  "deliveryType" : "PHYS",
+  "directionOfLeg1" : "MAKE",
+  "directionOfLeg2" : "TAKE",
+  "effectiveDate" : "2021-03-17",
+  "eventDate" : "2021-03-17",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-03-17T06:54:51Z",
+  "expirationDate" : "2021-06-01",
+  "finalContractualSettlementDate" : "2021-06-01",
+  "fixedRateDayCountConventionOfLeg1" : "A004",
+  "fixedRateOfLeg2" : 7.00,
+  "floatingRateDayCountConventionOfLeg2" : "A004",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalCurrency" : "USD",
+          "ReferenceRateTermUnit" : "MNTH",
+          "ReferenceRateTermValue" : 3,
+          "UnderlierID" : "USD-LIBOR-BBA",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Forward",
+          "Level" : "UPI"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfLeg2" : 44000000,
+  "notionalAmountOfTheContractOrLeg1" : 44000000,
+  "notionalCurrencyOfLeg2" : "USD",
+  "notionalCurrencyOfTheContractOrLeg1" : "USD",
+  "platformIdentifier" : "XXXX",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "DUMMYLEI012345678902",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "underlyingIdentificationType" : "X",
+  "uniqueTransactionIdentifier" : "IRFRAEXXMLXXXXXXXX03"
+}

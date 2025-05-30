@@ -1,0 +1,39 @@
+{
+  "actionType" : "NEWT",
+  "blockTradeElectionIndicator" : false,
+  "cftcGuidebook" : {
+    "assetClass" : "ForeignExchange",
+    "largeNotionalOffFacilitySwapElectionIndicator" : false,
+    "messageType" : "RT",
+    "physicalCommodityIndicator" : false,
+    "sefOrDcmAnonymousExecutionIndicator" : false,
+    "sefOrDcmIndicator" : false,
+    "settlementType" : "CASH"
+  },
+  "cleared" : "I",
+  "counterparty1" : "G55DZBDJSDRJKFCRVK55",
+  "counterparty2" : "F226TOH6YD6XJB17KS62",
+  "counterparty2IdentifierSource" : "LEID",
+  "customBasketIndicator" : false,
+  "effectiveDate" : "2022-02-23",
+  "eventTimestamp" : "2022-02-23T09:43:21Z",
+  "eventType" : "TRAD",
+  "exchangeRateLeg1" : 5.043317,
+  "executionTimestamp" : "2022-02-23T12:51:31Z",
+  "expirationDate" : "2022-03-18",
+  "nonReportable" : {
+    "counterparty1Format" : "Lei",
+    "counterparty2Format" : "Lei"
+  },
+  "notionalAmountLeg1" : 1800,
+  "notionalAmountLeg2" : 356.90796,
+  "notionalCurrencyLeg1" : "BRL",
+  "notionalCurrencyLeg2" : "USD",
+  "packageIndicator" : false,
+  "postPricedSwapIndicator" : false,
+  "primeBrokerageTransactionIndicator" : false,
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrencyLeg1" : "USD",
+  "submitterIdentifier" : "G55DZBDJSDRJKFCRVK55",
+  "uniqueTransactionIdentifier" : "FXNDFEXGAMMAXMLXXX03"
+}

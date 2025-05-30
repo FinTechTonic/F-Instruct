@@ -1,0 +1,12 @@
+namespace drr.enrichment.upi
+version "${project.version}"
+
+import drr.standards.iso.upi.*
+
+type UpiData:
+    upiRecord AnnaDsbUpiRecord (1..1)
+    upiOfUnderlying boolean (1..1) // In case of swaption
+
+type AnnaDsbUpiRequestAndType:
+    request AnnaDsbUpiRequest (1..1)
+    requestType AnnaDsbUpiRequestTypeEnum (1..1)

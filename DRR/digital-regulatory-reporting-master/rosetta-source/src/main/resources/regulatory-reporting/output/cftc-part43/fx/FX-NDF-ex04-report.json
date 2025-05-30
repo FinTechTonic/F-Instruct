@@ -1,0 +1,42 @@
+{
+  "actionType" : "NEWT",
+  "blockTradeElectionIndicator" : false,
+  "cftcGuidebook" : {
+    "assetClass" : "ForeignExchange",
+    "largeNotionalOffFacilitySwapElectionIndicator" : false,
+    "mandatoryClearingIndicator" : false,
+    "messageType" : "RT",
+    "physicalCommodityIndicator" : false,
+    "sefOrDcmAnonymousExecutionIndicator" : false,
+    "sefOrDcmIndicator" : false,
+    "settlementType" : "CASH"
+  },
+  "cleared" : "N",
+  "counterparty1" : "213800WWTABZ1GOJHH37",
+  "counterparty2" : "213800IV9PCAC364HN60",
+  "counterparty2IdentifierSource" : "LEID",
+  "customBasketIndicator" : false,
+  "effectiveDate" : "2021-12-06",
+  "eventTimestamp" : "2021-12-06T17:09:11Z",
+  "eventType" : "TRAD",
+  "exchangeRateBasis" : "KRW/USD",
+  "exchangeRateLeg1" : 1140.200000,
+  "executionTimestamp" : "2021-12-06T17:09:11Z",
+  "expirationDate" : "2018-11-29",
+  "nonReportable" : {
+    "counterparty1Format" : "Lei",
+    "counterparty2Format" : "Lei"
+  },
+  "nonStandardizedTermIndicator" : false,
+  "notionalAmountLeg1" : 1140200000,
+  "notionalAmountLeg2" : 1000000,
+  "notionalCurrencyLeg1" : "KRW",
+  "notionalCurrencyLeg2" : "USD",
+  "packageIndicator" : false,
+  "postPricedSwapIndicator" : false,
+  "primeBrokerageTransactionIndicator" : false,
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrencyLeg1" : "USD",
+  "submitterIdentifier" : "213800WWTABZ1GOJHH37",
+  "uniqueTransactionIdentifier" : "FXNDFEXXMLXXXXXXXX02"
+}

@@ -1,0 +1,53 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "CURR",
+  "beneficiary1" : "GGDZP1UYGU9STUHRDP49",
+  "beneficiary1IdentifierTypeIndicator" : true,
+  "broker" : "ZWNFQ48RUL8VJZ2AIC12",
+  "cleared" : "N",
+  "contractType" : "FORW",
+  "counterparty1" : "GGDZP1UYGU9STUHRDP48",
+  "counterparty2" : "254900QEE322YIK4P067",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "direction2OfLeg1" : "MAKE",
+  "direction2OfLeg2" : "TAKE",
+  "effectiveDate" : "2019-01-31",
+  "eventIdentifier" : "SI17764828466sz33wbbkr6u3664g4adt",
+  "eventTimestamp" : "2019-01-31T08:56:02Z",
+  "eventType" : "TRAD",
+  "exchangeRateBasis" : "USD/KRW",
+  "executionAgentOfTheCounterparty1" : "2549007904V5LEBO0B08",
+  "executionTimestamp" : "2019-01-31T08:56:02Z",
+  "expirationDate" : "2019-03-20",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "OtherUnderlierID" : "USD",
+          "OtherUnderlierIDSource" : "CCY",
+          "SettlementCurrency" : "USD",
+          "UnderlierID" : "KRW",
+          "UnderlierIDSource" : "CCY"
+        },
+        "Header" : {
+          "InstrumentType" : "Forward",
+          "Level" : "UPI",
+          "UseCase" : "NDF"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "KRW",
+  "notionalCurrencyLeg2" : "USD",
+  "notionalLeg1" : 3763000000.0,
+  "notionalLeg2" : 38999950.3,
+  "platformIdentifier" : "XOFF",
+  "reportSubmittingEntityID" : "GGDZP1UYGU9STUHRDP48",
+  "reportingEntity" : "GGDZP1UYGU9STUHRDP48",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "secondaryTransactionIdentifier" : "FXNDFEXXMLXXXXXXXX01",
+  "settlementCurrencyLeg1" : "USD",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "uniqueTransactionIdentifier" : "FXNDFEXXMLXXXXXXXX02"
+}

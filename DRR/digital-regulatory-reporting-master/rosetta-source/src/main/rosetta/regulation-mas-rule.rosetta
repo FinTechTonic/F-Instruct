@@ -1,0 +1,8 @@
+namespace drr.regulation.mas
+version "${project.version}"
+
+body Authority MAS <"The Monetary Authority of Singapore (MAS) is Singapores central bank and integrated financial regulator. MAS also works with the financial industry to develop Singapore as a dynamic international financial centre.">
+
+corpus Specifications "DTCC Specs" DTCC_Specs <"Document providing the message specifications required for inbound message for DTCC for MAS rewrite">
+
+corpus Regulations "Securities and Futures (Reporting of Derivatives Contracts) Regulations 2013" MAS_2013 <"The Securities And Futures (Reporting Of Derivatives Contracts) Regulations 2013 contain Regulations setting out reporting requirements for OTC counterparties for OTC derivatives.">

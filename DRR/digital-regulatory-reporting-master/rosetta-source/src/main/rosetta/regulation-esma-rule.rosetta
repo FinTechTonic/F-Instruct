@@ -1,0 +1,8 @@
+namespace drr.regulation.esma
+version "${project.version}"
+
+body Authority ESMA <"ESMA is an independent EU Authority that contributes to safeguarding the stability of the European Union's financial system by enhancing the protection of investors and promoting stable and orderly financial markets.">
+
+body Authority FCA <"The Financial Conduct Authority is the conduct regulator for 58,000 financial services firms and financial markets in the UK and the prudential regulator for over 18,000 of those firms. ">
+
+body Organisation FIA <"FIA (Futures Industry Association) is the leading global trade organization for the futures, options and centrally cleared derivatives markets, with offices in Brussels, London, Singapore and Washington, D.C. www.fia.org">

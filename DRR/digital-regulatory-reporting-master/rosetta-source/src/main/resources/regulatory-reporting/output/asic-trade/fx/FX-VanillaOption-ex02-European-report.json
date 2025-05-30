@@ -1,0 +1,63 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "CURR",
+  "beneficiary1" : "GGDZP1UYGU9STUHRDP49",
+  "beneficiary1IdentifierTypeIndicator" : true,
+  "callAmount" : 111500000.0,
+  "callCurrency" : "JPY",
+  "cleared" : "N",
+  "contractType" : "OPTN",
+  "counterparty1" : "GGDZP1UYGU9STUHRDP48",
+  "counterparty2" : "E57ODZWZ7FF32TWEFA76",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "direction" : "BYER",
+  "effectiveDate" : "2019-01-25",
+  "eventIdentifier" : "AL10291836316rye5ucr6u3669knmak",
+  "eventTimestamp" : "2019-02-04T18:14:41Z",
+  "eventType" : "TRAD",
+  "exchangeRateBasis" : "JPY/NZD",
+  "executionTimestamp" : "2019-01-25T03:55:41Z",
+  "expirationDate" : "2019-03-21",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "OptionExerciseStyle" : "EURO",
+          "OtherUnderlierID" : "NZD",
+          "OtherUnderlierIDSource" : "CCY",
+          "UnderlierID" : "JPY",
+          "UnderlierIDSource" : "CCY"
+        },
+        "Header" : {
+          "InstrumentType" : "Option",
+          "Level" : "UPI",
+          "UseCase" : "Vanilla_Option"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "JPY",
+  "notionalCurrencyLeg2" : "NZD",
+  "notionalLeg1" : 111500000.0,
+  "notionalLeg2" : 1110000.0,
+  "optionPremiumAmount" : 60085.0,
+  "optionPremiumCurrency" : "NZD",
+  "optionPremiumPaymentDate" : "2019-01-30",
+  "platformIdentifier" : "XOFF",
+  "putAmount" : 1110000.0,
+  "putCurrency" : "NZD",
+  "reportSubmittingEntityID" : "GGDZP1UYGU9STUHRDP48",
+  "reportingEntity" : "GGDZP1UYGU9STUHRDP48",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "secondaryTransactionIdentifier" : "FXVANILLAOPTIONEXE01",
+  "settlementCurrencyLeg1" : "JPY",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "strikePrice" : {
+    "strikePriceCurrency" : "JPY/NZD",
+    "strikePriceMonetary" : 73.5000000000000,
+    "strikePriceNotation" : "Monetary"
+  },
+  "uniqueTransactionIdentifier" : "FXVANILLAOPTIONEXE02"
+}

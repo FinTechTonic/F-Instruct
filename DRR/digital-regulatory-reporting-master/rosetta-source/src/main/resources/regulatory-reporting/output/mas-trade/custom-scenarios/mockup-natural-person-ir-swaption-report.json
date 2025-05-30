@@ -1,0 +1,70 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "INTR",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "SWPT",
+  "counterparty1" : "DUMMY0000000000LEI01",
+  "counterparty2" : "DUMMY0000000000LEI02",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "DUMMY0000000000LEI01",
+  "deliveryType" : "CASH",
+  "direction" : "BYER",
+  "effectiveDate" : "2018-04-01",
+  "eventDate" : "2018-04-01",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2018-04-01T14:15:36Z",
+  "expirationDate" : "2019-04-01",
+  "finalContractualSettlementDate" : "2024-04-03",
+  "firstExerciseDate" : "2019-04-01",
+  "fixedRateDayCountConventionOfLeg1" : "A001",
+  "fixedRatePaymentFrequencyPeriodMultiplierOfLeg1" : 1,
+  "fixedRatePaymentFrequencyPeriodOfLeg1" : "YEAR",
+  "floatingRateDayCountConventionOfLeg2" : "A004",
+  "floatingRatePaymentFrequencyPeriodMultiplierOfLeg2" : 6,
+  "floatingRatePaymentFrequencyPeriodOfLeg2" : "MNTH",
+  "floatingRateResetFrequencyPeriodMultiplierOfLeg2" : 6,
+  "floatingRateResetFrequencyPeriodOfLeg2" : "MNTH",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalCurrency" : "EUR",
+          "NotionalSchedule" : "Constant",
+          "ReferenceRateTermUnit" : "YEAR",
+          "ReferenceRateTermValue" : 1,
+          "UnderlierID" : "EUR-EURIBOR-Telerate",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Fixed_Float"
+        }
+      },
+      "requestType" : "UnderlyingProductRequest"
+    }
+  },
+  "notionalAmountOfLeg2" : 13000,
+  "notionalAmountOfTheContractOrLeg1" : 13000,
+  "notionalCurrencyOfLeg2" : "EUR",
+  "notionalCurrencyOfTheContractOrLeg1" : "EUR",
+  "optionPremiumAmount" : 100000,
+  "optionPremiumCurrency" : "EUR",
+  "optionStyle" : "EURO",
+  "optionType" : "OTHR",
+  "putAmount" : 13000,
+  "putCurrency" : "EUR",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "DUMMY0000000000LEI01",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "strikePrice" : {
+    "strikePriceDecimal" : 0.0500000000000,
+    "strikePriceNotation" : "Decimal"
+  },
+  "underlyingIdentificationType" : "O",
+  "uniqueTransactionIdentifier" : "MOCKUPNATURALPERSO01"
+}

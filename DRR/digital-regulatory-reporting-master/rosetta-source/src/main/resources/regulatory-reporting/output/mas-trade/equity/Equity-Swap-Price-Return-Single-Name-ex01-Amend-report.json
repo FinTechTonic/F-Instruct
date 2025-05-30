@@ -1,0 +1,51 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "EQUI",
+  "basketConstituents" : [ {
+    "identifier" : "CTCa.TO",
+    "source" : "Other"
+  } ],
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmationTimestamp" : "2021-02-05T21:52:08Z",
+  "confirmed" : "YCNF",
+  "contractType" : "SWAP",
+  "counterparty1" : "DUMMY0000000000LEI01",
+  "counterparty2" : "DUMMY0000000000LEI02",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "DUMMY0000000000LEI01",
+  "directionOfLeg2" : "MAKE",
+  "effectiveDate" : "2020-12-14",
+  "eventDate" : "2020-12-16",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2020-12-16T23:11:47Z",
+  "expirationDate" : "2022-12-19",
+  "finalContractualSettlementDate" : "2022-12-19",
+  "floatingRateDayCountConventionOfLeg2" : "A005",
+  "floatingRatePaymentFrequencyPeriodOfLeg2" : "ADHO",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "UnderlierID" : "CAD-BA-CDOR"
+        },
+        "Header" : {
+          "AssetClass" : "Equity",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfLeg2" : 8291615.00,
+  "notionalAmountOfTheContractOrLeg1" : 8291615.00,
+  "notionalCurrencyOfLeg2" : "CAD",
+  "notionalCurrencyOfTheContractOrLeg1" : "CAD",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "DUMMY0000000000LEI01",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "underlyingIdentificationType" : "B",
+  "uniqueTransactionIdentifier" : "EQUITYSWAPPRICERET01"
+}

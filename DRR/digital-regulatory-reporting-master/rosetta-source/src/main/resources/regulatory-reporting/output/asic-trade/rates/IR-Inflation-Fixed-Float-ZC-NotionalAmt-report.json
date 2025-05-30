@@ -1,0 +1,55 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "INTR",
+  "beneficiary1" : "549300V2LQD6SX1WIG70",
+  "beneficiary1IdentifierTypeIndicator" : true,
+  "cleared" : "N",
+  "contractType" : "SWAP",
+  "counterparty1" : "549300V2LQD6SX1WIG70",
+  "counterparty2" : "549300CWK6F65W566G32",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "dayCountConventionLeg1" : "A020",
+  "dayCountConventionLeg2" : "A020",
+  "direction2OfLeg1" : "MAKE",
+  "direction2OfLeg2" : "TAKE",
+  "effectiveDate" : "2022-02-28",
+  "eventIdentifier" : "D91116ADAFC7D372E0538DB0CC0A39C7",
+  "eventTimestamp" : "2022-02-28T09:44:12Z",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2022-02-28T09:43:41Z",
+  "expirationDate" : "2029-02-28",
+  "fixedRateLeg1" : 2.00,
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalCurrency" : "GBP",
+          "NotionalSchedule" : "Constant",
+          "ReferenceRateTermUnit" : "YEAR",
+          "UnderlierID" : "UK-RPI",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Inflation_Fixed_Float_Zero_Coupon"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "GBP",
+  "notionalCurrencyLeg2" : "GBP",
+  "notionalLeg1" : 1000000,
+  "notionalLeg2" : 1000000,
+  "paymentFrequencyPeriodLeg1" : "EXPI",
+  "paymentFrequencyPeriodLeg2" : "EXPI",
+  "paymentFrequencyPeriodMultiplierLeg1" : 1,
+  "paymentFrequencyPeriodMultiplierLeg2" : 1,
+  "reportSubmittingEntityID" : "549300V2LQD6SX1WIG70",
+  "reportingEntity" : "549300V2LQD6SX1WIG70",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrencyLeg2" : "Not Modelled"
+}

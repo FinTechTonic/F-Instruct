@@ -1,0 +1,59 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "CURR",
+  "callAmount" : 100.00000000,
+  "callCurrency" : "EUR",
+  "cleared" : "N",
+  "contractType" : "OPTN",
+  "counterparty1" : "MXKQVM4U1OHBQWFPG196",
+  "counterparty2" : "W22LROWP2IHZNBB6K528",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "direction" : "BYER",
+  "effectiveDate" : "2020-11-18",
+  "eventIdentifier" : "envuatuatExt1c7b35f7cf35543d3a181a69cb15ee8f2",
+  "eventTimestamp" : "2020-11-18T14:13:20Z",
+  "eventType" : "TRAD",
+  "exchangeRateBasis" : "EUR/USD",
+  "executionTimestamp" : "2020-11-18T14:12:30Z",
+  "expirationDate" : "2020-11-20",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "OptionExerciseStyle" : "AMER",
+          "OtherUnderlierID" : "USD",
+          "OtherUnderlierIDSource" : "CCY",
+          "UnderlierID" : "EUR",
+          "UnderlierIDSource" : "CCY"
+        },
+        "Header" : {
+          "AssetClass" : "Foreign_Exchange",
+          "InstrumentType" : "Option",
+          "Level" : "UPI",
+          "UseCase" : "Vanilla_Option"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "EUR",
+  "notionalCurrencyLeg2" : "USD",
+  "notionalLeg1" : 100.00000000,
+  "notionalLeg2" : 110.00000000,
+  "optionPremiumAmount" : 500.00000000,
+  "optionPremiumCurrency" : "USD",
+  "optionPremiumPaymentDate" : "2020-11-20",
+  "putAmount" : 110.00000000,
+  "putCurrency" : "USD",
+  "reportSubmittingEntityID" : "MXKQVM4U1OHBQWFPG196",
+  "reportingEntity" : "MXKQVM4U1OHBQWFPG196",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "secondaryTransactionIdentifier" : "FXVANILLAOPTIONEXA01",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "strikePrice" : {
+    "strikePriceCurrency" : "EUR/USD",
+    "strikePriceMonetary" : 1.1000000000000,
+    "strikePriceNotation" : "Monetary"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "INTR",
+  "bookingLocation" : "NonUSA",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : true,
+  "confirmationTimestamp" : "2022-02-28T09:23:44Z",
+  "confirmed" : "ECNF",
+  "contractType" : "SWAP",
+  "counterparty1" : "549300V2LQD6SX1WIG70",
+  "counterparty2" : "549300CWK6F65W566G32",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "549300V2LQD6SX1WIG70",
+  "deliveryType" : "PHYS",
+  "directionOfLeg1" : "MAKE",
+  "directionOfLeg2" : "TAKE",
+  "effectiveDate" : "2022-02-28",
+  "eventDate" : "2022-02-28",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2022-02-28T09:15:38Z",
+  "expirationDate" : "2026-02-28",
+  "finalContractualSettlementDate" : "2026-02-28",
+  "fixedRateDayCountConventionOfLeg1" : "A005",
+  "fixedRateOfLeg1" : 2.00,
+  "fixedRatePaymentFrequencyPeriodMultiplierOfLeg1" : 1,
+  "fixedRatePaymentFrequencyPeriodOfLeg1" : "EXPI",
+  "floatingRateDayCountConventionOfLeg2" : "A005",
+  "floatingRatePaymentFrequencyPeriodMultiplierOfLeg2" : 6,
+  "floatingRatePaymentFrequencyPeriodOfLeg2" : "MNTH",
+  "floatingRateResetFrequencyPeriodMultiplierOfLeg2" : 6,
+  "floatingRateResetFrequencyPeriodOfLeg2" : "MNTH",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalCurrency" : "GBP",
+          "NotionalSchedule" : "Constant",
+          "ReferenceRateTermUnit" : "MNTH",
+          "ReferenceRateTermValue" : 6,
+          "UnderlierID" : "GBP-LIBOR",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Fixed_Float_Zero_Coupon"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfLeg2" : 1000000,
+  "notionalAmountOfTheContractOrLeg1" : 1000000,
+  "notionalCurrencyOfLeg2" : "GBP",
+  "notionalCurrencyOfTheContractOrLeg1" : "GBP",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "549300V2LQD6SX1WIG70",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "underlyingIdentificationType" : "O"
+}

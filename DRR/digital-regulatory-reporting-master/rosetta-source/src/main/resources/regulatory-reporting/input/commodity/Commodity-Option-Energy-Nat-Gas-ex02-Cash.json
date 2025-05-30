@@ -1,0 +1,1384 @@
+{
+  "originatingWorkflowStep" : {
+    "businessEvent" : {
+      "intent" : "ContractFormation",
+      "eventDate" : "2022-03-17",
+      "instruction" : [ {
+        "primitiveInstruction" : {
+          "contractFormation" : {
+            "legalAgreement" : [ {
+              "legalAgreementIdentification" : {
+                "agreementName" : {
+                  "agreementType" : "MasterAgreement",
+                  "masterAgreementType" : {
+                    "value" : "ISDAMaster"
+                  }
+                },
+                "vintage" : 2002
+              },
+              "contractualParty" : [ {
+                "globalReference" : "4d8f029e",
+                "externalReference" : "Party1"
+              }, {
+                "globalReference" : "ee55392f",
+                "externalReference" : "Party2"
+              } ],
+              "meta" : {
+                "globalKey" : "8241850c"
+              }
+            } ]
+          }
+        },
+        "before" : {
+          "value" : {
+            "trade" : {
+              "tradeIdentifier" : [ {
+                "issuer" : {
+                  "value" : "DUMMY0000000000LEI01",
+                  "meta" : {
+                    "scheme" : "http://www.fpml.org/coding-scheme/external/issuer-identifier"
+                  }
+                },
+                "assignedIdentifier" : [ {
+                  "identifier" : {
+                    "value" : "COMMODITYOPTIONENE02",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/unique-transaction-identifier"
+                    }
+                  }
+                } ],
+                "meta" : {
+                  "globalKey" : "4cfe125"
+                },
+                "identifierType" : "UniqueTransactionIdentifier"
+              }, {
+                "issuerReference" : {
+                  "globalReference" : "4d8f029e",
+                  "externalReference" : "Party1"
+                },
+                "assignedIdentifier" : [ {
+                  "identifier" : {
+                    "value" : "COMMODITYOPTIONENE01",
+                    "meta" : {
+                      "scheme" : "http://www.dtcc.com/internal_Referenceid"
+                    }
+                  }
+                } ],
+                "meta" : {
+                  "globalKey" : "c4675530"
+                }
+              } ],
+              "tradeDate" : {
+                "value" : "2022-03-17",
+                "meta" : {
+                  "globalKey" : "3f30d1"
+                }
+              },
+              "tradableProduct" : {
+                "product" : {
+                  "contractualProduct" : {
+                    "productTaxonomy" : [ {
+                      "primaryAssetClass" : {
+                        "value" : "Commodity"
+                      }
+                    }, {
+                      "source" : "CFI",
+                      "value" : {
+                        "name" : {
+                          "value" : "HTSXVX",
+                          "meta" : {
+                            "scheme" : "http://www.fpml.org/coding-scheme/external/product-classification/iso10962"
+                          }
+                        }
+                      }
+                    }, {
+                      "source" : "ISDA",
+                      "productQualifier" : "Commodity_Swaption"
+                    } ],
+                    "productIdentifier" : [ {
+                      "value" : {
+                        "identifier" : {
+                          "value" : "Commodity:Energy:NatGas:Option:Cash",
+                          "meta" : {
+                            "scheme" : "http://www.fpml.org/coding-scheme/product-taxonomy"
+                          }
+                        },
+                        "source" : "Other",
+                        "meta" : {
+                          "globalKey" : "fbf1cdb5"
+                        }
+                      }
+                    } ],
+                    "economicTerms" : {
+                      "payout" : {
+                        "optionPayout" : [ {
+                          "payerReceiver" : {
+                            "payer" : "Party2",
+                            "receiver" : "Party1"
+                          },
+                          "settlementTerms" : {
+                            "settlementType" : "Physical",
+                            "meta" : {
+                              "globalKey" : "f3b1d0d7"
+                            }
+                          },
+                          "buyerSeller" : {
+                            "buyer" : "Party1",
+                            "seller" : "Party2"
+                          },
+                          "optionType" : "Call",
+                          "exerciseTerms" : {
+                            "optionStyle" : {
+                              "europeanExercise" : {
+                                "expirationDate" : [ {
+                                  "adjustableDate" : {
+                                    "unadjustedDate" : "2018-06-27",
+                                    "meta" : {
+                                      "globalKey" : "3f119b"
+                                    }
+                                  },
+                                  "meta" : {
+                                    "globalKey" : "3f119b"
+                                  }
+                                } ],
+                                "meta" : {
+                                  "globalKey" : "3f119b",
+                                  "externalKey" : "European"
+                                }
+                              }
+                            }
+                          },
+                          "underlier" : {
+                            "contractualProduct" : {
+                              "productTaxonomy" : [ {
+                                "source" : "ISDA",
+                                "productQualifier" : "Commodity_Swap_FixedFloat"
+                              } ],
+                              "economicTerms" : {
+                                "effectiveDate" : {
+                                  "adjustableDate" : {
+                                    "unadjustedDate" : "2018-07-01",
+                                    "dateAdjustments" : {
+                                      "businessDayConvention" : "NotApplicable",
+                                      "meta" : {
+                                        "globalKey" : "3a4b88ab"
+                                      }
+                                    },
+                                    "meta" : {
+                                      "globalKey" : "270d2e2c"
+                                    }
+                                  },
+                                  "meta" : {
+                                    "globalKey" : "270d2e2c"
+                                  }
+                                },
+                                "terminationDate" : {
+                                  "adjustableDate" : {
+                                    "unadjustedDate" : "2018-12-31",
+                                    "dateAdjustments" : {
+                                      "businessDayConvention" : "NotApplicable",
+                                      "meta" : {
+                                        "globalKey" : "3a4b88ab"
+                                      }
+                                    },
+                                    "meta" : {
+                                      "globalKey" : "2712500a"
+                                    }
+                                  },
+                                  "meta" : {
+                                    "globalKey" : "2712500a"
+                                  }
+                                },
+                                "payout" : {
+                                  "commodityPayout" : [ {
+                                    "payerReceiver" : {
+                                      "payer" : "Party2",
+                                      "receiver" : "Party1"
+                                    },
+                                    "priceQuantity" : {
+                                      "quantitySchedule" : {
+                                        "address" : {
+                                          "scope" : "DOCUMENT",
+                                          "value" : "quantity-1"
+                                        }
+                                      },
+                                      "meta" : {
+                                        "globalKey" : "0"
+                                      }
+                                    },
+                                    "settlementTerms" : {
+                                      "settlementType" : "Cash",
+                                      "settlementCurrency" : {
+                                        "value" : "USD"
+                                      },
+                                      "meta" : {
+                                        "globalKey" : "7610bbd9"
+                                      }
+                                    },
+                                    "averagingFeature" : {
+                                      "averagingMethod" : {
+                                        "isWeighted" : false,
+                                        "calculationMethod" : "Arithmetic"
+                                      }
+                                    },
+                                    "commodityPriceReturnTerms" : {
+                                      "spread" : {
+                                        "price" : {
+                                          "address" : {
+                                            "scope" : "DOCUMENT",
+                                            "value" : "price-1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "pricingDates" : {
+                                      "parametricDates" : {
+                                        "dayType" : "Business",
+                                        "dayDistribution" : "Penultimate"
+                                      }
+                                    },
+                                    "calculationPeriodDates" : {
+                                      "calculationPeriodFrequency" : {
+                                        "periodMultiplier" : 1,
+                                        "period" : "M",
+                                        "meta" : {
+                                          "globalKey" : "11e9",
+                                          "externalKey" : "calculationPeriodsSchedule_FloatLeg_2"
+                                        },
+                                        "balanceOfFirstPeriod" : false
+                                      },
+                                      "meta" : {
+                                        "globalKey" : "11e9"
+                                      }
+                                    },
+                                    "paymentDates" : {
+                                      "paymentDateSchedule" : {
+                                        "interimPaymentDates" : [ {
+                                          "adjustableDates" : {
+                                            "unadjustedDate" : [ "2018-08-27", "2018-09-25", "2018-10-25", "2018-11-26", "2018-12-26", "2019-01-25" ],
+                                            "meta" : {
+                                              "globalKey" : "a038ac3e"
+                                            }
+                                          },
+                                          "meta" : {
+                                            "globalKey" : "a038ac3e"
+                                          }
+                                        } ]
+                                      },
+                                      "meta" : {
+                                        "globalKey" : "a038ac3e"
+                                      }
+                                    },
+                                    "underlier" : {
+                                      "commodity" : {
+                                        "address" : {
+                                          "scope" : "DOCUMENT",
+                                          "value" : "commodity-1"
+                                        }
+                                      },
+                                      "meta" : {
+                                        "globalKey" : "0"
+                                      }
+                                    },
+                                    "meta" : {
+                                      "globalKey" : "5775c2d2",
+                                      "externalKey" : "FloatLeg_2"
+                                    }
+                                  } ],
+                                  "fixedPricePayout" : [ {
+                                    "payerReceiver" : {
+                                      "payer" : "Party1",
+                                      "receiver" : "Party2"
+                                    },
+                                    "priceQuantity" : {
+                                      "quantitySchedule" : {
+                                        "address" : {
+                                          "scope" : "DOCUMENT",
+                                          "value" : "quantity-3"
+                                        }
+                                      },
+                                      "meta" : {
+                                        "globalKey" : "0"
+                                      }
+                                    },
+                                    "paymentDates" : {
+                                      "paymentDateSchedule" : {
+                                        "interimPaymentDates" : [ {
+                                          "adjustableDates" : {
+                                            "unadjustedDate" : [ "2018-08-27", "2018-09-25", "2018-10-25", "2018-11-26", "2018-12-26", "2019-01-25" ],
+                                            "meta" : {
+                                              "globalKey" : "a038ac3e"
+                                            }
+                                          },
+                                          "meta" : {
+                                            "globalKey" : "a038ac3e"
+                                          }
+                                        } ]
+                                      },
+                                      "meta" : {
+                                        "globalKey" : "a038ac3e"
+                                      }
+                                    },
+                                    "fixedPrice" : {
+                                      "price" : {
+                                        "address" : {
+                                          "scope" : "DOCUMENT",
+                                          "value" : "price-2"
+                                        }
+                                      }
+                                    },
+                                    "meta" : {
+                                      "globalKey" : "1c7c0103",
+                                      "externalKey" : "FixedLeg_3"
+                                    }
+                                  } ],
+                                  "meta" : {
+                                    "globalKey" : "cf85dfd5"
+                                  }
+                                }
+                              },
+                              "meta" : {
+                                "globalKey" : "85d5aa33"
+                              }
+                            },
+                            "meta" : {
+                              "globalKey" : "85d5aa33"
+                            }
+                          },
+                          "meta" : {
+                            "globalKey" : "fce64fe5",
+                            "externalKey" : "commoditySwaption"
+                          }
+                        } ],
+                        "meta" : {
+                          "globalKey" : "fce64fe5"
+                        }
+                      },
+                      "nonStandardisedTerms" : false
+                    },
+                    "meta" : {
+                      "globalKey" : "23511e8b"
+                    }
+                  },
+                  "meta" : {
+                    "globalKey" : "23511e8b"
+                  }
+                },
+                "tradeLot" : [ {
+                  "priceQuantity" : [ {
+                    "price" : [ {
+                      "value" : {
+                        "value" : 0.000000,
+                        "unit" : {
+                          "currency" : {
+                            "value" : "USD"
+                          }
+                        },
+                        "priceType" : "AssetPrice",
+                        "arithmeticOperator" : "Add"
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "price-1"
+                        } ]
+                      }
+                    } ],
+                    "quantity" : [ {
+                      "value" : {
+                        "value" : 10000.00000,
+                        "frequency" : {
+                          "periodMultiplier" : 1,
+                          "period" : "D",
+                          "meta" : {
+                            "globalKey" : "63"
+                          }
+                        }
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "quantity-2"
+                        } ]
+                      }
+                    }, {
+                      "value" : {
+                        "value" : 1840000
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "quantity-1"
+                        } ]
+                      }
+                    } ],
+                    "observable" : {
+                      "commodity" : {
+                        "value" : {
+                          "productIdentifier" : [ {
+                            "value" : {
+                              "identifier" : {
+                                "value" : "NATURAL GAS-AECO C/NIT (US$/MMBTU)-CANADIAN GAS REPORTER",
+                                "meta" : {
+                                  "scheme" : "http://www.fpml.org/coding-scheme/commodity-reference-price-1-0"
+                                }
+                              },
+                              "source" : "ISDACRP",
+                              "meta" : {
+                                "globalKey" : "80fb9c83"
+                              }
+                            }
+                          } ],
+                          "priceQuoteType" : "Settlement"
+                        },
+                        "meta" : {
+                          "location" : [ {
+                            "scope" : "DOCUMENT",
+                            "value" : "commodity-1"
+                          } ]
+                        }
+                      },
+                      "meta" : {
+                        "globalKey" : "3944b7ba"
+                      }
+                    },
+                    "meta" : {
+                      "globalKey" : "d0a07b7c"
+                    }
+                  }, {
+                    "price" : [ {
+                      "value" : {
+                        "value" : 2.930000,
+                        "unit" : {
+                          "currency" : {
+                            "value" : "USD"
+                          }
+                        },
+                        "priceType" : "CashPrice",
+                        "cashPrice" : {
+                          "cashPriceType" : "Fee"
+                        }
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "price-2"
+                        } ]
+                      }
+                    } ],
+                    "quantity" : [ {
+                      "value" : {
+                        "value" : 10000.00000,
+                        "frequency" : {
+                          "periodMultiplier" : 1,
+                          "period" : "D",
+                          "meta" : {
+                            "globalKey" : "63"
+                          }
+                        }
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "quantity-4"
+                        } ]
+                      }
+                    }, {
+                      "value" : {
+                        "value" : 1840000
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "quantity-3"
+                        } ]
+                      }
+                    } ],
+                    "meta" : {
+                      "globalKey" : "dc2c82b8"
+                    }
+                  } ]
+                } ],
+                "counterparty" : [ {
+                  "role" : "Party1",
+                  "partyReference" : {
+                    "globalReference" : "4d8f029e",
+                    "externalReference" : "Party1"
+                  }
+                }, {
+                  "role" : "Party2",
+                  "partyReference" : {
+                    "globalReference" : "ee55392f",
+                    "externalReference" : "Party2"
+                  }
+                } ]
+              },
+              "party" : [ {
+                "partyId" : [ {
+                  "identifier" : {
+                    "value" : "213800IV9PCAC364HN60",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                    }
+                  },
+                  "identifierType" : "LEI",
+                  "meta" : {
+                    "globalKey" : "365954bc"
+                  }
+                } ],
+                "name" : {
+                  "value" : "Broadridge MessageAutomation"
+                },
+                "contactInformation" : {
+                  "address" : [ {
+                    "country" : {
+                      "value" : "GB"
+                    }
+                  } ]
+                },
+                "meta" : {
+                  "globalKey" : "4d8f029e",
+                  "externalKey" : "Party1"
+                }
+              }, {
+                "partyId" : [ {
+                  "identifier" : {
+                    "value" : "213800WWTABZ1GOJHH37",
+                    "meta" : {
+                      "scheme" : "http://www.dtcc.com/participant-internal-identifier"
+                    }
+                  },
+                  "meta" : {
+                    "globalKey" : "e726c1be"
+                  }
+                }, {
+                  "identifier" : {
+                    "value" : "DUMMY0000000000LEI01",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                    }
+                  },
+                  "identifierType" : "LEI",
+                  "meta" : {
+                    "globalKey" : "60fe4ea7"
+                  }
+                } ],
+                "name" : {
+                  "value" : "Broadridge Financial Solutions Limited"
+                },
+                "meta" : {
+                  "globalKey" : "ee55392f",
+                  "externalKey" : "Party2"
+                }
+              } ],
+              "meta" : {
+                "globalKey" : "d9e4317d"
+              }
+            },
+            "meta" : {
+              "globalKey" : "d9e4317d"
+            }
+          }
+        }
+      } ],
+      "after" : [ {
+        "trade" : {
+          "tradeIdentifier" : [ {
+            "issuer" : {
+              "value" : "DUMMY0000000000LEI01",
+              "meta" : {
+                "scheme" : "http://www.fpml.org/coding-scheme/external/issuer-identifier"
+              }
+            },
+            "assignedIdentifier" : [ {
+              "identifier" : {
+                "value" : "COMMODITYOPTIONENE02",
+                "meta" : {
+                  "scheme" : "http://www.fpml.org/coding-scheme/external/unique-transaction-identifier"
+                }
+              }
+            } ],
+            "meta" : {
+              "globalKey" : "4cfe125"
+            },
+            "identifierType" : "UniqueTransactionIdentifier"
+          }, {
+            "issuerReference" : {
+              "globalReference" : "4d8f029e",
+              "externalReference" : "Party1"
+            },
+            "assignedIdentifier" : [ {
+              "identifier" : {
+                "value" : "COMMODITYOPTIONENE01",
+                "meta" : {
+                  "scheme" : "http://www.dtcc.com/internal_Referenceid"
+                }
+              }
+            } ],
+            "meta" : {
+              "globalKey" : "c4675530"
+            }
+          } ],
+          "tradeDate" : {
+            "value" : "2022-03-17",
+            "meta" : {
+              "globalKey" : "3f30d1"
+            }
+          },
+          "tradableProduct" : {
+            "product" : {
+              "contractualProduct" : {
+                "productTaxonomy" : [ {
+                  "primaryAssetClass" : {
+                    "value" : "Commodity"
+                  }
+                }, {
+                  "source" : "CFI",
+                  "value" : {
+                    "name" : {
+                      "value" : "HTSXVX",
+                      "meta" : {
+                        "scheme" : "http://www.fpml.org/coding-scheme/external/product-classification/iso10962"
+                      }
+                    }
+                  }
+                }, {
+                  "source" : "ISDA",
+                  "productQualifier" : "Commodity_Swaption"
+                } ],
+                "productIdentifier" : [ {
+                  "value" : {
+                    "identifier" : {
+                      "value" : "Commodity:Energy:NatGas:Option:Cash",
+                      "meta" : {
+                        "scheme" : "http://www.fpml.org/coding-scheme/product-taxonomy"
+                      }
+                    },
+                    "source" : "Other",
+                    "meta" : {
+                      "globalKey" : "fbf1cdb5"
+                    }
+                  }
+                } ],
+                "economicTerms" : {
+                  "payout" : {
+                    "optionPayout" : [ {
+                      "payerReceiver" : {
+                        "payer" : "Party2",
+                        "receiver" : "Party1"
+                      },
+                      "settlementTerms" : {
+                        "settlementType" : "Physical",
+                        "meta" : {
+                          "globalKey" : "f3b1d0d7"
+                        }
+                      },
+                      "buyerSeller" : {
+                        "buyer" : "Party1",
+                        "seller" : "Party2"
+                      },
+                      "optionType" : "Call",
+                      "exerciseTerms" : {
+                        "optionStyle" : {
+                          "europeanExercise" : {
+                            "expirationDate" : [ {
+                              "adjustableDate" : {
+                                "unadjustedDate" : "2018-06-27",
+                                "meta" : {
+                                  "globalKey" : "3f119b"
+                                }
+                              },
+                              "meta" : {
+                                "globalKey" : "3f119b"
+                              }
+                            } ],
+                            "meta" : {
+                              "globalKey" : "3f119b",
+                              "externalKey" : "European"
+                            }
+                          }
+                        }
+                      },
+                      "underlier" : {
+                        "contractualProduct" : {
+                          "productTaxonomy" : [ {
+                            "source" : "ISDA",
+                            "productQualifier" : "Commodity_Swap_FixedFloat"
+                          } ],
+                          "economicTerms" : {
+                            "effectiveDate" : {
+                              "adjustableDate" : {
+                                "unadjustedDate" : "2018-07-01",
+                                "dateAdjustments" : {
+                                  "businessDayConvention" : "NotApplicable",
+                                  "meta" : {
+                                    "globalKey" : "3a4b88ab"
+                                  }
+                                },
+                                "meta" : {
+                                  "globalKey" : "270d2e2c"
+                                }
+                              },
+                              "meta" : {
+                                "globalKey" : "270d2e2c"
+                              }
+                            },
+                            "terminationDate" : {
+                              "adjustableDate" : {
+                                "unadjustedDate" : "2018-12-31",
+                                "dateAdjustments" : {
+                                  "businessDayConvention" : "NotApplicable",
+                                  "meta" : {
+                                    "globalKey" : "3a4b88ab"
+                                  }
+                                },
+                                "meta" : {
+                                  "globalKey" : "2712500a"
+                                }
+                              },
+                              "meta" : {
+                                "globalKey" : "2712500a"
+                              }
+                            },
+                            "payout" : {
+                              "commodityPayout" : [ {
+                                "payerReceiver" : {
+                                  "payer" : "Party2",
+                                  "receiver" : "Party1"
+                                },
+                                "priceQuantity" : {
+                                  "quantitySchedule" : {
+                                    "address" : {
+                                      "scope" : "DOCUMENT",
+                                      "value" : "quantity-1"
+                                    }
+                                  },
+                                  "meta" : {
+                                    "globalKey" : "0"
+                                  }
+                                },
+                                "settlementTerms" : {
+                                  "settlementType" : "Cash",
+                                  "settlementCurrency" : {
+                                    "value" : "USD"
+                                  },
+                                  "meta" : {
+                                    "globalKey" : "7610bbd9"
+                                  }
+                                },
+                                "averagingFeature" : {
+                                  "averagingMethod" : {
+                                    "isWeighted" : false,
+                                    "calculationMethod" : "Arithmetic"
+                                  }
+                                },
+                                "commodityPriceReturnTerms" : {
+                                  "spread" : {
+                                    "price" : {
+                                      "address" : {
+                                        "scope" : "DOCUMENT",
+                                        "value" : "price-1"
+                                      }
+                                    }
+                                  }
+                                },
+                                "pricingDates" : {
+                                  "parametricDates" : {
+                                    "dayType" : "Business",
+                                    "dayDistribution" : "Penultimate"
+                                  }
+                                },
+                                "calculationPeriodDates" : {
+                                  "calculationPeriodFrequency" : {
+                                    "periodMultiplier" : 1,
+                                    "period" : "M",
+                                    "meta" : {
+                                      "globalKey" : "11e9",
+                                      "externalKey" : "calculationPeriodsSchedule_FloatLeg_2"
+                                    },
+                                    "balanceOfFirstPeriod" : false
+                                  },
+                                  "meta" : {
+                                    "globalKey" : "11e9"
+                                  }
+                                },
+                                "paymentDates" : {
+                                  "paymentDateSchedule" : {
+                                    "interimPaymentDates" : [ {
+                                      "adjustableDates" : {
+                                        "unadjustedDate" : [ "2018-08-27", "2018-09-25", "2018-10-25", "2018-11-26", "2018-12-26", "2019-01-25" ],
+                                        "meta" : {
+                                          "globalKey" : "a038ac3e"
+                                        }
+                                      },
+                                      "meta" : {
+                                        "globalKey" : "a038ac3e"
+                                      }
+                                    } ]
+                                  },
+                                  "meta" : {
+                                    "globalKey" : "a038ac3e"
+                                  }
+                                },
+                                "underlier" : {
+                                  "commodity" : {
+                                    "address" : {
+                                      "scope" : "DOCUMENT",
+                                      "value" : "commodity-1"
+                                    }
+                                  },
+                                  "meta" : {
+                                    "globalKey" : "0"
+                                  }
+                                },
+                                "meta" : {
+                                  "globalKey" : "5775c2d2",
+                                  "externalKey" : "FloatLeg_2"
+                                }
+                              } ],
+                              "fixedPricePayout" : [ {
+                                "payerReceiver" : {
+                                  "payer" : "Party1",
+                                  "receiver" : "Party2"
+                                },
+                                "priceQuantity" : {
+                                  "quantitySchedule" : {
+                                    "address" : {
+                                      "scope" : "DOCUMENT",
+                                      "value" : "quantity-3"
+                                    }
+                                  },
+                                  "meta" : {
+                                    "globalKey" : "0"
+                                  }
+                                },
+                                "paymentDates" : {
+                                  "paymentDateSchedule" : {
+                                    "interimPaymentDates" : [ {
+                                      "adjustableDates" : {
+                                        "unadjustedDate" : [ "2018-08-27", "2018-09-25", "2018-10-25", "2018-11-26", "2018-12-26", "2019-01-25" ],
+                                        "meta" : {
+                                          "globalKey" : "a038ac3e"
+                                        }
+                                      },
+                                      "meta" : {
+                                        "globalKey" : "a038ac3e"
+                                      }
+                                    } ]
+                                  },
+                                  "meta" : {
+                                    "globalKey" : "a038ac3e"
+                                  }
+                                },
+                                "fixedPrice" : {
+                                  "price" : {
+                                    "address" : {
+                                      "scope" : "DOCUMENT",
+                                      "value" : "price-2"
+                                    }
+                                  }
+                                },
+                                "meta" : {
+                                  "globalKey" : "1c7c0103",
+                                  "externalKey" : "FixedLeg_3"
+                                }
+                              } ],
+                              "meta" : {
+                                "globalKey" : "cf85dfd5"
+                              }
+                            }
+                          },
+                          "meta" : {
+                            "globalKey" : "85d5aa33"
+                          }
+                        },
+                        "meta" : {
+                          "globalKey" : "85d5aa33"
+                        }
+                      },
+                      "meta" : {
+                        "globalKey" : "fce64fe5",
+                        "externalKey" : "commoditySwaption"
+                      }
+                    } ],
+                    "meta" : {
+                      "globalKey" : "fce64fe5"
+                    }
+                  },
+                  "nonStandardisedTerms" : false
+                },
+                "meta" : {
+                  "globalKey" : "23511e8b"
+                }
+              },
+              "meta" : {
+                "globalKey" : "23511e8b"
+              }
+            },
+            "tradeLot" : [ {
+              "priceQuantity" : [ {
+                "price" : [ {
+                  "value" : {
+                    "value" : 0.000000,
+                    "unit" : {
+                      "currency" : {
+                        "value" : "USD"
+                      }
+                    },
+                    "priceType" : "AssetPrice",
+                    "arithmeticOperator" : "Add"
+                  },
+                  "meta" : {
+                    "location" : [ {
+                      "scope" : "DOCUMENT",
+                      "value" : "price-1"
+                    } ]
+                  }
+                } ],
+                "quantity" : [ {
+                  "value" : {
+                    "value" : 10000.00000,
+                    "frequency" : {
+                      "periodMultiplier" : 1,
+                      "period" : "D",
+                      "meta" : {
+                        "globalKey" : "63"
+                      }
+                    }
+                  },
+                  "meta" : {
+                    "location" : [ {
+                      "scope" : "DOCUMENT",
+                      "value" : "quantity-2"
+                    } ]
+                  }
+                }, {
+                  "value" : {
+                    "value" : 1840000
+                  },
+                  "meta" : {
+                    "location" : [ {
+                      "scope" : "DOCUMENT",
+                      "value" : "quantity-1"
+                    } ]
+                  }
+                } ],
+                "observable" : {
+                  "commodity" : {
+                    "value" : {
+                      "productIdentifier" : [ {
+                        "value" : {
+                          "identifier" : {
+                            "value" : "NATURAL GAS-AECO C/NIT (US$/MMBTU)-CANADIAN GAS REPORTER",
+                            "meta" : {
+                              "scheme" : "http://www.fpml.org/coding-scheme/commodity-reference-price-1-0"
+                            }
+                          },
+                          "source" : "ISDACRP",
+                          "meta" : {
+                            "globalKey" : "80fb9c83"
+                          }
+                        }
+                      } ],
+                      "priceQuoteType" : "Settlement"
+                    },
+                    "meta" : {
+                      "location" : [ {
+                        "scope" : "DOCUMENT",
+                        "value" : "commodity-1"
+                      } ]
+                    }
+                  },
+                  "meta" : {
+                    "globalKey" : "3944b7ba"
+                  }
+                },
+                "meta" : {
+                  "globalKey" : "d0a07b7c"
+                }
+              }, {
+                "price" : [ {
+                  "value" : {
+                    "value" : 2.930000,
+                    "unit" : {
+                      "currency" : {
+                        "value" : "USD"
+                      }
+                    },
+                    "priceType" : "CashPrice",
+                    "cashPrice" : {
+                      "cashPriceType" : "Fee"
+                    }
+                  },
+                  "meta" : {
+                    "location" : [ {
+                      "scope" : "DOCUMENT",
+                      "value" : "price-2"
+                    } ]
+                  }
+                } ],
+                "quantity" : [ {
+                  "value" : {
+                    "value" : 10000.00000,
+                    "frequency" : {
+                      "periodMultiplier" : 1,
+                      "period" : "D",
+                      "meta" : {
+                        "globalKey" : "63"
+                      }
+                    }
+                  },
+                  "meta" : {
+                    "location" : [ {
+                      "scope" : "DOCUMENT",
+                      "value" : "quantity-4"
+                    } ]
+                  }
+                }, {
+                  "value" : {
+                    "value" : 1840000
+                  },
+                  "meta" : {
+                    "location" : [ {
+                      "scope" : "DOCUMENT",
+                      "value" : "quantity-3"
+                    } ]
+                  }
+                } ],
+                "meta" : {
+                  "globalKey" : "dc2c82b8"
+                }
+              } ]
+            } ],
+            "counterparty" : [ {
+              "role" : "Party1",
+              "partyReference" : {
+                "globalReference" : "4d8f029e",
+                "externalReference" : "Party1"
+              }
+            }, {
+              "role" : "Party2",
+              "partyReference" : {
+                "globalReference" : "ee55392f",
+                "externalReference" : "Party2"
+              }
+            } ]
+          },
+          "party" : [ {
+            "partyId" : [ {
+              "identifier" : {
+                "value" : "213800IV9PCAC364HN60",
+                "meta" : {
+                  "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                }
+              },
+              "identifierType" : "LEI",
+              "meta" : {
+                "globalKey" : "365954bc"
+              }
+            } ],
+            "name" : {
+              "value" : "Broadridge MessageAutomation"
+            },
+            "contactInformation" : {
+              "address" : [ {
+                "country" : {
+                  "value" : "GB"
+                }
+              } ]
+            },
+            "meta" : {
+              "globalKey" : "4d8f029e",
+              "externalKey" : "Party1"
+            }
+          }, {
+            "partyId" : [ {
+              "identifier" : {
+                "value" : "213800WWTABZ1GOJHH37",
+                "meta" : {
+                  "scheme" : "http://www.dtcc.com/participant-internal-identifier"
+                }
+              },
+              "meta" : {
+                "globalKey" : "e726c1be"
+              }
+            }, {
+              "identifier" : {
+                "value" : "DUMMY0000000000LEI01",
+                "meta" : {
+                  "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                }
+              },
+              "identifierType" : "LEI",
+              "meta" : {
+                "globalKey" : "60fe4ea7"
+              }
+            } ],
+            "name" : {
+              "value" : "Broadridge Financial Solutions Limited"
+            },
+            "meta" : {
+              "globalKey" : "ee55392f",
+              "externalKey" : "Party2"
+            }
+          } ],
+          "contractDetails" : {
+            "documentation" : [ {
+              "legalAgreementIdentification" : {
+                "agreementName" : {
+                  "agreementType" : "MasterAgreement",
+                  "masterAgreementType" : {
+                    "value" : "ISDAMaster"
+                  }
+                },
+                "vintage" : 2002
+              },
+              "contractualParty" : [ {
+                "globalReference" : "4d8f029e",
+                "externalReference" : "Party1"
+              }, {
+                "globalReference" : "ee55392f",
+                "externalReference" : "Party2"
+              } ],
+              "meta" : {
+                "globalKey" : "8241850c"
+              }
+            } ]
+          },
+          "meta" : {
+            "globalKey" : "d9e4317d"
+          }
+        },
+        "state" : {
+          "positionState" : "Formed"
+        },
+        "meta" : {
+          "globalKey" : "d9e4317d"
+        }
+      } ]
+    },
+    "previousWorkflowStep" : {
+      "globalReference" : "bae538cc"
+    },
+    "messageInformation" : {
+      "messageId" : {
+        "value" : "001229414555123459991234569BR777123456789",
+        "meta" : {
+          "scheme" : "http://www.bankx.com/msg_id"
+        }
+      },
+      "sentBy" : {
+        "value" : "213800IV9PCAC364HN60"
+      },
+      "sentTo" : [ {
+        "value" : "DTCCUS3"
+      } ]
+    },
+    "timestamp" : [ {
+      "dateTime" : "2019-11-16T00:00:00Z",
+      "qualification" : "eventCreationDateTime"
+    }, {
+      "dateTime" : "2022-03-17T14:44:58Z",
+      "qualification" : "executionDateTime"
+    } ],
+    "eventIdentifier" : [ {
+      "assignedIdentifier" : [ {
+        "identifier" : {
+          "value" : "001229414555123459991234569BR777123456789"
+        }
+      } ],
+      "meta" : {
+        "globalKey" : "916ec538"
+      }
+    } ],
+    "action" : "New",
+    "party" : [ {
+      "partyId" : [ {
+        "identifier" : {
+          "value" : "213800IV9PCAC364HN60",
+          "meta" : {
+            "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+          }
+        },
+        "identifierType" : "LEI",
+        "meta" : {
+          "globalKey" : "365954bc"
+        }
+      } ],
+      "name" : {
+        "value" : "Broadridge MessageAutomation"
+      },
+      "contactInformation" : {
+        "address" : [ {
+          "country" : {
+            "value" : "GB"
+          }
+        } ]
+      },
+      "meta" : {
+        "globalKey" : "4d8f029e",
+        "externalKey" : "Party1"
+      }
+    }, {
+      "partyId" : [ {
+        "identifier" : {
+          "value" : "213800WWTABZ1GOJHH37",
+          "meta" : {
+            "scheme" : "http://www.dtcc.com/participant-internal-identifier"
+          }
+        },
+        "meta" : {
+          "globalKey" : "e726c1be"
+        }
+      }, {
+        "identifier" : {
+          "value" : "DUMMY0000000000LEI01",
+          "meta" : {
+            "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+          }
+        },
+        "identifierType" : "LEI",
+        "meta" : {
+          "globalKey" : "60fe4ea7"
+        }
+      } ],
+      "name" : {
+        "value" : "Broadridge Financial Solutions Limited"
+      },
+      "meta" : {
+        "globalKey" : "ee55392f",
+        "externalKey" : "Party2"
+      }
+    } ]
+  },
+  "reportableInformation" : {
+    "confirmationMethod" : "NotConfirmed",
+    "executionVenueType" : "OffFacility",
+    "partyInformation" : [ {
+      "partyReference" : {
+        "globalReference" : "4d8f029e",
+        "externalReference" : "Party1"
+      },
+      "regimeInformation" : [ {
+        "supervisoryBody" : {
+          "value" : "CA.QC.AMF"
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "supervisoryBody" : {
+          "value" : "CA.ON.OSC"
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "EMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "ESMA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "esmaPartyInformation" : {
+          "natureOfParty" : "Financial",
+          "corporateSector" : {
+            "financialSector" : [ "CDTI" ]
+          },
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "UKEMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "FCA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "fcaPartyInformation" : {
+          "natureOfParty" : "Financial",
+          "corporateSector" : {
+            "financialSector" : [ "CDTI" ]
+          },
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "JFSA"
+        },
+        "supervisoryBody" : {
+          "value" : "JFSA"
+        },
+        "reportingRole" : "ReportingParty",
+        "technicalRecordId" : {
+          "value" : "001229414555123459991234569BR777123456789",
+          "meta" : {
+            "scheme" : "http://www.bankx.com/msg_id"
+          }
+        }
+      } ]
+    }, {
+      "partyReference" : {
+        "globalReference" : "ee55392f",
+        "externalReference" : "Party2"
+      },
+      "regimeInformation" : [ {
+        "regimeName" : {
+          "value" : "EMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "ESMA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "esmaPartyInformation" : {
+          "natureOfParty" : "Financial",
+          "corporateSector" : {
+            "financialSector" : [ "AIFD" ]
+          },
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "UKEMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "FCA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "fcaPartyInformation" : {
+          "natureOfParty" : "Financial",
+          "corporateSector" : {
+            "financialSector" : [ "AIFD" ]
+          },
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "JFSA"
+        },
+        "supervisoryBody" : {
+          "value" : "JFSA"
+        },
+        "reportingRole" : "ReportingParty",
+        "technicalRecordId" : {
+          "value" : "001229414555123459991234569BR777123456789",
+          "meta" : {
+            "scheme" : "http://www.bankx.com/msg_id"
+          }
+        }
+      } ]
+    } ],
+    "originalExecutionTimestamp" : "2022-03-17T14:44:58Z"
+  },
+  "reportingSide" : {
+    "reportingParty" : {
+      "globalReference" : "4d8f029e",
+      "externalReference" : "Party1"
+    },
+    "reportingCounterparty" : {
+      "globalReference" : "ee55392f",
+      "externalReference" : "Party2"
+    }
+  }
+}

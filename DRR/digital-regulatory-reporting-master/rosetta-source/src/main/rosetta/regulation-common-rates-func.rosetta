@@ -1,0 +1,287 @@
+namespace drr.regulation.common.rates
+version "${project.version}"
+
+import cdm.base.staticdata.asset.rates.*
+import drr.regulation.common.* //When the automatically imported version of ISOFloatingRateIndexEnum is available it should be replaced by the appropriate namespace
+
+func FloatingRateIndex_ISDA_To_EMIR: <"Classifies a floating rate index into an ISO code category, for those where the corresponding ISO code is known.">
+    inputs: floatingRateIndexISDA FloatingRateIndexEnum (1..1)
+    output: floatingRateIndexISO ISOFloatingRateIndexEnum (1..1)
+    set floatingRateIndexISO:
+        if floatingRateIndexISDA = FloatingRateIndexEnum -> AUD_BBR_AUBBSW
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> AUD_BBR_BBSW
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> AUD_BBR_BBSW_Bloomberg
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> AUD_BBSW
+            then floatingRateIndexISO -> BBSW
+        else if floatingRateIndexISDA = FloatingRateIndexEnum -> HUF_BUBOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> HUF_BUBOR_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> HUF_BUBOR_Reuters
+            then floatingRateIndexISO -> BUBO
+        else if floatingRateIndexISDA = FloatingRateIndexEnum -> CAD_BA_CDOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> CAD_BA_CDOR_Bloomberg
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> CAD_CDOR
+            then floatingRateIndexISO -> CDOR
+        else if floatingRateIndexISDA = FloatingRateIndexEnum -> DKK_CIBOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> DKK_CIBOR2
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> DKK_CIBOR2_Bloomberg
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> DKK_CIBOR2_DKNA13
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> DKK_CIBOR_DKNA13
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> DKK_CIBOR_DKNA13_Bloomberg
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> DKK_CIBOR_Reference_Banks
+            then floatingRateIndexISO -> CIBO
+        else if floatingRateIndexISDA = FloatingRateIndexEnum -> USD_Federal_Funds
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_Federal_Funds_H_15
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_Federal_Funds_H_15_Bloomberg
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_Federal_Funds_Reference_Dealers
+            then floatingRateIndexISO -> EFFR
+        else if floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_EONIA
+            then floatingRateIndexISO -> EONA
+        else if floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_EONIA_Swap_Index
+            then floatingRateIndexISO -> EONS
+        else if floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_EuroSTR
+            then floatingRateIndexISO -> ESTR
+        else if floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_EURIBOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_EURIBOR_Act_365
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_EURIBOR_Act_365_Bloomberg
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_EURIBOR_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_EURIBOR_Reuters
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_EURIBOR_Telerate
+            then floatingRateIndexISO -> EURI
+        else if floatingRateIndexISDA = FloatingRateIndexEnum -> USD_ISDAFIX3_Swap_Rate
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_ISDAFIX3_Swap_Rate_3_00
+            then floatingRateIndexISO -> ISDA
+        else if floatingRateIndexISDA = FloatingRateIndexEnum -> ZAR_JIBAR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> ZAR_JIBAR_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> ZAR_JIBAR_SAFEX
+            then floatingRateIndexISO -> JIBA
+        else if floatingRateIndexISDA = FloatingRateIndexEnum -> AUD_LIBOR_BBA
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> AUD_LIBOR_BBA_Bloomberg
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> AUD_LIBOR_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> CAD_LIBOR_BBA
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> CAD_LIBOR_BBA_Bloomberg
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> CAD_LIBOR_BBA_SwapMarker
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> CAD_LIBOR_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> CHF_LIBOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> CHF_LIBOR_BBA
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> CHF_LIBOR_BBA_Bloomberg
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> CHF_LIBOR_ISDA
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> CHF_LIBOR_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_LIBOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_LIBOR_BBA
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_LIBOR_BBA_Bloomberg
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_LIBOR_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> GBP_LIBOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> GBP_LIBOR_BBA
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> GBP_LIBOR_BBA_Bloomberg
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> GBP_LIBOR_ISDA
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> GBP_LIBOR_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> JPY_LIBOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> JPY_LIBOR_BBA
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> JPY_LIBOR_BBA_Bloomberg
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> JPY_LIBOR_FRASETT
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> JPY_LIBOR_ISDA
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> JPY_LIBOR_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> JPY_Quoting_Banks_LIBOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> MYR_KLIBOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> MYR_KLIBOR_BNM
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> MYR_KLIBOR_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> TRY_TRLIBOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_LIBOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_LIBOR_BBA
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_LIBOR_BBA_Bloomberg
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_LIBOR_ISDA
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_LIBOR_LIBO
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_LIBOR_Reference_Banks
+            then floatingRateIndexISO -> LIBO
+        else if floatingRateIndexISDA = FloatingRateIndexEnum -> USD_Municipal_Swap_Index
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_Municipal_Swap_Libor_Ratio_11_00_ICAP
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_Municipal_Swap_Rate_11_00_ICAP
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_SIFMA_Municipal_Swap_Index
+            then floatingRateIndexISO -> MAAA
+        else if floatingRateIndexISDA = FloatingRateIndexEnum -> RUB_MosPrime
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> RUB_MOSPRIME_NFEA
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> RUB_MOSPRIME_Reference_Banks
+            then floatingRateIndexISO -> MOSP
+        else if floatingRateIndexISDA = FloatingRateIndexEnum -> NOK_NIBOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> NOK_NIBOR_NIBR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> NOK_NIBOR_NIBR_Bloomberg
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> NOK_NIBOR_NIBR_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> NOK_NIBOR_OIBOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> NOK_NIBOR_Reference_Banks
+            then floatingRateIndexISO -> NIBO
+        else if floatingRateIndexISDA = FloatingRateIndexEnum -> CZK_PRIBOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> CZK_PRIBOR_PRBO
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> CZK_PRIBOR_Reference_Banks
+            then floatingRateIndexISO -> PRBO
+        else if floatingRateIndexISDA = FloatingRateIndexEnum -> USD_SOFR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_SOFR_Average_180D
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_SOFR_Average_30D
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_SOFR_Average_90D
+            then floatingRateIndexISO -> SOFR
+        else if floatingRateIndexISDA = FloatingRateIndexEnum -> GBP_SONIA
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> GBP_SONIA_ICE_Term
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> GBP_SONIA_Refinitiv_Term
+            then floatingRateIndexISO -> SONA
+        else if floatingRateIndexISDA = FloatingRateIndexEnum -> SEK_STIBOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> SEK_STIBOR_Bloomberg
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> SEK_STIBOR_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> SEK_STIBOR_SIDE
+            then floatingRateIndexISO -> STBO
+        else if floatingRateIndexISDA = FloatingRateIndexEnum -> AUD_BBSW_Quarterly_Swap_Rate_ICAP
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> AUD_BBSW_Semi_Annual_Swap_Rate_ICAP
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> AUD_Quarterly_Swap_Rate_ICAP
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> AUD_Quarterly_Swap_Rate_ICAP_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> AUD_Semi_Annual_Swap_Rate_11_00_BGCANTOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> AUD_Semi_Annual_Swap_Rate_BGCANTOR_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> AUD_Semi_annual_Swap_Rate_ICAP
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> AUD_Semi_Annual_Swap_Rate_ICAP_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> AUD_Swap_Rate_Reuters
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> CAD_ISDA_Swap_Rate
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> CHF_Annual_Swap_Rate
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> CHF_Annual_Swap_Rate_11_00_ICAP
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> CHF_Annual_Swap_Rate_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> CHF_ISDAFIX_Swap_Rate
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> CNY_Quarterly_7_day_Repo_Non_Deliverable_Swap_Rate_TRADITION
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> CNY_Quarterly_7_day_Repo_Non_Deliverable_Swap_Rate_TRADITION_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> CNY_Quarterly_7D_Repo_NDS_Rate_Tradition
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> CNY_Semi_Annual_Swap_Rate_11_00_BGCANTOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> CNY_Semi_Annual_Swap_Rate_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> CZK_Annual_Swap_Rate_11_00_BGCANTOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> CZK_Annual_Swap_Rate_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_Annual_Swap_Rate_10_00
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_Annual_Swap_Rate_10_00_BGCANTOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_Annual_Swap_Rate_10_00_Bloomberg
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_Annual_Swap_Rate_10_00_ICAP
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_Annual_Swap_Rate_10_00_SwapMarker
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_Annual_Swap_Rate_10_00_TRADITION
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_Annual_Swap_Rate_11_00
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_Annual_Swap_Rate_11_00_Bloomberg
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_Annual_Swap_Rate_11_00_ICAP
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_Annual_Swap_Rate_11_00_SwapMarker
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_Annual_Swap_Rate_3_Month
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_Annual_Swap_Rate_3_Month_SwapMarker
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_Annual_Swap_Rate_4_15_TRADITION
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_Annual_Swap_Rate_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_EURIBOR_ICE_Swap_Rate_11_00
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> EUR_EURIBOR_ICE_Swap_Rate_12_00
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> GBP_ISDA_Swap_Rate
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> GBP_LIBOR_ICE_Swap_Rate
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> GBP_Semi_Annual_Swap_Rate_11_00_TRADITION
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> GBP_Semi_Annual_Swap_Rate_4_15_TRADITION
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> GBP_Semi_Annual_Swap_Rate
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> GBP_Semi_Annual_Swap_Rate_11_00_ICAP
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> GBP_Semi_Annual_Swap_Rate_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> GBP_Semi_Annual_Swap_Rate_SwapMarker26
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> GBP_SONIA_ICE_Swap_Rate
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> GBP_SONIA_Swap_Rate
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> HKD_ISDA_Swap_Rate_11_00
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> HKD_ISDA_Swap_Rate_4_00
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> HKD_Quarterly_Annual_Swap_Rate_11_00_BGCANTOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> HKD_Quarterly_Annual_Swap_Rate_11_00_TRADITION
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> HKD_Quarterly_Annual_Swap_Rate_4_00_BGCANTOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> HKD_Quarterly_Annual_Swap_Rate_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> HKD_Quarterly_Quarterly_Swap_Rate_11_00_ICAP
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> HKD_Quarterly_Quarterly_Swap_Rate_4_00_ICAP
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> HKD_Quarterly_Quarterly_Swap_Rate_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> IDR_Semi_Annual_Swap_Rate_Non_deliverable_16_00_Tullett_Prebon
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> IDR_Semi_Annual_Swap_Rate_11_00_BGCANTOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> IDR_Semi_Annual_Swap_Rate_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> INR_MIBOR_OIS
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> INR_Semi_Annual_Swap_Rate_Non_deliverable_16_00_Tullett_Prebon
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> INR_Semi_Annual_Swap_Rate_11_30_BGCANTOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> INR_Semi_Annual_Swap_Rate_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> JPY_Annual_Swap_Rate_11_00_TRADITION
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> JPY_Annual_Swap_Rate_3_00_TRADITION
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> JPY_ISDA_Swap_Rate_10_00
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> JPY_ISDA_Swap_Rate_15_00
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> JPY_LIBOR_TSR_10_00
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> JPY_LIBOR_TSR_15_00
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> KRW_Quarterly_Annual_Swap_Rate_3_30_ICAP
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> MYR_Quarterly_Swap_Rate_11_00_TRADITION
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> MYR_Quarterly_Swap_Rate_TRADITION_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> NZD_BKBM_FRA_Swap_Rate_ICAP
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> NZD_Semi_Annual_Swap_Rate_11_00_BGCANTOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> NZD_Semi_Annual_Swap_Rate_BGCANTOR_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> NZD_Swap_Rate_ICAP
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> NZD_Swap_Rate_ICAP_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> PHP_Semi_Annual_Swap_Rate_11_00_BGCANTOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> PHP_Semi_Annual_Swap_Rate_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> RON_Annual_Swap_Rate_11_00_BGCANTOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> RON_Annual_Swap_Rate_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> RUB_Annual_Swap_Rate_11_00_BGCANTOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> RUB_Annual_Swap_Rate_12_45_TRADITION
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> RUB_Annual_Swap_Rate_4_15_TRADITION
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> RUB_Annual_Swap_Rate_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> RUB_Annual_Swap_Rate_TRADITION_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> SEK_Annual_Swap_Rate
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> SEK_Annual_Swap_Rate_SESWFI
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> SGD_Semi_Annual_Currency_Basis_Swap_Rate_11_00_Tullett_Prebon
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> SGD_Semi_Annual_Currency_Basis_Swap_Rate_16_00_Tullett_Prebon
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> SGD_Semi_Annual_Swap_Rate_11_00_TRADITION
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> SGD_Semi_Annual_Swap_Rate_11_00_BGCANTOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> SGD_Semi_Annual_Swap_Rate_11_00_Tullett_Prebon
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> SGD_Semi_Annual_Swap_Rate_16_00_Tullett_Prebon
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> SGD_Semi_Annual_Swap_Rate_ICAP
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> SGD_Semi_Annual_Swap_Rate_ICAP_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> SGD_Semi_Annual_Swap_Rate_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> SGD_Semi_Annual_Swap_Rate_TRADITION_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> THB_Semi_Annual_Swap_Rate_11_00_BGCANTOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> THB_Semi_Annual_Swap_Rate_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> TRY_Annual_Swap_Rate_11_00_TRADITION
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> TRY_Annual_Swap_Rate_11_15_BGCANTOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> TRY_Annual_Swap_Rate_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> TRY_Semi_Annual_Swap_Rate_TRADITION_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> TWD_Quarterly_Annual_Swap_Rate_11_00_BGCANTOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> TWD_Quarterly_Annual_Swap_Rate_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_Swap_Rate_BCMP1
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_Annual_Swap_Rate_11_00_BGCANTOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_Annual_Swap_Rate_11_00_TRADITION
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_Annual_Swap_Rate_4_00_TRADITION
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_ISDA_Swap_Rate
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_ISDA_Swap_Rate_3_00
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_LIBOR_ICE_Swap_Rate_11_00
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_LIBOR_ICE_Swap_Rate_15_00
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_SOFR_ICE_Swap_Rate
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> VND_Semi_Annual_Swap_Rate_11_00_BGCANTOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> VND_Semi_Annual_Swap_Rate_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> ZAR_Quarterly_Swap_Rate_1_00_TRADITION
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> ZAR_Quarterly_Swap_Rate_5_30_TRADITION
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> ZAR_Quarterly_Swap_Rate_TRADITION_Reference_Banks
+            then floatingRateIndexISO -> SWAP
+        else if floatingRateIndexISDA = FloatingRateIndexEnum -> JPY_Euroyen_TIBOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> JPY_TIBOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> JPY_TIBOR_17096
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> JPY_TIBOR_17097
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> JPY_TIBOR_DTIBOR01
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> JPY_TIBOR_TIBM
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> JPY_TIBOR_TIBM__10_Banks_
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> JPY_TIBOR_TIBM__5_Banks_
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> JPY_TIBOR_TIBM__All_Banks_
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> JPY_TIBOR_TIBM__All_Banks__Bloomberg
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> JPY_TIBOR_TIBM_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> JPY_TIBOR_ZTIBOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_TIBOR_ISDC
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_TIBOR_Reference_Banks
+            then floatingRateIndexISO -> TIBO
+        else if floatingRateIndexISDA = FloatingRateIndexEnum -> ILS_TELBOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> ILS_TELBOR01_Reuters
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> ILS_TELBOR_Reference_Banks
+            then floatingRateIndexISO -> TLBO
+        else if floatingRateIndexISDA = FloatingRateIndexEnum -> USD_Treasury_Rate_BCMP1
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_TBILL_Secondary_Market_Bond_Equivalent_Yield
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_TBILL_H_15
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_TBILL_H_15_Bloomberg
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_TBILL_Secondary_Market
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_Treasury_Rate_ICAP_BrokerTec
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_Treasury_Rate_SwapMarker100
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_Treasury_Rate_SwapMarker99
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_Treasury_Rate_T19901
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_Treasury_Rate_T500
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> USD_Treasury_19901_3_00_ICAP
+            then floatingRateIndexISO -> TREA
+        else if floatingRateIndexISDA = FloatingRateIndexEnum -> PLN_WIBOR
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> PLN_WIBOR_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> PLN_WIBOR_WIBO
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> PLZ_WIBOR_Reference_Banks
+            or floatingRateIndexISDA = FloatingRateIndexEnum -> PLZ_WIBOR_WIBO
+            then floatingRateIndexISO -> WIBO

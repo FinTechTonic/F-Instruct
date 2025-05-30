@@ -1,0 +1,14 @@
+{
+  "cleared" : "False",
+  "clearedEntity" : "Out of scope",
+  "effectiveDate" : "2020-07-29",
+  "interestRateRateLeg1" : 0.02085,
+  "optionExpirationDate" : "N/A",
+  "optionPremium" : "N/A",
+  "optionType" : "N/A",
+  "priorUniqueTransactionIdentifier" : "IRINFLATIONFIXEDFL01",
+  "reportingTimestamp" : "2021-03-31T07:39:54Z",
+  "terminationDate" : "2028-07-29",
+  "uniqueProductIdentifier" : "InterestRate_InflationSwap_FixedFloat_YearOn_Year",
+  "uniqueTransactionIdentifier" : "DTDApproved2381994503EMIRRiskNewNewInterest"
+}

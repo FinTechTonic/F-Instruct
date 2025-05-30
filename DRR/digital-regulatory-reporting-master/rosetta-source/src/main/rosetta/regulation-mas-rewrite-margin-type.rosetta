@@ -1,0 +1,295 @@
+namespace drr.regulation.mas.rewrite.margin
+version "${project.version}"
+
+import cdm.base.*
+import cdm.base.staticdata.asset.common.*
+import drr.regulation.mas.*
+import drr.regulation.common.*
+import iso20022.auth108.mas.*
+
+type MASMarginReport:
+    counterparty1 LEIIdentifier (1..1)
+        [ruleReference Counterparty1]
+    counterparty2 Max72AlphaNumericText (0..1)
+        [ruleReference Counterparty2]
+    counterparty2IdentifierType boolean (1..1)
+        [ruleReference Counterparty2IdentifierType]
+    reportingSpecifiedPerson LEIIdentifier (1..1)
+        [ruleReference ReportingSpecifiedPerson]
+    dataSubmitter string (1..1)
+        [ruleReference DataSubmitter]
+    uniqueTransactionIdentifier UTIIdentifier (0..1)
+        [ruleReference UniqueTransactionIdentifier]
+    reportingTimestamp zonedDateTime (1..1)
+        [ruleReference ReportingTimestamp]
+    collateralTimestamp zonedDateTime (0..1)
+        [ruleReference CollateralTimestamp]
+    collateralPortfolioIndicator boolean (0..1)
+        [ruleReference CollateralPortfolioIndicator]
+    initialMarginCollateralPortfolioCode Max52AlphaNumericText (0..1)
+        [ruleReference InitialMarginCollateralPortfolioCodeDTCC]
+    variationMarginCollateralPortfolioCode Max52AlphaNumericText (0..1)
+        [ruleReference VariationMarginCollateralPortfolioCodeDTCC]
+    initialMarginPostedByCounterparty1PreHaircut Max30D5Number (0..1)
+        [ruleReference InitialMarginPostedByCounterparty1PreHaircut]
+    initialMarginPostedByCounterparty1PostHaircut Max30D5Number (0..1)
+        [ruleReference InitialMarginPostedByCounterparty1PostHaircut]
+    initialMarginPostedByCounterparty1Currency ISOCurrencyCodeEnum (0..1)
+        [ruleReference InitialMarginPostedByCounterparty1Currency]
+    initialMarginCollectedByCounterparty1PreHaircut Max30D5Number (0..1)
+        [ruleReference InitialMarginCollectedByCounterparty1PreHaircut]
+    initialMarginCollectedByCounterparty1PostHaircut Max30D5Number (0..1)
+        [ruleReference InitialMarginCollectedByCounterparty1PostHaircut]
+    initialMarginCollectedByCounterparty1Currency ISOCurrencyCodeEnum (0..1)
+        [ruleReference InitialMarginCollectedByCounterparty1Currency]
+    variationMarginPostedByCounterparty1PreHaircut Max30D5Number (0..1)
+        [ruleReference VariationMarginPostedByCounterparty1PreHaircut]
+    variationMarginPostedByCounterparty1PostHaircut Max30D5Number (0..1)
+        [ruleReference VariationMarginPostedByCounterparty1PostHaircut]
+    variationMarginPostedByCounterparty1Currency ISOCurrencyCodeEnum (0..1)
+        [ruleReference VariationMarginPostedByCounterparty1Currency]
+    variationMarginCollectedByCounterparty1PreHaircut Max30D5Number (0..1)
+        [ruleReference VariationMarginCollectedByCounterparty1PreHaircut]
+    variationMarginCollectedByCounterparty1PostHaircut Max30D5Number (0..1)
+        [ruleReference VariationMarginCollectedByCounterparty1PostHaircut]
+    variationMarginCollectedByCounterparty1Currency ISOCurrencyCodeEnum (0..1)
+        [ruleReference VariationMarginCollectedByCounterparty1Currency]
+    excessCollateralPostedByCounterparty1 Max30D5Number (0..1)
+        [ruleReference ExcessCollateralPostedByCounterparty1]
+    currencyOfExcessCollateralPosted string (0..1)
+        [ruleReference CurrencyOfExcessCollateralPosted]
+    excessCollateralCollectedByCounterparty1 Max30D5Number (0..1)
+        [ruleReference ExcessCollateralCollectedByCounterparty1]
+    currencyOfExcessCollateralCollected string (0..1)
+        [ruleReference CurrencyOfExcessCollateralCollected]
+    collateralisationCategory CollateralisationType3Code (1..1)
+        [ruleReference CollateralisationCategory]
+    actionType MarginActionEnum (1..1)
+        [ruleReference ActionType]
+    eventDate date (1..1)
+        [ruleReference EventDate]
+    technicalRecordId string (0..1)
+        [ruleReference TechnicalRecordId]
+    executionAgentOfTheCounterparty1 LEIIdentifier (1..1)
+        [ruleReference ExecutionAgentOfTheCounterparty1DTCC]
+
+    condition DTCC_MAS_BR_0001_01: <"Counterparty 1 Condition">
+        [docReference MAS DTCC_Specs dataElement "1" field "Counterparty 1"
+        provision "When [Action Type] = NEWT, MODI, CORR, REVI, TERM, ERROR, MARU, VALU then [Counterparty 1] must NOT = [Counterparty 2] if [Counterparty 2 identifier type] is = LEI"]
+        if counterparty2IdentifierType = True then counterparty1 <> counterparty2
+
+    condition DTCC_MAS_BR_0002_01: <"Counterparty 2 Condition">
+        [docReference MAS DTCC_Specs dataElement "2" field "Counterparty 2"
+        provision "When [Action Type] = NEWT, MODI, CORR, REVI, TERM, ERROR, MARU, VALU then [Counterparty 1] must NOT = [Counterparty 2] if [Counterparty 2 identifier type] is = LEI"]
+        if counterparty2IdentifierType = True then counterparty1 <> counterparty2
+
+    condition DTCC_MAS_BR_0010_02: <"Unique transaction identifier Condition">
+        [docReference MAS DTCC_Specs dataElement "10" field "Unique transaction identifier"
+        provision "When [Action Type] = MARU, CORR then Required if [Initial margin collateral portfolio code] = 'NOAP' and [Variation margin collateral portfolio code] is = 'NOAP' or blank. (Hence, required If  [Collateral portfolio indicator] = False.) Reject if [Collateral portfolio indicator] = True."]
+        if [MarginActionEnum -> MARU, MarginActionEnum -> CORR] any = actionType then 
+        (if (initialMarginCollateralPortfolioCode = "NOAP" and (variationMarginCollateralPortfolioCode = "NOAP" or variationMarginCollateralPortfolioCode is absent)
+            or collateralPortfolioIndicator = False) then uniqueTransactionIdentifier exists
+        else if collateralPortfolioIndicator = True then uniqueTransactionIdentifier is absent)
+
+    condition DTCC_MAS_BR_0050_03: <"Reporting timestamp Condition">
+        [docReference MAS DTCC_Specs dataElement "50" field "Reporting timestamp"
+            provision "When [Action Type] = MARU, CORR then [Reporting timestamp] must be equal to or before the [Message Received timestamp] derived by the TR.
+            Reject if the date value of the [Reporting timestamp] is more than 2 days before the date value of the [Message Received timestamp]."]
+        [regulatoryReference ISDA ISDAWorkingGroup date "unknown"
+            provision "The logic regarding the order between submissions is not modelled. The condition cannot be executed in a stateless environment."]
+        //The logic regarding the [Message Received timestamp] is not included as this data is known post submission.
+        if [MarginActionEnum -> MARU, MarginActionEnum -> CORR] any = actionType then True
+
+    condition DTCC_MAS_BR_0058_02: <"Initial margin collateral portfolio code Condition">
+        [docReference MAS DTCC_Specs dataElement "58" field "Initial margin collateral portfolio code"
+            provision "When [Action Type] = MARU, CORR then 
+            Required if [Variation margin collateral portfolio code] = 'NOAP' and [Unique transaction identifier (UTI)] is blank. Reject if the value [NOAP]  is submitted in '/Prtfl/Cd'.
+            Reject if [UTI] is populated and [Initial margin collateral portfolio code] does NOT = 'NOAP'.
+            Note: If the [Initial margin collateral portfolio code] is not applicable to your trade, clients should submit the value [NOAP] to represent 'No Applicable' in '/NoPrtfl' XML."]
+        // [NOAP] value for '/Prtfl/Cd' = 'False' value for [Collateral portfolio indicator]
+        if [MarginActionEnum -> CORR, MarginActionEnum -> MARU] any = actionType then 
+        (if variationMarginCollateralPortfolioCode = "NOAP" and uniqueTransactionIdentifier is absent then initialMarginCollateralPortfolioCode exists 
+        else if uniqueTransactionIdentifier exists and initialMarginCollateralPortfolioCode <> "NOAP" then initialMarginCollateralPortfolioCode is absent
+        else if collateralPortfolioIndicator = False then initialMarginCollateralPortfolioCode is absent)
+
+    condition DTCC_MAS_BR_0058_04: <"Variation margin collateral portfolio code Condition">
+        [docReference MAS DTCC_Specs dataElement "58" field "Variation margin collateral portfolio code code"
+          provision "When [Action Type] = MARU, CORR then 
+          Reject if [UTI] is populated and [Variation margin collateral portfolio code] does NOT = 'NOAP'. ok
+          Reject if the value [NOAP] is submitted in '/Prtfl/Cd'. ok
+          Note: If the [Variation margin collateral portfolio code] is not applicable to your trade, clients must submit the value [NOAP] to represent 'No Applicable' in '/NoPrtfl' XML."]
+        // [NOAP] value for '/Prtfl/Cd' = 'False' value for [Collateral portfolio indicator]
+        if [MarginActionEnum -> CORR, MarginActionEnum -> MARU] any = actionType then 
+        (if collateralPortfolioIndicator = False then variationMarginCollateralPortfolioCode is absent
+        else if uniqueTransactionIdentifier exists and variationMarginCollateralPortfolioCode <> "NOAP" then False)
+
+    condition DTCC_MAS_BR_0059_01: <"Initial margin posted by Counterparty 1 (pre-haircut) Condition">
+        [docReference MAS DTCC_Specs dataElement "59" field "Initial margin posted by Counterparty 1 (pre-haircut)"
+            provision "when [Action Type] = MARU, CORR then Required if [Collateralisation category] = OWC1 or OWP1 or FLCL. Reject if [Collateralisation category] does not equal to OWC1 or OWP1 or FLCL. Reject if Negative"]
+        if [MarginActionEnum -> CORR, MarginActionEnum -> MARU] any = actionType
+        then if [CollateralisationType3Code -> OWC1, CollateralisationType3Code -> OWC2, CollateralisationType3Code -> FLCL] any = collateralisationCategory
+            then initialMarginPostedByCounterparty1PreHaircut exists and initialMarginPostedByCounterparty1PreHaircut >= 0
+            else if [CollateralisationType3Code -> OWC1, CollateralisationType3Code -> OWC2, CollateralisationType3Code -> FLCL] all <> collateralisationCategory
+            then initialMarginPostedByCounterparty1PreHaircut is absent
+
+    condition DTCC_MAS_BR_0060_01: <"Initial margin posted by Counterparty 1 (post-haircut) Condition">
+        [docReference MAS DTCC_Specs dataElement "60" field "Initial margin posted by Counterparty 1 (post-haircut)"
+            provision "When [Action Type] = MARU, CORR then Required if [Collateralisation category] = OWC1 or OWP1 or FLCL. Reject if [Collateralisation category] does not equal to OWC1 or OWP1 or FLCL. Reject if Negative"]
+        if [MarginActionEnum -> CORR, MarginActionEnum -> MARU] any = actionType
+        then if [CollateralisationType3Code -> OWC1, CollateralisationType3Code -> OWP1, CollateralisationType3Code -> FLCL] any = collateralisationCategory
+            then initialMarginPostedByCounterparty1PostHaircut exists and initialMarginPostedByCounterparty1PostHaircut >= 0
+            else if [CollateralisationType3Code -> OWC1, CollateralisationType3Code -> OWP1, CollateralisationType3Code -> FLCL] all <> collateralisationCategory
+            then initialMarginPostedByCounterparty1PostHaircut is absent
+
+    condition DTCC_MAS_BR_0061_01: <"Currency of initial margin posted Condition">
+        [docReference MAS DTCC_Specs dataElement "61" field "Currency of initial margin posted"
+            provision "When [Action Type] = MARU, CORR then Required if [Initial margin posted by the reporting counterparty (pre-haircut)] is populated.
+                Reject if [Currency of initial margin posted (pre-haircut)] = XAG, XAU, XBA, XBB, XBC, XBD, XDR, XEU, XFU, XPD or XPT."]
+        if [MarginActionEnum -> CORR, MarginActionEnum -> MARU] any = actionType
+                and initialMarginPostedByCounterparty1PreHaircut exists
+        then initialMarginPostedByCounterparty1Currency exists
+                and [ISOCurrencyCodeEnum -> XAG, ISOCurrencyCodeEnum -> XAU, ISOCurrencyCodeEnum -> XBA, ISOCurrencyCodeEnum -> XBB, ISOCurrencyCodeEnum -> XBC, ISOCurrencyCodeEnum -> XBD, ISOCurrencyCodeEnum -> XDR, ISOCurrencyCodeEnum -> XPD, ISOCurrencyCodeEnum -> XPT] all <> initialMarginPostedByCounterparty1Currency
+
+    condition DTCC_MAS_BR_0061_02: <"Currency of initial margin posted Condition">
+        [docReference MAS DTCC_Specs dataElement "61" field "Currency of initial margin posted"
+            provision "When [Action Type] = MARU, CORR then Required if [Initial margin posted by the reporting counterparty (post- haircut)] is populated. Reject if [Currency of initial margin posted (post-haircut)] = XAG, XAU, XBA, XBB, XBC, XBD, XDR, XEU, XFU, XPD or XPT."]
+        if [MarginActionEnum -> CORR, MarginActionEnum -> MARU] any = actionType
+                and initialMarginPostedByCounterparty1PostHaircut exists
+        then initialMarginPostedByCounterparty1Currency exists
+                and [ISOCurrencyCodeEnum -> XAG, ISOCurrencyCodeEnum -> XAU, ISOCurrencyCodeEnum -> XBA, ISOCurrencyCodeEnum -> XBB, ISOCurrencyCodeEnum -> XBC, ISOCurrencyCodeEnum -> XBD, ISOCurrencyCodeEnum -> XDR, ISOCurrencyCodeEnum -> XPD, ISOCurrencyCodeEnum -> XPT] all <> initialMarginPostedByCounterparty1Currency
+
+    condition DTCC_MAS_BR_0062_01: <"Initial margin collected by Counterparty 1 (pre-haircut) Condition">
+        [docReference MAS DTCC_Specs dataElement "62" field "Initial margin collected by Counterparty 1 (pre-haircut)"
+            provision "when [Action Type] = MARU, CORR then Required if [Collateralisation category] = OWC2 or OWP2 or FLCL. Reject if [Collateralisation category] does not equal to OWC2 or OWP2 or FLCL. Reject if Negative."]
+        if [MarginActionEnum -> CORR, MarginActionEnum -> MARU] any = actionType
+        then if [CollateralisationType3Code -> OWC2, CollateralisationType3Code -> OWP2, CollateralisationType3Code -> FLCL] any = collateralisationCategory
+            then initialMarginCollectedByCounterparty1PreHaircut exists and initialMarginCollectedByCounterparty1PreHaircut >= 0
+            else if [CollateralisationType3Code -> OWC2, CollateralisationType3Code -> OWP2, CollateralisationType3Code -> FLCL] all <> collateralisationCategory
+            then initialMarginCollectedByCounterparty1PreHaircut is absent
+
+    condition DTCC_MAS_BR_0063_01: <"Initial margin collected by Counterparty 1 (post-haircut) Condition">
+        [docReference MAS DTCC_Specs dataElement "63" field "Initial margin collected by Counterparty 1 (post-haircut)"
+            provision "when [Action Type] = MARU, CORR then Required if [Collateralisation category] = OWC2 or OWP2 or FLCL. Reject if [Collateralisation category] does not equal to OWC2 or OWP2 or FLCL. Reject if Negative."]
+        if [MarginActionEnum -> CORR, MarginActionEnum -> MARU] any = actionType
+        then if [CollateralisationType3Code -> OWC2, CollateralisationType3Code -> OWP2, CollateralisationType3Code -> FLCL] any = collateralisationCategory
+            then initialMarginCollectedByCounterparty1PostHaircut exists and initialMarginCollectedByCounterparty1PostHaircut >= 0
+            else if [CollateralisationType3Code -> OWC2, CollateralisationType3Code -> OWP2, CollateralisationType3Code -> FLCL] all <> collateralisationCategory
+            then initialMarginCollectedByCounterparty1PostHaircut is absent
+
+    condition DTCC_MAS_BR_0064_01: <"Currency of initial margin collected Condition">
+        [docReference MAS DTCC_Specs dataElement "64" field "Currency of initial margin collected"
+            provision "when [Action Type] = MARU, CORR then Required if [Initial margin collected by the reporting counterparty (pre-haircut)] is populated. Reject if [Currency of initial margin collected (pre-haircut)] = XAG, XAU, XBA, XBB, XBC, XBD, XDR, XEU, XFU, XPD or XPT."]
+        if [MarginActionEnum -> CORR, MarginActionEnum -> MARU] any = actionType and initialMarginCollectedByCounterparty1PreHaircut exists
+        then initialMarginCollectedByCounterparty1Currency exists
+                and [ISOCurrencyCodeEnum -> XAG, ISOCurrencyCodeEnum -> XAU, ISOCurrencyCodeEnum -> XBA, ISOCurrencyCodeEnum -> XBB, ISOCurrencyCodeEnum -> XBC, ISOCurrencyCodeEnum -> XBD, ISOCurrencyCodeEnum -> XDR, ISOCurrencyCodeEnum -> XPD, ISOCurrencyCodeEnum -> XPT] all <> initialMarginCollectedByCounterparty1Currency
+
+    condition DTCC_MAS_BR_0064_02: <"Currency of initial margin collected Condition">
+        [docReference MAS DTCC_Specs dataElement "64" field "Currency of initial margin collected"
+            provision "When [Action Type] = MARU, CORR then Required if [Initial margin collected by the reporting counterparty (post-haircut)] is populated. Reject if [Currency of initial margin collected (post-haircut)] = XAG, XAU, XBA, XBB, XBC, XBD, XDR, XEU, XFU, XPD or XPT."]
+        if [MarginActionEnum -> CORR, MarginActionEnum -> MARU] any = actionType and initialMarginCollectedByCounterparty1PostHaircut exists
+        then initialMarginCollectedByCounterparty1Currency exists
+                and [ISOCurrencyCodeEnum -> XAG, ISOCurrencyCodeEnum -> XAU, ISOCurrencyCodeEnum -> XBA, ISOCurrencyCodeEnum -> XBB, ISOCurrencyCodeEnum -> XBC, ISOCurrencyCodeEnum -> XBD, ISOCurrencyCodeEnum -> XDR, ISOCurrencyCodeEnum -> XPD, ISOCurrencyCodeEnum -> XPT] all <> initialMarginCollectedByCounterparty1Currency
+
+    condition DTCC_MAS_BR_0065_01: <"Variation margin posted by Counterparty 1 (pre-haircut) Condition">
+        [docReference MAS DTCC_Specs dataElement "65" field "Variation margin posted by Counterparty 1 (pre-haircut)"
+            provision "When [Action Type] = MARU, CORR then Required if [Collateralisation category] = PRC1 or PRCL or OWC1 or OWP1 or OWP2 or FLCL. Reject if [Collateralisation category] does not equal to PRC1 or PRCL or OWC1 or OWP1 or OWP2 or FLCL. Reject if Negative"]
+        if [MarginActionEnum -> CORR, MarginActionEnum -> MARU] any = actionType
+        then if [CollateralisationType3Code -> PRC1, CollateralisationType3Code -> PRCL, CollateralisationType3Code -> OWC1, CollateralisationType3Code -> OWP1, CollateralisationType3Code -> OWP2, CollateralisationType3Code -> FLCL] any = collateralisationCategory
+            then variationMarginPostedByCounterparty1PreHaircut exists and initialMarginCollectedByCounterparty1PostHaircut >= 0
+            else if [CollateralisationType3Code -> PRC1, CollateralisationType3Code -> PRCL, CollateralisationType3Code -> OWC1, CollateralisationType3Code -> OWP1, CollateralisationType3Code -> OWP2, CollateralisationType3Code -> FLCL] all <> collateralisationCategory
+            then variationMarginPostedByCounterparty1PreHaircut is absent
+
+    condition DTCC_MAS_BR_0066_01: <"Variation margin posted by Counterparty 1 (post-haircut) Condition">
+        [docReference MAS DTCC_Specs dataElement "66" field "Variation margin posted by Counterparty 1 (post-haircut)"
+            provision "When [Action Type] = MARU, CORR then Required if [Collateralisation category] = PRC1 or PRCL or OWC1 or OWP1 or OWP2 or FLCL. Reject if [Collateralisation category] does not equal to PRC1 or PRCL or OWC1 or OWP1 or OWP2 or FLCL. Reject if Negative."]
+        if [MarginActionEnum -> CORR, MarginActionEnum -> MARU] any = actionType
+        then if [CollateralisationType3Code -> PRC1, CollateralisationType3Code -> PRCL, CollateralisationType3Code -> OWC1, CollateralisationType3Code -> OWP1, CollateralisationType3Code -> OWP2, CollateralisationType3Code -> FLCL] any = collateralisationCategory
+            then variationMarginPostedByCounterparty1PostHaircut exists and initialMarginCollectedByCounterparty1PostHaircut >= 0
+            else if [CollateralisationType3Code -> PRC1, CollateralisationType3Code -> PRCL, CollateralisationType3Code -> OWC1, CollateralisationType3Code -> OWP1, CollateralisationType3Code -> OWP2, CollateralisationType3Code -> FLCL] all <> collateralisationCategory
+            then variationMarginPostedByCounterparty1PostHaircut is absent
+
+    condition DTCC_MAS_BR_0067_01: <"Currency of variation margin posted Condition">
+        [docReference MAS DTCC_Specs dataElement "67" field "Currency of variation margin posted"
+            provision "When [Action Type] = MARU, CORR then Required if [Variation margin posted by the reporting counterparty (pre-haircut)] is populated. Reject if [Currency of variation margin posted (pre-haircut)] = XAG, XAU, XBA, XBB, XBC, XBD, XDR, XEU, XFU, XPD or XPT."]
+        if [MarginActionEnum -> CORR, MarginActionEnum -> MARU] any = actionType and variationMarginPostedByCounterparty1PreHaircut exists
+        then variationMarginPostedByCounterparty1Currency exists
+                and [ISOCurrencyCodeEnum -> XAG, ISOCurrencyCodeEnum -> XAU, ISOCurrencyCodeEnum -> XBA, ISOCurrencyCodeEnum -> XBB, ISOCurrencyCodeEnum -> XBC, ISOCurrencyCodeEnum -> XBD, ISOCurrencyCodeEnum -> XDR, ISOCurrencyCodeEnum -> XPD, ISOCurrencyCodeEnum -> XPT] all <> variationMarginPostedByCounterparty1Currency
+
+    condition DTCC_MAS_BR_0067_02: <"Currency of variation margin posted Condition">
+        [docReference MAS DTCC_Specs dataElement "67" field "Currency of variation margin posted"
+            provision "When [Action Type] = MARU, CORR then Required if [Variation margin posted by the reporting counterparty (post-haircut)] is populated.  Reject if [Currency of variation margin posted (post-haircut)] = XAG, XAU, XBA, XBB, XBC, XBD, XDR, XEU, XFU, XPD or XPT."]
+        if [MarginActionEnum -> CORR, MarginActionEnum -> MARU] any = actionType
+                and variationMarginPostedByCounterparty1PostHaircut exists
+        then variationMarginPostedByCounterparty1Currency exists
+                and [ISOCurrencyCodeEnum -> XAG, ISOCurrencyCodeEnum -> XAU, ISOCurrencyCodeEnum -> XBA, ISOCurrencyCodeEnum -> XBB, ISOCurrencyCodeEnum -> XBC, ISOCurrencyCodeEnum -> XBD, ISOCurrencyCodeEnum -> XDR, ISOCurrencyCodeEnum -> XPD, ISOCurrencyCodeEnum -> XPT] all <> variationMarginPostedByCounterparty1Currency
+
+    condition DTCC_MAS_BR_0068_01: <"Variation margin collected by Counterparty 1 (pre-haircut) Condition">
+        [docReference MAS DTCC_Specs dataElement "68" field "Variation margin collected by Counterparty 1 (pre-haircut)"
+            provision "When [Action Type] = MARU, CORR then Required if [Collateralisation category] = PRC2 or PRCL or OWC2 or OWP1 or OWP2 or FLCL. Reject if [Collateralisation category] does not equal to PRC2 or PRCL or OWC2 or OWP1 or OWP2 or FLCL. Reject if Negative."]
+        if [MarginActionEnum -> CORR, MarginActionEnum -> MARU] any = actionType
+        then if [CollateralisationType3Code -> PRC2, CollateralisationType3Code -> PRCL, CollateralisationType3Code -> OWC2, CollateralisationType3Code -> OWP1, CollateralisationType3Code -> OWP2, CollateralisationType3Code -> FLCL] any = collateralisationCategory
+            then variationMarginCollectedByCounterparty1PreHaircut exists and variationMarginCollectedByCounterparty1PreHaircut >= 0
+            else if [CollateralisationType3Code -> PRC2, CollateralisationType3Code -> PRCL, CollateralisationType3Code -> OWC2, CollateralisationType3Code -> OWP1, CollateralisationType3Code -> OWP2, CollateralisationType3Code -> FLCL] all <> collateralisationCategory
+            then variationMarginCollectedByCounterparty1PreHaircut is absent
+
+    condition DTCC_MAS_BR_0069_01: <"Variation margin collected by Counterparty 1 (post-haircut) Condition">
+        [docReference MAS DTCC_Specs dataElement "69" field "Variation margin collected by Counterparty 1 (post-haircut)"
+            provision "When [Action Type] = MARU, CORR then Required if [Collateralisation category] = PRC2 or PRCL or OWC2 or OWP1 or OWP2 or FLCL. Reject if [Collateralisation category] does not equal to PRC2 or PRCL or OWC2 or OWP1 or OWP2 or FLCL. Reject if Negative."]
+        if [MarginActionEnum -> CORR, MarginActionEnum -> MARU] any = actionType
+        then if [CollateralisationType3Code -> PRC2, CollateralisationType3Code -> PRCL, CollateralisationType3Code -> OWC2, CollateralisationType3Code -> OWP1, CollateralisationType3Code -> OWP2, CollateralisationType3Code -> FLCL] any = collateralisationCategory
+            then variationMarginCollectedByCounterparty1PostHaircut exists and variationMarginCollectedByCounterparty1PostHaircut >= 0
+            else if [CollateralisationType3Code -> PRC2, CollateralisationType3Code -> PRCL, CollateralisationType3Code -> OWC2, CollateralisationType3Code -> OWP1, CollateralisationType3Code -> OWP2, CollateralisationType3Code -> FLCL] all <> collateralisationCategory
+            then variationMarginCollectedByCounterparty1PostHaircut is absent
+
+    condition DTCC_MAS_BR_0070_01: <"Currency of variation margin collected Condition">
+        [docReference MAS DTCC_Specs dataElement "70" field "Currency of variation margin collected"
+            provision "When [Action Type] = MARU, CORR then Required if [Variation margin collected by the reporting counterparty (pre-haircut)] is populated.Reject if [Currency of variation margin collected (pre-haircut)] = XAG, XAU, XBA, XBB, XBC, XBD, XDR, XEU, XFU, XPD or XPT."]
+        if [MarginActionEnum -> CORR, MarginActionEnum -> MARU] any = actionType and variationMarginCollectedByCounterparty1PreHaircut exists
+        then variationMarginCollectedByCounterparty1Currency exists
+                and [ISOCurrencyCodeEnum -> XAG, ISOCurrencyCodeEnum -> XAU, ISOCurrencyCodeEnum -> XBA, ISOCurrencyCodeEnum -> XBB, ISOCurrencyCodeEnum -> XBC, ISOCurrencyCodeEnum -> XBD, ISOCurrencyCodeEnum -> XDR, ISOCurrencyCodeEnum -> XPD, ISOCurrencyCodeEnum -> XPT] all <> variationMarginCollectedByCounterparty1Currency
+
+    condition DTCC_MAS_BR_0070_02: <"Currency of variation margin collected Condition">
+        [docReference MAS DTCC_Specs dataElement "70" field "Currency of variation margin collected"
+            provision "When [Action Type] = MARU, CORR then Required if [Variation margin collected by the reporting counterparty (post-haircut)] is populated. Reject if [Currency of variation margin collected (post-haircut)] = XAG, XAU, XBA, XBB, XBC, XBD, XDR, XEU, XFU, XPD or XPT."]
+        if [MarginActionEnum -> CORR, MarginActionEnum -> MARU] any = actionType and variationMarginCollectedByCounterparty1PostHaircut exists
+        then variationMarginCollectedByCounterparty1Currency exists
+                and [ISOCurrencyCodeEnum -> XAG, ISOCurrencyCodeEnum -> XAU, ISOCurrencyCodeEnum -> XBA, ISOCurrencyCodeEnum -> XBB, ISOCurrencyCodeEnum -> XBC, ISOCurrencyCodeEnum -> XBD, ISOCurrencyCodeEnum -> XDR, ISOCurrencyCodeEnum -> XPD, ISOCurrencyCodeEnum -> XPT] all <> variationMarginCollectedByCounterparty1Currency
+
+    condition DTCC_MAS_BR_0071_01: <"Excess colleral posted by Counterparty 1 Condition">
+        [docReference MAS DTCC_Specs dataElement "71" field "Excess colleral posted by Counterparty 1"
+            provision "When [Action Type] = MARU, CORR then Reject if Negative."]
+        if [MarginActionEnum -> CORR, MarginActionEnum -> MARU] any = actionType then excessCollateralPostedByCounterparty1 exists and excessCollateralPostedByCounterparty1 >= 0
+
+    condition DTCC_MAS_BR_0072_01: <"Currency of excess collateral posted Condition">
+        [docReference MAS DTCC_Specs dataElement "72" field "Currency of excess collateral posted"
+            provision "When [Action Type] = MARU, CORR then Required if [Excess collateral posted by the reporting counterparty] is populated. Reject if [Currency of excess collateral posted] = XAG, XAU, XBA, XBB, XBC, XBD, XDR, XEU, XFU, XPD or XPT."]
+        if [MarginActionEnum -> CORR, MarginActionEnum -> MARU] any = actionType
+                and excessCollateralPostedByCounterparty1 exists
+        then currencyOfExcessCollateralPosted exists
+                and ["XAG", "XAU", "XBA", "XBB", "XBC", "XBD", "XDR", "XEU", "XFU", "XPD", "XPT"] all <> currencyOfExcessCollateralPosted
+
+    condition DTCC_MAS_BR_0073_01: <"Excess colleral collected by Counterparty 1 Condition">
+        [docReference MAS DTCC_Specs dataElement "73" field "Excess colleral collected by Counterparty 1"
+            provision "When [Action Type] = MARU, CORR then Reject if Negative."]
+        if [MarginActionEnum -> CORR, MarginActionEnum -> MARU] any = actionType then excessCollateralCollectedByCounterparty1 exists and excessCollateralCollectedByCounterparty1 >= 0
+
+    condition DTCC_MAS_BR_0074_01: <"Currency of excess collateral collected Condition">
+        [docReference MAS DTCC_Specs dataElement "74" field "Currency of excess collateral collected"
+            provision "When [Action Type] = MARU, CORR then Required if [Excess collateral collected by the reporting counterparty] is populated. Reject if [Currency of excess collateral collected] = XAG, XAU, XBA, XBB, XBC, XBD, XDR, XEU, XFU, XPD or XPT."]
+        if [MarginActionEnum -> CORR, MarginActionEnum -> MARU] any = actionType
+                and excessCollateralCollectedByCounterparty1 exists
+        then currencyOfExcessCollateralCollected exists
+                and ["XAG", "XAU", "XBA", "XBB", "XBC", "XBD", "XDR", "XEU", "XFU", "XPD", "XPT"] all <> currencyOfExcessCollateralCollected
+
+    condition DTCC_MAS_BR_0132_01: <"Action type Condition">
+        [docReference MAS DTCC_Specs dataElement "132" field "Action type"
+            provision "When [Action Type] = NEWT, MODI, CORR, REVI, TERM, ERROR, MARU, VALU then See Action type & Event type tab for allowable combinations."]
+            [MarginActionEnum -> CORR, MarginActionEnum -> MARU] any = actionType
+        
+    condition DTCC_MAS_BR_0001a_02: <"Execution agent of the Counterparty 1">
+        [docReference MAS DTCC_Specs dataElement "[Not in regulation]" validationRule "Transaction"
+        provision "When [Action Type] = MARU/CORR then [Execution agent of Counterparty 1] must NOT = [Counterparty 1] or [Counterparty 2] or [Reporting Entity]"]
+        //TH Review May 2024 - Pending check of the Reporting Entity
+        if [MarginActionEnum -> CORR, MarginActionEnum -> MARU] any = actionType
+        then executionAgentOfTheCounterparty1 <> counterparty1
+                or executionAgentOfTheCounterparty1 <> counterparty2    

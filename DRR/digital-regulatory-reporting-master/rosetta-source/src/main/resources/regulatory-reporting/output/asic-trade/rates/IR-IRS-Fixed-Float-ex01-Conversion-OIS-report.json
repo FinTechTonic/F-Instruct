@@ -1,0 +1,59 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "INTR",
+  "cleared" : "N",
+  "contractType" : "SWAP",
+  "counterparty1" : "F226TOH6YD6XJB17KS62",
+  "counterparty2" : "XGJWNIWHTPOW4QHTR381",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "dayCountConventionLeg1" : "A004",
+  "dayCountConventionLeg2" : "A004",
+  "direction2OfLeg1" : "MAKE",
+  "direction2OfLeg2" : "TAKE",
+  "effectiveDate" : "2022-03-16",
+  "eventIdentifier" : "JF6470977",
+  "eventTimestamp" : "2021-08-11T03:00:00Z",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-08-11T03:00:00Z",
+  "expirationDate" : "2022-06-16",
+  "fixedRateLeg1" : 2.00,
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalCurrency" : "CHF",
+          "NotionalSchedule" : "Constant",
+          "ReferenceRateTermValue" : 1,
+          "UnderlierID" : "CHF-SARON-OIS Compound",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Fixed_Float_OIS"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "CHF",
+  "notionalCurrencyLeg2" : "CHF",
+  "notionalLeg1" : 25000000.00,
+  "notionalLeg2" : 25000000.00,
+  "paymentFrequencyPeriodLeg1" : "EXPI",
+  "paymentFrequencyPeriodLeg2" : "EXPI",
+  "paymentFrequencyPeriodMultiplierLeg1" : 1,
+  "paymentFrequencyPeriodMultiplierLeg2" : 1,
+  "reportSubmittingEntityID" : "F226TOH6YD6XJB17KS62",
+  "reportingEntity" : "F226TOH6YD6XJB17KS62",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "spreadLeg2" : {
+    "spreadLeg2Basis" : 0,
+    "spreadLeg2Notation" : "Basis"
+  },
+  "spreadNotationLeg2" : "4",
+  "uniqueTransactionIdentifier" : "IRIRSFIXEDFLOATEXC01"
+}

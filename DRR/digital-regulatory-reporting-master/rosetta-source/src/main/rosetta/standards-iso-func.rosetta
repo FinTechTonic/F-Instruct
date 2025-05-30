@@ -1,0 +1,26 @@
+namespace drr.standards.iso
+version "${project.version}"
+
+func API_GetMicData: <"Function that looks up MIC (iso10383) data based on MIC code.">
+    // external_api https://www.iso20022.org/sites/default/files/ISO10383_MIC/ISO10383_MIC.xml
+    inputs:
+        mic string (0..1)
+    output:
+        micData MicData (0..1)
+
+func GetOrFetchMicData: <"Return pre-enriched MIC data if present, otherwise attempt to fetch MIC data from API.">
+    inputs:
+        preEnriched MicData (0..*) <"Pre-enriched MIC data.">
+        mic string (0..1) <"MIC to be fetched from API.">
+    output:
+        micData MicData (0..1)
+
+    alias preEnrichedMicData:
+        preEnriched
+            filter item -> mic = mic
+            then only-element
+
+    set micData:
+        if preEnrichedMicData exists
+        then preEnrichedMicData
+        else API_GetMicData(mic)

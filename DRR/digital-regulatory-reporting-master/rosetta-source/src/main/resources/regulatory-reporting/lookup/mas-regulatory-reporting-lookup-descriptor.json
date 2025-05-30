@@ -1,0 +1,273 @@
+[
+  {
+    "name": "TraderDetails",
+    "keyType": "java.lang.String",
+    "valueType": "drr.regulation.techsprint.g20.mas.Trader",
+    "data": [
+      {
+        "key": "0ZCB8VD9IUTR-23618",
+        "value": {
+          "name": "Joe Bloggs",
+          "placeOfEmployment": {
+            "country": {
+              "value": "SG"
+            }
+          },
+          "isAutharisedToTradeIsSingapore": true,
+          "currentLocation": {
+            "country": {
+              "value": "SG"
+            }
+          }
+        }
+      },
+      {
+        "key": "NOV-12345",
+        "value": {
+          "name": "Joe Bloggs",
+          "placeOfEmployment": {
+            "country": {
+              "value": "SG"
+            }
+          },
+          "isAutharisedToTradeIsSingapore": true,
+          "currentLocation": {
+            "country": {
+              "value": "SG"
+            }
+          }
+        }
+      },
+      {
+        "key": "GUAMON5OX2SW-17625",
+        "value": {
+          "name": "Joe Bloggs",
+          "placeOfEmployment": {
+            "country": {
+              "value": "SG"
+            }
+          },
+          "isAutharisedToTradeIsSingapore": true,
+          "currentLocation": {
+            "country": {
+              "value": "SG"
+            }
+          }
+        }
+      },
+      {
+        "key": "YZBEU3UXPYTR-15452",
+        "value": {
+          "name": "Joe Bloggs",
+          "placeOfEmployment": {
+            "country": {
+              "value": "SG"
+            }
+          },
+          "isAutharisedToTradeIsSingapore": true,
+          "currentLocation": {
+            "country": {
+              "value": "SG"
+            }
+          }
+        }
+      },
+      {
+        "key": "0ZCB8VD9IU00426D8TH-25894",
+        "value": {
+          "name": "Joe Bloggs",
+          "placeOfEmployment": {
+            "country": {
+              "value": "SG"
+            }
+          },
+          "isAutharisedToTradeIsSingapore": true,
+          "currentLocation": {
+            "country": {
+              "value": "SG"
+            }
+          }
+        }
+      },
+      {
+        "key": "0CH7N0Y05NABN1234",
+        "value": {
+          "name": "Joe Bloggs",
+          "placeOfEmployment": {
+            "country": {
+              "value": "SG"
+            }
+          },
+          "isAutharisedToTradeIsSingapore": true,
+          "currentLocation": {
+            "country": {
+              "value": "SG"
+            }
+          }
+        }
+      },
+      {
+        "key": "VBWWV6BYQ0CH7N0Y0",
+        "value": {
+          "name": "Joe Bloggs",
+          "placeOfEmployment": {
+            "country": {
+              "value": "LN"
+            }
+          },
+          "isAutharisedToTradeIsSingapore": true,
+          "currentLocation": {
+            "country": {
+              "value": "LN"
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "BookingLocation",
+    "keyType": "java.lang.String",
+    "valueType": "cdm.base.staticdata.party.Address",
+    "data": [
+      {
+        "key": "54930084UKLVMY22DS16",
+        "value": {
+          "country": {
+            "value": "SG"
+          }
+        }
+      },
+      {
+        "key": "549300GUAMON5OX2OO54",
+        "value": {
+          "country": {
+            "value": "SG"
+          }
+        }
+      },
+      {
+        "key": "MP6I5ZYZBEU3UXPYFY54",
+        "value": {
+          "country": {
+            "value": "SG"
+          }
+        }
+      },
+      {
+        "key": "EYKN6V0ZCB8VD9IULB80",
+        "value": {
+          "country": {
+            "value": "NY"
+          }
+        }
+      },
+      {
+        "key": "54930084UKLVMY22DS16",
+        "value": {
+          "country": {
+            "value": "SG"
+          }
+        }
+      },
+      {
+        "key": "BFXS5XCH7N0Y05NIXW11",
+        "value": {
+          "country": {
+            "value": "SG"
+          }
+        }
+      },
+      {
+        "key": "549300VBWWV6BYQOWM67",
+        "value": {
+          "country": {
+            "value": "NY"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "IsExecutingEntityInvestmentFirm",
+    "keyType": "java.lang.String",
+    "valueType": "java.lang.Boolean",
+    "data": [
+      {
+        "key": "*",
+        "value": true
+      }
+    ]
+  },
+  {
+    "name": "ExecutingEntity",
+    "keyType": "java.lang.String",
+    "valueType": "drr.regulation.common.ExecutingEntity",
+    "data": [
+      {
+        "key": "549300GUAMON5OX2OO54",
+        "value": {
+          "addressOfBranch": {
+            "country": {
+              "value": "GB"
+            }
+          },
+          "addressOfIncorporation": {
+            "country": {
+              "value": "CH"
+            }
+          },
+          "isInvestmentFirm": true
+        }
+      },
+      {
+        "key": "549300O6E2WAK3IAXE34",
+        "value": {
+          "addressOfBranch": {
+            "country": {
+              "value": "NO"
+            }
+          },
+          "addressOfIncorporation": {
+            "country": {
+              "value": "NO"
+            }
+          },
+          "isInvestmentFirm": true
+        }
+      },
+      {
+        "key": "EYKN6V0ZCB8VD9IULB80",
+        "value": {
+          "addressOfBranch": {
+            "country": {
+              "value": "GB"
+            }
+          },
+          "addressOfIncorporation": {
+            "country": {
+              "value": "GB"
+            }
+          },
+          "isInvestmentFirm": true
+        }
+      },
+      {
+        "key": "MP6I5ZYZBEU3UXPYFY54",
+        "value": {
+          "addressOfBranch": {
+            "country": {
+              "value": "GB"
+            }
+          },
+          "addressOfIncorporation": {
+            "country": {
+              "value": "GB"
+            }
+          },
+          "isInvestmentFirm": true
+        }
+      }
+    ]
+  }
+]

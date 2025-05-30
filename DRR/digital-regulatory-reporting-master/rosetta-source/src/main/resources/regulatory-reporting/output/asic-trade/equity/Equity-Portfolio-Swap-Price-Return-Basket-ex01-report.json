@@ -1,0 +1,115 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "EQUI",
+  "basketConstituents" : [ {
+    "identifier" : "ANSS.OQ",
+    "source" : "RIC"
+  }, {
+    "identifier" : "AZPN.OQ",
+    "source" : "RIC"
+  }, {
+    "identifier" : "CA.OQ",
+    "source" : "RIC"
+  }, {
+    "identifier" : "CACI.N",
+    "source" : "RIC"
+  }, {
+    "identifier" : "CDW.OQ",
+    "source" : "RIC"
+  }, {
+    "identifier" : "CERN.OQ",
+    "source" : "RIC"
+  }, {
+    "identifier" : "DOX.OQ",
+    "source" : "RIC"
+  }, {
+    "identifier" : "233326107",
+    "source" : "CUSIP"
+  }, {
+    "identifier" : "FICO.N",
+    "source" : "RIC"
+  }, {
+    "identifier" : "IACI.OQ",
+    "source" : "RIC"
+  }, {
+    "identifier" : "IBM.N",
+    "source" : "RIC"
+  }, {
+    "identifier" : "LDOS.N",
+    "source" : "RIC"
+  }, {
+    "identifier" : "MANH.OQ",
+    "source" : "RIC"
+  }, {
+    "identifier" : "MDRX.OQ",
+    "source" : "RIC"
+  }, {
+    "identifier" : "MENT.OQ",
+    "source" : "RIC"
+  }, {
+    "identifier" : "NUAN.OQ",
+    "source" : "RIC"
+  }, {
+    "identifier" : "ORCL.N",
+    "source" : "RIC"
+  }, {
+    "identifier" : "SAIC.N",
+    "source" : "RIC"
+  }, {
+    "identifier" : "SNPS.OQ",
+    "source" : "RIC"
+  }, {
+    "identifier" : "SPLK.OQ",
+    "source" : "RIC"
+  }, {
+    "identifier" : "VRNT.OQ",
+    "source" : "RIC"
+  }, {
+    "identifier" : "VRSN.OQ",
+    "source" : "RIC"
+  } ],
+  "beneficiary1" : "TESTHOUSELEI00000001",
+  "beneficiary1IdentifierTypeIndicator" : true,
+  "cleared" : "N",
+  "contractType" : "SWAP",
+  "counterparty1" : "TESTHOUSELEI00000001",
+  "counterparty2" : "TESTCLIENTLEI0000009",
+  "dayCountConventionLeg2" : "A004",
+  "effectiveDate" : "2021-04-16",
+  "eventIdentifier" : "envuatuatExt148a5f4c0a8484da5a2dc38fed2e31c7a",
+  "eventTimestamp" : "2021-04-14T10:27:32.886Z",
+  "eventType" : "TRAD",
+  "executionAgentOfTheCounterparty1" : "TESTCLIENTLEI0000009",
+  "executionTimestamp" : "2021-04-14T10:01:05Z",
+  "expirationDate" : "2022-04-18",
+  "floatingRateReferencePeriodOfLeg2Multiplier" : 12,
+  "floatingRateReferencePeriodOfLeg2TimePeriod" : "MNTH",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "SettlementCurrency" : "USD",
+          "UnderlierID" : "USD-LIBOR-BBA"
+        },
+        "Header" : {
+          "AssetClass" : "Equity",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "USD",
+  "notionalCurrencyLeg2" : "USD",
+  "notionalLeg1" : 0.6600000000,
+  "notionalLeg2" : 0.6600000000,
+  "paymentFrequencyPeriodLeg2" : "ADHO",
+  "reportSubmittingEntityID" : "TESTHOUSELEI00000001",
+  "reportingEntity" : "TESTHOUSELEI00000001",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrencyLeg1" : "USD",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "uniqueTransactionIdentifier" : "EQUITYPORTFOLIOSWA01"
+}

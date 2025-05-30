@@ -1,0 +1,62 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "INTR",
+  "bookingLocation" : "GB",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "SWAP",
+  "counterparty1" : "213800IV9PCAC364HN60",
+  "counterparty2" : "213800WWTABZ1GOJHH37",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "213800IV9PCAC364HN60",
+  "deliveryType" : "PHYS",
+  "directionOfLeg1" : "MAKE",
+  "directionOfLeg2" : "TAKE",
+  "effectiveDate" : "2018-12-19",
+  "eventDate" : "2021-12-06",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-12-06T17:09:11Z",
+  "expirationDate" : "2024-03-20",
+  "finalContractualSettlementDate" : "2024-03-20",
+  "fixedRateDayCountConventionOfLeg1" : "A004",
+  "fixedRateOfLeg1" : 319.500,
+  "fixedRatePaymentFrequencyPeriodMultiplierOfLeg1" : 1,
+  "fixedRatePaymentFrequencyPeriodOfLeg1" : "EXPI",
+  "floatingRateDayCountConventionOfLeg2" : "A004",
+  "floatingRatePaymentFrequencyPeriodMultiplierOfLeg2" : 1,
+  "floatingRatePaymentFrequencyPeriodOfLeg2" : "EXPI",
+  "floatingRateResetFrequencyPeriodMultiplierOfLeg2" : 1,
+  "floatingRateResetFrequencyPeriodOfLeg2" : "EXPI",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalCurrency" : "USD",
+          "NotionalSchedule" : "Constant",
+          "ReferenceRateTermUnit" : "MNTH",
+          "ReferenceRateTermValue" : 3,
+          "UnderlierID" : "USD-LIBOR-BBA",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Fixed_Float_Zero_Coupon"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfLeg2" : 100000000,
+  "notionalAmountOfTheContractOrLeg1" : 100000000,
+  "notionalCurrencyOfLeg2" : "USD",
+  "notionalCurrencyOfTheContractOrLeg1" : "USD",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "213800IV9PCAC364HN60",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "underlyingIdentificationType" : "O",
+  "uniqueTransactionIdentifier" : "IRIRSFIXEDFLOATEXX02"
+}

@@ -1,0 +1,49 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "EQUI",
+  "bookingLocation" : "US",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "SWAP",
+  "counterparty1" : "DUMMYLEI123456789001",
+  "counterparty2" : "DUMMYLEI123456789002",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "DUMMYLEI123456789001",
+  "deliveryType" : "CASH",
+  "direction" : "SLLR",
+  "effectiveDate" : "2022-02-07",
+  "eventDate" : "2022-02-07",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2022-02-07T10:36:37Z",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "SettlementCurrency" : "USD"
+        },
+        "Header" : {
+          "AssetClass" : "Equity",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfTheContractOrLeg1" : 1000,
+  "notionalCurrencyOfTheContractOrLeg1" : "USD",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "DUMMYLEI123456789001",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrency1" : "USD",
+  "settlementCurrency2" : "USD",
+  "strikePrice" : {
+    "strikePriceDecimal" : 0.0000000000000,
+    "strikePriceNotation" : "Decimal"
+  },
+  "underlying" : "IE0031442068",
+  "underlyingIdentificationType" : "X",
+  "uniqueTransactionIdentifier" : "EQUITYSWAPPARAMETE02"
+}

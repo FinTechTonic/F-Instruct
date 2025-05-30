@@ -1,0 +1,67 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "COMM",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "SWAP",
+  "counterparty1" : "DUMMY0000000000LEI02",
+  "counterparty2" : "DUMMY0000000000LEI01",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "DUMMY0000000000LEI02",
+  "deliveryType" : "CASH",
+  "directionOfLeg1" : "TAKE",
+  "directionOfLeg2" : "MAKE",
+  "effectiveDate" : "2021-12-22",
+  "eventDate" : "2021-02-26",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-02-26T19:19:47Z",
+  "expirationDate" : "2021-12-22",
+  "finalContractualSettlementDate" : "2021-12-22",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "ReturnorPayoutTrigger" : "Total Return",
+          "UnderlierID" : "SOYABEAN MEAL-CBOT",
+          "UnderlierIDSource" : "COMM"
+        },
+        "Header" : {
+          "AssetClass" : "Commodities",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Swap"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfLeg2" : 75000.00,
+  "notionalAmountOfTheContractOrLeg1" : 75000.00,
+  "notionalCurrencyOfLeg2" : "USD",
+  "notionalCurrencyOfTheContractOrLeg1" : "USD",
+  "notionalQuantityOfLeg2" : 200,
+  "notionalQuantityOfTheContractOrLeg1" : 200,
+  "price" : {
+    "priceCurrency" : "USD",
+    "priceMonetary" : 375.0000000000000,
+    "priceNotation" : "Monetary"
+  },
+  "priceCurrency" : "USD",
+  "priceUnitOfMeasure" : "GBTN",
+  "quantityFrequencyMultiplierOfLeg2" : 1,
+  "quantityFrequencyMultiplierOfTheContractOrLeg1" : 1,
+  "quantityFrequencyOfLeg2" : "MNTH",
+  "quantityFrequencyOfTheContractOrLeg1" : "MNTH",
+  "quantityUnitOfMeasureForTheContractOrLeg1" : "GBTN",
+  "quantityUnitOfMeasureLeg2" : "GBTN",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "DUMMY0000000000LEI02",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrency2" : "USD",
+  "totalNotionalQuantityLeg2" : 200.00,
+  "totalNotionalQuantityOfTheContractOrLeg1" : 200.00,
+  "underlyingIdentificationType" : "O",
+  "uniqueTransactionIdentifier" : "COMMODITYSWAPAGRAI01"
+}

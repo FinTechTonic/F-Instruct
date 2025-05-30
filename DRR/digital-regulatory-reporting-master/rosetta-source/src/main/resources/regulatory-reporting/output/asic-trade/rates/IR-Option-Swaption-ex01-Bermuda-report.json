@@ -1,0 +1,72 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "INTR",
+  "beneficiary1" : "213800WWTABZ1GOJHH37",
+  "beneficiary1IdentifierTypeIndicator" : true,
+  "cleared" : "N",
+  "contractType" : "SWPT",
+  "counterparty1" : "213800WWTABZ1GOJHH37",
+  "counterparty2" : "213800IV9PCAC364HN60",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "dayCountConventionLeg1" : "A001",
+  "dayCountConventionLeg2" : "A004",
+  "direction" : "BYER",
+  "effectiveDate" : "2021-12-06",
+  "eventTimestamp" : "2021-12-06T17:09:17Z",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-12-06T17:09:17Z",
+  "expirationDate" : "2022-07-13",
+  "floatingRateReferencePeriodOfLeg2Multiplier" : 3,
+  "floatingRateReferencePeriodOfLeg2TimePeriod" : "MNTH",
+  "maturityDateOfTheUnderlying" : "2032-01-13",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalCurrency" : "USD",
+          "NotionalSchedule" : "Constant",
+          "ReferenceRateTermUnit" : "MNTH",
+          "ReferenceRateTermValue" : 6,
+          "UnderlierID" : "USD-LIBOR-BBA",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Fixed_Float"
+        }
+      },
+      "requestType" : "UnderlyingProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "USD",
+  "notionalCurrencyLeg2" : "USD",
+  "notionalLeg1" : 100000000,
+  "notionalLeg2" : 100000000,
+  "optionPremiumAmount" : 1244096.653,
+  "optionPremiumCurrency" : "USD",
+  "optionPremiumPaymentDate" : "2021-01-13",
+  "paymentFrequencyPeriodLeg1" : "MNTH",
+  "paymentFrequencyPeriodLeg2" : "MNTH",
+  "paymentFrequencyPeriodMultiplierLeg1" : 6,
+  "paymentFrequencyPeriodMultiplierLeg2" : 3,
+  "platformIdentifier" : "XXXX",
+  "putAmount" : 100000000,
+  "putCurrency" : "USD",
+  "reportSubmittingEntityID" : "213800WWTABZ1GOJHH37",
+  "reportingEntity" : "213800WWTABZ1GOJHH37",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "secondaryTransactionIdentifier" : "IROPTIONSWAPTIONEX01",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "spreadLeg2" : {
+    "spreadLeg2Basis" : 0,
+    "spreadLeg2Notation" : "Basis"
+  },
+  "spreadNotationLeg2" : "4",
+  "strikePrice" : {
+    "strikePriceNotation" : "Decimal"
+  },
+  "uniqueTransactionIdentifier" : "IROPTIONSWAPTIONEX02"
+}

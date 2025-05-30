@@ -1,0 +1,14 @@
+{
+  "actionType" : "EROR",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "counterparty1" : "549300K7EEOSKRJDRI19",
+  "counterparty2" : "549300O5MFEP1XJ40B46",
+  "entityResponsibleForReporting" : "549300K7EEOSKRJDRI19",
+  "eventIdentifier" : "X001",
+  "eventTimestamp" : "2011-02-04T16:42:16Z",
+  "isCrypto" : false,
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "submitterIdentifier" : "549300K7EEOSKRJDRI19",
+  "uti" : "WITHDRAWALERROREXX01"
+}

@@ -1,0 +1,67 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "INTR",
+  "bookingLocation" : "GB",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "SWAP",
+  "counterparty1" : "213800WWTABZ1GOJHH37",
+  "counterparty2" : "213800IV9PCAC364HN60",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "213800WWTABZ1GOJHH37",
+  "deliveryType" : "PHYS",
+  "directionOfLeg1" : "MAKE",
+  "directionOfLeg2" : "TAKE",
+  "effectiveDate" : "2018-10-23",
+  "eventDate" : "2021-12-06",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-12-06T17:09:11Z",
+  "expirationDate" : "2020-10-23",
+  "finalContractualSettlementDate" : "2020-10-23",
+  "floatingRateDayCountConventionOfLeg1" : "A004",
+  "floatingRateDayCountConventionOfLeg2" : "A004",
+  "floatingRatePaymentFrequencyPeriodMultiplierOfLeg1" : 1,
+  "floatingRatePaymentFrequencyPeriodMultiplierOfLeg2" : 3,
+  "floatingRatePaymentFrequencyPeriodOfLeg1" : "EXPI",
+  "floatingRatePaymentFrequencyPeriodOfLeg2" : "MNTH",
+  "floatingRateResetFrequencyPeriodMultiplierOfLeg1" : 1,
+  "floatingRateResetFrequencyPeriodMultiplierOfLeg2" : 3,
+  "floatingRateResetFrequencyPeriodOfLeg1" : "MNTH",
+  "floatingRateResetFrequencyPeriodOfLeg2" : "MNTH",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalCurrency" : "USD",
+          "NotionalSchedule" : "Constant",
+          "OtherLegReferenceRateTermUnit" : "MNTH",
+          "OtherLegReferenceRateTermValue" : 3,
+          "OtherLegUnderlierID" : "USD-LIBOR-BBA",
+          "OtherLegUnderlierIDSource" : "FPML",
+          "ReferenceRateTermValue" : 1,
+          "UnderlierID" : "USD-LIBOR-BBA",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Basis"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfLeg2" : 150000000,
+  "notionalAmountOfTheContractOrLeg1" : 150000000,
+  "notionalCurrencyOfLeg2" : "USD",
+  "notionalCurrencyOfTheContractOrLeg1" : "USD",
+  "platformIdentifier" : "ICSU",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "213800WWTABZ1GOJHH37",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "underlyingIdentificationType" : "O",
+  "uniqueTransactionIdentifier" : "IRIRSBASISEXXMLXXX02"
+}

@@ -1,0 +1,284 @@
+namespace drr.regulation.common
+version "${project.version}"
+
+import cdm.base.*
+import cdm.base.datetime.*
+
+enum ExecutionVenueTypeEnum: <"Enumeration representing the type of venue where a trade could be executed.">
+    [docReference ISDA FpML_Coding_Scheme schemeLocation "http://www.fpml.org/coding-scheme/execution-venue-type"]
+
+    DCM <"Registered Designated Contract Market.">
+    ETP <"Electronic Trading Platform as defined in the Japanese Financial Instruments and Exchange Act.">
+    MTF <"Registered Multilateral Trading Facility (MiFID and MiFID II) - Pursuant to MiFID II, refers to a multilateral system operated by an investment firm or market operator, which brings together multiple third-party buying and selling interests in financial instruments in the system, in accordance with non-discretionary rules, in a way that results in a contract in accordance with the provisions of Title II of the MiFID II.">
+    OffFacility <"Bilateral execution between counterparties not pursuant to the rules of a SEF or DCM.">
+    OTF <"Organised Trading Facility (MiFID II). A multilateral system which is not a regulated market or MTF and in which multiple third party buying and selling interests in bonds, structured finance product, emissions allowances or derivatives are able to interact in the system in a way which results in a contract.">
+    SEF <"Registered Swaps Execution Facility.">
+
+enum RegimeNameEnum: <"Enumeration of the regulation used for regulatory reporting, for example CFTC_PART43, CFTC_PART45, CSA_2013, etc..">
+    [docReference ISDA FpML_Coding_Scheme schemeLocation "http://www.fpml.org/coding-scheme/reporting-regime"]
+
+    ASIC <"Australian Securities and Investments Commission">
+    CA_Rule_91_507 displayName "CA.Rule.91-507" <"Rule 91-507 Derivatives: Trade Repositories and Derivatives Data. Harmonized rule adopted by Canadian provinces and territories.">
+    DoddFrankAct <"Dodd-Frank Act (US)">
+    EMIR <"European Markets Infrastructure Regulation">
+    HKTR <"Hong Kong Trade Repository">
+    JFSA <"Japan Financial Services Authority">
+    MAS <"The Monetary Authority of Singapore">
+    MiFID <"Markets in Financial Instruments Directive">
+    MiFIDII <"Markets in Financial Instruments Directive II">
+    MiFIR <"Markets in Financial Instruments Regulation">
+    ODRF <"OTC Derivatives Regulators Forum">
+    RussianFederation <"Russian regulatory reporting">
+    SFTR <"Securities Financing Transactions Regulation">
+    UKEMIR <"United Kingdom European Markets Infrastructure Regulation">
+
+enum ReportingRoleEnum: <"Enumeration of the role of a party in a report.  Used to clarify which participant's information is being reported.">
+    [docReference ISDA FpML_Coding_Scheme schemeLocation "http://www.fpml.org/coding-scheme/reporting-role"]
+
+    Agent <"The reporting counterparty has concluded the contract as agent for the account of and on behalf of a client.">
+    Counterparty <"The reporting counterparty is providing the relevant details for their side of the transaction.">
+    FullyDelegated <"Party has fully delegated responsibility of their reporting obligation in this jurisdiction to the submitter of this transaction.">
+    Independent <"Party has taken sole responsibility of the reporting obligation in the applicable jurisdiction.">
+    PartiallyDelegated <"Party has partially delegated responsibility of their reporting obligation (typically the common data only) in this jurisdiction to the submitter of this transaction.">
+    Principal <"The reporting counterparty has concluded the contract as principal on own account (on own behalf or on behalf of a client).">
+    ReportingParty <"Party responsible for reporting this transaction.">
+    VoluntaryParty <"Party not responsible for reporting this transaction.">
+
+enum SupervisoryBodyEnum: <"Enumeration of the supervisory body that may be supervising this transaction.">
+    [docReference ISDA FpML_Coding_Scheme schemeLocation "http://www.fpml.org/coding-scheme/supervisory-body"]
+
+    ASIC <"Australian Securities and Investments Commission">
+    BankOfRussia <"Central Bank of the Russian Federation">
+    CA_AB_ASC displayName "CA.AB.ASC" <"Alberta Securities Commission">
+    CA_BC_BCSC displayName "CA.BC.BCSC" <"British Columbia Securities Commission">
+    CA_MB_MSC displayName "CA.MB.MSC" <"The Manitoba Securities Commission">
+    CA_NB_FCSC displayName "CA.NB.FCSC" <"Financial and Consumer Services Commission">
+    CA_NL_DSS displayName "CA.NL.DSS" <"Deputy Superintendent of Securities, Service Newfoundland and Labrador">
+    CA_NS_NSSC displayName "CA.NS.NSSC" <"Nova Scotia Securities Commission">
+    CA_NT_NTSO displayName "CA.NT.NTSO" <"Northwest Territories Securities Office">
+    CA_NU_NSO displayName "CA.NU.NSO" <"Nunavut Securities Office, Government of Nunavut">
+    CA_ON_OSC displayName "CA.ON.OSC" <"Ontario Securities Commission">
+    CA_PEI_OSS displayName "CA.PEI.OSS" <"Office of the Superintendent of Securities">
+    CA_QC_AMF displayName "CA.QC.AMF" <"Autorite des marches financiers">
+    CA_SK_FCAA displayName "CA.SK.FCAA" <"Financial and Consumer Affairs Authority of Saskatchewan">
+    CA_YT_OSS displayName "CA.YT.OSS" <"Office of the Superintendent of Securities">
+    CFTC <"Commodity Futures Trading Commission (US)">
+    ESMA <"European Securities and Markets Authority (European Union)">
+    FCA <"Financial Conduct Authority (UK)">
+    Fed <"Federal Reserve (US)">
+    HKMA <"Hong Kong Monetary Authority (China)">
+    JFSA <"Japan Financial Services Authority (Japan)">
+    MAS <"The Monetary Authority of Singapore">
+    ODRF <"OTC Derivatives Regulators Forum">
+    SEC <"Securities and Exchange Commission (US)">
+    UKFSA <"Deprecated usage: FCA replaces UKFSA">
+
+enum OrganizationCharacteristicEnum: <"Specifies the categories or characteristics that apply to an organization which allow it to apply for an end-user exception determination.">
+    [docReference ISDA FpML_Coding_Scheme schemeLocation "http://www.fpml.org/coding-scheme/organization-characteristic"]
+
+    CaptiveFinanceUnit <"">
+    FinancialEntity <"">
+
+enum TransactionCharacteristicEnum: <"Specifies the categories or characteristics that apply to a transaction which allow application of an end-user exception determination.">
+    [docReference ISDA FpML_Coding_Scheme schemeLocation "http://www.fpml.org/coding-scheme/transaction-characteristic"]
+
+    BoardOfDirectorsApproval <"">
+    HedgesFinancialRisk <"">
+
+enum ConfirmationMethodEnum: <"Enumeration of the values specifying the method for confirmation of a transaction.">
+    Electronic <"Confirmation via a shared confirmation facility or platform, or a private/bilateral electronic system.">
+    NonElectronic <"Confirmation via a human-readable written document (possibly transmitted electronically).">
+    NotConfirmed <"This trade has not been confirmed and is not expected to be confirmed in any form. For example, this could include situations where the trade is an inter-affiliate trade and no confirmation is required, or cases were confirmation is negative only. For trades that have not yet been confirmed but are expected to be confirmed, one of the other values should be used.">
+
+enum CommodityTimeUnitEnum extends TimeUnitEnum: <"Specifies the approximate duration of the contract in the context of commodity trading. Exact boundaries between allowed values in EMIR Refit have not been precisely defined so far. This enumeration is expected to be removed when values exact definitions of values emerge and a functional assessment of duration - based upon start and end dates and times - can be implemented.">
+    Quarter <"Quarter">
+    Season <"Season">
+    Other <"Other">
+
+enum ClearingExceptionReasonEnum: <"Enumeration of the values specifying clearing exceptions and exemptions.">
+    [docReference ISDA FpML_Coding_Scheme schemeLocation "http://www.fpml.org/coding-scheme/cftc-clearing-exception-and-exemptions"]
+
+    Agent_Affiliate displayName "Agent-Affiliate" <"Used to indicate a clearing exception where a firm is hedging and using an agent to do doing the hedging on its behalf.">
+    Cooperative <"Clearing exception for certain swaps entered into by cooperatives. In the US, see Regulation 50.51(a) Definition of Exempt Cooperative.">
+    End_User displayName "End-User" <"In the US, see CFTC Final Rule on End-User Exception to Clearing Requirements for Swaps Fact Sheet.">
+    Exception <"Used to indicate an exception to a clearing requirement without elaborating on the type of exception.">
+    Inter_Affiliate displayName "Inter-Affiliate" <"In the US, see CFTC Final Rule - Clearing Exemption for Swaps Between Certain Affiliated Entities.">
+    NoActionLetter <"No-action letter.">
+    SmallBank <"Small bank exemption, as defined in Regulation 50.50(d) in the US.">
+    Treasury_Affiliate displayName "Treasury-Affiliate" <"In the US, see CFTC No Action Letter 13-22 No Action Relief from the Clearing Requirement for Swaps Entered into by Eligible Treasury Affiliates.">
+
+enum CreditDocumentEnum: <"Specifies arrangements being made to provide credit.">
+    [docReference ISDA FpML_Coding_Scheme schemeLocation "http://www.fpml.org/coding-scheme/credit-document"]
+
+    CreditSupportAgreement <"">
+    Guaranty <"">
+    OtherFinancing <"">
+    PledgeOfCollateral <"">
+    RelianceOnAvailableFinancing <"">
+
+enum NatureOfPartyEnum: <"EMIR Nature of the counterparty taxonomy">
+    [docReference ISDA FpML_Coding_Scheme schemeLocation "http://www.fpml.org/coding-scheme/esma-entity-classification"]
+
+    CentralCounterparty <"Indicates the organization with respect to the reporting Regime is a Central Counterparty, for example under ESMA EMIR.">
+    Exempt <"Parties that are exempted from reporting Financial, NonFinancial status as per Article 1(5) of EMIR, such as Multilateral Development Banks.">
+    Financial <"Indicates the organization referenced by the partyTradeInformation with respect to the reporting Regime is a Financial Entity, for example in ESMA reporting.">
+    NonFinancial <"Indicates the organization referenced by the partyTradeInformation with respect to the reporting Regime is a NonFinancial Entity, for example in ESMA reporting.">
+
+enum FinancialSectorEnum: <"EMIR Taxonomy for Financial Counterparties">
+    INVF <"Investment firm authorized in accordance with Directive 2014/65/EU of the European Parliament and of the Council">
+    CDTI <"Credit institution authorised in accordance with Directive 2013/36/EU">
+    INUN <"an insurance undertaking or reinsurance undertaking authorised in accordance with Directive 2009/138/EC of the European Parliament and of the Council">
+    UCIT <"a UCITS and, where relevant, its management company, authorised in accordance with Directive 2009/65/EC, unless that UCITS is set up exclusively for the purpose of serving one or more employee share purchase plans">
+    ORPI <"an institution for occupational retirement provision (IORP), as defined in point (1) of Article 6 of Directive (EU) 2016/2341 of the European Parliament and of the Council">
+    AIFD <"an alternative investment fund (AIF), as defined in point (a) of Article 4(1) of Directive 2011/61/EU, which is either established in the Union or managed by an alternative investment fund manager (AIFM) authorised or registered in accordance with that Directive, unless that AIF is set up exclusively for the purpose of serving one or more employee share purchase plans, or unless that AIF is a securitisation special purpose entity as referred to in point (g) of Article 2(3) of Directive 2011/61/EU, and, where relevant, its AIFM established in the Union">
+    CSDS <"a central securities depository authorised in accordance with Regulation (EU) No 909/2014 of the European Parliament and of the Council">
+
+enum NonFinancialSectorEnum: <"Taxonomy for Non-Financial Counterparties. The categories below correspond to the main sections of NACE classification as defined in Regulation (EC) No 1893/2006 of the European Parliament and of the Council(10).">
+    A <"Agriculture, forestry and fishing">
+    B <"Mining and quarrying">
+    C <"Manufacturing">
+    D <"Electricity, gas, steam and air conditioning supply">
+    ^E <"Water supply, sewerage, waste management and remediation activities. Note that 'E' clashes with the DSL keyword for mathematics E notation, so the name is prefixed with character '^' to indicate that it is a name rather than keyword.">
+    F <"Construction">
+    G <"Wholesale and retail trade, repair of motor vehicles and motorcycles">
+    H <"Transportation and storage">
+    I <"Accommodation and food service activities">
+    J <"Information and communication">
+    K <"Financial and insurance activities">
+    L <"Real estate activities">
+    M <"Professional, scientific and technical activities">
+    N <"Administrative and support service activities">
+    O <"Public administration and defence; compulsory social security">
+    P <"Education">
+    Q <"Human health and social work activities">
+    R <"Arts, entertainment and recreation">
+    S <"Other service activities">
+    T <"Activities of households as employers; undifferentiated goods  and services  producing activities of households for own use">
+    U <"Activities of extraterritorial organizations and bodies">
+
+enum SECEntityClassificationEnum: <"Specifies the entity classification of a party under the U.S. Securities and Exchange Commission (SEC).">
+    [docReference ISDA FpML_Coding_Scheme schemeLocation "http://www.fpml.org/coding-scheme/sec-entity-classification"]
+
+    CA <"Indicates the organization with respect to the reporting Regime is a Clearing Agency, for example under SEC. CA under SEC has the same meaning as CentralCounterparty under ESMA.">
+    MSBSP <"Indicates the organization with respect to the reporting Regime is a Major Security-based Swap Participant, for example under SEC SBSR.">
+    non_SBSD_MSBSP displayName "non-SBSD/MSBSP" <"Indicates the organization with respect to the reporting Regime is neither a Security-based Swap Dealer nor a Major Security-based Swap Participant, for example under SEC SBSR.">
+    Participant <"Indicates an organization with respect to the reporting Regime is a participant.">
+    SBSD <"Indicates the organization with respect to the reporting Regime is Security-based Swap Dealer, for example under SEC SBSR.">
+
+enum CFTCEntityClassificationEnum: <"Specifies the entity classification of a party under the CFTC.">
+    [docReference ISDA FpML_Coding_Scheme schemeLocation "http://www.fpml.org/coding-scheme/organization-type"]
+
+    MSP <"A significant participant in the swaps market, for example as defined by the Dodd-Frank Act.">
+    NaturalPerson <"A human being.">
+    non_SD_MSP displayName "non-SD/MSP" <"A firm that is neither a swap dealer nor a major swaps participant under the Dodd-Frank Act.">
+    SD <"Registered swap dealer.">
+
+enum CFTCFinancialEntityClassificationEnum: <"Specifies the financial entity classification of a party under the CFTC.">
+    [docReference ISDA FpML_Coding_Scheme schemeLocation "http://www.fpml.org/coding-scheme/cftc-entity-classification"]
+
+    CommodityPool <"A commodity pool as defined in CFTC CEA § 2(h)(7)(C).">
+    EmployeeBenefitPlan <"An employee benefit plan as defined in paragraphs (3) and (32) of section 1002 of title 29 of the Commodity Exchange Act (CEA).">
+    FinancialSectorPerson <"A person predominantly engaged in activities that are in the business of banking, or in activities that are financial in nature, as defined in section 1843(k) of title 12 of the Commodity Exchange Act (CEA).">
+    MSBSP <"A major security based swap participant as defined in CFTC CEA § 2(h)(7)(C).">
+    MSP <"A major swap participant as defined in CFTC CEA § 2(h)(7)(C).">
+    None <"None of the other codes apply.">
+    PrivateFund <"A private fund as defined in section 80b-2(a) of title 15 of the Commodity Exchange Act (CEA).">
+    SBSD <"A security-based swap dealer as defined in CFTC CEA § 2(h)(7)(C).">
+    SD <"A swap dealer as defined in CFTC CEA § 2(h)(7)(C).">
+
+enum CFTCFederalEntityClassificationEnum: <"Specifies the federal entity indicator of a party unde the CFTC">
+    [docReference ISDA FpML_Coding_Scheme schemeLocation "http://www.fpml.org/coding-scheme/cftc-organization-type"]
+
+    Agency <"An agency as defined in 5 U.S.C. 551(1), a federal instrumentality, or a federal authority.">
+    CharteredPursuantToFederalLaw <"An entity chartered pursuant to federal law after formation (example: an organization listed in title 36 of the U.S. Code).">
+    EstablishedByFederalEntity <"An entity that was established by, or at the direction of, one or more of the entities listed in clause (1), or has an ultimate parent listed in its LEI reference data that is an entity listed in clause (1) or in the first part of this clause (2).">
+    FederallyFundedResearchAndDevelopmentCenter <"A federally funded research and development center on the master list referenced in 48 CFR 35.017-6.">
+    GovernmentCorporation <"A government corporation (examples: as such term is defined in 5 U.S.C. 103(1) or in 31 U.S.C. 9101).">
+    GovernmentSponsoredEnterprise <"A government-sponsored enterprise (example: as such term is defined in 2 U.S.C. 622(8)).">
+    USCListedExecutiveDepartment <"An executive department listed in 5 U.S.C. 101.">
+
+enum PartyIdentifierFormatEnum:
+    Lei
+    LeiAndPerson
+
+enum MarginActionEnum:
+    MARU
+    CORR
+
+// Provisional enum, to be removed when the automatically imported version from ISO is available
+enum ISOFloatingRateIndexEnum: <"Floating rate index ISO Code List corresponding to the version published by EMIR Refit as part of its requirements.">
+    BBSW <"BBSW">
+    BUBO <"BUBOR">
+    CDOR <"CDOR">
+    CIBO <"CIBOR">
+    CORA <"CORA">
+    // CORA: Not present in the ISO Code List published by EMIR Refit as part of its requirements
+    EFFR <"Effective Federal Funds Rate OBFR = Overnight Bank Funding Rate">
+    EONA <"EONIA">
+    EONS <"EONIA SWAP">
+    ESTR <"STR">
+    EURI <"EURIBOR">
+    HKIO <"HKIO">
+    // HKIO: Not present in the ISO Code List published by EMIR Refit as part of its requirements
+    ISDA <"ISDAFIX">
+    JIBA <"JIBAR">
+    LIBO <"LIBOR">
+    MAAA <"Muni AAA">
+    MOSP <"MOSPRIM">
+    NIBO <"NIBOR">
+    PRBO <"PRIBOR">
+    SOFR <"SOFR">
+    SONA <"SONIA">
+    STBO <"STIBOR">
+    SWAP <"SWAP">
+    TIBO <"TIBOR">
+    TLBO <"TELBOR">
+    TREA <"Treasury">
+    WIBO <"WIBOR">
+// Other values specified in the ISO Code List published by EMIR Refit as part of its requirements:
+// EUUS = EURODOLLAR
+// EUCH = EuroSwiss
+// GCFR = GCF REPO
+// LIBI = LIBID
+// PFAN = Pfandbriefe
+// FUSW = Future SWAP
+// CZNA = CZEONIA
+enum MandatorilyClearableEnum:
+    ProductAndCptyMandatory <"The contract belongs to a class of OTC derivatives that has been declared subject to the clearing obligation and both counterparties to the contract are subject to the clearing obligation">
+    ProductMandatoryButNotCpty <"The contract belongs to a class of OTC derivatives that has been declared subject to the clearing obligation but one or both counterparties to the contract are not subject to the clearing obligation or value">
+    ProductNotMandatory <"The contract does not belong to a class of OTC derivatives that has been declared subject to the clearing obligation">
+
+enum ReportableActionEnum:
+    Error <"An action of cancellation of a wrongly submitted entire transaction in case it never came into existence or was not subject to the reporting requirements but was reported erroneously, or a cancellation of duplicate report.">
+    Correct <"A report correcting the erroneous data fields of a previously submitted report.">
+    Revive <"An action that reinstates a swap transaction that was reported as error on terminated by mistake.">
+    TransferOut <"An action that transfers swap transaction from one SDR to another SOR (change of swap data repository).">
+    Update <"An upgrade of an outstanding transaction performed in order to ensure its conformity with the amended reporting requirements.">
+    TransferIn <"The process by which a swap is transferred to another SDR that has the effect of the closing of the suap transaction at one 50 or opening of the same swap transaction using the same UTI/USI in a different SDR (new).">
+
+enum ActionTypeEnum: <"Type of action taken on the contract.">
+    NEWT <"New: A report of a derivative, at a trade or position level, for the first time.">
+    MODI <"Modify: A modification to the terms or details of a previously reported derivative, at a trade or position level, but not a correction of a report.">
+    VALU <"Valuation: An update of a valuation of a derivative, at a trade or position level.">
+    CORR <"Correct: A report correcting the erroneous data fields of a previously submitted report.">
+    TERM <"Terminate: A termination of an existing derivative, at a trade or position level.">
+    EROR <"Error: A cancellation of a wrongly submitted entire report in case the derivative, at a trade or position level, never came into existence.">
+    REVI <"Revive: Re-opening of a derivative, at a trade or position level, that was cancelled with action type Error or terminated by mistake.">
+    POSC <"Position component: A report of a new derivative that is included in a separate position report on the same day.">
+    PRTO <"For the transfer of a Reportable Transaction from one Derivative Trade Repository to another Derivative Trade Repository.">
+    MARU <"Collateral: An update to collateral margin data.">
+
+enum EventTypeEnum: <"Explanation or reason for the action being taken on the contract, where applicable.">
+    TRAD <"Trade: Conclusion of a derivative or renegotiation of its terms that does not result in change of a counterparty.">
+    NOVA <"Step-in: An event, where part or entirety of the derivative is transferred to a counterparty 2 (and reported as a new derivative) and the existing derivative is either terminated or its notional is modified.">
+    COMP <"PTRR: Post-trade risk reduction exercise.">
+    ETRM <"Early termination: Termination of a derivative, at a trade or position level.">
+    CLRG <"Clearing: Central clearing is a process where a derivatives clearing organization interposes itself between counterparties to contracts, becoming the buyer to every seller and the seller to every buyer. It has the effect of terminating an existing transaction between the buyer and the seller and thereby ensuring the performance of open contracts.">
+    EXER <"Exercise: The exercise of an option or a swaption by one counterparty of the transaction, fully or partially.">
+    ALOC <"Allocation: Allocation event, where an existing derivative is allocated to different counterparties and reported as new derivatives with reduced notional amounts.">
+    CLAL <"Clearing and Allocation: A simultaneous clearing and allocation event in a derivatives clearing organization.">
+    CREV <"Credit event: An event or trigger that results in the termination or modification of the state of a previously submitted credit derivative transaction.">
+    CORP <"Corporate event: A corporate action on equity underlying that impacts the derivatives on that equity.">
+    INCP <"Inclusion in position: Inclusion of CCP-cleared derivative or CFD into a position, where an existing derivative is terminated and either a new position is created or the notional of an existing position is modified.">
+    UPDT <"Update: Update of an outstanding derivative performed during the transition period in order to ensure its conformity with the amended reporting requirements.">
+    PTNG <"Transfer: The process by which a swap is transferred to another SDR that has the effect of the closing of the swap transaction at one SDR or opening of the same swap transaction using the same UTI/USI in a different SDR (new).">

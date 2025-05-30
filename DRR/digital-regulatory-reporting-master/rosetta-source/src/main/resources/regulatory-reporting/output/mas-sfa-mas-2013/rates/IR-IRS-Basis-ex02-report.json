@@ -1,0 +1,13 @@
+{
+  "cleared" : "False",
+  "clearedEntity" : "Out of scope",
+  "effectiveDate" : "2018-10-23",
+  "optionExpirationDate" : "N/A",
+  "optionPremium" : "N/A",
+  "optionType" : "N/A",
+  "priorUniqueTransactionIdentifier" : "IRIRSBASISEXXMLXXX01",
+  "reportingTimestamp" : "2021-12-06T17:09:11Z",
+  "terminationDate" : "2020-10-23",
+  "uniqueProductIdentifier" : "InterestRate_IRSwap_Basis",
+  "uniqueTransactionIdentifier" : "BDM-259273-249367"
+}

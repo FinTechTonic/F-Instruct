@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+    <id>distribution</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <fileSets>
+        <fileSet>
+            <directory>${project.build.directory}/drr-artefacts/drr/rosetta</directory>
+            <outputDirectory>model</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/resources/distribution</directory>
+            <outputDirectory/>
+        </fileSet>
+        <fileSet>
+            <directory>${project.build.directory}/drr-artefacts/cdm-sample-files</directory>
+            <outputDirectory>translate/xml</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>${project.build.directory}/drr-artefacts/release</directory>
+            <outputDirectory/>
+        </fileSet>
+        <fileSet>
+            <directory>${project.build.directory}/drr-json</directory>
+            <outputDirectory>translate/json</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>${project.build.directory}/drr-artefacts/regulatory-reporting/data/fpml-5-10/record-keeping</directory>
+            <outputDirectory>test-pack/fpml-5-10/record-keeping</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>${project.build.directory}/drr-dependencies</directory>
+            <outputDirectory>lib</outputDirectory>
+        </fileSet>
+
+    </fileSets>
+</assembly>

@@ -1,0 +1,419 @@
+namespace drr.standards.iso.upi
+version "${project.version}"
+
+type AnnaDsbUpiRequest:
+    Header AnnaDsbHeader (1..1)
+    Attributes AnnaDsbAttributes (1..1)
+
+type AnnaDsbHeader:
+    InstrumentType AnnaDsbInstrumentTypeEnum (1..1)
+    UseCase AnnaDsbUseCaseEnum (1..1)
+    Level AnnaDsbLevelEnum (1..1)
+    AssetClass AnnaDsbAssetClassEnum (1..1)
+
+type AnnaDsbAttributes:
+    ReturnorPayoutTrigger AnnaDsbReturnorPayoutTriggerEnum (0..1)
+    AdditionalSubProduct string (0..1)
+    UnderlyingInstrumentIndexTermUnit AnnaDsbUnderlyingInstrumentIndexTermUnitEnum (0..1)
+    ValuationMethodorTrigger AnnaDsbValuationMethodorTriggerEnum (0..1)
+    UnderlyingInstrumentISIN string (0..1)
+    OtherLegReferenceRateTermUnit AnnaDsbUnderlyingInstrumentIndexTermUnitEnum (0..1)
+    NotionalSchedule AnnaDsbNotionalScheduleEnum (0..1)
+    OtherUnderlying AnnaDsbOtherUnderlying (0..1)
+    UnderlyingIssuerType AnnaDsbUnderlyingIssuerTypeEnum (0..1) // Also seen with type AnnaDsbUnderlyingIssuerType
+    UnderlierIDSource AnnaDsbUnderlierIDSourceEnum (0..1)
+    PlaceofSettlement AnnaDsbPlaceofSettlementEnum (0..1)
+    UnderlyingInstrumentIndexTermValue int (0..1)
+    SettlementCurrency string (0..1)
+    UnderlyingInstrumentIndex string (0..1)
+    BaseProduct AnnaDsbBaseProduct (0..1) // Also seen with type string, AnnaDsbBaseProductEnum
+    UnderlyingInstrumentUPI string (0..1)
+    OtherLegUnderlierType AnnaDsbOtherLegUnderlierType (0..1)
+    UnderlyingAssetClass AnnaDsbUnderlyingAssetClass (0..1)
+    OptionType AnnaDsbOptionTypeEnum (0..1)
+    DeliveryType AnnaDsbDeliveryTypeEnum (0..1)
+    ContractSpecification AnnaDsbContractSpecificationEnum (0..1) // Also seen with type string
+    SubProduct string (0..1)
+    DebtSeniority AnnaDsbDebtSeniorityEnum (0..1)
+    ReferenceRate string (0..1)
+    UnderlierCharacteristic AnnaDsbUnderlierCharacteristicEnum (0..1) // Also seen with type string
+    OtherUnderlierID string (0..1)
+    OtherUnderlierIDSource AnnaDsbOtherUnderlierIDSourceEnum (0..1)
+    UnderlierID string (0..1)
+    OtherReferenceRate string (0..1)
+    NotionalCurrency string (0..1)
+    OtherLegUnderlying AnnaDsbOtherLegUnderlying (0..1)
+    OtherNotionalCurrency string (0..1) // Also seen with type null
+    ReferenceRateTermUnit AnnaDsbUnderlyingInstrumentIndexTermUnitEnum (0..1)
+    OptionExerciseStyle AnnaDsbOptionExerciseStyleEnum (0..1)
+    UnderlyingAssetType AnnaDsbUnderlyingAssetTypeEnum (0..1)
+    OtherLegReferenceRateTermValue int (0..1)
+    OtherUnderlierCharacteristic AnnaDsbUnderlierCharacteristicEnum (0..1)
+    OtherLegUnderlierID string (0..1)
+    OtherSubProduct string (0..1)
+    OtherLegReferenceRate string (0..1)
+    Underlying AnnaDsbUnderlying (0..1)
+    OtherBaseProduct AnnaDsbBaseProduct (0..1) // Also seen with type string
+    UnderlyingInstrumentIndexProp string (0..1)
+    ReferenceRateTermValue int (0..1)
+    OtherLegUnderlierIDSource AnnaDsbOtherLegUnderlierIDSourceEnum (0..1)
+    OtherAdditionalSubProduct string (0..1)
+
+type AnnaDsbAttributesRecord:
+    ReturnorPayoutTrigger AnnaDsbReturnorPayoutTriggerEnum (0..1)
+    AdditionalSubProduct string (0..1)
+    UnderlyingInstrumentIndexTermUnit AnnaDsbUnderlyingInstrumentIndexTermUnitEnum (0..1)
+    ValuationMethodorTrigger AnnaDsbValuationMethodorTriggerEnum (0..1)
+    UnderlyingInstrumentISIN string (0..1)
+    OtherLegReferenceRateTermUnit AnnaDsbUnderlyingInstrumentIndexTermUnitEnum (0..1)
+    NotionalSchedule AnnaDsbNotionalScheduleEnum (0..1)
+    OtherUnderlying AnnaDsbOtherUnderlying (0..1)
+    UnderlyingIssuerType AnnaDsbUnderlyingIssuerTypeEnum (0..1) // Also seen with type AnnaDsbUnderlyingIssuerType
+    UnderlierIDSource AnnaDsbUnderlierIDSourceEnum (0..1)
+    PlaceofSettlement AnnaDsbPlaceofSettlementEnum (0..1)
+    UnderlyingInstrumentIndexTermValue int (0..1)
+    SettlementCurrency string (0..1)
+    UnderlyingInstrumentIndex string (0..1)
+    BaseProduct string (0..1) // Also seen with type string, AnnaDsbBaseProductEnum
+    UnderlyingInstrumentUPI string (0..1)
+    OtherLegUnderlierType AnnaDsbOtherLegUnderlierType (0..1)
+    UnderlyingAssetClass AnnaDsbUnderlyingAssetClass (0..1)
+    OptionType AnnaDsbOptionTypeEnum (0..1)
+    DeliveryType AnnaDsbDeliveryTypeEnum (0..1)
+    ContractSpecification AnnaDsbContractSpecificationEnum (0..1) // Also seen with type string
+    SubProduct string (0..1)
+    DebtSeniority AnnaDsbDebtSeniorityEnum (0..1)
+    ReferenceRate string (0..1)
+    UnderlierCharacteristic AnnaDsbUnderlierCharacteristicEnum (0..1) // Also seen with type string
+    OtherUnderlierID string (0..1)
+    OtherUnderlierIDSource AnnaDsbOtherUnderlierIDSourceEnum (0..1)
+    UnderlierID string (0..1)
+    OtherReferenceRate string (0..1)
+    NotionalCurrency string (0..1)
+    OtherLegUnderlying AnnaDsbOtherLegUnderlying (0..1)
+    OtherNotionalCurrency string (0..1) // Also seen with type null
+    ReferenceRateTermUnit AnnaDsbUnderlyingInstrumentIndexTermUnitEnum (0..1)
+    OptionExerciseStyle AnnaDsbOptionExerciseStyleEnum (0..1)
+    UnderlyingAssetType AnnaDsbUnderlyingAssetTypeEnum (0..1)
+    OtherLegReferenceRateTermValue int (0..1)
+    OtherUnderlierCharacteristic AnnaDsbUnderlierCharacteristicEnum (0..1)
+    OtherLegUnderlierID string (0..1)
+    OtherSubProduct string (0..1)
+    OtherLegReferenceRate string (0..1)
+    Underlying AnnaDsbUnderlying (0..1)
+    OtherBaseProduct string (0..1) // Also seen with type string
+    UnderlyingInstrumentIndexProp string (0..1)
+    ReferenceRateTermValue int (0..1)
+    OtherLegUnderlierIDSource AnnaDsbOtherLegUnderlierIDSourceEnum (0..1)
+    OtherAdditionalSubProduct string (0..1)
+
+type AnnaDsbBaseProduct:
+    AGRI AnnaDsbAGRI (0..1)
+    ENVR AnnaDsbENVR (0..1)
+    FRTL AnnaDsbFRTL (0..1)
+    OTHC AnnaDsbOTHC (0..1)
+    INFL AnnaDsbEmpty (0..1)
+    POLY AnnaDsbPOLY (0..1)
+    OTHR AnnaDsbEmpty (0..1)
+    MCEX AnnaDsbEmpty (0..1)
+    NRGY AnnaDsbNRGY (0..1)
+    INDP AnnaDsbINDP (0..1)
+    OEST AnnaDsbEmpty (0..1)
+    METL AnnaDsbMETL (0..1)
+    PAPR AnnaDsbPAPR (0..1)
+    FRGT AnnaDsbFRGT (0..1)
+
+type AnnaDsbAGRI:
+    SEAF AnnaDsbEmpty (0..1)
+    GRIN AnnaDsbAdditionalSubProduct (0..1)
+    OOLI AnnaDsbAdditionalSubProduct (0..1)
+    POTA AnnaDsbEmpty (0..1)
+    DIRY AnnaDsbEmpty (0..1)
+    FRST AnnaDsbEmpty (0..1)
+    SOFT AnnaDsbAdditionalSubProduct (0..1)
+    LSTK AnnaDsbEmpty (0..1)
+    GROS AnnaDsbAdditionalSubProduct (0..1)
+
+type AnnaDsbNRGY:
+    RNNG AnnaDsbEmpty (0..1)
+    LGHT AnnaDsbEmpty (0..1)
+    ELEC AnnaDsbAdditionalSubProduct (0..1)
+    DIST AnnaDsbEmpty (0..1)
+    COAL AnnaDsbEmpty (0..1)
+    INRG AnnaDsbEmpty (0..1)
+    OILP AnnaDsbAdditionalSubProduct (0..1)
+    NGAS AnnaDsbAdditionalSubProduct (0..1)
+
+type AnnaDsbENVR:
+    CRBR AnnaDsbEmpty (0..1)
+    EMIS AnnaDsbAdditionalSubProduct (0..1)
+    WTHR AnnaDsbEmpty (0..1)
+
+type AnnaDsbFRGT:
+    CSHP AnnaDsbEmpty (0..1)
+    WETF AnnaDsbAdditionalSubProduct (0..1)
+    DRYF AnnaDsbAdditionalSubProduct (0..1)
+
+type AnnaDsbFRTL:
+    AMMO AnnaDsbEmpty (0..1)
+    SLPH AnnaDsbEmpty (0..1)
+    DAPH AnnaDsbEmpty (0..1)
+    PTSH AnnaDsbEmpty (0..1)
+    UREA AnnaDsbEmpty (0..1)
+    UAAN AnnaDsbEmpty (0..1)
+
+type AnnaDsbINDP:
+    CSTR AnnaDsbEmpty (0..1)
+    MFTG AnnaDsbEmpty (0..1)
+
+type AnnaDsbMETL:
+    NPRM AnnaDsbAdditionalSubProduct (0..1)
+    PRME AnnaDsbAdditionalSubProduct (0..1)
+
+type AnnaDsbPAPR:
+    PULP AnnaDsbEmpty (0..1)
+    NSPT AnnaDsbEmpty (0..1)
+    RCVP AnnaDsbEmpty (0..1)
+    CBRD AnnaDsbEmpty (0..1)
+
+type AnnaDsbPOLY:
+    PLST AnnaDsbEmpty (1..1)
+
+type AnnaDsbOTHC:
+    DLVR AnnaDsbEmpty (0..1)
+    NDLV AnnaDsbEmpty (0..1)
+
+type AnnaDsbUnderlying:
+    DebtSeniority AnnaDsbDebtSeniorityEnum (0..1)
+    UnderlierCharacteristic AnnaDsbUnderlierCharacteristicEnum (0..1)
+    ReferenceRate string (0..1)
+    UnderlierID string (0..1)
+    UnderlyingInstrumentIndexTermUnit AnnaDsbUnderlyingInstrumentIndexTermUnitEnum (0..1)
+    UnderlyingInstrumentISIN string (0..1)
+    UnderlyingCreditIndexVersion int (0..1) // Also seen with type AnnaDsbUnderlyingCreditIndexVersionEnum
+    UnderlierType AnnaDsbUnderlierType (0..1)
+    Basket AnnaDsbEmpty (0..1)
+    ReferenceRateTermUnit AnnaDsbUnderlyingInstrumentIndexTermUnitEnum (0..1)
+    UnderlyingAssetType AnnaDsbUnderlyingAssetType (0..1) // Also seen with type AnnaDsbUnderlyingAssetTypeEnum
+    UnderlierIDSource AnnaDsbUnderlierIDSourceEnum (0..1)
+    UnderlyingInstrumentIndexTermValue int (0..1) // Also seen with type AnnaDsbUnderlyingInstrumentIndexTermValueEnum
+    UnderlyingCreditIndexSeries int (0..1) // Also seen with type AnnaDsbUnderlyingCreditIndexSeriesEnum
+    InstrumentISIN string (0..1)
+    InstrumentLEI string (0..1)
+    UnderlyingInstrumentIndex string (0..1)
+    UnderlyingInstrumentIndexProp string (0..1)
+    ReferenceRateTermValue int (0..1)
+    UnderlyingInstrumentUPI string (0..1)
+    UnderlyingInstrumentLEI string (0..1)
+
+type AnnaDsbUnderlierType:
+    UnderlierIDSource AnnaDsbUnderlierIDSourceEnum (1..1)
+    DebtSeniority AnnaDsbDebtSeniorityEnum (0..1)
+    UnderlyingInstrumentIndexTermValue int (0..1)
+    UnderlyingCreditIndexSeries int (0..1)
+    UnderlierID string (1..1)
+    UnderlyingInstrumentIndexTermUnit AnnaDsbUnderlyingInstrumentIndexTermUnitEnum (0..1)
+    UnderlyingCreditIndexVersion int (0..1)
+    ReferenceRateTermValue int (0..1)
+    ReferenceRateTermUnit AnnaDsbUnderlyingInstrumentIndexTermUnitEnum (0..1)
+
+type AnnaDsbOtherUnderlying:
+    OtherUnderlierIDSource AnnaDsbOtherUnderlierIDSourceEnum (0..1)
+    OtherUnderlierID string (0..1)
+    Basket AnnaDsbEmpty (0..1)
+
+type AnnaDsbUnderlyingAssetType:
+    CDSIndex AnnaDsbCDSIndex (0..1)
+    SingleName AnnaDsbSingleName (0..1)
+    CDSSingleName AnnaDsbCDSSingleName (0..1)
+    Options AnnaDsbSingleStock (0..1)
+    Futures AnnaDsbSingleStock (0..1)
+    SingleStock AnnaDsbSingleStock (0..1)
+    Forwards AnnaDsbSingleStock (0..1)
+    Swaps AnnaDsbCDSSingleName (0..1)
+    Index AnnaDsbCDSIndex (0..1)
+    IndexTranche AnnaDsbIndexTranche (0..1)
+    CDSIndexTranche AnnaDsbCDSIndex (0..1)
+    Other AnnaDsbOther (0..1)
+
+type AnnaDsbCDSSingleName:
+    UnderlierIDSource AnnaDsbUnderlierIDSourceEnum (1..1)
+    DebtSeniority AnnaDsbDebtSeniorityEnum (0..1)
+    UnderlierID string (1..1)
+
+type AnnaDsbCDSIndex:
+    UnderlierIDSource AnnaDsbUnderlierIDSourceEnum (1..1)
+    UnderlyingInstrumentIndexTermValue int (0..1)
+    UnderlyingCreditIndexSeries int (0..1)
+    UnderlierID string (1..1) // Also seen with type null
+    UnderlyingInstrumentIndexTermUnit AnnaDsbUnderlyingInstrumentIndexTermUnitEnum (0..1)
+    UnderlyingCreditIndexVersion int (0..1)
+
+type AnnaDsbOther:
+    UnderlierIDSource AnnaDsbUnderlierIDSourceEnum (1..1)
+    DebtSeniority AnnaDsbDebtSeniorityEnum (0..1)
+    UnderlyingInstrumentIndexTermValue int (0..1)
+    UnderlyingCreditIndexSeries int (0..1)
+    UnderlierID string (1..1) // Also seen with type null
+    UnderlyingInstrumentIndexTermUnit AnnaDsbUnderlyingInstrumentIndexTermUnitEnum (0..1)
+    UnderlyingCreditIndexVersion int (0..1)
+
+type AnnaDsbSingleName:
+    UnderlierIDSource AnnaDsbUnderlierIDSourceEnum (1..1)
+    DebtSeniority AnnaDsbDebtSeniorityEnum (1..1)
+    UnderlierID string (1..1)
+
+type AnnaDsbIndexTranche:
+    UnderlierIDSource AnnaDsbUnderlierIDSourceEnum (1..1)
+    UnderlyingInstrumentIndexTermValue int (1..1)
+    UnderlyingCreditIndexSeries int (1..1)
+    UnderlierID string (1..1) // Also seen with type null
+    UnderlyingInstrumentIndexTermUnit AnnaDsbUnderlyingInstrumentIndexTermUnitEnum (1..1)
+    UnderlyingCreditIndexVersion int (1..1)
+
+type AnnaDsbUnderlyingIssuerType:
+    Sovereign AnnaDsbContractSpecification (0..1)
+    Corporate AnnaDsbContractSpecification (0..1)
+    Local AnnaDsbContractSpecification (0..1)
+
+type AnnaDsbSingleStock:
+    UnderlierIDSource AnnaDsbUnderlierIDSourceEnum (1..1)
+    UnderlierID string (1..1)
+
+type AnnaDsbUnderlyingAssetClass:
+    Rates AnnaDsbRates (0..1)
+    Credit AnnaDsbCredit (0..1)
+    Commodities AnnaDsbCommodities (0..1)
+    Equity AnnaDsbEquity (0..1)
+    Foreign_Exchange AnnaDsbForeign_Exchange (0..1)
+
+type AnnaDsbRates:
+    ReturnorPayoutTrigger AnnaDsbReturnorPayoutTriggerEnum (0..1)
+    ReferenceRate string (0..1)
+    UnderlierCharacteristic string (0..1) // Also seen with type AnnaDsbUnderlierCharacteristicEnum
+    UnderlyingInstrumentISIN string (0..1)
+    OtherLegReferenceRateTermUnit AnnaDsbUnderlyingInstrumentIndexTermUnitEnum (0..1)
+    NotionalCurrency string (0..1)
+    OtherLegUnderlying AnnaDsbOtherLegUnderlying (0..1)
+    OtherNotionalCurrency string (0..1)
+    ReferenceRateTermUnit AnnaDsbUnderlyingInstrumentIndexTermUnitEnum (0..1)
+    OtherLegReferenceRateTermValue int (0..1)
+    OtherLegReferenceRate string (0..1)
+    Underlying AnnaDsbUnderlying (0..1)
+    OtherLegUnderlierCharacteristic AnnaDsbUnderlierCharacteristicEnum (0..1)
+    ReferenceRateTermValue int (0..1)
+    UnderlierName string (0..1)
+
+type AnnaDsbEquity:
+    ReturnorPayoutTrigger AnnaDsbReturnorPayoutTriggerEnum (0..1)
+    UnderlierCharacteristic AnnaDsbUnderlierCharacteristicEnum (0..1)
+    Underlying AnnaDsbUnderlying (0..1)
+    UnderlyingInstrumentISIN string (0..1)
+    UnderlyingInstrumentIndex string (0..1)
+    UnderlyingInstrumentIndexProp string (0..1)
+    UnderlierName string (0..1)
+
+type AnnaDsbCredit:
+    ReturnorPayoutTrigger AnnaDsbReturnorPayoutTriggerEnum (0..1)
+    UnderlierCharacteristic AnnaDsbUnderlierCharacteristicEnum (0..1)
+    DebtSeniority AnnaDsbDebtSeniorityEnum (0..1)
+    UnderlyingInstrumentIndexTermUnit AnnaDsbUnderlyingInstrumentIndexTermUnitEnum (0..1)
+    UnderlyingInstrumentISIN string (0..1)
+    UnderlyingCreditIndexVersion int (0..1)
+    UnderlyingInstrumentIndexTermValue int (0..1)
+    UnderlyingCreditIndexSeries int (0..1)
+    Underlying AnnaDsbUnderlying (0..1)
+    UnderlyingInstrumentIndexProp string (0..1)
+    UnderlyingInstrumentIndex string (0..1)
+    UnderlierName string (0..1)
+    UnderlyingInstrumentLEI string (0..1)
+
+type AnnaDsbForeign_Exchange:
+    UnderlierIDSource AnnaDsbUnderlierIDSourceEnum (0..1)
+    ReturnorPayoutTrigger AnnaDsbReturnorPayoutTriggerEnum (0..1)
+    PlaceofSettlement AnnaDsbPlaceofSettlementEnum (0..1)
+    OtherUnderlierIDSource AnnaDsbOtherUnderlierIDSourceEnum (0..1)
+    OtherUnderlierID string (0..1)
+    UnderlierID string (0..1)
+    SettlementCurrency string (0..1)
+    NotionalCurrency string (0..1)
+    OtherNotionalCurrency string (0..1)
+    UnderlierName string (0..1)
+
+type AnnaDsbCommodities:
+    ReturnorPayoutTrigger AnnaDsbReturnorPayoutTriggerEnum (0..1)
+    SubProduct string (0..1)
+    UnderlierCharacteristic AnnaDsbUnderlierCharacteristicEnum (0..1)
+    ReferenceRate string (0..1)
+    AdditionalSubProduct string (0..1)
+    OtherReferenceRate string (0..1)
+    NotionalCurrency string (0..1)
+    OtherNotionalCurrency string (0..1)
+    OtherUnderlying AnnaDsbOtherUnderlying (0..1)
+    OtherUnderlierCharacteristic AnnaDsbUnderlierCharacteristicEnum (0..1)
+    OtherSubProduct string (0..1)
+    Underlying AnnaDsbUnderlying (0..1)
+    OtherBaseProduct AnnaDsbBaseProduct (0..1) // Also seen with type string
+    UnderlyingInstrumentIndex string (0..1)
+    UnderlyingInstrumentIndexProp string (0..1)
+    BaseProduct AnnaDsbBaseProduct (0..1) // Also seen with type string
+    UnderlierName string (0..1)
+    OtherAdditionalSubProduct string (0..1)
+
+type AnnaDsbOtherLegUnderlying:
+    OtherLegUnderlierID string (0..1)
+    OtherLegReferenceRate string (0..1)
+    OtherLegReferenceRateTermUnit AnnaDsbUnderlyingInstrumentIndexTermUnitEnum (0..1)
+    OtherLegUnderlierCharacteristic AnnaDsbUnderlierCharacteristicEnum (0..1)
+    OtherLegUnderlierIDSource AnnaDsbOtherLegUnderlierIDSourceEnum (0..1)
+    Basket AnnaDsbEmpty (0..1)
+    OtherLegReferenceRateTermValue int (0..1)
+
+type AnnaDsbOtherLegUnderlierType:
+    OtherLegUnderlierID string (1..1)
+    OtherLegUnderlierIDSource AnnaDsbOtherLegUnderlierIDSourceEnum (1..1)
+
+type AnnaDsbUpiRecord:
+    Identifier AnnaDsbIdentifier (1..1)
+    Header AnnaDsbHeader (1..1)
+    Derived AnnaDsbDerived (1..1)
+    Attributes AnnaDsbAttributesRecord (1..1)
+    TemplateVersion int (1..1)
+
+type AnnaDsbIdentifier:
+    Status AnnaDsbStatusEnum (1..1)
+    LastUpdateDateTime string (1..1)
+    StatusReason string (0..1)
+    UPI string (1..1)
+
+type AnnaDsbDerived:
+    ReturnorPayoutTrigger AnnaDsbReturnorPayoutTriggerEnum (0..1)
+    UnderlierCharacteristic string (0..1)
+    ValuationMethodorTrigger AnnaDsbValuationMethodorTriggerEnum (0..1)
+    ShortName string (1..1)
+    UnderlyingIssuerType AnnaDsbUnderlyingIssuerTypeEnum (0..1)
+    ClassificationType string (1..1)
+    OptionExerciseStyle AnnaDsbOptionExerciseStyleEnum (0..1)
+    UnderlyingAssetType string (0..1) // Also seen with type AnnaDsbUnderlyingAssetTypeEnum
+    SingleorMultiCurrency AnnaDsbSingleorMultiCurrencyEnum (0..1)
+    CFIDeliveryType AnnaDsbCFIDeliveryTypeEnum (0..1)
+    UnderlyingRecord AnnaDsbUnderlyingRecord (0..*)
+    CFIOptionStyleandType AnnaDsbCFIOptionStyleandTypeEnum (0..1)
+    UnderlierName string (0..1)
+    UnderlyingAssetClass AnnaDsbUnderlyingAssetClass (0..1)
+    DeliveryType AnnaDsbDeliveryTypeEnum (0..1)
+    FurtherGrouping string (0..1)
+
+type AnnaDsbUnderlyingRecord:
+    UnderlierIDSource AnnaDsbUnderlierIDSourceEnum (1..1)
+    UnderlierID string (1..1)
+    ReturnUnderlierID string (1..*)
+    ReturnUnderlierIDSource AnnaDsbReturnUnderlierIDSourceEnum (1..1)
+
+type AnnaDsbContractSpecification:
+    ContractSpecification AnnaDsbContractSpecificationEnum (0..1)
+
+type AnnaDsbEmpty:
+
+type AnnaDsbAdditionalSubProduct:
+    AdditionalSubProduct AnnaDsbAdditionalSubProductEnum (1..1)

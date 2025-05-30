@@ -1,0 +1,73 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "INTR",
+  "cleared" : "N",
+  "contractType" : "SWAP",
+  "counterparty1" : "TESTLEIINFBS00000002",
+  "counterparty2" : "TESTLEIINFBS00000001",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "dayCountConventionLeg1" : "A004",
+  "dayCountConventionLeg2" : "A004",
+  "direction2OfLeg1" : "MAKE",
+  "direction2OfLeg2" : "TAKE",
+  "effectiveDate" : "2021-03-11",
+  "eventIdentifier" : "DTDApproved2380083603EMIRRiskNewNewInterest",
+  "eventTimestamp" : "2021-03-09T13:13:23Z",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-03-09T13:12:38Z",
+  "expirationDate" : "2031-03-11",
+  "floatingRateReferencePeriodOfLeg2Multiplier" : 1,
+  "floatingRateReferencePeriodOfLeg2TimePeriod" : "DAIL",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "NotionalCurrency" : "USD",
+          "NotionalSchedule" : "Constant",
+          "OtherLegReferenceRateTermUnit" : "DAYS",
+          "OtherLegReferenceRateTermValue" : 1,
+          "OtherLegUnderlierID" : "USD-SOFR-COMPOUND",
+          "OtherLegUnderlierIDSource" : "FPML",
+          "ReferenceRateTermUnit" : "MNTH",
+          "ReferenceRateTermValue" : 3,
+          "UnderlierID" : "USD-Federal Funds-H.15",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Basis"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "USD",
+  "notionalCurrencyLeg2" : "USD",
+  "notionalLeg1" : 15000000,
+  "notionalLeg2" : 15000000,
+  "paymentFrequencyPeriodLeg1" : "MNTH",
+  "paymentFrequencyPeriodLeg2" : "MNTH",
+  "paymentFrequencyPeriodMultiplierLeg1" : 3,
+  "paymentFrequencyPeriodMultiplierLeg2" : 3,
+  "platformIdentifier" : "EGSI",
+  "reportSubmittingEntityID" : "TESTLEIINFBS00000002",
+  "reportingEntity" : "TESTLEIINFBS00000002",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "secondaryTransactionIdentifier" : "IRIRSBASISEXXMLXXX01",
+  "settlementCurrencyLeg1" : "USD",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "spreadLeg1" : {
+    "spreadLeg1Basis" : 6,
+    "spreadLeg1Notation" : "Basis"
+  },
+  "spreadLeg2" : {
+    "spreadLeg2Basis" : 1,
+    "spreadLeg2Notation" : "Basis"
+  },
+  "spreadNotationLeg1" : "4",
+  "spreadNotationLeg2" : "4",
+  "uniqueTransactionIdentifier" : "DUMMYTRADEIDENTIFY01IRSBASISEX01"
+}

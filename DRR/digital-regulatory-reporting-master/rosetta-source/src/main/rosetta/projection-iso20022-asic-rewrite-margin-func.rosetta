@@ -1,0 +1,156 @@
+namespace drr.projection.iso20022.asic.rewrite.margin
+version "${project.version}"
+
+import drr.projection.iso20022.common.*
+import drr.regulation.common.*
+import drr.regulation.asic.rewrite.margin.*
+
+import iso20022.auth108.asic.*
+
+func Project_ASICMarginReportToIso20022:
+    [projection]
+    inputs:
+        marginReport ASICMarginReport (1..1)
+    output:
+        iso20022Report Document (1..1)
+
+    set iso20022Report -> derivsTradMrgnDataRpt -> tradData -> rpt:
+        TradeReport31Choice__1 {
+            mrgnUpd: if marginReport -> actionType = MarginActionEnum -> MARU
+                then Create_MarginReportData(marginReport),
+            crrctn: if marginReport -> actionType = MarginActionEnum -> CORR
+                then Create_MarginReportData(marginReport)
+        }
+
+func Create_MarginReportData:
+    inputs:
+        marginReport ASICMarginReport (1..1)
+    output:
+        details MarginReportData7__1 (1..1)
+
+    set details:
+        MarginReportData7__1 {
+//            rptgTmStmp: reportingTimestamp,
+            txId: UniqueTransactionIdentifier2Choice__1 {
+                    unqTxIdr: marginReport -> uniqueTransactionIdentifier,
+                    ...
+                },
+            ctrPtyId: Create_CounterpartySpecificData(marginReport),
+            coll: MarginCollateralReport4__1 {
+                    collstnCtgy: marginReport -> collateralisationCategory,
+                    collPrtflCd: CollateralPortfolioCode5Choice__1 {
+                            mrgnPrtflCd: MarginPortfolio3__1 {
+                                    initlMrgnPrtflCd: PortfolioCode5Choice__1 {
+                                            prtfl: PortfolioIdentification3__1 {
+                                                    cd: marginReport -> initialMarginCollateralPortfolioCode,
+                                                    prtflTxXmptn: marginReport -> portfolioContainingNonReportedComponentIndicator
+                                                },
+                                            ...
+                                        },
+                                    vartnMrgnPrtflCd: PortfolioCode5Choice__1 {
+                                            prtfl: PortfolioIdentification3__1 {
+                                                    cd: marginReport -> collateralPortfolioCodeVM,
+                                                    prtflTxXmptn: marginReport -> portfolioContainingNonReportedComponentIndicator
+                                                },
+                                            ...
+                                        },
+                                }
+                        },
+                    tmStmp: marginReport -> collateralTimestamp
+                },
+            pstdMrgnOrColl: Create_PostedMarginReport(marginReport),
+            rcvdMrgnOrColl: Create_ReceivedMarginReport(marginReport),
+            techAttrbts: TechnicalAttributes6__1 {
+                    techRcrdId: marginReport -> technicalRecordId + "_" + marginReport -> reportingTimestamp to-string,
+                    rptRctTmStmp: marginReport -> reportingTimestamp
+                }
+        }
+
+func Create_CounterpartySpecificData:
+    inputs:
+        marginReport ASICMarginReport (1..1)
+    output:
+        ctrPtySpcfcData TradeCounterpartyReport20__1 (1..1)
+
+    set ctrPtySpcfcData:
+        TradeCounterpartyReport20__1 {
+            rptgCtrPty: Counterparty45__1 {
+                    id: PartyIdentification248Choice__1 {
+                            lgl: LegalPersonIdentification1__1 {
+                                    id: OrganisationIdentification15Choice__1 {
+                                            lei: marginReport -> counterparty1
+                                        }
+                                }
+                        },
+                    ...
+                },
+            submitgAgt: OrganisationIdentification15Choice__1 {
+                    lei: marginReport -> reportSubmittingEntityID
+                },
+            othrCtrPty: Counterparty46__1 {
+                    idTp: PartyIdentification248Choice__2 {
+                            lgl: if marginReport -> counterpartyIdentifierType = True
+                                then LegalPersonIdentification1__2 {
+                                        id: OrganisationIdentification15Choice__2 {
+                                                lei: marginReport -> counterparty2,
+                                                ...
+                                            }
+                                    },
+                            ntrl: if marginReport -> counterpartyIdentifierType = False
+                                then NaturalPersonIdentification3__1 {
+                                        id: NaturalPersonIdentification2__1 {
+                                                id: GenericIdentification175__1 {
+                                                        id: marginReport -> counterparty2
+                                                    }
+                                            }
+                                    }
+                        }
+                },
+            nttyRspnsblForRpt: OrganisationIdentification15Choice__1 {
+                    lei: empty
+                }
+        }
+
+func Create_PostedMarginReport:
+    inputs:
+        marginReport ASICMarginReport (1..1)
+    output:
+        postMarginData PostedMarginOrCollateral6__1 (1..1)
+
+    set postMarginData:
+        PostedMarginOrCollateral6__1 {
+            initlMrgnPstdPreHrcut: ActiveOrHistoricCurrencyAnd5DecimalAmount {
+                    value: marginReport -> initialMarginPostedByTheReportingEntityPreHaircut,
+                    ccy: marginReport -> currencyofInitialMarginPosted to-string
+                },
+            initlMrgnPstdPstHrcut: ActiveOrHistoricCurrencyAnd5DecimalAmount {
+                    value: marginReport -> initialMarginPostedByTheReportingEntityPostHaircut,
+                    ccy: marginReport -> currencyofInitialMarginPosted to-string
+                },
+            vartnMrgnPstdPreHrcut: ActiveOrHistoricCurrencyAnd5DecimalAmount {
+                    value: marginReport -> variationMarginPostedByTheReportingEntityPreHaircut,
+                    ccy: marginReport -> currencyOfVariationMarginPosted to-string
+                }
+        }
+
+func Create_ReceivedMarginReport:
+    inputs:
+        marginReport ASICMarginReport (1..1)
+    output:
+        rcvdMarginData ReceivedMarginOrCollateral6__1 (1..1)
+
+    set rcvdMarginData:
+        ReceivedMarginOrCollateral6__1 {
+            initlMrgnRcvdPreHrcut: ActiveOrHistoricCurrencyAnd5DecimalAmount {
+                    value: marginReport -> initialMarginCollectedByTheReportingEntityPreHaircut,
+                    ccy: marginReport -> currencyofInitialMarginCollected to-string
+                },
+            initlMrgnRcvdPstHrcut: ActiveOrHistoricCurrencyAnd5DecimalAmount {
+                    value: marginReport -> initialMarginCollectedByTheReportingEntityPostHaircut,
+                    ccy: marginReport -> currencyofInitialMarginCollected to-string
+                },
+            vartnMrgnRcvdPreHrcut: ActiveOrHistoricCurrencyAnd5DecimalAmount {
+                    value: marginReport -> variationMarginCollectedByTheReportingEntityPreHaircut,
+                    ccy: marginReport -> currencyOfVariationMarginCollected to-string
+                },
+        }

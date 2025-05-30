@@ -1,0 +1,66 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "COMM",
+  "bookingLocation" : "US",
+  "callAmount" : 46494750.00,
+  "callCurrency" : "USD",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmationTimestamp" : "2021-03-03T22:37:01Z",
+  "confirmed" : "YCNF",
+  "contractType" : "OPTN",
+  "counterparty1" : "DUMMY0000000000LEI02",
+  "counterparty2" : "DUMMY0000000000LEI01",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "DUMMY0000000000LEI02",
+  "deliveryType" : "CASH",
+  "direction" : "BYER",
+  "effectiveDate" : "2021-02-25",
+  "eventDate" : "2021-02-25",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-02-25T13:55:09Z",
+  "expirationDate" : "2022-01-31",
+  "finalContractualSettlementDate" : "2022-01-31",
+  "firstExerciseDate" : "2022-01-31",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "OptionExerciseStyle" : "EURO",
+          "OptionType" : "CALL",
+          "UnderlierID" : "GOLD-COMEX",
+          "UnderlierIDSource" : "COMM",
+          "ValuationMethodorTrigger" : "Vanilla"
+        },
+        "Header" : {
+          "AssetClass" : "Commodities",
+          "InstrumentType" : "Option",
+          "Level" : "UPI",
+          "UseCase" : "Option"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfTheContractOrLeg1" : 46494750.00,
+  "notionalCurrencyOfTheContractOrLeg1" : "USD",
+  "notionalQuantityOfTheContractOrLeg1" : 11750.00,
+  "optionPremiumAmount" : 777850.00,
+  "optionPremiumCurrency" : "USD",
+  "optionStyle" : "EURO",
+  "optionType" : "CALL",
+  "quantityFrequencyOfTheContractOrLeg1" : "EXPI",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "DUMMY0000000000LEI02",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrency1" : "USD",
+  "strikePrice" : {
+    "strikePriceCurrency" : "USD",
+    "strikePriceMonetary" : 3957.0000000000000,
+    "strikePriceNotation" : "Monetary"
+  },
+  "totalNotionalQuantityOfTheContractOrLeg1" : 11750.00,
+  "underlyingIdentificationType" : "O",
+  "uniqueTransactionIdentifier" : "COMMODITYOPTIONMET01"
+}

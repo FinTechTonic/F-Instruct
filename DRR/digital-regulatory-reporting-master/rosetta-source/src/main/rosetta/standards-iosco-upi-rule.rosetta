@@ -1,0 +1,2 @@
+namespace drr.standards.iosco.upi
+version "${project.version}"

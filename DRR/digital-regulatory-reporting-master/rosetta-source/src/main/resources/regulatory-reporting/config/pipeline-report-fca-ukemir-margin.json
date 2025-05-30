@@ -1,0 +1,10 @@
+{
+  "id" : "pipeline-report-fca-ukemir-margin",
+  "name" : "FCA / UKEMIR Margin",
+  "transform" : {
+    "type" : "REPORT",
+    "function" : "drr.regulation.fca.ukemir.refit.margin.reports.FCAUKEMIRMarginReportFunction",
+    "inputType" : "drr.regulation.common.CollateralReportInstruction",
+    "outputType" : "drr.regulation.fca.ukemir.refit.margin.FCAUKEMIRMarginReport"
+  }
+}

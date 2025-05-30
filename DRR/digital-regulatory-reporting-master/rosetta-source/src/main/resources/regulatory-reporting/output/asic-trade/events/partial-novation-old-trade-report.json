@@ -1,0 +1,58 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "INTR",
+  "broker" : "549300OL8KL0WCQ34V31",
+  "cleared" : "N",
+  "contractType" : "SWAP",
+  "counterparty1" : "5493001RKR55V4X61F71",
+  "counterparty2" : "549300O5MFEP1XJ40B46",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "dayCountConventionLeg1" : "A011",
+  "dayCountConventionLeg2" : "A004",
+  "direction2OfLeg1" : "TAKE",
+  "direction2OfLeg2" : "MAKE",
+  "effectiveDate" : "2011-02-08",
+  "eventIdentifier" : "SEF006",
+  "eventTimestamp" : "2011-07-01T11:13:07Z",
+  "eventType" : "NOVA",
+  "executionTimestamp" : "2011-02-04T16:20:47Z",
+  "expirationDate" : "2016-02-08",
+  "fixedRateLeg1" : 2.5300,
+  "floatingRateReferencePeriodOfLeg2Multiplier" : 3,
+  "floatingRateReferencePeriodOfLeg2TimePeriod" : "MNTH",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalCurrency" : "USD",
+          "NotionalSchedule" : "Constant",
+          "ReferenceRateTermUnit" : "MNTH",
+          "ReferenceRateTermValue" : 6,
+          "UnderlierID" : "USD-LIBOR-BBA",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Fixed_Float"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "USD",
+  "notionalCurrencyLeg2" : "USD",
+  "notionalLeg1" : 7500000.00,
+  "notionalLeg2" : 7500000.00,
+  "paymentFrequencyPeriodLeg1" : "MNTH",
+  "paymentFrequencyPeriodLeg2" : "MNTH",
+  "paymentFrequencyPeriodMultiplierLeg1" : 6,
+  "paymentFrequencyPeriodMultiplierLeg2" : 3,
+  "reportSubmittingEntityID" : "5493001RKR55V4X61F71",
+  "reportingEntity" : "5493001RKR55V4X61F71",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "uniqueTransactionIdentifier" : "PARTIALNOVATIONXML01"
+}

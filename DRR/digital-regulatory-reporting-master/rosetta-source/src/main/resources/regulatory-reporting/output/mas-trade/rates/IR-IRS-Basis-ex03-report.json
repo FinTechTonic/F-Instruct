@@ -1,0 +1,75 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "INTR",
+  "bookingLocation" : "DEU",
+  "cleared" : "I",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "SWAP",
+  "counterparty1" : "G3SDK4EG3HH735DJJ456",
+  "counterparty2" : "F226TOH6YD6XJB17KS62",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "G3SDK4EG3HH735DJJ456",
+  "deliveryType" : "PHYS",
+  "directionOfLeg1" : "MAKE",
+  "directionOfLeg2" : "TAKE",
+  "effectiveDate" : "2018-05-24",
+  "eventDate" : "2021-10-07",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-10-07T13:18:08Z",
+  "expirationDate" : "2025-05-24",
+  "finalContractualSettlementDate" : "2025-05-24",
+  "floatingRateDayCountConventionOfLeg1" : "A004",
+  "floatingRateDayCountConventionOfLeg2" : "A004",
+  "floatingRatePaymentFrequencyPeriodMultiplierOfLeg1" : 3,
+  "floatingRatePaymentFrequencyPeriodMultiplierOfLeg2" : 6,
+  "floatingRatePaymentFrequencyPeriodOfLeg1" : "MNTH",
+  "floatingRatePaymentFrequencyPeriodOfLeg2" : "MNTH",
+  "floatingRateResetFrequencyPeriodMultiplierOfLeg1" : 3,
+  "floatingRateResetFrequencyPeriodMultiplierOfLeg2" : 6,
+  "floatingRateResetFrequencyPeriodOfLeg1" : "MNTH",
+  "floatingRateResetFrequencyPeriodOfLeg2" : "MNTH",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalCurrency" : "EUR",
+          "NotionalSchedule" : "Constant",
+          "OtherLegReferenceRateTermUnit" : "MNTH",
+          "OtherLegReferenceRateTermValue" : 6,
+          "OtherLegUnderlierID" : "EUR-EURIBOR",
+          "OtherLegUnderlierIDSource" : "FPML",
+          "ReferenceRateTermUnit" : "MNTH",
+          "ReferenceRateTermValue" : 3,
+          "UnderlierID" : "EUR-EURIBOR",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Basis"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfLeg2" : 10000.00,
+  "notionalAmountOfTheContractOrLeg1" : 10000.00,
+  "notionalCurrencyOfLeg2" : "EUR",
+  "notionalCurrencyOfTheContractOrLeg1" : "EUR",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "G3SDK4EG3HH735DJJ456",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "spreadOfLeg1" : {
+    "spreadNotationOfLeg1" : "Basis",
+    "spreadOfLeg1Basis" : 20
+  },
+  "spreadOfLeg2" : {
+    "spreadNotationOfLeg2" : "Basis",
+    "spreadOfLeg2Basis" : 15
+  },
+  "underlyingIdentificationType" : "O",
+  "uniqueTransactionIdentifier" : "IRIRSBASISEXXMLXXX01"
+}

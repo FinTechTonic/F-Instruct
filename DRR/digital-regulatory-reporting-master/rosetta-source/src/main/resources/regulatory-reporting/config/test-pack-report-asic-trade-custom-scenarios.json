@@ -1,0 +1,249 @@
+{
+  "id" : "test-pack-report-asic-trade-custom-scenarios",
+  "pipelineId" : "pipeline-report-asic-trade",
+  "name" : "Custom Scenarios",
+  "samples" : [ {
+    "id" : "mockup-agent-trading-capacity",
+    "name" : "mockup agent trading capacity",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-agent-trading-capacity.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-agent-trading-capacity-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 14,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-clearing-threshold-party-1",
+    "name" : "mockup clearing threshold party 1",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-clearing-threshold-party-1.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-clearing-threshold-party-1-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 18,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-clearing-threshold-party-2",
+    "name" : "mockup clearing threshold party 2",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-clearing-threshold-party-2.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-clearing-threshold-party-2-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 18,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-com-ex5-gas-v-electricity-spark-spread-singleleg-01",
+    "name" : "mockup com ex5 gas v electricity spark spread singleleg 01",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-com-ex5-gas-v-electricity-spark-spread-singleleg-01.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-com-ex5-gas-v-electricity-spark-spread-singleleg-01-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 19,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-com-ex5-gas-v-electricity-spark-spread-singleleg-02",
+    "name" : "mockup com ex5 gas v electricity spark spread singleleg 02",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-com-ex5-gas-v-electricity-spark-spread-singleleg-02.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-com-ex5-gas-v-electricity-spark-spread-singleleg-02-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 25,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-commodity-delivery",
+    "name" : "mockup commodity delivery",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-commodity-delivery.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-commodity-delivery-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 16,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-commodity-swap-last-available-spot-price",
+    "name" : "mockup commodity swap last available spot price",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-commodity-swap-last-available-spot-price.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-commodity-swap-last-available-spot-price-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 15,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-corporate-sector-ex01-single-party-esma",
+    "name" : "mockup corporate sector ex01 single party esma",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-corporate-sector-ex01-single-party-esma.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-corporate-sector-ex01-single-party-esma-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 16,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-corporate-sector-ex02-multiple-parties-multiple-regimes",
+    "name" : "mockup corporate sector ex02 multiple parties multiple regimes",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-corporate-sector-ex02-multiple-parties-multiple-regimes.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-corporate-sector-ex02-multiple-parties-multiple-regimes-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 16,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-external-api-enrich",
+    "name" : "mockup external api enrich",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-external-api-enrich.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-external-api-enrich-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 23,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-federal-entity-credit-default-swap",
+    "name" : "mockup federal entity credit default swap",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-federal-entity-credit-default-swap.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-federal-entity-credit-default-swap-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 18,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-financial-entity-ir-swap",
+    "name" : "mockup financial entity ir swap",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-financial-entity-ir-swap.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-financial-entity-ir-swap-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 17,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-fx-strategy-forward",
+    "name" : "mockup fx strategy forward",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-fx-strategy-forward.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-fx-strategy-forward-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 22,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-fx-strategy-spot",
+    "name" : "mockup fx strategy spot",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-fx-strategy-spot.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-fx-strategy-spot-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 22,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-fx-swap-spot-forward",
+    "name" : "mockup fx swap spot forward",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-fx-swap-spot-forward.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-fx-swap-spot-forward-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 22,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-natural-person-ir-swaption",
+    "name" : "mockup natural person ir swaption",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-natural-person-ir-swaption.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-natural-person-ir-swaption-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 16,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-package-price-ir-swap",
+    "name" : "mockup package price ir swap",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-package-price-ir-swap.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-package-price-ir-swap-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 16,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-post-priced",
+    "name" : "mockup post priced",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-post-priced.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-post-priced-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 23,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-post-priced-apac",
+    "name" : "mockup post priced apac",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-post-priced-apac.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-post-priced-apac-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 23,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-pre-enrich",
+    "name" : "mockup pre enrich",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-pre-enrich.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-pre-enrich-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 23,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-pre-enrich-ssbs",
+    "name" : "mockup pre enrich ssbs",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-pre-enrich-ssbs.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-pre-enrich-ssbs-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 23,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-principal-trading-capacity",
+    "name" : "mockup principal trading capacity",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-principal-trading-capacity.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-principal-trading-capacity-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 14,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-strikeprice-ex01-strikepriceschedule",
+    "name" : "mockup strikePrice ex01 strikePriceSchedule",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-strikePrice-ex01-strikePriceSchedule.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-strikePrice-ex01-strikePriceSchedule-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 28,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-strikeprice-ex02-strikepriceperunitschedule-01",
+    "name" : "mockup strikePrice ex02 strikePricePerUnitSchedule 01",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-strikePrice-ex02-strikePricePerUnitSchedule-01.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-strikePrice-ex02-strikePricePerUnitSchedule-01-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 18,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-strikeprice-ex02-strikepriceperunitschedule-02",
+    "name" : "mockup strikePrice ex02 strikePricePerUnitSchedule 02",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-strikePrice-ex02-strikePricePerUnitSchedule-02.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-strikePrice-ex02-strikePricePerUnitSchedule-02-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 18,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-volatility-strike-price-variance-swap",
+    "name" : "mockup volatility strike price variance swap",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-volatility-strike-price-variance-swap.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-volatility-strike-price-variance-swap-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 21,
+      "runtimeError" : false
+    }
+  }, {
+    "id" : "mockup-volatility-swap",
+    "name" : "mockup volatility swap",
+    "inputPath" : "regulatory-reporting/input/custom-scenarios/mockup-volatility-swap.json",
+    "outputPath" : "regulatory-reporting/output/asic-trade/custom-scenarios/mockup-volatility-swap-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 22,
+      "runtimeError" : false
+    }
+  } ]
+}

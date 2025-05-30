@@ -1,0 +1,67 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "INTR",
+  "bookingLocation" : "DE",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : true,
+  "confirmed" : "NCNF",
+  "contractType" : "SWAP",
+  "counterparty1" : "DUMMYLEI012345678906",
+  "counterparty2" : "DUMMYLEI012345678905",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "DUMMYLEI012345678906",
+  "deliveryType" : "PHYS",
+  "directionOfLeg1" : "TAKE",
+  "directionOfLeg2" : "MAKE",
+  "effectiveDate" : "2021-03-15",
+  "eventDate" : "2021-03-12",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-03-12T09:43:47Z",
+  "expirationDate" : "2021-12-10",
+  "finalContractualSettlementDate" : "2021-12-10",
+  "fixedRateDayCountConventionOfLeg1" : "A004",
+  "fixedRateOfLeg1" : 5.00,
+  "fixedRatePaymentFrequencyPeriodMultiplierOfLeg1" : 1,
+  "fixedRatePaymentFrequencyPeriodOfLeg1" : "YEAR",
+  "floatingRateDayCountConventionOfLeg2" : "A004",
+  "floatingRatePaymentFrequencyPeriodMultiplierOfLeg2" : 1,
+  "floatingRatePaymentFrequencyPeriodOfLeg2" : "YEAR",
+  "floatingRateResetFrequencyPeriodMultiplierOfLeg2" : 1,
+  "floatingRateResetFrequencyPeriodOfLeg2" : "DAIL",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalCurrency" : "USD",
+          "NotionalSchedule" : "Constant",
+          "ReferenceRateTermUnit" : "DAYS",
+          "ReferenceRateTermValue" : 1,
+          "UnderlierID" : "USD-Federal Funds-H.15-OIS-COMPOUND",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Fixed_Float_OIS"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfLeg2" : 33000000,
+  "notionalAmountOfTheContractOrLeg1" : 33000000,
+  "notionalCurrencyOfLeg2" : "USD",
+  "notionalCurrencyOfTheContractOrLeg1" : "USD",
+  "platformIdentifier" : "XXXX",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "DUMMYLEI012345678906",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "spreadOfLeg2" : {
+    "spreadNotationOfLeg2" : "Basis",
+    "spreadOfLeg2Basis" : 1
+  },
+  "underlyingIdentificationType" : "O",
+  "uniqueTransactionIdentifier" : "IRIRSFIXEDFLOATEXO03"
+}

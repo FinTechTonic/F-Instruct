@@ -1,0 +1,15 @@
+{
+  "id" : "test-pack-report-jfsa-margin-collateral",
+  "pipelineId" : "pipeline-report-jfsa-margin",
+  "name" : "Collateral",
+  "samples" : [ {
+    "id" : "collateral-ex01",
+    "name" : "Collateral ex01",
+    "inputPath" : "regulatory-reporting/input/collateral/Collateral-ex01.json",
+    "outputPath" : "regulatory-reporting/output/jfsa-margin/collateral/Collateral-ex01-report.json",
+    "assertions" : {
+      "modelValidationFailures" : 0,
+      "runtimeError" : false
+    }
+  } ]
+}

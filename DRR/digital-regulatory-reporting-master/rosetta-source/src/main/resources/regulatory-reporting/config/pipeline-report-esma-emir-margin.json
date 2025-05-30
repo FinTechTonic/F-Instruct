@@ -1,0 +1,10 @@
+{
+  "id" : "pipeline-report-esma-emir-margin",
+  "name" : "ESMA / EMIR Margin",
+  "transform" : {
+    "type" : "REPORT",
+    "function" : "drr.regulation.esma.emir.refit.margin.reports.ESMAEMIRMarginReportFunction",
+    "inputType" : "drr.regulation.common.CollateralReportInstruction",
+    "outputType" : "drr.regulation.esma.emir.refit.margin.ESMAEMIRMarginReport"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "actionType" : "CORR",
+  "assetClass" : "OTHR",
+  "cleared" : "N",
+  "contractType" : "SWAP",
+  "counterparty1" : "213800IV9PCAC364HN60",
+  "counterparty2" : "213800WWTABZ1GOJHH37",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "direction2OfLeg1" : "MAKE",
+  "direction2OfLeg2" : "MAKE",
+  "effectiveDate" : "2021-01-04",
+  "eventIdentifier" : "001229414555123459991234569BR777123456789",
+  "eventTimestamp" : "2020-11-16T00:00:00Z",
+  "executionTimestamp" : "2022-03-17T14:44:58Z",
+  "expirationDate" : "2021-01-29",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "ReturnorPayoutTrigger" : "Total Return",
+          "UnderlierID" : "PALLADIUM-NYMEX",
+          "UnderlierIDSource" : "COMM"
+        },
+        "Header" : {
+          "AssetClass" : "Commodities",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Swap"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalQuantityLeg1" : 3000.00000,
+  "notionalQuantityLeg2" : 3000.00000,
+  "quantityUnitOfMeasureLeg1" : "OZTR",
+  "quantityUnitOfMeasureLeg2" : "OZTR",
+  "reportSubmittingEntityID" : "213800IV9PCAC364HN60",
+  "reportingEntity" : "213800IV9PCAC364HN60",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "secondaryTransactionIdentifier" : "COMMODITYSWAPINDEX01",
+  "settlementCurrencyLeg1" : "USD",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "spreadCurrencyLeg1" : "USD",
+  "spreadCurrencyLeg2" : "USD",
+  "spreadLeg1" : {
+    "spreadLeg1Monetary" : 0.0030000000000,
+    "spreadLeg1Notation" : "Monetary"
+  },
+  "spreadLeg2" : {
+    "spreadLeg2Monetary" : 0.0000000000000,
+    "spreadLeg2Notation" : "Monetary"
+  },
+  "spreadNotationLeg1" : "1",
+  "spreadNotationLeg2" : "1",
+  "totalNotionalQuantityLeg1" : 2000,
+  "totalNotionalQuantityLeg2" : 4000,
+  "uniqueTransactionIdentifier" : "COMMODITYSWAPINDEX02"
+}

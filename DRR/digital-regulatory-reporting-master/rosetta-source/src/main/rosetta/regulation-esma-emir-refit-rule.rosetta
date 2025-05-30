@@ -1,0 +1,16 @@
+namespace drr.regulation.esma.emir.refit
+version "${project.version}"
+
+corpus FinalReport "ESMA74-362-824" TechnicalStandards <"Final Report Published 17 December 2020 | ESMA74-362-824 Technical standards on reporting, data quality, data access and registration of Trade Repositories under EMIR REFIT">
+//  Link: https://www.esma.europa.eu/sites/default/files/library/esma74-362-824_fr_on_the_ts_on_reporting_data_quality_data_access_and_registration_of_trs_under_emir_refit_0.pdf
+corpus FinalReport "ESMA74-362-2281" Guidelines <"Final Report Published 14 December 2022 | ESMA74-362-2281 Guidelines for Reporting under EMIR">
+//  Link: https://www.esma.europa.eu/sites/default/files/library/esma74-362-2281_final_report_guidelines_emir_refit.pdf
+corpus CommissionDelegatedRegulation "2019/834" Refit <"Regulation (EU) 2019/834 of the European Parliament and of the Council of 20 May 2019 amending Regulation (EU) No 648/2012 as regards the clearing obligation, the suspension of the clearing obligation, the reporting requirements, the risk-mitigation techniques for OTC derivative contracts not cleared by a central counterparty, the registration and supervision of trade repositories and the requirements for trade repositories.">
+// Link: https://eur-lex.europa.eu/eli/reg/2012/648/2022-08-12
+corpus CommissionDelegatedRegulation "2022/1855" RTS <"Commission Delegated Regulation (EU) No 2022/1855 of 10 June 2022 supplementing Regulation (EU) No 648/2012 of the European Parliament and of the Council on OTC derivatives, central counterparties and trade repositories with regard to regulatory technical standards specifying the minimum details of the data to be reported to trade repositories and the type of reports to be used.">
+//  Link: https://eur-lex.europa.eu/eli/reg_del/2022/1855/oj
+corpus CommissionImplementingRegulation "2022/1860" ITS <"COMMISSION IMPLEMENTING REGULATION (EU) 2022/1860 of 10 June 2022 laying down implementing technical standards for the application of Regulation (EU) No 648/2012 of the European Parliament and of the Council with regard to the standards, formats, frequency and methods and arrangements for reporting">
+// Link: https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32022R1860
+corpus FinalReport "ESMA74-362-2683" ValidationRules <"The validation rules document sets out detailed technical rules on how the TRs should verify the completeness and accuracy of the reported data as well as the conditions and thresholds to be applied to determine whether the values reported by both counterparties match or not. Finally, the Validation rules document contains also a template for notifications of reporting errors and omissions to the NCAs">
+// Link: https://www.esma.europa.eu/sites/default/files/library/esma74-362-2683_emir_refit_validation_rules_reconciliation_tolerances_and_template_for_notifications_of_dq_issues.xlsx
+corpus FIAReportingBestPractice "01Sep2023" FIAReportingBestPractice <"FIA has engaged with derivatives exchanges, market participants, and international regulators for over a decade on the development of best practices to mitigate market disruptions.">

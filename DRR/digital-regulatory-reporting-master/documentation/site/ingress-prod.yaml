@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+  name: drr-docs-ingress
+  namespace: drr-docs-prod
+spec:
+  rules:
+  - host: drr.docs.rosetta-technology.io
+    http:
+      paths:
+      - backend:
+          service:
+            name: drr-docs
+            port:
+              number: 80
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - drr.docs.rosetta-technology.io
+    secretName: drr-docs-cert

@@ -1,0 +1,1382 @@
+namespace drr.regulation.jfsa.rewrite.trade
+version "${project.version}"
+
+import cdm.base.*
+import cdm.base.staticdata.asset.common.*
+import drr.regulation.common.*
+import drr.regulation.common.util.*
+import drr.regulation.jfsa.*
+import drr.standards.iso.*
+import drr.enrichment.common.*
+import drr.enrichment.lei.*
+
+import iso20022.auth030.esma.*
+
+type JFSATransactionReport:
+    [rootType]
+    effectiveDate ISODate (0..1)
+        [ruleReference EffectiveDate]
+    expirationDate ISODate (0..1)
+        [ruleReference ExpirationDate]
+    earlyTerminationDate date (0..1)
+        [ruleReference EarlyTerminationDate]
+    reportingTimestamp zonedDateTime (1..1)
+        [ruleReference ReportingTimestamp]
+    executionTimestamp zonedDateTime (0..1)
+        [ruleReference ExecutionTimestamp]
+    entityResponsibleForReporting LEIIdentifier (1..1)
+        [ruleReference EntityResponsibleForReporting]
+    counterparty1 LEIIdentifier (1..1)
+        [ruleReference Counterparty1]
+    counterparty2 Max72AlphaNumericText (1..1)
+        [ruleReference Counterparty2]
+    counterparty2IdentifierType boolean (1..1)
+        [ruleReference Counterparty2IdentifierType]
+    direction1 Max4Text (0..1)
+	    [ruleReference Direction1]
+    direction2Leg1 Max4Text (0..1)
+	    [ruleReference Direction2Leg1]
+    direction2Leg2 Max4Text (0..1)
+        [ruleReference Direction2Leg2]
+    submitterIdentifier LEIIdentifier (1..1)
+        [ruleReference SubmitterIdentifier]
+    newSDRIdentifier LEIIdentifier (0..1)
+        [ruleReference NewSDRIdentifier]
+    originalSwapSDRIdentifier LEIIdentifier (0..1)
+        [ruleReference OriginalSwapSDRIdentifier]
+    cleared Max1Text (0..1)
+        [ruleReference Cleared]
+    centralCounterparty LEIIdentifier (0..1)
+        [ruleReference CentralCounterparty]
+    clearingMember LEIIdentifier (0..1)
+        [ruleReference ClearingMember]
+    platformIdentifier Max4Text (0..1)
+        [ruleReference PlatformIdentifier]
+    confirmed Max4Text (0..1)
+        [ruleReference Confirmed]
+    finalContractualSettlementDate date (0..1)
+        [ruleReference FinalContractualSettlementDate]
+    confirmationTimestamp zonedDateTime (0..1)
+        [ruleReference ConfirmationTimestampDTCC]
+    settlementCurrencyLeg1 ISOCurrencyCodeEnum (0..1)
+        [ruleReference SettlementCurrencyLeg1]
+    settlementCurrencyLeg2 ISOCurrencyCodeEnum (0..1)
+        [ruleReference SettlementCurrencyLeg2]
+    clearingAccountOrigin Max4Text (0..1)
+        [ruleReference ClearingAccountOrigin]
+    originalSwapUTI UTIIdentifier (0..1)
+        [ruleReference OriginalSwapUTI]
+    clearingReceiptTimestamp zonedDateTime (0..1)
+        [ruleReference ClearingReceiptTimestamp]
+    uti UTIIdentifier (0..1)
+        [ruleReference Uti]
+    utiProprietary UTIIdentifierLegacy (0..1)
+        [ruleReference UtiProprietary]
+    priorUti UTIIdentifier (0..1)
+        [ruleReference PriorUti]
+    priorUtiProprietary UTIIdentifierLegacy (0..1)
+        [ruleReference PriorUtiProprietary]
+    fixedRateDayCountConventionLeg1 InterestComputationMethod4Code (0..1)
+        [ruleReference FixedRateDayCountConventionLeg1]
+    floatingRateDayCountConventionOfLeg1 InterestComputationMethod4Code (0..1)
+        [ruleReference FloatingRateDayCountConventionOfLeg1]
+    fixedRateDayCountConventionLeg2 InterestComputationMethod4Code (0..1)
+        [ruleReference FixedRateDayCountConventionLeg2]
+    floatingRateDayCountConventionOfLeg2 InterestComputationMethod4Code (0..1)
+        [ruleReference FloatingRateDayCountConventionOfLeg2]
+    fixedRatePaymentFrequencyPeriodLeg1 Max4Text (0..1)
+        [ruleReference FixedRatePaymentFrequencyPeriodLeg1]
+    fixedRatePaymentFrequencyPeriodLeg2 Max4Text (0..1)
+        [ruleReference FixedRatePaymentFrequencyPeriodLeg2]
+    floatingRatePaymentFrequencyPeriodLeg1 Max4Text (0..1)
+        [ruleReference FloatingRatePaymentFrequencyPeriodLeg1]
+    floatingRatePaymentFrequencyPeriodLeg2 Max4Text (0..1)
+        [ruleReference FloatingRatePaymentFrequencyPeriodLeg2]
+    fixedRatePaymentFrequencyPeriodMultiplierLeg1 Max3Number (0..1)
+        [ruleReference FixedRatePaymentFrequencyPeriodMultiplierLeg1]
+    fixedRatePaymentFrequencyPeriodMultiplierLeg2 Max3Number (0..1)
+        [ruleReference FixedRatePaymentFrequencyPeriodMultiplierLeg2]
+    floatingRatePaymentFrequencyPeriodMultiplierLeg1 Max3Number (0..1)
+        [ruleReference FloatingRatePaymentFrequencyPeriodMultiplierLeg1]
+    floatingRatePaymentFrequencyPeriodMultiplierLeg2 Max3Number (0..1)
+        [ruleReference FloatingRatePaymentFrequencyPeriodMultiplierLeg2]
+    fixingDateLeg1 zonedDateTime (0..1)
+        [ruleReference FixingDateLeg1]
+    fixingDateLeg2 zonedDateTime (0..1)
+        [ruleReference FixingDateLeg2]
+    floatingRateResetFrequencyPeriodLeg1 Max4Text (0..1)
+        [ruleReference FloatingRateResetFrequencyPeriodLeg1]
+    floatingRateResetFrequencyPeriodOfLeg2 Max4Text (0..1)
+		[ruleReference FloatingRateResetFrequencyPeriodLeg2]
+    floatingRateResetFrequencyPeriodMultiplierLeg1 Max3Number (0..1)
+        [ruleReference FloatingRateResetFrequencyPeriodMultiplierLeg1]
+    floatingRateResetFrequencyPeriodMultiplierLeg2 Max3Number (0..1)
+        [ruleReference FloatingRateResetFrequencyPeriodMultiplierLeg2]
+    otherPayment OtherPaymentReport (0..*)
+		[ruleReference OtherPayment]
+    valuationAmount ShortFraction5DecimalNumber (0..1)
+        [ruleReference ValuationAmount]
+    valuationCurrency ISOCurrencyCodeEnum (0..1)
+        [ruleReference ValuationCurrency]
+    valuationMethod ValuationType1Code (0..1)
+        [ruleReference ValuationMethod]
+    valuationTimestamp /*ISO*/zonedDateTime (0..1)
+        [ruleReference ValuationTimestamp]
+    collateralPortfolioIndicator boolean (0..1)
+        [ruleReference CollateralPortfolioIndicator]
+    initialMarginCollateralPortfolioCode Max52AlphaNumericText (0..1)
+        [ruleReference InitialMarginCollateralPortfolioCode]
+    variationMarginCollateralPortfolioCode Max52AlphaNumericText (0..1)
+        [ruleReference VariationMarginCollateralPortfolioCode]
+    price PriceAndNotation (0..1)
+    priceNotation NumericChar1to4 (0..1)
+        [ruleReference PriceNotation]
+    priceUnitOfMeasure Max4Text (0..1)
+        [ruleReference PriceUnitOfMeasure]
+    priceSchedule PriceScheduleReport (0..*)
+        [ruleReference PriceSchedule]
+    fixedRateLeg1 BaseOneRate (0..1)
+        [ruleReference FixedRateLeg1]
+    fixedRateLeg2 BaseOneRate (0..1)
+        [ruleReference FixedRateLeg2]
+    spreadOfLeg1 SpreadOfLeg1 (0..1)
+    spreadNotationOfLeg1 NumericChar1to4 (0..1)
+        [ruleReference SpreadNotationOfLeg1]
+    spreadOfLeg2 SpreadOfLeg2 (0..1)
+    spreadNotationOfLeg2 NumericChar1to4 (0..1)
+        [ruleReference SpreadNotationOfLeg2]
+    strikePrice StrikePriceAndNotation (0..1)
+    strikePriceNotation NumericChar1to4 (0..1)
+        [ruleReference StrikePriceNotation]
+    strikePriceSchedule StrikePriceScheduleReport (0..*)
+        [ruleReference StrikePriceSchedule]
+    optionPremiumAmount ShortFraction5DecimalNumber (0..1)
+        [ruleReference OptionPremiumAmount]
+    optionPremiumCurrency ISOCurrencyCodeEnum (0..1)
+        [ruleReference OptionPremiumCurrency]
+    optionPremiumPaymentDate date (0..1)
+        [ruleReference OptionPremiumPaymentDate]
+    firstExerciseDate date (0..1)
+        [ruleReference FirstExerciseDate]
+    exchangeRate Max18D13Number (0..1)
+        [ruleReference ExchangeRate]
+    exchangeRateBasis ExchangeRateBasisStringFormat (0..1)
+        [ruleReference ExchangeRateBasis]
+    notionalLeg1 ShortFraction5DecimalNumber (0..1)
+        [ruleReference NotionalLeg1]
+    notionalLeg2 ShortFraction5DecimalNumber (0..1)
+        [ruleReference NotionalLeg2]
+    callAmount ShortFraction5DecimalNumber (0..1)
+        [ruleReference CallAmount]
+    putAmount ShortFraction5DecimalNumber (0..1)
+        [ruleReference PutAmount]
+    notionalCurrencyOfLeg1 ISOCurrencyCodeEnum (0..1)
+        [ruleReference NotionalCurrencyOfLeg1]
+    notionalCurrencyOfLeg2 ISOCurrencyCodeEnum (0..1)
+        [ruleReference NotionalCurrencyOfLeg2]
+    callCurrency ISOCurrencyCodeEnum (0..1)
+        [ruleReference CallCurrency]
+    putCurrency ISOCurrencyCodeEnum (0..1)
+        [ruleReference PutCurrency]
+    quantityUnitOfMeasureLeg1 Max4Text (0..1)
+        [ruleReference QuantityUnitOfMeasureLeg1]
+    quantityUnitOfMeasureLeg2 Max4Text (0..1)
+        [ruleReference QuantityUnitOfMeasureLeg2]
+    notionalAmountScheduleLeg1 NotionalAmountScheduleLeg1Report (0..*)
+        [ruleReference NotionalAmountScheduleLeg1]
+    notionalAmountScheduleLeg2 NotionalAmountScheduleLeg2Report (0..*)
+        [ruleReference NotionalAmountScheduleLeg2]
+    totalNotionalQuantityLeg1 ShortFraction5DecimalNumber (0..1)
+        [ruleReference TotalNotionalQuantityLeg1]
+    totalNotionalQuantityLeg2 ShortFraction5DecimalNumber (0..1)
+        [ruleReference TotalNotionalQuantityLeg2]
+    notionalQuantityScheduleLeg1 NotionalQuantityScheduleLeg1Report (0..*)
+        [ruleReference NotionalQuantityScheduleLeg1]
+    notionalQuantityScheduleLeg2 NotionalQuantityScheduleLeg2Report (0..*)
+        [ruleReference NotionalQuantityScheduleLeg2]
+    actionType Max4Text (1..1)
+        [ruleReference ActionType]
+    eventType Max4Text (0..1)
+        [ruleReference EventType]
+    eventTimestamp zonedDateTime (1..1)
+        [ruleReference EventTimestamp]
+    eventIdentifier Max52Text (0..1)
+        [ruleReference EventIdentifier]
+    indexFactor ShortFraction10DecimalNumber (0..1)
+        [ruleReference IndexFactor]
+    embeddedOptionType Max4Text (0..1)
+        [ruleReference EmbeddedOptionType]
+    upi string (0..1)
+        [ruleReference UPI]
+    deliveryType Max4Text (0..1)
+        [ruleReference DeliveryType]
+    assetClass Max4Text (1..1)
+        [ruleReference AssetClass]
+    underlyingIdentificationType Max1Text (0..1)
+        [ruleReference UnderlyingIdentificationType]
+    underlyingIdentification ISINOct2015Identifier (0..1)
+        [ruleReference UnderlyingIdentification]
+    underlyingIndexIndicator Max4Text (0..1)
+        [ruleReference UnderlyingIndexIndicator]
+    nameOfTheUnderlyingIndex Max50AlphaNumericTextWithSplChars (0..1)
+        [ruleReference NameOfTheUnderlyingIndex]
+    referenceEntity string (0..1)
+        [ruleReference ReferenceEntity]
+    indicatorOfTheFloatingRateOfLeg1 Max4Text (0..1)
+        [ruleReference IndicatorOfTheFloatingRateOfLeg1]
+    indicatorOfTheFloatingRateOfLeg2 Max4Text (0..1)
+        [ruleReference IndicatorOfTheFloatingRateOfLeg2]
+    nameOfTheFloatingRateOfLeg1 Max50AlphaNumericTextWithSplChars (0..1)
+        [ruleReference NameOfTheFloatingRateOfLeg1]
+    nameOfTheFloatingRateOfLeg2 Max50AlphaNumericTextWithSplChars (0..1)
+        [ruleReference NameOfTheFloatingRateOfLeg2]
+    floatingRateReferencePeriodOfLeg1TimePeriod Max4Text (0..1)
+    	[ruleReference FloatingRateReferencePeriodOfLeg1TimePeriod]
+    floatingRateReferencePeriodOfLeg2TimePeriod Max4Text (0..1)
+        [ruleReference FloatingRateReferencePeriodOfLeg2TimePeriod]
+    floatingRateReferencePeriodOfLeg1Multiplier Max3Number (0..1)
+        [ruleReference FloatingRateReferencePeriodOfLeg1Multiplier]
+    floatingRateReferencePeriodOfLeg2Multiplier Max3Number (0..1)
+        [ruleReference FloatingRateReferencePeriodOfLeg2Multiplier]
+    isCrypto boolean (1..1)
+        [ruleReference DerivativeBasedOnCryptoAssets]
+    maturityDateOfTheUnderlying date (0..1)
+        [ruleReference MaturityDateOfTheUnderlying]
+    seniority Max4Text (0..1)
+        [ruleReference Seniority]
+    series Max5Int (0..1)
+        [ruleReference Series]
+    version Max5Int (0..1)
+        [ruleReference Version]
+    cdSIndexAttachmentPoint ShortFraction10DecimalNumber (0..1)
+        [ruleReference CDSIndexAttachmentPoint]
+    cdSIndexDetachmentPoint ShortFraction10DecimalNumber (0..1)
+        [ruleReference CDSIndexDetachmentPoint]
+    customBasketCode Max72AlphaNumericText (0..1)
+        [ruleReference CustomBasketCode]
+    basketConstituents BasketConstituentsReport (0..*)
+        [ruleReference BasketConstituents]
+    contractType Max4Text (1..1)
+        [ruleReference ContractType]
+    optionStyle Max4Text (0..1)
+        [ruleReference OptionStyle]
+    optionType Max4Text (0..1)
+        [ruleReference OptionType]
+    packageIdentifier Max35AlphaNumericText (0..1)
+        [ruleReference PackageIdentifier]
+    packageTransactionPrice PackageTransactionPrice (0..1)
+    packageTransactionPriceCurrency ISOCurrencyCodeEnum (0..1)
+       [ruleReference PackageTransactionPriceCurrency]
+    packageTransactionPriceNotation NumericChar1to4 (0..1)
+        [ruleReference PackageTransactionPriceNotation]
+    packageTransactionSpread PackageTransactionSpread (0..1)
+    packageTransactionSpreadCurrency ISOCurrencyCodeEnum (0..1)
+        [ruleReference PackageTransactionSpreadCurrency]
+    packageTransactionSpreadNotation NumericChar1to4 (0..1)
+        [ruleReference PackageTransactionSpreadNotation]
+    technicalRecordId string (0..1)
+        [ruleReference TechnicalRecordId]
+    nonReportable JFSANonReportable (0..1)
+
+//All Conditions below are specific to IR/FX/XA , as applicable
+    condition ExpirationDate:
+        [docReference JFSA Trade dataElement "2" validationRule "Expiration Date"
+      provision "[Expiration date] should be equal to or later than the value in [Effective date]"]
+        if expirationDate exists
+        then expirationDate = effectiveDate or expirationDate > effectiveDate
+        else False
+
+    condition DTCC_JFSA_BR_0003_01: <"Early termination date Condition">
+        [docReference JFSA DTCC_Specs dataElement "3" field "Early termination date"
+          provision "[Early termination date] must be equal to or before than the value in [Expiration date]."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string, ActionTypeEnum -> TERM to-string] any = actionType then
+            (if earlyTerminationDate exists then earlyTerminationDate <= expirationDate)
+
+    condition DTCC_JFSA_BR_0004_01: <"Reporting timestamp Condition 1">
+        [docReference JFSA DTCC_Specs dataElement "4" field "Reporting timestamp"
+          provision "[Reporting timestamp] must be equal to or later than the value in [Execution timestamp]. [Reporting timestamp] must be equal to or before the [Message Received timestamp] derived by the TR. Reject if the date value of the [Reporting timestamp] is more than 2 days before the date value of the [Message Received timestamp]. Reject if [Reporting Timestamp] is NOT in equal or incremental order between submissions."]
+        [regulatoryReference ISDA ISDAWorkingGroup date "unknown"
+            provision "The logic regarding the order between submissions is not modelled. The condition cannot be executed in a stateless environment."]
+        //The logic regarding the [Message Received timestamp] is not included as this data is known post submission.
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string, ActionTypeEnum -> PRTO to-string, ActionTypeEnum -> EROR to-string, ActionTypeEnum -> TERM to-string] any = actionType then reportingTimestamp >= executionTimestamp
+
+    condition DTCC_JFSA_BR_0004_02: <"Reporting timestamp Condition 2">
+        [docReference JFSA DTCC_Specs dataElement "4" field "Reporting timestamp"
+          provision "[Reporting timestamp] must be equal to or before the [Message Received timestamp] derived by the TR. The date value of the [Reporting timestamp] must NOT be more than 2 days before the date value of the [Message Received timestamp]. [Reporting timestamp] must be equal to or greater than the [Valuation timestamp]."]
+        //The logic regarding the [Message Received timestamp] is not included as this data is known post submission.
+        if ActionTypeEnum -> VALU to-string = actionType then reportingTimestamp >= valuationTimestamp
+    
+    condition DTCC_JFSA_BR_0007_01: <"Counterparty 1 Condition">
+        [docReference JFSA DTCC_Specs dataElement "7" field "Counterparty 1"
+          provision "[Counterparty 1] must NOT = [Counterparty 2] if [Counterparty 2 identifier type] is = LEI"]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string, ActionTypeEnum -> PRTO to-string, ActionTypeEnum -> EROR to-string, ActionTypeEnum -> TERM to-string] any = actionType then
+            (if counterparty2IdentifierType = True then counterparty1 <> counterparty2)
+
+    condition DTCC_JFSA_BR_0008_01: <"Counterparty 2 Condition">
+        [docReference JFSA DTCC_Specs dataElement "8" field "Counterparty 2"
+          provision "[Counterparty 1] must NOT = [Counterparty 2] if [Counterparty 2 identifier type] is = LEI"]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string, ActionTypeEnum -> PRTO to-string, ActionTypeEnum -> EROR to-string, ActionTypeEnum -> TERM to-string] any = actionType then
+            (if counterparty2IdentifierType = True then counterparty2 <> counterparty1)
+
+    condition DTCC_JFSA_BR_0010_01: <"Direction 1 (Buyer/Seller) Condition">
+        [docReference JFSA DTCC_Specs dataElement "10" field "Direction 1 (Buyer/Seller)"
+          provision "Required if [Direction 2 of leg 1] and [Direction 2 of leg 2] are both blank. Reject if [Direction 2 of leg 1] or [Direction 2 of leg 2] are populated."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string, ActionTypeEnum -> PRTO to-string, ActionTypeEnum -> EROR to-string, ActionTypeEnum -> TERM to-string] any = actionType then
+            (if direction2Leg1 is absent and direction2Leg2 is absent then direction1 exists
+            else if direction2Leg1 exists or direction2Leg2 exists then direction1 is absent)
+
+    condition DTCC_JFSA_BR_0011_01: <"Direction 2-Leg 1 Condition">
+        [docReference JFSA DTCC_Specs dataElement "11" field "Direction 2-Leg 1"
+          provision "Required if [Direction 1] is blank. Reject if [Direction 1] is populated. [Direction 2 of Leg 1] must NOT = [Direction 2 of leg 2]."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string, ActionTypeEnum -> PRTO to-string, ActionTypeEnum -> EROR to-string, ActionTypeEnum -> TERM to-string] any = actionType then
+            (if direction1 is absent then direction2Leg1 exists
+            else if direction1 exists then direction2Leg1 is absent
+            else if direction2Leg1 = direction2Leg2 then False)
+
+    condition DTCC_JFSA_BR_0011_02: <"Direction 2-Leg 2 Condition">
+        [docReference JFSA DTCC_Specs dataElement "11" field "Direction 2-Leg 2"
+          provision "Reject if [Direction 1] and [Direction 2 of leg 1] are both blank. [Direction 2 of Leg 1] must NOT = [Direction 2 of leg 2]."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string, ActionTypeEnum -> PRTO to-string, ActionTypeEnum -> EROR to-string, ActionTypeEnum -> TERM to-string] any = actionType then
+            (if direction1 is absent and direction2Leg1 is absent then direction2Leg2 is absent
+            else if direction2Leg1 = direction2Leg2 then False)
+
+    condition DTCC_JFSA_BR_0013_01: <"New SDR Identifier Condition">
+        [docReference JFSA DTCC_Specs dataElement "13" field "New SDR Identifier"
+          provision "The only value which can be submitted: 5493005XNMG636HNJY05"]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string, ActionTypeEnum -> PRTO to-string, ActionTypeEnum -> EROR to-string, ActionTypeEnum -> TERM to-string] any = actionType then
+            (if newSDRIdentifier exists then newSDRIdentifier = "5493005XNMG636HNJY05")
+
+    condition DTCC_JFSA_BR_0016_01: <"Central counterparty Condition">
+        [docReference JFSA DTCC_Specs dataElement "16" field "Central counterparty"
+		  provision "Required if [Cleared] = Y."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string, ActionTypeEnum -> PRTO to-string, ActionTypeEnum -> EROR to-string, ActionTypeEnum -> TERM to-string] any = actionType then
+            (if cleared = "Y" then centralCounterparty exists)
+
+    condition DTCC_JFSA_BR_0017_01: <"Clearing member Condition">
+        [docReference JFSA DTCC_Specs dataElement "17" field "Clearing member"
+		  provision "Required if [Cleared] = Y."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if cleared = "Y" then clearingMember exists)
+
+    condition DTCC_JFSA_BR_0019a_01: <"[Internal] Confirmation timestamp Condition">
+        [docReference JFSA DTCC_Specs dataElement "19a" field "[Internal] Confirmation timestamp"
+		  provision "Required if [Confirmed] is populated with the values: 'ECNF' or 'YCNF'"]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string, ActionTypeEnum -> PRTO to-string, ActionTypeEnum -> EROR to-string, ActionTypeEnum -> TERM to-string] any = actionType then
+            (if ["ECNF", "YCNF"] any = confirmed then confirmationTimestamp exists)
+
+    condition FinalContractualSettlementDate:
+        [docReference JFSA Trade dataElement "20" validationRule "FinalContractualSettlementDate"
+        provision "[Final contractual settlement date] should be equal to or later than the value in [Expiration date]."]
+        if finalContractualSettlementDate exists
+        then finalContractualSettlementDate = expirationDate or finalContractualSettlementDate > expirationDate
+        else False
+
+    condition SettlementCurrencyLeg1:
+        [docReference JFSA Trade dataElement "21" validationRule "SettlementCurrencyLeg1"
+        provision "[Required if [Delivery type] = CASH"]
+        if deliveryType = "CASH"
+        then settlementCurrencyLeg1 exists
+
+    condition ClearingReceiptTimestamp:
+        [docReference JFSA Trade dataElement "24" validationRule "Clearing Receipt Timestamp"
+        provision "Required if: Cleared = Y AND [Action Type] = 'NEWT' AND [Event Type] = 'CLRG' or = 'CLAL'"]
+        if cleared = "Y" or (cleared = "I" and actionType = ActionTypeEnum -> TERM to-string) and eventType = EventTypeEnum -> CLRG to-string
+        then clearingReceiptTimestamp exists
+
+    condition DTCC_JFSA_BR_0024_02: <"Clearing receipt timestamp Condition 2">
+        [docReference JFSA DTCC_Specs dataElement "24" field "Clearing receipt timestamp"
+          provision "Required if: Cleared = Y AND [Action Type] = 'TERM' AND [Event Type] = 'CLRG' or = 'CLAL'"]
+        if cleared = "Y" and actionType = ActionTypeEnum -> TERM to-string and [EventTypeEnum -> CLRG to-string, EventTypeEnum -> CLAL to-string] any = eventType
+            then clearingReceiptTimestamp exists
+
+    condition Uti:
+        [docReference JFSA Trade dataElement "25" validationRule "UTI"
+        provision "UTI is required (Global UTI or Proprietary format)"]
+        required choice uti, utiProprietary
+
+    condition PriorUti:
+        [docReference JFSA Trade dataElement "26" validationRule "Prior UTI"
+        provision "Required if: [Action type] = 'NEWT' AND [Event type] = 'NOVA' or 'CLRG' or 'EXER' or 'ALOC' or 'CLAL'"]
+        if actionType = ActionTypeEnum -> NEWT to-string and [EventTypeEnum -> NOVA to-string, EventTypeEnum -> EXER to-string, EventTypeEnum -> ALOC to-string, EventTypeEnum -> CLRG to-string, EventTypeEnum -> CLAL to-string] any = eventType
+        then required choice priorUti, priorUtiProprietary
+
+    condition FixedRateDayCountConventionLeg1:
+        [docReference JFSA Trade dataElement "27" validationRule "Fixed rate day count convention of leg 1"
+      provision "Required if [Fixed rate payment frequency period leg 1] is populated."]
+        if fixedRatePaymentFrequencyPeriodLeg1 exists
+        then fixedRateDayCountConventionLeg1 exists
+
+    condition FloatingRateDayCountConventionOfLeg1:
+    [docReference JFSA Trade dataElement "27" validationRule "Floating rate day count convention of leg 1"
+      provision "Required if [Floating rate payment frequency period leg 1] is populated."]
+        if floatingRatePaymentFrequencyPeriodLeg1 exists
+        then floatingRateDayCountConventionOfLeg1 exists
+
+    condition FixedRateDayCountConventionLeg2:
+    [docReference JFSA Trade dataElement "27" validationRule "Fixed rate day count convention of leg 2"
+      provision "Required if [Fixed rate payment frequency period leg 2] is populated."]
+        if fixedRatePaymentFrequencyPeriodLeg2 exists
+        then fixedRateDayCountConventionLeg2 exists
+
+    condition FloatingRateDayCountConventionOfLeg2:
+    [docReference JFSA Trade dataElement "27" validationRule "Floating rate day count convention of leg 2"
+      provision "Required if [Floating rate payment frequency period leg 2] is populated."]
+        if floatingRatePaymentFrequencyPeriodLeg2 exists
+        then floatingRateDayCountConventionOfLeg2 exists
+
+    condition FixedRatePaymentFrequencyPeriodLeg1:
+    [docReference JFSA Trade dataElement "28" validationRule "Fixed rate payment frequency period leg 1"
+      provision "Required if [Fixed rate payment frequency period multiplier leg 1] is populated."]
+        if fixedRatePaymentFrequencyPeriodMultiplierLeg1 exists
+        then fixedRatePaymentFrequencyPeriodLeg1 exists
+
+    condition FloatingRatePaymentFrequencyPeriodOfLeg1:
+    [docReference JFSA Trade dataElement "28" validationRule "Floating rate payment frequency period leg 1"
+      provision "Required if [Floating rate payment frequency period multiplier leg 1] is populated."]
+        if floatingRatePaymentFrequencyPeriodMultiplierLeg1 exists
+        then floatingRatePaymentFrequencyPeriodLeg1 exists
+
+    condition FixedRatePaymentFrequencyPeriodLeg2:
+    [docReference JFSA Trade dataElement "28" validationRule "Fixed rate payment frequency period leg 2"
+      provision "Required if [Fixed rate payment frequency period multiplier leg 2] is populated."]
+        if fixedRatePaymentFrequencyPeriodMultiplierLeg2 exists
+        then fixedRatePaymentFrequencyPeriodLeg2 exists
+
+    condition FloatingRatePaymentFrequencyPeriodOfLeg2:
+    [docReference JFSA Trade dataElement "28" validationRule "Floating rate payment frequency period leg 2"
+      provision "Required if [Floating rate payment frequency period multiplier leg 2] is populated."]
+        if floatingRatePaymentFrequencyPeriodMultiplierLeg2 exists
+        then floatingRatePaymentFrequencyPeriodLeg2 exists
+
+    condition DTCC_JFSA_BR_0029_01: <"Fixed rate payment frequency period multiplier-Leg 1 Condition">
+        [docReference JFSA DTCC_Specs dataElement "29" field "Payment frequency period multiplier"
+          provision "Required if [Fixed rate payment frequency period leg 1] is populate with 'YEAR', 'MNTH', 'WEEK', 'DAIL' or 'EXPI'. Reject if [Fixed rate payment frequency period leg 1] = 'EXPI', and the value in this field is NOT = 1."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if ["YEAR", "MNTH", "WEEK", "DAIL", "EXPI"] any = fixedRatePaymentFrequencyPeriodLeg1 then fixedRatePaymentFrequencyPeriodMultiplierLeg1 exists
+            else if fixedRatePaymentFrequencyPeriodLeg1 = "EXPI" and fixedRatePaymentFrequencyPeriodMultiplierLeg1 <> 1 then fixedRatePaymentFrequencyPeriodMultiplierLeg1 is absent)
+
+    condition DTCC_JFSA_BR_0029_02: <"Floating rate payment frequency period multiplier-Leg 1 Condition">
+        [docReference JFSA DTCC_Specs dataElement "29" field "Payment frequency period multiplier"
+          provision "Required if [Floating rate payment frequency period leg 1] is populate with 'YEAR', 'MNTH', 'WEEK', 'DAIL' or 'EXPI'. Reject if [Floating rate payment frequency period leg 1] = 'EXPI', and the value in this field is NOT = 1."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if ["YEAR", "MNTH", "WEEK", "DAIL", "EXPI"] any = floatingRatePaymentFrequencyPeriodLeg1 then floatingRatePaymentFrequencyPeriodMultiplierLeg1 exists
+            else if floatingRatePaymentFrequencyPeriodLeg1 = "EXPI" and floatingRatePaymentFrequencyPeriodMultiplierLeg1 <> 1 then floatingRatePaymentFrequencyPeriodMultiplierLeg1 is absent)
+
+    condition DTCC_JFSA_BR_0029_03: <"Fixed rate payment frequency period multiplier-Leg 2 Condition">
+        [docReference JFSA DTCC_Specs dataElement "29" field "Payment frequency period multiplier"
+          provision "Required if [Fixed rate payment frequency period leg 2] is populate with 'YEAR', 'MNTH', 'WEEK', 'DAIL' or 'EXPI'. Reject if [Fixed rate payment frequency period leg 2] = EXPI', and the value in this field is NOT = 1."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if ["YEAR", "MNTH", "WEEK", "DAIL", "EXPI"] any = fixedRatePaymentFrequencyPeriodLeg2 then fixedRatePaymentFrequencyPeriodMultiplierLeg2 exists
+            else if fixedRatePaymentFrequencyPeriodLeg2 = "EXPI" and fixedRatePaymentFrequencyPeriodMultiplierLeg2 <> 1 then fixedRatePaymentFrequencyPeriodMultiplierLeg2 is absent)
+
+    condition DTCC_JFSA_BR_0029_04: <"Floating rate payment frequency period multiplier-Leg 2 Condition">
+        [docReference JFSA DTCC_Specs dataElement "29" field "Payment frequency period multiplier"
+          provision "Required if [Floating rate payment frequency period leg 2] is populate with 'YEAR', 'MNTH', 'WEEK', 'DAIL' or 'EXPI'. Reject if [Floating rate payment frequency period leg 2] = EXPI', and the value in this field is NOT = 1."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if ["YEAR", "MNTH", "WEEK", "DAIL", "EXPI"] any = floatingRatePaymentFrequencyPeriodLeg2 then floatingRatePaymentFrequencyPeriodMultiplierLeg2 exists
+            else if floatingRatePaymentFrequencyPeriodLeg2 = "EXPI" and floatingRatePaymentFrequencyPeriodMultiplierLeg2 <> 1 then floatingRatePaymentFrequencyPeriodMultiplierLeg2 is absent)
+
+    condition FloatingRateResetFrequencyPeriodofLeg1:
+    [docReference JFSA Trade dataElement "31" validationRule "Floating rate reset frequency period leg 1"
+      provision "Required if [Floating rate reset frequency period multiplier leg 1] is populated."]
+        if floatingRateResetFrequencyPeriodMultiplierLeg1 exists
+        then floatingRateResetFrequencyPeriodLeg1 exists
+
+    condition FloatingRateResetFrequencyPeriodLeg2:
+    [docReference JFSA Trade dataElement "31" validationRule "Floating rate reset frequency period leg 2"
+      provision "Required if [Floating rate reset frequency period multiplier leg 2] is populated."]
+        if floatingRateResetFrequencyPeriodMultiplierLeg2 exists
+        then floatingRateResetFrequencyPeriodOfLeg2 exists
+
+    condition FloatingRateResetFrequencyPeriodMultiplierLeg1:
+    [docReference JFSA Trade dataElement "32" validationRule "Floating rate reset frequency period multiplier leg 1"
+      provision "Reject if [Floating rate reset frequency period leg 1] = EXPI', and the value in this field is NOT = 1."]
+        if floatingRateResetFrequencyPeriodLeg1 = "EXPI"
+                and floatingRatePaymentFrequencyPeriodMultiplierLeg1 <> 1
+        then floatingRateResetFrequencyPeriodMultiplierLeg1 is absent
+
+    condition FloatingRateResetFrequencyPeriodMultiplierLeg2:
+    [docReference JFSA Trade dataElement "32" validationRule "Floating rate reset frequency period multiplier leg 2"
+      provision "Reject if [Floating rate reset frequency period leg 2] = EXPI', and the value in this field is NOT = 1."]
+        if floatingRateResetFrequencyPeriodOfLeg2 = "EXPI"
+                and floatingRatePaymentFrequencyPeriodMultiplierLeg2 <> 1
+        then floatingRateResetFrequencyPeriodMultiplierLeg2 is absent
+
+    condition DTCC_JFSA_BR_0033_01: <"Other payment amount Condition 1">
+        [docReference JFSA DTCC_Specs dataElement "33" field "Other payment amount"
+          provision "Required if [Other payment type] is populated."]
+        if [ActionTypeEnum -> PRTO to-string, ActionTypeEnum -> EROR to-string, ActionTypeEnum -> TERM to-string] any = actionType then
+            (if otherPayment -> paymentType exists then otherPayment -> amount exists)
+
+    condition DTCC_JFSA_BR_0033_02: <"Other payment amount Condition 2">
+        [docReference JFSA DTCC_Specs dataElement "33" field "Other payment amount"
+          provision "Required if [Other payment type] is populated. Reject if for Other Payment fields, the number of Other payment amount , Other payment type, Other payment currency, Other payment date, Other payment payer and Other payment receiver does not match."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if otherPayment -> paymentType exists then otherPayment -> amount exists
+            else if otherPayment -> amount count <> otherPayment -> paymentType count or
+                otherPayment -> amount count <> otherPayment -> currency count or
+                otherPayment -> amount count <> otherPayment -> date count or
+                otherPayment -> amount count <> otherPayment -> payer count or
+                otherPayment -> amount count <> otherPayment -> receiver count
+                then False)
+
+    condition DTCC_JFSA_BR_0034_01: <"Other payment type Condition">
+        [docReference JFSA DTCC_Specs dataElement "34" field "Other payment type"
+          provision "Required if [Other payment amount] or [Other payment currency] or [Other payment date] or [Other payment payer] or [Other payment receiver] is populated. Reject if for Other Payment fields, the number of Other payment amount , Other payment type, Other payment currency, Other payment date, Other payment payer and Other payment receiver does not match."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string, ActionTypeEnum -> PRTO to-string, ActionTypeEnum -> EROR to-string, ActionTypeEnum -> TERM to-string] any = actionType then
+            (if otherPayment -> amount exists
+                or otherPayment -> currency exists
+                or otherPayment -> date exists
+                or otherPayment -> payer exists
+                or otherPayment -> receiver exists
+                then otherPayment -> paymentType exists
+            else if otherPayment -> paymentType count <> otherPayment -> amount count or
+                otherPayment -> paymentType count <> otherPayment -> currency count or
+                otherPayment -> paymentType count <> otherPayment -> date count or
+                otherPayment -> paymentType count <> otherPayment -> payer count or
+                otherPayment -> paymentType count <> otherPayment -> receiver count
+                then False)
+
+    condition DTCC_JFSA_BR_0035_01: <"Other payment currency Condition">
+        [docReference JFSA DTCC_Specs dataElement "35" field "Other payment currency"
+          provision "Required if [Other payment amount] is populated. Reject if for Other Payment fields, the number of Other payment amount , Other payment type, Other payment currency, Other payment date, Other payment payer and Other payment receiver does not match."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string, ActionTypeEnum -> PRTO to-string, ActionTypeEnum -> EROR to-string, ActionTypeEnum -> TERM to-string] any = actionType then
+            (if otherPayment -> amount exists then otherPayment -> currency exists
+            else if otherPayment -> currency count <> otherPayment -> amount count or
+                otherPayment -> currency count <> otherPayment -> paymentType count or
+                otherPayment -> currency count <> otherPayment -> date count or
+                otherPayment -> currency count <> otherPayment -> payer count or
+                otherPayment -> currency count <> otherPayment -> receiver count
+                then False)
+
+    condition DTCC_JFSA_BR_0036_01: <"Other payment date Condition">
+        [docReference JFSA DTCC_Specs dataElement "36" field "Other payment date"
+          provision "Required if [Other payment amount] is populated. Reject if for Other Payment fields, the number of Other payment amount , Other payment type, Other payment currency, Other payment date, Other payment payer and Other payment receiver does not match."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string, ActionTypeEnum -> PRTO to-string, ActionTypeEnum -> EROR to-string, ActionTypeEnum -> TERM to-string] any = actionType then
+            (if otherPayment -> amount exists then otherPayment -> date exists
+            else if otherPayment -> date count <> otherPayment -> amount count or
+                otherPayment -> date count <> otherPayment -> paymentType count or
+                otherPayment -> date count <> otherPayment -> currency count or
+                otherPayment -> date count <> otherPayment -> payer count or
+                otherPayment -> date count <> otherPayment -> receiver count
+                then False)
+
+    condition DTCC_JFSA_BR_0037_01: <"Other payment payer Condition">
+        [docReference JFSA DTCC_Specs dataElement "37" field "Other payment payer"
+          provision "Required if [Other payment amount] is populated. Reject if for Other Payment fields, the number of Other payment amount , Other payment type, Other payment currency, Other payment date, Other payment payer and Other payment receiver does not match."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string, ActionTypeEnum -> PRTO to-string, ActionTypeEnum -> EROR to-string, ActionTypeEnum -> TERM to-string] any = actionType then
+            (if otherPayment -> amount exists then otherPayment -> payer exists
+            else if otherPayment -> payer count <> otherPayment -> amount count or
+                otherPayment -> payer count <> otherPayment -> paymentType count or
+                otherPayment -> payer count <> otherPayment -> currency count or
+                otherPayment -> payer count <> otherPayment -> date count or
+                otherPayment -> payer count <> otherPayment -> receiver count
+                then False)
+
+    condition DTCC_JFSA_BR_0038_01: <"Other payment receiver Condition">
+        [docReference JFSA DTCC_Specs dataElement "38" field "Other payment receiver"
+          provision "Required if [Other payment amount] is populated. Reject if for Other Payment fields, the number of Other payment amount , Other payment type, Other payment currency, Other payment date, Other payment payer and Other payment receiver does not match."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string, ActionTypeEnum -> PRTO to-string, ActionTypeEnum -> EROR to-string, ActionTypeEnum -> TERM to-string] any = actionType then
+            (if otherPayment -> amount exists then otherPayment -> receiver exists
+            else if otherPayment -> receiver count <> otherPayment -> amount count or
+                otherPayment -> receiver count <> otherPayment -> paymentType count or
+                otherPayment -> receiver count <> otherPayment -> currency count or
+                otherPayment -> receiver count <> otherPayment -> date count or
+                otherPayment -> receiver count <> otherPayment -> payer count
+                then False)
+
+    condition DTCC_JFSA_BR_0062_01: <"Initial margin collateral portfolio code Condition 1">
+        [docReference JFSA DTCC_Specs dataElement "62" field "Initial margin collateral portfolio code"
+          provision "Reject if the value [NOAP] is submitted in '/Prtfl/Cd'."]
+        //[NOAP] value for '/Prtfl/Cd' = 'False' value for [Collateral portfolio indicator]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string, ActionTypeEnum -> PRTO to-string, ActionTypeEnum -> EROR to-string, ActionTypeEnum -> TERM to-string] any = actionType then
+            (if collateralPortfolioIndicator = False then initialMarginCollateralPortfolioCode is absent)
+
+    condition DTCC_JFSA_BR_0063_01: <"Variation margin collateral portfolio code Condition 1">
+        [docReference JFSA DTCC_Specs dataElement "63" field "Variation margin collateral portfolio code"
+          provision "Required if [Initial margin collateral portfolio code] = 'NOAP'. Reject if the value [NOAP] is submitted in '/Prtfl/Cd'."]
+        //[NOAP] value for '/Prtfl/Cd' = 'False' value for [Collateral portfolio indicator]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if initialMarginCollateralPortfolioCode = "NOAP" then variationMarginCollateralPortfolioCode exists
+            else if collateralPortfolioIndicator = False then variationMarginCollateralPortfolioCode is absent)
+
+    condition DTCC_JFSA_BR_0063_02: <"Variation margin collateral portfolio code Condition 2">
+        [docReference JFSA DTCC_Specs dataElement "63" field "Variation margin collateral portfolio code"
+          provision "Reject if the value [NOAP] is submitted in '/Prtfl/Cd'."]
+        //[NOAP] value for '/Prtfl/Cd' = 'False' value for [Collateral portfolio indicator]
+        if [ActionTypeEnum -> PRTO to-string, ActionTypeEnum -> EROR to-string, ActionTypeEnum -> TERM to-string] any = actionType then
+            (if collateralPortfolioIndicator = False then variationMarginCollateralPortfolioCode is absent)
+
+    condition DTCC_JFSA_BR_0064_01: <"Price Condition">
+        [docReference JFSA DTCC_Specs dataElement "64" field "Price"
+          provision "Required if [Price schedules - Price in effect between the unadjusted effective date and unadjusted end date inclusive] is provided."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if priceSchedule -> priceMonetary exists or priceSchedule -> pricePercentage exists then price exists)
+
+    condition DTCC_JFSA_BR_0065_01: <"Price currency Condition">
+        [docReference JFSA DTCC_Specs dataElement "65" field "Price currency"
+          provision "Required if [Price notation] = 1"]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if priceNotation = "1" then priceNotation exists)
+
+    condition DTCC_JFSA_BR_0066_01: <"Price notation Condition">
+        [docReference JFSA DTCC_Specs dataElement "66" field "Price notation"
+          provision "Required if [Price] is populated. Required if [Price schedules - Price in effect between the unadjusted effective date and unadjusted end date inclusive] is populated."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if price exists then priceNotation exists
+            else if priceSchedule -> priceMonetary exists or priceSchedule -> pricePercentage exists then priceNotation exists)
+
+    condition DTCC_JFSA_BR_0068_01: <"Price schedules - Unadjusted effective date of the price Condition">
+        [docReference JFSA DTCC_Specs dataElement "68" field "Price schedules - Unadjusted effective date of the price"
+          provision "Required if [Price schedules - Price in effect between the unadjusted effective date and unadjusted end date inclusive] is populated. Reject if the for Price schedules, the number of Price and Effective date does not match. Reject if the for Price schedules, if the End Date is provided and the number of Price and Effective date and End date values does not match. Reject if the Effective dates submitted are not in ascending order. Reject if the Effective dates submitted are not greater then the End Dates of the previous payment schedule."]
+        [regulatoryReference JFSA PeerReviewGroup date "20240110"
+          provision "End date fields are not required for JFSA since non-contiguous schedules are only possible for commodities, which are out of scope for this jurisdiction."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if priceSchedule -> priceMonetary exists or priceSchedule -> pricePercentage exists then priceSchedule -> effectiveDate exists
+            else if priceSchedule -> priceMonetary count <> priceSchedule -> effectiveDate count or priceSchedule -> pricePercentage count <> priceSchedule -> effectiveDate count then False)
+
+    condition DTCC_JFSA_BR_0069_01: <"Price schedules - Unadjusted end date of the price Condition">
+        [docReference JFSA DTCC_Specs dataElement "69" field "Price schedules - Unadjusted end date of the price"
+          provision "Reject if the for Price schedules, the number of Price and Effective date does not match. Reject if the for Price schedules, if the End Date is provided and the number of Price and Effective date and End date values does not match. Reject if the End dates submitted are not in ascending order."]
+        [regulatoryReference JFSA PeerReviewGroup date "20240110"
+          provision "End date fields are not required for JFSA since non-contiguous schedules are only possible for commodities, which are out of scope for this jurisdiction."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if priceSchedule -> priceMonetary count <> priceSchedule -> effectiveDate count or priceSchedule -> pricePercentage count <> priceSchedule -> effectiveDate count then False)
+
+    condition DTCC_JFSA_BR_0070_01: <"Price schedules - Price in effect between the unadjusted effective date and unadjusted end date inclusive Condition">
+        [docReference JFSA DTCC_Specs dataElement "70" field "Price schedules - Price in effect between the unadjusted effective date and unadjusted end date inclusive"
+          provision "Reject if the for Price schedules, the number of Price and Effective date does not match. Reject if the for Price schedules, if the End Date is provided and the number of Price and Effective date and End date values does not match."]
+        [regulatoryReference JFSA PeerReviewGroup date "20240110"
+          provision "End date fields are not required for JFSA since non-contiguous schedules are only possible for commodities, which are out of scope for this jurisdiction."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if priceSchedule -> priceMonetary count <> priceSchedule -> effectiveDate count or priceSchedule -> pricePercentage count <> priceSchedule -> effectiveDate count then False)
+
+    condition DTCC_JFSA_BR_0071_01: <"Fixed rate-Leg 1 Condition">
+        [docReference JFSA DTCC_Specs dataElement "71" field "Fixed rate"
+          provision "Required if [Underlying Identification type] AND [Indicator of the floating rate of leg 1] AND [Name of the floating rate of leg 1] are all blank."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if assetClass = "INTR" and underlyingIdentificationType is absent and indicatorOfTheFloatingRateOfLeg1 is absent and nameOfTheFloatingRateOfLeg1 is absent then fixedRateLeg1 exists)
+
+    condition DTCC_JFSA_BR_0071_02: <"Fixed rate-Leg 2 Condition">
+        [docReference JFSA DTCC_Specs dataElement "71" field "Fixed rate"
+          provision "Required If [Indicator of the floating rate of leg 2], [Name of the floating rate of leg 2] are both blank."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if assetClass = "INTR" and indicatorOfTheFloatingRateOfLeg2 is absent and nameOfTheFloatingRateOfLeg2 is absent then fixedRateLeg2 exists)
+
+    condition DTCC_JFSA_BR_0073_01: <"Spread currency-Leg 1 Condition">
+        [docReference JFSA DTCC_Specs dataElement "73" field "Spread currency-Leg 1"
+          provision "Required if [Spread notation of leg 1] = 1."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if spreadNotationOfLeg1 = "1" then spreadOfLeg1 -> spreadCurrencyOfLeg1 exists)
+
+    condition DTCC_JFSA_BR_0073_02: <"Spread currency-Leg 2 Condition">
+        [docReference JFSA DTCC_Specs dataElement "73" field "Spread currency-Leg 2"
+          provision "Required if [Spread notation of leg 2] = 1."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if spreadNotationOfLeg2 = "1" then spreadOfLeg2 -> spreadCurrencyOfLeg2 exists)
+
+    condition DTCC_JFSA_BR_0074_01: <"Spread notation-Leg 1 Condition">
+        [docReference JFSA DTCC_Specs dataElement "74" field "Spread notation-Leg 1"
+          provision "Required if [Spread of leg 1] is populated."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if spreadOfLeg1 exists then spreadNotationOfLeg1 exists)
+
+    condition DTCC_JFSA_BR_0074_02: <"Spread notation-Leg 2 Condition">
+        [docReference JFSA DTCC_Specs dataElement "74" field "Spread notation-Leg 2"
+          provision "Required if [Spread of leg 2] is populated."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if spreadOfLeg2 exists then spreadNotationOfLeg2 exists)
+
+    condition DTCC_JFSA_BR_0076_01: <"Strike price currency Condition">
+        [docReference JFSA DTCC_Specs dataElement "76" field "Strike price currency"
+          provision "Required if [Strike price notation] = 1."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if strikePriceNotation = "1" then strikePrice -> strikePriceCurrency exists)
+
+    condition DTCC_JFSA_BR_0077_01: <"Strike price notation Condition">
+        [docReference JFSA DTCC_Specs dataElement "77" field "Strike price notation"
+          provision "Required if [Strike price] = is populated"]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if strikePrice exists then strikePriceNotation exists)
+
+        condition DTCC_JFSA_BR_0078_01: <"Strike price schedules - Unadjusted effective date of the strike price Condition">
+        [docReference JFSA DTCC_Specs dataElement "78" field "Strike price schedules - Unadjusted effective date of the strike price"
+          provision "Required if [Strike price schedules - Strike price in effect between the unadjusted effective date and unadjusted end date inclusive] is populated. Reject if the for Strike Price schedules, the number of Strike Price and Effective date values does not match. Reject if the for Strike Price schedules, if the End Date is provided and  the number of Strike Price and Effective date and End date values does not match. Reject if the Effective dates submitted are not in ascending order. Reject if the Effective dates submitted are not greater then the End Dates of the previous payment schedule."]
+        [regulatoryReference JFSA PeerReviewGroup date "20240110"
+          provision "End date fields are not required for JFSA since non-contiguous schedules are only possible for commodities, which are out of scope for this jurisdiction."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if strikePriceSchedule -> strikePriceInEffectOnAssociatedEffectiveDateMonetary exists or strikePriceSchedule -> strikePriceInEffectOnAssociatedEffectiveDateDecimal exists
+                then strikePriceSchedule -> effectiveDateStrikePrice exists
+            else if strikePriceSchedule -> strikePriceInEffectOnAssociatedEffectiveDateMonetary count <> strikePriceSchedule -> effectiveDateStrikePrice count or strikePriceSchedule -> strikePriceInEffectOnAssociatedEffectiveDateDecimal count <> strikePriceSchedule -> effectiveDateStrikePrice count then False)
+
+    condition DTCC_JFSA_BR_0079_01: <"Strike price schedules - Unadjusted end date of the strike price Condition">
+        [docReference JFSA DTCC_Specs dataElement "79" field "Strike price schedules - Unadjusted end date of the strike price"
+          provision "Reject if the for Strike Price schedules, the number of Strike Price and Effective date values does not match. Reject if the for Strike Price schedules, if the End Date is provided and  the number of Strike Price and Effective date and End date values does not match. Reject if End dates submitted are not in ascending order."]
+        [regulatoryReference JFSA PeerReviewGroup date "20240110"
+          provision "End date fields are not required for JFSA since non-contiguous schedules are only possible for commodities, which are out of scope for this jurisdiction."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if strikePriceSchedule -> strikePriceInEffectOnAssociatedEffectiveDateMonetary count <> strikePriceSchedule -> effectiveDateStrikePrice count or strikePriceSchedule -> strikePriceInEffectOnAssociatedEffectiveDateDecimal count <> strikePriceSchedule -> effectiveDateStrikePrice count then False)
+
+    condition DTCC_JFSA_BR_0080_01: <"Strike price schedules - Strike price in effect between the unadjusted effective date and unadjusted end date inclusive Condition">
+        [docReference JFSA DTCC_Specs dataElement "80" field "Strike price schedules - Strike price in effect between the unadjusted effective date and unadjusted end date inclusive"
+          provision "Reject if the for Strike Price schedules, the number of Strike Price and Effective date values does not match. Reject if the for Strike Price schedules, if the End Date is provided and  the number of Strike Price and Effective date and End date values does not match."]
+        [regulatoryReference JFSA PeerReviewGroup date "20240110"
+          provision "End date fields are not required for JFSA since non-contiguous schedules are only possible for commodities, which are out of scope for this jurisdiction."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if strikePriceSchedule -> strikePriceInEffectOnAssociatedEffectiveDateMonetary count <> strikePriceSchedule -> effectiveDateStrikePrice count or strikePriceSchedule -> strikePriceInEffectOnAssociatedEffectiveDateDecimal count <> strikePriceSchedule -> effectiveDateStrikePrice count then False)
+
+    condition DTCC_JFSA_BR_0081_01: <"Option premium amount Condition">
+        [docReference JFSA DTCC_Specs dataElement "81" field "Option premium amount"
+          provision "Required if [Option premium currency] is populated."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string, ActionTypeEnum -> PRTO to-string, ActionTypeEnum -> EROR to-string, ActionTypeEnum -> TERM to-string] any = actionType then
+            (if optionPremiumCurrency exists then optionPremiumAmount exists)
+
+    condition DTCC_JFSA_BR_0082_01: <"Option premium currency Condition">
+        [docReference JFSA DTCC_Specs dataElement "82" field "Option premium currency"
+          provision "Required if [Option premium amount] is populated."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string, ActionTypeEnum -> PRTO to-string, ActionTypeEnum -> EROR to-string, ActionTypeEnum -> TERM to-string] any = actionType then
+            (if optionPremiumCurrency exists then optionPremiumAmount exists)
+
+    condition DTCC_JFSA_BR_0083_01: <"Option premium payment date Condition">
+        [docReference JFSA DTCC_Specs dataElement "82" field "Option premium payment date"
+          provision "Required if [Option premium amount] is greater than Zero."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if optionPremiumAmount > 0 then optionPremiumPaymentDate exists)
+
+    condition DTCC_JFSA_BR_0087_01: <"Notional amount-Leg 1 Condition">
+        [docReference JFSA DTCC_Specs dataElement "87" field "Notional amount-Leg 1"
+          provision "Reject if Negative."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if notionalLeg1 < 0 then False)
+
+    condition DTCC_JFSA_BR_0087_02: <"Notional amount-Leg 2 Condition">
+        [docReference JFSA DTCC_Specs dataElement "87" field "Notional amount-Leg 2"
+          provision "Reject if Negative."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if notionalLeg1 < 0 then False)
+
+    condition NotionalCurrencyLeg1:
+      [docReference JFSA Trade dataElement "90" validationRule "Notional currency of leg 1"
+      provision "Required when [Notional Amount of leg 1] is populated."]
+        if notionalLeg1 exists
+        then notionalCurrencyOfLeg1 exists
+        else notionalCurrencyOfLeg1 is absent
+
+    condition NotionalCurrencyLeg2:
+      [docReference JFSA Trade dataElement "90" validationRule "Notional currency of leg 2"
+      provision "Required when [Notional Amount of leg 2] is populated."]
+        if notionalLeg2 exists
+        then notionalCurrencyOfLeg2 exists
+        else notionalCurrencyOfLeg2 is absent
+
+    condition CallCurrencyCondition:
+         [docReference JFSA Trade dataElement "91" validationRule "Call Currency"
+      provision "Required if [Call amount] is populated"]
+        if callAmount exists
+        then callCurrency exists
+
+    condition PutCurrencyCondition:
+     [docReference JFSA Trade dataElement "92" validationRule "Call Currency"
+      provision "Required if [Call amount] is populated"]
+        if putAmount exists
+        then putCurrency exists
+    
+    condition DTCC_JFSA_BR_0093_01: <"Quantity unit of measure-Leg 1 Condition">
+        [docReference JFSA DTCC_Specs dataElement "93" field "Quantity unit of measure-Leg 1"
+          provision "Required if [Total notional quantity of leg 1] is populated."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if totalNotionalQuantityLeg1 exists then quantityUnitOfMeasureLeg1 exists)
+
+    condition DTCC_JFSA_BR_0093_02: <"Quantity unit of measure-Leg 2 Condition">
+        [docReference JFSA DTCC_Specs dataElement "93" field "Quantity unit of measure-Leg 2"
+          provision "Required if [Total notional quantity of leg 2] is populated."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if totalNotionalQuantityLeg2 exists then quantityUnitOfMeasureLeg2 exists)
+
+    condition DTCC_JFSA_BR_0094_01: <"Notional amount schedule - notional amount in effect on associated effective date-Leg 1 Condition">
+        [docReference JFSA DTCC_Specs dataElement "94" field "Notional amount schedule - notional amount in effect on associated effective date"
+          provision "Reject if for Notional schedules Leg 1, the number of Notional Amounts and Effective date values does not match. Reject if for Notional schedules Leg 1, if the End Date is provided and the number of Notional Amounts and Effective date and End date values does not match. Reject if Negative."]
+        [regulatoryReference JFSA PeerReviewGroup date "20240110"
+          provision "End date fields are not required for JFSA since non-contiguous schedules are only possible for commodities, which are out of scope for this jurisdiction."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if notionalAmountScheduleLeg1 -> amount count <> notionalAmountScheduleLeg1 -> effectiveDate count then False
+            else if notionalAmountScheduleLeg1 -> amount any < 0 then False)
+
+    condition DTCC_JFSA_BR_0094_02: <"Notional amount schedule - notional amount in effect on associated effective date-Leg 2 Condition">
+        [docReference JFSA DTCC_Specs dataElement "94" field "Notional amount schedule - notional amount in effect on associated effective date"
+          provision "Reject if for Notional schedules Leg 2, the number of Notional Amounts and Effective date values does not match. Reject if for Notional schedules Leg 2, if the End Date is provided and the number of Notional Amounts and Effective date and End date values does not match. Reject if Negative."]
+        [regulatoryReference JFSA PeerReviewGroup date "20240110"
+          provision "End date fields are not required for JFSA since non-contiguous schedules are only possible for commodities, which are out of scope for this jurisdiction."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if notionalAmountScheduleLeg2 -> amount count <> notionalAmountScheduleLeg2 -> effectiveDate count then False
+            else if notionalAmountScheduleLeg2 -> amount any < 0 then False)
+
+    condition DTCC_JFSA_BR_0095_01: <"Notional amount schedule - unadjusted effective date of the notional amount-Leg 1 Condition">
+        [docReference JFSA DTCC_Specs dataElement "95" field "Notional amount schedule - unadjusted effective date of the notional amount"
+          provision "Reject if for Notional schedules Leg 1, the number of Notional Amounts and Effective date values does not match. Reject if for Notional schedules Leg 1, if the End Date is provided and the number of Notional Amounts and Effective date and End date values does not match. Reject if the Effective dates submitted are not in ascending order. Reject if the Effective dates submitted are not greater then the End Dates of the previous payment schedule."]
+        [regulatoryReference JFSA PeerReviewGroup date "20240110"
+          provision "End date fields are not required for JFSA since non-contiguous schedules are only possible for commodities, which are out of scope for this jurisdiction."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if notionalAmountScheduleLeg1 -> amount count <> notionalAmountScheduleLeg1 -> effectiveDate count then False)
+
+    condition DTCC_JFSA_BR_0095_02: <"Notional amount schedule - unadjusted effective date of the notional amount-Leg 2 Condition">
+        [docReference JFSA DTCC_Specs dataElement "95" field "Notional amount schedule - unadjusted effective date of the notional amount"
+          provision "Reject if for Notional schedules Leg 2, the number of Notional Amounts and Effective date values does not match. Reject if for Notional schedules Leg 2, if the End Date is provided and the number of Notional Amounts and Effective date and End date values does not match. Reject if the Effective dates submitted are not in ascending order. Reject if the Effective dates submitted are not greater then the End Dates of the previous payment schedule."]
+        [regulatoryReference JFSA PeerReviewGroup date "20240110"
+          provision "End date fields are not required for JFSA since non-contiguous schedules are only possible for commodities, which are out of scope for this jurisdiction."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if notionalAmountScheduleLeg2 -> amount count <> notionalAmountScheduleLeg2 -> effectiveDate count then False)
+
+    condition DTCC_JFSA_BR_0096_01: <"Notional amount schedule - unadjusted end date of the notional amount-Leg 1 Condition">
+        [docReference JFSA DTCC_Specs dataElement "96" field "Notional amount schedule - unadjusted end date of the notional amount"
+          provision "Reject if for Notional schedules Leg 1, the number of Notional Amounts and Effective date values does not match. Reject if for Notional schedules Leg 1, if the End Date is provided and the number of Notional Amounts and Effective date and End date values does not match. Reject if the End dates submitted are not in ascending order."]
+        [regulatoryReference JFSA PeerReviewGroup date "20240110"
+          provision "End date fields are not required for JFSA since non-contiguous schedules are only possible for commodities, which are out of scope for this jurisdiction."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if notionalAmountScheduleLeg1 -> amount count <> notionalAmountScheduleLeg1 -> effectiveDate count then False)
+
+    condition DTCC_JFSA_BR_0096_02: <"Notional amount schedule - unadjusted end date of the notional amount-Leg 2 Condition">
+        [docReference JFSA DTCC_Specs dataElement "96" field "Notional amount schedule - unadjusted end date of the notional amount"
+          provision "Reject if for Notional schedules Leg 2, the number of Notional Amounts and Effective date values does not match. Reject if for Notional schedules Leg 2, if the End Date is provided and the number of Notional Amounts and Effective date and End date values does not match. Reject if the End dates submitted are not in ascending order."]
+        [regulatoryReference JFSA PeerReviewGroup date "20240110"
+          provision "End date fields are not required for JFSA since non-contiguous schedules are only possible for commodities, which are out of scope for this jurisdiction."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if notionalAmountScheduleLeg2 -> amount count <> notionalAmountScheduleLeg2 -> effectiveDate count then False)
+
+    condition DTCC_JFSA_BR_0098_01: <"Notional quantity schedules - Unadjusted date on which the associated notional quantity becomes effective-Leg 1 Condition">
+        [docReference JFSA DTCC_Specs dataElement "98" field "Notional quantity schedules - Unadjusted date on which the associated notional quantity becomes effective-Leg 1"
+          provision "Required if [Notional quantity schedules - Notional quantity which becomes effective on the associated unadjusted effective date of leg 1] is populated. Reject if for Notional Quantity Leg 1 schedules, the number of Notional Quantities and Effective date values does not match. Reject if for Notional Quantity Leg 1 schedules, if the End Date is provided, the number of Notional Quantities and Effective date and End date values does not match. Reject if the Effective dates submitted are not in ascending order. Reject if the Effective dates submitted are not greater then the End Dates of the previous payment schedule."]
+        [regulatoryReference JFSA PeerReviewGroup date "20240110"
+          provision "End date fields are not required for JFSA since non-contiguous schedules are only possible for commodities, which are out of scope for this jurisdiction."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if notionalQuantityScheduleLeg1 -> value exists then notionalQuantityScheduleLeg1 -> effectiveDate exists
+            else if notionalQuantityScheduleLeg1 -> value count <> notionalQuantityScheduleLeg1 -> effectiveDate count then False)
+
+    condition DTCC_JFSA_BR_0098_02: <"Notional quantity schedules - Unadjusted date on which the associated notional quantity becomes effective-Leg 2 Condition">
+        [docReference JFSA DTCC_Specs dataElement "98" field "Notional quantity schedules - Unadjusted date on which the associated notional quantity becomes effective-Leg 2"
+          provision "Required if [Notional quantity schedules - Notional quantity which becomes effective on the associated unadjusted effective date of leg 2] is populated. Reject if for Notional Quantity Leg 2 schedules, the number of Notional Quantities and Effective date values does not match. Reject if for Notional Quantity Leg 2 schedules, if the End Date is provided, the number of Notional Quantities and Effective date and End date values does not match. Reject if the Effective dates submitted are not in ascending order. Reject if the Effective dates submitted are not greater then the End Dates of the previous payment schedule."]
+        [regulatoryReference JFSA PeerReviewGroup date "20240110"
+          provision "End date fields are not required for JFSA since non-contiguous schedules are only possible for commodities, which are out of scope for this jurisdiction."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if notionalQuantityScheduleLeg2 -> value exists then notionalQuantityScheduleLeg2 -> effectiveDate exists
+            else if notionalQuantityScheduleLeg2 -> value count <> notionalQuantityScheduleLeg2 -> effectiveDate count then False)
+
+    condition DTCC_JFSA_BR_0099_01: <"Notional quantity schedules - Unadjusted end date of the notional quantity-Leg 1 Condition">
+        [docReference JFSA DTCC_Specs dataElement "99" field "Notional quantity schedules - Unadjusted end date of the notional quantity-Leg 1"
+          provision "Reject if for Notional Quantity Leg 1 schedules, the number of Notional Quantities and Effective date values does not match. Reject if for Notional Quantity Leg 1 schedules, if the End Date is provided, the number of Notional Quantities and Effective date and End date values does not match. Reject if End dates submitted are not in ascending order."]
+        [regulatoryReference JFSA PeerReviewGroup date "20240110"
+          provision "End date fields are not required for JFSA since non-contiguous schedules are only possible for commodities, which are out of scope for this jurisdiction."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if notionalQuantityScheduleLeg1 -> value count <> notionalQuantityScheduleLeg1 -> effectiveDate count then False)
+
+    condition DTCC_JFSA_BR_0099_02: <"Notional quantity schedules - Unadjusted end date of the notional quantity-Leg 2 Condition">
+        [docReference JFSA DTCC_Specs dataElement "99" field "Notional quantity schedules - Unadjusted end date of the notional quantity-Leg 2"
+          provision "Reject if for Notional Quantity Leg 2 schedules, the number of Notional Quantities and Effective date values does not match. Reject if for Notional Quantity Leg 2 schedules, if the End Date is provided, the number of Notional Quantities and Effective date and End date values does not match. Reject if End dates submitted are not in ascending order."]
+        [regulatoryReference JFSA PeerReviewGroup date "20240110"
+          provision "End date fields are not required for JFSA since non-contiguous schedules are only possible for commodities, which are out of scope for this jurisdiction."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if notionalQuantityScheduleLeg2 -> value count <> notionalQuantityScheduleLeg2 -> effectiveDate count then False)
+
+    condition DTCC_JFSA_BR_0100_01: <"Notional quantity schedules - Notional quantity which becomes effective on the associated unadjusted effective date-Leg 1 Condition">
+        [docReference JFSA DTCC_Specs dataElement "100" field "Notional quantity schedules - Notional quantity which becomes effective on the associated unadjusted effective date-Leg 1"
+          provision "Required if [Notional quantity schedules - Unadjusted date on which the associated notional quantity becomes effective of leg 1] is populated. Reject if for Notional Quantity Leg 1 schedules, the number of Notional Quantities and Effective date values does not match. Reject if for Notional Quantity Leg 1 schedules, if the End Date is provided, the number of Notional Quantities and Effective date and End date values does not match."]
+        [regulatoryReference JFSA PeerReviewGroup date "20240110"
+          provision "End date fields are not required for JFSA since non-contiguous schedules are only possible for commodities, which are out of scope for this jurisdiction."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if notionalQuantityScheduleLeg1 -> effectiveDate exists then notionalQuantityScheduleLeg1 -> value exists
+            else if notionalQuantityScheduleLeg1 -> value count <> notionalQuantityScheduleLeg1 -> effectiveDate count then False)
+
+    condition DTCC_JFSA_BR_0100_02: <"Notional quantity schedules - Notional quantity which becomes effective on the associated unadjusted effective date-Leg 2 Condition">
+        [docReference JFSA DTCC_Specs dataElement "100" field "Notional quantity schedules - Notional quantity which becomes effective on the associated unadjusted effective date-Leg 2"
+          provision "Required if [Notional quantity schedules - Unadjusted date on which the associated notional quantity becomes effective of leg 2] is populated. Reject if for Notional Quantity Leg 2 schedules, the number of Notional Quantities and Effective date values does not match. Reject if for Notional Quantity Leg 2 schedules, if the End Date is provided, the number of Notional Quantities and Effective date and End date values does not match."]
+        [regulatoryReference JFSA PeerReviewGroup date "20240110"
+          provision "End date fields are not required for JFSA since non-contiguous schedules are only possible for commodities, which are out of scope for this jurisdiction."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if notionalQuantityScheduleLeg2 -> effectiveDate exists then notionalQuantityScheduleLeg2 -> value exists
+            else if notionalQuantityScheduleLeg2 -> value count <> notionalQuantityScheduleLeg2 -> effectiveDate count then False)
+
+    condition DTCC_JFSA_BR_0101_01: <"Action type Condition">
+        [docReference JFSA DTCC_Specs dataElement "101" field "Action type"
+          provision "Allowable Action Type and Event Type Combinations for Each Message Type"]
+        if actionType = ActionTypeEnum -> NEWT to-string 
+        then 
+            [EventTypeEnum -> TRAD to-string, 
+            EventTypeEnum -> NOVA to-string, 
+            EventTypeEnum -> COMP to-string, 
+            EventTypeEnum -> CLRG to-string, 
+            EventTypeEnum -> EXER to-string, 
+            EventTypeEnum -> ALOC to-string, 
+            EventTypeEnum -> CLAL to-string, 
+            EventTypeEnum -> PTNG to-string, 
+            EventTypeEnum -> CORP to-string] any = eventType
+        else if actionType = ActionTypeEnum -> MODI to-string 
+        then 
+            [EventTypeEnum -> TRAD to-string, 
+            EventTypeEnum -> NOVA to-string, 
+            EventTypeEnum -> COMP to-string, 
+            EventTypeEnum -> ETRM to-string, 
+            EventTypeEnum -> EXER to-string, 
+            EventTypeEnum -> ALOC to-string, 
+            EventTypeEnum -> CREV to-string, 
+            EventTypeEnum -> CORP to-string, 
+            EventTypeEnum -> UPDT to-string] any = eventType
+        else if actionType = ActionTypeEnum -> PRTO to-string 
+        then EventTypeEnum -> PTNG to-string = eventType
+        else if actionType = ActionTypeEnum -> TERM to-string 
+        then 
+            [EventTypeEnum -> NOVA to-string, 
+            EventTypeEnum -> COMP to-string, 
+            EventTypeEnum -> ETRM to-string, 
+            EventTypeEnum -> CLRG to-string, 
+            EventTypeEnum -> EXER to-string, 
+            EventTypeEnum -> ALOC to-string, 
+            EventTypeEnum -> CLAL to-string, 
+            EventTypeEnum -> CREV to-string, 
+            EventTypeEnum -> CORP to-string] any = eventType
+        else if [ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string, ActionTypeEnum -> EROR to-string, ActionTypeEnum -> VALU to-string, ActionTypeEnum -> MARU to-string] any = actionType 
+        then True
+
+    condition DTCC_JFSA_BR_0102_01: <"Event type Condition">
+        [docReference JFSA DTCC_Specs dataElement "102" field "Event type"
+          provision "Allowable Action Type and Event Type Combinations for Each Message Type"]
+        if actionType = ActionTypeEnum -> NEWT to-string 
+        then 
+            [EventTypeEnum -> TRAD to-string, 
+            EventTypeEnum -> NOVA to-string, 
+            EventTypeEnum -> COMP to-string, 
+            EventTypeEnum -> CLRG to-string, 
+            EventTypeEnum -> EXER to-string, 
+            EventTypeEnum -> ALOC to-string, 
+            EventTypeEnum -> CLAL to-string, 
+            EventTypeEnum -> PTNG to-string, 
+            EventTypeEnum -> CORP to-string] any = eventType
+        else if actionType = ActionTypeEnum -> MODI to-string 
+        then 
+            [EventTypeEnum -> TRAD to-string, 
+            EventTypeEnum -> NOVA to-string, 
+            EventTypeEnum -> COMP to-string, 
+            EventTypeEnum -> ETRM to-string, 
+            EventTypeEnum -> EXER to-string, 
+            EventTypeEnum -> ALOC to-string, 
+            EventTypeEnum -> CREV to-string, 
+            EventTypeEnum -> CORP to-string, 
+            EventTypeEnum -> UPDT to-string] any = eventType
+        else if actionType = ActionTypeEnum -> PRTO to-string 
+        then EventTypeEnum -> PTNG to-string = eventType
+        else if actionType = ActionTypeEnum -> TERM to-string 
+        then 
+            [EventTypeEnum -> NOVA to-string, 
+            EventTypeEnum -> COMP to-string, 
+            EventTypeEnum -> ETRM to-string, 
+            EventTypeEnum -> CLRG to-string, 
+            EventTypeEnum -> EXER to-string, 
+            EventTypeEnum -> ALOC to-string, 
+            EventTypeEnum -> CLAL to-string, 
+            EventTypeEnum -> CREV to-string, 
+            EventTypeEnum -> CORP to-string] any = eventType
+        else if [ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string, ActionTypeEnum -> EROR to-string, ActionTypeEnum -> VALU to-string, ActionTypeEnum -> MARU to-string] any = actionType 
+        then True
+
+    condition DTCC_JFSA_BR_0103_01: <"Event identifier Condition">
+        [docReference JFSA DTCC_Specs dataElement "103" field "Event identifier"
+          provision "Required if: [Action Type] = 'NEWT' or  'MODI' or 'TERM' AND [Event Type] = 'COMP' OR [Action Type] = 'MODI' or 'TERM' AND [Event Type] = 'CREV'"]
+        if (eventType = EventTypeEnum -> COMP to-string and [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> TERM to-string] any = actionType
+            or eventType = EventTypeEnum -> CREV to-string and [ActionTypeEnum -> MODI to-string, ActionTypeEnum -> TERM to-string] any = actionType)
+            then eventIdentifier exists
+
+    condition DTCC_JFSA_BR_0104_01: <"Event timestamp Condition 1">
+        [docReference JFSA DTCC_Specs dataElement "104" field "Event Timestamp"
+          provision "If [Action Type] = NEWT, MODI, CORR, the date value of the [Event timestamp] must be equal to or later than the date value in [Execution timestamp]. If [Action Type] = NEWT, MODI, CORR, the date value of the [Event timestamp] must be equal to or before the date value of the [Reporting timestamp]. If [Action Type] = REVI, the date value of the [Event timestamp] must be equal to the date value [Reporting timestamp]. If [Action Type] = NEWT, MODI, CORR, the date value in the [Event timestamp] should be equal to or before BOTH the [Expiration date] OR the [Early termination date] where populated. If [Action Type] = MODI, CORR, REVI, [Event timestamp] should not be before the [Initial Event timestamp] of the NEWT Message. If [Action Type] = MODI or CORR, and is submitted after [Action Type] = TERM in the base trade, the [Event Timestamp] of MODI, CORR must be lesser than the [Event timestamp] of the base trades TERM."]
+        [regulatoryReference ISDA ISDAWorkingGroup date "unknown"
+            provision "The logic regarding the [Initial event timestamp] is not modelled. The condition cannot be executed in a stateless environment."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string] any = actionType then eventTimestamp >= executionTimestamp and eventTimestamp <= reportingTimestamp
+        else if ActionTypeEnum -> REVI to-string = actionType then eventTimestamp = reportingTimestamp
+        else if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string] any = actionType then eventTimestamp -> date <= expirationDate and eventTimestamp -> date <= earlyTerminationDate
+
+    condition DTCC_JFSA_BR_0104_02: <"Event timestamp Condition 2">
+        [docReference JFSA DTCC_Specs dataElement "104" field "Event Timestamp"
+          provision "[Event timestamp] must be equal to or later than the value in [Execution timestamp]. The date value of the [Event timestamp] must be equal to the date value [Reporting timestamp]. The date value in the [Event timestamp] should be equal to or before BOTH the [Expiration date] OR the [Early termination date] where populated. [Event timestamp] should not be before the [Initial Event timestamp] of the NEWT Message."]
+        [regulatoryReference ISDA ISDAWorkingGroup date "unknown"
+            provision "The logic regarding the [Initial event timestamp] is not modelled. The condition cannot be executed in a stateless environment."]
+        if [ActionTypeEnum -> EROR to-string, ActionTypeEnum -> PRTO to-string] any = actionType then eventTimestamp >= executionTimestamp and eventTimestamp = reportingTimestamp and eventTimestamp -> date <= expirationDate and eventTimestamp -> date <= earlyTerminationDate
+
+    condition DTCC_JFSA_BR_0104_03: <"Event timestamp Condition 3">
+        [docReference JFSA DTCC_Specs dataElement "104" field "Event Timestamp"
+          provision "[Event timestamp] must be equal to or greater than the value in [Execution timestamp]. [Event timestamp] must be equal to or before the [Reporting timestamp]. The date value in the [Event timestamp] must be equal to or before the [Expiration Date] The date value in the [Event Timestamp] and the date value in the [Early termination date] should be the same. [Event timestamp] should not be before the [Initial Event timestamp] of the NEWT Message."]
+        [regulatoryReference ISDA ISDAWorkingGroup date "unknown"
+            provision "The logic regarding the [Initial event timestamp] is not modelled. The condition cannot be executed in a stateless environment."]
+        if ActionTypeEnum -> TERM to-string = actionType then eventTimestamp >= executionTimestamp and eventTimestamp <= reportingTimestamp and eventTimestamp -> date <= expirationDate and eventTimestamp -> date = earlyTerminationDate
+
+    condition DTCC_JFSA_BR_0110_01: <"Underlying identification type Condition 1">
+        [docReference JFSA DTCC_Specs dataElement "110" field "Underlying identification type"
+          provision "Required if [Reference entity] is blank."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType and assetClass = "CRDT" then
+            (if referenceEntity is absent then underlyingIdentificationType exists)
+    
+    condition DTCC_JFSA_BR_0110_02: <"Underlying identification type Condition 2">
+        [docReference JFSA DTCC_Specs dataElement "110" field "Underlying identification type"
+          provision "Required if [Fixed rate of leg 1], [Indicator of the floating rate of leg 1], [Name of the floating rate of leg 1] are all blank."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType and assetClass = "INTR" then
+            (if fixedRateLeg1 is absent and nameOfTheFloatingRateOfLeg1 is absent and indicatorOfTheFloatingRateOfLeg1 is absent then underlyingIdentificationType exists)
+
+    condition DTCC_JFSA_BR_0110_03: <"Underlying identification type Condition 3">
+        [docReference JFSA DTCC_Specs dataElement "110" field "Underlying identification type"
+          provision "Required if [Underlying identification] is populated."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType and assetClass = "OTHR" then
+            (if underlyingIdentification exists then underlyingIdentificationType exists)
+
+    condition DTCC_JFSA_BR_0110_04: <"Underlying identification type Condition 4">
+        [docReference JFSA DTCC_Specs dataElement "110" field "Underlying identification type"
+          provision "Required if [Custom basket code LEI] and [Custom basket code Identifier] is populated."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType and assetClass = "CURR" then
+            (if customBasketCode exists and GetOrFetchLeiData(nonReportable -> enrichment -> leiData, SubString(customBasketCode, 1, 20)) -> lei exists then underlyingIdentificationType exists)
+
+    condition DTCC_JFSA_BR_0111_01: <"Underlying identification Condition 1">
+        [docReference JFSA DTCC_Specs dataElement "111" field "Underlying identification"
+          provision "Required if  Underlying identification type is = 'X' and [Name of the underlying index] AND [Indicator of the underlying index] are both blank. Required if  Underlying identification type is = 'I'"]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType and assetClass = "INTR" then
+            (if underlyingIdentificationType = "I" then underlyingIdentification exists
+            else if underlyingIdentificationType = "X" and underlyingIndexIndicator is absent and nameOfTheUnderlyingIndex is absent then underlyingIdentification exists)
+
+    condition DTCC_JFSA_BR_0111_02: <"Underlying identification Condition 2">
+        [docReference JFSA DTCC_Specs dataElement "111" field "Underlying identification"
+          provision "Required if  Underlying identification type is = 'X' and [Name of the underlying index] is blank. Required if  Underlying identification type is = 'I'"]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType and ["CRDT", "EQUI"] any = assetClass then
+            (if underlyingIdentificationType = "I" then underlyingIdentification exists
+            else if underlyingIdentificationType = "X" and nameOfTheUnderlyingIndex is absent then underlyingIdentification exists)
+
+    condition UnderlyingIndexIndicator:
+    [docReference JFSA Trade dataElement "112" validationRule "Indicator of the underlying index"
+      provision "Required if  Underlying identification type is = X and [Name of the underlying index] AND [Underlying identification] are both blank."]
+        if assetClass = "INTR"
+                and underlyingIdentificationType = "X"
+                and underlyingIdentification is absent
+                and nameOfTheUnderlyingIndex is absent
+        then underlyingIndexIndicator exists
+
+    condition DTCC_JFSA_BR_0113_01: <"Name of the underlying index Condition 1">
+        [docReference JFSA DTCC_Specs dataElement "113" field "Name of the underlying index"
+          provision "Required if Underlying identification type is = 'X' and [Indicator of the underlying index] AND [Underlying identification] are both blank."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType and assetClass = "INTR" then
+            (if underlyingIdentificationType = "X" and underlyingIdentification is absent and underlyingIndexIndicator is absent then nameOfTheUnderlyingIndex exists)
+
+    condition DTCC_JFSA_BR_0113_02: <"Name of the underlying index Condition 2">
+        [docReference JFSA DTCC_Specs dataElement "113" field "Name of the underlying index"
+          provision "Required if  Underlying identification type is = 'X' and [Underlying identification] is blank."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType and ["CRDT", "EQUI"] any = assetClass then
+            (if underlyingIdentificationType = "X" and underlyingIdentification is absent then nameOfTheUnderlyingIndex exists)
+
+    condition DTCC_JFSA_BR_0114_01: <"Reference entity Condition">
+        [docReference JFSA DTCC_Specs dataElement "114" field "Reference entity"
+          provision "Required If [Underlying identification type] is blank."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if underlyingIdentificationType is absent then referenceEntity exists)
+
+    condition IndicatorOfTheFloatingRateOfLeg1:
+        [docReference JFSA Trade dataElement "115" validationRule "Indicator of the underlying index"
+      provision "Required If [Underlying Identification type] AND [Fixed rate of leg 1] AND [Name of the floating rate of leg 1] are all blank."]
+        if assetClass = "INTR"
+                and (fixedRateLeg1 is absent
+                    and nameOfTheFloatingRateOfLeg1 is absent
+                    and underlyingIdentificationType is absent)
+        then indicatorOfTheFloatingRateOfLeg1 exists
+
+    condition IndicatorOfTheFloatingRateOfLeg2:
+        [docReference JFSA Trade dataElement "115" validationRule "Indicator of the underlying index"
+      provision "Required if [Fixed rate of leg 2] AND [Name of the floating rate of leg 2] are both blank."]
+        if assetClass = "INTR"
+                and (fixedRateLeg2 is absent and nameOfTheFloatingRateOfLeg2 is absent)
+        then indicatorOfTheFloatingRateOfLeg2 exists
+
+    condition Nameofthefloatingrateofleg1:
+        [docReference JFSA Trade dataElement "116" field "Name of the floating rate of leg 1"
+        provision "Required if [Underlying Identification type] AND [Fixed rate of leg 1] AND [Indicator of the floating rate of leg 1] are all blank."]
+        if assetClass = "INTR"
+                and underlyingIdentificationType is absent
+                and fixedRateLeg1 is absent
+                and indicatorOfTheFloatingRateOfLeg1 is absent
+        then nameOfTheFloatingRateOfLeg1 exists
+
+    condition Nameofthefloatingrateofleg2:
+        [docReference JFSA Trade dataElement "116" field "Name of the floating rate of leg 2"
+        provision "Required if [Fixed rate of leg 2] AND [Indicator of the floating rate of leg 2] are all blank."]
+        if assetClass = "INTR"
+                and fixedRateLeg2 is absent
+                and indicatorOfTheFloatingRateOfLeg2 is absent
+        then nameOfTheFloatingRateOfLeg2 exists
+
+    condition DTCC_JFSA_BR_0117_01: <"Floating rate reference period - time period-Leg 1 Condition">
+        [docReference JFSA DTCC_Specs dataElement "117" field "Floating rate reference period - time period"
+          provision "Required if [Floating rate reference period of leg 1 - multiplier] is populated."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if floatingRateReferencePeriodOfLeg1Multiplier exists then floatingRateReferencePeriodOfLeg1TimePeriod exists)
+
+    condition DTCC_JFSA_BR_0117_02: <"Floating rate reference period - time period-Leg 2 Condition">
+        [docReference JFSA DTCC_Specs dataElement "117" field "Floating rate reference period - time period"
+          provision "Required if [Floating rate reference period of leg 2 - multiplier] is populated."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if floatingRateReferencePeriodOfLeg2Multiplier exists then floatingRateReferencePeriodOfLeg2TimePeriod exists)
+
+    condition DTCC_JFSA_BR_0118_01: <"Floating rate reference period - multiplier-Leg 1 Condition">
+        [docReference JFSA DTCC_Specs dataElement "118" field "Floating rate reference period - multiplier"
+          provision "Required if [Floating rate reference period of leg 1 - time period] is populated with 'YEAR', 'MNTH', 'WEEK 'or 'DAIL'."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if ["YEAR", "MNTH", "WEEK", "DAIL"] any = floatingRateReferencePeriodOfLeg1TimePeriod then floatingRateReferencePeriodOfLeg1Multiplier exists)
+
+    condition DTCC_JFSA_BR_0118_02: <"Floating rate reference period - multiplier-Leg 2 Condition">
+        [docReference JFSA DTCC_Specs dataElement "118" field "Floating rate reference period - multiplier"
+          provision "Required if [Floating rate reference period of leg 2 - time period] is populated with 'YEAR', 'MNTH', 'WEEK 'or 'DAIL'."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if ["YEAR", "MNTH", "WEEK", "DAIL"] any = floatingRateReferencePeriodOfLeg2TimePeriod then floatingRateReferencePeriodOfLeg2Multiplier exists)
+
+    condition DTCC_JFSA_BR_0124_01: <"CDS index attachment point Condition">
+        [docReference JFSA DTCC_Specs dataElement "124" field "CDS index attachment point"
+          provision "[CDS index attachment point] must be less than the value in [CDS index detachment point]"]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if cdSIndexAttachmentPoint exists then cdSIndexAttachmentPoint < cdSIndexDetachmentPoint)
+
+    condition DTCC_JFSA_BR_0125_01: <"CDS index detachment point Condition">
+        [docReference JFSA DTCC_Specs dataElement "125" field "CDS index detachment point"
+          provision "[CDS index detachment point] must be greater than the value in [CDS index attachment point]."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if cdSIndexDetachmentPoint exists then cdSIndexDetachmentPoint > cdSIndexAttachmentPoint)
+
+    condition DTCC_JFSA_BR_0127_01: <"Identifier of the basket's constituents Condition">
+        [docReference JFSA DTCC_Specs dataElement "127" field "Identifier of the basket's constituents"
+          provision "Required if [Custom basket code LEI] and [Custom basket code Identifier] is populated."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if customBasketCode exists and GetOrFetchLeiData(nonReportable -> enrichment -> leiData, SubString(customBasketCode, 1, 20)) -> lei exists then basketConstituents -> identifier exists)
+
+    condition DTCC_JFSA_BR_0128_01: <"Basket constituent identifier source Condition">
+        [docReference JFSA DTCC_Specs dataElement "128" field "Basket constituent identifier source"
+          provision "Required if non ISIN values are reported in [Identifier of the basket's constituents]."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string, ActionTypeEnum -> PRTO to-string, ActionTypeEnum -> EROR to-string, ActionTypeEnum -> TERM to-string] any = actionType then basketConstituents extract (if item -> source -> ISIN is absent then item -> source exists) then all = True
+
+    condition DTCC_JFSA_BR_0133_01: <"Package transaction price Condition">
+        [docReference JFSA DTCC_Specs dataElement "133" field "Package transaction price"
+          provision "Required if [Package identifier] is populated and [Package transaction spread] is blank."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if packageIdentifier exists and packageTransactionSpread is absent then packageTransactionPrice exists)
+
+    condition DTCC_JFSA_BR_0134_01: <"Package transaction price currency Condition">
+        [docReference JFSA DTCC_Specs dataElement "134" field "Package transaction price currency"
+          provision "Required if [Package transaction price notation] = '1'."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if packageTransactionPriceNotation = "1" then packageTransactionPriceCurrency exists)
+
+    condition DTCC_JFSA_BR_0135_01: <"Package transaction price notation Condition">
+        [docReference JFSA DTCC_Specs dataElement "135" field "Package transaction price notation"
+          provision "Required if [Package transaction price] is populated."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if packageTransactionPrice exists then packageTransactionPriceNotation exists)
+
+    condition DTCC_JFSA_BR_0136_01: <"Package transaction spread Condition">
+        [docReference JFSA DTCC_Specs dataElement "136" field "Package transaction spread"
+          provision "Required if [Package identifier] is populated and [Package transaction price] is blank."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if packageIdentifier exists and packageTransactionPrice is absent then packageTransactionSpread exists)
+
+    condition DTCC_JFSA_BR_0137_01: <"Package transaction spread currency Condition">
+        [docReference JFSA DTCC_Specs dataElement "137" field "Package transaction spread currency"
+          provision "Required if [Package transaction spread notation] = '1'."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if packageTransactionSpreadNotation = "1" then packageTransactionSpreadCurrency exists)
+
+    condition DTCC_JFSA_BR_0138_01: <"Package transaction spread notation Condition">
+        [docReference JFSA DTCC_Specs dataElement "138" field "Package transaction spread notation"
+          provision "Required if [Package transaction spread] is populated."]
+        if [ActionTypeEnum -> NEWT to-string, ActionTypeEnum -> MODI to-string, ActionTypeEnum -> CORR to-string, ActionTypeEnum -> REVI to-string] any = actionType then
+            (if packageTransactionSpread exists then packageTransactionSpreadNotation exists)
+
+type NotionalQuantityScheduleLeg1Report:
+    effectiveDate date (1..1)
+        [ruleReference NotionalQuantityScheduleLeg1EffectiveDate]
+    endDate date (0..1)
+        [ruleReference NotionalQuantityScheduleLeg1EndDate]
+    value ShortFraction5DecimalNumber (1..1)
+        [ruleReference NotionalQuantityScheduleLeg1Value]
+
+type NotionalQuantityScheduleLeg2Report:
+    effectiveDate date (1..1)
+        [ruleReference NotionalQuantityScheduleLeg2EffectiveDate]
+    endDate date (0..1)
+        [ruleReference NotionalQuantityScheduleLeg2EndDate]
+    value ShortFraction5DecimalNumber (1..1)
+        [ruleReference NotionalQuantityScheduleLeg2Value]
+
+type OtherPaymentReport:
+    paymentType string (1..1)
+        [ruleReference OtherPaymentType]
+    amount ShortFraction5DecimalNumber (1..1)
+        [ruleReference OtherPaymentAmount]
+    currency ISOCurrencyCodeEnum (1..1)
+        [ruleReference OtherPaymentCurrency]
+    date date (1..1)
+        [ruleReference OtherPaymentDate]
+    payer string (1..1)
+       [ruleReference OtherPaymentPayer]
+    payerFormat PartyIdentifierFormatEnum (1..1)
+        [nonReportable]
+        [ruleReference OtherPaymentPayerFormat]
+    receiver string (1..1)
+        [ruleReference OtherPaymentReceiver]
+    receiverFormat PartyIdentifierFormatEnum (1..1)
+        [nonReportable]
+        [ruleReference OtherPaymentReceiverFormat]
+
+type PriceScheduleReport:
+    effectiveDate ISODate (1..1)
+        [ruleReference ContractPriceScheduleEffectiveDate]
+    endDate ISODate (0..1)
+        [ruleReference ContractPriceScheduleEndDate]
+    priceMonetary BaseOne18Rate (0..1)
+        [ruleReference PriceScheduleAmountFormatMonetary]
+    pricePercentage BaseOneRate (0..1)
+        [ruleReference PriceScheduleAmountFormatPercentage]
+
+    condition MonetaryOrPercentage:
+        optional choice priceMonetary, pricePercentage
+
+type StrikePriceScheduleReport:
+    effectiveDateStrikePrice ISODate (0..1)
+           [ruleReference EffectiveDateStrikePrice]
+    endDateStrikePrice ISODate (0..1)
+           [ruleReference EndDateStrikePrice]
+    strikePriceInEffectOnAssociatedEffectiveDateMonetary BaseOne18Rate (0..1)
+        [ruleReference StrikePriceInEffectOnAssociatedEffectiveDateMonetary]
+    strikePriceInEffectOnAssociatedEffectiveDateDecimal BaseOneRate (0..1)
+        [ruleReference StrikePriceInEffectOnAssociatedEffectiveDateDecimal]
+    strikePriceNotationInEffectOnAssociatedEffectiveDate PriceNotationEnum (0..1)
+        [nonReportable]
+        [ruleReference StrikePriceNotationInEffectOnAssociatedEffectiveDate]
+
+    condition MonetaryOrDecimal:
+        optional choice strikePriceInEffectOnAssociatedEffectiveDateMonetary, strikePriceInEffectOnAssociatedEffectiveDateDecimal
+
+    condition Monetary:
+        if strikePriceNotationInEffectOnAssociatedEffectiveDate = PriceNotationEnum -> Monetary
+        then strikePriceInEffectOnAssociatedEffectiveDateMonetary exists
+
+    condition Decimal:
+        if strikePriceNotationInEffectOnAssociatedEffectiveDate = PriceNotationEnum -> Decimal
+        then strikePriceInEffectOnAssociatedEffectiveDateDecimal exists
+
+type NotionalAmountScheduleLeg1Report:
+    amount ShortFraction5DecimalNumber (1..1)
+        [ruleReference NotionalAmountScheduleLeg1Amount]
+    effectiveDate date (1..1)
+        [ruleReference NotionalAmountScheduleLeg1EffectiveDate]
+
+type NotionalAmountScheduleLeg2Report:
+    amount ShortFraction5DecimalNumber (1..1)
+        [ruleReference NotionalAmountScheduleLeg2Amount]
+    effectiveDate date (1..1)
+        [ruleReference NotionalAmountScheduleLeg2EffectiveDate]
+
+type PriceAndNotation:
+    priceMonetary BaseOne18Rate (0..1)
+        [ruleReference PriceFormatMonetary]
+    pricePercentage BaseOneRate (0..1)
+        [ruleReference PriceFormatPercentage]
+    priceCurrency ISOCurrencyCodeEnum (0..1)
+        [ruleReference PriceCurrency]
+    priceNotation PriceNotationEnum (0..1)
+        [nonReportable]
+        [ruleReference GetPriceNotationEnum]
+
+    condition MonetaryOrPercentage:
+        optional choice priceMonetary, pricePercentage
+
+type StrikePriceAndNotation:
+    strikePriceMonetary BaseOne31Rate (0..1)
+        [ruleReference StrikePriceMonetary]
+    strikePriceDecimal BaseOne21Rate (0..1)
+        [ruleReference StrikePriceDecimal]
+    strikePriceCurrency string (0..1)
+        [ruleReference StrikePriceCurrencyCurrencyPair]
+    strikePriceNotation PriceNotationEnum (0..1)
+        [nonReportable]
+        [ruleReference GetStrikePriceNotationEnum]
+
+    condition MonetaryOrDecimal:
+        optional choice strikePriceMonetary, strikePriceDecimal
+
+type PackageTransactionPrice:
+    packageTransactionPriceMonetary BaseOne18Rate (0..1)
+        [ruleReference PackageTransactionPriceMonetary]
+    packageTransactionPricePercentage BaseOneRate (0..1)
+        [ruleReference PackageTransactionPricePercentage]
+    packageTransactionPriceBasis BasisFormat (0..1)
+        [ruleReference PackageTransactionPriceBasis]
+    packageTransactionPriceNotation PriceNotationEnum (0..1)
+        [nonReportable]
+        [ruleReference GetPackageTransactionPriceNotationEnum]
+
+    condition MonetaryOrPercentageOrBasis:
+        optional choice packageTransactionPriceMonetary, packageTransactionPricePercentage, packageTransactionPriceBasis
+
+type PackageTransactionSpread:
+    packageTransactionSpreadMonetary BaseOne18Rate (0..1)
+        [ruleReference PackageTransactionSpreadMonetary]
+    packageTransactionSpreadPercentage BaseOneRate (0..1)
+        [ruleReference PackageTransactionSpreadPercentage]
+    packageTransactionSpreadBasis BasisFormat (0..1)
+        [ruleReference PackageTransactionSpreadBasis]
+    packageTransactionSpreadNotation PriceNotationEnum (0..1)
+        [nonReportable]
+        [ruleReference GetPackageTransactionSpreadNotationEnum]
+
+    condition MonetaryOrPercentageOrBasis:
+        optional choice packageTransactionSpreadMonetary, packageTransactionSpreadPercentage, packageTransactionSpreadBasis
+
+type SpreadOfLeg1:
+    spreadOfLeg1Monetary BaseOne18Rate (0..1)
+        [ruleReference SpreadOfLeg1Monetary]
+    spreadOfLeg1Percentage BaseOneRate (0..1)
+        [ruleReference SpreadOfLeg1Percentage]
+    spreadOfLeg1Basis BasisFormat (0..1)
+        [ruleReference SpreadOfLeg1Basis]
+    spreadCurrencyOfLeg1 ISOCurrencyCodeEnum (0..1)
+        [ruleReference SpreadCurrencyOfLeg1]
+    spreadOfLeg1Notation PriceNotationEnum (0..1)
+        [nonReportable]
+        [ruleReference GetSpreadLeg1NotationEnum]
+
+    condition MonetaryOrPercentageOrBasis:
+        optional choice spreadOfLeg1Monetary, spreadOfLeg1Percentage, spreadOfLeg1Basis
+
+type SpreadOfLeg2:
+    spreadOfLeg2Monetary BaseOne18Rate (0..1)
+        [ruleReference SpreadOfLeg2Monetary]
+    spreadOfLeg2Percentage BaseOneRate (0..1)
+        [ruleReference SpreadOfLeg2Percentage]
+    spreadOfLeg2Basis BasisFormat (0..1)
+        [ruleReference SpreadOfLeg2Basis]
+    spreadCurrencyOfLeg2 ISOCurrencyCodeEnum (0..1)
+        [ruleReference SpreadCurrencyOfLeg2]
+    spreadOfLeg2Notation PriceNotationEnum (0..1)
+        [nonReportable]
+        [ruleReference GetSpreadLeg2NotationEnum]
+
+    condition MonetaryOrPercentageOrBasis:
+        optional choice spreadOfLeg2Monetary, spreadOfLeg2Percentage, spreadOfLeg2Basis
+
+type BasketConstituentsReport:
+    identifier ISINOct2015Identifier (0..1)
+        [ruleReference IdentifierOfBasketConstituents]
+    source ProductIdTypeEnum (0..1)
+        [ruleReference BasketConstituentIdentifierSource]
+
+type JFSANonReportable:
+    enrichment EnrichmentData (0..1) <"Populated by pre-enrichment process">
+        [nonReportable]
+        [ruleReference EnrichmentData]
+
+typeAlias Max25Number: <"Number (max 999) of objects represented as an integer.">
+    number(digits: 25)
+
+typeAlias BaseOne31Rate: <"Number with 31-integer and 13-decimal limit">
+	number(digits: 31, fractionalDigits: 13)
+
+typeAlias BaseOne21Rate: <"Number with 21-integer and 10-decimal limit">
+	number(digits: 21, fractionalDigits: 10)

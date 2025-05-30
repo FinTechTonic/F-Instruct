@@ -1,0 +1,10 @@
+{
+  "id" : "pipeline-report-cftc-part45",
+  "name" : "CFTC / Part45",
+  "transform" : {
+    "type" : "REPORT",
+    "function" : "drr.regulation.cftc.rewrite.reports.CFTCPart45ReportFunction",
+    "inputType" : "drr.regulation.common.TransactionReportInstruction",
+    "outputType" : "drr.regulation.cftc.rewrite.CFTCPart45TransactionReport"
+  }
+}

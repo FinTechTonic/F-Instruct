@@ -1,0 +1,64 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "CRDT",
+  "basketConstituents" : [ {
+    "identifier" : "US0089ABC985",
+    "source" : "ISIN"
+  }, {
+    "identifier" : "US0089ABC985",
+    "source" : "ISIN"
+  } ],
+  "bookingLocation" : "GB",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmationTimestamp" : "2019-11-11T15:50:51Z",
+  "confirmed" : "ECNF",
+  "contractType" : "SWAP",
+  "counterparty1" : "213800H14XVWOV87OI72",
+  "counterparty2" : "I7331LVCZKQKX5T7XV54",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "213800H14XVWOV87OI72",
+  "deliveryType" : "CASH",
+  "direction" : "BYER",
+  "effectiveDate" : "2004-03-23",
+  "eventDate" : "2015-01-24",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2015-01-24T16:20:47Z",
+  "expirationDate" : "2014-03-20",
+  "finalContractualSettlementDate" : "2014-03-20",
+  "fixedRateDayCountConventionOfLeg1" : "A008",
+  "fixedRateOfLeg1" : 0.6000,
+  "fixedRatePaymentFrequencyPeriodMultiplierOfLeg1" : 1,
+  "fixedRatePaymentFrequencyPeriodOfLeg1" : "MNTH",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "SettlementCurrency" : "USD",
+          "Underlying" : {
+            "DebtSeniority" : "SNDB",
+            "UnderlierID" : "US0089ABC985",
+            "UnderlyingInstrumentIndexTermUnit" : "YEAR"
+          }
+        },
+        "Header" : {
+          "AssetClass" : "Credit",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfTheContractOrLeg1" : 25000000,
+  "notionalCurrencyOfTheContractOrLeg1" : "USD",
+  "platformIdentifier" : "XNAS",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "213800H14XVWOV87OI72",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrency1" : "USD",
+  "underlying" : "CDSBASKETSAMPLE08912",
+  "underlyingIdentificationType" : "B",
+  "uniqueTransactionIdentifier" : "CREDITBASKETTRANCH01"
+}

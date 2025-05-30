@@ -1,0 +1,14 @@
+{
+  "cleared" : "False",
+  "clearedEntity" : "Out of scope",
+  "effectiveDate" : "2019-02-23",
+  "interestRatePrice" : 0.12,
+  "optionExpirationDate" : "N/A",
+  "optionPremium" : "N/A",
+  "optionType" : "N/A",
+  "priorUniqueTransactionIdentifier" : "IRCAPFLOOREXCAPSPR01",
+  "reportingTimestamp" : "2021-03-17T07:35:37Z",
+  "terminationDate" : "2026-10-27",
+  "uniqueProductIdentifier" : "InterestRate_CapFloor",
+  "uniqueTransactionIdentifier" : "DTDApproved2380798703FCARiskNewNewInterestR"
+}

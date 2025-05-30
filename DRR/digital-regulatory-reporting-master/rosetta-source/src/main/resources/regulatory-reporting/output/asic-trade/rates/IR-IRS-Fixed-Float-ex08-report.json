@@ -1,0 +1,57 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "INTR",
+  "cleared" : "N",
+  "contractType" : "SWAP",
+  "counterparty1" : "549300VBWWV6BYQOWM67",
+  "counterparty2" : "529900DTJ5A7S5UCBB52",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "dayCountConventionLeg1" : "A011",
+  "dayCountConventionLeg2" : "A004",
+  "direction2OfLeg1" : "TAKE",
+  "direction2OfLeg2" : "MAKE",
+  "effectiveDate" : "1994-12-14",
+  "eventIdentifier" : "123453212",
+  "eventTimestamp" : "1994-12-12T09:57:00Z",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "1994-12-12T00:00:00Z",
+  "expirationDate" : "1999-12-14",
+  "fixedRateLeg1" : 6.00,
+  "floatingRateReferencePeriodOfLeg2Multiplier" : 6,
+  "floatingRateReferencePeriodOfLeg2TimePeriod" : "MNTH",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalCurrency" : "EUR",
+          "NotionalSchedule" : "Constant",
+          "ReferenceRateTermUnit" : "YEAR",
+          "ReferenceRateTermValue" : 1,
+          "UnderlierID" : "EUR-LIBOR-BBA",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Fixed_Float"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "EUR",
+  "notionalCurrencyLeg2" : "EUR",
+  "notionalLeg1" : 50000000.00,
+  "notionalLeg2" : 50000000.00,
+  "paymentFrequencyPeriodLeg1" : "YEAR",
+  "paymentFrequencyPeriodLeg2" : "MNTH",
+  "paymentFrequencyPeriodMultiplierLeg1" : 1,
+  "paymentFrequencyPeriodMultiplierLeg2" : 6,
+  "reportSubmittingEntityID" : "549300VBWWV6BYQOWM67",
+  "reportingEntity" : "549300VBWWV6BYQOWM67",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "uniqueTransactionIdentifier" : "IRIRSFIXEDFLOATEXX03X17X16E15T14A13O12L11F10D9E8X7I6"
+}

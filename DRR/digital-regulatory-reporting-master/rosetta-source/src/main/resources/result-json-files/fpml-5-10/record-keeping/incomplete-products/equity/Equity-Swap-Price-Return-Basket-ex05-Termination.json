@@ -1,0 +1,934 @@
+{
+  "originatingWorkflowStep" : {
+    "proposedEvent" : {
+      "intent" : "ContractFormation",
+      "eventDate" : "2021-12-07",
+      "instruction" : [ {
+        "primitiveInstruction" : {
+          "contractFormation" : {
+            "legalAgreement" : [ {
+              "legalAgreementIdentification" : {
+                "agreementName" : {
+                  "agreementType" : "MasterAgreement",
+                  "masterAgreementType" : {
+                    "value" : "ISDAMaster"
+                  }
+                },
+                "vintage" : 2002
+              },
+              "meta" : {
+                "globalKey" : "c6cc4d2b"
+              }
+            } ]
+          }
+        },
+        "before" : {
+          "value" : {
+            "trade" : {
+              "tradeIdentifier" : [ {
+                "issuer" : {
+                  "value" : "DUMMY0000000000LEI02",
+                  "meta" : {
+                    "scheme" : "http://www.fpml.org/coding-scheme/external/issuer-identifier"
+                  }
+                },
+                "assignedIdentifier" : [ {
+                  "identifier" : {
+                    "value" : "EQUITYSWAPPRICERET01",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/unique-transaction-identifier"
+                    }
+                  }
+                } ],
+                "meta" : {
+                  "globalKey" : "a2ba17f1"
+                },
+                "identifierType" : "UniqueTransactionIdentifier"
+              } ],
+              "tradeDate" : {
+                "value" : "2021-12-07",
+                "meta" : {
+                  "globalKey" : "3f2b07"
+                }
+              },
+              "tradableProduct" : {
+                "product" : {
+                  "contractualProduct" : {
+                    "productTaxonomy" : [ {
+                      "primaryAssetClass" : {
+                        "value" : "Equity"
+                      }
+                    } ],
+                    "productIdentifier" : [ {
+                      "value" : {
+                        "identifier" : {
+                          "value" : "Equity:Swap:PriceReturnBasicPerformance:Basket",
+                          "meta" : {
+                            "scheme" : "http://www.fpml.org/coding-scheme/product-taxonomy"
+                          }
+                        },
+                        "source" : "Other",
+                        "meta" : {
+                          "globalKey" : "ead9b8f9"
+                        }
+                      }
+                    } ],
+                    "economicTerms" : {
+                      "effectiveDate" : {
+                        "adjustableDate" : {
+                          "unadjustedDate" : "2021-12-09",
+                          "meta" : {
+                            "globalKey" : "3f2b09"
+                          }
+                        },
+                        "meta" : {
+                          "globalKey" : "3f2b09"
+                        }
+                      },
+                      "payout" : {
+                        "performancePayout" : [ {
+                          "payerReceiver" : {
+                            "payer" : "Party1"
+                          },
+                          "priceQuantity" : {
+                            "quantitySchedule" : {
+                              "address" : {
+                                "scope" : "DOCUMENT",
+                                "value" : "quantity-7"
+                              }
+                            },
+                            "meta" : {
+                              "globalKey" : "0"
+                            }
+                          },
+                          "settlementTerms" : {
+                            "settlementCurrency" : {
+                              "value" : "USD"
+                            },
+                            "meta" : {
+                              "globalKey" : "14966"
+                            }
+                          },
+                          "valuationDates" : {
+                            "valuationDatesInterim" : {
+                              "valuationDates" : {
+                                "periodicDates" : {
+                                  "periodFrequency" : {
+                                    "periodMultiplier" : 1,
+                                    "period" : "M",
+                                    "meta" : {
+                                      "globalKey" : "6c"
+                                    }
+                                  }
+                                },
+                                "meta" : {
+                                  "globalKey" : "6c"
+                                }
+                              },
+                              "meta" : {
+                                "globalKey" : "6c"
+                              }
+                            },
+                            "valuationDatesFinal" : {
+                              "valuationDate" : {
+                                "adjustableDate" : {
+                                  "unadjustedDate" : "2022-01-11",
+                                  "meta" : {
+                                    "globalKey" : "3f304b"
+                                  }
+                                },
+                                "meta" : {
+                                  "globalKey" : "3f304b"
+                                }
+                              },
+                              "meta" : {
+                                "globalKey" : "3f304b"
+                              }
+                            }
+                          },
+                          "underlier" : {
+                            "basket" : {
+                              "basketConstituent" : [ {
+                                "security" : {
+                                  "productIdentifier" : [ {
+                                    "address" : {
+                                      "scope" : "DOCUMENT",
+                                      "value" : "productIdentifier-4"
+                                    }
+                                  } ],
+                                  "securityType" : "Equity"
+                                },
+                                "meta" : {
+                                  "globalKey" : "7a5b92c5"
+                                }
+                              }, {
+                                "security" : {
+                                  "productIdentifier" : [ {
+                                    "address" : {
+                                      "scope" : "DOCUMENT",
+                                      "value" : "productIdentifier-3"
+                                    }
+                                  } ],
+                                  "securityType" : "Equity"
+                                },
+                                "meta" : {
+                                  "globalKey" : "7a5b92c5"
+                                }
+                              }, {
+                                "security" : {
+                                  "productIdentifier" : [ {
+                                    "address" : {
+                                      "scope" : "DOCUMENT",
+                                      "value" : "productIdentifier-1"
+                                    }
+                                  } ],
+                                  "securityType" : "Equity"
+                                },
+                                "meta" : {
+                                  "globalKey" : "7a5b92c5"
+                                }
+                              }, {
+                                "security" : {
+                                  "productIdentifier" : [ {
+                                    "address" : {
+                                      "scope" : "DOCUMENT",
+                                      "value" : "productIdentifier-2"
+                                    }
+                                  } ],
+                                  "securityType" : "Equity"
+                                },
+                                "meta" : {
+                                  "globalKey" : "7a5b92c5"
+                                }
+                              }, {
+                                "security" : {
+                                  "productIdentifier" : [ {
+                                    "address" : {
+                                      "scope" : "DOCUMENT",
+                                      "value" : "productIdentifier-6"
+                                    }
+                                  } ],
+                                  "securityType" : "Equity"
+                                },
+                                "meta" : {
+                                  "globalKey" : "7a5b92c5"
+                                }
+                              }, {
+                                "security" : {
+                                  "productIdentifier" : [ {
+                                    "address" : {
+                                      "scope" : "DOCUMENT",
+                                      "value" : "productIdentifier-5"
+                                    }
+                                  } ],
+                                  "securityType" : "Equity"
+                                },
+                                "meta" : {
+                                  "globalKey" : "7a5b92c5"
+                                }
+                              }, {
+                                "security" : {
+                                  "productIdentifier" : [ {
+                                    "address" : {
+                                      "scope" : "DOCUMENT",
+                                      "value" : "productIdentifier-7"
+                                    }
+                                  } ],
+                                  "securityType" : "Equity"
+                                },
+                                "meta" : {
+                                  "globalKey" : "7a5b92c5"
+                                }
+                              }, {
+                                "security" : {
+                                  "productIdentifier" : [ {
+                                    "address" : {
+                                      "scope" : "DOCUMENT",
+                                      "value" : "productIdentifier-8"
+                                    }
+                                  } ],
+                                  "securityType" : "Equity"
+                                },
+                                "meta" : {
+                                  "globalKey" : "7a5b92c5"
+                                }
+                              }, {
+                                "security" : {
+                                  "productIdentifier" : [ {
+                                    "address" : {
+                                      "scope" : "DOCUMENT",
+                                      "value" : "productIdentifier-9"
+                                    }
+                                  } ],
+                                  "securityType" : "Equity"
+                                },
+                                "meta" : {
+                                  "globalKey" : "7a5b92c5"
+                                }
+                              } ]
+                            },
+                            "meta" : {
+                              "globalKey" : "c5c84bed"
+                            }
+                          },
+                          "returnTerms" : {
+                            "priceReturnTerms" : {
+                              "returnType" : "Price"
+                            }
+                          },
+                          "meta" : {
+                            "globalKey" : "4fc097b5"
+                          }
+                        } ],
+                        "meta" : {
+                          "globalKey" : "4fc097b5"
+                        }
+                      },
+                      "nonStandardisedTerms" : false
+                    },
+                    "meta" : {
+                      "globalKey" : "cc7a599d"
+                    }
+                  },
+                  "meta" : {
+                    "globalKey" : "cc7a599d"
+                  }
+                },
+                "tradeLot" : [ {
+                  "priceQuantity" : [ {
+                    "quantity" : [ {
+                      "value" : {
+                        "value" : 100881730.00
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "quantity-6"
+                        } ]
+                      }
+                    }, {
+                      "value" : {
+                        "value" : 100881730.00,
+                        "unit" : {
+                          "currency" : {
+                            "value" : "USD"
+                          }
+                        }
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "quantity-7"
+                        } ]
+                      }
+                    } ],
+                    "meta" : {
+                      "globalKey" : "b64466da"
+                    }
+                  }, {
+                    "quantity" : [ {
+                      "value" : {
+                        "value" : 0.1650618982,
+                        "unit" : {
+                          "financialUnit" : "Weight"
+                        }
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "quantity-9"
+                        } ]
+                      }
+                    } ],
+                    "observable" : {
+                      "productIdentifier" : [ {
+                        "value" : {
+                          "identifier" : {
+                            "value" : "ABBV.N",
+                            "meta" : {
+                              "scheme" : "http://www.fpml.org/spec/2003/instrument-id-Reuters-RIC"
+                            }
+                          },
+                          "source" : "RIC",
+                          "meta" : {
+                            "globalKey" : "e2dffeb7"
+                          }
+                        },
+                        "meta" : {
+                          "location" : [ {
+                            "scope" : "DOCUMENT",
+                            "value" : "productIdentifier-4"
+                          } ]
+                        }
+                      } ],
+                      "meta" : {
+                        "globalKey" : "791fd829"
+                      }
+                    },
+                    "meta" : {
+                      "globalKey" : "72851095"
+                    }
+                  }, {
+                    "quantity" : [ {
+                      "value" : {
+                        "value" : 0.2164144888,
+                        "unit" : {
+                          "financialUnit" : "Weight"
+                        }
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "quantity-8"
+                        } ]
+                      }
+                    } ],
+                    "observable" : {
+                      "productIdentifier" : [ {
+                        "value" : {
+                          "identifier" : {
+                            "value" : "ADS.N",
+                            "meta" : {
+                              "scheme" : "http://www.fpml.org/spec/2003/instrument-id-Reuters-RIC"
+                            }
+                          },
+                          "source" : "RIC",
+                          "meta" : {
+                            "globalKey" : "72d0ec7c"
+                          }
+                        },
+                        "meta" : {
+                          "location" : [ {
+                            "scope" : "DOCUMENT",
+                            "value" : "productIdentifier-3"
+                          } ]
+                        }
+                      } ],
+                      "meta" : {
+                        "globalKey" : "e74ca304"
+                      }
+                    },
+                    "meta" : {
+                      "globalKey" : "7854101e"
+                    }
+                  }, {
+                    "quantity" : [ {
+                      "value" : {
+                        "value" : 0.2769371848,
+                        "unit" : {
+                          "financialUnit" : "Weight"
+                        }
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "quantity-11"
+                        } ]
+                      }
+                    } ],
+                    "observable" : {
+                      "productIdentifier" : [ {
+                        "value" : {
+                          "identifier" : {
+                            "value" : "CMCSA.O",
+                            "meta" : {
+                              "scheme" : "http://www.fpml.org/spec/2003/instrument-id-Reuters-RIC"
+                            }
+                          },
+                          "source" : "RIC",
+                          "meta" : {
+                            "globalKey" : "903460a4"
+                          }
+                        },
+                        "meta" : {
+                          "location" : [ {
+                            "scope" : "DOCUMENT",
+                            "value" : "productIdentifier-1"
+                          } ]
+                        }
+                      } ],
+                      "meta" : {
+                        "globalKey" : "7657b3dc"
+                      }
+                    },
+                    "meta" : {
+                      "globalKey" : "7904c9a9"
+                    }
+                  }, {
+                    "quantity" : [ {
+                      "value" : {
+                        "value" : 0.0110041265,
+                        "unit" : {
+                          "financialUnit" : "Weight"
+                        }
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "quantity-10"
+                        } ]
+                      }
+                    } ],
+                    "observable" : {
+                      "productIdentifier" : [ {
+                        "value" : {
+                          "identifier" : {
+                            "value" : "COHR.O",
+                            "meta" : {
+                              "scheme" : "http://www.fpml.org/spec/2003/instrument-id-Reuters-RIC"
+                            }
+                          },
+                          "source" : "RIC",
+                          "meta" : {
+                            "globalKey" : "632e30f5"
+                          }
+                        },
+                        "meta" : {
+                          "location" : [ {
+                            "scope" : "DOCUMENT",
+                            "value" : "productIdentifier-2"
+                          } ]
+                        }
+                      } ],
+                      "meta" : {
+                        "globalKey" : "297edab"
+                      }
+                    },
+                    "meta" : {
+                      "globalKey" : "be8c06a5"
+                    }
+                  }, {
+                    "quantity" : [ {
+                      "value" : {
+                        "value" : 0.0751948647,
+                        "unit" : {
+                          "financialUnit" : "Weight"
+                        }
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "quantity-2"
+                        } ]
+                      }
+                    } ],
+                    "observable" : {
+                      "productIdentifier" : [ {
+                        "value" : {
+                          "identifier" : {
+                            "value" : "NLSN.N",
+                            "meta" : {
+                              "scheme" : "http://www.fpml.org/spec/2003/instrument-id-Reuters-RIC"
+                            }
+                          },
+                          "source" : "RIC",
+                          "meta" : {
+                            "globalKey" : "a48d63d3"
+                          }
+                        },
+                        "meta" : {
+                          "location" : [ {
+                            "scope" : "DOCUMENT",
+                            "value" : "productIdentifier-6"
+                          } ]
+                        }
+                      } ],
+                      "meta" : {
+                        "globalKey" : "ed1f168d"
+                      }
+                    },
+                    "meta" : {
+                      "globalKey" : "cda66582"
+                    }
+                  }, {
+                    "quantity" : [ {
+                      "value" : {
+                        "value" : 0.0050435580,
+                        "unit" : {
+                          "financialUnit" : "Weight"
+                        }
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "quantity-1"
+                        } ]
+                      }
+                    } ],
+                    "observable" : {
+                      "productIdentifier" : [ {
+                        "value" : {
+                          "identifier" : {
+                            "value" : "TYL.N",
+                            "meta" : {
+                              "scheme" : "http://www.fpml.org/spec/2003/instrument-id-Reuters-RIC"
+                            }
+                          },
+                          "source" : "RIC",
+                          "meta" : {
+                            "globalKey" : "9461bf45"
+                          }
+                        },
+                        "meta" : {
+                          "location" : [ {
+                            "scope" : "DOCUMENT",
+                            "value" : "productIdentifier-5"
+                          } ]
+                        }
+                      } ],
+                      "meta" : {
+                        "globalKey" : "f7d6295b"
+                      }
+                    },
+                    "meta" : {
+                      "globalKey" : "bfbae93"
+                    }
+                  }, {
+                    "quantity" : [ {
+                      "value" : {
+                        "value" : 0.0119211371,
+                        "unit" : {
+                          "financialUnit" : "Weight"
+                        }
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "quantity-4"
+                        } ]
+                      }
+                    } ],
+                    "observable" : {
+                      "productIdentifier" : [ {
+                        "value" : {
+                          "identifier" : {
+                            "value" : "VRSK.O",
+                            "meta" : {
+                              "scheme" : "http://www.fpml.org/spec/2003/instrument-id-Reuters-RIC"
+                            }
+                          },
+                          "source" : "RIC",
+                          "meta" : {
+                            "globalKey" : "55faf497"
+                          }
+                        },
+                        "meta" : {
+                          "location" : [ {
+                            "scope" : "DOCUMENT",
+                            "value" : "productIdentifier-7"
+                          } ]
+                        }
+                      } ],
+                      "meta" : {
+                        "globalKey" : "69639e49"
+                      }
+                    },
+                    "meta" : {
+                      "globalKey" : "5383e323"
+                    }
+                  }, {
+                    "quantity" : [ {
+                      "value" : {
+                        "value" : 0.2200825309,
+                        "unit" : {
+                          "financialUnit" : "Weight"
+                        }
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "quantity-3"
+                        } ]
+                      }
+                    } ],
+                    "observable" : {
+                      "productIdentifier" : [ {
+                        "value" : {
+                          "identifier" : {
+                            "value" : "WMT.N",
+                            "meta" : {
+                              "scheme" : "http://www.fpml.org/spec/2003/instrument-id-Reuters-RIC"
+                            }
+                          },
+                          "source" : "RIC",
+                          "meta" : {
+                            "globalKey" : "98dad20e"
+                          }
+                        },
+                        "meta" : {
+                          "location" : [ {
+                            "scope" : "DOCUMENT",
+                            "value" : "productIdentifier-8"
+                          } ]
+                        }
+                      } ],
+                      "meta" : {
+                        "globalKey" : "827f6fb2"
+                      }
+                    },
+                    "meta" : {
+                      "globalKey" : "b0ae749"
+                    }
+                  }, {
+                    "quantity" : [ {
+                      "value" : {
+                        "value" : 0.0183402109,
+                        "unit" : {
+                          "financialUnit" : "Weight"
+                        }
+                      },
+                      "meta" : {
+                        "location" : [ {
+                          "scope" : "DOCUMENT",
+                          "value" : "quantity-5"
+                        } ]
+                      }
+                    } ],
+                    "observable" : {
+                      "productIdentifier" : [ {
+                        "value" : {
+                          "identifier" : {
+                            "value" : "ZBH.N",
+                            "meta" : {
+                              "scheme" : "http://www.fpml.org/spec/2003/instrument-id-Reuters-RIC"
+                            }
+                          },
+                          "source" : "RIC",
+                          "meta" : {
+                            "globalKey" : "9d58e4ec"
+                          }
+                        },
+                        "meta" : {
+                          "location" : [ {
+                            "scope" : "DOCUMENT",
+                            "value" : "productIdentifier-9"
+                          } ]
+                        }
+                      } ],
+                      "meta" : {
+                        "globalKey" : "dc3b894"
+                      }
+                    },
+                    "meta" : {
+                      "globalKey" : "535016ca"
+                    }
+                  } ]
+                } ]
+              },
+              "party" : [ {
+                "partyId" : [ {
+                  "identifier" : {
+                    "value" : "DUMMY0000000000LEI02",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                    }
+                  },
+                  "identifierType" : "LEI",
+                  "meta" : {
+                    "globalKey" : "60fe4ec6"
+                  }
+                } ],
+                "contactInformation" : {
+                  "address" : [ {
+                    "country" : {
+                      "value" : "CA"
+                    }
+                  } ]
+                },
+                "meta" : {
+                  "globalKey" : "80d8424",
+                  "externalKey" : "PartyA"
+                }
+              }, {
+                "partyId" : [ {
+                  "identifier" : {
+                    "value" : "DUMMY0000000000LEI01",
+                    "meta" : {
+                      "scheme" : "http://www.fpml.org/coding-scheme/external/iso17442"
+                    }
+                  },
+                  "identifierType" : "LEI",
+                  "meta" : {
+                    "globalKey" : "60fe4ea7"
+                  }
+                } ],
+                "contactInformation" : {
+                  "address" : [ {
+                    "country" : {
+                      "value" : "US"
+                    }
+                  } ]
+                },
+                "meta" : {
+                  "globalKey" : "658adc5",
+                  "externalKey" : "PartyB"
+                }
+              } ],
+              "meta" : {
+                "globalKey" : "ea5db071"
+              }
+            },
+            "meta" : {
+              "globalKey" : "ea5db071"
+            }
+          }
+        }
+      } ]
+    },
+    "messageInformation" : {
+      "messageId" : {
+        "value" : "2230f227c5a641eda4634300cce2fee9",
+        "meta" : {
+          "scheme" : "http://www.bankx.com/msg_id"
+        }
+      },
+      "sentBy" : {
+        "value" : "DUMMY0000000000LEI02"
+      },
+      "sentTo" : [ {
+        "value" : "DTCCGTR"
+      } ]
+    },
+    "timestamp" : [ {
+      "dateTime" : "2022-01-04T15:11:22.5767007Z",
+      "qualification" : "eventCreationDateTime"
+    }, {
+      "dateTime" : "2021-12-07T21:57:18Z",
+      "qualification" : "executionDateTime"
+    }, {
+      "dateTime" : "2021-12-08T20:13:02Z",
+      "qualification" : "confirmationDateTime"
+    }, {
+      "dateTime" : "2021-12-07T21:57:18Z",
+      "qualification" : "executionDateTime"
+    }, {
+      "dateTime" : "2021-12-08T20:13:02Z",
+      "qualification" : "confirmationDateTime"
+    } ],
+    "eventIdentifier" : [ {
+      "assignedIdentifier" : [ {
+        "identifier" : {
+          "value" : "2230f227c5a641eda4634300cce2fee9"
+        }
+      } ],
+      "meta" : {
+        "globalKey" : "6ac93160"
+      }
+    } ],
+    "action" : "New",
+    "meta" : {
+      "globalKey" : "1e49fba4"
+    }
+  },
+  "reportableInformation" : {
+    "confirmationMethod" : "NonElectronic",
+    "executionVenueType" : "OffFacility",
+    "intragroup" : false,
+    "partyInformation" : [ {
+      "partyReference" : {
+        "globalReference" : "80d8424",
+        "externalReference" : "PartyA"
+      },
+      "regimeInformation" : [ {
+        "supervisoryBody" : {
+          "value" : "CFTC"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "EMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "ESMA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "esmaPartyInformation" : {
+          "natureOfParty" : "Financial",
+          "corporateSector" : {
+            "financialSector" : [ "AIFD" ]
+          },
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "UKEMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "FCA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "fcaPartyInformation" : {
+          "natureOfParty" : "Financial",
+          "corporateSector" : {
+            "financialSector" : [ "AIFD" ]
+          },
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "JFSA"
+        },
+        "supervisoryBody" : {
+          "value" : "JFSA"
+        },
+        "reportingRole" : "ReportingParty"
+      } ]
+    }, {
+      "partyReference" : {
+        "globalReference" : "658adc5",
+        "externalReference" : "PartyB"
+      },
+      "regimeInformation" : [ {
+        "supervisoryBody" : {
+          "value" : "CFTC"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "reportingRole" : "Counterparty"
+      }, {
+        "regimeName" : {
+          "value" : "EMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "ESMA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "esmaPartyInformation" : {
+          "natureOfParty" : "Financial",
+          "corporateSector" : {
+            "financialSector" : [ "UCIT" ]
+          },
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "UKEMIR"
+        },
+        "supervisoryBody" : {
+          "value" : "FCA"
+        },
+        "mandatorilyClearable" : "ProductMandatoryButNotCpty",
+        "fcaPartyInformation" : {
+          "natureOfParty" : "Financial",
+          "corporateSector" : {
+            "financialSector" : [ "UCIT" ]
+          },
+          "exceedsClearingThreshold" : true
+        },
+        "reportingRole" : "ReportingParty"
+      }, {
+        "regimeName" : {
+          "value" : "JFSA"
+        },
+        "supervisoryBody" : {
+          "value" : "JFSA"
+        },
+        "reportingRole" : "ReportingParty"
+      } ]
+    } ],
+    "originalExecutionTimestamp" : "2021-12-07T21:57:18Z"
+  }
+}

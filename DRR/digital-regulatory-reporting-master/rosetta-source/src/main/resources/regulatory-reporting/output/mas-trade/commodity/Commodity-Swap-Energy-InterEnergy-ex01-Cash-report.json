@@ -1,0 +1,68 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "COMM",
+  "bookingLocation" : "CA",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "SWAP",
+  "counterparty1" : "DUMMY0000000000LEI02",
+  "counterparty2" : "DUMMY0000000000LEI01",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "DUMMY0000000000LEI02",
+  "deliveryType" : "CASH",
+  "directionOfLeg1" : "TAKE",
+  "directionOfLeg2" : "MAKE",
+  "effectiveDate" : "2022-01-01",
+  "eventDate" : "2021-12-02",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-12-02T22:58:56Z",
+  "expirationDate" : "2022-03-31",
+  "finalContractualSettlementDate" : "2022-03-31",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "ReturnorPayoutTrigger" : "Total Return",
+          "UnderlierID" : "InterEnergy - NYMEX",
+          "UnderlierIDSource" : "COMM"
+        },
+        "Header" : {
+          "AssetClass" : "Commodities",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Swap"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfLeg2" : 4005000.00,
+  "notionalAmountOfTheContractOrLeg1" : 1335000.00,
+  "notionalCurrencyOfLeg2" : "USD",
+  "notionalCurrencyOfTheContractOrLeg1" : "USD",
+  "notionalQuantityOfLeg2" : 1000,
+  "notionalQuantityOfTheContractOrLeg1" : 1000,
+  "price" : {
+    "priceCurrency" : "USD",
+    "priceMonetary" : 1335.0000000000000,
+    "priceNotation" : "Monetary"
+  },
+  "priceCurrency" : "USD",
+  "priceUnitOfMeasure" : "GBTN",
+  "quantityFrequencyMultiplierOfLeg2" : 1,
+  "quantityFrequencyMultiplierOfTheContractOrLeg1" : 1,
+  "quantityFrequencyOfLeg2" : "MNTH",
+  "quantityFrequencyOfTheContractOrLeg1" : "MNTH",
+  "quantityUnitOfMeasureForTheContractOrLeg1" : "GBTN",
+  "quantityUnitOfMeasureLeg2" : "GBTN",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "DUMMY0000000000LEI02",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrency2" : "USD",
+  "totalNotionalQuantityLeg2" : 3000.00,
+  "totalNotionalQuantityOfTheContractOrLeg1" : 1000.00,
+  "underlyingIdentificationType" : "O",
+  "uniqueTransactionIdentifier" : "COMMODITYSWAPENERG01"
+}

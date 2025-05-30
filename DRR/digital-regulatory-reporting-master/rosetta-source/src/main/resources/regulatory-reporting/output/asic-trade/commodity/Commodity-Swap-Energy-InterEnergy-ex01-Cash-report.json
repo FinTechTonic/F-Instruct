@@ -1,0 +1,58 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "OTHR",
+  "cleared" : "N",
+  "contractType" : "SWAP",
+  "counterparty1" : "DUMMY0000000000LEI02",
+  "counterparty2" : "DUMMY0000000000LEI01",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "direction2OfLeg1" : "TAKE",
+  "direction2OfLeg2" : "MAKE",
+  "effectiveDate" : "2022-01-01",
+  "eventIdentifier" : "23e74eb5a4504cabbd7e1d2311d23ccf",
+  "eventTimestamp" : "2021-12-04T04:53:05.0165801Z",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-12-02T22:58:56Z",
+  "expirationDate" : "2022-03-31",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "ReturnorPayoutTrigger" : "Total Return",
+          "UnderlierID" : "InterEnergy - NYMEX",
+          "UnderlierIDSource" : "COMM"
+        },
+        "Header" : {
+          "AssetClass" : "Commodities",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Swap"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "USD",
+  "notionalCurrencyLeg2" : "USD",
+  "notionalLeg1" : 1335000.00,
+  "notionalLeg2" : 4005000.00,
+  "notionalQuantityLeg1" : 1000,
+  "notionalQuantityLeg2" : 1000,
+  "price" : {
+    "priceCurrency" : "USD",
+    "priceMonetary" : 1335.0000000000000,
+    "priceNotation" : "Monetary"
+  },
+  "priceCurrency" : "USD",
+  "priceUnitOfMeasure" : "GBTN",
+  "quantityUnitOfMeasureLeg1" : "GBTN",
+  "quantityUnitOfMeasureLeg2" : "GBTN",
+  "reportSubmittingEntityID" : "DUMMY0000000000LEI02",
+  "reportingEntity" : "DUMMY0000000000LEI02",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "totalNotionalQuantityLeg1" : 1000.00,
+  "totalNotionalQuantityLeg2" : 3000.00,
+  "uniqueTransactionIdentifier" : "COMMODITYSWAPENERG01"
+}

@@ -1,0 +1,55 @@
+{
+  "actionType" : "CORR",
+  "assetClass" : "INTR",
+  "cleared" : "I",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "SWAP",
+  "counterparty1" : "5493001RKR55V4X61F71",
+  "counterparty2" : "549300O5MFEP1XJ40B46",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "5493001RKR55V4X61F71",
+  "deliveryType" : "PHYS",
+  "directionOfLeg1" : "TAKE",
+  "directionOfLeg2" : "MAKE",
+  "effectiveDate" : "2011-02-08",
+  "eventDate" : "2011-02-04",
+  "executionTimestamp" : "2011-02-04T16:20:47Z",
+  "expirationDate" : "2016-02-08",
+  "finalContractualSettlementDate" : "2016-02-08",
+  "fixedRateDayCountConventionOfLeg1" : "A011",
+  "fixedRateOfLeg1" : 2.5400,
+  "fixedRatePaymentFrequencyPeriodMultiplierOfLeg1" : 6,
+  "fixedRatePaymentFrequencyPeriodOfLeg1" : "MNTH",
+  "floatingRateDayCountConventionOfLeg2" : "A004",
+  "floatingRatePaymentFrequencyPeriodMultiplierOfLeg2" : 3,
+  "floatingRatePaymentFrequencyPeriodOfLeg2" : "MNTH",
+  "floatingRateResetFrequencyPeriodMultiplierOfLeg2" : 3,
+  "floatingRateResetFrequencyPeriodOfLeg2" : "MNTH",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalSchedule" : "Constant",
+          "ReferenceRateTermUnit" : "MNTH",
+          "ReferenceRateTermValue" : 6,
+          "UnderlierID" : "USD-LIBOR-BBA",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Fixed_Float"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "5493001RKR55V4X61F71",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "underlyingIdentificationType" : "O",
+  "uniqueTransactionIdentifier" : "TRADECORRECTIONEXX01"
+}

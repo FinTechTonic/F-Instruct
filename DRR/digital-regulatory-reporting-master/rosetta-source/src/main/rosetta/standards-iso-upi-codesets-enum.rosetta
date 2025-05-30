@@ -1,0 +1,112 @@
+namespace drr.standards.iso.upi.codesets
+version "${project.version}"
+
+enum AnnaDsbMrktCreditIndexEnum:
+    ABX_HE_A displayName "ABX.HE.A" <"ABX.HE.A">
+    ABX_HE_AA displayName "ABX.HE.AA" <"ABX.HE.AA">
+    ABX_HE_AAA displayName "ABX.HE.AAA" <"ABX.HE.AAA">
+    ABX_HE_BBB displayName "ABX.HE.BBB" <"ABX.HE.BBB">
+    ABX_HE_BBB_ displayName "ABX.HE.BBB-" <"ABX.HE.BBB-">
+    ABX_HE_PENAAA displayName "ABX.HE.PENAAA" <"ABX.HE.PENAAA">
+    CDX_EM displayName "CDX.EM" <"CDX.EM">
+    CDX_EM_DIVERSIFIED displayName "CDX.EM.DIVERSIFIED" <"CDX.EM.DIVERSIFIED">
+    CDX_EM_ex_EU displayName "CDX.EM.ex-EU" <"CDX.EM.ex-EU">
+    CDX_LATAM_CORP displayName "CDX.LATAM.CORP" <"CDX.LATAM.CORP">
+    CDX_NA_HY displayName "CDX.NA.HY" <"CDX.NA.HY">
+    CDX_NA_HY_B displayName "CDX.NA.HY.B" <"CDX.NA.HY.B">
+    CDX_NA_HY_BB displayName "CDX.NA.HY.BB" <"CDX.NA.HY.BB">
+    CDX_NA_HY_Ex_BB displayName "CDX.NA.HY.Ex-BB" <"CDX.NA.HY.Ex-BB">
+    CDX_NA_HY_HB displayName "CDX.NA.HY.HB" <"CDX.NA.HY.HB">
+    CDX_NA_IG displayName "CDX.NA.IG" <"CDX.NA.IG">
+    CDX_NA_IG_BBB displayName "CDX.NA.IG.BBB" <"CDX.NA.IG.BBB">
+    CDX_NA_IG_CONS displayName "CDX.NA.IG.CONS" <"CDX.NA.IG.CONS">
+    CDX_NA_IG_ENRG displayName "CDX.NA.IG.ENRG" <"CDX.NA.IG.ENRG">
+    CDX_NA_IG_FIN displayName "CDX.NA.IG.FIN" <"CDX.NA.IG.FIN">
+    CDX_NA_IG_HVOL displayName "CDX.NA.IG.HVOL" <"CDX.NA.IG.HVOL">
+    CDX_NA_IG_INDU displayName "CDX.NA.IG.INDU" <"CDX.NA.IG.INDU">
+    CDX_NA_IG_TMT displayName "CDX.NA.IG.TMT" <"CDX.NA.IG.TMT">
+    CDX_NA_XO displayName "CDX.NA.XO" <"CDX.NA.XO">
+    CMBX_NA_A displayName "CMBX.NA.A" <"CMBX.NA.A">
+    CMBX_NA_AA displayName "CMBX.NA.AA" <"CMBX.NA.AA">
+    CMBX_NA_AAA displayName "CMBX.NA.AAA" <"CMBX.NA.AAA">
+    CMBX_NA_AJ displayName "CMBX.NA.AJ" <"CMBX.NA.AJ">
+    CMBX_NA_AM displayName "CMBX.NA.AM" <"CMBX.NA.AM">
+    CMBX_NA_AS displayName "CMBX.NA.AS" <"CMBX.NA.AS">
+    CMBX_NA_BB displayName "CMBX.NA.BB" <"CMBX.NA.BB">
+    CMBX_NA_BBB displayName "CMBX.NA.BBB" <"CMBX.NA.BBB">
+    CMBX_NA_BBB_ displayName "CMBX.NA.BBB-" <"CMBX.NA.BBB-">
+    iBoxx_EUR_CoCo displayName "iBoxx EUR CoCo" <"iBoxx EUR CoCo">
+    iBoxx_EUR_CoCo_Liquid_Developed_Market_AT1 displayName "iBoxx EUR CoCo Liquid Developed Market AT1" <"iBoxx EUR CoCo Liquid Developed Market AT1">
+    IBOXX_EUR_CORPORATES displayName "IBOXX EUR CORPORATES" <"IBOXX EUR CORPORATES">
+    IBOXX_EUR_LIQUID_HIGH_YIELD_INDEX displayName "IBOXX EUR LIQUID HIGH YIELD INDEX" <"IBOXX EUR LIQUID HIGH YIELD INDEX">
+    IBOXX_GBP_CORPORATES displayName "IBOXX GBP CORPORATES" <"IBOXX GBP CORPORATES">
+    IBOXX_TREPP_CMBS_LIQUID displayName "IBOXX TREPP CMBS LIQUID" <"IBOXX TREPP CMBS LIQUID">
+    IBOXX_TREPP_CMBS_OVERALL displayName "IBOXX TREPP CMBS OVERALL" <"IBOXX TREPP CMBS OVERALL">
+    iBoxx_USD_CoCo displayName "iBoxx USD CoCo" <"iBoxx USD CoCo">
+    iBoxx_USD_CoCo_Liquid_Developed_Market displayName "iBoxx USD CoCo Liquid Developed Market" <"iBoxx USD CoCo Liquid Developed Market">
+    iBoxx_USD_CoCo_Liquid_Developed_Market_AT1 displayName "iBoxx USD CoCo Liquid Developed Market AT1" <"iBoxx USD CoCo Liquid Developed Market AT1">
+    IBOXX_USD_DOMESTIC_CORPORATES displayName "IBOXX USD DOMESTIC CORPORATES" <"IBOXX USD DOMESTIC CORPORATES">
+    IBOXX_USD_LIQUID_HIGH_YIELD_INDEX displayName "IBOXX USD LIQUID HIGH YIELD INDEX" <"IBOXX USD LIQUID HIGH YIELD INDEX">
+    iBoxx_USD_Liquid_High_Yield_Oil_Gas_5_25_50_Issuer_Cap_ displayName "iBoxx USD Liquid High Yield Oil & Gas (5/25/50 Issuer Cap)" <"iBoxx USD Liquid High Yield Oil & Gas (5/25/50 Issuer Cap)">
+    IBOXX_USD_LIQUID_IG displayName "IBOXX USD LIQUID IG" <"IBOXX USD LIQUID IG">
+    IBOXX_USD_LIQUID_LEVERAGED_LOANS_INDEX displayName "IBOXX USD LIQUID LEVERAGED LOANS INDEX" <"IBOXX USD LIQUID LEVERAGED LOANS INDEX">
+    IOS_FN30_300 displayName "IOS.FN30.300" <"IOS.FN30.300">
+    IOS_FN30_350 displayName "IOS.FN30.350" <"IOS.FN30.350">
+    IOS_FN30_400 displayName "IOS.FN30.400" <"IOS.FN30.400">
+    IOS_FN30_450 displayName "IOS.FN30.450" <"IOS.FN30.450">
+    IOS_FN30_500 displayName "IOS.FN30.500" <"IOS.FN30.500">
+    IOS_FN30_550 displayName "IOS.FN30.550" <"IOS.FN30.550">
+    IOS_FN30_600 displayName "IOS.FN30.600" <"IOS.FN30.600">
+    IOS_FN30_650 displayName "IOS.FN30.650" <"IOS.FN30.650">
+    IOS_GII30_400 displayName "IOS.GII30.400" <"IOS.GII30.400">
+    IOS_GII30_450 displayName "IOS.GII30.450" <"IOS.GII30.450">
+    IOS_GII30_500 displayName "IOS.GII30.500" <"IOS.GII30.500">
+    ITRAXX_ASIA_EX_JAPAN_IG displayName "ITRAXX ASIA EX-JAPAN IG" <"ITRAXX ASIA EX-JAPAN IG">
+    Itraxx_Asia_ex_Japan_IG_Restricted_ displayName "Itraxx Asia ex-Japan IG (Restricted)" <"Itraxx Asia ex-Japan IG (Restricted)">
+    ITRAXX_AUSTRALIA displayName "ITRAXX AUSTRALIA" <"ITRAXX AUSTRALIA">
+    ITRAXX_CEEMEA displayName "ITRAXX CEEMEA" <"ITRAXX CEEMEA">
+    ITRAXX_EUROPE displayName "ITRAXX EUROPE" <"ITRAXX EUROPE">
+    ITRAXX_EUROPE_CROSSOVER displayName "ITRAXX EUROPE CROSSOVER" <"ITRAXX EUROPE CROSSOVER">
+    ITRAXX_EUROPE_HIVOL displayName "ITRAXX EUROPE HIVOL" <"ITRAXX EUROPE HIVOL">
+    iTraxx_Europe_Non_Financial displayName "iTraxx Europe Non-Financial" <"iTraxx Europe Non-Financial">
+    ITRAXX_EUROPE_SENIOR_FINANCIALS displayName "ITRAXX EUROPE SENIOR FINANCIALS" <"ITRAXX EUROPE SENIOR FINANCIALS">
+    ITRAXX_EUROPE_SUB_FINANCIALS displayName "ITRAXX EUROPE SUB FINANCIALS" <"ITRAXX EUROPE SUB FINANCIALS">
+    ITRAXX_JAPAN displayName "ITRAXX JAPAN" <"ITRAXX JAPAN">
+    iTraxx_MSCI_ESG_Screened_Europe_Index displayName "iTraxx MSCI ESG Screened Europe Index" <"iTraxx MSCI ESG Screened Europe Index">
+    ITRAXX_SOVX_ASIA_PACIFIC displayName "ITRAXX SOVX ASIA PACIFIC" <"ITRAXX SOVX ASIA PACIFIC">
+    ITRAXX_SOVX_BRIC displayName "ITRAXX SOVX BRIC" <"ITRAXX SOVX BRIC">
+    ITRAXX_SOVX_CEEMEA displayName "ITRAXX SOVX CEEMEA" <"ITRAXX SOVX CEEMEA">
+    ITRAXX_SOVX_CEEMEA_EX_EU displayName "ITRAXX SOVX CEEMEA EX-EU" <"ITRAXX SOVX CEEMEA EX-EU">
+    ITRAXX_SOVX_G7 displayName "ITRAXX SOVX G7" <"ITRAXX SOVX G7">
+    ITRAXX_SOVX_GLOBAL_LIQUID_INVESTMENT_GRADE displayName "ITRAXX SOVX GLOBAL LIQUID INVESTMENT GRADE" <"ITRAXX SOVX GLOBAL LIQUID INVESTMENT GRADE">
+    ITRAXX_SOVX_LATIN_AMERICA displayName "ITRAXX SOVX LATIN AMERICA" <"ITRAXX SOVX LATIN AMERICA">
+    ITRAXX_SOVX_WESTERN_EUROPE displayName "ITRAXX SOVX WESTERN EUROPE" <"ITRAXX SOVX WESTERN EUROPE">
+    LCDX_NA displayName "LCDX.NA" <"LCDX.NA">
+    Markit_iBoxx_Trepp_CMBS_Original_AAA_Rolling_Index displayName "Markit iBoxx Trepp CMBS Original AAA Rolling Index" <"Markit iBoxx Trepp CMBS Original AAA Rolling Index">
+    MBX_FN30_300 displayName "MBX.FN30.300" <"MBX.FN30.300">
+    MBX_FN30_350 displayName "MBX.FN30.350" <"MBX.FN30.350">
+    MBX_FN30_400 displayName "MBX.FN30.400" <"MBX.FN30.400">
+    MBX_FN30_450 displayName "MBX.FN30.450" <"MBX.FN30.450">
+    MBX_FN30_500 displayName "MBX.FN30.500" <"MBX.FN30.500">
+    MBX_FN30_550 displayName "MBX.FN30.550" <"MBX.FN30.550">
+    MBX_FN30_600 displayName "MBX.FN30.600" <"MBX.FN30.600">
+    MBX_FN30_650 displayName "MBX.FN30.650" <"MBX.FN30.650">
+    MBX_GII30_400 displayName "MBX.GII30.400" <"MBX.GII30.400">
+    MBX_GII30_450 displayName "MBX.GII30.450" <"MBX.GII30.450">
+    MBX_GII30_500 displayName "MBX.GII30.500" <"MBX.GII30.500">
+    MCDX_NA displayName "MCDX.NA" <"MCDX.NA">
+    PO_FN30_300 displayName "PO.FN30.300" <"PO.FN30.300">
+    PO_FN30_350 displayName "PO.FN30.350" <"PO.FN30.350">
+    PO_FN30_400 displayName "PO.FN30.400" <"PO.FN30.400">
+    PO_FN30_450 displayName "PO.FN30.450" <"PO.FN30.450">
+    PO_FN30_500 displayName "PO.FN30.500" <"PO.FN30.500">
+    PO_FN30_550 displayName "PO.FN30.550" <"PO.FN30.550">
+    PO_FN30_600 displayName "PO.FN30.600" <"PO.FN30.600">
+    PO_FN30_650 displayName "PO.FN30.650" <"PO.FN30.650">
+    PO_GII30_400 displayName "PO.GII30.400" <"PO.GII30.400">
+    PO_GII30_450 displayName "PO.GII30.450" <"PO.GII30.450">
+    PO_GII30_500 displayName "PO.GII30.500" <"PO.GII30.500">
+    PRIMEX_ARM displayName "PRIMEX.ARM" <"PRIMEX.ARM">
+    PRIMEX_FRM displayName "PRIMEX.FRM" <"PRIMEX.FRM">
+    TABX_HE_BBB displayName "TABX.HE.BBB" <"TABX.HE.BBB">
+    TABX_HE_BBB_ displayName "TABX.HE.BBB-" <"TABX.HE.BBB-">

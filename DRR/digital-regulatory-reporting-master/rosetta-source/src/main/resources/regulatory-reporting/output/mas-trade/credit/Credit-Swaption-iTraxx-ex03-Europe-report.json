@@ -1,0 +1,62 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "CRDT",
+  "bookingLocation" : "US",
+  "callAmount" : 500000000,
+  "callCurrency" : "EUR",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "SWPT",
+  "counterparty1" : "DUMMYLEI123456789002",
+  "counterparty2" : "DUMMYLEI123456789001",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "DUMMYLEI123456789002",
+  "deliveryType" : "PHYS",
+  "direction" : "BYER",
+  "effectiveDate" : "2020-02-27",
+  "eventDate" : "2022-02-11",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2022-02-11T07:48:14Z",
+  "expirationDate" : "2020-03-18",
+  "finalContractualSettlementDate" : "2024-12-20",
+  "firstExerciseDate" : "2020-03-18",
+  "fixedRateDayCountConventionOfLeg1" : "A004",
+  "fixedRatePaymentFrequencyPeriodMultiplierOfLeg1" : 3,
+  "fixedRatePaymentFrequencyPeriodOfLeg1" : "MNTH",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "OPTL",
+          "Underlying" : {
+            "UnderlierIDSource" : "ISIN"
+          }
+        },
+        "Header" : {
+          "AssetClass" : "Credit",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI"
+        }
+      },
+      "requestType" : "UnderlyingProductRequest"
+    }
+  },
+  "notionalAmountOfTheContractOrLeg1" : 500000000,
+  "notionalCurrencyOfTheContractOrLeg1" : "EUR",
+  "optionPremiumAmount" : 0,
+  "optionPremiumCurrency" : "EUR",
+  "optionStyle" : "EURO",
+  "optionType" : "CALL",
+  "putAmount" : 500000000,
+  "putCurrency" : "EUR",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "DUMMYLEI123456789002",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "strikePrice" : {
+    "strikePriceDecimal" : 0.0100000000000,
+    "strikePriceNotation" : "Decimal"
+  },
+  "underlyingIdentificationType" : "O",
+  "uniqueTransactionIdentifier" : "CREDITSWAPTIONITRA02"
+}

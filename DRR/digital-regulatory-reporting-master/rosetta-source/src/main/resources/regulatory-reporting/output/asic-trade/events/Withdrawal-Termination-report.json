@@ -1,0 +1,30 @@
+{
+  "actionType" : "NEWT",
+  "beneficiary1" : "213800IV9PCAC364HN60",
+  "beneficiary1IdentifierTypeIndicator" : true,
+  "cleared" : "N",
+  "counterparty1" : "213800IV9PCAC364HN60",
+  "counterparty2" : "213800WWTABZ1GOJHH37",
+  "eventIdentifier" : "077749839555123459991234569BR777123456789",
+  "eventTimestamp" : "2021-12-06T17:09:13Z",
+  "eventType" : "ToDo",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH"
+        },
+        "Header" : {
+          "Level" : "UPI"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "reportSubmittingEntityID" : "213800IV9PCAC364HN60",
+  "reportingEntity" : "213800IV9PCAC364HN60",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "secondaryTransactionIdentifier" : "WITHDRAWALTERMINAT01",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "uniqueTransactionIdentifier" : "WITHDRAWALTERMINAT02"
+}

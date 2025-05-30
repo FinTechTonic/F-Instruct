@@ -1,0 +1,34 @@
+{
+  "actionType" : "NEWT",
+  "blockTradeElectionIndicator" : false,
+  "cftcGuidebook" : {
+    "assetClass" : "Equity",
+    "messageType" : "RT",
+    "physicalCommodityIndicator" : false,
+    "sefOrDcmAnonymousExecutionIndicator" : false,
+    "sefOrDcmIndicator" : false
+  },
+  "cleared" : "N",
+  "counterparty1" : "DUMMY0000000000LEI02",
+  "counterparty2" : "DUMMY0000000000LEI01",
+  "counterparty2IdentifierSource" : "LEID",
+  "customBasketIndicator" : false,
+  "effectiveDate" : "2022-01-02",
+  "eventTimestamp" : "2021-11-09T07:47:51.4265352Z",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2020-03-17T08:03:27Z",
+  "expirationDate" : "2022-12-31",
+  "nonReportable" : {
+    "counterparty1Format" : "Lei",
+    "counterparty2Format" : "Lei"
+  },
+  "nonStandardizedTermIndicator" : false,
+  "packageIndicator" : false,
+  "postPricedSwapIndicator" : false,
+  "primeBrokerageTransactionIndicator" : false,
+  "quantityUnitOfMeasureLeg1" : "SHAS",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "submitterIdentifier" : "DUMMY0000000000LEI02",
+  "totalNotionalQuantityLeg1" : 656000.00,
+  "uniqueTransactionIdentifier" : "EQUITYSWAPPARAMETE01"
+}

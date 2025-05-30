@@ -1,0 +1,54 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "CURR",
+  "bookingLocation" : "US",
+  "cleared" : "I",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "FORW",
+  "counterparty1" : "549300O5MFEP1XJ40B46",
+  "counterparty2" : "5493001RKR55V4X61F71",
+  "dataSubmitter" : "549300O5MFEP1XJ40B46",
+  "deliveryType" : "PHYS",
+  "directionOfLeg1" : "MAKE",
+  "directionOfLeg2" : "TAKE",
+  "effectiveDate" : "2011-02-12",
+  "eventDate" : "2011-02-04",
+  "eventType" : "TRAD",
+  "exchangeRate" : 0.9175,
+  "exchangeRateBasis" : "EUR/USD",
+  "executionTimestamp" : "2011-02-04T16:20:47Z",
+  "expirationDate" : "2011-12-21",
+  "finalContractualSettlementDate" : "2011-12-21",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "OtherUnderlierID" : "USD",
+          "OtherUnderlierIDSource" : "CCY",
+          "UnderlierID" : "EUR",
+          "UnderlierIDSource" : "CCY"
+        },
+        "Header" : {
+          "AssetClass" : "Foreign_Exchange",
+          "InstrumentType" : "Forward",
+          "Level" : "UPI",
+          "UseCase" : "Forward"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfLeg2" : 9175000,
+  "notionalAmountOfTheContractOrLeg1" : 10000000,
+  "notionalCurrencyOfLeg2" : "USD",
+  "notionalCurrencyOfTheContractOrLeg1" : "EUR",
+  "packageIdentifier" : "MOCKUPFXSTRATEGYFOO17F16Y15G14E13T1",
+  "platformIdentifier" : "XNAS",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "549300O5MFEP1XJ40B46",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "swapLinkID" : "MOCKUPFXSTRATEGYFOO17F16Y15G14E13T1",
+  "uniqueTransactionIdentifier" : "MOCKUPFXSTRATEGYFO01"
+}

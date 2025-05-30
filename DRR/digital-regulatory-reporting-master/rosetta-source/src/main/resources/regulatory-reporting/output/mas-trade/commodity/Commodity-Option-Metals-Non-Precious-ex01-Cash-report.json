@@ -1,0 +1,65 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "COMM",
+  "bookingLocation" : "CA",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "OPTN",
+  "counterparty1" : "DUMMY0000000000LEI02",
+  "counterparty2" : "DUMMY0000000000LEI01",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "DUMMY0000000000LEI02",
+  "deliveryType" : "CASH",
+  "direction" : "BYER",
+  "effectiveDate" : "2022-12-01",
+  "eventDate" : "2021-11-19",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-11-19T17:49:49Z",
+  "expirationDate" : "2022-12-31",
+  "finalContractualSettlementDate" : "2022-12-31",
+  "firstExerciseDate" : "2022-12-31",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "OptionExerciseStyle" : "EURO",
+          "OptionType" : "PUTO",
+          "UnderlierID" : "ALUMINIUM ALLOY-LME CASH",
+          "UnderlierIDSource" : "COMM",
+          "ValuationMethodorTrigger" : "Vanilla"
+        },
+        "Header" : {
+          "AssetClass" : "Commodities",
+          "InstrumentType" : "Option",
+          "Level" : "UPI",
+          "UseCase" : "Option"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfTheContractOrLeg1" : 163742.4000000000,
+  "notionalCurrencyOfTheContractOrLeg1" : "USD",
+  "notionalQuantityOfTheContractOrLeg1" : 65.76,
+  "optionStyle" : "EURO",
+  "optionType" : "PUTO",
+  "putAmount" : 163742.4000000000,
+  "putCurrency" : "USD",
+  "quantityFrequencyMultiplierOfTheContractOrLeg1" : 1,
+  "quantityFrequencyOfTheContractOrLeg1" : "MNTH",
+  "quantityUnitOfMeasureForTheContractOrLeg1" : "TONE",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "DUMMY0000000000LEI02",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrency1" : "USD",
+  "strikePrice" : {
+    "strikePriceCurrency" : "USD",
+    "strikePriceMonetary" : 2490.0000000000000,
+    "strikePriceNotation" : "Monetary"
+  },
+  "totalNotionalQuantityOfTheContractOrLeg1" : 65.76,
+  "underlyingIdentificationType" : "O",
+  "uniqueTransactionIdentifier" : "COMMODITYOPTIONMET01"
+}

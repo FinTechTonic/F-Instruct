@@ -1,0 +1,41 @@
+{
+  "actionType" : "NEWT",
+  "blockTradeElectionIndicator" : false,
+  "cftcGuidebook" : {
+    "assetClass" : "ForeignExchange",
+    "messageType" : "RT",
+    "physicalCommodityIndicator" : false,
+    "sefOrDcmAnonymousExecutionIndicator" : false,
+    "sefOrDcmIndicator" : false,
+    "settlementType" : "CASH"
+  },
+  "cleared" : "N",
+  "counterparty1" : "DUMMY0000000000LEI01",
+  "counterparty2" : "DUMMY0000000000LEI01",
+  "counterparty2IdentifierSource" : "LEID",
+  "customBasketIndicator" : false,
+  "effectiveDate" : "2020-01-01",
+  "eventTimestamp" : "2020-01-01T10:06:10Z",
+  "eventType" : "TRAD",
+  "exchangeRateBasis" : "USD/JPY",
+  "exchangeRateLeg1" : 1,
+  "executionTimestamp" : "2020-01-01T08:59:51Z",
+  "expirationDate" : "2021-08-16",
+  "nonReportable" : {
+    "counterparty1Format" : "Lei",
+    "counterparty2Format" : "Lei"
+  },
+  "nonStandardizedTermIndicator" : false,
+  "notionalAmountLeg1" : 1,
+  "notionalAmountLeg2" : 1,
+  "notionalCurrencyLeg1" : "JPY",
+  "notionalCurrencyLeg2" : "USD",
+  "packageIndicator" : false,
+  "platformIdentifier" : "XOFF",
+  "postPricedSwapIndicator" : false,
+  "primeBrokerageTransactionIndicator" : false,
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrencyLeg1" : "JPY",
+  "submitterIdentifier" : "DUMMY0000000000LEI01",
+  "uniqueTransactionIdentifier" : "DUMMY0000000000LEI01"
+}

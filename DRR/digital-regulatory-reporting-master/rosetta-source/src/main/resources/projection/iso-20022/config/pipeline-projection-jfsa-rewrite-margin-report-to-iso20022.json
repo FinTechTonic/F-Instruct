@@ -1,0 +1,15 @@
+{
+  "id" : "pipeline-projection-jfsa-rewrite-margin-report-to-iso20022",
+  "name" : "Project_JfsaRewriteMarginReportToIso20022",
+  "transform" : {
+    "type" : "PROJECTION",
+    "function" : "drr.projection.iso20022.jfsa.rewrite.margin.functions.Project_JFSARewriteMarginReportToIso20022",
+    "inputType" : "drr.regulation.jfsa.rewrite.margin.JFSAMarginReport",
+    "outputType" : "iso20022.auth108.jfsa.Document"
+  },
+  "upstreamPipelineId" : "pipeline-report-jfsa-margin",
+  "outputSerialisation" : {
+    "format" : "XML",
+    "configPath" : "xml-config/auth108-jfsa-rosetta-xml-config.json"
+  }
+}

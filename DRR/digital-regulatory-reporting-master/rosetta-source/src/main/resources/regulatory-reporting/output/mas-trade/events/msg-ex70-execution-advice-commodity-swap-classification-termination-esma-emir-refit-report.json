@@ -1,0 +1,54 @@
+{
+  "actionType" : "MODI",
+  "assetClass" : "COMM",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "OTHR",
+  "counterparty1" : "549300AJRHKBLY9GM262",
+  "counterparty2" : "549300KFSLY4U7N3LL12",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "549300AJRHKBLY9GM262",
+  "deliveryType" : "PHYS",
+  "direction" : "BYER",
+  "effectiveDate" : "2009-06-01",
+  "eventDate" : "2009-05-25",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2009-01-28T00:00:00Z",
+  "expirationDate" : "2009-06-30",
+  "finalContractualSettlementDate" : "2009-06-30",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "ReturnorPayoutTrigger" : "Forward price of underlying instrument",
+          "UnderlierID" : "OIL-WTI-NYMEX",
+          "UnderlierIDSource" : "COMM"
+        },
+        "Header" : {
+          "AssetClass" : "Commodities",
+          "InstrumentType" : "Forward",
+          "Level" : "UPI",
+          "UseCase" : "Forward"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "otherPayment" : [ {
+    "amount" : 5000.00,
+    "currency" : "USD",
+    "payer" : "549300AJRHKBLY9GM262",
+    "payerFormat" : "Lei",
+    "paymentType" : "UWIN",
+    "receiver" : "549300KFSLY4U7N3LL12",
+    "receiverFormat" : "Lei"
+  } ],
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "549300AJRHKBLY9GM262",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "underlyingIdentificationType" : "O",
+  "uniqueProductIdentifier" : "QZ17F5PN51JM",
+  "uniqueTransactionIdentifier" : "MSGEXEXECUTIONADVI03I17V16D15A14N13O12I11T10U9C8E7X6"
+}

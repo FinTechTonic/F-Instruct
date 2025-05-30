@@ -1,0 +1,68 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "CURR",
+  "bookingLocation" : "KY",
+  "callAmount" : 222240000.0,
+  "callCurrency" : "CNY",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : true,
+  "confirmed" : "NCNF",
+  "contractType" : "OPTN",
+  "counterparty1" : "5493000WTY4OJJTSMT27",
+  "counterparty2" : "GGDZP1UYGU9STUHRDP48",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "5493000WTY4OJJTSMT27",
+  "deliveryType" : "CASH",
+  "direction" : "BYER",
+  "effectiveDate" : "2019-01-16",
+  "eventDate" : "2019-01-16",
+  "eventType" : "TRAD",
+  "exchangeRate" : 6.6,
+  "exchangeRateBasis" : "CNY/USD",
+  "executionAgentOfTheCounterparty1" : "549300F2KFOQJZRKZ512",
+  "executionTimestamp" : "2019-01-16T14:11:05Z",
+  "expirationDate" : "2019-04-11",
+  "finalContractualSettlementDate" : "2019-04-15",
+  "firstExerciseDate" : "2019-04-11",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "OptionExerciseStyle" : "EURO",
+          "OtherUnderlierID" : "USD",
+          "OtherUnderlierIDSource" : "CCY",
+          "UnderlierID" : "CNY",
+          "UnderlierIDSource" : "CCY"
+        },
+        "Header" : {
+          "InstrumentType" : "Option",
+          "Level" : "UPI",
+          "UseCase" : "Vanilla_Option"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfLeg2" : 555500000.0,
+  "notionalAmountOfTheContractOrLeg1" : 222240000.0,
+  "notionalCurrencyOfLeg2" : "USD",
+  "notionalCurrencyOfTheContractOrLeg1" : "CNY",
+  "optionPremiumAmount" : 51250.0,
+  "optionPremiumCurrency" : "USD",
+  "optionStyle" : "EURO",
+  "optionType" : "OTHR",
+  "platformIdentifier" : "XXXX",
+  "putAmount" : 555500000.0,
+  "putCurrency" : "USD",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "5493000WTY4OJJTSMT27",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrency1" : "CNY",
+  "strikePrice" : {
+    "strikePriceCurrency" : "CNY/USD",
+    "strikePriceMonetary" : 6.6000000000000,
+    "strikePriceNotation" : "Monetary"
+  },
+  "uniqueTransactionIdentifier" : "FXNDOEXEUROPEANXML02"
+}

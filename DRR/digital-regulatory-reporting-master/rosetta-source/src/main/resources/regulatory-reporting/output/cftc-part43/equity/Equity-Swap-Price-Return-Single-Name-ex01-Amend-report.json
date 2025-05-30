@@ -1,0 +1,38 @@
+{
+  "actionType" : "NEWT",
+  "blockTradeElectionIndicator" : false,
+  "cftcGuidebook" : {
+    "assetClass" : "Equity",
+    "messageType" : "RT",
+    "physicalCommodityIndicator" : false,
+    "sefOrDcmAnonymousExecutionIndicator" : false,
+    "sefOrDcmIndicator" : false
+  },
+  "cleared" : "N",
+  "counterparty1" : "DUMMY0000000000LEI01",
+  "counterparty2" : "DUMMY0000000000LEI02",
+  "counterparty2IdentifierSource" : "LEID",
+  "customBasketIndicator" : true,
+  "effectiveDate" : "2020-12-14",
+  "eventTimestamp" : "2022-01-29T06:39:48.0169097Z",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2020-12-16T23:11:47Z",
+  "expirationDate" : "2022-12-19",
+  "floatingRateDayCountConventionLeg2" : "A005",
+  "floatingRatePaymentFrequencyPeriodLeg2" : "ADHO",
+  "nonReportable" : {
+    "counterparty1Format" : "Lei",
+    "counterparty2Format" : "Lei"
+  },
+  "nonStandardizedTermIndicator" : false,
+  "notionalAmountLeg1" : 8291615.00,
+  "notionalAmountLeg2" : 8291615.00,
+  "notionalCurrencyLeg1" : "CAD",
+  "notionalCurrencyLeg2" : "CAD",
+  "packageIndicator" : false,
+  "postPricedSwapIndicator" : false,
+  "primeBrokerageTransactionIndicator" : false,
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "submitterIdentifier" : "DUMMY0000000000LEI01",
+  "uniqueTransactionIdentifier" : "EQUITYSWAPPRICERET01"
+}

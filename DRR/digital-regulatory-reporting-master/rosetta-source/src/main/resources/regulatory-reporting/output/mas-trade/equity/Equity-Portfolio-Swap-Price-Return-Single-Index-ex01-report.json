@@ -1,0 +1,51 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "EQUI",
+  "basketConstituents" : [ {
+    "identifier" : ".FTSE",
+    "source" : "RIC"
+  } ],
+  "bookingLocation" : "US",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmationTimestamp" : "2022-02-10T05:42:21Z",
+  "confirmed" : "ECNF",
+  "contractType" : "SWAP",
+  "counterparty1" : "DUMMYLEI123456789001",
+  "counterparty2" : "DUMMYLEI123456789002",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "DUMMYLEI123456789001",
+  "deliveryType" : "CASH",
+  "directionOfLeg2" : "MAKE",
+  "effectiveDate" : "2022-02-14",
+  "eventDate" : "2022-02-10",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2022-02-10T05:42:21Z",
+  "floatingRateDayCountConventionOfLeg2" : "A004",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "SettlementCurrency" : "USD",
+          "UnderlierID" : "USD-SOFR-COMPOUND"
+        },
+        "Header" : {
+          "AssetClass" : "Equity",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfTheContractOrLeg1" : 90000,
+  "notionalCurrencyOfTheContractOrLeg1" : "USD",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "DUMMYLEI123456789001",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "settlementCurrency1" : "USD",
+  "settlementCurrency2" : "USD",
+  "underlyingIdentificationType" : "B",
+  "uniqueTransactionIdentifier" : "EQUITYPORTFOLIOSWA03"
+}

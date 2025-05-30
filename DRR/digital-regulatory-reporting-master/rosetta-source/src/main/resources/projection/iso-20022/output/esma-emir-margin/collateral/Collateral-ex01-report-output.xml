@@ -1,0 +1,64 @@
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:auth.108.001.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <DerivsTradMrgnDataRpt>
+    <TradData>
+      <Rpt>
+        <Crrctn>
+          <RptgTmStmp>2024-04-29T00:00:00Z</RptgTmStmp>
+          <CtrPtyId>
+            <RptgCtrPty>
+              <Id>
+                <Lgl>
+                  <Id>
+                    <LEI>5493001RKR55V4X61F71</LEI>
+                  </Id>
+                </Lgl>
+              </Id>
+            </RptgCtrPty>
+            <OthrCtrPty>
+              <IdTp>
+                <Lgl>
+                  <Id>
+                    <LEI>5U0XI89JRFVHWIBS4F54</LEI>
+                  </Id>
+                </Lgl>
+              </IdTp>
+            </OthrCtrPty>
+            <SubmitgAgt>
+              <LEI>5493001RKR55V4X61F71</LEI>
+            </SubmitgAgt>
+            <NttyRspnsblForRpt>
+              <LEI>5493001RKR55V4X61F71</LEI>
+            </NttyRspnsblForRpt>
+          </CtrPtyId>
+          <EvtDt>2021-03-13</EvtDt>
+          <TxId>
+            <UnqTxIdr>DTD380513903T7YHJ898COLLATERALEX01UNIQUETRANSACTION1</UnqTxIdr>
+          </TxId>
+          <Coll>
+            <CollPrtflCd>
+              <Prtfl>
+                <Cd>COLL123</Cd>
+              </Prtfl>
+            </CollPrtflCd>
+            <CollstnCtgy>FLCL</CollstnCtgy>
+            <TmStmp>2021-03-13T06:32:49Z</TmStmp>
+          </Coll>
+          <PstdMrgnOrColl>
+            <InitlMrgnPstdPreHrcut Ccy="GBP">190.00000</InitlMrgnPstdPreHrcut>
+            <InitlMrgnPstdPstHrcut Ccy="GBP">170.00000</InitlMrgnPstdPstHrcut>
+            <VartnMrgnPstdPreHrcut>50.00000</VartnMrgnPstdPreHrcut>
+            <VartnMrgnPstdPstHrcut>40.00000</VartnMrgnPstdPstHrcut>
+            <XcssCollPstd>0.00000</XcssCollPstd>
+          </PstdMrgnOrColl>
+          <RcvdMrgnOrColl>
+            <InitlMrgnRcvdPreHrcut Ccy="GBP">175.00000</InitlMrgnRcvdPreHrcut>
+            <InitlMrgnRcvdPstHrcut Ccy="GBP">165.00000</InitlMrgnRcvdPstHrcut>
+            <VartnMrgnRcvdPreHrcut Ccy="GBP">25.00000</VartnMrgnRcvdPreHrcut>
+            <VartnMrgnRcvdPstHrcut Ccy="GBP">25.00000</VartnMrgnRcvdPstHrcut>
+            <XcssCollRcvd>0.00000</XcssCollRcvd>
+          </RcvdMrgnOrColl>
+        </Crrctn>
+      </Rpt>
+    </TradData>
+  </DerivsTradMrgnDataRpt>
+</Document>

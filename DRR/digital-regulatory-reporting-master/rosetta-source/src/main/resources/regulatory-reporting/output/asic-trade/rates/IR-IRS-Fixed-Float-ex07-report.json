@@ -1,0 +1,64 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "INTR",
+  "beneficiary1" : "213800IV9PCAC364HN60",
+  "beneficiary1IdentifierTypeIndicator" : true,
+  "cleared" : "N",
+  "contractType" : "SWAP",
+  "counterparty1" : "213800IV9PCAC364HN60",
+  "counterparty2" : "213800WWTABZ1GOJHH37",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "dayCountConventionLeg1" : "A001",
+  "dayCountConventionLeg2" : "A004",
+  "direction2OfLeg1" : "MAKE",
+  "direction2OfLeg2" : "TAKE",
+  "effectiveDate" : "2019-09-11",
+  "eventTimestamp" : "2021-12-06T17:09:13Z",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-12-06T17:09:13Z",
+  "expirationDate" : "2020-10-26",
+  "fixedRateLeg1" : -0.1500,
+  "floatingRateReferencePeriodOfLeg2Multiplier" : 3,
+  "floatingRateReferencePeriodOfLeg2TimePeriod" : "MNTH",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalCurrency" : "EUR",
+          "NotionalSchedule" : "Constant",
+          "ReferenceRateTermUnit" : "YEAR",
+          "ReferenceRateTermValue" : 1,
+          "UnderlierID" : "EUR-EURIBOR",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Fixed_Float"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "EUR",
+  "notionalCurrencyLeg2" : "EUR",
+  "notionalLeg1" : 50000000,
+  "notionalLeg2" : 50000000,
+  "paymentFrequencyPeriodLeg1" : "YEAR",
+  "paymentFrequencyPeriodLeg2" : "MNTH",
+  "paymentFrequencyPeriodMultiplierLeg1" : 1,
+  "paymentFrequencyPeriodMultiplierLeg2" : 3,
+  "reportSubmittingEntityID" : "213800IV9PCAC364HN60",
+  "reportingEntity" : "213800IV9PCAC364HN60",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "secondaryTransactionIdentifier" : "IRIRSFIXEDFLOATEXX01",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "spreadLeg2" : {
+    "spreadLeg2Basis" : 0,
+    "spreadLeg2Notation" : "Basis"
+  },
+  "spreadNotationLeg2" : "4",
+  "uniqueTransactionIdentifier" : "IRIRSFIXEDFLOATEXX02"
+}

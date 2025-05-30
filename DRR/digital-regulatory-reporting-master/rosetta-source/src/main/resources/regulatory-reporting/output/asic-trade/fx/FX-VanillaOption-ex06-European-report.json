@@ -1,0 +1,64 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "CURR",
+  "beneficiary1" : "549300ZK53CNGEEI6A29",
+  "beneficiary1IdentifierTypeIndicator" : true,
+  "callAmount" : 1000000.00,
+  "callCurrency" : "USD",
+  "cleared" : "N",
+  "contractType" : "OPTN",
+  "counterparty1" : "549300ZK53CNGEEI6A29",
+  "counterparty2" : "R0MUWSFPU8MPRO8K5P83",
+  "counterpartyIdentifierTypeIndicator" : true,
+  "direction" : "SLLR",
+  "effectiveDate" : "2020-12-03",
+  "eventIdentifier" : "D97J9JTCprimaryDTCCEU0",
+  "eventTimestamp" : "2020-12-03T15:24:36Z",
+  "eventType" : "TRAD",
+  "exchangeRateBasis" : "USD/JPY",
+  "executionTimestamp" : "2020-12-03T15:22:41Z",
+  "expirationDate" : "2021-06-03",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "CASH",
+          "OptionExerciseStyle" : "EURO",
+          "OtherUnderlierID" : "USD",
+          "OtherUnderlierIDSource" : "CCY",
+          "UnderlierID" : "JPY",
+          "UnderlierIDSource" : "CCY"
+        },
+        "Header" : {
+          "AssetClass" : "Foreign_Exchange",
+          "InstrumentType" : "Option",
+          "Level" : "UPI",
+          "UseCase" : "Vanilla_Option"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalCurrencyLeg1" : "JPY",
+  "notionalCurrencyLeg2" : "USD",
+  "notionalLeg1" : 104300000,
+  "notionalLeg2" : 1000000.00,
+  "optionPremiumAmount" : 0.00,
+  "optionPremiumCurrency" : "USD",
+  "optionPremiumPaymentDate" : "2020-12-07",
+  "platformIdentifier" : "XXXX",
+  "putAmount" : 104300000,
+  "putCurrency" : "JPY",
+  "reportSubmittingEntityID" : "549300ZK53CNGEEI6A29",
+  "reportingEntity" : "549300ZK53CNGEEI6A29",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "secondaryTransactionIdentifier" : "FXVANILLAOPTIONEXE01",
+  "settlementCurrencyLeg1" : "JPY",
+  "settlementCurrencyLeg2" : "Not Modelled",
+  "strikePrice" : {
+    "strikePriceCurrency" : "USD/JPY",
+    "strikePriceMonetary" : 104.3000000000000,
+    "strikePriceNotation" : "Monetary"
+  },
+  "uniqueTransactionIdentifier" : "FXVANILLAOPTIONEXE02"
+}

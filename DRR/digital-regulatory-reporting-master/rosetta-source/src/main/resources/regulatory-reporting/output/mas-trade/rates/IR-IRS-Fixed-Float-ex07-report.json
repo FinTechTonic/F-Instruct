@@ -1,0 +1,66 @@
+{
+  "actionType" : "NEWT",
+  "assetClass" : "INTR",
+  "bookingLocation" : "GB",
+  "cleared" : "N",
+  "collateralPortfolioIndicator" : false,
+  "confirmed" : "NCNF",
+  "contractType" : "SWAP",
+  "counterparty1" : "213800IV9PCAC364HN60",
+  "counterparty2" : "213800WWTABZ1GOJHH37",
+  "counterparty2IdentifierType" : true,
+  "dataSubmitter" : "213800IV9PCAC364HN60",
+  "deliveryType" : "PHYS",
+  "directionOfLeg1" : "MAKE",
+  "directionOfLeg2" : "TAKE",
+  "effectiveDate" : "2019-09-11",
+  "eventDate" : "2021-12-06",
+  "eventType" : "TRAD",
+  "executionTimestamp" : "2021-12-06T17:09:13Z",
+  "expirationDate" : "2020-10-26",
+  "finalContractualSettlementDate" : "2020-10-26",
+  "fixedRateDayCountConventionOfLeg1" : "A001",
+  "fixedRateOfLeg1" : -0.1500,
+  "fixedRatePaymentFrequencyPeriodMultiplierOfLeg1" : 1,
+  "fixedRatePaymentFrequencyPeriodOfLeg1" : "YEAR",
+  "floatingRateDayCountConventionOfLeg2" : "A004",
+  "floatingRatePaymentFrequencyPeriodMultiplierOfLeg2" : 3,
+  "floatingRatePaymentFrequencyPeriodOfLeg2" : "MNTH",
+  "floatingRateResetFrequencyPeriodMultiplierOfLeg2" : 3,
+  "floatingRateResetFrequencyPeriodOfLeg2" : "MNTH",
+  "nonReportable" : {
+    "preUpiData" : {
+      "request" : {
+        "Attributes" : {
+          "DeliveryType" : "PHYS",
+          "NotionalCurrency" : "EUR",
+          "NotionalSchedule" : "Constant",
+          "ReferenceRateTermUnit" : "YEAR",
+          "ReferenceRateTermValue" : 1,
+          "UnderlierID" : "EUR-EURIBOR",
+          "UnderlierIDSource" : "FPML"
+        },
+        "Header" : {
+          "AssetClass" : "Rates",
+          "InstrumentType" : "Swap",
+          "Level" : "UPI",
+          "UseCase" : "Fixed_Float"
+        }
+      },
+      "requestType" : "ProductRequest"
+    }
+  },
+  "notionalAmountOfLeg2" : 50000000,
+  "notionalAmountOfTheContractOrLeg1" : 50000000,
+  "notionalCurrencyOfLeg2" : "EUR",
+  "notionalCurrencyOfTheContractOrLeg1" : "EUR",
+  "reportingObligationOfSpecifiedPerson" : "Not Modelled",
+  "reportingSpecifiedPerson" : "213800IV9PCAC364HN60",
+  "reportingTimestamp" : "2024-04-29T00:00:00Z",
+  "spreadOfLeg2" : {
+    "spreadNotationOfLeg2" : "Basis",
+    "spreadOfLeg2Basis" : 0
+  },
+  "underlyingIdentificationType" : "O",
+  "uniqueTransactionIdentifier" : "IRIRSFIXEDFLOATEXX02"
+}

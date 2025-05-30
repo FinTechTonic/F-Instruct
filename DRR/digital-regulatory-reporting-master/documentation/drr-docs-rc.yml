@@ -1,0 +1,30 @@
+version: "1.0"
+steps:
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    git: rosetta-models
+    repo: "${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}"
+    revision: "${{CF_REVISION}}"
+
+  BuildDocsDockerImage:
+    title: Build DRR Docs Docker Image
+    image_name: regnosys/drr-docs
+    type: build
+    working_directory: ./documentation
+    dockerfile: Dockerfile
+    tag: ${{TAG_NAME}}
+    build_arguments:
+      - LATEST_RELEASE_ID=${{TAG_NAME}}
+    registry: regnosys-docker-registry
+
+  DeployDocsRCServer:
+    title: Deploy rc Server Image
+    type: deploy
+    kind: kubernetes
+    cluster: rc-cluster-private
+    namespace: drr-docs-rc
+    service: drr-docs
+    candidate:
+      image: "${{BuildDocsDockerImage}}"
+      registry: regnosys-docker-registry
