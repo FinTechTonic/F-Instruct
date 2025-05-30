@@ -1,0 +1,3 @@
+[submodule "common-domain-model"]
+	path = common-domain-model
+	url = https://github.com/finos/common-domain-model
