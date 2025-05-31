@@ -1,0 +1,23 @@
+## **ISDA Launches Digital Regulatory Reporting 1.0 and Opens Access to Entire Market**
+
+**NEW YORK, November 22, 2022 –** The International Swaps and Derivatives Association, Inc. (ISDA) has launched the full open-source version of the Digital Regulatory Reporting (DRR) model and opened access to ISDA members and non-members to support compliance with the US Commodity Futures Trading Commission's (CFTC) amended swap data reporting rules.
+
+The CFTC is the first regulator to amend its swap data reporting framework to incorporate new international data standards, with the initial round of changes due to come into effect on December 5. The DRR, which is free to access, provides market participants with a mutualized industry interpretation of the rules in human-readable, machine-executable code that firms can use as the basis for implementation or to check their own interpretation of the rules is consistent with the peer-reviewed industry version.
+
+The launch of DRR 1.0 follows the successful [implementation and testing of the initiative by](https://www.isda.org/2022/11/02/isda-and-bnp-paribas-successfully-test-digital-regulatory-reporting-for-cftc-rules/)  [BNP Paribas,](https://www.isda.org/2022/11/02/isda-and-bnp-paribas-successfully-test-digital-regulatory-reporting-for-cftc-rules/) which used the DRR in a real-world, production-level environment to submit data required under the revised CFTC rules to the Depository Trust & Clearing Corporation's swap data repository testing simulator.
+
+With the DRR now available to market participants in full production mode for the CFTC rewrite, work will continue in a test environment to develop new functionality and adapt the framework for forthcoming data reporting rule changes in Europe and Asia-Pacific. ISDA estimates that approximately 70% of the coded CFTC rules can be transferred directly to the DRR that is being developed for Europe, while 90% of the combined coded US and European rules could be applied for rule changes in Asia-Pacific.
+
+The DRR has been developed in close collaboration with a diverse range of market participants and stakeholders, including buy- and sell-side firms, trade repositories and technology providers. The initiative leverages the [Common Domain Model](https://www.isda.org/category/infrastructure/common-domain-model/) to transform a mutualized interpretation of the CFTC rule amendments into code, thereby reducing the inconsistencies that can emerge when each firm independently implements its own interpretation of the rules.
+
+"We're delighted to make DRR 1.0 freely available to all market participants. The DRR represents a big step forward in bringing greater efficiency to regulatory reporting by establishing a collaborative, peer-reviewed interpretation of the rules that firms can either use as the foundation of their build or to compare their reading of the rules with the industry view. This will result in better quality, more accurate and more consistent data reported to regulators," says Scott O'Malia, ISDA's Chief Executive.
+
+Read a [fact sheet on the DRR here.](https://assets.isda.org/media/c23e827f/b24fd564.pdf)
+
+## **About ISDA**
+
+Since 1985, ISDA has worked to make the global derivatives markets safer and more efficient. Today, ISDA has over 1,000 member institutions from 79 countries. These members comprise a broad range of derivatives market participants, including corporations, investment managers, government and supranational entities, insurance companies, energy and commodities firms, and international and regional banks. In addition to market participants, members also include key components of the derivatives market infrastructure, such as exchanges, intermediaries, clearing houses and repositories, as well as law firms, accounting firms and other service providers. Information about ISDA and its activities is available on the Association's website: [www.isda.org.](http://www.isda.org/) Follow us on [Twitter,](https://twitter.com/isda) [LinkedIn,](https://www.linkedin.com/company/isda) [Facebook](https://www.facebook.com/ISDA.org/) and [YouTube.](https://www.youtube.com/channel/UCg5freZEYaKSWfdtH-0gsxg)
+
+## **For Press Queries, Please Contact:**
+
+Nick Sawyer, ISDA London, +44 20 3808 9740, [nsawyer@isda.org](mailto:nsawyer@isda.org) Lauren (Dobbs) Springer, ISDA New York, +1 212 901 6019, [ldobbs@isda.org](mailto:ldobbs@isda.org) Joel Clark, ISDA London, +44 20 3808 9760, [jclark@isda.org](mailto:jclark@isda.org) Christopher Faimali, ISDA London, +44 20 3808 9736, [cfaimali@isda.org](mailto:cfaimali@isda.org) Nikki Lu, ISDA Hong Kong, +852 2200 5901, [nlu@isda.org](mailto:nlu@isda.org)
