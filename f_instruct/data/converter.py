@@ -7,36 +7,68 @@ try:
     from marker.converters.pdf import PdfConverter
     from marker.models import create_model_dict
     from marker.output import text_from_rendered
+    from marker.config.parser import ConfigParser
 except ImportError:
     print("marker-pdf not installed. Install with: pip install marker-pdf")
     sys.exit(1)
 
-def convert_file(input_file, output_file):
+def convert_file(input_file, output_file, model=None):
     """Convert a single PDF file to markdown with minimal fuss"""
     print(f"Converting: {input_file}")
+    print(f"LLM enhancement: {'Enabled with ' + model if model else 'Disabled'}")
     
-    # Create converter
-    converter = PdfConverter(artifact_dict=create_model_dict())
-    
-    # Convert file
-    rendered = converter(input_file)
-    
-    # Extract markdown
-    markdown_content, _, _ = text_from_rendered(rendered)
-    
-    # Get markdown text
-    if isinstance(markdown_content, dict) and "markdown" in markdown_content:
-        markdown_text = markdown_content["markdown"]
-    elif isinstance(markdown_content, str):
-        markdown_text = markdown_content
-    else:
-        markdown_text = str(markdown_content)
-    
-    # Save to file
-    with open(output_file, "w", encoding="utf-8") as f:
-        f.write(markdown_text)
-    
-    print(f"Saved to: {output_file}")
+    try:
+        # Create configuration dictionary
+        config = {
+            "output_format": "markdown",
+            "format_lines": True,
+            "disable_image_extraction": True
+        }
+        
+        # Add LLM configuration if model is specified
+        if model:
+            config.update({
+                "use_llm": True,
+                "llm_service": "marker.services.ollama.OllamaService",
+                "ollama_model": model,
+                "ollama_base_url": "http://localhost:11434"  # Default Ollama URL
+            })
+        
+        # Parse configuration
+        config_parser = ConfigParser(config)
+        
+        # Create converter with appropriate configuration
+        converter = PdfConverter(
+            artifact_dict=create_model_dict(),
+            config=config_parser.generate_config_dict(),
+            processor_list=config_parser.get_processors(),
+            renderer=config_parser.get_renderer(),
+            llm_service=config_parser.get_llm_service() if model else None
+        )
+        
+        # Convert file
+        rendered = converter(input_file)
+        
+        # Extract markdown
+        markdown_content, metadata, _ = text_from_rendered(rendered)
+        
+        # Get markdown text
+        if isinstance(markdown_content, dict) and "markdown" in markdown_content:
+            markdown_text = markdown_content["markdown"]
+        elif isinstance(markdown_content, str):
+            markdown_text = markdown_content
+        else:
+            markdown_text = str(markdown_content)
+        
+        # Save to file
+        with open(output_file, "w", encoding="utf-8") as f:
+            f.write(markdown_text)
+        
+        print(f"Saved to: {output_file}")
+        return True
+    except Exception as e:
+        print(f"Error: {str(e)}")
+        return False
     
 def ingest_data(input_path, output_dir, model=None):
     """Process PDF files and convert to markdown"""
@@ -51,12 +83,7 @@ def ingest_data(input_path, output_dir, model=None):
             return False
             
         output_file = os.path.join(output_dir, f"{os.path.splitext(os.path.basename(input_path))[0]}.md")
-        try:
-            convert_file(input_path, output_file)
-            return True
-        except Exception as e:
-            print(f"Error: {str(e)}")
-            return False
+        return convert_file(input_path, output_file, model)
     
     elif os.path.isdir(input_path):
         # Process all PDF files in directory
@@ -73,11 +100,8 @@ def ingest_data(input_path, output_dir, model=None):
         success_count = 0
         for pdf_file in pdf_files:
             output_file = os.path.join(output_dir, f"{os.path.splitext(os.path.basename(pdf_file))[0]}.md")
-            try:
-                convert_file(pdf_file, output_file)
+            if convert_file(pdf_file, output_file, model):
                 success_count += 1
-            except Exception as e:
-                print(f"Error with {pdf_file}: {str(e)}")
         
         print(f"Processed {success_count}/{len(pdf_files)} files successfully")
         return success_count > 0
@@ -91,10 +115,14 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Convert PDF to Markdown")
     parser.add_argument("-i", "--input", required=True, help="Input PDF file or directory")
     parser.add_argument("-o", "--output", required=True, help="Output directory")
+    parser.add_argument("-m", "--model", help="Ollama model to use for enhanced extraction (default: phi4)")
     args = parser.parse_args()
     
     print("PDF to Markdown Converter")
     print("-------------------------")
     
-    success = ingest_data(args.input, args.output)
+    # If -m is specified without a value, default to phi4
+    model = args.model if args.model else (None if args.model is None else "phi4")
+    
+    success = ingest_data(args.input, args.output, model)
     sys.exit(0 if success else 1)
