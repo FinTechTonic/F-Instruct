@@ -1,2 +1,0 @@
-namespace drr.regulation.esma.emir.refit.tr
-version "${project.version}"

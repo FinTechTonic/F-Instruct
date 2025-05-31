@@ -1,6 +1,0 @@
-namespace drr.regulation.jfsa
-version "${project.version}"
-
-body Authority JFSA <"The Japanese Financial Services Agency is a Japanese government agency and an integrated financial regulator responsible for overseeing banking, securities and exchange, and insurance sectors in order to ensure the stability of the financial system of Japan">
-
-corpus Specifications "DTCC Specs" DTCC_Specs <"Document providing the message specifications required for inbound message for DTCC for JFSA rewrite">

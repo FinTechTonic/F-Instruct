@@ -1,6 +1,0 @@
-namespace drr.regulation.asic
-version "${project.version}"
-
-body Authority ASIC <"The Australian Securities and Investments Commission is an independent commission of the Australian Government tasked as the national corporate regulator.">
-
-corpus Specifications "DTCC Specs (v0.4)" DTCC_Specs <"Document providing the message specifications required for inbound message for DTCC for ASIC rewrite">

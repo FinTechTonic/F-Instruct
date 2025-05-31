@@ -1,0 +1,21 @@
+[project]
+name = "f-instruct"
+version = "0.1.0"
+description = "A structured financial agent system that produces compliant structured financial products and can integrate with open banking systems."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    {name = "Team Tonic"},
+]
+dependencies = [
+    "click>=8.1.8",
+    "easyocr>=1.7.2",
+    "matplotlib>=3.10.1",
+    "numpy>=2.2.5",
+    "opencv-python>=4.11.0.86",
+    "pdf2image>=1.17.0",
+    "pymupdf>=1.25.5",
+    "rich>=14.0.0",
+    "torch>=2.7.0",
+    "torchvision>=0.22.0",
+]

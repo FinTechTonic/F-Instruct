@@ -1,4 +1,0 @@
-namespace drr.projection.iso20022.common
-version "${project.version}"
-
-annotation projection: <"Annotation that describes a projection function.">

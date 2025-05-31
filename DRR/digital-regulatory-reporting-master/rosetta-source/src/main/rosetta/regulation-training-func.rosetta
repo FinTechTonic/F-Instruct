@@ -1,2 +1,0 @@
-namespace drr.regulation.training
-version "${project.version}"

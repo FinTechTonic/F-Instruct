@@ -1,6 +1,0 @@
-namespace drr.regulation.esma.emir
-version "${project.version}"
-
-corpus QandAOnEMIRReporting "ESMA70-1861941480-52" QandA_On_EMIR_Reporting <"Questions and Answers. Implementation of the Regulation (EU) No 648/2012 on OTC derivatives, central counterparties and trade repositories (EMIR)">
-//This is Pre-Refit, but absent future post-Refit guidelines, may also be applied in some circumstances to Refit.
-corpus Regulation "648/2012" EMIR <"Regulation (EU) No 648/2012 of the European Parliament and of the Council of 4 July 2012 on OTC derivatives, central counterparties and trade repositories Text with EEA relevance">

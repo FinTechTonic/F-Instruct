@@ -1,6 +1,0 @@
-namespace drr.enrichment.upi
-version "${project.version}"
-
-enum AnnaDsbUpiRequestTypeEnum:
-    ProductRequest
-    UnderlyingProductRequest

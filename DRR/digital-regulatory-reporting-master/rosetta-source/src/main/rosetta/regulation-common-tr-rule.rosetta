@@ -1,7 +1,0 @@
-namespace drr.regulation.common.tr
-version "${project.version}"
-
-body TradeRepository DTCC <"DTCC Data Repository">
-body TradeRepository CME <"Chicago Mercantile Exchange Inc.">
-body TradeRepository ICE <"ICE Trade Vault">
-body TradeRepository KOR <"KOR Reporting Inc">
