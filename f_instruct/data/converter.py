@@ -38,7 +38,7 @@ import easyocr
 
 __version__ = "1.0.0"
 
-# --- Globals that will be initialized later ---
+# Globals to be initialized by _ensure_dependencies_loaded.
 READER: Optional[easyocr.Reader] = None
 CV2: Optional[Any] = None
 FITZ: Optional[Any] = None
@@ -48,7 +48,7 @@ EASYOCR: Optional[Any] = None
 IS_LOADED = False
 
 
-# --- Secure Path Utilities ---
+# Secure path utility function.
 def safe_join(base, *paths):
     """
     Safely join one or more path components to the base directory.
@@ -63,12 +63,12 @@ def safe_join(base, *paths):
     return final_path
 
 
-# --- Dependency Loading Function ---
+# Dependency loading function.
 def _ensure_dependencies_loaded():
     """Loads heavy dependencies and initializes READER if not already done."""
     global READER, CV2, FITZ, NP, TORCH, EASYOCR, IS_LOADED
 
-    # Skip if already loaded
+    # Skip if already loaded.
     if IS_LOADED:
         return
 
@@ -96,14 +96,14 @@ def _ensure_dependencies_loaded():
         sys.exit(1)
 
 
-# --- Console/Progress ---
-# Define a custom theme (dark with purple accents)
+# Console and progress bar configuration.
+# Define a custom theme (dark with purple accents).
 custom_theme = Theme({
     "info": "dim cyan",
     "warning": "magenta",
     "danger": "bold red",
     "success": "bold green",
-    "status": "bold bright_magenta",  # Purple-like for status
+    "status": "bold bright_magenta",  # Purple-like for status.
     "progress.description": "white",
     "progress.percentage": "bright_magenta",
     "bar.complete": "bright_magenta",
@@ -114,7 +114,7 @@ custom_theme = Theme({
 })
 console = Console(theme=custom_theme)
 
-# Configure Progress columns
+# Configure Progress columns.
 progress_columns = [
     TextColumn("[progress.description]{task.description}", justify="right"),
     BarColumn(
@@ -129,7 +129,7 @@ progress_columns = [
 ]
 
 
-# --- Constants ---
+# Script-wide constants.
 def get_temp_dir():
     """Get system temporary directory for intermediate files."""
     return tempfile.gettempdir()
@@ -140,7 +140,7 @@ HORIZONTAL_POOLING = 25
 MAX_WORKERS = min(32, (os.cpu_count() or 1) + 4)
 
 
-# --- Utility Class ---
+# Utility class for various operations.
 class Utils:
     """Static utility methods for various operations."""
 
@@ -178,7 +178,7 @@ class Utils:
 
     @staticmethod
     def remove_duplicate_bboxes(boxes):
-        """Remove bounding boxes from a list that start at the same y-coord"""
+        """Remove bounding boxes from a list that start at the same y-coord."""
         new = []
         seen_y = set()
         for box in boxes:
@@ -213,7 +213,7 @@ class Utils:
         """Expand a bounding box by the given factor."""
         if NP is None:
             console.print("Error: NumPy not loaded.", style="danger")
-            return box  # Return original box or handle error appropriately
+            return box  # Return original box or handle error appropriately.
         x, y, w, h = box.x, box.y, box.width, box.height
         expansion = int(min(h, w) * expand_factor)
         x = max(0, x - expansion)
@@ -226,11 +226,11 @@ class Utils:
         """Extract filename without extension using regex."""
         filename = os.path.basename(path)
         filename = re.sub(r'[^a-zA-Z0-9_\-\.]', '_', filename)
-        # Updated regex to handle trailing dots correctly
+        # Updated regex to handle trailing dots correctly.
         match = re.match(r'^(.+?)(\.[^.]+)?$', filename.rstrip('.'))
         if match:
             return match.group(1)
-        return filename.rstrip('.')  # Fallback for names without extensions
+        return filename.rstrip('.')  # Fallback for names without extensions.
 
     @staticmethod
     def escape_special_chars(s):
@@ -238,7 +238,7 @@ class Utils:
         if not isinstance(s, str):
             s = str(s)
 
-        # Process character by character instead of using string replace
+        # Process character by character instead of using string replace.
         result = []
         for char in s:
             if char == '&':
@@ -268,12 +268,12 @@ class Utils:
 
     @staticmethod
     def make_strlist(lst):
-        """Make all the items of a lst a string"""
+        """Make all the items of a lst a string."""
         return [str(i) for i in lst]
 
     @staticmethod
     async def async_write_all(filename, lst):
-        """Asynchronously write all strings in lst to filename"""
+        """Asynchronously write all strings in lst to filename."""
         try:
             async with asyncio.Lock():
                 with open(filename, 'w', encoding='utf-8') as f:
@@ -288,7 +288,7 @@ class Utils:
 
     @staticmethod
     def write_all(filename, lst):
-        """Write all strings in lst to filename"""
+        """Write all strings in lst to filename."""
         with open(filename, 'w', encoding='utf-8') as f:
             for s in lst:
                 f.write(s)
@@ -298,7 +298,7 @@ class Utils:
     @staticmethod
     def create_latex_project_structure(base_path, pdf_name):
         """Create a proper LaTeX project directory structure."""
-        # If base_path is absolute, use it directly; else join with cwd
+        # If base_path is absolute, use it directly; else join with cwd.
         if os.path.isabs(base_path):
             safe_base = base_path
         else:
@@ -331,13 +331,13 @@ class Utils:
         def _extract_images():
             extracted_images = []
             try:
-                # Fix: Add null check for FITZ
+                # Fix: Add null check for FITZ.
                 if FITZ is None:
                     return []
                 doc = FITZ.open(pdf_path)
                 img_count = 0
 
-                # Fix: Use range(len(doc)) instead of enumerate(doc)
+                # Fix: Use range(len(doc)) instead of enumerate(doc).
                 for page_num in range(len(doc)):
                     page = doc.load_page(page_num)
                     image_list = page.get_images(full=True)
@@ -368,7 +368,7 @@ class Utils:
             return await loop.run_in_executor(executor, _extract_images)
 
 
-# --- Bounding Box Class ---
+# Class representing a bounding box.
 class BBox:
     """BBox object representing bounding rectangle (x, y, width, height)"""
     def __init__(self, x, y, width, height):
@@ -379,8 +379,8 @@ class BBox:
         self.y_bottom = self.y + self.height
 
 
-# --- LaTeX Classes ---
-class LatexText:  # Renamed to avoid conflict with rich.text.Text
+# Classes for representing LaTeX elements.
+class LatexText:  # Renamed to avoid conflict with rich.text.Text.
     """Class representing regular LaTeX text."""
     def __init__(self, text):
         self.text = Utils.escape_special_chars(text)
@@ -399,7 +399,7 @@ class Command:
         self.text = self._make_text()
 
     def _make_text(self):
-        """Creates command string, formatting command name, args, and options"""
+        """Creates command string, formatting command name, args, and options."""
         cmd_name = self.command_name
         args = self.arguments
         opts = self.options
@@ -451,7 +451,7 @@ class Environment:
         return [start] + content + [end]
 
 
-# --- PDF Segmentation Functions ---
+# Functions for PDF page segmenting.
 def segment(img):
     """Input: cv2 image of page. Output: BBox objects for content blocks."""
     if CV2 is None:
@@ -512,7 +512,7 @@ def find_content_blocks(img):
     return process_bboxes(segment(img))
 
 
-# --- PDF Processing Classes ---
+# Classes for processing PDF content.
 class Block:
     """Represents a content block within a Page (text only - no figure extraction)."""
 
@@ -522,13 +522,14 @@ class Block:
         self.bbox = bbox
         self.block_index = block_index
         self.block = self._make_block(bbox, parent_page.page_img, parent_page.height)
-        self.content_string = self._determine_content()
+        # Updated to use new method that returns both text and font info.
+        self.content_string, self.font_info = self._determine_content_and_font()
 
     def _make_block(self, bbox, page_img=None, height=None):
         """Extract the block image from the page."""
         if NP is None:
             console.print("Error: NumPy not loaded.", style="danger")
-            return None  # Indicate error
+            return None  # Indicate error.
         if height is None:
             console.print(
                 "Warning: Height not provided to _make_block, "
@@ -537,7 +538,7 @@ class Block:
             )
             return NP.zeros((10, 10, 3), dtype=NP.uint8)
 
-        # Fix: Add null check for page_img
+        # Fix: Add null check for page_img.
         if page_img is None:
             console.print("Error: page_img is None in _make_block", style="danger")
             return NP.zeros((10, 10, 3), dtype=NP.uint8)
@@ -555,7 +556,7 @@ class Block:
         """Extract text content using OCR - treat everything as potential text."""
         if READER is None:
             console.print("Error: EasyOCR Reader not initialized.", style="danger")
-            return '--OCR Not Available--'
+            return ''  # Return empty string instead of placeholder text.
         
         try:
             if (
@@ -564,15 +565,15 @@ class Block:
                 or self.block.shape[0] < 5
                 or self.block.shape[1] < 5
             ):
-                return '--Block too small for OCR--'
+                return ''  # Return empty string instead of placeholder text.
 
-            # More aggressive OCR settings for text tables and fancy formatting
+            # More aggressive OCR settings for text tables and fancy formatting.
             results = READER.readtext(
                 self.block, 
                 paragraph=True,
-                width_ths=0.7,  # Lower threshold for text detection
+                width_ths=0.7,  # Lower threshold for text detection.
                 height_ths=0.7,
-                detail=1        # Get bounding boxes too
+                detail=1        # Get bounding boxes too.
             )
 
             if results:
@@ -581,31 +582,167 @@ class Block:
                     if isinstance(result, (list, tuple)) and len(result) >= 2:
                         text_parts.append(str(result[1]).strip())
                 
-                # Join with spaces and clean up
+                # Join with spaces and clean up.
                 text = " ".join(text_parts)
                 if text and not text.isspace():
                     return text
             
-            # If no text found, still return a placeholder rather than treating as figure
-            return f'--No readable text detected in block {self.block_index}--'
+            # If no text found, return empty string (not placeholder text).
+            return ''
 
         except Exception as e:
             console.print(f"Error during OCR processing: {e}", style="danger")
-            return f'--OCR Error in block {self.block_index}: {str(e)}--'
+            return ''  # Return empty string instead of error message.
+
+    def _determine_content_and_font(self):
+        """Enhanced OCR settings optimized for financial regulatory documents."""
+        if READER is None:
+            console.print("Error: EasyOCR Reader not initialized.", style="danger")
+            return '', {'avg_height': 0, 'max_height': 0, 'confidence': 0}
+        
+        try:
+            if (
+                self.block is None
+                or self.block.size == 0
+                or self.block.shape[0] < 5
+                or self.block.shape[1] < 5
+            ):
+                return '', {'avg_height': 0, 'max_height': 0, 'confidence': 0}
+
+            # Optimized OCR settings for clean financial documents.
+            results = READER.readtext(
+                self.block, 
+                paragraph=False,  # Get individual text segments for better font analysis.
+                width_ths=0.8,    # Higher threshold for clean documents.
+                height_ths=0.7,   # Refined height detection.
+                detail=1,
+                # Additional parameters for better text detection.
+                slope_ths=0.1,    # Lower slope threshold for straight text.
+                ycenter_ths=0.5,  # Better center detection.
+                add_margin=0.1    # Small margin for better text capture.
+            )
+
+            if results:
+                text_parts = []
+                heights = []
+                confidences = []
+                
+                for result in results:
+                    if isinstance(result, (list, tuple)) and len(result) >= 3:
+                        bbox_coords, text, confidence = result
+                        if text.strip() and confidence > 0.3:  # Filter low-confidence results.
+                            text_parts.append(str(text).strip())
+                            
+                            # Calculate text height from bounding box.
+                            if len(bbox_coords) >= 4:
+                                # bbox_coords is typically [[x1,y1], [x2,y2], [x3,y3], [x4,y4]].
+                                y_coords = [point[1] for point in bbox_coords]
+                                text_height = max(y_coords) - min(y_coords)
+                                heights.append(text_height)
+                                confidences.append(confidence)
+                
+                if text_parts:
+                    combined_text = " ".join(text_parts)
+                    
+                    # Enhanced font statistics for better classification.
+                    font_info = {
+                        'avg_height': sum(heights) / len(heights) if heights else 0,
+                        'max_height': max(heights) if heights else 0,
+                        'min_height': min(heights) if heights else 0,
+                        'confidence': sum(confidences) / len(confidences) if confidences else 0,
+                        'text_count': len(text_parts),
+                        'height_variance': max(heights) - min(heights) if heights else 0
+                    }
+                    
+                    return combined_text, font_info
+            
+            # If no text found after processing results, or if results was empty.
+            return '', {'avg_height': 0, 'max_height': 0, 'min_height': 0, 'confidence': 0, 'text_count': 0, 'height_variance': 0}
+
+        except Exception as e:
+            console.print(f"Error during OCR processing in _determine_content_and_font: {e}", style="danger")
+            return '', {'avg_height': 0, 'max_height': 0, 'min_height': 0, 'confidence': 0, 'text_count': 0, 'height_variance': 0}
 
     def generate_latex(self):
-        """Generate LaTeX representation for this text block with metadata."""
-        if not self.content_string or self.content_string.isspace():
-            return []
-        
-        # Simplified block metadata - just page and block ID
+        """Generate LaTeX representation with font-based formatting."""
         page_num = getattr(self.parent_page, 'page_number', 'Unknown')
         
-        return [
-            LatexText(f"% Page {page_num}, Block {self.block_index}"),
-            LatexText(self.content_string),
-            LatexText(''),  # Add blank line for readability
+        # Get text classification.
+        text_type = self._classify_text_type()
+        
+        # Enhanced metadata with classification.
+        metadata = [
+            LatexText(f"% Page {page_num}, Block {self.block_index}, " +
+                     f"Height: {self.font_info['avg_height']:.1f}, " +
+                     f"Confidence: {self.font_info['confidence']:.2f}, " +
+                     f"Type: {text_type}")
         ]
+        
+        # Handle empty content with comment instead of fake text.
+        if not self.content_string or self.content_string.isspace():
+            metadata.append(LatexText("% Empty block - no readable text"))
+            metadata.append(LatexText(''))  # Blank line here
+            return metadata
+        
+        # Apply formatting based on font size classification.
+        content = []
+        
+        if text_type == 'main_title':
+            content = [
+                Command('begin', arguments=['center']),
+                Command('textbf', arguments=[Command('LARGE', arguments=[self.content_string])]),
+                Command('end', arguments=['center']),
+                Command('vspace', arguments=['1em'])
+            ]
+        elif text_type == 'section_title':
+            content = [
+                Command('textbf', arguments=[Command('Large', arguments=[self.content_string])]),
+                Command('vspace', arguments=['0.8em'])
+            ]
+        elif text_type == 'subsection':
+            content = [
+                Command('textbf', arguments=[Command('large', arguments=[self.content_string])]),
+                Command('vspace', arguments=['0.5em'])
+            ]
+        elif text_type == 'emphasis':
+            content = [
+                Command('textbf', arguments=[self.content_string])
+            ]
+        elif text_type == 'small_text':
+            content = [
+                Command('small', arguments=[self.content_string])
+            ]
+        else:  # body_text
+            content = [
+                LatexText(self.content_string)
+            ]
+    
+        return metadata + content + [LatexText('')] # Blank line here
+
+    def _classify_text_type(self):
+        """Classify text based on font size relative to page average."""
+        if not hasattr(self.parent_page, 'avg_font_height'):
+            return 'body_text'  # Changed from 'normal'
+        
+        avg_page_height = self.parent_page.avg_font_height
+        if avg_page_height == 0:
+            return 'body_text'  # Changed from 'normal'
+        
+        ratio = self.font_info['avg_height'] / avg_page_height
+        
+        # Refined thresholds for clean financial documents
+        if ratio >= 2.5:
+            return 'main_title'      # e.g., "Digital Regulatory Reporting..."
+        elif ratio >= 1.8:
+            return 'section_title'   # e.g., Major section headers
+        elif ratio >= 1.3:
+            return 'subsection'      # e.g., Subsection headers
+        elif ratio >= 1.1:
+            return 'emphasis'        # e.g., Emphasized text
+        elif ratio <= 0.7:
+            return 'small_text'      # e.g., Fine print, footnotes
+        else:
+            return 'body_text'       # e.g., Main content
 
 
 class Page:
@@ -619,6 +756,13 @@ class Page:
         self.height = page_img.shape[0]
         self.width = page_img.shape[1]
         self.blocks = []
+        self.avg_font_height = 0  # Will be calculated after blocks are processed.
+        self.path = pdf.path  # Reference to parent PDF path for metadata.
+
+    @property
+    def pages(self):
+        """Access pages through parent PDF object."""
+        return self.parent_pdf.pages
 
     async def async_generate_blocks(self, page_img, parent_pdf_instance):
         """Asynchronously generate text blocks from page image."""
@@ -659,33 +803,119 @@ class Page:
                     )
 
                 block.block = block_img_result
-                block.content_string = block._determine_content()
+                # Updated to use new method that returns both text and font info.
+                block.content_string, block.font_info = block._determine_content_and_font()
                 return block
 
             block_tasks.append(process_single_block(bbox, block_idx))
 
         blocks = await asyncio.gather(*block_tasks)
+        
+        # Update parent page reference and calculate font statistics.
+        for block in blocks:
+            block.parent_page = self
+    
+        self.blocks = blocks
+        self._calculate_average_font_height()
+        
         return blocks
 
+    def _calculate_average_font_height(self):
+        """Calculate average font height for this page to enable relative sizing."""
+        heights = []
+        for block in self.blocks:
+            if (block.font_info['avg_height'] > 0 and 
+                block.font_info['confidence'] > 0.5 and  # Only confident detections.
+                block.content_string.strip()):  # Only blocks with actual text.
+                heights.append(block.font_info['avg_height'])
+        
+        self.avg_font_height = sum(heights) / len(heights) if heights else 12.0  # Default fallback.
+
     async def async_generate_latex(self):
-        """Asynchronously generate LaTeX content for the page with page metadata."""
+        """Generate LaTeX content for this specific page only."""
+        # Add page header with metadata
         content = [
-            Command('newpage'),
-            LatexText(f"% ===== PAGE {self.page_number} START ====="),
-            Command('section*', arguments=[f'Page {self.page_number}']),
-            LatexText(f"% blocks_count: {len(self.blocks)}"),
-            LatexText(''),  # Blank line
+            LatexText(f"% ===== PAGE {self.page_number} ====="),
+            LatexText(''),
+            Command('section', arguments=[f'Page {self.page_number}']),
+            LatexText('')
         ]
         
+        # Process all blocks in this page only
         for block in self.blocks:
-            content.extend(block.generate_latex())
+            block_content = block.generate_latex()
+            content.extend(block_content)
         
-        content.extend([
-            LatexText(f"% ===== PAGE {self.page_number} END ====="),
-            LatexText(''),  # Blank line
-        ])
-        
+        content.append(LatexText(''))  # Add spacing after page
         return content
+
+    async def async_generate_latex_old(self):
+        """Generate LaTeX content with enhanced document metadata."""
+        import datetime
+        import os
+        now = datetime.datetime.now()
+        
+        # Get filename with extension and clean up title
+        source_filename = os.path.basename(self.path)
+        clean_title = source_filename.replace('-', ' ').replace('_', ' ')
+        
+        # Calculate document statistics
+        total_blocks = sum(len(page.blocks) for page in self.pages)
+        total_text_blocks = sum(
+            sum(1 for block in page.blocks if block.content_string.strip()) 
+            for page in self.pages
+        )
+        total_empty_blocks = total_blocks - total_text_blocks
+        
+        # Calculate average font height across document
+        all_heights = []
+        for page in self.pages:
+            for block in page.blocks:
+                if (block.font_info['avg_height'] > 0 and 
+                    block.font_info['confidence'] > 0.5 and
+                    block.content_string.strip()):
+                    all_heights.append(block.font_info['avg_height'])
+        
+        doc_avg_height = sum(all_heights) / len(all_heights) if all_heights else 0
+        
+        content = [
+            LatexText(f"% ===== DOCUMENT METADATA ====="),
+            LatexText(f"% generator: F-Instruct PDF Converter v{__version__}"),
+            LatexText(f"% source_file: {source_filename}"),
+            LatexText(f"% generated_timestamp: {now.isoformat()}"),
+            LatexText(f"% processing_mode: text_extraction_with_font_analysis"),
+            LatexText(f"% total_pages: {len(self.pages)}"),
+            LatexText(f"% total_blocks: {total_blocks}"),
+            LatexText(f"% text_blocks: {total_text_blocks}"),
+            LatexText(f"% empty_blocks: {total_empty_blocks}"),
+            LatexText(f"% document_avg_font_height: {doc_avg_height:.1f}"),
+            LatexText(f"% document_type: financial_regulatory_report"),
+            LatexText(f"% content_language: en"),
+            LatexText(f"% ocr_engine: easyocr"),
+            LatexText(f"% font_classification: enabled"),
+            LatexText(f"% ===== END METADATA ====="),
+            LatexText(''),
+            Command('title', arguments=[f'Document: {clean_title}']),  # Clean title here
+            Command('author', arguments=['F-Instruct Converter']),
+            Command('date', arguments=[now.strftime('%B %d, %Y')]),
+            Command('maketitle'),
+            LatexText(''),
+            Command('tableofcontents'),
+            Command('newpage'),
+            LatexText(''),
+        ]
+
+        console.print("Generating LaTeX content with font analysis...", style="status")
+        
+        # Sort pages by page number to ensure correct order
+        sorted_pages = sorted(self.pages, key=lambda p: p.page_number)
+        
+        # Process pages in correct order (sequential, not async)
+        for page in sorted_pages:
+            page_content = await page.async_generate_latex()
+            content.extend(page_content)
+
+        return [Environment(content, 'document')]
 
 
 class PDF:
@@ -696,9 +926,9 @@ class PDF:
         self.path = filepath
         self.name = Utils.get_file_name(filepath)
         self.data_folder = data_folder
-        self.output_dir = output_dir  # Store but don't create subdirectories
+        self.output_dir = output_dir  # Store but don't create subdirectories.
         
-        # Use temp directory for all intermediate files
+        # Use temp directory for all intermediate files.
         self.temp_asset_folder = safe_join(
             os.getcwd(), data_folder, f"{self.name}_temp"
         )
@@ -715,7 +945,7 @@ class PDF:
         instance.data_folder = data_folder
         instance.output_dir = output_dir
 
-        # Use temp directory only
+        # Use temp directory only.
         if os.path.isabs(data_folder):
             instance.temp_asset_folder = os.path.join(data_folder, f"{instance.name}_temp")
         else:
@@ -757,7 +987,7 @@ class PDF:
                     page_imgs.append(img)
                     progress.update(task, advance=1)
 
-            # Save page images to temp directory only
+            # Save page images to temp directory only.
             save_dir = safe_join(self.temp_asset_folder, "pages")
             os.makedirs(save_dir, exist_ok=True)
 
@@ -770,7 +1000,7 @@ class PDF:
                     if page_img is None:
                         continue
                     
-                    # Save to temp directory for debugging if needed
+                    # Save to temp directory for debugging if needed.
                     save_path = safe_join(save_dir, f"page_{page_num}.png")
                     await loop.run_in_executor(None, CV2.imwrite, save_path, page_img)
                     
@@ -821,17 +1051,17 @@ class PDF:
             
         try:
             page = doc.load_page(page_num)
-            # Get page as pixmap with good resolution
-            mat = FITZ.Matrix(2.0, 2.0)  # 2x zoom for better quality
+            # Get page as pixmap with good resolution.
+            mat = FITZ.Matrix(2.0, 2.0)  # 2x zoom for better quality.
             pix = page.get_pixmap(matrix=mat)
             
-            # Convert to OpenCV image
+            # Convert to OpenCV image.
             img_data = pix.tobytes("png")
             import io
             from PIL import Image
             img = Image.open(io.BytesIO(img_data))
             
-            # Convert PIL to OpenCV format
+            # Convert PIL to OpenCV format.
             import numpy as np
             opencv_img = np.array(img)
             opencv_img = CV2.cvtColor(opencv_img, CV2.COLOR_RGB2BGR)
@@ -842,36 +1072,58 @@ class PDF:
             console.print(f"Error extracting page {page_num}: {e}", style="danger")
             return None
 
-    # Add project_dir property
     @property
     def project_dir(self):
         """Return the project directory path."""
         return self.output_dir
 
     async def async_generate_latex(self):
-        """Generate LaTeX content with document metadata for pandas processing."""
+        """Generate LaTeX content with enhanced document metadata."""
         import datetime
         import os
         now = datetime.datetime.now()
         
-        # Enhanced metadata for pandas DataFrame processing
+        # Get filename with extension and clean up title
+        source_filename = os.path.basename(self.path)
+        clean_title = self.name.replace('-', ' ').replace('_', ' ')
+        
+        # Calculate document statistics
         total_blocks = sum(len(page.blocks) for page in self.pages)
+        total_text_blocks = sum(
+            sum(1 for block in page.blocks if block.content_string.strip()) 
+            for page in self.pages
+        )
+        total_empty_blocks = total_blocks - total_text_blocks
+        
+        # Calculate average font height across document
+        all_heights = []
+        for page in self.pages:
+            for block in page.blocks:
+                if (block.font_info['avg_height'] > 0 and 
+                    block.font_info['confidence'] > 0.5 and
+                    block.content_string.strip()):
+                    all_heights.append(block.font_info['avg_height'])
+        
+        doc_avg_height = sum(all_heights) / len(all_heights) if all_heights else 0
         
         content = [
             LatexText(f"% ===== DOCUMENT METADATA ====="),
             LatexText(f"% generator: F-Instruct PDF Converter v{__version__}"),
-            LatexText(f"% source_file: {os.path.basename(self.path)}"),
-            LatexText(f"% source_path: {self.path}"),
+            LatexText(f"% source_file: {source_filename}"),
             LatexText(f"% generated_timestamp: {now.isoformat()}"),
-            LatexText(f"% processing_mode: text_extraction_only"),
+            LatexText(f"% processing_mode: text_extraction_with_font_analysis"),
             LatexText(f"% total_pages: {len(self.pages)}"),
             LatexText(f"% total_blocks: {total_blocks}"),
+            LatexText(f"% text_blocks: {total_text_blocks}"),
+            LatexText(f"% empty_blocks: {total_empty_blocks}"),
+            LatexText(f"% document_avg_font_height: {doc_avg_height:.1f}"),
             LatexText(f"% document_type: financial_regulatory_report"),
             LatexText(f"% content_language: en"),
             LatexText(f"% ocr_engine: easyocr"),
+            LatexText(f"% font_classification: enabled"),
             LatexText(f"% ===== END METADATA ====="),
             LatexText(''),
-            Command('title', arguments=[f'Document: {self.name}']),
+            Command('title', arguments=[f'Document: {clean_title}']),  # Clean title here
             Command('author', arguments=['F-Instruct Converter']),
             Command('date', arguments=[now.strftime('%B %d, %Y')]),
             Command('maketitle'),
@@ -881,21 +1133,14 @@ class PDF:
             LatexText(''),
         ]
 
-        console.print("Generating LaTeX content...", style="status")
+        console.print("Generating LaTeX content with font analysis...", style="status")
         
-        tasks = [page.async_generate_latex() for page in self.pages]
-        if tasks:
-            with Progress(*progress_columns, console=console, transient=True) as progress:
-                task = progress.add_task("Processing pages", total=len(tasks))
-                results = []
-                for coro in asyncio.as_completed(tasks):
-                    page_content = await coro
-                    results.append(page_content)
-                    progress.update(task, advance=1)
-        else:
-            results = []
-
-        for page_content in results:
+        # Sort pages by page number to ensure correct order
+        sorted_pages = sorted(self.pages, key=lambda p: p.page_number)
+        
+        # Process pages in correct order (sequential, not async)
+        for page in sorted_pages:
+            page_content = await page.async_generate_latex()
             content.extend(page_content)
 
         return [Environment(content, 'document')]
@@ -924,16 +1169,16 @@ class TexFile:
     async def async_generate_tex_file(self, filename=None):
         """Write LaTeX file directly to output directory (no subdirectory)."""
         if filename is None:
-            # Output directly to specified output directory
+            # Output directly to specified output directory.
             filename = safe_join(self.pdf_obj.output_dir, f"{self.pdf_obj.name}.tex")
         
-        # Ensure output directory exists
+        # Ensure output directory exists.
         os.makedirs(os.path.dirname(filename), exist_ok=True)
         
         content = self._unpack_content(self.preamble + self.body)
         await Utils.async_write_all(filename, content)
         
-        # Clean up temp directory
+        # Clean up temp directory.
         await self._cleanup_temp_files()
 
     async def _cleanup_temp_files(self):
@@ -970,12 +1215,13 @@ class TexFile:
             Command('usepackage', arguments=['booktabs']),
             Command('usepackage', arguments=['xcolor']),
             Command('setlength', arguments=[Command('parindent'), '0pt']),
-            Command('setlength', arguments=[Command('parskip'), '0.8em']),  # More spacing
+            Command('setlength', arguments=[Command('parskip'), '0.8em']),
             LatexText('% ===== PANDAS PROCESSING OPTIMIZED ====='),
             LatexText('% This document structure is optimized for DataFrame conversion'),
             LatexText('% Each text block is clearly separated with metadata comments'),
-            LatexText('% Metadata format: % Page X, Block Y'),
+            LatexText('% Metadata format: % Page X, Block Y, Height: Z, Confidence: W, Type: T'),
             LatexText('% Section format: Page X for easy chunking'),
+            LatexText('% Font classification: main_title, section_title, subsection, emphasis, small_text, body_text'),
             LatexText('% ===== END OPTIMIZATION NOTES ====='),
             LatexText(''),
         ]
@@ -990,10 +1236,10 @@ class TexFile:
             elif isinstance(item, Command):
                 result.append(item.text)
             elif isinstance(item, Environment):
-                # Recursively unpack environment content
+                # Recursively unpack environment content.
                 result.extend(self._unpack_content(item.content))
             elif isinstance(item, list):
-                # Recursively unpack nested lists
+                # Recursively unpack nested lists.
                 result.extend(self._unpack_content(item))
             elif hasattr(item, 'text'):
                 result.append(item.text)
@@ -1022,7 +1268,7 @@ async def async_convert(source_path, output_dir='.', data=None):
     """Asynchronously convert a PDF file or directory of PDF files to LaTeX."""
     _ensure_dependencies_loaded()
     
-    # Use system temp directory if data not specified
+    # Use system temp directory if data not specified.
     if data is None:
         data = os.path.join(get_temp_dir(), "f_instruct_temp")
     
@@ -1041,17 +1287,17 @@ async def async_convert(source_path, output_dir='.', data=None):
         tasks = []
         for filename in pdf_files:
             file_path = os.path.join(source_path, filename)
-            # Create a unique output subdir for each file based on its name
+            # Create a unique output subdir for each file based on its name.
             file_output_dir_name = Utils.get_file_name(filename)
             file_output_dir = safe_join(output_dir, file_output_dir_name)
-            # Pass the specific output dir and the main data dir
+            # Pass the specific output dir and the main data dir.
             tasks.append(async_convert(file_path, file_output_dir, data))
 
         await asyncio.gather(*tasks)
 
     elif os.path.isfile(source_path) and source_path.lower().endswith('.pdf'):
         try:
-            # PDF.async_init now needs the data directory
+            # PDF.async_init now needs the data directory.
             pdf = await PDF.async_init(source_path, data, output_dir)
             if pdf:
                 tex_file = await TexFile.async_init(pdf)
@@ -1078,7 +1324,7 @@ async def async_convert(source_path, output_dir='.', data=None):
 
 def convert(source_path, output_dir='.', data=None):
     """Synchronously convert a PDF file or directory of PDF files to LaTeX."""
-    # Runs the async_convert function using asyncio.run()
+    # Runs the async_convert function using asyncio.run().
     asyncio.run(async_convert(source_path, output_dir, data))
 
 
@@ -1105,17 +1351,17 @@ def cli(input_path, output):
     if '--help' not in sys.argv and '-h' not in sys.argv:
         _ensure_dependencies_loaded()
 
-    # Create output directory if it doesn't exist
+    # Create output directory if it doesn't exist.
     os.makedirs(output, exist_ok=True)
     
-    # Use system temp directory for intermediate files
+    # Use system temp directory for intermediate files.
     temp_data_dir = os.path.join(get_temp_dir(), "f_instruct_temp")
 
     console.print(f"Input: {input_path}", style="info")
     console.print(f"Output directory: {os.path.abspath(output)}", style="info")
     console.print(f"PDF2LaTeX Converter v{__version__}", style="status")
 
-    # Smart detection of input type
+    # Smart detection of input type.
     if os.path.isfile(input_path):
         if input_path.lower().endswith('.pdf'):
             console.print("Detected: Single PDF file", style="dim cyan")
@@ -1144,7 +1390,7 @@ def cli(input_path, output):
         sys.exit(1)
 
 
-# --- Helper Functions for API usage ---
+# Helper functions for programmatic API usage.
 def convert_pdf(pdf_path, output_dir='.', data=None):
     """
     Convert a PDF file to LaTeX format.
