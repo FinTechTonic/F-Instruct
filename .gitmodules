@@ -1,6 +1,3 @@
 [submodule "common-domain-model"]
 	path = common-domain-model
 	url = https://github.com/finos/common-domain-model
-[submodule "digital-regulatory-reporting"]
-	path = digital-regulatory-reporting
-	url = https://github.com/FinTechTonic/digital-regulatory-reporting
