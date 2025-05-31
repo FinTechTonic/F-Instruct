@@ -234,37 +234,19 @@ class Utils:
 
     @staticmethod
     def escape_special_chars(s):
-        """Return string s with LaTeX special characters escaped."""
+        """Return string s with LaTeX special characters escaped using regex for better performance."""
         if not isinstance(s, str):
             s = str(s)
-
-        # Process character by character instead of using string replace.
-        result = []
-        for char in s:
-            if char == '&':
-                result.append(r'\&')
-            elif char == '%':
-                result.append(r'\%')
-            elif char == '$':
-                result.append(r'\$')
-            elif char == '#':
-                result.append(r'\#')
-            elif char == '_':
-                result.append(r'\_')
-            elif char == '{':
-                result.append(r'\{')
-            elif char == '}':
-                result.append(r'\}')
-            elif char == '~':
-                result.append(r'\textasciitilde{}')
-            elif char == '^':
-                result.append(r'\textasciicircum{}')
-            elif char == '\\':
-                result.append(r'\textbackslash{}')
-            else:
-                result.append(char)
-
-        return ''.join(result)
+    
+        # Use regex substitutions for common LaTeX special characters
+        s = re.sub(r'([&%$#_{}])', r'\\\1', s)
+    
+        # Handle characters that need special treatment
+        s = re.sub(r'~', r'\\textasciitilde{}', s)
+        s = re.sub(r'\^', r'\\textasciicircum{}', s)
+        s = re.sub(r'\\(?![{}$&%#_~^])', r'\\textbackslash{}', s)
+    
+        return s
 
     @staticmethod
     def make_strlist(lst):
@@ -664,16 +646,16 @@ class Block:
             return '', {'avg_height': 0, 'max_height': 0, 'min_height': 0, 'confidence': 0, 'text_count': 0, 'height_variance': 0}
 
     def generate_latex(self):
-        """Generate LaTeX representation with font-based formatting."""
+        """Generate LaTeX representation with standardized comment format."""
         page_num = getattr(self.parent_page, 'page_number', 'Unknown')
         
         # Get text classification.
         text_type = self._classify_text_type()
         
-        # Enhanced metadata with classification.
+        # Standardized metadata comment format
         metadata = [
-            LatexText(f"% Page {page_num}, Block {self.block_index}, " +
-                     f"Height: {self.font_info['avg_height']:.1f}, " +
+            LatexText(f"% BLOCK: Page {page_num}, Block {self.block_index}, " +
+                     f"Font: {self.font_info['avg_height']:.1f}, " +
                      f"Confidence: {self.font_info['confidence']:.2f}, " +
                      f"Type: {text_type}")
         ]
@@ -832,10 +814,13 @@ class Page:
         self.avg_font_height = sum(heights) / len(heights) if heights else 12.0  # Default fallback.
 
     async def async_generate_latex(self):
-        """Generate LaTeX content for this specific page only."""
-        # Add page header with metadata
+        """Generate LaTeX content for this specific page with standardized comments."""
+        # Add page header with standardized metadata
         content = [
-            LatexText(f"% ===== PAGE {self.page_number} ====="),
+            LatexText(f"% PAGE: === Page {self.page_number} ==="),
+            LatexText(f"% PAGE: Width: {self.width}, Height: {self.height}"),
+            LatexText(f"% PAGE: Block Count: {len(self.blocks)}"),
+            LatexText(f"% PAGE: Avg Font: {self.avg_font_height:.1f}"),
             LatexText(''),
             Command('section', arguments=[f'Page {self.page_number}']),
             LatexText('')
@@ -1166,8 +1151,22 @@ class TexFile:
         instance.body = await pdf_obj.async_generate_latex()
         return instance
 
+    # Add this function to TexFile class - it will perform a final pass to ensure special characters are escaped
+    def _final_escape_pass(self, content_list):
+        """Make a final pass to ensure all LaTeX special characters are properly escaped."""
+        escaped_content = []
+        for line in content_list:
+            # Skip lines that are LaTeX commands or comments
+            if line.strip().startswith('\\') or line.strip().startswith('%'):
+                escaped_content.append(line)
+            else:
+                # Apply escaping again to catch any missed special characters
+                escaped_content.append(Utils.escape_special_chars(line))
+        return escaped_content
+
+    # Modify async_generate_tex_file method in TexFile class
     async def async_generate_tex_file(self, filename=None):
-        """Write LaTeX file directly to output directory (no subdirectory)."""
+        """Write LaTeX file directly to output directory with additional escape pass."""
         if filename is None:
             # Output directly to specified output directory.
             filename = safe_join(self.pdf_obj.output_dir, f"{self.pdf_obj.name}.tex")
@@ -1175,7 +1174,12 @@ class TexFile:
         # Ensure output directory exists.
         os.makedirs(os.path.dirname(filename), exist_ok=True)
         
+        # First unpack the content
         content = self._unpack_content(self.preamble + self.body)
+        
+        # Then apply final escape pass to catch any missed special characters
+        content = self._final_escape_pass(content)
+        
         await Utils.async_write_all(filename, content)
         
         # Clean up temp directory.
