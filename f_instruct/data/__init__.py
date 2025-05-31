@@ -12,8 +12,8 @@ Usage:
     uv run f_instruct/data/converter.py --input ./documents --output ./processed_data
     
     # Programmatic usage for workflow integration
-    from f_instruct.data import ingest_documents
-    ingest_documents("./input_documents", "./processed_data")
+    from f_instruct.data import ingest_data
+    ingest_data("./input_documents", "./processed_data")
 """
 
 from __future__ import annotations
@@ -50,10 +50,10 @@ def ingest_data(input_path, output_dir):
         
     Example:
         # Ingest a single document
-        ingest_documents("financial_report.pdf", "./processed_data")
+        ingest_data("financial_report.pdf", "./processed_data")
         
         # Ingest a directory of documents
-        ingest_documents("./quarterly_reports", "./processed_data")
+        ingest_data("./quarterly_reports", "./processed_data")
     """
     try:
         console.print(f"🔄 Starting document ingestion workflow", style="status")

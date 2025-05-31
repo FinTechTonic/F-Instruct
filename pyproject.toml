@@ -12,6 +12,7 @@ dependencies = [
     "easyocr>=1.7.2",
     "numpy>=2.2.5",
     "opencv-python>=4.11.0.86",
+    "pillow>=11.2.1",
     "pymupdf>=1.25.5",
     "rich>=14.0.0",
     "torch>=2.7.0",

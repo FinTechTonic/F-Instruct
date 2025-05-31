@@ -66,7 +66,7 @@ def safe_join(base, *paths):
 # --- Dependency Loading Function ---
 def _ensure_dependencies_loaded():
     """Loads heavy dependencies and initializes READER if not already done."""
-    global READER, CV2, FITZ, PLT, NP, TORCH, EASYOCR, IS_LOADED
+    global READER, CV2, FITZ, NP, TORCH, EASYOCR, IS_LOADED
 
     # Skip if already loaded
     if IS_LOADED:
@@ -92,7 +92,7 @@ def _ensure_dependencies_loaded():
 
     except ImportError as e:
         console.print(f"Error importing dependencies: {e}", style="danger")
-        console.print("Please ensure all required libraries (OpenCV, PyMuPDF, Matplotlib, NumPy, PyTorch, EasyOCR) are installed.", style="warning")
+        console.print("Please ensure all required libraries (OpenCV, PyMuPDF, NumPy, PyTorch, EasyOCR) are installed.", style="warning")
         sys.exit(1)
 
 
@@ -514,16 +514,15 @@ def find_content_blocks(img):
 
 # --- PDF Processing Classes ---
 class Block:
-    """Represents a content block within a Page (text or figure)."""
+    """Represents a content block within a Page (text only - no figure extraction)."""
 
-    def __init__(self, bbox, parent_page):
-        """Initialize a block with its bounding box and parent page."""
+    def __init__(self, bbox, parent_page, block_index):
+        """Initialize a block with its bounding box, parent page, and index."""
         self.parent_page = parent_page
         self.bbox = bbox
-        self.block = self._make_block(
-            bbox, parent_page.page_img, parent_page.height
-        )
-        self.block_type, self.content_string = self._determine_content()
+        self.block_index = block_index
+        self.block = self._make_block(bbox, parent_page.page_img, parent_page.height)
+        self.content_string = self._determine_content()
 
     def _make_block(self, bbox, page_img=None, height=None):
         """Extract the block image from the page."""
@@ -553,10 +552,11 @@ class Block:
         return NP.zeros((10, 10, 3), dtype=NP.uint8)
 
     def _determine_content(self):
-        """Determine if the block is text or figure using OCR."""
+        """Extract text content using OCR - treat everything as potential text."""
         if READER is None:
             console.print("Error: EasyOCR Reader not initialized.", style="danger")
-            return (1, '--Block Type is Figure (OCR Not Loaded)--')
+            return '--OCR Not Available--'
+        
         try:
             if (
                 self.block is None
@@ -564,176 +564,64 @@ class Block:
                 or self.block.shape[0] < 5
                 or self.block.shape[1] < 5
             ):
-                return (1, '--Block Type is Figure (Too small)--')
+                return '--Block too small for OCR--'
 
-            results = READER.readtext(self.block, paragraph=True)
-
-            if results:
-                # Fix: EasyOCR returns list of tuples (bbox, text, confidence)
-                text_parts = []
-                for result in results:
-                    if isinstance(result, (list, tuple)) and len(result) >= 2:
-                        # result[1] is the text portion
-                        text_parts.append(str(result[1]))
-                s = " ".join(text_parts)
-
-                if s and not s.isspace() and len(s) > 3:
-                    return (0, s)
-
-            return (1, '--Block Type is Figure--')
-
-        except Exception as e:  # pylint: disable=broad-except
-            console.print(f"Error during OCR processing: {e}", style="danger")
-            return (1, f'--Block Type is Figure (OCR Error: {str(e)})--')
-
-    async def async_determine_content(self, block_img):
-        """Asynchronous version of determine_content for parallel processing."""
-        if READER is None:
-            console.print("Error: EasyOCR Reader not initialized.", style="danger")
-            self.block_type, self.content_string = 1, '--Block Type is Figure (OCR Not Loaded)--'
-            return (1, '--Block Type is Figure (OCR Not Loaded)--')
-        
-        loop = asyncio.get_running_loop()
-        try:
-            if (
-                block_img is None or block_img.size == 0 or
-                block_img.shape[0] < 5 or block_img.shape[1] < 5
-            ):
-                self.block_type, self.content_string = 1, '--Block Type is Figure (Too small)--'
-                return (1, '--Block Type is Figure (Too small)--')
-            
-            # Fix: Add proper function wrapper for thread executor
-            def _run_ocr():
-                if READER is None:
-                    return []
-                return READER.readtext(block_img, paragraph=True)
-            
-            results = await loop.run_in_executor(None, _run_ocr)
-            
-            if results:
-                # Fix: EasyOCR returns list of tuples (bbox, text, confidence)
-                text_parts = []
-                for result in results:
-                    if isinstance(result, (list, tuple)) and len(result) >= 2:
-                        # result[1] is the text portion
-                        text_parts.append(str(result[1]))
-                s = " ".join(text_parts)
-                if s and not s.isspace() and len(s) > 3:
-                    self.block_type, self.content_string = 0, s
-                    return (0, s)
-            self.block_type, self.content_string = 1, '--Block Type is Figure--'
-            return (1, '--Block Type is Figure--')
-        except Exception as e:  # pylint: disable=broad-except
-            console.print(
-                f"Error during async OCR processing: {e}",
-                style="danger"
+            # More aggressive OCR settings for text tables and fancy formatting
+            results = READER.readtext(
+                self.block, 
+                paragraph=True,
+                width_ths=0.7,  # Lower threshold for text detection
+                height_ths=0.7,
+                detail=1        # Get bounding boxes too
             )
-            self.block_type, self.content_string = 1, f'--Block Type is Figure (OCR Error: {str(e)})--'
-            return (1, f'--Block Type is Figure (OCR Error: {str(e)})--')
+
+            if results:
+                text_parts = []
+                for result in results:
+                    if isinstance(result, (list, tuple)) and len(result) >= 2:
+                        text_parts.append(str(result[1]).strip())
+                
+                # Join with spaces and clean up
+                text = " ".join(text_parts)
+                if text and not text.isspace():
+                    return text
+            
+            # If no text found, still return a placeholder rather than treating as figure
+            return f'--No readable text detected in block {self.block_index}--'
+
+        except Exception as e:
+            console.print(f"Error during OCR processing: {e}", style="danger")
+            return f'--OCR Error in block {self.block_index}: {str(e)}--'
 
     def generate_latex(self):
-        """Generate LaTeX representation for this block."""
-        if CV2 is None:
-            console.print("Error: OpenCV not loaded.", style="danger")
+        """Generate LaTeX representation for this text block with metadata."""
+        if not self.content_string or self.content_string.isspace():
             return []
         
-        match self.block_type:
-            case 0:
-                if self.content_string and not self.content_string.isspace():
-                    return [
-                        LatexText(self.content_string),
-                        Command('vspace', arguments=['10pt'])
-                    ]
-                return []
-            case 1:
-                figure_dir = self.parent_page.parent_pdf.figures_dir
-                fig_filename = (
-                    f"figure_{self.parent_page.parent_pdf.num_figs}.png"
-                )
-                fig_path = safe_join(figure_dir, fig_filename)
-
-                try:
-                    os.makedirs(figure_dir, exist_ok=True)
-                    # Fix: Ensure block is not None before writing
-                    if self.block is not None:
-                        success = CV2.imwrite(fig_path, self.block)
-                        if success:
-                            self.parent_page.parent_pdf.num_figs += 1
-                            relative_fig_path = f"figures/{fig_filename}"
-                            fig_env_content = [
-                                Command('centering'),
-                                Command(
-                                    'includegraphics',
-                                    arguments=[relative_fig_path],
-                                    options=[('width', r'0.8\textwidth')]
-                                )
-                            ]
-                            return [
-                                Environment(fig_env_content, 'figure', options=[('', 'H')])
-                            ]
-                except Exception as e:  # pylint: disable=broad-except
-                    console.print(
-                        f"Error saving figure {fig_path}: {e}",
-                        style="danger"
-                    )
-                    return []
-            case _:
-                return []
+        # Simplified block metadata - just page and block ID
+        page_num = getattr(self.parent_page, 'page_number', 'Unknown')
+        
+        return [
+            LatexText(f"% Page {page_num}, Block {self.block_index}"),
+            LatexText(self.content_string),
+            LatexText(''),  # Add blank line for readability
+        ]
 
 
 class Page:
-    """Page object representing a PDF page containing Block objects."""
+    """Page object representing a PDF page containing text blocks only."""
 
-    def __init__(self, page_img, pdf):
-        """Initialize a page with its image and parent PDF."""
+    def __init__(self, page_img, pdf, page_number):
+        """Initialize a page with its image, parent PDF, and page number."""
         self.page_img = page_img
         self.parent_pdf = pdf
+        self.page_number = page_number
         self.height = page_img.shape[0]
         self.width = page_img.shape[1]
         self.blocks = []
 
-    async def async_determine_content(self, block_img):
-        """Determine content type for a block image."""
-        if READER is None:
-            console.print("Error: EasyOCR Reader not initialized.", style="danger")
-            return (1, '--Block Type is Figure (OCR Not Loaded)--')
-        
-        loop = asyncio.get_running_loop()
-        try:
-            if (
-                block_img is None or block_img.size == 0 or
-                block_img.shape[0] < 5 or block_img.shape[1] < 5
-            ):
-                return (1, '--Block Type is Figure (Too small)--')
-            
-            # Fix: Add proper function wrapper for thread executor
-            def _run_ocr():
-                if READER is None:
-                    return []
-                return READER.readtext(block_img, paragraph=True)
-            
-            results = await loop.run_in_executor(None, _run_ocr)
-            
-            if results:
-                # Fix: EasyOCR returns list of tuples (bbox, text, confidence)
-                text_parts = []
-                for result in results:
-                    if isinstance(result, (list, tuple)) and len(result) >= 2:
-                        # result[1] is the text portion
-                        text_parts.append(str(result[1]))
-                s = " ".join(text_parts)
-                if s and not s.isspace() and len(s) > 3:
-                    return (0, s)
-            return (1, '--Block Type is Figure--')
-        except Exception as e:  # pylint: disable=broad-except
-            console.print(
-                f"Error during async OCR processing: {e}",
-                style="danger"
-            )
-            return (1, f'--Block Type is Figure (OCR Error: {str(e)})--')
-
     async def async_generate_blocks(self, page_img, parent_pdf_instance):
-        """Asynchronously generate blocks from page image."""
+        """Asynchronously generate text blocks from page image."""
         loop = asyncio.get_running_loop()
 
         with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
@@ -752,75 +640,71 @@ class Page:
             {
                 'parent_pdf': parent_pdf_instance,
                 'page_img': page_img,
-                'height': page_height
+                'height': page_height,
+                'page_number': self.page_number
             }
         )()
 
-        for bbox in bboxes:
-            async def process_single_block(bbox):
+        for block_idx, bbox in enumerate(bboxes):
+            async def process_single_block(bbox, idx):
                 block = Block.__new__(Block)
                 block.parent_page = temp_page_context
                 block.bbox = bbox
+                block.block_index = idx
 
                 with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-                    # Fix: Use proper method call with self parameter
                     block_img_result = await loop.run_in_executor(
                         executor,
                         lambda: block._make_block(bbox, page_img, page_height)
                     )
 
                 block.block = block_img_result
-
-                # Fix: Use the Page instance method instead of non-existent Block method
-                block_type, content_string = await self.async_determine_content(
-                    block.block
-                )
-                block.block_type = block_type
-                block.content_string = content_string
-
+                block.content_string = block._determine_content()
                 return block
 
-            block_tasks.append(process_single_block(bbox))
+            block_tasks.append(process_single_block(bbox, block_idx))
 
         blocks = await asyncio.gather(*block_tasks)
         return blocks
 
     async def async_generate_latex(self):
-        """Asynchronously generate LaTeX content for the page."""
-        content = []
+        """Asynchronously generate LaTeX content for the page with page metadata."""
+        content = [
+            Command('newpage'),
+            LatexText(f"% ===== PAGE {self.page_number} START ====="),
+            Command('section*', arguments=[f'Page {self.page_number}']),
+            LatexText(f"% blocks_count: {len(self.blocks)}"),
+            LatexText(''),  # Blank line
+        ]
+        
         for block in self.blocks:
             content.extend(block.generate_latex())
-        return content + [
-            Command('par'),
-            Command('vspace', arguments=['10pt'])
-        ]
+        
+        content.extend([
+            LatexText(f"% ===== PAGE {self.page_number} END ====="),
+            LatexText(''),  # Blank line
+        ])
+        
+        return content
 
 
 class PDF:
-    """PDF Object representing a PDF document containing Page objects."""
+    """PDF Object representing a PDF document - simplified for text-only processing."""
+    
     def __init__(self, filepath, data_folder=DEFAULT_DATA_FOLDER, output_dir='.'):
         """Initialize a PDF object from a file path."""
         self.path = filepath
         self.name = Utils.get_file_name(filepath)
         self.data_folder = data_folder
-
-        # Use output_dir as the base for project structure
-        project_paths = Utils.create_latex_project_structure(output_dir, self.name)
-        self.project_dir = project_paths["project_dir"]
-        self.figures_dir = project_paths["figures_dir"]
-        self.build_dir = project_paths["build_dir"]
-
-        self.asset_folder = self.figures_dir
-
-        # Place temp assets relative to data_folder, ensuring safety
+        self.output_dir = output_dir  # Store but don't create subdirectories
+        
+        # Use temp directory for all intermediate files
         self.temp_asset_folder = safe_join(
-            os.getcwd(), data_folder, f"{self.name}_assets"
+            os.getcwd(), data_folder, f"{self.name}_temp"
         )
         os.makedirs(self.temp_asset_folder, exist_ok=True)
-
-        self.num_figs = 0
+        
         self.pages = []
-        self.embedded_images = []
 
     @classmethod
     async def async_init(cls, filepath, data_folder=DEFAULT_DATA_FOLDER, output_dir='.'):
@@ -829,80 +713,35 @@ class PDF:
         instance.path = filepath
         instance.name = Utils.get_file_name(filepath)
         instance.data_folder = data_folder
+        instance.output_dir = output_dir
 
-        project_paths = Utils.create_latex_project_structure(
-            output_dir, instance.name
-        )
-        instance.project_dir = project_paths["project_dir"]
-        instance.figures_dir = project_paths["figures_dir"]
-        instance.build_dir = project_paths["build_dir"]
-
-        instance.asset_folder = instance.figures_dir
-
-        # Fix: If data_folder is absolute, use it directly for temp_asset_folder
+        # Use temp directory only
         if os.path.isabs(data_folder):
-            instance.temp_asset_folder = os.path.join(data_folder, f"{instance.name}_assets")
+            instance.temp_asset_folder = os.path.join(data_folder, f"{instance.name}_temp")
         else:
             instance.temp_asset_folder = safe_join(
-                os.getcwd(), data_folder, f"{instance.name}_assets"
+                os.getcwd(), data_folder, f"{instance.name}_temp"
             )
         os.makedirs(instance.temp_asset_folder, exist_ok=True)
 
-        instance.num_figs = 0
-
-        console.print(
-            f"Extracting embedded images from {instance.name}...",
-            style="status"
-        )
-        instance.embedded_images = await Utils.extract_images_from_pdf(
-            filepath, instance.figures_dir
-        )
-        console.print(
-            f"Extracted {len(instance.embedded_images)} embedded images",
-            style="info"
-        )
-
+        console.print(f"Processing PDF: {instance.name}", style="status")
         instance.pages = await instance._async_pdf_to_pages()
         return instance
-
-    def _extract_page_image(self, doc, page_num):
-        """Extracts a single page image from the PDF document."""
-        if NP is None or CV2 is None:
-            console.print("Error: NumPy or OpenCV not loaded.", style="danger")
-            return None
-        try:
-            page = doc.load_page(page_num)
-            pix = page.get_pixmap(dpi=300)
-            img = NP.frombuffer(
-                pix.samples, dtype=NP.uint8
-            ).reshape(pix.height, pix.width, pix.n)
-            if pix.n == 4:
-                img = CV2.cvtColor(img, CV2.COLOR_RGBA2BGR)
-            elif pix.n == 3:
-                img = CV2.cvtColor(img, CV2.COLOR_RGB2BGR)
-            elif pix.n == 1:
-                img = CV2.cvtColor(img, CV2.COLOR_GRAY2BGR)
-            return img
-        except Exception as e:  # pylint: disable=broad-except
-            console.print(
-                f"Error extracting image for page {page_num}: {e}",
-                style="danger"
-            )
-            return None
 
     async def _async_pdf_to_pages(self):
         """Asynchronously convert PDF file to a list of Page objects."""
         if FITZ is None or CV2 is None:
             console.print("Error: PyMuPDF or OpenCV not loaded.", style="danger")
             return []
+        
         loop = asyncio.get_running_loop()
         path = self.path
 
         doc = await loop.run_in_executor(None, FITZ.open, path)
         page_imgs = []
+        
         try:
             extract_tasks = []
-            # Fix: Use range(len(doc)) instead of enumerate(doc)
             for page_num in range(len(doc)):
                 extract_tasks.append(loop.run_in_executor(
                     None,
@@ -918,45 +757,34 @@ class PDF:
                     page_imgs.append(img)
                     progress.update(task, advance=1)
 
-            save_dir = safe_join(self.build_dir, "pages")
+            # Save page images to temp directory only
+            save_dir = safe_join(self.temp_asset_folder, "pages")
             os.makedirs(save_dir, exist_ok=True)
-            console.print("Saving page images asynchronously...", style="status")
 
-            with Progress(*progress_columns, console=console, transient=True) as progress:
-                task = progress.add_task("Saving pages", total=len(page_imgs))
-                with concurrent.futures.ThreadPoolExecutor(
-                    max_workers=MAX_WORKERS
-                ) as executor:
-                    save_futures = []
-                    for i, img in enumerate(page_imgs):
-                        if img is None:
-                            continue
-                        save_path = safe_join(save_dir, f"page_{i+1}.png")
-                        save_futures.append(loop.run_in_executor(
-                            executor,
-                            CV2.imwrite,
-                            save_path, img
-                        ))
-                    for coro in asyncio.as_completed(save_futures):
-                        await coro
-                        progress.update(task, advance=1)
-
-            console.print("Segmenting pages asynchronously...", style="status")
+            console.print("Processing pages for text extraction...", style="status")
             pages = []
+            
             with Progress(*progress_columns, console=console, transient=True) as progress:
-                task = progress.add_task("Segmenting", total=len(page_imgs))
-                for page_img in page_imgs:
+                task = progress.add_task("Creating pages", total=len(page_imgs))
+                for page_num, page_img in enumerate(page_imgs, 1):
                     if page_img is None:
                         continue
+                    
+                    # Save to temp directory for debugging if needed
+                    save_path = safe_join(save_dir, f"page_{page_num}.png")
+                    await loop.run_in_executor(None, CV2.imwrite, save_path, page_img)
+                    
                     page = Page.__new__(Page)
                     page.page_img = page_img
                     page.parent_pdf = self
+                    page.page_number = page_num
                     page.height = page_img.shape[0]
                     page.width = page_img.shape[1]
                     page.blocks = []
                     pages.append(page)
                     progress.update(task, advance=1)
 
+            # Process blocks for all pages
             block_tasks = [
                 page.async_generate_blocks(page.page_img, self)
                 for page in pages
@@ -964,10 +792,7 @@ class PDF:
 
             if block_tasks:
                 with Progress(*progress_columns, console=console, transient=True) as progress:
-                    task = progress.add_task(
-                        "Block segmentation",
-                        total=len(block_tasks)
-                    )
+                    task = progress.add_task("Extracting text blocks", total=len(block_tasks))
                     blocks_results = []
                     for coro in asyncio.as_completed(block_tasks):
                         result = await coro
@@ -976,31 +801,89 @@ class PDF:
             else:
                 blocks_results = []
 
-            page_idx = 0
+            # Assign blocks to pages
             for i, page in enumerate(pages):
-                if page.page_img is not None:
-                    if page_idx < len(blocks_results):
-                        page.blocks = blocks_results[page_idx]
-                        page_idx += 1
-                    else:
-                        console.print(
-                            f"Warning: Mismatch in block results for page {i}",
-                            style="warning"
-                        )
-                        page.blocks = []
+                if i < len(blocks_results):
+                    page.blocks = blocks_results[i]
+                else:
+                    page.blocks = []
 
             return pages
 
         finally:
             await loop.run_in_executor(None, doc.close)
 
+    def _extract_page_image(self, doc, page_num):
+        """Extract a single page as an image."""
+        if FITZ is None or CV2 is None:
+            console.print("Error: PyMuPDF or OpenCV not loaded.", style="danger")
+            return None
+            
+        try:
+            page = doc.load_page(page_num)
+            # Get page as pixmap with good resolution
+            mat = FITZ.Matrix(2.0, 2.0)  # 2x zoom for better quality
+            pix = page.get_pixmap(matrix=mat)
+            
+            # Convert to OpenCV image
+            img_data = pix.tobytes("png")
+            import io
+            from PIL import Image
+            img = Image.open(io.BytesIO(img_data))
+            
+            # Convert PIL to OpenCV format
+            import numpy as np
+            opencv_img = np.array(img)
+            opencv_img = CV2.cvtColor(opencv_img, CV2.COLOR_RGB2BGR)
+            
+            return opencv_img
+            
+        except Exception as e:
+            console.print(f"Error extracting page {page_num}: {e}", style="danger")
+            return None
+
+    # Add project_dir property
+    @property
+    def project_dir(self):
+        """Return the project directory path."""
+        return self.output_dir
+
     async def async_generate_latex(self):
-        """Asynchronously generate LaTeX content for the PDF."""
-        content = []
-        console.print("Generating LaTeX asynchronously...", style="status")
+        """Generate LaTeX content with document metadata for pandas processing."""
+        import datetime
+        import os
+        now = datetime.datetime.now()
+        
+        # Enhanced metadata for pandas DataFrame processing
+        total_blocks = sum(len(page.blocks) for page in self.pages)
+        
+        content = [
+            LatexText(f"% ===== DOCUMENT METADATA ====="),
+            LatexText(f"% generator: F-Instruct PDF Converter v{__version__}"),
+            LatexText(f"% source_file: {os.path.basename(self.path)}"),
+            LatexText(f"% source_path: {self.path}"),
+            LatexText(f"% generated_timestamp: {now.isoformat()}"),
+            LatexText(f"% processing_mode: text_extraction_only"),
+            LatexText(f"% total_pages: {len(self.pages)}"),
+            LatexText(f"% total_blocks: {total_blocks}"),
+            LatexText(f"% document_type: financial_regulatory_report"),
+            LatexText(f"% content_language: en"),
+            LatexText(f"% ocr_engine: easyocr"),
+            LatexText(f"% ===== END METADATA ====="),
+            LatexText(''),
+            Command('title', arguments=[f'Document: {self.name}']),
+            Command('author', arguments=['F-Instruct Converter']),
+            Command('date', arguments=[now.strftime('%B %d, %Y')]),
+            Command('maketitle'),
+            LatexText(''),
+            Command('tableofcontents'),
+            Command('newpage'),
+            LatexText(''),
+        ]
 
+        console.print("Generating LaTeX content...", style="status")
+        
         tasks = [page.async_generate_latex() for page in self.pages]
-
         if tasks:
             with Progress(*progress_columns, console=console, transient=True) as progress:
                 task = progress.add_task("Processing pages", total=len(tasks))
@@ -1015,35 +898,13 @@ class PDF:
         for page_content in results:
             content.extend(page_content)
 
-        if self.embedded_images:
-            content.append(Command('section', arguments=['Embedded Images']))
-            content.append(
-                LatexText('The following images were embedded in the PDF:')
-            )
-            content.append(Command('vspace', arguments=['10pt']))
-
-            for idx, img_path in enumerate(self.embedded_images):
-                img_filename = os.path.basename(img_path)
-                fig_env_content = [
-                    Command('centering'),
-                    Command(
-                        'includegraphics',
-                        arguments=[f"figures/{img_filename}"],
-                        options=[('width', r'0.8\textwidth')]
-                    ),
-                    Command('caption', arguments=[f"Embedded image {idx+1}"])
-                ]
-                content.append(
-                    Environment(fig_env_content, 'figure', options=[('', 'H')])
-                )
-
         return [Environment(content, 'document')]
 
 
 class TexFile:
-    """Class representing a LaTeX file with preamble and body content."""
+    """Class representing a LaTeX file - simplified output to specified directory."""
+    
     def __init__(self, pdf_obj, use_default_preamble=True):
-        """Initialize a TexFile object from a PDF object."""
         self.pdf_obj = pdf_obj
         self.preamble = (
             self._make_default_preamble() if use_default_preamble else []
@@ -1052,7 +913,6 @@ class TexFile:
 
     @classmethod
     async def async_init(cls, pdf_obj, use_default_preamble=True):
-        """Asynchronous initializer for TexFile."""
         instance = cls.__new__(cls)
         instance.pdf_obj = pdf_obj
         instance.preamble = (
@@ -1062,60 +922,85 @@ class TexFile:
         return instance
 
     async def async_generate_tex_file(self, filename=None):
-        """Asynchronously write the LaTeX file content to the specified file."""
+        """Write LaTeX file directly to output directory (no subdirectory)."""
         if filename is None:
-            filename = safe_join(self.pdf_obj.project_dir, f"{self.pdf_obj.name}.tex")
+            # Output directly to specified output directory
+            filename = safe_join(self.pdf_obj.output_dir, f"{self.pdf_obj.name}.tex")
+        
+        # Ensure output directory exists
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
+        
         content = self._unpack_content(self.preamble + self.body)
         await Utils.async_write_all(filename, content)
+        
+        # Clean up temp directory
+        await self._cleanup_temp_files()
 
-    def generate_tex_file(self, filename):
-        """Write the LaTeX file content to the specified file."""
-        content = self._unpack_content(self.preamble + self.body)
-        Utils.write_all(filename, content)
-
-    @staticmethod
-    def _unpack_content(lst):
-        """Convert LaTeX objects to strings suitable for writing to a file."""
-        content = []
-        for obj in lst:
-            if isinstance(obj, Environment):
-                env_content = TexFile._unpack_content(obj.content)
-                content.extend(env_content)
-            elif hasattr(obj, 'text'):
-                content.append(obj.text)
-            else:
-                content.append(str(obj))
-        return [
-            s.replace("\x0c", Command('vspace', arguments=['10pt']).text)
-            for s in content if s
-        ]
-
-    def add_to_preamble(self, obj):
-        """Add a LaTeX object to the preamble."""
-        self.preamble.append(obj)
+    async def _cleanup_temp_files(self):
+        """Clean up temporary files after processing."""
+        import shutil
+        loop = asyncio.get_running_loop()
+        
+        try:
+            if os.path.exists(self.pdf_obj.temp_asset_folder):
+                await loop.run_in_executor(
+                    None, 
+                    shutil.rmtree, 
+                    self.pdf_obj.temp_asset_folder
+                )
+                console.print(f"Cleaned up temporary files", style="dim cyan")
+        except Exception as e:
+            console.print(f"Warning: Could not clean up temp files: {e}", style="warning")
 
     @staticmethod
     def _make_default_preamble():
-        """Create default preamble for LaTeX document."""
+        """Enhanced preamble optimized for pandas processing."""
         return [
             Command(
                 'documentclass',
                 arguments=['article'],
-                options=[('', 'a4paper'), ('', '12pt')]
+                options=[('', 'a4paper'), ('', '11pt')]
             ),
             Command('usepackage', arguments=['amsmath']),
             Command('usepackage', arguments=['amssymb']),
-            Command('usepackage', arguments=['graphicx']),
-            Command(
-                'usepackage',
-                arguments=['geometry'],
-                options=[('margin', '1in')]
-            ),
+            Command('usepackage', arguments=['geometry'], options=[('margin', '1in')]),
             Command('usepackage', arguments=['float']),
-            Command('usepackage', arguments=['caption']),
+            Command('usepackage', arguments=['longtable']),
+            Command('usepackage', arguments=['array']),
+            Command('usepackage', arguments=['booktabs']),
+            Command('usepackage', arguments=['xcolor']),
             Command('setlength', arguments=[Command('parindent'), '0pt']),
-            Command('setlength', arguments=[Command('parskip'), '1em']),
+            Command('setlength', arguments=[Command('parskip'), '0.8em']),  # More spacing
+            LatexText('% ===== PANDAS PROCESSING OPTIMIZED ====='),
+            LatexText('% This document structure is optimized for DataFrame conversion'),
+            LatexText('% Each text block is clearly separated with metadata comments'),
+            LatexText('% Metadata format: % Page X, Block Y'),
+            LatexText('% Section format: Page X for easy chunking'),
+            LatexText('% ===== END OPTIMIZATION NOTES ====='),
+            LatexText(''),
         ]
+
+    def _unpack_content(self, content_list):
+        """Unpack nested LaTeX content into flat string list."""
+        result = []
+        
+        for item in content_list:
+            if isinstance(item, LatexText):
+                result.append(item.text)
+            elif isinstance(item, Command):
+                result.append(item.text)
+            elif isinstance(item, Environment):
+                # Recursively unpack environment content
+                result.extend(self._unpack_content(item.content))
+            elif isinstance(item, list):
+                # Recursively unpack nested lists
+                result.extend(self._unpack_content(item))
+            elif hasattr(item, 'text'):
+                result.append(item.text)
+            else:
+                result.append(str(item))
+        
+        return result
 
 
 def print_status(msg):
