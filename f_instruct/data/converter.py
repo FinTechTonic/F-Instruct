@@ -10,17 +10,18 @@ and handling non-textual elements as figures.
 Uses asyncio and ThreadPoolExecutor for parallel processing.
 
 Usage:
-    python converter.py --file path/to/file.pdf
-    python converter.py --path path/to/directory
-    python converter.py --help
+    uv run f_instruct/data/converter.py --input path/to/file.pdf
+    uv run f_instruct/data/converter.py --input path/to/directory
+    uv run f_instruct/data/converter.py --help
 """
 
 import os
 import re
 import sys
 import asyncio
+import tempfile
 import concurrent.futures
-from typing import Optional, List, Any
+from typing import Optional, Any
 
 import click
 from rich.console import Console
@@ -33,11 +34,6 @@ from rich.progress import (
 )
 from rich.theme import Theme
 
-import cv2
-import fitz  # PyMuPDF
-import matplotlib.pyplot as plt
-import numpy as np
-import torch
 import easyocr
 
 __version__ = "1.0.0"
@@ -46,7 +42,6 @@ __version__ = "1.0.0"
 READER: Optional[easyocr.Reader] = None
 CV2: Optional[Any] = None
 FITZ: Optional[Any] = None
-PLT: Optional[Any] = None
 NP: Optional[Any] = None
 TORCH: Optional[Any] = None
 EASYOCR: Optional[Any] = None
@@ -80,14 +75,12 @@ def _ensure_dependencies_loaded():
     try:
         import cv2 as cv2_module
         import fitz as fitz_module
-        import matplotlib.pyplot as plt_module
         import numpy as np_module
         import torch as torch_module
         import easyocr as easyocr_module
 
         CV2 = cv2_module
         FITZ = fitz_module
-        PLT = plt_module
         NP = np_module
         TORCH = torch_module
         EASYOCR = easyocr_module
@@ -137,7 +130,11 @@ progress_columns = [
 
 
 # --- Constants ---
-DEFAULT_DATA_FOLDER = "data"
+def get_temp_dir():
+    """Get system temporary directory for intermediate files."""
+    return tempfile.gettempdir()
+
+DEFAULT_DATA_FOLDER = os.path.join(get_temp_dir(), "f_instruct_data")
 MIN_TEXT_SIZE = 10
 HORIZONTAL_POOLING = 25
 MAX_WORKERS = min(32, (os.cpu_count() or 1) + 4)
@@ -178,31 +175,6 @@ class Utils:
             white_count = NP.sum(white_pixels)
             imsize = img.size
         return white_count / imsize if imsize > 0 else 0
-
-    @staticmethod
-    def simple_plot(img):
-        """Plot img using matplotlib.pyplot"""
-        if PLT is None or CV2 is None:
-            console.print("Error: Matplotlib or OpenCV not loaded.", style="danger")
-            return
-        PLT.imshow(
-            CV2.cvtColor(img, CV2.COLOR_BGR2RGB) if len(img.shape) == 3 else img
-        )
-        PLT.show()
-
-    @staticmethod
-    def plot_all_boxes(img, boxes):
-        """Plots all rectangles from boxes onto img."""
-        if CV2 is None or NP is None:
-            console.print("Error: OpenCV or NumPy not loaded.", style="danger")
-            return img  # Return original image on error
-        copy = img.copy()
-        alpha = 0.4
-        for box in boxes:
-            x, y, w, h = box.x, box.y, box.width, box.height
-            rand_color = list(NP.random.random(size=3) * 256)
-            CV2.rectangle(copy, (x, y), (x + w, y + h), rand_color, -1)
-        return CV2.addWeighted(copy, alpha, img, 1 - alpha, 0)
 
     @staticmethod
     def remove_duplicate_bboxes(boxes):
@@ -1161,12 +1133,18 @@ def print_error(msg):
     console.print(msg, style="danger")
 
 
-async def async_convert(source_path, output_dir='.', data=DEFAULT_DATA_FOLDER):  # Renamed data_dir to data
+async def async_convert(source_path, output_dir='.', data=None):
     """Asynchronously convert a PDF file or directory of PDF files to LaTeX."""
     _ensure_dependencies_loaded()
-    console.print(f"Processing file: {source_path}", style="info")
+    
+    # Use system temp directory if data not specified
+    if data is None:
+        data = os.path.join(get_temp_dir(), "f_instruct_temp")
+    
+    console.print(f"Processing: {source_path}", style="info")
+    console.print(f"Temporary files: {data}", style="dim cyan")
 
-    os.makedirs(data, exist_ok=True)  # Renamed data_dir to data
+    os.makedirs(data, exist_ok=True)
 
     if os.path.isdir(source_path):
         pdf_files = [f for f in os.listdir(source_path) if f.lower().endswith('.pdf')]
@@ -1174,6 +1152,7 @@ async def async_convert(source_path, output_dir='.', data=DEFAULT_DATA_FOLDER): 
             console.print(f"No PDF files found in directory: {source_path}", style="warning")
             return
 
+        console.print(f"Found {len(pdf_files)} PDF file(s) to process", style="info")
         tasks = []
         for filename in pdf_files:
             file_path = os.path.join(source_path, filename)
@@ -1181,14 +1160,14 @@ async def async_convert(source_path, output_dir='.', data=DEFAULT_DATA_FOLDER): 
             file_output_dir_name = Utils.get_file_name(filename)
             file_output_dir = safe_join(output_dir, file_output_dir_name)
             # Pass the specific output dir and the main data dir
-            tasks.append(async_convert(file_path, file_output_dir, data))  # Renamed data_dir to data
+            tasks.append(async_convert(file_path, file_output_dir, data))
 
         await asyncio.gather(*tasks)
 
     elif os.path.isfile(source_path) and source_path.lower().endswith('.pdf'):
         try:
             # PDF.async_init now needs the data directory
-            pdf = await PDF.async_init(source_path, data, output_dir)  # Renamed data_dir to data
+            pdf = await PDF.async_init(source_path, data, output_dir)
             if pdf:
                 tex_file = await TexFile.async_init(pdf)
                 if tex_file:
@@ -1204,60 +1183,72 @@ async def async_convert(source_path, output_dir='.', data=DEFAULT_DATA_FOLDER): 
 
         except Exception as e:  # pylint: disable=broad-except
             console.print(f"Error processing {source_path}: {e}", style="danger")
-            # Optionally, print traceback for debugging
-            # traceback.print_exc()
+    
+    elif os.path.isfile(source_path):
+        console.print(f"Error: {source_path} is not a PDF file", style="danger")
+    
     else:
-        console.print(f"Invalid source path: {source_path}. Must be a PDF file or directory.", style="danger")
+        console.print(f"Error: {source_path} does not exist or is not accessible", style="danger")
 
 
-def convert(source_path, output_dir='.', data=DEFAULT_DATA_FOLDER):  # Renamed data_dir to data
+def convert(source_path, output_dir='.', data=None):
     """Synchronously convert a PDF file or directory of PDF files to LaTeX."""
     # Runs the async_convert function using asyncio.run()
-    asyncio.run(async_convert(source_path, output_dir, data))  # Renamed data_dir to data
+    asyncio.run(async_convert(source_path, output_dir, data))
 
 
 # --- CLI Interface ---
 @click.command(context_settings=dict(help_option_names=['-h', '--help']))
-@click.option('--file', '-f', type=click.Path(exists=True), help="Path to PDF file to convert")
-@click.option('--path', '-p', type=click.Path(exists=True), help="Path to directory containing PDFs to convert")
-@click.option('--output', '-o', type=click.Path(), default='.', show_default=True, help="Output directory for generated LaTeX projects")
-@click.option('--data', '-d', type=click.Path(), default=DEFAULT_DATA_FOLDER, show_default=True, help="Directory for storing intermediate files")
+@click.option('--input', '-i', 'input_path', type=click.Path(exists=True), required=True, 
+              help="Path to PDF file or directory containing PDF files to convert")
+@click.option('--output', '-o', type=click.Path(), default='.', show_default=True, 
+              help="Output directory for generated LaTeX projects")
 @click.version_option(version=__version__, message='PDF2LaTeX Converter %(version)s')
-def main(file, path, output, data):
+def cli(input_path, output):
     """
     PDF2LaTeX Converter - Convert PDF files to LaTeX format.
 
-    This tool extracts text using OCR and treats non-textual elements as figures.
-    It processes files in parallel using asyncio for improved performance.
+    This tool automatically detects whether the input is a single PDF file or a directory
+    containing PDF files and processes them accordingly. It extracts text using OCR and 
+    treats non-textual elements as figures, processing files in parallel for improved performance.
     
     Examples:
-        python converter.py -f document.pdf
-        python converter.py -p ./pdf_folder -o ./latex_output
-        python converter.py --file report.pdf --output ./results
+        uv run f_instruct/data/converter.py -i document.pdf
+        uv run f_instruct/data/converter.py -i ./pdf_folder -o ./latex_output
+        uv run f_instruct/data/converter.py --input report.pdf --output ./results
     """
     if '--help' not in sys.argv and '-h' not in sys.argv:
         _ensure_dependencies_loaded()
 
-    if not file and not path:
-        console.print("Error: Please provide either --file or --path option.", style="danger")
-        console.print("Use --help to see usage information.", style="info")
-        sys.exit(1)
+    # Create output directory if it doesn't exist
+    os.makedirs(output, exist_ok=True)
+    
+    # Use system temp directory for intermediate files
+    temp_data_dir = os.path.join(get_temp_dir(), "f_instruct_temp")
 
-    if data:
-        os.makedirs(data, exist_ok=True)
-
-    project_output_dir = output if output != '.' else safe_join(os.getcwd(), data)
-    os.makedirs(project_output_dir, exist_ok=True)
-
-    console.print(f"Using output directory: {project_output_dir}", style="info")
+    console.print(f"Input: {input_path}", style="info")
+    console.print(f"Output directory: {os.path.abspath(output)}", style="info")
     console.print(f"PDF2LaTeX Converter v{__version__}", style="status")
 
+    # Smart detection of input type
+    if os.path.isfile(input_path):
+        if input_path.lower().endswith('.pdf'):
+            console.print("Detected: Single PDF file", style="dim cyan")
+        else:
+            console.print("Error: Input file is not a PDF", style="danger")
+            sys.exit(1)
+    elif os.path.isdir(input_path):
+        pdf_count = len([f for f in os.listdir(input_path) if f.lower().endswith('.pdf')])
+        console.print(f"Detected: Directory with {pdf_count} PDF file(s)", style="dim cyan")
+        if pdf_count == 0:
+            console.print("Error: No PDF files found in directory", style="danger")
+            sys.exit(1)
+    else:
+        console.print("Error: Input path does not exist", style="danger")
+        sys.exit(1)
+
     try:
-        if path:
-            convert(path, project_output_dir, data)
-        elif file:
-            convert(file, project_output_dir, data)
-        
+        convert(input_path, output, temp_data_dir)
         console.print("Conversion completed successfully! 🎉", style="success")
         
     except KeyboardInterrupt:
@@ -1269,31 +1260,51 @@ def main(file, path, output, data):
 
 
 # --- Helper Functions for API usage ---
-def convert_pdf(pdf_path, output_dir='.', data='data'):
+def convert_pdf(pdf_path, output_dir='.', data=None):
     """
     Convert a PDF file to LaTeX format.
     
     Args:
         pdf_path: Path to the PDF file
         output_dir: Directory where LaTeX project will be created
-        data: Directory for intermediate files
+        data: Directory for intermediate files (uses system temp if None)
     """
     _ensure_dependencies_loaded()
     return convert(pdf_path, output_dir, data)
 
 
-def convert_pdfs_in_directory(directory_path, output_dir='.', data='data'):
+def convert_pdfs_in_directory(directory_path, output_dir='.', data=None):
     """
     Convert all PDF files in a directory to LaTeX format.
     
     Args:
         directory_path: Path to directory containing PDF files
         output_dir: Directory where LaTeX projects will be created
-        data: Directory for intermediate files
+        data: Directory for intermediate files (uses system temp if None)
     """
     _ensure_dependencies_loaded()
     return convert(directory_path, output_dir, data)
 
 
+def smart_convert(input_path, output_dir='.'):
+    """
+    Smart conversion function that auto-detects file vs directory.
+    
+    Args:
+        input_path: Path to PDF file or directory containing PDF files
+        output_dir: Directory where LaTeX projects will be created
+    
+    Returns:
+        bool: True if conversion successful, False otherwise
+    """
+    try:
+        _ensure_dependencies_loaded()
+        convert(input_path, output_dir)
+        return True
+    except Exception as e:
+        console.print(f"Smart conversion failed: {e}", style="danger")
+        return False
+
+
 if __name__ == "__main__":
-    main()  # pylint: disable=no-value-for-parameter
+    cli()  # pylint: disable=no-value-for-parameter

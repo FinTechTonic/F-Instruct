@@ -10,12 +10,9 @@ authors = [
 dependencies = [
     "click>=8.1.8",
     "easyocr>=1.7.2",
-    "matplotlib>=3.10.1",
     "numpy>=2.2.5",
     "opencv-python>=4.11.0.86",
-    "pdf2image>=1.17.0",
     "pymupdf>=1.25.5",
     "rich>=14.0.0",
     "torch>=2.7.0",
-    "torchvision>=0.22.0",
 ]
