@@ -40,36 +40,36 @@ uv run f_instruct/data/converter.py -i ./data/ingress -o ./data/processed -m phi
 
 ### Data Preprocessor
 
-#### `preprocess_data(input_dir, output_dir, model=None)`
+#### `preprocess_data(input_dir, output_dir, model)`
 
-Processes Markdown files into structured Parquet datasets, including chunked text and document metadata.
+Processes Markdown files into structured Parquet datasets, using spaCy for advanced paragraph detection and an Ollama LLM for text enhancement and named entity formatting.
 
 1.  **data.parquet**: This file contains individual text chunks extracted from the source documents, along with their associated metadata.
 
-    | Column Name       | Description                                                                 |
-    |-------------------|-----------------------------------------------------------------------------|
-    | `chunk_id`        | Unique identifier for the text chunk (primary key).                         |
-    | `document_id`     | Identifier of the source document this chunk belongs to.                    |
-    | `chunk_index`     | Sequential index of the chunk within its source document.                   |
-    | `text`            | The actual text content of the chunk.                                       |
-    | `title`           | Title of the source document.                                               |
-    | `source_name`     | Original filename of the source document.                                   |
-    | `classifier_code` | Classifier code assigned to the source document.                            |
-    | `paragraph_id`    | Identifier of the paragraph this chunk belongs to.                          |
-    | `position_start`  | Start character position of this chunk in the original document.            |
-    | `position_end`    | End character position of this chunk in the original document.              |
-    | `previous_chunk_id` | ID of the previous chunk in sequence (for context navigation).            |
-    | `next_chunk_id`   | ID of the next chunk in sequence (for context navigation).                  |
-    | `is_first_chunk`  | Boolean flag indicating if this is the first chunk in a document.           |
-    | `is_last_chunk`   | Boolean flag indicating if this is the last chunk in a document.            |
-    | `relative_position` | Float value (0.0-1.0) indicating relative position within document.       |
+    | Column Name       | Type    | Description                                                                 |
+    |-------------------|---------|-----------------------------------------------------------------------------|
+    | `chunk_id`        | int     | Unique integer identifier for the text chunk (primary key).                 |
+    | `document_id`     | str     | Identifier of the source document this chunk belongs to.                    |
+    | `chunk_index`     | int     | Sequential index of the chunk within its source document.                   |
+    | `text`            | str     | The enhanced text content of the chunk with marked-up entities.             |
+    | `title`           | str     | Title of the source document.                                               |
+    | `source_name`     | str     | Original filename of the source document.                                   |
+    | `classifier_code` | str     | Classifier code assigned to the source document.                            |
+    | `paragraph_id`    | str     | Identifier of the paragraph this chunk belongs to.                          |
+    | `position_start`  | int     | Start character position of this chunk in the original document.            |
+    | `position_end`    | int     | End character position of this chunk in the original document.              |
+    | `previous_chunk_id` | int   | ID of the previous chunk in sequence (-1 if none).                        |
+    | `next_chunk_id`   | int     | ID of the next chunk in sequence (-1 if none).                             |
+    | `is_first_chunk`  | bool    | Boolean flag indicating if this is the first chunk in a document.           |
+    | `is_last_chunk`   | bool    | Boolean flag indicating if this is the last chunk in a document.            |
+    | `relative_position` | float | Float value (0.0-1.0) indicating relative position within document.       |
 
-    > **Note:** Chunks maintain their original document sequence, allowing for easy forward/backward navigation to retrieve additional context when needed.
+    > **Note:** The preprocessor now uses spaCy for improved paragraph detection and boundary analysis, and leverages an Ollama LLM to enhance readability and mark up named entities with bold formatting.
 
 **Parameters:**
 - `input_dir` (str) - Path to directory containing Markdown files.
 - `output_dir` (str) - Output directory for the processed Parquet data file(s).
-- `model` (str, optional) - Ollama model to use for advanced features (e.g., 'phi4'). (Currently a placeholder for future implementation).
+- `model` (str) - Ollama model to use for text enhancement and named entity recognition (e.g., 'phi4').
 
 **Returns:**
 - `dict[str, pandas.DataFrame]` - A dictionary containing the processed data DataFrame.
@@ -78,19 +78,13 @@ Processes Markdown files into structured Parquet datasets, including chunked tex
 ```python
 from f_instruct.data import preprocess_data
 
-# Process Markdown documents from processed to structured
-preprocess_data("./data/processed", "./data/structured")
-
-# With model specified (for future NLP features)
+# Process Markdown documents with enhanced NLP features
 preprocess_data("./data/processed", "./data/structured", model="phi4")
 ```
 
 **CLI:**
 ```bash
-# Basic usage
-uv run f_instruct/data/preprocessor.py -i ./data/processed -o ./data/structured
-
-# With model specification (for future NLP features)
+# Preprocessor requires specifying a model
 uv run f_instruct/data/preprocessor.py -i ./data/processed -o ./data/structured -m phi4
 ```
 
