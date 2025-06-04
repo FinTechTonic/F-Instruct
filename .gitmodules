@@ -4,3 +4,6 @@
 [submodule "digital-regulatory-reporting"]
 	path = digital-regulatory-reporting
 	url = https://github.com/FinTechTonic/digital-regulatory-reporting
+[submodule "yourbench"]
+	path = yourbench
+	url = https://github.com/Josephrp/yourbench.git
