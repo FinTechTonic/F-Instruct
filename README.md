@@ -88,6 +88,43 @@ preprocess_data("./data/processed", "./data/structured", model="phi4")
 uv run f_instruct/data/preprocessor.py -i ./data/processed -o ./data/structured -m phi4
 ```
 
+### Financial Data Processor
+
+#### `process_financial_data(input_dir, output_dir, model="phi4")`
+
+Generates diverse training examples from financial regulatory data, creating question-answer pairs, instruction examples, financial product definitions, API interactions, and regulatory compliance scenarios.
+
+The processor uses a Language Model to generate high-quality training data in multiple formats and saves it as JSON, JSONL, and Parquet files.
+
+**Parameters:**
+- `input_dir` (str) - Directory containing preprocessed parquet files
+- `output_dir` (str) - Output directory for generated training examples
+- `model` (str, optional) - Ollama model to use for generation (default: 'phi4')
+
+**Returns:**
+- `str` - Path to the generated output file
+
+**Example:**
+```python
+from f_instruct.data import process_financial_data
+
+# Generate training data from preprocessed financial documents
+output_path = process_financial_data(
+    "./data/structured", 
+    "./data/training", 
+    model="phi4"
+)
+```
+
+**CLI:**
+```bash
+# Generate training data using default phi4 model
+uv run f_instruct/data/processor.py -i ./data/structured -o ./data/training
+
+# Use a different model for generation
+uv run f_instruct/data/processor.py -i ./data/structured -o ./data/training -m llama3
+```
+
 ---
 
 *Copyright 2025 Team Tonic*
