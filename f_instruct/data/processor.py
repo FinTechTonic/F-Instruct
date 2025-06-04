@@ -37,15 +37,6 @@ def count_tokens(text, encoding_name="cl100k_base"):
     encoding = tiktoken.get_encoding(encoding_name)
     return len(encoding.encode(text))
 
-def add_token_counts_to_dataframe(df):
-    token_counts = []
-    num_rows = len(df)
-    texts = df["text"]
-    for i in range(num_rows):
-        token_counts.append(count_tokens(texts.iloc[i]))
-    df["token_count"] = token_counts
-    return df
-
 def _collect_context_chunks(doc_chunks, doc_indices, current_position, direction, max_steps, adjusted_page_size, estimated_tokens):
     collected_indices = []
     for i in range(1, max_steps + 1):
@@ -138,8 +129,6 @@ def create_page(df, next_chunk_id, page_size=2048):
 def load_data(input_file, page_size=2048, overlap=10):
     df = pd.read_parquet(input_file)
     df = df.set_index("chunk_id", drop=False)
-    if "token_count" not in df.columns:
-        df = add_token_counts_to_dataframe(df)
     all_chunk_ids_list = df.index.unique().tolist()
     pages = []
     for _ in tqdm(range(len(all_chunk_ids_list)), desc="Creating page fragments", total=len(all_chunk_ids_list)):
