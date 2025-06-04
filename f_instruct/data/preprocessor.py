@@ -52,13 +52,7 @@ def read_markdown_file(file_path):
         return f.read()
 
 def extract_title_from_filename(file_name: str) -> str:
-    """Extract a placeholder title from filename 
-    
-    TODO: Replace with LLM-based title generation that:
-        - Analyzes document content for meaningful title.
-        - Considers document structure and keywords.
-        - Creates concise, descriptive titles.
-    """
+    """Extract a placeholder title from filename"""
     # Simple placeholder logic: strip extension from filename.
     return os.path.splitext(file_name)[0]
 
@@ -69,12 +63,6 @@ def chunk_markdown_text(text):
     - Splits text by one or more newlines (collapsing consecutive newlines).
     - Creates a chunk for each resulting paragraph.
     - Maintains navigation metadata between chunks.
-    
-    TODO: Replace with a more sophisticated implementation that includes:
-        - Advanced paragraph detection for Markdown (including tables, code blocks, etc.).
-        - Sentence boundary detection using spaCy.
-        - Semantic chunking with overlap.
-        - Accurate position tracking for reconstruction.
     """
     
     # Split by one or more newlines and filter out empty chunks.
