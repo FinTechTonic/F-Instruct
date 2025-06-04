@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os
 import re
 import sys
@@ -114,17 +115,6 @@ def process_markdown_file(file_path, global_chunk_id):
         })
     return chunks_data, global_chunk_id
 
-def index_data(df):
-    n = len(df)
-    df["chunk_index"] = range(n)
-    df["is_first_chunk"] = df["chunk_index"] == 0
-    df["is_last_chunk"] = df["chunk_index"] == (n - 1)
-    df["relative_position"] = df["chunk_index"] / (n - 1 if n > 1 else 1)
-    df["position_start"] = df["chunk_index"]
-    df["position_end"] = df["chunk_index"]
-    logger("Indexing data: Updated chunk indices and meta fields")
-    return df
-
 def deduplicate_chunks(df, threshold=0.95):
     texts = df["text"].tolist()
     vectorizer = TfidfVectorizer()
@@ -141,15 +131,31 @@ def deduplicate_chunks(df, threshold=0.95):
                 continue
             similarity = sim_matrix[i, j]
             if similarity >= threshold:
-                logger(f"Duplicate found: Chunk {i} and Chunk {j} have similarity {similarity:.2f}")
+                logger(f"Duplicate found: Chunk {df.iloc[i]['chunk_id']} and Chunk {df.iloc[j]['chunk_id']} have similarity {similarity:.2f}")
                 to_drop.add(j)
                 duplicate_count += 1
     logger(f"Total duplicates removed: {duplicate_count}")
     new_df = df.drop(df.index[list(to_drop)]).reset_index(drop=True)
-    new_df = index_data(new_df)
+    new_df = reindex_chunks(new_df)
     return new_df
 
-def preprocess_data(input_dir, output_dir, model=None, dedup_threshold=0.95):
+def reindex_chunks(df):
+    df = df.sort_values(by=["document_id", "chunk_index"]).reset_index(drop=True)
+    n = len(df)
+    new_ids = list(range(1, n + 1))
+    df["chunk_id"] = new_ids
+    df["chunk_index"] = new_ids
+    df["position_start"] = new_ids
+    df["position_end"] = new_ids
+    df["is_first_chunk"] = df.index == 0
+    df["is_last_chunk"] = df.index == (n - 1)
+    if n > 1:
+        df["relative_position"] = df.index / (n - 1)
+    else:
+        df["relative_position"] = 0.5
+    return df
+
+def preprocess_data(input_dir, output_dir, model=None, dedup_threshold=None):
     start_time = time.time()
     logger("Starting preprocessing of Markdown files")
     logger(f"Input directory: {input_dir}")
@@ -177,7 +183,10 @@ def preprocess_data(input_dir, output_dir, model=None, dedup_threshold=0.95):
             logger(f"Error processing {file_name}: {str(e)}")
     data_df = pd.DataFrame(all_chunks)
     if not data_df.empty:
-        data_df = deduplicate_chunks(data_df, threshold=dedup_threshold)
+        if dedup_threshold is not None:
+            data_df = deduplicate_chunks(data_df, threshold=dedup_threshold)
+        else:
+            data_df = reindex_chunks(data_df)
     if data_df.empty:
         logger("No data to save. Output Parquet/JSONL file will be empty or not created.")
     else:
@@ -185,8 +194,9 @@ def preprocess_data(input_dir, output_dir, model=None, dedup_threshold=0.95):
         data_file = os.path.join(output_dir, "data.parquet")
         data_df.to_parquet(data_file, index=False)
         logger("Saving data to JSONL file...")
-        jsonl_file = os.path.join(output_dir, "data.jsonl")
+        jsonl_file = os.path.splitext(data_file)[0] + ".jsonl"
         data_df.to_json(jsonl_file, orient="records", lines=True)
+        logger(f"Data saved to {data_file} and {jsonl_file}")
     elapsed_time = time.time() - start_time
     total_chunks = len(data_df)
     summary_message = (
@@ -198,25 +208,11 @@ def preprocess_data(input_dir, output_dir, model=None, dedup_threshold=0.95):
     return {"data": data_df}
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Process Markdown to structured Parquet/JSONL datasets."
-    )
-    parser.add_argument(
-        "-i", "--input", required=True,
-        help="Input directory containing Markdown files."
-    )
-    parser.add_argument(
-        "-o", "--output", required=True,
-        help="Output directory for processed data."
-    )
-    parser.add_argument(
-        "-m", "--model",
-        help="Ollama model to use for advanced features (e.g., 'phi4'). (Placeholder)"
-    )
-    parser.add_argument(
-        "-d", "--dedup_threshold", type=float, default=0.95,
-        help="Similarity threshold for deduplication (default: 0.95)"
-    )
+    parser = argparse.ArgumentParser(description="Process Markdown to structured Parquet/JSONL datasets.")
+    parser.add_argument("-i", "--input", required=True, help="Input directory containing Markdown files.")
+    parser.add_argument("-o", "--output", required=True, help="Output directory for processed data.")
+    parser.add_argument("-m", "--model", help="Ollama model to use for advanced features (e.g., 'phi4'). (Placeholder)")
+    parser.add_argument("-d", "--dedup_threshold", type=float, default=None, help="Deduplication similarity threshold (e.g., 0.95)")
     args = parser.parse_args()
     logger("F-Instruct Document Preprocessor")
     logger("Converting Markdown to structured Parquet/JSONL datasets")
