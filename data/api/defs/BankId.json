@@ -1,0 +1,11 @@
+{
+  "required": [
+    "value"
+  ],
+  "properties": {
+    "value": {
+      "type": "string",
+      "example": "gh.29.uk"
+    }
+  }
+}

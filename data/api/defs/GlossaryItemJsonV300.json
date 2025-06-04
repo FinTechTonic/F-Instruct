@@ -1,0 +1,15 @@
+{
+  "required": [
+    "title",
+    "description"
+  ],
+  "properties": {
+    "title": {
+      "type": "string",
+      "example": "Dr."
+    },
+    "description": {
+      "$ref": "#/definitions/GlossaryDescriptionJsonV300"
+    }
+  }
+}

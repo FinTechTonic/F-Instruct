@@ -1,0 +1,22 @@
+{
+  "required": [
+    "answer",
+    "date",
+    "available_funds_request_id"
+  ],
+  "properties": {
+    "answer": {
+      "type": "string",
+      "example": "yes"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "example": "2025-05-26T10:28:42Z"
+    },
+    "available_funds_request_id": {
+      "type": "string",
+      "example": "c4ykz59svsr9b7fmdxk8ezs7"
+    }
+  }
+}

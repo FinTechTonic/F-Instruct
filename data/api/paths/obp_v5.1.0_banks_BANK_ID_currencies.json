@@ -1,0 +1,39 @@
+{
+  "get": {
+    "tags": [
+      "FX"
+    ],
+    "summary": "Get Currencies at a Bank",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get Currencies specified by BANK_ID</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>alphanumeric_code</strong></a>: alphanumeric_code</p><p><a href=\"/glossary#\"><strong>currencies</strong></a>: currencies</p>",
+    "operationId": "OBPv5.1.0-getCurrenciesAtBank",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/CurrenciesJsonV510"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "required": [
+    "generate_auditors_view",
+    "number",
+    "IBAN",
+    "label",
+    "owners",
+    "balance",
+    "bank",
+    "id",
+    "type",
+    "generate_accountants_view",
+    "generate_public_view"
+  ],
+  "properties": {
+    "generate_auditors_view": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "number": {
+      "type": "string",
+      "example": "1"
+    },
+    "IBAN": {
+      "type": "string",
+      "example": "1234567890"
+    },
+    "label": {
+      "type": "string",
+      "example": "Account 1 at Bank 1"
+    },
+    "owners": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "balance": {
+      "$ref": "#/definitions/SandboxBalanceImport"
+    },
+    "bank": {
+      "type": "string",
+      "example": "bank1"
+    },
+    "id": {
+      "type": "string",
+      "example": "account1"
+    },
+    "type": {
+      "type": "string",
+      "example": "savings"
+    },
+    "generate_accountants_view": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "generate_public_view": {
+      "type": "boolean",
+      "example": "true"
+    }
+  }
+}

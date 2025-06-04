@@ -1,0 +1,23 @@
+{
+  "required": [
+    "collection_code",
+    "product_code",
+    "items"
+  ],
+  "properties": {
+    "collection_code": {
+      "type": "string",
+      "example": "C"
+    },
+    "product_code": {
+      "type": "string",
+      "example": "1234BW"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ProductCollectionItemJsonV310"
+      }
+    }
+  }
+}

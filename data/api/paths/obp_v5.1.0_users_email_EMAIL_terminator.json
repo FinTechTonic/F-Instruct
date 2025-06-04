@@ -1,0 +1,31 @@
+{
+  "get": {
+    "tags": [
+      "User"
+    ],
+    "summary": "Get Users by Email Address",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get users by email address</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.<br />CanGetAnyUser entitlement is required,</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#\">EMAIL</a>: <a href=\"&#109;&#x61;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#x66;e&#108;&#105;&#120;s&#109;i&#x74;&#x68;&#x40;e&#120;&#97;m&#x70;&#108;e&#x2e;c&#x6f;&#x6d;\">fe&#x6c;&#x69;&#120;&#115;&#x6d;&#105;&#x74;&#104;&#64;&#x65;&#x78;&#x61;m&#112;&#x6c;&#x65;&#x2e;&#x63;&#x6f;m</a></p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>account_id</strong></a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#\"><strong>email</strong></a>: <a href=\"m&#x61;&#x69;&#x6c;&#116;&#111;:&#102;el&#x69;x&#115;&#x6d;&#105;&#x74;&#104;&#64;&#x65;&#120;&#x61;&#109;p&#x6c;&#x65;&#46;&#x63;&#111;&#109;\">f&#101;l&#105;&#x78;&#115;&#109;&#105;&#x74;&#x68;&#64;&#x65;&#120;&#97;&#109;&#112;l&#x65;&#46;&#x63;&#111;&#x6d;</a></p><p><a href=\"/glossary#entitlement_id\"><strong>entitlement_id</strong></a>:</p><p><a href=\"/glossary#entitlements\"><strong>entitlements</strong></a>:</p><p><a href=\"/glossary#\"><strong>is_deleted</strong></a>: is_deleted</p><p><a href=\"/glossary#\"><strong>is_locked</strong></a>: is_locked</p><p><a href=\"/glossary#list\"><strong>list</strong></a>:</p><p><a href=\"/glossary#provider\"><strong>provider</strong></a>: ETHEREUM</p><p><a href=\"/glossary#provider_id\"><strong>provider_id</strong></a>:</p><p><a href=\"/glossary#role_name\"><strong>role_name</strong></a>:</p><p><a href=\"/glossary#text\"><strong>text</strong></a>:</p><p><a href=\"/glossary#type\"><strong>type</strong></a>:</p><p><a href=\"/glossary#\"><strong>user_id</strong></a>: 9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1</p><p><a href=\"/glossary#\"><strong>username</strong></a>: felixsmith</p><p><a href=\"/glossary#users\"><strong>users</strong></a>: user list</p><p><a href=\"/glossary#\"><strong>view_id</strong></a>: owner</p><p><a href=\"/glossary#\">agreements</a>: agreements</p><p><a href=\"/glossary#\">last_marketing_agreement_signed_date</a>: last_marketing_agreement_signed_date</p><p><a href=\"/glossary#views\">views</a>:</p>",
+    "operationId": "OBPv4.0.0-getUsersByEmail",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/UsersJsonV400"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

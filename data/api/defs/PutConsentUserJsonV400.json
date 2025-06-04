@@ -1,0 +1,11 @@
+{
+  "required": [
+    "user_id"
+  ],
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "example": "ed7a7c01-db37-45cc-ba12-0ae8891c195c"
+    }
+  }
+}

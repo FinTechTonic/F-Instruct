@@ -1,0 +1,13 @@
+{
+  "required": [
+    "branches"
+  ],
+  "properties": {
+    "branches": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/BranchJsonV300"
+      }
+    }
+  }
+}

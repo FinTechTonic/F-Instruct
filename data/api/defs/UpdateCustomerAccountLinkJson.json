@@ -1,0 +1,11 @@
+{
+  "required": [
+    "relationship_type"
+  ],
+  "properties": {
+    "relationship_type": {
+      "type": "string",
+      "example": "Owner"
+    }
+  }
+}

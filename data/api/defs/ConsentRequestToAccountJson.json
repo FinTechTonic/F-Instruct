@@ -1,0 +1,27 @@
+{
+  "required": [
+    "account_routing",
+    "branch_routing",
+    "bank_routing",
+    "counterparty_name",
+    "limit"
+  ],
+  "properties": {
+    "account_routing": {
+      "$ref": "#/definitions/AccountRoutingJsonV121"
+    },
+    "branch_routing": {
+      "$ref": "#/definitions/BranchRoutingJsonV141"
+    },
+    "bank_routing": {
+      "$ref": "#/definitions/BankRoutingJsonV121"
+    },
+    "counterparty_name": {
+      "type": "string",
+      "example": "John Smith Ltd."
+    },
+    "limit": {
+      "$ref": "#/definitions/PostCounterpartyLimitV510"
+    }
+  }
+}

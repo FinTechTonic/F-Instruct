@@ -1,0 +1,19 @@
+{
+  "required": [
+    "to",
+    "value",
+    "description"
+  ],
+  "properties": {
+    "to": {
+      "$ref": "#/definitions/TransactionRequestAccountJsonV140"
+    },
+    "value": {
+      "$ref": "#/definitions/AmountOfMoneyJsonV121"
+    },
+    "description": {
+      "type": "string",
+      "example": "this is for work"
+    }
+  }
+}

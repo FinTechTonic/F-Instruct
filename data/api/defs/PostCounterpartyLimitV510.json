@@ -1,0 +1,49 @@
+{
+  "required": [
+    "max_monthly_amount",
+    "max_number_of_monthly_transactions",
+    "max_single_amount",
+    "max_number_of_transactions",
+    "currency",
+    "max_number_of_yearly_transactions",
+    "max_yearly_amount",
+    "max_total_amount"
+  ],
+  "properties": {
+    "max_monthly_amount": {
+      "type": "string",
+      "example": "10000.11"
+    },
+    "max_number_of_monthly_transactions": {
+      "type": "integer",
+      "format": "int32",
+      "example": "10"
+    },
+    "max_single_amount": {
+      "type": "string",
+      "example": "1000.11"
+    },
+    "max_number_of_transactions": {
+      "type": "integer",
+      "format": "int32",
+      "example": "100"
+    },
+    "currency": {
+      "type": "string",
+      "example": "EUR"
+    },
+    "max_number_of_yearly_transactions": {
+      "type": "integer",
+      "format": "int32",
+      "example": "100"
+    },
+    "max_yearly_amount": {
+      "type": "string",
+      "example": "12000.11"
+    },
+    "max_total_amount": {
+      "type": "string",
+      "example": "10000.12"
+    }
+  }
+}

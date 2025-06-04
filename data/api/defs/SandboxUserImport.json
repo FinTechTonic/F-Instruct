@@ -1,0 +1,21 @@
+{
+  "required": [
+    "email",
+    "password",
+    "user_name"
+  ],
+  "properties": {
+    "email": {
+      "type": "string",
+      "example": "user1@example.com"
+    },
+    "password": {
+      "type": "string",
+      "example": "TESOBE520berlin123!"
+    },
+    "user_name": {
+      "type": "string",
+      "example": "User 1"
+    }
+  }
+}

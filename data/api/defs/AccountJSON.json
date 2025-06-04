@@ -1,0 +1,28 @@
+{
+  "required": [
+    "id",
+    "label",
+    "views_available",
+    "bank_id"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "123"
+    },
+    "label": {
+      "type": "string",
+      "example": "OBP"
+    },
+    "views_available": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ViewJSONV121"
+      }
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    }
+  }
+}

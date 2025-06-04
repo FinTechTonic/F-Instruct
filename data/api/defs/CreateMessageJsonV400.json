@@ -1,0 +1,26 @@
+{
+  "required": [
+    "message",
+    "transport",
+    "from_department",
+    "from_person"
+  ],
+  "properties": {
+    "message": {
+      "type": "string",
+      "example": "123456"
+    },
+    "transport": {
+      "type": "string",
+      "example": "SMS"
+    },
+    "from_department": {
+      "type": "string",
+      "example": "Open Bank"
+    },
+    "from_person": {
+      "type": "string",
+      "example": "Tom"
+    }
+  }
+}

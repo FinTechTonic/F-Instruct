@@ -1,0 +1,11 @@
+{
+  "required": [
+    "app_name"
+  ],
+  "properties": {
+    "app_name": {
+      "type": "string",
+      "example": "App name"
+    }
+  }
+}

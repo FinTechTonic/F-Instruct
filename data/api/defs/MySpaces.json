@@ -1,0 +1,13 @@
+{
+  "required": [
+    "bank_ids"
+  ],
+  "properties": {
+    "bank_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "required": [
+    "roles"
+  ],
+  "properties": {
+    "roles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AvailableRoleJSON"
+      }
+    }
+  }
+}

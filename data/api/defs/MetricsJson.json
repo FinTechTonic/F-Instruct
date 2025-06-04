@@ -1,0 +1,13 @@
+{
+  "required": [
+    "metrics"
+  ],
+  "properties": {
+    "metrics": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/MetricJson"
+      }
+    }
+  }
+}

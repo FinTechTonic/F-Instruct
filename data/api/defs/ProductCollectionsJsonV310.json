@@ -1,0 +1,13 @@
+{
+  "required": [
+    "product_collection"
+  ],
+  "properties": {
+    "product_collection": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ProductCollectionJsonV310"
+      }
+    }
+  }
+}

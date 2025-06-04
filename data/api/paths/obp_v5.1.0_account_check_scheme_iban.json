@@ -1,0 +1,41 @@
+{
+  "post": {
+    "tags": [
+      "Account"
+    ],
+    "summary": "Validate and check IBAN",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Validate and check IBAN for errors</p><p>User Authentication is Optional. The User need not be logged in.</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#address\"><strong>address</strong></a>:</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#address\"><strong>address</strong></a>:</p><p><a href=\"/glossary#attributes\"><strong>attributes</strong></a>: attribute value in form of (name, value)</p><p><a href=\"/glossary#Bank\"><strong>bank</strong></a>:</p><p><a href=\"/glossary#bank_routings\"><strong>bank_routings</strong></a>: bank routing in form of (scheme, address)</p><p><a href=\"/glossary#Branch\"><strong>branch</strong></a>: branch</p><p><a href=\"/glossary#city\"><strong>city</strong></a>:</p><p><a href=\"/glossary#country\"><strong>country</strong></a>: Germany</p><p><a href=\"/glossary#\"><strong>is_valid</strong></a>: is_valid</p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#phone\"><strong>phone</strong></a>:</p><p><a href=\"/glossary#postcode\"><strong>postcode</strong></a>:</p><p><a href=\"/glossary#scheme\"><strong>scheme</strong></a>: OBP</p><p><a href=\"/glossary#\"><strong>value</strong></a>: 5987953</p><p><a href=\"/glossary#details\">details</a>:</p>",
+    "operationId": "OBPv4.0.0-ibanChecker",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "IbanAddress object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/IbanAddress"
+        }
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/IbanCheckerJsonV400"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUnknownError"
+        }
+      }
+    }
+  }
+}

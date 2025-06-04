@@ -1,0 +1,35 @@
+{
+  "required": [
+    "is_bank_id_exact_match",
+    "method_name",
+    "connector_name",
+    "parameters"
+  ],
+  "properties": {
+    "is_bank_id_exact_match": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "method_name": {
+      "type": "string",
+      "example": "getBank"
+    },
+    "connector_name": {
+      "type": "string",
+      "example": "rest_vMar2019"
+    },
+    "method_routing_id": {
+      "type": "string"
+    },
+    "bank_id_pattern": {
+      "type": "string",
+      "example": "some_bankId"
+    },
+    "parameters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/MethodRoutingParam"
+      }
+    }
+  }
+}

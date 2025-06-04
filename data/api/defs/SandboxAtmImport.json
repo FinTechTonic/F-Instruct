@@ -1,0 +1,33 @@
+{
+  "required": [
+    "name",
+    "location",
+    "bank_id",
+    "id",
+    "meta",
+    "address"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "Ashbourne Atm 1"
+    },
+    "location": {
+      "$ref": "#/definitions/SandboxLocationImport"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "bank1"
+    },
+    "id": {
+      "type": "string",
+      "example": "atm1"
+    },
+    "meta": {
+      "$ref": "#/definitions/SandboxMetaImport"
+    },
+    "address": {
+      "$ref": "#/definitions/SandboxAddressImport"
+    }
+  }
+}

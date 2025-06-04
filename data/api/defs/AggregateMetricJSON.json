@@ -1,0 +1,30 @@
+{
+  "required": [
+    "count",
+    "average_response_time",
+    "minimum_response_time",
+    "maximum_response_time"
+  ],
+  "properties": {
+    "count": {
+      "type": "integer",
+      "format": "int32",
+      "example": "7076"
+    },
+    "average_response_time": {
+      "type": "number",
+      "format": "double",
+      "example": "65.21"
+    },
+    "minimum_response_time": {
+      "type": "number",
+      "format": "double",
+      "example": "1.0"
+    },
+    "maximum_response_time": {
+      "type": "number",
+      "format": "double",
+      "example": "9039.0"
+    }
+  }
+}

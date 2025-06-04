@@ -1,0 +1,13 @@
+{
+  "required": [
+    "counterparty_ids"
+  ],
+  "properties": {
+    "counterparty_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

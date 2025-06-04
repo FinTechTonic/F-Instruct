@@ -1,0 +1,24 @@
+{
+  "required": [
+    "hasPersonalEntity",
+    "FooBar"
+  ],
+  "properties": {
+    "dynamicEntityId": {
+      "type": "string"
+    },
+    "hasPersonalEntity": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "FooBar": {
+      "$ref": "#/definitions/DynamicEntityDefinition"
+    },
+    "userId": {
+      "type": "string"
+    },
+    "bankId": {
+      "type": "string"
+    }
+  }
+}

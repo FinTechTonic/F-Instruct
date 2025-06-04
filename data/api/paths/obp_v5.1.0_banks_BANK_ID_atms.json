@@ -1,0 +1,122 @@
+{
+  "get": {
+    "tags": [
+      "ATM"
+    ],
+    "summary": "Get Bank ATMS",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Returns information about ATMs for a single bank specified by BANK_ID including:</p><ul><li>Address</li><li>Geo Location</li><li>License the data under this endpoint is released under</li></ul><p>Pagination:</p><p>By default, 100 records are returned.</p><p>You can use the url query parameters <em>limit</em> and <em>offset</em> for pagination</p><p>User Authentication is Optional. The User need not be logged in.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#accessibility_features\"><strong>accessibility_features</strong></a>: [&quot;ATAC&quot;,&quot;ATAD&quot;]</p><p><a href=\"/glossary#address\"><strong>address</strong></a>:</p><p><a href=\"/glossary#\"><strong>atm_attribute_id</strong></a>: xxaf2a-9a0f-4bfa-b30b-9003aa467f51</p><p><a href=\"/glossary#atm_id\"><strong>atm_id</strong></a>: atme-9a0f-4bfa-b30b-9003aa467f51</p><p><a href=\"/glossary#\"><strong>atm_type</strong></a>:</p><p><a href=\"/glossary#atms\"><strong>atms</strong></a>:</p><p><a href=\"/glossary#\"><strong>balance_inquiry_fee</strong></a>:</p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#\"><strong>branch_identification</strong></a>: branch_identification</p><p><a href=\"/glossary#\"><strong>cash_withdrawal_international_fee</strong></a>:</p><p><a href=\"/glossary#\"><strong>cash_withdrawal_national_fee</strong></a>:</p><p><a href=\"/glossary#city\"><strong>city</strong></a>:</p><p><a href=\"/glossary#closing_time\"><strong>closing_time</strong></a>: 2020-01-27</p><p><a href=\"/glossary#country_code\"><strong>country_code</strong></a>: 1254</p><p><a href=\"/glossary#county\"><strong>county</strong></a>:</p><p><a href=\"/glossary#friday\"><strong>friday</strong></a>:</p><p><a href=\"/glossary#\"><strong>has_deposit_capability</strong></a>: false</p><p><a href=\"/glossary#id\"><strong>id</strong></a>: d8839721-ad8f-45dd-9f78-2080414b93f9</p><p><a href=\"/glossary#\"><strong>is_accessible</strong></a>: false</p><p><a href=\"/glossary#latitude\"><strong>latitude</strong></a>: 38.8951</p><p><a href=\"/glossary#license\"><strong>license</strong></a>:</p><p><a href=\"/glossary#\"><strong>line_1</strong></a>:</p><p><a href=\"/glossary#\"><strong>line_2</strong></a>:</p><p><a href=\"/glossary#\"><strong>line_3</strong></a>:</p><p><a href=\"/glossary#\"><strong>located_at</strong></a>:</p><p><a href=\"/glossary#location\"><strong>location</strong></a>:</p><p><a href=\"/glossary#\"><strong>location_categories</strong></a>: location_categories</p><p><a href=\"/glossary#longitude\"><strong>longitude</strong></a>: -77.0364</p><p><a href=\"/glossary#meta\"><strong>meta</strong></a>:</p><p><a href=\"/glossary#\"><strong>minimum_withdrawal</strong></a>: minimum_withdrawal</p><p><a href=\"/glossary#monday\"><strong>monday</strong></a>:</p><p><a href=\"/glossary#more_info\"><strong>more_info</strong></a>: More information about this fee</p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#\"><strong>notes</strong></a>: notes</p><p><a href=\"/glossary#opening_time\"><strong>opening_time</strong></a>:</p><p><a href=\"/glossary#phone\"><strong>phone</strong></a>:</p><p><a href=\"/glossary#postcode\"><strong>postcode</strong></a>:</p><p><a href=\"/glossary#saturday\"><strong>saturday</strong></a>:</p><p><a href=\"/glossary#services\"><strong>services</strong></a>: [{&quot;CY&quot;:[&quot;PS_010&quot;,&quot;PS_020&quot;,&quot;PS_03C&quot;,&quot;PS_04C&quot;]}]</p><p><a href=\"/glossary#\"><strong>site_identification</strong></a>: site_identification</p><p><a href=\"/glossary#\"><strong>site_name</strong></a>: site_name</p><p><a href=\"/glossary#state\"><strong>state</strong></a>:</p><p><a href=\"/glossary#sunday\"><strong>sunday</strong></a>:</p><p><a href=\"/glossary#supported_currencies\"><strong>supported_currencies</strong></a>: [&quot;EUR&quot;,&quot;MXN&quot;,&quot;USD&quot;]</p><p><a href=\"/glossary#supported_languages\"><strong>supported_languages</strong></a>: [&quot;es&quot;,&quot;fr&quot;,&quot;de&quot;]</p><p><a href=\"/glossary#thursday\"><strong>thursday</strong></a>:</p><p><a href=\"/glossary#tuesday\"><strong>tuesday</strong></a>:</p><p><a href=\"/glossary#type\"><strong>type</strong></a>:</p><p><a href=\"/glossary#\"><strong>value</strong></a>: 5987953</p><p><a href=\"/glossary#wednesday\"><strong>wednesday</strong></a>:</p><p><a href=\"/glossary#attributes\">attributes</a>: attribute value in form of (name, value)</p><p><a href=\"/glossary#id\"><strong>id</strong></a>: d8839721-ad8f-45dd-9f78-2080414b93f9</p><p><a href=\"/glossary#is_active\">is_active</a>: false</p>",
+    "operationId": "OBPv5.1.0-getAtms",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/AtmsJsonV510"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorBankNotFound"
+        }
+      }
+    }
+  },
+  "head": {
+    "tags": [
+      "ATM"
+    ],
+    "summary": "Head Bank ATMS",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Head Bank ATMS.</p><p>User Authentication is Optional. The User need not be logged in.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#accessibility_features\"><strong>accessibility_features</strong></a>: [&quot;ATAC&quot;,&quot;ATAD&quot;]</p><p><a href=\"/glossary#address\"><strong>address</strong></a>:</p><p><a href=\"/glossary#atms\"><strong>atms</strong></a>:</p><p><a href=\"/glossary#\"><strong>balance_inquiry_fee</strong></a>:</p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#\"><strong>branch_identification</strong></a>: branch_identification</p><p><a href=\"/glossary#\"><strong>cash_withdrawal_international_fee</strong></a>:</p><p><a href=\"/glossary#\"><strong>cash_withdrawal_national_fee</strong></a>:</p><p><a href=\"/glossary#city\"><strong>city</strong></a>:</p><p><a href=\"/glossary#closing_time\"><strong>closing_time</strong></a>: 2020-01-27</p><p><a href=\"/glossary#country_code\"><strong>country_code</strong></a>: 1254</p><p><a href=\"/glossary#county\"><strong>county</strong></a>:</p><p><a href=\"/glossary#friday\"><strong>friday</strong></a>:</p><p><a href=\"/glossary#\"><strong>has_deposit_capability</strong></a>: false</p><p><a href=\"/glossary#id\"><strong>id</strong></a>: d8839721-ad8f-45dd-9f78-2080414b93f9</p><p><a href=\"/glossary#\"><strong>is_accessible</strong></a>: false</p><p><a href=\"/glossary#latitude\"><strong>latitude</strong></a>: 38.8951</p><p><a href=\"/glossary#license\"><strong>license</strong></a>:</p><p><a href=\"/glossary#\"><strong>line_1</strong></a>:</p><p><a href=\"/glossary#\"><strong>line_2</strong></a>:</p><p><a href=\"/glossary#\"><strong>line_3</strong></a>:</p><p><a href=\"/glossary#\"><strong>located_at</strong></a>:</p><p><a href=\"/glossary#location\"><strong>location</strong></a>:</p><p><a href=\"/glossary#\"><strong>location_categories</strong></a>: location_categories</p><p><a href=\"/glossary#longitude\"><strong>longitude</strong></a>: -77.0364</p><p><a href=\"/glossary#meta\"><strong>meta</strong></a>:</p><p><a href=\"/glossary#\"><strong>minimum_withdrawal</strong></a>: minimum_withdrawal</p><p><a href=\"/glossary#monday\"><strong>monday</strong></a>:</p><p><a href=\"/glossary#more_info\"><strong>more_info</strong></a>: More information about this fee</p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#\"><strong>notes</strong></a>: notes</p><p><a href=\"/glossary#opening_time\"><strong>opening_time</strong></a>:</p><p><a href=\"/glossary#postcode\"><strong>postcode</strong></a>:</p><p><a href=\"/glossary#saturday\"><strong>saturday</strong></a>:</p><p><a href=\"/glossary#services\"><strong>services</strong></a>: [{&quot;CY&quot;:[&quot;PS_010&quot;,&quot;PS_020&quot;,&quot;PS_03C&quot;,&quot;PS_04C&quot;]}]</p><p><a href=\"/glossary#\"><strong>site_identification</strong></a>: site_identification</p><p><a href=\"/glossary#\"><strong>site_name</strong></a>: site_name</p><p><a href=\"/glossary#state\"><strong>state</strong></a>:</p><p><a href=\"/glossary#sunday\"><strong>sunday</strong></a>:</p><p><a href=\"/glossary#supported_currencies\"><strong>supported_currencies</strong></a>: [&quot;EUR&quot;,&quot;MXN&quot;,&quot;USD&quot;]</p><p><a href=\"/glossary#supported_languages\"><strong>supported_languages</strong></a>: [&quot;es&quot;,&quot;fr&quot;,&quot;de&quot;]</p><p><a href=\"/glossary#thursday\"><strong>thursday</strong></a>:</p><p><a href=\"/glossary#tuesday\"><strong>tuesday</strong></a>:</p><p><a href=\"/glossary#wednesday\"><strong>wednesday</strong></a>:</p><p><a href=\"/glossary#id\"><strong>id</strong></a>: d8839721-ad8f-45dd-9f78-2080414b93f9</p>",
+    "operationId": "OBPv5.0.0-headAtms",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/AtmsJsonV400"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorBankNotFound"
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "ATM"
+    ],
+    "summary": "Create ATM",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Create ATM.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#accessibility_features\"><strong>accessibility_features</strong></a>: [&quot;ATAC&quot;,&quot;ATAD&quot;]</p><p><a href=\"/glossary#address\"><strong>address</strong></a>:</p><p><a href=\"/glossary#\"><strong>atm_type</strong></a>:</p><p><a href=\"/glossary#\"><strong>balance_inquiry_fee</strong></a>:</p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#\"><strong>branch_identification</strong></a>: branch_identification</p><p><a href=\"/glossary#\"><strong>cash_withdrawal_international_fee</strong></a>:</p><p><a href=\"/glossary#\"><strong>cash_withdrawal_national_fee</strong></a>:</p><p><a href=\"/glossary#city\"><strong>city</strong></a>:</p><p><a href=\"/glossary#closing_time\"><strong>closing_time</strong></a>: 2020-01-27</p><p><a href=\"/glossary#country_code\"><strong>country_code</strong></a>: 1254</p><p><a href=\"/glossary#county\"><strong>county</strong></a>:</p><p><a href=\"/glossary#friday\"><strong>friday</strong></a>:</p><p><a href=\"/glossary#\"><strong>has_deposit_capability</strong></a>: false</p><p><a href=\"/glossary#id\"><strong>id</strong></a>: d8839721-ad8f-45dd-9f78-2080414b93f9</p><p><a href=\"/glossary#\"><strong>is_accessible</strong></a>: false</p><p><a href=\"/glossary#latitude\"><strong>latitude</strong></a>: 38.8951</p><p><a href=\"/glossary#license\"><strong>license</strong></a>:</p><p><a href=\"/glossary#\"><strong>line_1</strong></a>:</p><p><a href=\"/glossary#\"><strong>line_2</strong></a>:</p><p><a href=\"/glossary#\"><strong>line_3</strong></a>:</p><p><a href=\"/glossary#\"><strong>located_at</strong></a>:</p><p><a href=\"/glossary#location\"><strong>location</strong></a>:</p><p><a href=\"/glossary#\"><strong>location_categories</strong></a>: location_categories</p><p><a href=\"/glossary#longitude\"><strong>longitude</strong></a>: -77.0364</p><p><a href=\"/glossary#meta\"><strong>meta</strong></a>:</p><p><a href=\"/glossary#\"><strong>minimum_withdrawal</strong></a>: minimum_withdrawal</p><p><a href=\"/glossary#monday\"><strong>monday</strong></a>:</p><p><a href=\"/glossary#more_info\"><strong>more_info</strong></a>: More information about this fee</p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#\"><strong>notes</strong></a>: notes</p><p><a href=\"/glossary#opening_time\"><strong>opening_time</strong></a>:</p><p><a href=\"/glossary#phone\"><strong>phone</strong></a>:</p><p><a href=\"/glossary#postcode\"><strong>postcode</strong></a>:</p><p><a href=\"/glossary#saturday\"><strong>saturday</strong></a>:</p><p><a href=\"/glossary#services\"><strong>services</strong></a>: [{&quot;CY&quot;:[&quot;PS_010&quot;,&quot;PS_020&quot;,&quot;PS_03C&quot;,&quot;PS_04C&quot;]}]</p><p><a href=\"/glossary#\"><strong>site_identification</strong></a>: site_identification</p><p><a href=\"/glossary#\"><strong>site_name</strong></a>: site_name</p><p><a href=\"/glossary#state\"><strong>state</strong></a>:</p><p><a href=\"/glossary#sunday\"><strong>sunday</strong></a>:</p><p><a href=\"/glossary#supported_currencies\"><strong>supported_currencies</strong></a>: [&quot;EUR&quot;,&quot;MXN&quot;,&quot;USD&quot;]</p><p><a href=\"/glossary#supported_languages\"><strong>supported_languages</strong></a>: [&quot;es&quot;,&quot;fr&quot;,&quot;de&quot;]</p><p><a href=\"/glossary#thursday\"><strong>thursday</strong></a>:</p><p><a href=\"/glossary#tuesday\"><strong>tuesday</strong></a>:</p><p><a href=\"/glossary#wednesday\"><strong>wednesday</strong></a>:</p><p><a href=\"/glossary#id\"><strong>id</strong></a>: d8839721-ad8f-45dd-9f78-2080414b93f9</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#accessibility_features\"><strong>accessibility_features</strong></a>: [&quot;ATAC&quot;,&quot;ATAD&quot;]</p><p><a href=\"/glossary#address\"><strong>address</strong></a>:</p><p><a href=\"/glossary#\"><strong>atm_attribute_id</strong></a>: xxaf2a-9a0f-4bfa-b30b-9003aa467f51</p><p><a href=\"/glossary#atm_id\"><strong>atm_id</strong></a>: atme-9a0f-4bfa-b30b-9003aa467f51</p><p><a href=\"/glossary#\"><strong>atm_type</strong></a>:</p><p><a href=\"/glossary#\"><strong>balance_inquiry_fee</strong></a>:</p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#\"><strong>branch_identification</strong></a>: branch_identification</p><p><a href=\"/glossary#\"><strong>cash_withdrawal_international_fee</strong></a>:</p><p><a href=\"/glossary#\"><strong>cash_withdrawal_national_fee</strong></a>:</p><p><a href=\"/glossary#city\"><strong>city</strong></a>:</p><p><a href=\"/glossary#closing_time\"><strong>closing_time</strong></a>: 2020-01-27</p><p><a href=\"/glossary#country_code\"><strong>country_code</strong></a>: 1254</p><p><a href=\"/glossary#county\"><strong>county</strong></a>:</p><p><a href=\"/glossary#friday\"><strong>friday</strong></a>:</p><p><a href=\"/glossary#\"><strong>has_deposit_capability</strong></a>: false</p><p><a href=\"/glossary#id\"><strong>id</strong></a>: d8839721-ad8f-45dd-9f78-2080414b93f9</p><p><a href=\"/glossary#\"><strong>is_accessible</strong></a>: false</p><p><a href=\"/glossary#latitude\"><strong>latitude</strong></a>: 38.8951</p><p><a href=\"/glossary#license\"><strong>license</strong></a>:</p><p><a href=\"/glossary#\"><strong>line_1</strong></a>:</p><p><a href=\"/glossary#\"><strong>line_2</strong></a>:</p><p><a href=\"/glossary#\"><strong>line_3</strong></a>:</p><p><a href=\"/glossary#\"><strong>located_at</strong></a>:</p><p><a href=\"/glossary#location\"><strong>location</strong></a>:</p><p><a href=\"/glossary#\"><strong>location_categories</strong></a>: location_categories</p><p><a href=\"/glossary#longitude\"><strong>longitude</strong></a>: -77.0364</p><p><a href=\"/glossary#meta\"><strong>meta</strong></a>:</p><p><a href=\"/glossary#\"><strong>minimum_withdrawal</strong></a>: minimum_withdrawal</p><p><a href=\"/glossary#monday\"><strong>monday</strong></a>:</p><p><a href=\"/glossary#more_info\"><strong>more_info</strong></a>: More information about this fee</p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#\"><strong>notes</strong></a>: notes</p><p><a href=\"/glossary#opening_time\"><strong>opening_time</strong></a>:</p><p><a href=\"/glossary#phone\"><strong>phone</strong></a>:</p><p><a href=\"/glossary#postcode\"><strong>postcode</strong></a>:</p><p><a href=\"/glossary#saturday\"><strong>saturday</strong></a>:</p><p><a href=\"/glossary#services\"><strong>services</strong></a>: [{&quot;CY&quot;:[&quot;PS_010&quot;,&quot;PS_020&quot;,&quot;PS_03C&quot;,&quot;PS_04C&quot;]}]</p><p><a href=\"/glossary#\"><strong>site_identification</strong></a>: site_identification</p><p><a href=\"/glossary#\"><strong>site_name</strong></a>: site_name</p><p><a href=\"/glossary#state\"><strong>state</strong></a>:</p><p><a href=\"/glossary#sunday\"><strong>sunday</strong></a>:</p><p><a href=\"/glossary#supported_currencies\"><strong>supported_currencies</strong></a>: [&quot;EUR&quot;,&quot;MXN&quot;,&quot;USD&quot;]</p><p><a href=\"/glossary#supported_languages\"><strong>supported_languages</strong></a>: [&quot;es&quot;,&quot;fr&quot;,&quot;de&quot;]</p><p><a href=\"/glossary#thursday\"><strong>thursday</strong></a>:</p><p><a href=\"/glossary#tuesday\"><strong>tuesday</strong></a>:</p><p><a href=\"/glossary#type\"><strong>type</strong></a>:</p><p><a href=\"/glossary#\"><strong>value</strong></a>: 5987953</p><p><a href=\"/glossary#wednesday\"><strong>wednesday</strong></a>:</p><p><a href=\"/glossary#attributes\">attributes</a>: attribute value in form of (name, value)</p><p><a href=\"/glossary#id\"><strong>id</strong></a>: d8839721-ad8f-45dd-9f78-2080414b93f9</p><p><a href=\"/glossary#is_active\">is_active</a>: false</p>",
+    "operationId": "OBPv5.1.0-createAtm",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "PostAtmJsonV510 object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/PostAtmJsonV510"
+        }
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/AtmJsonV510"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

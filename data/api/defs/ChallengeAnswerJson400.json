@@ -1,0 +1,24 @@
+{
+  "required": [
+    "id",
+    "answer"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "This is challenge.id, you can get it from `Create Transaction Request.` response, only is useful if status ==`INITIATED` there."
+    },
+    "answer": {
+      "type": "string",
+      "example": "123"
+    },
+    "reason_code": {
+      "type": "string",
+      "example": "[Optional] Reason code for REJECT answer (e.g. 'CUST')"
+    },
+    "additional_information": {
+      "type": "string",
+      "example": "[Optional] Additional description for REJECT answer"
+    }
+  }
+}

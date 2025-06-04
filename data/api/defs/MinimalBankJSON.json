@@ -1,0 +1,16 @@
+{
+  "required": [
+    "national_identifier",
+    "name"
+  ],
+  "properties": {
+    "national_identifier": {
+      "type": "string",
+      "example": "OBP"
+    },
+    "name": {
+      "type": "string",
+      "example": "OBP"
+    }
+  }
+}

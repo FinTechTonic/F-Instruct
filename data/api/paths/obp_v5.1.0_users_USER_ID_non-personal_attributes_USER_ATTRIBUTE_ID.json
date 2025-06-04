@@ -1,0 +1,36 @@
+{
+  "delete": {
+    "tags": [
+      "User"
+    ],
+    "summary": "Delete Non Personal User Attribute",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Delete the Non Personal User Attribute specified by ENTITLEMENT_REQUEST_ID for a user specified by USER_ID</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#\">USER_ATTRIBUTE_ID</a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#User.user_id\">USER_ID</a>: 9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1</p><p><strong>JSON response body fields:</strong></p>",
+    "operationId": "OBPv5.1.0-deleteNonPersonalUserAttribute",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "USER_ID",
+        "description": "The user id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "204": {
+        "description": "Success"
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

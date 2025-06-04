@@ -1,0 +1,95 @@
+{
+  "required": [
+    "allows",
+    "expires_date",
+    "networks",
+    "customer_id",
+    "issue_number",
+    "replacement",
+    "enabled",
+    "collected",
+    "technology",
+    "account_id",
+    "pin_reset",
+    "serial_number",
+    "valid_from_date",
+    "name_on_card",
+    "posted",
+    "card_type"
+  ],
+  "properties": {
+    "allows": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "expires_date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "networks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "customer_id": {
+      "type": "string",
+      "example": "7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    },
+    "issue_number": {
+      "type": "string",
+      "example": "1"
+    },
+    "replacement": {
+      "$ref": "#/definitions/ReplacementJSON"
+    },
+    "enabled": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "collected": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "technology": {
+      "type": "string",
+      "example": "technology1"
+    },
+    "account_id": {
+      "type": "string",
+      "example": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0"
+    },
+    "pin_reset": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/PinResetJSON"
+      }
+    },
+    "serial_number": {
+      "type": "string",
+      "example": "1324234"
+    },
+    "valid_from_date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "name_on_card": {
+      "type": "string",
+      "example": "SusanSmith"
+    },
+    "posted": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "card_type": {
+      "type": "string",
+      "example": "Credit"
+    }
+  }
+}

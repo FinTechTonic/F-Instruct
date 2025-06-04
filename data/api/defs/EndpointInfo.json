@@ -1,0 +1,16 @@
+{
+  "required": [
+    "name",
+    "version"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "getAccounts"
+    },
+    "version": {
+      "type": "string",
+      "example": "OBPv3.0.0"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "required": [
+    "duration_time"
+  ],
+  "properties": {
+    "duration_time": {
+      "type": "string",
+      "example": "10 ms"
+    }
+  }
+}

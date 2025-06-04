@@ -1,0 +1,13 @@
+{
+  "required": [
+    "web_hooks"
+  ],
+  "properties": {
+    "web_hooks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AccountWebhookJson"
+      }
+    }
+  }
+}

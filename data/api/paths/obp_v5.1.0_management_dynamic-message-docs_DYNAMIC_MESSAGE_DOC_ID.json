@@ -1,0 +1,99 @@
+{
+  "delete": {
+    "tags": [
+      "Dynamic-Message-Doc"
+    ],
+    "summary": "Delete Dynamic Message Doc",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Delete a Dynamic Message Doc.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#\">DYNAMIC_MESSAGE_DOC_ID</a>:</p><p><strong>JSON response body fields:</strong></p>",
+    "operationId": "OBPv4.0.0-deleteDynamicMessageDoc",
+    "parameters": [],
+    "responses": {
+      "204": {
+        "description": "Success",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "get": {
+    "tags": [
+      "Dynamic-Message-Doc"
+    ],
+    "summary": "Get Dynamic Message Doc",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get a Dynamic Message Doc by DYNAMIC_MESSAGE_DOC_ID.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#\">DYNAMIC_MESSAGE_DOC_ID</a>:</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#description\"><strong>description</strong></a>: Description of the object. Maximum length is 2000. It can be any characters here.</p><p><a href=\"/glossary#process\"><strong>process</strong></a>: obp.getBank</p>",
+    "operationId": "OBPv4.0.0-getDynamicMessageDoc",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/JsonDynamicMessageDoc"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "put": {
+    "tags": [
+      "Dynamic-Message-Doc"
+    ],
+    "summary": "Update Dynamic Message Doc",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Update a Dynamic Message Doc.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#\">DYNAMIC_MESSAGE_DOC_ID</a>:</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#description\"><strong>description</strong></a>: Description of the object. Maximum length is 2000. It can be any characters here.</p><p><a href=\"/glossary#process\"><strong>process</strong></a>: obp.getBank</p>",
+    "operationId": "OBPv4.0.0-updateDynamicMessageDoc",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "JsonDynamicMessageDoc object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/JsonDynamicMessageDoc"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/JsonDynamicMessageDoc"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

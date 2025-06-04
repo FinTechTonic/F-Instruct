@@ -1,0 +1,32 @@
+{
+  "get": {
+    "tags": [
+      "Documentation",
+      "API"
+    ],
+    "summary": "Get Message Docs",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>These message docs provide example messages sent by OBP to the (RabbitMq) message queue for processing by the Core Banking / Payment system Adapter - together with an example expected response and possible error codes.<br />Integrators can use these messages to build Adapters that provide core banking services to OBP.</p><p>Note: API Explorer provides a Message Docs page where these messages are displayed.</p><p><code>CONNECTOR</code>: rest_vMar2019, stored_procedure_vDec2019 ...</p><p>User Authentication is Optional. The User need not be logged in.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Connector\">CONNECTOR</a>: CONNECTOR</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#adapter_implementation\"><strong>adapter_implementation</strong></a>:</p><p><a href=\"/glossary#dependent_endpoints\"><strong>dependent_endpoints</strong></a>:</p><p><a href=\"/glossary#description\"><strong>description</strong></a>: Description of the object. Maximum length is 2000. It can be any characters here.</p><p><a href=\"/glossary#example_inbound_message\"><strong>example_inbound_message</strong></a>: {}</p><p><a href=\"/glossary#example_outbound_message\"><strong>example_outbound_message</strong></a>: {}</p><p><a href=\"/glossary#group\"><strong>group</strong></a>:</p><p><a href=\"/glossary#message_docs\"><strong>message_docs</strong></a>:</p><p><a href=\"/glossary#message_format\"><strong>message_format</strong></a>:</p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#process\"><strong>process</strong></a>: obp.getBank</p><p><a href=\"/glossary#suggested_order\"><strong>suggested_order</strong></a>:</p><p><a href=\"/glossary#version\"><strong>version</strong></a>:</p><p><a href=\"/glossary#inboundavroschema\">inboundAvroSchema</a>:</p><p><a href=\"/glossary#inbound_topic\">inbound_topic</a>:</p><p><a href=\"/glossary#outboundavroschema\">outboundAvroSchema</a>:</p><p><a href=\"/glossary#outbound_topic\">outbound_topic</a>:</p><p><a href=\"/glossary#requiredfieldinfo\">requiredFieldInfo</a>: false</p>",
+    "operationId": "OBPv2.2.0-getMessageDocs",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/MessageDocsJson"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorInvalidConnector"
+        }
+      }
+    }
+  }
+}

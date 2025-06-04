@@ -1,0 +1,30 @@
+{
+  "required": [
+    "type",
+    "minLength",
+    "maxLength",
+    "examples"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "example": "string"
+    },
+    "minLength": {
+      "type": "integer",
+      "format": "int32",
+      "example": "2"
+    },
+    "maxLength": {
+      "type": "integer",
+      "format": "int32",
+      "example": "50"
+    },
+    "examples": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

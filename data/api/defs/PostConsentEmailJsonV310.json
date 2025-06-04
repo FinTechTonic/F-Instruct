@@ -1,0 +1,44 @@
+{
+  "required": [
+    "email",
+    "everything",
+    "views",
+    "entitlements"
+  ],
+  "properties": {
+    "time_to_live": {
+      "type": "integer",
+      "format": "int64",
+      "example": "3600"
+    },
+    "email": {
+      "type": "string",
+      "example": "felixsmith@example.com"
+    },
+    "everything": {
+      "type": "boolean",
+      "example": "false"
+    },
+    "consumer_id": {
+      "type": "string",
+      "example": "7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    },
+    "valid_from": {
+      "type": "string",
+      "format": "date",
+      "example": "2025-05-26T10:28:42Z"
+    },
+    "views": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/PostConsentViewJsonV310"
+      }
+    },
+    "entitlements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/PostConsentEntitlementJsonV310"
+      }
+    }
+  }
+}

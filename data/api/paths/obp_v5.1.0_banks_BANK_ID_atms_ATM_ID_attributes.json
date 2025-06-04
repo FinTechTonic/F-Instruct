@@ -1,0 +1,99 @@
+{
+  "get": {
+    "tags": [
+      "ATM"
+    ],
+    "summary": "Get ATM Attributes",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get ATM Attributes</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#atm_id\">ATM_ID</a>: atme-9a0f-4bfa-b30b-9003aa467f51</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>atm_attribute_id</strong></a>: xxaf2a-9a0f-4bfa-b30b-9003aa467f51</p><p><a href=\"/glossary#\"><strong>atm_attributes</strong></a>: atm_attributes</p><p><a href=\"/glossary#atm_id\"><strong>atm_id</strong></a>: atme-9a0f-4bfa-b30b-9003aa467f51</p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#type\"><strong>type</strong></a>:</p><p><a href=\"/glossary#\"><strong>value</strong></a>: 5987953</p><p><a href=\"/glossary#is_active\">is_active</a>: false</p>",
+    "operationId": "OBPv5.1.0-getAtmAttributes",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "ATM_ID",
+        "description": "the atm id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/AtmAttributesResponseJsonV510"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "ATM"
+    ],
+    "summary": "Create ATM Attribute",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Create ATM Attribute</p><p>The type field must be one of &quot;STRING&quot;, &quot;INTEGER&quot;, &quot;DOUBLE&quot; or DATE_WITH_DAY&quot;</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#atm_id\">ATM_ID</a>: atme-9a0f-4bfa-b30b-9003aa467f51</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#type\"><strong>type</strong></a>:</p><p><a href=\"/glossary#\"><strong>value</strong></a>: 5987953</p><p><a href=\"/glossary#is_active\">is_active</a>: false</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>atm_attribute_id</strong></a>: xxaf2a-9a0f-4bfa-b30b-9003aa467f51</p><p><a href=\"/glossary#atm_id\"><strong>atm_id</strong></a>: atme-9a0f-4bfa-b30b-9003aa467f51</p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#type\"><strong>type</strong></a>:</p><p><a href=\"/glossary#\"><strong>value</strong></a>: 5987953</p><p><a href=\"/glossary#is_active\">is_active</a>: false</p>",
+    "operationId": "OBPv5.1.0-createAtmAttribute",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "AtmAttributeJsonV510 object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/AtmAttributeJsonV510"
+        }
+      },
+      {
+        "in": "path",
+        "name": "ATM_ID",
+        "description": "the atm id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/AtmAttributeResponseJsonV510"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "delete": {
+    "tags": [
+      "Counterparty-Metadata",
+      "Counterparty"
+    ],
+    "summary": "Delete url of other bank account",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Account.account_id\">ACCOUNT_ID</a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#other_account_id\">OTHER_ACCOUNT_ID</a>:</p><p><a href=\"/glossary#this_view_id\">VIEW_ID</a>: owner</p><p><strong>JSON response body fields:</strong></p>",
+    "operationId": "OBPv1.2.1-deleteCounterpartyUrl",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "OTHER_ACCOUNT_ID",
+        "description": "The other account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "VIEW_ID",
+        "description": "The view id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "ACCOUNT_ID",
+        "description": "The account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "204": {
+        "description": "Success"
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "Counterparty-Metadata",
+      "Counterparty"
+    ],
+    "summary": "Add url to other bank account",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>A url which represents the counterparty (home page url etc.)</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Account.account_id\">ACCOUNT_ID</a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#other_account_id\">OTHER_ACCOUNT_ID</a>:</p><p><a href=\"/glossary#this_view_id\">VIEW_ID</a>: owner</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#\"><strong>URL</strong></a>: <a href=\"http://www.example.com/id-docs/123/image.png\">http://www.example.com/id-docs/123/image.png</a></p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#success\"><strong>success</strong></a>:</p>",
+    "operationId": "OBPv1.2.1-addCounterpartyUrl",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "UrlJSON object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/UrlJSON"
+        }
+      },
+      {
+        "in": "path",
+        "name": "OTHER_ACCOUNT_ID",
+        "description": "The other account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "VIEW_ID",
+        "description": "The view id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "ACCOUNT_ID",
+        "description": "The account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/SuccessMessage"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "put": {
+    "tags": [
+      "Counterparty-Metadata",
+      "Counterparty"
+    ],
+    "summary": "Update url of other bank account",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>A url which represents the counterparty (home page url etc.)</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Account.account_id\">ACCOUNT_ID</a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#other_account_id\">OTHER_ACCOUNT_ID</a>:</p><p><a href=\"/glossary#this_view_id\">VIEW_ID</a>: owner</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#success\"><strong>success</strong></a>:</p>",
+    "operationId": "OBPv1.2.1-updateCounterpartyUrl",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "UrlJSON object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/UrlJSON"
+        }
+      },
+      {
+        "in": "path",
+        "name": "OTHER_ACCOUNT_ID",
+        "description": "The other account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "VIEW_ID",
+        "description": "The view id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "ACCOUNT_ID",
+        "description": "The account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/SuccessMessage"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

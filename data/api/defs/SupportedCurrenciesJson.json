@@ -1,0 +1,13 @@
+{
+  "required": [
+    "supported_currencies"
+  ],
+  "properties": {
+    "supported_currencies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

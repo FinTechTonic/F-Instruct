@@ -1,0 +1,86 @@
+{
+  "get": {
+    "tags": [
+      "Consumer"
+    ],
+    "summary": "Get Call Limits for a Consumer",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get Calls limits per Consumer.<br />User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#\">CONSUMER_ID</a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#per_day_call_limit\"><strong>per_day_call_limit</strong></a>:</p><p><a href=\"/glossary#per_hour_call_limit\"><strong>per_hour_call_limit</strong></a>:</p><p><a href=\"/glossary#per_minute_call_limit\"><strong>per_minute_call_limit</strong></a>:</p><p><a href=\"/glossary#per_month_call_limit\"><strong>per_month_call_limit</strong></a>:</p><p><a href=\"/glossary#per_second_call_limit\"><strong>per_second_call_limit</strong></a>: 10</p><p><a href=\"/glossary#per_week_call_limit\"><strong>per_week_call_limit</strong></a>:</p><p><a href=\"/glossary#calls_made\">calls_made</a>: 50</p><p><a href=\"/glossary#current_state\">current_state</a>:</p><p><a href=\"/glossary#per_day\">per_day</a>: 4000</p><p><a href=\"/glossary#per_hour\">per_hour</a>:</p><p><a href=\"/glossary#per_minute\">per_minute</a>:</p><p><a href=\"/glossary#per_month\">per_month</a>: 500</p><p><a href=\"/glossary#per_second\">per_second</a>: 1000</p><p><a href=\"/glossary#per_week\">per_week</a>: 50000</p><p><a href=\"/glossary#reset_in_seconds\">reset_in_seconds</a>:</p>",
+    "operationId": "OBPv3.1.0-getCallsLimit",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "CONSUMER_ID",
+        "description": "new consumer id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/CallLimitJson"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "put": {
+    "tags": [
+      "Consumer",
+      "Rate-Limits"
+    ],
+    "summary": "Set Rate Limits / Call Limits per Consumer",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Set the API rate limits / call limits for a Consumer:</p><p>Rate limiting can be set:</p><p>Per Second<br />Per Minute<br />Per Hour<br />Per Week<br />Per Month</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#\">CONSUMER_ID</a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#from_date\"><strong>from_date</strong></a>: 1100-01-01T01:01:01.000Z</p><p><a href=\"/glossary#per_day_call_limit\"><strong>per_day_call_limit</strong></a>:</p><p><a href=\"/glossary#per_hour_call_limit\"><strong>per_hour_call_limit</strong></a>:</p><p><a href=\"/glossary#per_minute_call_limit\"><strong>per_minute_call_limit</strong></a>:</p><p><a href=\"/glossary#per_month_call_limit\"><strong>per_month_call_limit</strong></a>:</p><p><a href=\"/glossary#per_second_call_limit\"><strong>per_second_call_limit</strong></a>: 10</p><p><a href=\"/glossary#per_week_call_limit\"><strong>per_week_call_limit</strong></a>:</p><p><a href=\"/glossary#to_date\"><strong>to_date</strong></a>: 1100-01-01T01:01:01.000Z</p><p><a href=\"/glossary#\">api_name</a>: api_name</p><p><a href=\"/glossary#api_version\">api_version</a>:</p><p><a href=\"/glossary#\">bank_id</a>: gh.29.uk</p>",
+    "operationId": "OBPv4.0.0-callsLimit",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "CallLimitPostJsonV400 object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/CallLimitPostJsonV400"
+        }
+      },
+      {
+        "in": "path",
+        "name": "CONSUMER_ID",
+        "description": "new consumer id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/CallLimitPostJsonV400"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

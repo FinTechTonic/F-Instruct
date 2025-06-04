@@ -1,0 +1,41 @@
+{
+  "required": [
+    "order_id",
+    "number_of_checkbooks",
+    "first_check_number",
+    "order_date",
+    "status",
+    "shipping_code",
+    "distribution_channel"
+  ],
+  "properties": {
+    "order_id": {
+      "type": "string",
+      "example": "xjksajfkj"
+    },
+    "number_of_checkbooks": {
+      "type": "string",
+      "example": "4"
+    },
+    "first_check_number": {
+      "type": "string",
+      "example": "5165276"
+    },
+    "order_date": {
+      "type": "string",
+      "example": "07082013"
+    },
+    "status": {
+      "type": "string",
+      "example": "2"
+    },
+    "shipping_code": {
+      "type": "string",
+      "example": "1"
+    },
+    "distribution_channel": {
+      "type": "string",
+      "example": "1201"
+    }
+  }
+}

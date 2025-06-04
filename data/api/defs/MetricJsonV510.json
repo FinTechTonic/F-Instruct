@@ -1,0 +1,97 @@
+{
+  "required": [
+    "duration",
+    "response_body",
+    "implemented_in_version",
+    "target_ip",
+    "url",
+    "correlation_id",
+    "implemented_by_partial_function",
+    "user_id",
+    "developer_email",
+    "date",
+    "consumer_id",
+    "verb",
+    "app_name",
+    "source_ip",
+    "user_name"
+  ],
+  "properties": {
+    "duration": {
+      "type": "integer",
+      "format": "int64",
+      "example": "39"
+    },
+    "response_body": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "example": "401"
+        },
+        "message": {
+          "type": "string",
+          "example": "OBP-20001: User not logged in. Authentication is required!"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ]
+    },
+    "implemented_in_version": {
+      "type": "string",
+      "example": "v210"
+    },
+    "target_ip": {
+      "type": "string",
+      "example": "2001:0db8:3c4d:0015:0000:0000:1a2f:1a2b"
+    },
+    "url": {
+      "type": "string",
+      "example": "www.openbankproject.com"
+    },
+    "correlation_id": {
+      "type": "string",
+      "example": "v8ho6h5ivel3uq7a5zcnv0w1"
+    },
+    "implemented_by_partial_function": {
+      "type": "string",
+      "example": "getBanks"
+    },
+    "user_id": {
+      "type": "string",
+      "example": "9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+    },
+    "developer_email": {
+      "type": "string",
+      "example": "felixsmith@example.com"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "consumer_id": {
+      "type": "string",
+      "example": "123"
+    },
+    "verb": {
+      "type": "string",
+      "example": "get"
+    },
+    "app_name": {
+      "type": "string",
+      "example": "SOFI"
+    },
+    "source_ip": {
+      "type": "string",
+      "example": "2001:0db8:3c4d:0015:0000:0000:1a2f:1a2b"
+    },
+    "user_name": {
+      "type": "string",
+      "example": "OBP"
+    }
+  }
+}

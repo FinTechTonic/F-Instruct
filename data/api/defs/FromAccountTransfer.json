@@ -1,0 +1,16 @@
+{
+  "required": [
+    "mobile_phone_number",
+    "nickname"
+  ],
+  "properties": {
+    "mobile_phone_number": {
+      "type": "string",
+      "example": "+44 07972 444 876"
+    },
+    "nickname": {
+      "type": "string",
+      "example": "String"
+    }
+  }
+}

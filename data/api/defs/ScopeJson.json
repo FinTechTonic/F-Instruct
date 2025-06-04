@@ -1,0 +1,21 @@
+{
+  "required": [
+    "scope_id",
+    "role_name",
+    "bank_id"
+  ],
+  "properties": {
+    "scope_id": {
+      "type": "string",
+      "example": "88625da4-a671-435e-9d24-e5b6e5cc404f"
+    },
+    "role_name": {
+      "type": "string",
+      "example": "CanGetEntitlementsForAnyUserAtOneBank"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    }
+  }
+}

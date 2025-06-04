@@ -1,0 +1,36 @@
+{
+  "required": [
+    "new_balance",
+    "description",
+    "completed",
+    "type",
+    "value",
+    "posted"
+  ],
+  "properties": {
+    "new_balance": {
+      "$ref": "#/definitions/AmountOfMoneyJsonV121"
+    },
+    "description": {
+      "type": "string",
+      "example": "OBP"
+    },
+    "completed": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "type": {
+      "type": "string",
+      "example": "AC"
+    },
+    "value": {
+      "$ref": "#/definitions/AmountOfMoneyJsonV121"
+    },
+    "posted": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "post": {
+    "tags": [
+      "Directory",
+      "Consumer"
+    ],
+    "summary": "Create a Consumer(Dynamic Registration)",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Create a Consumer (mTLS access).</p><p>JWT payload:<br />- minimal<br />{ &quot;description&quot;:&quot;Description&quot; }<br />- full<br />{<br />&quot;description&quot;: &quot;Description&quot;,<br />&quot;app_name&quot;: &quot;Tesobe GmbH&quot;,<br />&quot;app_type&quot;: &quot;Sofit&quot;,<br />&quot;developer_email&quot;: &quot;<a href=\"&#x6d;&#97;&#105;l&#x74;&#111;&#x3a;&#109;&#x61;rko&#64;&#116;&#x65;&#x73;&#x6f;&#98;&#101;.c&#111;&#109;\">&#109;&#97;&#x72;&#107;&#x6f;&#64;&#x74;&#101;&#x73;&#111;&#98;&#x65;&#x2e;c&#111;m</a>&quot;,<br />&quot;redirect_url&quot;: &quot;<a href=\"http://localhost:8082\">http://localhost:8082</a>&quot;<br />}<br />Please note that JWT must be signed with the counterpart private key of the public key used to establish mTLS</p><p>User Authentication is Optional. The User need not be logged in.</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#jwt\"><strong>jwt</strong></a>: eyJhbGciOiJIUzI1NiJ9.eyJlbnRpdGxlbWVudHMiOltdLCJjcmVhdGVkQnlVc2VySWQiOiJhYjY1MzlhOS1iMTA1LTQ0ODktYTg4My0wYWQ4ZDZjNjE2NTciLCJzdWIiOiIyMWUxYzhjYy1mOTE4LTRlYWMtYjhlMy01ZTVlZWM2YjNiNGIiLCJhdWQiOiJlanpuazUwNWQxMzJyeW9tbmhieDFxbXRvaHVyYnNiYjBraWphanNrIiwibmJmIjoxNTUzNTU0ODk5LCJpc3MiOiJodHRwczpcL1wvd3d3Lm9wZW5iYW5rcHJvamVjdC5jb20iLCJleHAiOjE1NTM1NTg0OTksImlhdCI6MTU1MzU1NDg5OSwianRpIjoiMDlmODhkNWYtZWNlNi00Mzk4LThlOTktNjYxMWZhMWNkYmQ1Iiwidmlld3MiOlt7ImFjY291bnRfaWQiOiJtYXJrb19wcml2aXRlXzAxIiwiYmFua19pZCI6ImdoLjI5LnVrLngiLCJ2aWV3X2lkIjoib3duZXIifSx7ImFjY291bnRfaWQiOiJtYXJrb19wcml2aXRlXzAyIiwiYmFua19pZCI6ImdoLjI5LnVrLngiLCJ2aWV3X2lkIjoib3duZXIifV19.8cc7cBEf2NyQvJoukBCmDLT7LXYcuzTcSYLqSpbxLp4</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#app_name\"><strong>app_name</strong></a>: appNameBank</p><p><a href=\"/glossary#app_type\"><strong>app_type</strong></a>: Web</p><p><a href=\"/glossary#\"><strong>certificate_pem</strong></a>: certificate_pem</p><p><a href=\"/glossary#company\"><strong>company</strong></a>: Tesobe GmbH</p><p><a href=\"/glossary#\"><strong>consumer_id</strong></a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#\"><strong>consumer_key</strong></a>: bwf0ykmwoirip1yjxcn15wnhuyxcziwgtcoaildq</p><p><a href=\"/glossary#created\"><strong>created</strong></a>:</p><p><a href=\"/glossary#created_by_user\"><strong>created_by_user</strong></a>:</p><p><a href=\"/glossary#description\"><strong>description</strong></a>: Description of the object. Maximum length is 2000. It can be any characters here.</p><p><a href=\"/glossary#developer_email\"><strong>developer_email</strong></a>:</p><p><a href=\"/glossary#\"><strong>email</strong></a>: <a href=\"&#109;&#x61;&#105;lt&#111;:&#x66;&#101;&#x6c;&#x69;&#120;&#x73;mi&#x74;&#104;&#64;&#101;&#x78;&#97;&#109;&#112;&#108;&#101;&#46;&#x63;&#111;&#109;\">&#x66;&#101;&#x6c;&#105;&#120;sm&#105;&#116;&#x68;&#64;e&#120;&#97;&#109;&#112;&#108;&#x65;.&#99;o&#109;</a></p><p><a href=\"/glossary#enabled\"><strong>enabled</strong></a>: false</p><p><a href=\"/glossary#\"><strong>issuer_domain_name</strong></a>: issuer_domain_name</p><p><a href=\"/glossary#\"><strong>not_after</strong></a>: not_after</p><p><a href=\"/glossary#\"><strong>not_before</strong></a>: not_before</p><p><a href=\"/glossary#provider\"><strong>provider</strong></a>: ETHEREUM</p><p><a href=\"/glossary#provider_id\"><strong>provider_id</strong></a>:</p><p><a href=\"/glossary#redirect_url\"><strong>redirect_url</strong></a>: <a href=\"https://apisandbox.openbankproject.com\">https://apisandbox.openbankproject.com</a></p><p><a href=\"/glossary#\"><strong>subject_domain_name</strong></a>: subject_domain_name</p><p><a href=\"/glossary#\"><strong>user_id</strong></a>: 9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1</p><p><a href=\"/glossary#\"><strong>username</strong></a>: felixsmith</p><p><a href=\"/glossary#\">certificate_info</a>: certificate_info</p><p><a href=\"/glossary#logo_url\">logo_url</a>: logo_url</p><p><a href=\"/glossary#roles\">roles</a>: CanCreateMyUser</p><p><a href=\"/glossary#\">roles_info</a>: roles_info</p>",
+    "operationId": "OBPv5.1.0-createConsumerDynamicRegistration",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "ConsumerJwtPostJsonV510 object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/ConsumerJwtPostJsonV510"
+        }
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/ConsumerJsonV510"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorInvalidJsonFormat"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "required": [
+    "top_apis"
+  ],
+  "properties": {
+    "top_apis": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/TopApiJson"
+      }
+    }
+  }
+}

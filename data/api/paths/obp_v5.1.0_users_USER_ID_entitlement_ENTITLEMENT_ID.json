@@ -1,0 +1,45 @@
+{
+  "delete": {
+    "tags": [
+      "Role",
+      "User",
+      "Entitlement"
+    ],
+    "summary": "Delete Entitlement",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Delete Entitlement specified by ENTITLEMENT_ID for an user specified by USER_ID</p><p>Authentication is required and the user needs to be a Super Admin.<br />Super Admins are listed in the Props file.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#entitlement_id\">ENTITLEMENT_ID</a>:</p><p><a href=\"/glossary#User.user_id\">USER_ID</a>: 9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1</p><p><strong>JSON response body fields:</strong></p>",
+    "operationId": "OBPv2.0.0-deleteEntitlement",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "ENTITLEMENT_ID",
+        "description": "The entitblement id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "USER_ID",
+        "description": "The user id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "204": {
+        "description": "Success"
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

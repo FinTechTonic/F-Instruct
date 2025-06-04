@@ -1,0 +1,21 @@
+{
+  "required": [
+    "name",
+    "type",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "BATTERY_LEVEL"
+    },
+    "type": {
+      "type": "string",
+      "example": "STRING"
+    },
+    "value": {
+      "type": "string",
+      "example": "90"
+    }
+  }
+}

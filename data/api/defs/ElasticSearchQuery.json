@@ -1,0 +1,10 @@
+{
+  "required": [
+    "match_all"
+  ],
+  "properties": {
+    "match_all": {
+      "$ref": "#/definitions/EmptyElasticSearch"
+    }
+  }
+}

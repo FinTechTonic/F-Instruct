@@ -1,0 +1,18 @@
+{
+  "required": [
+    "atm_id",
+    "location_categories"
+  ],
+  "properties": {
+    "atm_id": {
+      "type": "string",
+      "example": "atme-9a0f-4bfa-b30b-9003aa467f51"
+    },
+    "location_categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "required": [
+    "id",
+    "name",
+    "description"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "owner"
+    },
+    "name": {
+      "type": "string",
+      "example": "owner"
+    },
+    "description": {
+      "type": "string",
+      "example": "This view is for the owner for the account."
+    }
+  }
+}

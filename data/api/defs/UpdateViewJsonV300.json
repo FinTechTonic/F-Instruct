@@ -1,0 +1,41 @@
+{
+  "required": [
+    "description",
+    "is_public",
+    "hide_metadata_if_alias_used",
+    "which_alias_to_use",
+    "metadata_view",
+    "allowed_actions"
+  ],
+  "properties": {
+    "description": {
+      "type": "string",
+      "example": "this is for family"
+    },
+    "is_public": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "hide_metadata_if_alias_used": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "which_alias_to_use": {
+      "type": "string",
+      "example": "family"
+    },
+    "is_firehose": {
+      "type": "boolean"
+    },
+    "metadata_view": {
+      "type": "string",
+      "example": "owner"
+    },
+    "allowed_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

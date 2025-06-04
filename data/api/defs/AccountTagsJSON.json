@@ -1,0 +1,13 @@
+{
+  "required": [
+    "tags"
+  ],
+  "properties": {
+    "tags": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AccountTagJSON"
+      }
+    }
+  }
+}

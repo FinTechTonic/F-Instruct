@@ -1,0 +1,83 @@
+{
+  "required": [
+    "mobile_phone_number",
+    "legal_name"
+  ],
+  "properties": {
+    "name_suffix": {
+      "type": "string",
+      "example": "Sr"
+    },
+    "email": {
+      "type": "string",
+      "example": "felixsmith@example.com"
+    },
+    "branch_id": {
+      "type": "string",
+      "example": "DERBY6"
+    },
+    "mobile_phone_number": {
+      "type": "string",
+      "example": "+49 30 901820"
+    },
+    "customer_number": {
+      "type": "string",
+      "example": "5987953"
+    },
+    "highest_education_attained": {
+      "type": "string",
+      "example": "Master"
+    },
+    "dob_of_dependants": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "date"
+      }
+    },
+    "date_of_birth": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "credit_rating": {
+      "$ref": "#/definitions/CustomerCreditRatingJSON"
+    },
+    "last_ok_date": {
+      "type": "string",
+      "format": "date",
+      "example": "2024-05-26T10:28:44Z"
+    },
+    "employment_status": {
+      "type": "string",
+      "example": "worker"
+    },
+    "legal_name": {
+      "type": "string",
+      "example": "Eveline Tripman"
+    },
+    "credit_limit": {
+      "$ref": "#/definitions/AmountOfMoneyJsonV121"
+    },
+    "title": {
+      "type": "string",
+      "example": "Dr."
+    },
+    "face_image": {
+      "$ref": "#/definitions/CustomerFaceImageJson"
+    },
+    "dependants": {
+      "type": "integer",
+      "format": "int32",
+      "example": "1"
+    },
+    "relationship_status": {
+      "type": "string",
+      "example": "single"
+    },
+    "kyc_status": {
+      "type": "boolean",
+      "example": "false"
+    }
+  }
+}

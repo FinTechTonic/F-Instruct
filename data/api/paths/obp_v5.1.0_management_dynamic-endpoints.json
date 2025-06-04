@@ -1,0 +1,146 @@
+{
+  "get": {
+    "tags": [
+      "Dynamic-Endpoint-Manage",
+      "API"
+    ],
+    "summary": " Get Dynamic Endpoints",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get Dynamic Endpoints.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p>",
+    "operationId": "OBPv4.0.0-getDynamicEndpoints",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "type": "object",
+          "required": [
+            "dynamic_endpoints"
+          ],
+          "properties": {
+            "dynamic_endpoints": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "user_id": {
+                    "type": "string",
+                    "example": "9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+                  },
+                  "dynamic_endpoint_id": {
+                    "type": "string",
+                    "example": "dynamic-endpoint-id"
+                  },
+                  "swagger_string": {
+                    "type": "object",
+                    "properties": {
+                      "swagger": {
+                        "type": "string",
+                        "example": "2.0"
+                      }
+                    },
+                    "required": [
+                      "swagger"
+                    ]
+                  }
+                },
+                "required": [
+                  "user_id",
+                  "dynamic_endpoint_id",
+                  "swagger_string"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "Dynamic-Endpoint-Manage",
+      "API"
+    ],
+    "summary": "Create Dynamic Endpoint",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Create dynamic endpoints.</p><p>Create dynamic endpoints with one json format swagger content.</p><p>If the host of swagger is <code>dynamic_entity</code>, then you need link the swagger fields to the dynamic entity fields,<br />please check <code>Endpoint Mapping</code> endpoints.</p><p>If the host of swagger is <code>obp_mock</code>, every dynamic endpoint will return example response of swagger,</p><p>when create MethodRouting for given dynamic endpoint, it will be routed to given url.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p>",
+    "operationId": "OBPv4.0.0-createDynamicEndpoint",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "JObject object that needs to be added.",
+        "required": true,
+        "schema": {
+          "type": "object",
+          "properties": {
+            "swagger": {
+              "type": "string",
+              "example": "2.0"
+            }
+          },
+          "required": [
+            "swagger"
+          ]
+        }
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "user_id": {
+              "type": "string",
+              "example": "9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+            },
+            "dynamic_endpoint_id": {
+              "type": "string",
+              "example": "dynamic-endpoint-id"
+            },
+            "swagger_string": {
+              "type": "object",
+              "properties": {
+                "swagger": {
+                  "type": "string",
+                  "example": "2.0"
+                }
+              },
+              "required": [
+                "swagger"
+              ]
+            }
+          },
+          "required": [
+            "user_id",
+            "dynamic_endpoint_id",
+            "swagger_string"
+          ]
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

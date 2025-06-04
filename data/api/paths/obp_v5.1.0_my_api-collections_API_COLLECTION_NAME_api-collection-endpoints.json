@@ -1,0 +1,70 @@
+{
+  "get": {
+    "tags": [
+      "Api-Collection"
+    ],
+    "summary": "Get My Api Collection Endpoints",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get Api Collection Endpoints By API_COLLECTION_NAME.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#\">API_COLLECTION_NAME</a>: Favourites</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>api_collection_endpoint_id</strong></a>: 8uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#\"><strong>api_collection_endpoints</strong></a>: api_collection_endpoints</p><p><a href=\"/glossary#\"><strong>api_collection_id</strong></a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#\"><strong>operation_id</strong></a>: OBPv4.0.0-getBanks</p>",
+    "operationId": "OBPv4.0.0-getMyApiCollectionEndpoints",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/ApiCollectionEndpointsJson400"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "Api-Collection"
+    ],
+    "summary": "Create My Api Collection Endpoint",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Create Api Collection Endpoint.</p><p>glossary-item-not-found</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#\">API_COLLECTION_NAME</a>: Favourites</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#\"><strong>operation_id</strong></a>: OBPv4.0.0-getBanks</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>api_collection_endpoint_id</strong></a>: 8uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#\"><strong>api_collection_id</strong></a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#\"><strong>operation_id</strong></a>: OBPv4.0.0-getBanks</p>",
+    "operationId": "OBPv4.0.0-createMyApiCollectionEndpoint",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "PostApiCollectionEndpointJson400 object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/PostApiCollectionEndpointJson400"
+        }
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/ApiCollectionEndpointJson400"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

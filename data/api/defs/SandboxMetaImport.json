@@ -1,0 +1,10 @@
+{
+  "required": [
+    "license"
+  ],
+  "properties": {
+    "license": {
+      "$ref": "#/definitions/SandboxLicenseImport"
+    }
+  }
+}

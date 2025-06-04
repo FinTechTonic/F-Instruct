@@ -1,0 +1,16 @@
+{
+  "required": [
+    "frequency",
+    "detail"
+  ],
+  "properties": {
+    "frequency": {
+      "type": "string",
+      "example": "YEARLY"
+    },
+    "detail": {
+      "type": "string",
+      "example": "LAST_DAY"
+    }
+  }
+}

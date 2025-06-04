@@ -1,0 +1,11 @@
+{
+  "required": [
+    "status"
+  ],
+  "properties": {
+    "status": {
+      "type": "string",
+      "example": "COMPLETED"
+    }
+  }
+}

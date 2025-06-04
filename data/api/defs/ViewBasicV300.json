@@ -1,0 +1,26 @@
+{
+  "required": [
+    "id",
+    "short_name",
+    "description",
+    "is_public"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "owner"
+    },
+    "short_name": {
+      "type": "string",
+      "example": "owner"
+    },
+    "description": {
+      "type": "string",
+      "example": "This view is for the owner for the account."
+    },
+    "is_public": {
+      "type": "boolean",
+      "example": "false"
+    }
+  }
+}

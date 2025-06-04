@@ -1,0 +1,25 @@
+{
+  "required": [
+    "akka",
+    "elastic_search",
+    "cache",
+    "scopes"
+  ],
+  "properties": {
+    "akka": {
+      "$ref": "#/definitions/AkkaJSON"
+    },
+    "elastic_search": {
+      "$ref": "#/definitions/ElasticSearchJSON"
+    },
+    "cache": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/CachedFunctionJSON"
+      }
+    },
+    "scopes": {
+      "$ref": "#/definitions/ScopesJSON"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "required": [
+    "name",
+    "number"
+  ],
+  "properties": {
+    "name": {
+      "$ref": "#/definitions/DynamicEntityStringTypeExample"
+    },
+    "number": {
+      "$ref": "#/definitions/DynamicEntityIntTypeExample"
+    }
+  }
+}

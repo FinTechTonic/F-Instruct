@@ -1,0 +1,55 @@
+{
+  "post": {
+    "tags": [
+      "User"
+    ],
+    "summary": "Answer User Auth Context Update Challenge",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Answer User Auth Context Update Challenge.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#auth_context_update_id\">AUTH_CONTEXT_UPDATE_ID</a>:</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#answer\"><strong>answer</strong></a>:</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>consumer_id</strong></a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#\"><strong>key</strong></a>: CustomerNumber</p><p><a href=\"/glossary#status\"><strong>status</strong></a>:</p><p><a href=\"/glossary#user_auth_context_update_id\"><strong>user_auth_context_update_id</strong></a>:</p><p><a href=\"/glossary#\"><strong>user_id</strong></a>: 9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1</p><p><a href=\"/glossary#\"><strong>value</strong></a>: 5987953</p>",
+    "operationId": "OBPv5.0.0-answerUserAuthContextUpdateChallenge",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "PostUserAuthContextUpdateJsonV310 object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/PostUserAuthContextUpdateJsonV310"
+        }
+      },
+      {
+        "in": "path",
+        "name": "AUTH_CONTEXT_UPDATE_ID",
+        "description": "the auth context update id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/UserAuthContextUpdateJsonV500"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

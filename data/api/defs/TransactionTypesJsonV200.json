@@ -1,0 +1,13 @@
+{
+  "required": [
+    "transaction_types"
+  ],
+  "properties": {
+    "transaction_types": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/TransactionTypeJsonV200"
+      }
+    }
+  }
+}

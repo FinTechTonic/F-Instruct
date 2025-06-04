@@ -1,0 +1,21 @@
+{
+  "required": [
+    "api_collection_endpoint_id",
+    "api_collection_id",
+    "operation_id"
+  ],
+  "properties": {
+    "api_collection_endpoint_id": {
+      "type": "string",
+      "example": "8uy8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    },
+    "api_collection_id": {
+      "type": "string",
+      "example": "7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    },
+    "operation_id": {
+      "type": "string",
+      "example": "OBPv4.0.0-getBanks"
+    }
+  }
+}

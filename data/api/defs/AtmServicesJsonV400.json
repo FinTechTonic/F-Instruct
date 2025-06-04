@@ -1,0 +1,13 @@
+{
+  "required": [
+    "services"
+  ],
+  "properties": {
+    "services": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

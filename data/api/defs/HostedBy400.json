@@ -1,0 +1,26 @@
+{
+  "required": [
+    "organisation",
+    "email",
+    "phone",
+    "organisation_website"
+  ],
+  "properties": {
+    "organisation": {
+      "type": "string",
+      "example": "String"
+    },
+    "email": {
+      "type": "string",
+      "example": "String"
+    },
+    "phone": {
+      "type": "string",
+      "example": "String"
+    },
+    "organisation_website": {
+      "type": "string",
+      "example": "String"
+    }
+  }
+}

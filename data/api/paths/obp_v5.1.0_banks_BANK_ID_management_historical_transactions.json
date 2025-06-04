@@ -1,0 +1,48 @@
+{
+  "post": {
+    "tags": [
+      "Transaction-Request"
+    ],
+    "summary": "Create Historical Transactions ",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Create historical transactions at one Bank</p><p>Use this endpoint to create transactions between any two accounts at the same bank.<br />From account and to account must be at the same bank.<br />Example:<br />{<br />&quot;from_account_id&quot;: &quot;1ca8a7e4-6d02-48e3-a029-0b2bf89de9f0&quot;,<br />&quot;to_account_id&quot;: &quot;2ca8a7e4-6d02-48e3-a029-0b2bf89de9f0&quot;,<br />&quot;value&quot;: {<br />&quot;currency&quot;: &quot;GBP&quot;,<br />&quot;amount&quot;: &quot;10&quot;<br />},<br />&quot;description&quot;: &quot;this is for work&quot;,<br />&quot;posted&quot;: &quot;2017-09-19T02:31:05Z&quot;,<br />&quot;completed&quot;: &quot;2017-09-19T02:31:05Z&quot;,<br />&quot;type&quot;: &quot;SANDBOX_TAN&quot;,<br />&quot;charge_policy&quot;: &quot;SHARED&quot;<br />}</p><p>This call is experimental.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#\"><strong>amount</strong></a>: 10.12</p><p><a href=\"/glossary#\"><strong>charge_policy</strong></a>: SHARED</p><p><a href=\"/glossary#completed\"><strong>completed</strong></a>: 2020-01-27</p><p><a href=\"/glossary#\"><strong>currency</strong></a>: EUR</p><p><a href=\"/glossary#description\"><strong>description</strong></a>: Description of the object. Maximum length is 2000. It can be any characters here.</p><p><a href=\"/glossary#\"><strong>from_account_id</strong></a>: from_account_id</p><p><a href=\"/glossary#posted\"><strong>posted</strong></a>: 2020-01-27</p><p><a href=\"/glossary#\"><strong>to_account_id</strong></a>: to_account_id</p><p><a href=\"/glossary#type\"><strong>type</strong></a>:</p><p><a href=\"/glossary#\"><strong>value</strong></a>: 5987953</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>amount</strong></a>: 10.12</p><p><a href=\"/glossary#\"><strong>charge_policy</strong></a>: SHARED</p><p><a href=\"/glossary#completed\"><strong>completed</strong></a>: 2020-01-27</p><p><a href=\"/glossary#\"><strong>currency</strong></a>: EUR</p><p><a href=\"/glossary#description\"><strong>description</strong></a>: Description of the object. Maximum length is 2000. It can be any characters here.</p><p><a href=\"/glossary#from\"><strong>from</strong></a>:</p><p><a href=\"/glossary#posted\"><strong>posted</strong></a>: 2020-01-27</p><p><a href=\"/glossary#to\"><strong>to</strong></a>:</p><p><a href=\"/glossary#\"><strong>transaction_id</strong></a>: 2fg8a7e4-6d02-40e3-a129-0b2bf89de8ub</p><p><a href=\"/glossary#\"><strong>transaction_request_type</strong></a>: SEPA</p><p><a href=\"/glossary#\"><strong>value</strong></a>: 5987953</p><p><a href=\"/glossary#\">account_id</a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#\">bank_id</a>: gh.29.uk</p><p><a href=\"/glossary#\">counterparty_id</a>: 9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh</p>",
+    "operationId": "OBPv4.0.0-createHistoricalTransactionAtBank",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "PostHistoricalTransactionAtBankJson object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/PostHistoricalTransactionAtBankJson"
+        }
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/PostHistoricalTransactionResponseJson"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorInvalidJsonFormat"
+        }
+      }
+    }
+  }
+}

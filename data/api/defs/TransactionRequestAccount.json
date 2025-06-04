@@ -1,0 +1,16 @@
+{
+  "required": [
+    "bank_id",
+    "account_id"
+  ],
+  "properties": {
+    "bank_id": {
+      "type": "string",
+      "example": "String"
+    },
+    "account_id": {
+      "type": "string",
+      "example": "String"
+    }
+  }
+}

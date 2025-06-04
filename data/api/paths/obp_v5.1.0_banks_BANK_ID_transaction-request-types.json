@@ -1,0 +1,40 @@
+{
+  "get": {
+    "tags": [
+      "Transaction-Request",
+      "Bank"
+    ],
+    "summary": "Get Transaction Request Types at Bank",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get the list of the Transaction Request Types supported by the bank.</p><p>User Authentication is Optional. The User need not be logged in.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>transaction_request_type</strong></a>: SEPA</p><p><a href=\"/glossary#transaction_request_types\"><strong>transaction_request_types</strong></a>:</p>",
+    "operationId": "OBPv2.1.0-getTransactionRequestTypesSupportedByBank",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/TransactionRequestTypesJSON"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUnknownError"
+        }
+      }
+    }
+  }
+}

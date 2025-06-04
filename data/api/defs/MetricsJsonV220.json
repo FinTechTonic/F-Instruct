@@ -1,0 +1,16 @@
+{
+  "required": [
+    "property",
+    "value"
+  ],
+  "properties": {
+    "property": {
+      "type": "string",
+      "example": "String"
+    },
+    "value": {
+      "type": "string",
+      "example": "Mapper"
+    }
+  }
+}

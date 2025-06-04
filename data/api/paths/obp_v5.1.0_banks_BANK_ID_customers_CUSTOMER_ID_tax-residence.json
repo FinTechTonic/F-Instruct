@@ -1,0 +1,56 @@
+{
+  "post": {
+    "tags": [
+      "Customer",
+      "KYC"
+    ],
+    "summary": "Create Tax Residence",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Create a Tax Residence for a Customer specified by CUSTOMER_ID.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#Customer.customer_id\">CUSTOMER_ID</a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#domain\"><strong>domain</strong></a>:</p><p><a href=\"/glossary#tax_number\"><strong>tax_number</strong></a>: 456</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#domain\"><strong>domain</strong></a>:</p><p><a href=\"/glossary#tax_number\"><strong>tax_number</strong></a>: 456</p><p><a href=\"/glossary#tax_residence_id\"><strong>tax_residence_id</strong></a>:</p>",
+    "operationId": "OBPv3.1.0-createTaxResidence",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "PostTaxResidenceJsonV310 object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/PostTaxResidenceJsonV310"
+        }
+      },
+      {
+        "in": "path",
+        "name": "CUSTOMER_ID",
+        "description": "The customer id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/TaxResidenceV310"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

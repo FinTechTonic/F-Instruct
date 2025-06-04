@@ -1,0 +1,19 @@
+{
+  "required": [
+    "product_code"
+  ],
+  "properties": {
+    "product_code": {
+      "type": "string",
+      "example": "1234BW"
+    },
+    "user_id": {
+      "type": "string",
+      "example": "9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+    },
+    "customer_id": {
+      "type": "string",
+      "example": "7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    }
+  }
+}

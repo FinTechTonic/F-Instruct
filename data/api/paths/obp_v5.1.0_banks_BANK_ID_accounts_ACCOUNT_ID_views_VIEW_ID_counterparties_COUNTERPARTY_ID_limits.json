@@ -1,0 +1,249 @@
+{
+  "delete": {
+    "tags": [
+      "Counterparty-Limits"
+    ],
+    "summary": "Delete Counterparty Limit",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Delete Counterparty Limit.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Account.account_id\">ACCOUNT_ID</a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#\">COUNTERPARTY_ID</a>: 9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#this_view_id\">VIEW_ID</a>: owner</p><p><strong>JSON response body fields:</strong></p>",
+    "operationId": "OBPv5.1.0-deleteCounterpartyLimit",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "COUNTERPARTY_ID",
+        "description": "the counterparty id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "VIEW_ID",
+        "description": "The view id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "ACCOUNT_ID",
+        "description": "The account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "204": {
+        "description": "Success"
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "get": {
+    "tags": [
+      "Counterparty-Limits"
+    ],
+    "summary": "Get Counterparty Limit",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get Counterparty Limit.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Account.account_id\">ACCOUNT_ID</a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#\">COUNTERPARTY_ID</a>: 9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#this_view_id\">VIEW_ID</a>: owner</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>account_id</strong></a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#\"><strong>counterparty_id</strong></a>: 9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#counterparty_limit_id\"><strong>counterparty_limit_id</strong></a>: abc9a7e4-6d02-40e3-a129-0b2bf89de9b1</p><p><a href=\"/glossary#\"><strong>currency</strong></a>: EUR</p><p><a href=\"/glossary#max_monthly_amount\"><strong>max_monthly_amount</strong></a>: 10000.11</p><p><a href=\"/glossary#max_number_of_monthly_transactions\"><strong>max_number_of_monthly_transactions</strong></a>: 10</p><p><a href=\"/glossary#max_number_of_transactions\"><strong>max_number_of_transactions</strong></a>: 100</p><p><a href=\"/glossary#max_number_of_yearly_transactions\"><strong>max_number_of_yearly_transactions</strong></a>: 100</p><p><a href=\"/glossary#max_single_amount\"><strong>max_single_amount</strong></a>: 1000.11</p><p><a href=\"/glossary#max_total_amount\"><strong>max_total_amount</strong></a>: 10000.12</p><p><a href=\"/glossary#max_yearly_amount\"><strong>max_yearly_amount</strong></a>: 12000.11</p><p><a href=\"/glossary#\"><strong>view_id</strong></a>: owner</p>",
+    "operationId": "OBPv5.1.0-getCounterpartyLimit",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "COUNTERPARTY_ID",
+        "description": "the counterparty id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "VIEW_ID",
+        "description": "The view id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "ACCOUNT_ID",
+        "description": "The account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/CounterpartyLimitV510"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "Counterparty-Limits"
+    ],
+    "summary": "Create Counterparty Limit",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Create limits (for single or recurring payments) for a counterparty specified by the COUNTERPARTY_ID.</p><p>Using this endpoint, we can attach a limit record to a Counterparty referenced by its counterparty_id (a UUID).</p><p>For more information on Counterparty Limits, see <a href=\"/glossary#Counterparty-Limits\">here</a></p><p>For an introduction to Counterparties in OBP, see <a href=\"/glossary#Counterparties\">here</a></p><p>You can automate the process of creating counterparty limits and consents for VRP with this <a href=\"https://apiexplorer-ii-sandbox.openbankproject.com//operationid/OBPv5.1.0-createVRPConsentRequest\">endpoint</a>.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Account.account_id\">ACCOUNT_ID</a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#\">COUNTERPARTY_ID</a>: 9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#this_view_id\">VIEW_ID</a>: owner</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#\"><strong>currency</strong></a>: EUR</p><p><a href=\"/glossary#max_monthly_amount\"><strong>max_monthly_amount</strong></a>: 10000.11</p><p><a href=\"/glossary#max_number_of_monthly_transactions\"><strong>max_number_of_monthly_transactions</strong></a>: 10</p><p><a href=\"/glossary#max_number_of_transactions\"><strong>max_number_of_transactions</strong></a>: 100</p><p><a href=\"/glossary#max_number_of_yearly_transactions\"><strong>max_number_of_yearly_transactions</strong></a>: 100</p><p><a href=\"/glossary#max_single_amount\"><strong>max_single_amount</strong></a>: 1000.11</p><p><a href=\"/glossary#max_total_amount\"><strong>max_total_amount</strong></a>: 10000.12</p><p><a href=\"/glossary#max_yearly_amount\"><strong>max_yearly_amount</strong></a>: 12000.11</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>account_id</strong></a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#\"><strong>counterparty_id</strong></a>: 9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#counterparty_limit_id\"><strong>counterparty_limit_id</strong></a>: abc9a7e4-6d02-40e3-a129-0b2bf89de9b1</p><p><a href=\"/glossary#\"><strong>currency</strong></a>: EUR</p><p><a href=\"/glossary#max_monthly_amount\"><strong>max_monthly_amount</strong></a>: 10000.11</p><p><a href=\"/glossary#max_number_of_monthly_transactions\"><strong>max_number_of_monthly_transactions</strong></a>: 10</p><p><a href=\"/glossary#max_number_of_transactions\"><strong>max_number_of_transactions</strong></a>: 100</p><p><a href=\"/glossary#max_number_of_yearly_transactions\"><strong>max_number_of_yearly_transactions</strong></a>: 100</p><p><a href=\"/glossary#max_single_amount\"><strong>max_single_amount</strong></a>: 1000.11</p><p><a href=\"/glossary#max_total_amount\"><strong>max_total_amount</strong></a>: 10000.12</p><p><a href=\"/glossary#max_yearly_amount\"><strong>max_yearly_amount</strong></a>: 12000.11</p><p><a href=\"/glossary#\"><strong>view_id</strong></a>: owner</p>",
+    "operationId": "OBPv5.1.0-createCounterpartyLimit",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "PostCounterpartyLimitV510 object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/PostCounterpartyLimitV510"
+        }
+      },
+      {
+        "in": "path",
+        "name": "COUNTERPARTY_ID",
+        "description": "the counterparty id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "VIEW_ID",
+        "description": "The view id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "ACCOUNT_ID",
+        "description": "The account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/CounterpartyLimitV510"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "put": {
+    "tags": [
+      "Counterparty-Limits"
+    ],
+    "summary": "Update Counterparty Limit",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Update Counterparty Limit.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Account.account_id\">ACCOUNT_ID</a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#\">COUNTERPARTY_ID</a>: 9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#this_view_id\">VIEW_ID</a>: owner</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>account_id</strong></a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#\"><strong>counterparty_id</strong></a>: 9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#counterparty_limit_id\"><strong>counterparty_limit_id</strong></a>: abc9a7e4-6d02-40e3-a129-0b2bf89de9b1</p><p><a href=\"/glossary#\"><strong>currency</strong></a>: EUR</p><p><a href=\"/glossary#max_monthly_amount\"><strong>max_monthly_amount</strong></a>: 10000.11</p><p><a href=\"/glossary#max_number_of_monthly_transactions\"><strong>max_number_of_monthly_transactions</strong></a>: 10</p><p><a href=\"/glossary#max_number_of_transactions\"><strong>max_number_of_transactions</strong></a>: 100</p><p><a href=\"/glossary#max_number_of_yearly_transactions\"><strong>max_number_of_yearly_transactions</strong></a>: 100</p><p><a href=\"/glossary#max_single_amount\"><strong>max_single_amount</strong></a>: 1000.11</p><p><a href=\"/glossary#max_total_amount\"><strong>max_total_amount</strong></a>: 10000.12</p><p><a href=\"/glossary#max_yearly_amount\"><strong>max_yearly_amount</strong></a>: 12000.11</p><p><a href=\"/glossary#\"><strong>view_id</strong></a>: owner</p>",
+    "operationId": "OBPv5.1.0-updateCounterpartyLimit",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "PostCounterpartyLimitV510 object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/PostCounterpartyLimitV510"
+        }
+      },
+      {
+        "in": "path",
+        "name": "COUNTERPARTY_ID",
+        "description": "the counterparty id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "VIEW_ID",
+        "description": "The view id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "ACCOUNT_ID",
+        "description": "The account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/CounterpartyLimitV510"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

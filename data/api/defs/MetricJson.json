@@ -1,0 +1,68 @@
+{
+  "required": [
+    "duration",
+    "implemented_in_version",
+    "url",
+    "correlation_id",
+    "implemented_by_partial_function",
+    "user_id",
+    "developer_email",
+    "date",
+    "consumer_id",
+    "verb",
+    "app_name",
+    "user_name"
+  ],
+  "properties": {
+    "duration": {
+      "type": "integer",
+      "format": "int64",
+      "example": "39"
+    },
+    "implemented_in_version": {
+      "type": "string",
+      "example": "v210"
+    },
+    "url": {
+      "type": "string",
+      "example": "www.openbankproject.com"
+    },
+    "correlation_id": {
+      "type": "string",
+      "example": "v8ho6h5ivel3uq7a5zcnv0w1"
+    },
+    "implemented_by_partial_function": {
+      "type": "string",
+      "example": "getBanks"
+    },
+    "user_id": {
+      "type": "string",
+      "example": "9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+    },
+    "developer_email": {
+      "type": "string",
+      "example": "felixsmith@example.com"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "consumer_id": {
+      "type": "string",
+      "example": "123"
+    },
+    "verb": {
+      "type": "string",
+      "example": "get"
+    },
+    "app_name": {
+      "type": "string",
+      "example": "SOFI"
+    },
+    "user_name": {
+      "type": "string",
+      "example": "OBP"
+    }
+  }
+}

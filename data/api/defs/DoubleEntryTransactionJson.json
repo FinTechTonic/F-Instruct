@@ -1,0 +1,18 @@
+{
+  "required": [
+    "transaction_request",
+    "debit_transaction",
+    "credit_transaction"
+  ],
+  "properties": {
+    "transaction_request": {
+      "$ref": "#/definitions/TransactionRequestBankAccountJson"
+    },
+    "debit_transaction": {
+      "$ref": "#/definitions/TransactionBankAccountJson"
+    },
+    "credit_transaction": {
+      "$ref": "#/definitions/TransactionBankAccountJson"
+    }
+  }
+}

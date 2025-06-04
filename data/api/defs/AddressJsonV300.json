@@ -1,0 +1,46 @@
+{
+  "required": [
+    "city",
+    "line_2",
+    "state",
+    "postcode",
+    "county",
+    "country_code",
+    "line_3",
+    "line_1"
+  ],
+  "properties": {
+    "city": {
+      "type": "string",
+      "example": "Berlin"
+    },
+    "line_2": {
+      "type": "string",
+      "example": "The Place"
+    },
+    "state": {
+      "type": "string",
+      "example": "Brandenburg"
+    },
+    "postcode": {
+      "type": "string",
+      "example": "13359"
+    },
+    "county": {
+      "type": "string",
+      "example": "String"
+    },
+    "country_code": {
+      "type": "string",
+      "example": "DE"
+    },
+    "line_3": {
+      "type": "string",
+      "example": "The Hill"
+    },
+    "line_1": {
+      "type": "string",
+      "example": "No 1 the Road"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "get": {
+    "tags": [
+      "API"
+    ],
+    "summary": "Get API Tags",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get API TagsGet API Tags</p><p>User Authentication is Optional. The User need not be logged in.</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>account_id</strong></a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#accounts\"><strong>accounts</strong></a>:</p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#\"><strong>view_id</strong></a>: owner</p>",
+    "operationId": "OBPv5.1.0-getApiTags",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/AccountsMinimalJson400"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUnknownError"
+        }
+      }
+    }
+  }
+}

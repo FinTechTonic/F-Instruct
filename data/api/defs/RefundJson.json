@@ -1,0 +1,16 @@
+{
+  "required": [
+    "transaction_id",
+    "reason_code"
+  ],
+  "properties": {
+    "transaction_id": {
+      "type": "string",
+      "example": "2fg8a7e4-6d02-40e3-a129-0b2bf89de8ub"
+    },
+    "reason_code": {
+      "type": "string",
+      "example": "CUST"
+    }
+  }
+}

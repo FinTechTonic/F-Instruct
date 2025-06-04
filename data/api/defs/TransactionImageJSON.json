@@ -1,0 +1,31 @@
+{
+  "required": [
+    "URL",
+    "label",
+    "id",
+    "date",
+    "user"
+  ],
+  "properties": {
+    "URL": {
+      "type": "string",
+      "example": "www.openbankproject.com"
+    },
+    "label": {
+      "type": "string",
+      "example": "NONE"
+    },
+    "id": {
+      "type": "string",
+      "example": "5995d6a2-01b3-423c-a173-5481df49bdaf"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "user": {
+      "$ref": "#/definitions/UserJSONV121"
+    }
+  }
+}

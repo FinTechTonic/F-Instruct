@@ -1,0 +1,13 @@
+{
+  "required": [
+    "medias"
+  ],
+  "properties": {
+    "medias": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/KycMediaJSON"
+      }
+    }
+  }
+}

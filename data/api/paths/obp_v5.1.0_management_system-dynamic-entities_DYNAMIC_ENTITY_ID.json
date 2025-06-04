@@ -1,0 +1,84 @@
+{
+  "delete": {
+    "tags": [
+      "Dynamic-Entity-Manage",
+      "API"
+    ],
+    "summary": "Delete System Level Dynamic Entity",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Delete a DynamicEntity specified by DYNAMIC_ENTITY_ID.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p>",
+    "operationId": "OBPv4.0.0-deleteSystemDynamicEntity",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "DYNAMIC_ENTITY_ID",
+        "description": "the dynamic entity id ",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "204": {
+        "description": "Success"
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "put": {
+    "tags": [
+      "Dynamic-Entity-Manage",
+      "API"
+    ],
+    "summary": "Update System Level Dynamic Entity",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Update a System Level Dynamic Entity.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p>Update one DynamicEntity, after update finished, the corresponding CRUD endpoints will be changed.</p><p>The following field types are as supported:<br />[number, integer, boolean, string, DATE_WITH_DAY, reference]</p><p>DATE_WITH_DAY format: yyyy-MM-dd</p><p>Reference types are like foreign keys and composite foreign keys are supported. The value you need to supply as the (composite) foreign key is a UUID (or several UUIDs in the case of a composite key) that match value in another Entity..<br />The following list shows all the possible reference types in the system with corresponding examples values so you can see how to construct each reference type value.</p><pre><code>&quot;someField0&quot;: {    &quot;type&quot;: &quot;reference:FishPort&quot;,    &quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;}<p>&quot;someField1&quot;: {<br />&quot;type&quot;: &quot;reference:FooBar&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField2&quot;: {<br />&quot;type&quot;: &quot;reference:sustrans&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField3&quot;: {<br />&quot;type&quot;: &quot;reference:SimonCovid&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField4&quot;: {<br />&quot;type&quot;: &quot;reference:CovidAPIDays&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField5&quot;: {<br />&quot;type&quot;: &quot;reference:customer_cars&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField6&quot;: {<br />&quot;type&quot;: &quot;reference:MarchHare&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField7&quot;: {<br />&quot;type&quot;: &quot;reference:InsurancePolicy&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField8&quot;: {<br />&quot;type&quot;: &quot;reference:Odometer&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField9&quot;: {<br />&quot;type&quot;: &quot;reference:InsurancePremium&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField10&quot;: {<br />&quot;type&quot;: &quot;reference:ObpActivity&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField11&quot;: {<br />&quot;type&quot;: &quot;reference:test1&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField12&quot;: {<br />&quot;type&quot;: &quot;reference:D-Entity1&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField13&quot;: {<br />&quot;type&quot;: &quot;reference:test_daniel707&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField14&quot;: {<br />&quot;type&quot;: &quot;reference:Bank&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField15&quot;: {<br />&quot;type&quot;: &quot;reference:Consumer&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField16&quot;: {<br />&quot;type&quot;: &quot;reference:Customer&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField17&quot;: {<br />&quot;type&quot;: &quot;reference:MethodRouting&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField18&quot;: {<br />&quot;type&quot;: &quot;reference:DynamicEntity&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField19&quot;: {<br />&quot;type&quot;: &quot;reference:TransactionRequest&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField20&quot;: {<br />&quot;type&quot;: &quot;reference:ProductAttribute&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField21&quot;: {<br />&quot;type&quot;: &quot;reference:AccountAttribute&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField22&quot;: {<br />&quot;type&quot;: &quot;reference:TransactionAttribute&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField23&quot;: {<br />&quot;type&quot;: &quot;reference:CustomerAttribute&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField24&quot;: {<br />&quot;type&quot;: &quot;reference:AccountApplication&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField25&quot;: {<br />&quot;type&quot;: &quot;reference:CardAttribute&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField26&quot;: {<br />&quot;type&quot;: &quot;reference:Counterparty&quot;,<br />&quot;example&quot;: &quot;2a9fe628-584a-4621-a017-65f743e0d50c&quot;<br />}</p><p>&quot;someField27&quot;: {<br />&quot;type&quot;: &quot;reference:Branch:bankId&amp;branchId&quot;,<br />&quot;example&quot;: &quot;bankId=2a9fe628-584a-4621-a017-65f743e0d50c&amp;branchId=659bae42-8185-4914-ab2e-b7f370fcaddf&quot;<br />}</p><p>&quot;someField28&quot;: {<br />&quot;type&quot;: &quot;reference:Atm:bankId&amp;atmId&quot;,<br />&quot;example&quot;: &quot;bankId=2a9fe628-584a-4621-a017-65f743e0d50c&amp;atmId=659bae42-8185-4914-ab2e-b7f370fcaddf&quot;<br />}</p><p>&quot;someField29&quot;: {<br />&quot;type&quot;: &quot;reference:BankAccount:bankId&amp;accountId&quot;,<br />&quot;example&quot;: &quot;bankId=2a9fe628-584a-4621-a017-65f743e0d50c&amp;accountId=659bae42-8185-4914-ab2e-b7f370fcaddf&quot;<br />}</p><p>&quot;someField30&quot;: {<br />&quot;type&quot;: &quot;reference:Product:bankId&amp;productCode&quot;,<br />&quot;example&quot;: &quot;bankId=2a9fe628-584a-4621-a017-65f743e0d50c&amp;productCode=659bae42-8185-4914-ab2e-b7f370fcaddf&quot;<br />}</p><p>&quot;someField31&quot;: {<br />&quot;type&quot;: &quot;reference:PhysicalCard:bankId&amp;cardId&quot;,<br />&quot;example&quot;: &quot;bankId=2a9fe628-584a-4621-a017-65f743e0d50c&amp;cardId=659bae42-8185-4914-ab2e-b7f370fcaddf&quot;<br />}</p><p>&quot;someField32&quot;: {<br />&quot;type&quot;: &quot;reference:Transaction:bankId&amp;accountId&amp;transactionId&quot;,<br />&quot;example&quot;: &quot;bankId=2a9fe628-584a-4621-a017-65f743e0d50c&amp;accountId=659bae42-8185-4914-ab2e-b7f370fcaddf&amp;transactionId=8494e8d1-cc3b-4640-8575-454c8e5b078a&quot;<br />}</p><p>&quot;someField33&quot;: {<br />&quot;type&quot;: &quot;reference:Counterparty:bankId&amp;accountId&amp;counterpartyId&quot;,<br />&quot;example&quot;: &quot;bankId=2a9fe628-584a-4621-a017-65f743e0d50c&amp;accountId=659bae42-8185-4914-ab2e-b7f370fcaddf&amp;counterpartyId=8494e8d1-cc3b-4640-8575-454c8e5b078a&quot;<br />}</p></code></pre>",
+    "operationId": "OBPv4.0.0-updateSystemDynamicEntity",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "DynamicEntityFooBar object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/DynamicEntityFooBar"
+        }
+      },
+      {
+        "in": "path",
+        "name": "DYNAMIC_ENTITY_ID",
+        "description": "the dynamic entity id ",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/DynamicEntityFooBar"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

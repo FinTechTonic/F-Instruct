@@ -1,0 +1,57 @@
+{
+  "required": [
+    "customer_id",
+    "customer_number",
+    "bank_id",
+    "id",
+    "how",
+    "date",
+    "satisfied",
+    "staff_user_id",
+    "staff_name",
+    "comments"
+  ],
+  "properties": {
+    "customer_id": {
+      "type": "string",
+      "example": "7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    },
+    "customer_number": {
+      "type": "string",
+      "example": "5987953"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "id": {
+      "type": "string",
+      "example": "PlaceholderString"
+    },
+    "how": {
+      "type": "string",
+      "example": "PlaceholderString"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "satisfied": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "staff_user_id": {
+      "type": "string",
+      "example": "9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+    },
+    "staff_name": {
+      "type": "string",
+      "example": "PlaceholderString"
+    },
+    "comments": {
+      "type": "string",
+      "example": "PlaceholderString"
+    }
+  }
+}

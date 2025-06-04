@@ -1,0 +1,37 @@
+{
+  "required": [
+    "name",
+    "attribute_type",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "OVERDRAFT_START_DATE"
+    },
+    "card_id": {
+      "type": "string",
+      "example": "36f8a9e6-c2b1-407a-8bd0-421b7119307e "
+    },
+    "attribute_type": {
+      "type": "string",
+      "enum": [
+        "STRING",
+        "INTEGER",
+        "DOUBLE",
+        "DATE_WITH_DAY"
+      ]
+    },
+    "bank_id": {
+      "$ref": "#/definitions/BankId"
+    },
+    "value": {
+      "type": "string",
+      "example": "2012-04-23"
+    },
+    "card_attribute_id": {
+      "type": "string",
+      "example": "b4e0352a-9a0f-4bfa-b30b-9003aa467f50"
+    }
+  }
+}

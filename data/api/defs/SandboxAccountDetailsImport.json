@@ -1,0 +1,36 @@
+{
+  "required": [
+    "new_balance",
+    "description",
+    "completed",
+    "type",
+    "value",
+    "posted"
+  ],
+  "properties": {
+    "new_balance": {
+      "type": "string",
+      "example": "1244.00"
+    },
+    "description": {
+      "type": "string",
+      "example": "some description"
+    },
+    "completed": {
+      "type": "string",
+      "example": "2012-04-07T00:00:00.001Z"
+    },
+    "type": {
+      "type": "string",
+      "example": "SEPA"
+    },
+    "value": {
+      "type": "string",
+      "example": "-135.33"
+    },
+    "posted": {
+      "type": "string",
+      "example": "2012-03-07T00:00:00.001Z"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "required": [
+    "scheme",
+    "address"
+  ],
+  "properties": {
+    "scheme": {
+      "type": "string",
+      "example": "accountNumber"
+    },
+    "address": {
+      "type": "string",
+      "example": "123456"
+    }
+  }
+}

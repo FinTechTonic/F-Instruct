@@ -1,0 +1,39 @@
+{
+  "get": {
+    "tags": [
+      "System-Integrity"
+    ],
+    "summary": "Check for Orphaned Accounts",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Check for orphaned accounts at Bank Account model</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#success\"><strong>success</strong></a>:</p><p><a href=\"/glossary#\">debug_info</a>: debug_info</p>",
+    "operationId": "OBPv5.1.0-orphanedAccountCheck",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/CheckSystemIntegrityJsonV510"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

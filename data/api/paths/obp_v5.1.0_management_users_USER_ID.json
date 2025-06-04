@@ -1,0 +1,39 @@
+{
+  "put": {
+    "tags": [
+      "User"
+    ],
+    "summary": "Validate a user",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Validate the User by USER_ID.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#User.user_id\">USER_ID</a>: 9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#last_lock_date\"><strong>last_lock_date</strong></a>: 2020-01-27</p><p><a href=\"/glossary#type_of_lock\"><strong>type_of_lock</strong></a>:</p><p><a href=\"/glossary#\"><strong>user_id</strong></a>: 9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1</p>",
+    "operationId": "OBPv5.1.0-validateUserByUserId",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "USER_ID",
+        "description": "The user id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/UserLockStatusJson"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "required": [
+    "bank_id",
+    "account_id",
+    "view_id"
+  ],
+  "properties": {
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "account_id": {
+      "type": "string",
+      "example": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0"
+    },
+    "view_id": {
+      "type": "string",
+      "example": "owner"
+    },
+    "helper_info": {
+      "$ref": "#/definitions/HelperInfoJson"
+    }
+  }
+}

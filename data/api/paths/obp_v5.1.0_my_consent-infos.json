@@ -1,0 +1,33 @@
+{
+  "get": {
+    "tags": [
+      "Consent",
+      "Account Information Service (AIS)",
+      "PSD2"
+    ],
+    "summary": "Get My Consents Info",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>This endpoint gets the Consents that the current User created.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>api_standard</strong></a>: api_standard</p><p><a href=\"/glossary#api_version\"><strong>api_version</strong></a>:</p><p><a href=\"/glossary#consent_id\"><strong>consent_id</strong></a>:</p><p><a href=\"/glossary#consents\"><strong>consents</strong></a>:</p><p><a href=\"/glossary#\"><strong>consumer_id</strong></a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#created_by_user_id\"><strong>created_by_user_id</strong></a>:</p><p><a href=\"/glossary#\"><strong>last_action_date</strong></a>: last_action_date</p><p><a href=\"/glossary#\"><strong>last_usage_date</strong></a>: last_usage_date</p><p><a href=\"/glossary#status\"><strong>status</strong></a>:</p>",
+    "operationId": "OBPv4.0.0-getConsentInfos",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/ConsentInfosJsonV400"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

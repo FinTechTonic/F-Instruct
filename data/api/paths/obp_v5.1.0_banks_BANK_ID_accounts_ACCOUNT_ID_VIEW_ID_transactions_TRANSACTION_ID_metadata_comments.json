@@ -1,0 +1,129 @@
+{
+  "get": {
+    "tags": [
+      "Transaction-Metadata",
+      "Transaction"
+    ],
+    "summary": "Get Transaction Comments",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Returns the transaction TRANSACTION_ID comments made on a <a href=\"#1_2_1-getViewsForBankAccount\">view</a> (VIEW_ID).</p><p>Authentication via OAuth is required if the view is not public.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Account.account_id\">ACCOUNT_ID</a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#transaction_ids\">TRANSACTION_ID</a>: 2fg8a7e4-6d02-40e3-a129-0b2bf89de8ub</p><p><a href=\"/glossary#this_view_id\">VIEW_ID</a>: owner</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#comments\"><strong>comments</strong></a>:</p><p><a href=\"/glossary#\"><strong>date</strong></a>: 2020-01-27</p><p><a href=\"/glossary#display_name\"><strong>display_name</strong></a>:</p><p><a href=\"/glossary#id\"><strong>id</strong></a>: d8839721-ad8f-45dd-9f78-2080414b93f9</p><p><a href=\"/glossary#provider\"><strong>provider</strong></a>: ETHEREUM</p><p><a href=\"/glossary#User\"><strong>user</strong></a>:</p><p><a href=\"/glossary#\"><strong>value</strong></a>: 5987953</p>",
+    "operationId": "OBPv1.2.1-getCommentsForViewOnTransaction",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "TRANSACTION_ID",
+        "description": "The transaction id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "VIEW_ID",
+        "description": "The view id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "ACCOUNT_ID",
+        "description": "The account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/TransactionCommentsJSON"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "Transaction-Metadata",
+      "Transaction"
+    ],
+    "summary": "Add a Transaction Comment",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Posts a comment about a transaction TRANSACTION_ID on a <a href=\"#1_2_1-getViewsForBankAccount\">view</a> VIEW_ID.</p><p>${authenticationRequiredMessage(false)}</p><p>Authentication is required since the comment is linked with the user.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Account.account_id\">ACCOUNT_ID</a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#transaction_ids\">TRANSACTION_ID</a>: 2fg8a7e4-6d02-40e3-a129-0b2bf89de8ub</p><p><a href=\"/glossary#this_view_id\">VIEW_ID</a>: owner</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#\"><strong>value</strong></a>: 5987953</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>date</strong></a>: 2020-01-27</p><p><a href=\"/glossary#display_name\"><strong>display_name</strong></a>:</p><p><a href=\"/glossary#id\"><strong>id</strong></a>: d8839721-ad8f-45dd-9f78-2080414b93f9</p><p><a href=\"/glossary#provider\"><strong>provider</strong></a>: ETHEREUM</p><p><a href=\"/glossary#User\"><strong>user</strong></a>:</p><p><a href=\"/glossary#\"><strong>value</strong></a>: 5987953</p>",
+    "operationId": "OBPv1.2.1-addCommentForViewOnTransaction",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "PostTransactionCommentJSON object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/PostTransactionCommentJSON"
+        }
+      },
+      {
+        "in": "path",
+        "name": "TRANSACTION_ID",
+        "description": "The transaction id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "VIEW_ID",
+        "description": "The view id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "ACCOUNT_ID",
+        "description": "The account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/TransactionCommentJSON"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "required": [
+    "attributeType",
+    "name",
+    "value"
+  ],
+  "properties": {
+    "attributeType": {
+      "type": "string",
+      "example": "STRING"
+    },
+    "name": {
+      "type": "string",
+      "example": "STATUS"
+    },
+    "value": {
+      "type": "string",
+      "example": "closed"
+    }
+  }
+}

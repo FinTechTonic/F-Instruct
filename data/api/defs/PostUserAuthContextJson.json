@@ -1,0 +1,16 @@
+{
+  "required": [
+    "key",
+    "value"
+  ],
+  "properties": {
+    "key": {
+      "type": "string",
+      "example": "CUSTOMER_NUMBER"
+    },
+    "value": {
+      "type": "string",
+      "example": "78987432"
+    }
+  }
+}

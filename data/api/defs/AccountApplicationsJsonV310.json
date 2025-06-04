@@ -1,0 +1,13 @@
+{
+  "required": [
+    "account_applications"
+  ],
+  "properties": {
+    "account_applications": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AccountApplicationResponseJson"
+      }
+    }
+  }
+}

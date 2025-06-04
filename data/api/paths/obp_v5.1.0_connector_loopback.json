@@ -1,0 +1,31 @@
+{
+  "get": {
+    "tags": [
+      "API"
+    ],
+    "summary": "Get Connector Status (Loopback)",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>This endpoint makes a call to the Connector to check the backend transport is reachable. (WIP)</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#connector_version\"><strong>connector_version</strong></a>:</p><p><a href=\"/glossary#duration_time\"><strong>duration_time</strong></a>: 60</p><p><a href=\"/glossary#\"><strong>git_commit</strong></a>: 59623811dd8a41f6ffe67be46954eee11913dc28</p>",
+    "operationId": "OBPv3.1.0-getObpConnectorLoopback",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/ObpApiLoopbackJson"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUnknownError"
+        }
+      }
+    }
+  }
+}

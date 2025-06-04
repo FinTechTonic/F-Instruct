@@ -1,0 +1,21 @@
+{
+  "required": [
+    "session_id",
+    "staff_token",
+    "customer_token"
+  ],
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "example": "String"
+    },
+    "staff_token": {
+      "type": "string",
+      "example": "String"
+    },
+    "customer_token": {
+      "type": "string",
+      "example": "String"
+    }
+  }
+}

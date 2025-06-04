@@ -1,0 +1,39 @@
+{
+  "required": [
+    "name",
+    "backend_messages",
+    "total_duration",
+    "version",
+    "date",
+    "git_commit"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "ACCOUNT_MANAGEMENT_FEE"
+    },
+    "backend_messages": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/InboundStatusMessage"
+      }
+    },
+    "total_duration": {
+      "type": "string",
+      "format": "double",
+      "example": "5.123"
+    },
+    "version": {
+      "type": "string",
+      "example": ""
+    },
+    "date": {
+      "type": "string",
+      "example": "2020-01-27"
+    },
+    "git_commit": {
+      "type": "string",
+      "example": "59623811dd8a41f6ffe67be46954eee11913dc28"
+    }
+  }
+}

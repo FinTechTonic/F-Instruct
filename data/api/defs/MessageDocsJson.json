@@ -1,0 +1,13 @@
+{
+  "required": [
+    "message_docs"
+  ],
+  "properties": {
+    "message_docs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/MessageDocJson"
+      }
+    }
+  }
+}

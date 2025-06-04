@@ -1,0 +1,22 @@
+{
+  "properties": {
+    "per_week": {
+      "$ref": "#/definitions/RateLimit"
+    },
+    "per_second": {
+      "$ref": "#/definitions/RateLimit"
+    },
+    "per_month": {
+      "$ref": "#/definitions/RateLimit"
+    },
+    "per_day": {
+      "$ref": "#/definitions/RateLimit"
+    },
+    "per_minute": {
+      "$ref": "#/definitions/RateLimit"
+    },
+    "per_hour": {
+      "$ref": "#/definitions/RateLimit"
+    }
+  }
+}

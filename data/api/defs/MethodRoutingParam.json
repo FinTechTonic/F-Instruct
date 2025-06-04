@@ -1,0 +1,16 @@
+{
+  "required": [
+    "key",
+    "value"
+  ],
+  "properties": {
+    "key": {
+      "type": "string",
+      "example": "url"
+    },
+    "value": {
+      "type": "string",
+      "example": "http://mydomain.com/xxx"
+    }
+  }
+}

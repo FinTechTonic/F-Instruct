@@ -1,0 +1,126 @@
+{
+  "required": [
+    "allows",
+    "expires_date",
+    "networks",
+    "customer_id",
+    "issue_number",
+    "replacement",
+    "enabled",
+    "collected",
+    "card_number",
+    "technology",
+    "cancelled",
+    "bank_id",
+    "card_id",
+    "pin_reset",
+    "serial_number",
+    "account",
+    "valid_from_date",
+    "card_attributes",
+    "name_on_card",
+    "posted",
+    "card_type",
+    "on_hot_list"
+  ],
+  "properties": {
+    "allows": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "expires_date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "networks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "customer_id": {
+      "type": "string",
+      "example": "7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    },
+    "issue_number": {
+      "type": "string",
+      "example": "1"
+    },
+    "replacement": {
+      "$ref": "#/definitions/ReplacementJSON"
+    },
+    "enabled": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "collected": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "card_number": {
+      "type": "string",
+      "example": "364435172576215"
+    },
+    "technology": {
+      "type": "string",
+      "example": "technologyString1"
+    },
+    "cancelled": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "card_id": {
+      "type": "string",
+      "example": "36f8a9e6-c2b1-407a-8bd0-421b7119307e "
+    },
+    "pin_reset": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/PinResetJSON"
+      }
+    },
+    "serial_number": {
+      "type": "string",
+      "example": "1324234"
+    },
+    "account": {
+      "$ref": "#/definitions/AccountBasicV310"
+    },
+    "valid_from_date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "card_attributes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/CardAttributeCommons"
+      }
+    },
+    "name_on_card": {
+      "type": "string",
+      "example": "SusanSmith"
+    },
+    "posted": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "card_type": {
+      "type": "string",
+      "example": "Credit"
+    },
+    "on_hot_list": {
+      "type": "boolean",
+      "example": "true"
+    }
+  }
+}

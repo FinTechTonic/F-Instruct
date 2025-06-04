@@ -1,0 +1,13 @@
+{
+  "required": [
+    "accessibility_features"
+  ],
+  "properties": {
+    "accessibility_features": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

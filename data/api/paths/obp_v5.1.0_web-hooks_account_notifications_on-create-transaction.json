@@ -1,0 +1,42 @@
+{
+  "post": {
+    "tags": [
+      "Webhook",
+      "Bank"
+    ],
+    "summary": "Create system level Account Notification Webhook",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Create a notification Webhook that will fire for all accounts on the system.</p><p>Webhooks are used to call external web services when certain events happen.</p><p>For instance, a webhook can be used to notify an external service if a transaction is created on an account.</p><p>When an account notification webhook fires it will POST to the URL you specify during the creation of the webhook.</p><p>Inside the payload you will find account_id and transaction_id and also user_ids and customer_ids of the Users / Customers linked to the Account.</p><p>The webhook will POST the following structure to your service:</p><p>{<br />&quot;event_name&quot;: &quot;OnCreateTransaction&quot;,<br />&quot;event_id&quot;: &quot;9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1&quot;,<br />&quot;bank_id&quot;: &quot;gh.29.uk&quot;,<br />&quot;account_id&quot;: &quot;8ca9a7e4-6d02-40e3-a129-0b2bf89de9b1&quot;,<br />&quot;transaction_id&quot;: &quot;7ca9a7e4-6d02-40e3-a129-0b2bf89de9b1&quot;,<br />&quot;related_entities&quot;: [<br />{<br />&quot;user_id&quot;: &quot;8ca9a7e4-6d02-40e3-a129-0b2bf89de9b1&quot;,<br />&quot;customer_ids&quot;: [&quot;3ca9a7e4-6d02-40e3-a129-0b2bf89de9b1&quot;]<br />}<br />]<br />}</p><p>Thus, your service should accept the above POST body structure.</p><p>In this way, your web service can be informed about an event on an account and act accordingly.</p><p>Further information about the account, transaction or related entities can then be retrieved using the standard REST APIs.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#http_method\"><strong>http_method</strong></a>: GET</p><p><a href=\"/glossary#http_protocol\"><strong>http_protocol</strong></a>:</p><p><a href=\"/glossary#\"><strong>url</strong></a>: <a href=\"http://www.example.com/id-docs/123/image.png\">http://www.example.com/id-docs/123/image.png</a></p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#created_by_user_id\"><strong>created_by_user_id</strong></a>:</p><p><a href=\"/glossary#http_method\"><strong>http_method</strong></a>: GET</p><p><a href=\"/glossary#http_protocol\"><strong>http_protocol</strong></a>:</p><p><a href=\"/glossary#trigger_name\"><strong>trigger_name</strong></a>:</p><p><a href=\"/glossary#\"><strong>url</strong></a>: <a href=\"http://www.example.com/id-docs/123/image.png\">http://www.example.com/id-docs/123/image.png</a></p><p><a href=\"/glossary#\"><strong>webhook_id</strong></a>: webhook_id</p>",
+    "operationId": "OBPv4.0.0-createSystemAccountNotificationWebhook",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "AccountNotificationWebhookPostJson object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/AccountNotificationWebhookPostJson"
+        }
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/SystemAccountNotificationWebhookJson"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUnknownError"
+        }
+      }
+    }
+  }
+}

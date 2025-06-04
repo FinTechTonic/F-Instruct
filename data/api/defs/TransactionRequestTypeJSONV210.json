@@ -1,0 +1,11 @@
+{
+  "required": [
+    "transaction_request_type"
+  ],
+  "properties": {
+    "transaction_request_type": {
+      "type": "string",
+      "example": "SandboxTan"
+    }
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "required": [
+    "sunday",
+    "services",
+    "name",
+    "location",
+    "tuesday",
+    "cash_withdrawal_international_fee",
+    "wednesday",
+    "branch_identification",
+    "location_categories",
+    "site_identification",
+    "monday",
+    "has_deposit_capability",
+    "balance_inquiry_fee",
+    "site_name",
+    "more_info",
+    "bank_id",
+    "meta",
+    "supported_languages",
+    "supported_currencies",
+    "accessibility_features",
+    "address",
+    "cash_withdrawal_national_fee",
+    "friday",
+    "notes",
+    "is_accessible",
+    "atm_type",
+    "thursday",
+    "saturday",
+    "located_at",
+    "minimum_withdrawal",
+    "phone"
+  ],
+  "properties": {
+    "sunday": {
+      "$ref": "#/definitions/OpeningTimesV300"
+    },
+    "services": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "name": {
+      "type": "string",
+      "example": "Atm by the Lake"
+    },
+    "location": {
+      "$ref": "#/definitions/LocationJsonV140"
+    },
+    "tuesday": {
+      "$ref": "#/definitions/OpeningTimesV300"
+    },
+    "cash_withdrawal_international_fee": {
+      "type": "string",
+      "example": ""
+    },
+    "wednesday": {
+      "$ref": "#/definitions/OpeningTimesV300"
+    },
+    "branch_identification": {
+      "type": "string",
+      "example": ""
+    },
+    "location_categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AtmAttributeResponseJsonV510"
+      }
+    },
+    "site_identification": {
+      "type": "string",
+      "example": ""
+    },
+    "monday": {
+      "$ref": "#/definitions/OpeningTimesV300"
+    },
+    "has_deposit_capability": {
+      "type": "string",
+      "example": "false"
+    },
+    "balance_inquiry_fee": {
+      "type": "string",
+      "example": ""
+    },
+    "site_name": {
+      "type": "string",
+      "example": ""
+    },
+    "more_info": {
+      "type": "string",
+      "example": "More information about this fee"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "id": {
+      "type": "string"
+    },
+    "meta": {
+      "$ref": "#/definitions/MetaJsonV140"
+    },
+    "supported_languages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "supported_currencies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "accessibility_features": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "address": {
+      "$ref": "#/definitions/AddressJsonV300"
+    },
+    "cash_withdrawal_national_fee": {
+      "type": "string",
+      "example": ""
+    },
+    "friday": {
+      "$ref": "#/definitions/OpeningTimesV300"
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "is_accessible": {
+      "type": "string",
+      "example": "false"
+    },
+    "atm_type": {
+      "type": "string",
+      "example": ""
+    },
+    "thursday": {
+      "$ref": "#/definitions/OpeningTimesV300"
+    },
+    "saturday": {
+      "$ref": "#/definitions/OpeningTimesV300"
+    },
+    "located_at": {
+      "type": "string",
+      "example": ""
+    },
+    "minimum_withdrawal": {
+      "type": "string",
+      "example": "5"
+    },
+    "phone": {
+      "type": "string",
+      "example": ""
+    }
+  }
+}

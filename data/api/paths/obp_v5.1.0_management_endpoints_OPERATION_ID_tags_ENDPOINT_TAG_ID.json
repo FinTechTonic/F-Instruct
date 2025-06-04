@@ -1,0 +1,70 @@
+{
+  "delete": {
+    "tags": [
+      "API"
+    ],
+    "summary": "Delete System Level Endpoint Tag",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Delete System Level Endpoint Tag.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#\">ENDPOINT_TAG_ID</a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#\">OPERATION_ID</a>: OBPv4.0.0-getBanks</p><p><strong>JSON response body fields:</strong></p>",
+    "operationId": "OBPv4.0.0-deleteSystemLevelEndpointTag",
+    "parameters": [],
+    "responses": {
+      "204": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/Full"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "put": {
+    "tags": [
+      "API"
+    ],
+    "summary": "Update System Level Endpoint Tag",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Update System Level Endpoint Tag, you can only update the tag_name here, operation_id can not be updated.</p><p>Note: Resource Docs are cached, TTL is 3600 seconds</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#\">ENDPOINT_TAG_ID</a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#\">OPERATION_ID</a>: OBPv4.0.0-getBanks</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#\"><strong>endpoint_tag_id</strong></a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#\"><strong>operation_id</strong></a>: OBPv4.0.0-getBanks</p><p><a href=\"/glossary#\"><strong>tag_name</strong></a>: BankAccountTag1</p>",
+    "operationId": "OBPv4.0.0-updateSystemLevelEndpointTag",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "EndpointTagJson400 object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/EndpointTagJson400"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/BankLevelEndpointTagResponseJson400"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

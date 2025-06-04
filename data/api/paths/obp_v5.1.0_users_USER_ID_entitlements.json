@@ -1,0 +1,89 @@
+{
+  "get": {
+    "tags": [
+      "Role",
+      "Entitlement",
+      "User"
+    ],
+    "summary": "Get Entitlements for User",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#User.user_id\">USER_ID</a>: 9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#entitlement_id\"><strong>entitlement_id</strong></a>:</p><p><a href=\"/glossary#list\"><strong>list</strong></a>:</p><p><a href=\"/glossary#role_name\"><strong>role_name</strong></a>:</p><p><a href=\"/glossary#\"><strong>user_id</strong></a>: 9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1</p>",
+    "operationId": "OBPv4.0.0-getEntitlements",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "USER_ID",
+        "description": "The user id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/EntitlementsJsonV400"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "Role",
+      "Entitlement",
+      "User"
+    ],
+    "summary": "Add Entitlement for a User",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Create Entitlement. Grant Role to User.</p><p>Entitlements are used to grant System or Bank level roles to Users. (For Account level privileges, see Views)</p><p>For a System level Role (.e.g CanGetAnyUser), set bank_id to an empty string i.e. &quot;bank_id&quot;:&quot;&quot;</p><p>For a Bank level Role (e.g. CanCreateAccount), set bank_id to a valid value e.g. &quot;bank_id&quot;:&quot;my-bank-id&quot;</p><p>Authentication is required and the user needs to be a Super Admin. Super Admins are listed in the Props file.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#User.user_id\">USER_ID</a>: 9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#role_name\"><strong>role_name</strong></a>:</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#entitlement_id\"><strong>entitlement_id</strong></a>:</p><p><a href=\"/glossary#role_name\"><strong>role_name</strong></a>:</p>",
+    "operationId": "OBPv2.0.0-addEntitlement",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "CreateEntitlementJSON object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/CreateEntitlementJSON"
+        }
+      },
+      {
+        "in": "path",
+        "name": "USER_ID",
+        "description": "The user id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/EntitlementJSON"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

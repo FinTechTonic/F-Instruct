@@ -1,0 +1,16 @@
+{
+  "required": [
+    "is_pending_agent",
+    "is_confirmed_agent"
+  ],
+  "properties": {
+    "is_pending_agent": {
+      "type": "boolean",
+      "example": "false"
+    },
+    "is_confirmed_agent": {
+      "type": "boolean",
+      "example": "true"
+    }
+  }
+}

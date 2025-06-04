@@ -1,0 +1,22 @@
+{
+  "required": [
+    "description",
+    "required",
+    "properties"
+  ],
+  "properties": {
+    "description": {
+      "type": "string",
+      "example": "description of this entity, can be markdown text."
+    },
+    "required": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "properties": {
+      "$ref": "#/definitions/DynamicEntityFullBarFields"
+    }
+  }
+}

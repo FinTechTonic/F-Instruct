@@ -1,0 +1,22 @@
+{
+  "required": [
+    "id",
+    "this_account",
+    "details"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "transaction-without-counterparty"
+    },
+    "this_account": {
+      "$ref": "#/definitions/SandboxAccountIdImport"
+    },
+    "counterparty": {
+      "$ref": "#/definitions/SandboxTransactionCounterparty"
+    },
+    "details": {
+      "$ref": "#/definitions/SandboxAccountDetailsImport"
+    }
+  }
+}

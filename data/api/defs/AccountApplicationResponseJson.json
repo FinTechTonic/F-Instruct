@@ -1,0 +1,35 @@
+{
+  "required": [
+    "date_of_application",
+    "account_application_id",
+    "product_code",
+    "status",
+    "customer",
+    "user"
+  ],
+  "properties": {
+    "date_of_application": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "account_application_id": {
+      "type": "string",
+      "example": "gc23a7e2-7dd2-4bdf-a0b4-ae31232a4763"
+    },
+    "product_code": {
+      "type": "string",
+      "example": "1234BW"
+    },
+    "status": {
+      "type": "string",
+      "example": "REQUESTED"
+    },
+    "customer": {
+      "$ref": "#/definitions/CustomerJsonV310"
+    },
+    "user": {
+      "$ref": "#/definitions/ResourceUserJSON"
+    }
+  }
+}

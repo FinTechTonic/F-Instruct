@@ -1,0 +1,27 @@
+{
+  "required": [
+    "operationId",
+    "authTypes"
+  ],
+  "properties": {
+    "operationId": {
+      "type": "string",
+      "example": "OBPv4.0.0-updateXxx"
+    },
+    "authTypes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "DirectLogin",
+          "OAuth1.0a",
+          "GatewayLogin",
+          "DAuth",
+          "OAuth2_OIDC",
+          "OAuth2_OIDC_FAPI",
+          "Anonymous"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "get": {
+    "tags": [
+      "Consent",
+      "Account Information Service (AIS)",
+      "PSD2"
+    ],
+    "summary": "Get Consents at Bank",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>This endpoint gets the Consents at Bank by BANK_ID.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p>1 limit (for pagination: defaults to 50)  eg:limit=200</p><p>2 offset (for pagination: zero index, defaults to 0) eg: offset=10</p><p>3 consumer_id  (ignore if omitted)</p><p>4 user_id  (ignore if omitted)</p><p>5 status  (ignore if omitted)</p><p>eg: /management/consents/banks/BANK_ID?&amp;consumer_id=78&amp;limit=10&amp;offset=10</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>account_id</strong></a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#\"><strong>api_standard</strong></a>: api_standard</p><p><a href=\"/glossary#api_version\"><strong>api_version</strong></a>:</p><p><a href=\"/glossary#\"><strong>aud</strong></a>: String</p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#\"><strong>consent_reference_id</strong></a>: consent_reference_id</p><p><a href=\"/glossary#consents\"><strong>consents</strong></a>:</p><p><a href=\"/glossary#\"><strong>consumer_id</strong></a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#\"><strong>counterparty_ids</strong></a>: counterparty_ids</p><p><a href=\"/glossary#\"><strong>createdByUserId</strong></a>: createdByUserId</p><p><a href=\"/glossary#created_by_user_id\"><strong>created_by_user_id</strong></a>:</p><p><a href=\"/glossary#entitlements\"><strong>entitlements</strong></a>:</p><p><a href=\"/glossary#\"><strong>exp</strong></a>: 60</p><p><a href=\"/glossary#\"><strong>iat</strong></a>: 60</p><p><a href=\"/glossary#\"><strong>iss</strong></a>: String</p><p><a href=\"/glossary#\"><strong>jti</strong></a>: String</p><p><a href=\"/glossary#\"><strong>jwt_payload</strong></a>: jwt_payload</p><p><a href=\"/glossary#\"><strong>last_action_date</strong></a>: last_action_date</p><p><a href=\"/glossary#\"><strong>last_usage_date</strong></a>: last_usage_date</p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#\"><strong>nbf</strong></a>: 60</p><p><a href=\"/glossary#\"><strong>request_headers</strong></a>: request_headers</p><p><a href=\"/glossary#role_name\"><strong>role_name</strong></a>:</p><p><a href=\"/glossary#status\"><strong>status</strong></a>:</p><p><a href=\"/glossary#\"><strong>sub</strong></a>: felixsmith</p><p><a href=\"/glossary#\"><strong>values</strong></a>: values</p><p><a href=\"/glossary#\"><strong>view_id</strong></a>: owner</p><p><a href=\"/glossary#views\"><strong>views</strong></a>:</p><p><a href=\"/glossary#\">access</a>: access</p><p><a href=\"/glossary#accounts\">accounts</a>:</p><p><a href=\"/glossary#\">allPsd2</a>: allPsd2</p><p><a href=\"/glossary#\">availableAccounts</a>: availableAccounts</p><p><a href=\"/glossary#\">balances</a>: balances</p><p><a href=\"/glossary#\">bban</a>: bban</p><p><a href=\"/glossary#\">currency</a>: EUR</p><p><a href=\"/glossary#\">email</a>: <a href=\"m&#97;&#105;&#x6c;&#x74;o&#x3a;&#x66;&#x65;l&#105;&#x78;&#x73;mi&#x74;&#x68;&#x40;e&#x78;am&#x70;l&#x65;&#46;&#x63;o&#109;\">&#x66;el&#105;&#120;s&#x6d;&#x69;t&#104;&#x40;&#101;&#120;&#97;m&#x70;&#x6c;&#101;&#46;&#x63;&#x6f;&#x6d;</a></p><p><a href=\"/glossary#\">frequency_per_day</a>: frequency_per_day</p><p><a href=\"/glossary#\">helper_info</a>: helper_info</p><p><a href=\"/glossary#\">iban</a>: DE91 1000 0000 0123 4567 89</p><p><a href=\"/glossary#\">maskedPan</a>: maskedPan</p><p><a href=\"/glossary#\">msisdn</a>: msisdn</p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#\">pan</a>: pan</p><p><a href=\"/glossary#\">remaining_requests</a>: remaining_requests</p><p><a href=\"/glossary#transactions\">transactions</a>:</p>",
+    "operationId": "OBPv5.1.0-getConsentsAtBank",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/ConsentsJsonV510"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

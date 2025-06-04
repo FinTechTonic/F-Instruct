@@ -1,0 +1,36 @@
+{
+  "delete": {
+    "tags": [
+      "WebUi-Props"
+    ],
+    "summary": "Delete WebUiProps",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Delete a WebUiProps specified by WEB_UI_PROPS_ID.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#web_ui_props_id\">WEB_UI_PROPS_ID</a>:</p><p><strong>JSON response body fields:</strong></p>",
+    "operationId": "OBPv3.1.0-deleteWebUiProps",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "WEB_UI_PROPS_ID",
+        "description": "the web ui props id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "204": {
+        "description": "Success"
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

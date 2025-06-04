@@ -1,0 +1,62 @@
+{
+  "required": [
+    "number",
+    "account_routings",
+    "label",
+    "owners",
+    "balance",
+    "bank_id",
+    "id",
+    "type",
+    "account_rules"
+  ],
+  "properties": {
+    "number": {
+      "type": "string",
+      "example": ""
+    },
+    "account_attributes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AccountAttributeResponseJson"
+      }
+    },
+    "account_routings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AccountRoutingJsonV121"
+      }
+    },
+    "label": {
+      "type": "string",
+      "example": "My Account"
+    },
+    "owners": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/UserJSONV121"
+      }
+    },
+    "balance": {
+      "$ref": "#/definitions/AmountOfMoneyJsonV121"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "id": {
+      "type": "string",
+      "example": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0"
+    },
+    "type": {
+      "type": "string",
+      "example": ""
+    },
+    "account_rules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AccountRuleJsonV300"
+      }
+    }
+  }
+}

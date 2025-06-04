@@ -1,0 +1,35 @@
+{
+  "required": [
+    "account_routings",
+    "account_type",
+    "bank_id",
+    "account_id",
+    "branch_routings"
+  ],
+  "properties": {
+    "account_routings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AccountRoutingJsonV121"
+      }
+    },
+    "account_type": {
+      "type": "string",
+      "example": "330"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "account_id": {
+      "type": "string",
+      "example": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0"
+    },
+    "branch_routings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/BranchRoutingJsonV141"
+      }
+    }
+  }
+}

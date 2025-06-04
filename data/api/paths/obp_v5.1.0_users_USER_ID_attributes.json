@@ -1,0 +1,39 @@
+{
+  "get": {
+    "tags": [
+      "User"
+    ],
+    "summary": "Get User with Attributes by USER_ID",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get User Attributes for the user defined via USER_ID.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#User.user_id\">USER_ID</a>: 9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>email</strong></a>: <a href=\"&#x6d;&#97;&#105;l&#x74;&#111;:&#102;&#x65;&#108;&#x69;&#x78;&#115;&#109;&#105;&#116;h&#x40;&#x65;x&#x61;&#109;p&#108;&#101;&#x2e;c&#x6f;m\">f&#101;li&#x78;&#115;m&#105;t&#x68;&#x40;&#101;xa&#x6d;&#112;&#108;&#x65;&#x2e;&#99;&#x6f;&#109;</a></p><p><a href=\"/glossary#\"><strong>insert_date</strong></a>: 2020-01-27</p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#provider\"><strong>provider</strong></a>: ETHEREUM</p><p><a href=\"/glossary#provider_id\"><strong>provider_id</strong></a>:</p><p><a href=\"/glossary#type\"><strong>type</strong></a>:</p><p><a href=\"/glossary#\"><strong>user_attribute_id</strong></a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#\"><strong>user_attributes</strong></a>: user_attributes</p><p><a href=\"/glossary#\"><strong>user_id</strong></a>: 9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1</p><p><a href=\"/glossary#\"><strong>username</strong></a>: felixsmith</p><p><a href=\"/glossary#\"><strong>value</strong></a>: 5987953</p>",
+    "operationId": "OBPv4.0.0-getUserWithAttributes",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "USER_ID",
+        "description": "The user id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/UserWithAttributesResponseJson"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

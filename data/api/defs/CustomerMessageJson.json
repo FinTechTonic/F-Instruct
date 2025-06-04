@@ -1,0 +1,32 @@
+{
+  "required": [
+    "from_person",
+    "id",
+    "date",
+    "from_department",
+    "message"
+  ],
+  "properties": {
+    "from_person": {
+      "type": "string",
+      "example": "String"
+    },
+    "id": {
+      "type": "string",
+      "example": "5995d6a2-01b3-423c-a173-5481df49bdaf"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "from_department": {
+      "type": "string",
+      "example": "String"
+    },
+    "message": {
+      "type": "string",
+      "example": "String"
+    }
+  }
+}

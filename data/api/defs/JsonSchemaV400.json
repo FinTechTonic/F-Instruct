@@ -1,0 +1,42 @@
+{
+  "required": [
+    "description",
+    "properties",
+    "additionalProperties",
+    "title",
+    "type",
+    "required",
+    "$schema"
+  ],
+  "properties": {
+    "description": {
+      "type": "string",
+      "example": "The demo json-schema"
+    },
+    "properties": {
+      "$ref": "#/definitions/Properties"
+    },
+    "additionalProperties": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "title": {
+      "type": "string",
+      "example": "The demo schema"
+    },
+    "type": {
+      "type": "string",
+      "example": "object"
+    },
+    "required": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "$schema": {
+      "type": "string",
+      "example": "http://json-schema.org/draft-07/schema"
+    }
+  }
+}

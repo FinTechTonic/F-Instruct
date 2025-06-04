@@ -1,0 +1,23 @@
+{
+  "required": [
+    "card",
+    "to",
+    "value",
+    "description"
+  ],
+  "properties": {
+    "card": {
+      "$ref": "#/definitions/CardJsonV400"
+    },
+    "to": {
+      "$ref": "#/definitions/CounterpartyIdJson"
+    },
+    "value": {
+      "$ref": "#/definitions/AmountOfMoneyJsonV121"
+    },
+    "description": {
+      "type": "string",
+      "example": "A card payment description. "
+    }
+  }
+}

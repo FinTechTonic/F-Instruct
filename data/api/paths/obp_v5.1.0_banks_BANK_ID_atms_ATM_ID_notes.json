@@ -1,0 +1,55 @@
+{
+  "put": {
+    "tags": [
+      "ATM"
+    ],
+    "summary": "Update ATM Notes",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Update ATM Notes.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#atm_id\">ATM_ID</a>: atme-9a0f-4bfa-b30b-9003aa467f51</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#atm_id\"><strong>atm_id</strong></a>: atme-9a0f-4bfa-b30b-9003aa467f51</p><p><a href=\"/glossary#\"><strong>notes</strong></a>: notes</p>",
+    "operationId": "OBPv4.0.0-updateAtmNotes",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "AtmNotesJsonV400 object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/AtmNotesJsonV400"
+        }
+      },
+      {
+        "in": "path",
+        "name": "ATM_ID",
+        "description": "the atm id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/AtmNotesResponseJsonV400"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

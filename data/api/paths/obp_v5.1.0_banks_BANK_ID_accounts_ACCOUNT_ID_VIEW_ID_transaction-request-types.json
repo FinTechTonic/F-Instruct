@@ -1,0 +1,55 @@
+{
+  "get": {
+    "tags": [
+      "Transaction-Request",
+      "Payment Initiation Service (PIS)",
+      "PSD2"
+    ],
+    "summary": "Get Transaction Request Types for Account",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Returns the Transaction Request Types that the account specified by ACCOUNT_ID and view specified by VIEW_ID has access to.</p><p>These are the ways this API Server can create a Transaction via a Transaction Request<br />(as opposed to Transaction Types which include external types too e.g. for Transactions created by core banking etc.)</p><p>A Transaction Request Type internally determines:</p><ul><li>the required Transaction Request 'body' i.e. fields that define the 'what' and 'to' of a Transaction Request,</li><li>the type of security challenge that may be be raised before the Transaction Request proceeds, and</li><li>the threshold of that challenge.</li></ul><p>For instance in a 'SANDBOX_TAN' Transaction Request, for amounts over 1000 currency units, the user must supply a positive integer to complete the Transaction Request and create a Transaction.</p><p>This approach aims to provide only one endpoint for initiating transactions, and one that handles challenges, whilst still allowing flexibility with the payload and internal logic.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Account.account_id\">ACCOUNT_ID</a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#this_view_id\">VIEW_ID</a>: owner</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>amount</strong></a>: 10.12</p><p><a href=\"/glossary#charge\"><strong>charge</strong></a>:</p><p><a href=\"/glossary#\"><strong>currency</strong></a>: EUR</p><p><a href=\"/glossary#summary\"><strong>summary</strong></a>:</p><p><a href=\"/glossary#transaction_request_types\"><strong>transaction_request_types</strong></a>:</p><p><a href=\"/glossary#\"><strong>value</strong></a>: 5987953</p>",
+    "operationId": "OBPv1.4.0-getTransactionRequestTypes",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "VIEW_ID",
+        "description": "The view id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "ACCOUNT_ID",
+        "description": "The account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/TransactionRequestTypesJsonV140"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

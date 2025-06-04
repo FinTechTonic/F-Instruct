@@ -1,0 +1,11 @@
+{
+  "required": [
+    "tag_name"
+  ],
+  "properties": {
+    "tag_name": {
+      "type": "string",
+      "example": "BankAccountTag1"
+    }
+  }
+}

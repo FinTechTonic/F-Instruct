@@ -1,0 +1,31 @@
+{
+  "get": {
+    "tags": [
+      "Role"
+    ],
+    "summary": "Get Roles",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Returns all available roles</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#requires_bank_id\"><strong>requires_bank_id</strong></a>:</p><p><a href=\"/glossary#role\"><strong>role</strong></a>:</p><p><a href=\"/glossary#roles\"><strong>roles</strong></a>: CanCreateMyUser</p>",
+    "operationId": "OBPv2.1.0-getRoles",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/AvailableRolesJSON"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

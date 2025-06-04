@@ -1,0 +1,25 @@
+{
+  "required": [
+    "name",
+    "type",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "TAX_ID"
+    },
+    "type": {
+      "type": "string",
+      "example": "INTEGER"
+    },
+    "value": {
+      "type": "string",
+      "example": "12345678"
+    },
+    "is_active": {
+      "type": "boolean",
+      "example": "true"
+    }
+  }
+}

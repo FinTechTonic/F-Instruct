@@ -1,0 +1,48 @@
+{
+  "put": {
+    "tags": [
+      "Consumer"
+    ],
+    "summary": "Update Consumer Name",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Update an existing name for a Consumer specified by CONSUMER_ID.</p><p>Please note: Your consumer may be disabled as a result of this action.</p><p>CONSUMER_ID can be obtained after you register the application.</p><p>Or use the endpoint 'Get Consumers' to get it</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#\">CONSUMER_ID</a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#app_name\"><strong>app_name</strong></a>: appNameBank</p><p><a href=\"/glossary#app_type\"><strong>app_type</strong></a>: Web</p><p><a href=\"/glossary#\"><strong>certificate_pem</strong></a>: certificate_pem</p><p><a href=\"/glossary#company\"><strong>company</strong></a>: Tesobe GmbH</p><p><a href=\"/glossary#\"><strong>consumer_id</strong></a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#\"><strong>consumer_key</strong></a>: bwf0ykmwoirip1yjxcn15wnhuyxcziwgtcoaildq</p><p><a href=\"/glossary#created\"><strong>created</strong></a>:</p><p><a href=\"/glossary#created_by_user\"><strong>created_by_user</strong></a>:</p><p><a href=\"/glossary#description\"><strong>description</strong></a>: Description of the object. Maximum length is 2000. It can be any characters here.</p><p><a href=\"/glossary#developer_email\"><strong>developer_email</strong></a>:</p><p><a href=\"/glossary#\"><strong>email</strong></a>: <a href=\"&#109;&#x61;&#105;&#108;&#116;&#x6f;&#58;&#x66;e&#x6c;&#x69;&#x78;&#x73;&#109;i&#x74;h&#x40;&#101;&#x78;&#97;&#x6d;&#112;&#x6c;&#101;&#x2e;c&#111;&#109;\">&#x66;&#101;&#x6c;&#105;&#x78;&#115;m&#x69;&#x74;&#104;&#x40;&#101;&#x78;a&#x6d;&#112;&#108;e.&#x63;&#111;m</a></p><p><a href=\"/glossary#enabled\"><strong>enabled</strong></a>: false</p><p><a href=\"/glossary#\"><strong>issuer_domain_name</strong></a>: issuer_domain_name</p><p><a href=\"/glossary#\"><strong>not_after</strong></a>: not_after</p><p><a href=\"/glossary#\"><strong>not_before</strong></a>: not_before</p><p><a href=\"/glossary#provider\"><strong>provider</strong></a>: ETHEREUM</p><p><a href=\"/glossary#provider_id\"><strong>provider_id</strong></a>:</p><p><a href=\"/glossary#redirect_url\"><strong>redirect_url</strong></a>: <a href=\"https://apisandbox.openbankproject.com\">https://apisandbox.openbankproject.com</a></p><p><a href=\"/glossary#\"><strong>subject_domain_name</strong></a>: subject_domain_name</p><p><a href=\"/glossary#\"><strong>user_id</strong></a>: 9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1</p><p><a href=\"/glossary#\"><strong>username</strong></a>: felixsmith</p><p><a href=\"/glossary#\">certificate_info</a>: certificate_info</p><p><a href=\"/glossary#logo_url\">logo_url</a>: logo_url</p><p><a href=\"/glossary#roles\">roles</a>: CanCreateMyUser</p><p><a href=\"/glossary#\">roles_info</a>: roles_info</p>",
+    "operationId": "OBPv5.1.0-updateConsumerName",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "ConsumerNameJson object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/ConsumerNameJson"
+        }
+      },
+      {
+        "in": "path",
+        "name": "CONSUMER_ID",
+        "description": "new consumer id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/ConsumerJsonV510"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

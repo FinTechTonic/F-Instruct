@@ -1,0 +1,48 @@
+{
+  "get": {
+    "tags": [
+      "Role",
+      "Entitlement",
+      "User"
+    ],
+    "summary": "Get Entitlements for User at Bank",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get Entitlements specified by BANK_ID and USER_ID</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#User.user_id\">USER_ID</a>: 9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#entitlement_id\"><strong>entitlement_id</strong></a>:</p><p><a href=\"/glossary#list\"><strong>list</strong></a>:</p><p><a href=\"/glossary#role_name\"><strong>role_name</strong></a>:</p>",
+    "operationId": "OBPv2.1.0-getEntitlementsByBankAndUser",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "USER_ID",
+        "description": "The user id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/EntitlementJSONs"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

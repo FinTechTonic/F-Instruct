@@ -1,0 +1,13 @@
+{
+  "required": [
+    "addresses"
+  ],
+  "properties": {
+    "addresses": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/CustomerAddressJsonV310"
+      }
+    }
+  }
+}

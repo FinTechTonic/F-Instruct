@@ -1,0 +1,21 @@
+{
+  "required": [
+    "name",
+    "mobile_phone",
+    "email_address"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "Simon "
+    },
+    "mobile_phone": {
+      "type": "string",
+      "example": "+44 07972 444 876"
+    },
+    "email_address": {
+      "type": "string",
+      "example": "felixsmith@example.com"
+    }
+  }
+}

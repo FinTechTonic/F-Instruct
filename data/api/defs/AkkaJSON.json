@@ -1,0 +1,22 @@
+{
+  "required": [
+    "ports",
+    "log_level"
+  ],
+  "properties": {
+    "ports": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/PortJSON"
+      }
+    },
+    "log_level": {
+      "type": "string",
+      "example": "Debug"
+    },
+    "remote_data_secret_matched": {
+      "type": "boolean",
+      "example": "true"
+    }
+  }
+}

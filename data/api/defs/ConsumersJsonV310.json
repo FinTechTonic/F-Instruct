@@ -1,0 +1,13 @@
+{
+  "required": [
+    "consumers"
+  ],
+  "properties": {
+    "consumers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ConsumerJsonV310"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "required": [
+    "organisation",
+    "organisation_website"
+  ],
+  "properties": {
+    "organisation": {
+      "type": "string",
+      "example": "Amazon"
+    },
+    "organisation_website": {
+      "type": "string",
+      "example": "https://aws.amazon.com/"
+    }
+  }
+}

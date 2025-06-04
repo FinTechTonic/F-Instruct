@@ -1,0 +1,21 @@
+{
+  "required": [
+    "name",
+    "attribute_type",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "HOUSE_RENT"
+    },
+    "attribute_type": {
+      "type": "string",
+      "example": "STRING"
+    },
+    "value": {
+      "type": "string",
+      "example": "123456789"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "required": [
+    "present",
+    "provider_id",
+    "creator",
+    "invitees",
+    "bank_id",
+    "purpose_id",
+    "when",
+    "meeting_id",
+    "keys"
+  ],
+  "properties": {
+    "present": {
+      "$ref": "#/definitions/MeetingPresentJson"
+    },
+    "provider_id": {
+      "type": "string",
+      "example": "Chris"
+    },
+    "creator": {
+      "$ref": "#/definitions/ContactDetailsJson"
+    },
+    "invitees": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/InviteeJson"
+      }
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "purpose_id": {
+      "type": "string",
+      "example": "String, eg: onboarding"
+    },
+    "when": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "meeting_id": {
+      "type": "string",
+      "example": "UUID-String"
+    },
+    "keys": {
+      "$ref": "#/definitions/MeetingKeysJson"
+    }
+  }
+}

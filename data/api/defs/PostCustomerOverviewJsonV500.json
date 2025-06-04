@@ -1,0 +1,11 @@
+{
+  "required": [
+    "customer_number"
+  ],
+  "properties": {
+    "customer_number": {
+      "type": "string",
+      "example": "5987953"
+    }
+  }
+}

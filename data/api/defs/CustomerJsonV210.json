@@ -1,0 +1,92 @@
+{
+  "required": [
+    "customer_id",
+    "email",
+    "mobile_phone_number",
+    "customer_number",
+    "highest_education_attained",
+    "dob_of_dependants",
+    "bank_id",
+    "date_of_birth",
+    "last_ok_date",
+    "employment_status",
+    "legal_name",
+    "face_image",
+    "dependants",
+    "relationship_status",
+    "kyc_status"
+  ],
+  "properties": {
+    "customer_id": {
+      "type": "string",
+      "example": "7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    },
+    "email": {
+      "type": "string",
+      "example": "felixsmith@example.com"
+    },
+    "mobile_phone_number": {
+      "type": "string",
+      "example": "+44 07972 444 876"
+    },
+    "customer_number": {
+      "type": "string",
+      "example": "5987953"
+    },
+    "highest_education_attained": {
+      "type": "string",
+      "example": "Master"
+    },
+    "dob_of_dependants": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "date"
+      }
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "date_of_birth": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "credit_rating": {
+      "$ref": "#/definitions/CustomerCreditRatingJSON"
+    },
+    "last_ok_date": {
+      "type": "string",
+      "format": "date",
+      "example": "2024-05-26T10:28:42Z"
+    },
+    "employment_status": {
+      "type": "string",
+      "example": "worker"
+    },
+    "legal_name": {
+      "type": "string",
+      "example": "Eveline Tripman"
+    },
+    "credit_limit": {
+      "$ref": "#/definitions/AmountOfMoneyJsonV121"
+    },
+    "face_image": {
+      "$ref": "#/definitions/CustomerFaceImageJson"
+    },
+    "dependants": {
+      "type": "integer",
+      "format": "int32",
+      "example": "1"
+    },
+    "relationship_status": {
+      "type": "string",
+      "example": "single"
+    },
+    "kyc_status": {
+      "type": "boolean",
+      "example": "false"
+    }
+  }
+}

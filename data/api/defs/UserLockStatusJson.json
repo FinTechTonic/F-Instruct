@@ -1,0 +1,22 @@
+{
+  "required": [
+    "user_id",
+    "type_of_lock",
+    "last_lock_date"
+  ],
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "example": "9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+    },
+    "type_of_lock": {
+      "type": "string",
+      "example": "lock_via_api"
+    },
+    "last_lock_date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T01:01:01Z"
+    }
+  }
+}

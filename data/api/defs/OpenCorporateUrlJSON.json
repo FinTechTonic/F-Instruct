@@ -1,0 +1,11 @@
+{
+  "required": [
+    "open_corporates_URL"
+  ],
+  "properties": {
+    "open_corporates_URL": {
+      "type": "string",
+      "example": "String"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "required": [
+    "mobile_phone_number"
+  ],
+  "properties": {
+    "mobile_phone_number": {
+      "type": "string",
+      "example": "+381631954907"
+    }
+  }
+}

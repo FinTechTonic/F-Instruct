@@ -1,0 +1,13 @@
+{
+  "required": [
+    "supported_languages"
+  ],
+  "properties": {
+    "supported_languages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

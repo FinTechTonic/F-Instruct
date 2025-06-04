@@ -1,0 +1,31 @@
+{
+  "required": [
+    "name",
+    "parent_product_code"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "Deposit Account 1"
+    },
+    "description": {
+      "type": "string",
+      "example": "Description of the object. Maximum length is 2000. It can be any characters here."
+    },
+    "terms_and_conditions_url": {
+      "type": "string",
+      "example": "www.example.com/xyz"
+    },
+    "more_info_url": {
+      "type": "string",
+      "example": "www.example.com/abc"
+    },
+    "meta": {
+      "$ref": "#/definitions/MetaJsonV140"
+    },
+    "parent_product_code": {
+      "type": "string",
+      "example": "787LOW"
+    }
+  }
+}

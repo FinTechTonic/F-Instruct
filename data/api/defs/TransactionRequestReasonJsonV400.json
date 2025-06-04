@@ -1,0 +1,27 @@
+{
+  "required": [
+    "code"
+  ],
+  "properties": {
+    "description": {
+      "type": "string",
+      "example": "SEPA payment"
+    },
+    "amount": {
+      "type": "string",
+      "example": "100"
+    },
+    "code": {
+      "type": "string",
+      "example": "410"
+    },
+    "document_number": {
+      "type": "string",
+      "example": "2020/154"
+    },
+    "currency": {
+      "type": "string",
+      "example": "EUR"
+    }
+  }
+}

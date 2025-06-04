@@ -1,0 +1,11 @@
+{
+  "required": [
+    "address"
+  ],
+  "properties": {
+    "address": {
+      "type": "string",
+      "example": "DE75512108001245126199"
+    }
+  }
+}

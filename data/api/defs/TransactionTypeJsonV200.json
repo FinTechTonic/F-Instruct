@@ -1,0 +1,34 @@
+{
+  "required": [
+    "description",
+    "short_code",
+    "bank_id",
+    "id",
+    "charge",
+    "summary"
+  ],
+  "properties": {
+    "description": {
+      "type": "string",
+      "example": "PlaceholderString"
+    },
+    "short_code": {
+      "type": "string",
+      "example": "PlaceholderString"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "id": {
+      "$ref": "#/definitions/TransactionTypeId"
+    },
+    "charge": {
+      "$ref": "#/definitions/AmountOfMoneyJsonV121"
+    },
+    "summary": {
+      "type": "string",
+      "example": "PlaceholderString"
+    }
+  }
+}

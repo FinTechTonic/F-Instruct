@@ -1,0 +1,101 @@
+{
+  "get": {
+    "tags": [
+      "Account",
+      "Balance"
+    ],
+    "summary": "Get All Bank Account Balances",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get all Balances for a Bank Account.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Account.account_id\">ACCOUNT_ID</a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>account_id</strong></a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#\"><strong>balance_amount</strong></a>: 50.89</p><p><a href=\"/glossary#balance_id\"><strong>balance_id</strong></a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#balance_type\"><strong>balance_type</strong></a>: openingBooked</p><p><a href=\"/glossary#\"><strong>balances</strong></a>: balances</p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p>",
+    "operationId": "OBPv5.1.0-getAllBankAccountBalances",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "ACCOUNT_ID",
+        "description": "The account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/BankAccountBalancesJsonV510"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "Account",
+      "Balance"
+    ],
+    "summary": "Create Bank Account Balance",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Create a new Balance for a Bank Account.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Account.account_id\">ACCOUNT_ID</a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#\"><strong>balance_amount</strong></a>: 50.89</p><p><a href=\"/glossary#balance_type\"><strong>balance_type</strong></a>: openingBooked</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>account_id</strong></a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#\"><strong>balance_amount</strong></a>: 50.89</p><p><a href=\"/glossary#balance_id\"><strong>balance_id</strong></a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#balance_type\"><strong>balance_type</strong></a>: openingBooked</p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p>",
+    "operationId": "OBPv5.1.0-createBankAccountBalance",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "BankAccountBalanceRequestJsonV510 object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/BankAccountBalanceRequestJsonV510"
+        }
+      },
+      {
+        "in": "path",
+        "name": "ACCOUNT_ID",
+        "description": "The account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/BankAccountBalanceResponseJsonV510"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

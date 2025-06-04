@@ -1,0 +1,55 @@
+{
+  "required": [
+    "created_by_user_id",
+    "jwt_payload",
+    "api_version",
+    "last_usage_date",
+    "jwt",
+    "status",
+    "consumer_id",
+    "api_standard",
+    "consent_id",
+    "last_action_date"
+  ],
+  "properties": {
+    "created_by_user_id": {
+      "type": "string",
+      "example": "9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+    },
+    "jwt_payload": {
+      "$ref": "#/definitions/ConsentJWT"
+    },
+    "api_version": {
+      "type": "string",
+      "example": "v1.3"
+    },
+    "last_usage_date": {
+      "type": "string",
+      "example": "2021-04-08T09:12:27Z"
+    },
+    "jwt": {
+      "type": "string",
+      "example": "eyJhbGciOiJIUzI1NiJ9.eyJlbnRpdGxlbWVudHMiOltdLCJjcmVhdGVkQnlVc2VySWQiOiJhYjY1MzlhOS1iMTA1LTQ0ODktYTg4My0wYWQ4ZDZjNjE2NTciLCJzdWIiOiIyMWUxYzhjYy1mOTE4LTRlYWMtYjhlMy01ZTVlZWM2YjNiNGIiLCJhdWQiOiJlanpuazUwNWQxMzJyeW9tbmhieDFxbXRvaHVyYnNiYjBraWphanNrIiwibmJmIjoxNTUzNTU0ODk5LCJpc3MiOiJodHRwczpcL1wvd3d3Lm9wZW5iYW5rcHJvamVjdC5jb20iLCJleHAiOjE1NTM1NTg0OTksImlhdCI6MTU1MzU1NDg5OSwianRpIjoiMDlmODhkNWYtZWNlNi00Mzk4LThlOTktNjYxMWZhMWNkYmQ1Iiwidmlld3MiOlt7ImFjY291bnRfaWQiOiJtYXJrb19wcml2aXRlXzAxIiwiYmFua19pZCI6ImdoLjI5LnVrLngiLCJ2aWV3X2lkIjoib3duZXIifSx7ImFjY291bnRfaWQiOiJtYXJrb19wcml2aXRlXzAyIiwiYmFua19pZCI6ImdoLjI5LnVrLngiLCJ2aWV3X2lkIjoib3duZXIifV19.8cc7cBEf2NyQvJoukBCmDLT7LXYcuzTcSYLqSpbxLp4"
+    },
+    "status": {
+      "type": "string",
+      "example": ""
+    },
+    "consumer_id": {
+      "type": "string",
+      "example": "7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    },
+    "api_standard": {
+      "type": "string",
+      "example": "Berlin Group"
+    },
+    "consent_id": {
+      "type": "string",
+      "example": ""
+    },
+    "last_action_date": {
+      "type": "string",
+      "example": "2020-01-27"
+    }
+  }
+}

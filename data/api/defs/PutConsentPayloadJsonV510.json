@@ -1,0 +1,10 @@
+{
+  "required": [
+    "access"
+  ],
+  "properties": {
+    "access": {
+      "$ref": "#/definitions/ConsentAccessJson"
+    }
+  }
+}

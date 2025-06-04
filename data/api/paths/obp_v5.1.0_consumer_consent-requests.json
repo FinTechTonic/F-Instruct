@@ -1,0 +1,43 @@
+{
+  "post": {
+    "tags": [
+      "Consent",
+      "Account Information Service (AIS)",
+      "PSD2"
+    ],
+    "summary": "Create Consent Request",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Client Authentication (mandatory)</p><p>It is used when applications request an access token to access their own resources, not on behalf of a user.</p><p>The client needs to authenticate themselves for this request.<br />In case of public client we use client_id and private key to obtain access token, otherwise we use client_id and client_secret.<br />The obtained access token is used in the HTTP Bearer auth header of our request.</p><p>Example:<br />Authorization: Bearer eXtneO-THbQtn3zvK_kQtXXfvOZyZFdBCItlPDbR2Bk.dOWqtXCtFX-tqGTVR0YrIjvAolPIVg7GZ-jz83y6nA0</p><p>After successfully creating the VRP consent request, you need to call the <code>Create Consent By CONSENT_REQUEST_ID</code> endpoint to finalize the consent.</p><p>Application Access is Required. The Application must be authenticated.</p><p>User Authentication is Optional. The User need not be logged in.</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#\"><strong>account_access</strong></a>: account_access</p><p><a href=\"/glossary#account_routing\"><strong>account_routing</strong></a>:</p><p><a href=\"/glossary#address\"><strong>address</strong></a>:</p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#everything\"><strong>everything</strong></a>:</p><p><a href=\"/glossary#role_name\"><strong>role_name</strong></a>:</p><p><a href=\"/glossary#scheme\"><strong>scheme</strong></a>: OBP</p><p><a href=\"/glossary#\"><strong>view_id</strong></a>: owner</p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#\">consumer_id</a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#\">email</a>: <a href=\"&#x6d;a&#105;&#x6c;&#x74;&#x6f;&#58;&#102;e&#x6c;&#x69;x&#x73;&#x6d;&#x69;&#116;&#x68;@&#101;&#x78;&#x61;&#109;&#x70;&#x6c;e&#46;&#x63;&#111;&#109;\">&#x66;&#x65;lix&#x73;&#x6d;&#105;th&#64;&#101;xa&#109;&#112;&#x6c;&#x65;&#x2e;&#x63;om</a></p><p><a href=\"/glossary#entitlements\">entitlements</a>:</p><p><a href=\"/glossary#phone_number\">phone_number</a>:</p><p><a href=\"/glossary#time_to_live\">time_to_live</a>:</p><p><a href=\"/glossary#valid_from\">valid_from</a>: 2020-01-27</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#consent_request_id\"><strong>consent_request_id</strong></a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#\"><strong>consumer_id</strong></a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#payload\"><strong>payload</strong></a>: payload</p>",
+    "operationId": "OBPv5.0.0-createConsentRequest",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "PostConsentRequestJsonV500 object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/PostConsentRequestJsonV500"
+        }
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/ConsentRequestResponseJson"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorInvalidJsonFormat"
+        }
+      }
+    }
+  }
+}

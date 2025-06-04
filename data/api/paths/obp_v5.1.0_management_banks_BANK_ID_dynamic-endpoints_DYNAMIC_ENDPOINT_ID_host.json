@@ -1,0 +1,49 @@
+{
+  "put": {
+    "tags": [
+      "Dynamic-Endpoint-Manage",
+      "API"
+    ],
+    "summary": " Update Bank Level Dynamic Endpoint Host",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Update Bank Level  dynamic endpoint Host.<br />The value can be obp_mock, dynamic_entity, or some service url.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p>",
+    "operationId": "OBPv4.0.0-updateBankLevelDynamicEndpointHost",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "DynamicEndpointHostJson400 object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/DynamicEndpointHostJson400"
+        }
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/DynamicEndpointHostJson400"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorBankNotFound"
+        }
+      }
+    }
+  }
+}

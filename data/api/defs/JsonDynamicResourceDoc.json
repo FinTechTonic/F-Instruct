@@ -1,0 +1,131 @@
+{
+  "required": [
+    "error_response_bodies",
+    "description",
+    "tags",
+    "request_verb",
+    "method_body",
+    "roles",
+    "request_url",
+    "partial_function_name",
+    "summary"
+  ],
+  "properties": {
+    "error_response_bodies": {
+      "type": "string",
+      "example": "OBP-50000: Unknown Error.,OBP-20001: User not logged in. Authentication is required!,OBP-20006: User is missing one or more roles: ,OBP-10001: Incorrect json format."
+    },
+    "description": {
+      "type": "string",
+      "example": "Create one User"
+    },
+    "tags": {
+      "type": "string",
+      "example": "Create-My-User"
+    },
+    "dynamic_resource_doc_id": {
+      "type": "string"
+    },
+    "request_verb": {
+      "type": "string",
+      "example": "POST"
+    },
+    "method_body": {
+      "type": "string",
+      "example": "%20%20%20%20val%20Some(resourceDoc)%20%3D%20callContext.resourceDocument%0A%20%20%20%20val%20hasRequestBody%20%3D%20request.body.isDefined%0A%0A%20%20%20%20%2F%2F%20get%20Path%20Parameters%2C%20example%3A%0A%20%20%20%20%2F%2F%20if%20the%20requestUrl%20of%20resourceDoc%20is%20%2Fhello%2Fbanks%2FBANK_ID%2Fworld%0A%20%20%20%20%2F%2F%20the%20request%20path%20is%20%2Fhello%2Fbanks%2Fbank_x%2Fworld%0A%20%20%20%20%2F%2FpathParams.get(%22BANK_ID%22)%20will%20get%20Option(%22bank_x%22)%20value%0A%0A%20%20%20%20val%20myUserId%20%3D%20pathParams(%22MY_USER_ID%22)%0A%0A%0A%20%20%20%20val%20requestEntity%20%3D%20request.json%20match%20%7B%0A%20%20%20%20%20%20case%20Full(zson)%20%3D%3E%0A%20%20%20%20%20%20%20%20try%20%7B%0A%20%20%20%20%20%20%20%20%20%20zson.extract%5BRequestRootJsonClass%5D%0A%20%20%20%20%20%20%20%20%7D%20catch%20%7B%0A%20%20%20%20%20%20%20%20%20%20case%20e%3A%20MappingException%20%3D%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20Full(errorJsonResponse(s%22%24InvalidJsonFormat%20%24%7Be.msg%7D%22))%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20case%20_%3A%20EmptyBox%20%3D%3E%0A%20%20%20%20%20%20%20%20return%20Full(errorJsonResponse(s%22%24InvalidRequestPayload%20Current%20request%20has%20no%20payload%22))%0A%20%20%20%20%7D%0A%0A%0A%20%20%20%20%2F%2F%20please%20add%20business%20logic%20here%0A%20%20%20%20val%20responseBody%3AResponseRootJsonClass%20%3D%20ResponseRootJsonClass(s%22%24%7BmyUserId%7D_from_path%22%2C%20requestEntity.name%2C%20requestEntity.age%2C%20requestEntity.hobby)%0A%20%20%20%20Future.successful%20%7B%0A%20%20%20%20%20%20(responseBody%2C%20HttpCode.%60200%60(callContext.callContext))%0A%20%20%20%20%7D"
+    },
+    "roles": {
+      "type": "string",
+      "example": "CanCreateMyUser"
+    },
+    "example_request_body": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Jhon"
+        },
+        "age": {
+          "type": "integer",
+          "format": "int32",
+          "example": "12"
+        },
+        "hobby": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "coding"
+          }
+        },
+        "_optional_fields_": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "hobby"
+          }
+        }
+      },
+      "required": [
+        "name",
+        "age",
+        "hobby",
+        "_optional_fields_"
+      ]
+    },
+    "request_url": {
+      "type": "string",
+      "example": "/my_user/MY_USER_ID"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "partial_function_name": {
+      "type": "string",
+      "example": "createUser"
+    },
+    "summary": {
+      "type": "string",
+      "example": "Create My User"
+    },
+    "success_response_body": {
+      "type": "object",
+      "properties": {
+        "my_user_id": {
+          "type": "string",
+          "example": "some_id_value"
+        },
+        "name": {
+          "type": "string",
+          "example": "Jhon"
+        },
+        "age": {
+          "type": "integer",
+          "format": "int32",
+          "example": "12"
+        },
+        "hobby": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "coding"
+          }
+        },
+        "_optional_fields_": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "hobby"
+          }
+        }
+      },
+      "required": [
+        "my_user_id",
+        "name",
+        "age",
+        "hobby",
+        "_optional_fields_"
+      ]
+    }
+  }
+}

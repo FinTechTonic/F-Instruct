@@ -1,0 +1,42 @@
+{
+  "required": [
+    "customer_number",
+    "how",
+    "date",
+    "satisfied",
+    "staff_user_id",
+    "staff_name",
+    "comments"
+  ],
+  "properties": {
+    "customer_number": {
+      "type": "string",
+      "example": "5987953"
+    },
+    "how": {
+      "type": "string",
+      "example": "online_meeting"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "satisfied": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "staff_user_id": {
+      "type": "string",
+      "example": "67876"
+    },
+    "staff_name": {
+      "type": "string",
+      "example": "Simon"
+    },
+    "comments": {
+      "type": "string",
+      "example": "String"
+    }
+  }
+}

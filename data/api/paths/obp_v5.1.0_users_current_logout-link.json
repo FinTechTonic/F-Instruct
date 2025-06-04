@@ -1,0 +1,31 @@
+{
+  "get": {
+    "tags": [
+      "User"
+    ],
+    "summary": "Get Logout Link",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get the Logout Link</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#link\"><strong>link</strong></a>:</p>",
+    "operationId": "OBPv4.0.0-getLogoutLink",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/LogoutLinkJson"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

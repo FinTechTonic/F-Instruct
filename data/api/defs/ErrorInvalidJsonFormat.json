@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "message": {
+      "type": "string",
+      "example": "OBP-10001: Incorrect json format."
+    }
+  }
+}

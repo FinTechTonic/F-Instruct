@@ -1,0 +1,26 @@
+{
+  "required": [
+    "legal_name",
+    "mobile_phone_number",
+    "agent_number",
+    "currency"
+  ],
+  "properties": {
+    "legal_name": {
+      "type": "string",
+      "example": "Eveline Tripman"
+    },
+    "mobile_phone_number": {
+      "type": "string",
+      "example": "+49 30 901820"
+    },
+    "agent_number": {
+      "type": "string",
+      "example": "5987953"
+    },
+    "currency": {
+      "type": "string",
+      "example": "EUR"
+    }
+  }
+}

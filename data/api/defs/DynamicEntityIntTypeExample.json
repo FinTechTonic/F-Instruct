@@ -1,0 +1,28 @@
+{
+  "required": [
+    "type",
+    "example",
+    "description"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "number",
+        "integer",
+        "boolean",
+        "string",
+        "DATE_WITH_DAY"
+      ]
+    },
+    "example": {
+      "type": "integer",
+      "format": "int32",
+      "example": "698761728"
+    },
+    "description": {
+      "type": "string",
+      "example": "description of **number** field, can be markdown text."
+    }
+  }
+}

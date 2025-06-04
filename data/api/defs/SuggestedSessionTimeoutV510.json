@@ -1,0 +1,11 @@
+{
+  "required": [
+    "timeout_in_seconds"
+  ],
+  "properties": {
+    "timeout_in_seconds": {
+      "type": "string",
+      "example": "300"
+    }
+  }
+}

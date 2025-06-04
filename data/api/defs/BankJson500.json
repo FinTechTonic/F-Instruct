@@ -1,0 +1,44 @@
+{
+  "required": [
+    "bank_routings",
+    "website",
+    "full_name",
+    "logo",
+    "id",
+    "bank_code"
+  ],
+  "properties": {
+    "bank_routings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/BankRoutingJsonV121"
+      }
+    },
+    "website": {
+      "type": "string",
+      "example": "bank logoUrl string"
+    },
+    "full_name": {
+      "type": "string",
+      "example": "bank fullName string"
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/BankAttributeBankResponseJsonV400"
+      }
+    },
+    "logo": {
+      "type": "string",
+      "example": "bank logoUrl string"
+    },
+    "id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "bank_code": {
+      "type": "string",
+      "example": "CGHZ"
+    }
+  }
+}

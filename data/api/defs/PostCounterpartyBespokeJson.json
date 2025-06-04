@@ -1,0 +1,16 @@
+{
+  "required": [
+    "key",
+    "value"
+  ],
+  "properties": {
+    "key": {
+      "type": "string",
+      "example": "englishName"
+    },
+    "value": {
+      "type": "string",
+      "example": "english Name"
+    }
+  }
+}

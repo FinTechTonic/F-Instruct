@@ -1,0 +1,49 @@
+{
+  "post": {
+    "tags": [
+      "Customer",
+      "User"
+    ],
+    "summary": "Create User Customer Link",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Link a User to a Customer</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#\"><strong>customer_id</strong></a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#\"><strong>user_id</strong></a>: 9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>customer_id</strong></a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#date_inserted\"><strong>date_inserted</strong></a>:</p><p><a href=\"/glossary#is_active\"><strong>is_active</strong></a>: false</p><p><a href=\"/glossary#user_customer_link_id\"><strong>user_customer_link_id</strong></a>:</p><p><a href=\"/glossary#\"><strong>user_id</strong></a>: 9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1</p>",
+    "operationId": "OBPv4.0.0-createUserCustomerLinks",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "CreateUserCustomerLinkJson object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/CreateUserCustomerLinkJson"
+        }
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/UserCustomerLinkJson"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

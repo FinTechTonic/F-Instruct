@@ -1,0 +1,41 @@
+{
+  "required": [
+    "created_by_user_id",
+    "url",
+    "trigger_name",
+    "http_protocol",
+    "http_method",
+    "bank_id",
+    "webhook_id"
+  ],
+  "properties": {
+    "created_by_user_id": {
+      "type": "string",
+      "example": "9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+    },
+    "url": {
+      "type": "string",
+      "example": "https://localhost.openbankproject.com"
+    },
+    "trigger_name": {
+      "type": "string",
+      "example": "OnCreateTransaction"
+    },
+    "http_protocol": {
+      "type": "string",
+      "example": "HTTP/1.1"
+    },
+    "http_method": {
+      "type": "string",
+      "example": "POST"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "webhook_id": {
+      "type": "string",
+      "example": "fc23a7e2-7dd2-4bdf-a0b4-ae31232a4762"
+    }
+  }
+}

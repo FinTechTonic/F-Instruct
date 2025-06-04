@@ -1,0 +1,35 @@
+{
+  "required": [
+    "name",
+    "attribute_type",
+    "regulated_entity_id",
+    "value",
+    "regulated_entity_attribute_id"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "ACCOUNT_MANAGEMENT_FEE"
+    },
+    "is_active": {
+      "type": "boolean",
+      "example": "false"
+    },
+    "attribute_type": {
+      "type": "string",
+      "example": ""
+    },
+    "regulated_entity_id": {
+      "type": "string",
+      "example": "0af807d7-3c39-43ef-9712-82bcfde1b9ca"
+    },
+    "value": {
+      "type": "string",
+      "example": "5987953"
+    },
+    "regulated_entity_attribute_id": {
+      "type": "string",
+      "example": "attrafa-9a0f-4bfa-b30b-9003aa467f51"
+    }
+  }
+}

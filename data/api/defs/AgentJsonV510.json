@@ -1,0 +1,46 @@
+{
+  "required": [
+    "agent_number",
+    "mobile_phone_number",
+    "bank_id",
+    "currency",
+    "legal_name",
+    "is_confirmed_agent",
+    "is_pending_agent",
+    "agent_id"
+  ],
+  "properties": {
+    "agent_number": {
+      "type": "string",
+      "example": "5987953"
+    },
+    "mobile_phone_number": {
+      "type": "string",
+      "example": "+49 30 901820"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "currency": {
+      "type": "string",
+      "example": "EUR"
+    },
+    "legal_name": {
+      "type": "string",
+      "example": "Eveline Tripman"
+    },
+    "is_confirmed_agent": {
+      "type": "boolean",
+      "example": "false"
+    },
+    "is_pending_agent": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "agent_id": {
+      "type": "string",
+      "example": "7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    }
+  }
+}

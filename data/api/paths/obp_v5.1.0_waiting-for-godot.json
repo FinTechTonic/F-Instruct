@@ -1,0 +1,31 @@
+{
+  "get": {
+    "tags": [
+      "API"
+    ],
+    "summary": "Waiting For Godot",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Waiting For Godot</p><p>Uses query parameter &quot;sleep&quot; in milliseconds.<br />For instance: .../waiting-for-godot?sleep=50 means postpone response in 50 milliseconds.</p><p>User Authentication is Optional. The User need not be logged in.</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>sleep_in_milliseconds</strong></a>: sleep_in_milliseconds</p>",
+    "operationId": "OBPv5.1.0-waitingForGodot",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/WaitingForGodotJsonV510"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUnknownError"
+        }
+      }
+    }
+  }
+}

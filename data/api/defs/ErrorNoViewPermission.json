@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "message": {
+      "type": "string",
+      "example": "OBP-30022: The current view does not have the permission:"
+    }
+  }
+}

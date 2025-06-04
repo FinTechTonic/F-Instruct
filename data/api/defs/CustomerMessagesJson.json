@@ -1,0 +1,13 @@
+{
+  "required": [
+    "messages"
+  ],
+  "properties": {
+    "messages": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/CustomerMessageJson"
+      }
+    }
+  }
+}

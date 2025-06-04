@@ -1,0 +1,34 @@
+{
+  "required": [
+    "sunday",
+    "tuesday",
+    "wednesday",
+    "monday",
+    "friday",
+    "thursday",
+    "saturday"
+  ],
+  "properties": {
+    "sunday": {
+      "$ref": "#/definitions/OpeningTimesV300"
+    },
+    "tuesday": {
+      "$ref": "#/definitions/OpeningTimesV300"
+    },
+    "wednesday": {
+      "$ref": "#/definitions/OpeningTimesV300"
+    },
+    "monday": {
+      "$ref": "#/definitions/OpeningTimesV300"
+    },
+    "friday": {
+      "$ref": "#/definitions/OpeningTimesV300"
+    },
+    "thursday": {
+      "$ref": "#/definitions/OpeningTimesV300"
+    },
+    "saturday": {
+      "$ref": "#/definitions/OpeningTimesV300"
+    }
+  }
+}

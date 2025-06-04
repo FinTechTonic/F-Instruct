@@ -1,0 +1,11 @@
+{
+  "required": [
+    "alphanumeric_code"
+  ],
+  "properties": {
+    "alphanumeric_code": {
+      "type": "string",
+      "example": "EUR"
+    }
+  }
+}

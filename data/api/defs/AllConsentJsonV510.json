@@ -1,0 +1,58 @@
+{
+  "required": [
+    "created_by_user_id",
+    "jwt_payload",
+    "consent_reference_id",
+    "api_version",
+    "last_usage_date",
+    "status",
+    "consumer_id",
+    "api_standard",
+    "last_action_date"
+  ],
+  "properties": {
+    "frequency_per_day": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "created_by_user_id": {
+      "type": "string",
+      "example": "9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+    },
+    "remaining_requests": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "jwt_payload": {
+      "$ref": "#/definitions/ConsentJWT"
+    },
+    "consent_reference_id": {
+      "type": "string",
+      "example": "9d429899-24f5-42c8-8565-943ffa6a7945"
+    },
+    "api_version": {
+      "type": "string",
+      "example": "v1.3"
+    },
+    "last_usage_date": {
+      "type": "string",
+      "example": "2021-04-08T09:12:27Z"
+    },
+    "status": {
+      "type": "string",
+      "example": "INITIATED"
+    },
+    "consumer_id": {
+      "type": "string",
+      "example": "7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    },
+    "api_standard": {
+      "type": "string",
+      "example": "Berlin Group"
+    },
+    "last_action_date": {
+      "type": "string",
+      "example": "2020-01-27"
+    }
+  }
+}

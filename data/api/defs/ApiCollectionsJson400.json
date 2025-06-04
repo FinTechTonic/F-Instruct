@@ -1,0 +1,13 @@
+{
+  "required": [
+    "api_collections"
+  ],
+  "properties": {
+    "api_collections": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ApiCollectionJson400"
+      }
+    }
+  }
+}

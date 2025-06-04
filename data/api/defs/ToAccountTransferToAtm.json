@@ -1,0 +1,25 @@
+{
+  "required": [
+    "legal_name",
+    "date_of_birth",
+    "mobile_phone_number",
+    "kyc_document"
+  ],
+  "properties": {
+    "legal_name": {
+      "type": "string",
+      "example": "Eveline Tripman"
+    },
+    "date_of_birth": {
+      "type": "string",
+      "example": "20181230"
+    },
+    "mobile_phone_number": {
+      "type": "string",
+      "example": "+44 07972 444 876"
+    },
+    "kyc_document": {
+      "$ref": "#/definitions/ToAccountTransferToAtmKycDocument"
+    }
+  }
+}

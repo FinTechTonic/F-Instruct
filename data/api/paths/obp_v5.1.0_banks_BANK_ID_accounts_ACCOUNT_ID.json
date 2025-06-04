@@ -1,0 +1,109 @@
+{
+  "post": {
+    "tags": [
+      "Account"
+    ],
+    "summary": "Update Account Label",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Update the label for the account. The label is how the account is known to the account owner e.g. 'My savings account'</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Account.account_id\">ACCOUNT_ID</a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#\"><strong>label</strong></a>: My Account</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#success\"><strong>success</strong></a>:</p>",
+    "operationId": "OBPv4.0.0-updateAccountLabel",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "UpdateAccountJsonV400 object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/UpdateAccountJsonV400"
+        }
+      },
+      {
+        "in": "path",
+        "name": "ACCOUNT_ID",
+        "description": "The account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/SuccessMessage"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorInvalidJsonFormat"
+        }
+      }
+    }
+  },
+  "put": {
+    "tags": [
+      "Account",
+      "Onboarding"
+    ],
+    "summary": "Create Account (PUT)",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Create Account at bank specified by BANK_ID with Id specified by ACCOUNT_ID.</p><p>The User can create an Account for themself  - or -  the User that has the USER_ID specified in the POST body.</p><p>If the PUT body USER_ID <em>is</em> specified, the logged in user must have the Role canCreateAccount. Once created, the Account will be owned by the User specified by USER_ID.</p><p>If the PUT body USER_ID is <em>not</em> specified, the account will be owned by the logged in User.</p><p>The 'product_code' field SHOULD be a product_code from Product.<br />If the 'product_code' matches a product_code from Product, account attributes will be created that match the Product Attributes.</p><p>Note: The Amount MUST be zero.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Account.account_id\">ACCOUNT_ID</a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#account_attribute_id\"><strong>account_attribute_id</strong></a>:</p><p><a href=\"/glossary#account_attributes\"><strong>account_attributes</strong></a>:</p><p><a href=\"/glossary#\"><strong>account_id</strong></a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#account_routings\"><strong>account_routings</strong></a>:</p><p><a href=\"/glossary#address\"><strong>address</strong></a>:</p><p><a href=\"/glossary#\"><strong>amount</strong></a>: 10.12</p><p><a href=\"/glossary#balance\"><strong>balance</strong></a>: 10</p><p><a href=\"/glossary#\"><strong>branch_id</strong></a>: DERBY6</p><p><a href=\"/glossary#\"><strong>currency</strong></a>: EUR</p><p><a href=\"/glossary#\"><strong>label</strong></a>: My Account</p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#product_code\"><strong>product_code</strong></a>: 1234BW</p><p><a href=\"/glossary#scheme\"><strong>scheme</strong></a>: OBP</p><p><a href=\"/glossary#type\"><strong>type</strong></a>:</p><p><a href=\"/glossary#\"><strong>user_id</strong></a>: 9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1</p><p><a href=\"/glossary#\"><strong>value</strong></a>: 5987953</p><p><a href=\"/glossary#\">product_instance_code</a>: product_instance_code</p>",
+    "operationId": "OBPv5.0.0-createAccount",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "CreateAccountRequestJsonV500 object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/CreateAccountRequestJsonV500"
+        }
+      },
+      {
+        "in": "path",
+        "name": "ACCOUNT_ID",
+        "description": "The account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/CreateAccountResponseJsonV310"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorInvalidJsonFormat"
+        }
+      }
+    }
+  }
+}

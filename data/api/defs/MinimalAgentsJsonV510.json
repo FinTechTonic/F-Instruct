@@ -1,0 +1,13 @@
+{
+  "required": [
+    "agents"
+  ],
+  "properties": {
+    "agents": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/MinimalAgentJsonV510"
+      }
+    }
+  }
+}

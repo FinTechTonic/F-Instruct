@@ -1,0 +1,17 @@
+{
+  "required": [
+    "url",
+    "date"
+  ],
+  "properties": {
+    "url": {
+      "type": "string",
+      "example": "www.openbankproject"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    }
+  }
+}

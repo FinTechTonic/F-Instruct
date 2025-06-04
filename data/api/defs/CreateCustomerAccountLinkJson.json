@@ -1,0 +1,26 @@
+{
+  "required": [
+    "customer_id",
+    "bank_id",
+    "account_id",
+    "relationship_type"
+  ],
+  "properties": {
+    "customer_id": {
+      "type": "string",
+      "example": "7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "account_id": {
+      "type": "string",
+      "example": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0"
+    },
+    "relationship_type": {
+      "type": "string",
+      "example": "Owner"
+    }
+  }
+}

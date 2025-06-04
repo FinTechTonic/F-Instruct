@@ -1,0 +1,28 @@
+{
+  "required": [
+    "description",
+    "to",
+    "from",
+    "message",
+    "value"
+  ],
+  "properties": {
+    "description": {
+      "type": "string",
+      "example": "String"
+    },
+    "to": {
+      "$ref": "#/definitions/ToAccountTransferToAtm"
+    },
+    "from": {
+      "$ref": "#/definitions/FromAccountTransfer"
+    },
+    "message": {
+      "type": "string",
+      "example": "String"
+    },
+    "value": {
+      "$ref": "#/definitions/AmountOfMoneyJsonV121"
+    }
+  }
+}

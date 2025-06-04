@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "message": {
+      "type": "string",
+      "example": "OBP-30066: Could not get accounts."
+    }
+  }
+}

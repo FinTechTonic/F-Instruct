@@ -1,0 +1,71 @@
+{
+  "required": [
+    "customer_id",
+    "name_suffix",
+    "email",
+    "branch_id",
+    "mobile_phone_number",
+    "customer_number",
+    "customer_attributes",
+    "bank_id",
+    "date_of_birth",
+    "legal_name",
+    "title",
+    "accounts"
+  ],
+  "properties": {
+    "customer_id": {
+      "type": "string",
+      "example": "7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    },
+    "name_suffix": {
+      "type": "string",
+      "example": "Sr"
+    },
+    "email": {
+      "type": "string",
+      "example": "felixsmith@example.com"
+    },
+    "branch_id": {
+      "type": "string",
+      "example": "DERBY6"
+    },
+    "mobile_phone_number": {
+      "type": "string",
+      "example": "+44 07972 444 876"
+    },
+    "customer_number": {
+      "type": "string",
+      "example": "5987953"
+    },
+    "customer_attributes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/CustomerAttributeResponseJsonV300"
+      }
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "date_of_birth": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "legal_name": {
+      "type": "string",
+      "example": "Eveline Tripman"
+    },
+    "title": {
+      "type": "string",
+      "example": "Dr."
+    },
+    "accounts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AccountResponseJson500"
+      }
+    }
+  }
+}

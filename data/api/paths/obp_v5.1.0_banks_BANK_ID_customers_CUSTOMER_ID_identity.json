@@ -1,0 +1,55 @@
+{
+  "put": {
+    "tags": [
+      "Customer"
+    ],
+    "summary": "Update the identity data of a Customer",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Update the identity data of the Customer specified by CUSTOMER_ID.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#Customer.customer_id\">CUSTOMER_ID</a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>amount</strong></a>: 10.12</p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#\"><strong>branch_id</strong></a>: DERBY6</p><p><a href=\"/glossary#\"><strong>currency</strong></a>: EUR</p><p><a href=\"/glossary#\"><strong>customer_id</strong></a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#\"><strong>customer_number</strong></a>: 5987953</p><p><a href=\"/glossary#\"><strong>date</strong></a>: 2020-01-27</p><p><a href=\"/glossary#\"><strong>date_of_birth</strong></a>: 2018-03-09</p><p><a href=\"/glossary#\"><strong>dependants</strong></a>: 1</p><p><a href=\"/glossary#dob_of_dependants\"><strong>dob_of_dependants</strong></a>: [2019-09-08, 2017-07-12]</p><p><a href=\"/glossary#\"><strong>email</strong></a>: <a href=\"ma&#105;l&#x74;&#x6f;:&#102;&#101;&#108;&#x69;&#x78;&#x73;&#109;&#x69;&#x74;&#104;@&#x65;&#120;&#97;m&#112;&#108;&#x65;&#46;&#99;&#x6f;&#109;\">fe&#108;i&#x78;&#x73;&#109;&#x69;t&#104;&#64;&#101;&#120;&#x61;&#x6d;&#x70;&#x6c;&#x65;&#46;&#x63;&#111;&#x6d;</a></p><p><a href=\"/glossary#\"><strong>employment_status</strong></a>: worker</p><p><a href=\"/glossary#face_image\"><strong>face_image</strong></a>:</p><p><a href=\"/glossary#\"><strong>highest_education_attained</strong></a>: Master</p><p><a href=\"/glossary#\"><strong>kyc_status</strong></a>: false</p><p><a href=\"/glossary#last_ok_date\"><strong>last_ok_date</strong></a>: 2024-05-26T10:28:41.296Z</p><p><a href=\"/glossary#\"><strong>legal_name</strong></a>: Eveline Tripman</p><p><a href=\"/glossary#mobile_phone_number\"><strong>mobile_phone_number</strong></a>: +49 30 901820</p><p><a href=\"/glossary#\"><strong>name_suffix</strong></a>: Sr</p><p><a href=\"/glossary#\"><strong>rating</strong></a>:</p><p><a href=\"/glossary#\"><strong>relationship_status</strong></a>: single</p><p><a href=\"/glossary#\"><strong>source</strong></a>:</p><p><a href=\"/glossary#\"><strong>title</strong></a>: Dr.</p><p><a href=\"/glossary#\"><strong>url</strong></a>: <a href=\"http://www.example.com/id-docs/123/image.png\">http://www.example.com/id-docs/123/image.png</a></p><p><a href=\"/glossary#credit_limit\">credit_limit</a>:</p><p><a href=\"/glossary#credit_rating\">credit_rating</a>:</p>",
+    "operationId": "OBPv3.1.0-updateCustomerIdentity",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "PutUpdateCustomerIdentityJsonV310 object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/PutUpdateCustomerIdentityJsonV310"
+        }
+      },
+      {
+        "in": "path",
+        "name": "CUSTOMER_ID",
+        "description": "The customer id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/CustomerJsonV310"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

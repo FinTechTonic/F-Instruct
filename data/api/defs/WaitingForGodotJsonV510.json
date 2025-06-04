@@ -1,0 +1,12 @@
+{
+  "required": [
+    "sleep_in_milliseconds"
+  ],
+  "properties": {
+    "sleep_in_milliseconds": {
+      "type": "integer",
+      "format": "int64",
+      "example": "50"
+    }
+  }
+}

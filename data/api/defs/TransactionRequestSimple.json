@@ -1,0 +1,46 @@
+{
+  "required": [
+    "otherAccountSecondaryRoutingAddress",
+    "otherBankRoutingScheme",
+    "otherBranchRoutingScheme",
+    "otherAccountRoutingScheme",
+    "otherBankRoutingAddress",
+    "otherAccountRoutingAddress",
+    "otherAccountSecondaryRoutingScheme",
+    "otherBranchRoutingAddress"
+  ],
+  "properties": {
+    "otherAccountSecondaryRoutingAddress": {
+      "type": "string",
+      "example": "DE91 1000 0000 0123 4567 89"
+    },
+    "otherBankRoutingScheme": {
+      "type": "string",
+      "example": "BIC"
+    },
+    "otherBranchRoutingScheme": {
+      "type": "string",
+      "example": "BRANCH-CODE"
+    },
+    "otherAccountRoutingScheme": {
+      "type": "string",
+      "example": "IBAN"
+    },
+    "otherBankRoutingAddress": {
+      "type": "string",
+      "example": "GENODEM1GLS"
+    },
+    "otherAccountRoutingAddress": {
+      "type": "string",
+      "example": "DE91 1000 0000 0123 4567 89"
+    },
+    "otherAccountSecondaryRoutingScheme": {
+      "type": "string",
+      "example": "IBAN"
+    },
+    "otherBranchRoutingAddress": {
+      "type": "string",
+      "example": "DERBY6"
+    }
+  }
+}

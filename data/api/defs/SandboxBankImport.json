@@ -1,0 +1,31 @@
+{
+  "required": [
+    "website",
+    "full_name",
+    "logo",
+    "id",
+    "short_name"
+  ],
+  "properties": {
+    "website": {
+      "type": "string",
+      "example": "http://example.com"
+    },
+    "full_name": {
+      "type": "string",
+      "example": "Bank 1 Inc."
+    },
+    "logo": {
+      "type": "string",
+      "example": "http://example.com/logo"
+    },
+    "id": {
+      "type": "string",
+      "example": "bank1"
+    },
+    "short_name": {
+      "type": "string",
+      "example": "bank 1"
+    }
+  }
+}

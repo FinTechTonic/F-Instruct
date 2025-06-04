@@ -1,0 +1,16 @@
+{
+  "required": [
+    "credit_rating",
+    "credit_source"
+  ],
+  "properties": {
+    "credit_rating": {
+      "type": "string",
+      "example": "Good"
+    },
+    "credit_source": {
+      "type": "string",
+      "example": "Bank"
+    }
+  }
+}

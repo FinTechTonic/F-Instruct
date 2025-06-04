@@ -1,0 +1,86 @@
+{
+  "get": {
+    "tags": [
+      "Bank",
+      "PSD2"
+    ],
+    "summary": "Get Settlement accounts at Bank",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get settlement accounts on this API instance<br />Returns a list of settlement accounts at this Bank</p><p>Note: a settlement account is considered as a bank account.<br />So you can update it and add account attributes to it using the regular account endpoints</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#account_attribute_id\"><strong>account_attribute_id</strong></a>:</p><p><a href=\"/glossary#account_attributes\"><strong>account_attributes</strong></a>:</p><p><a href=\"/glossary#\"><strong>account_id</strong></a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#account_routings\"><strong>account_routings</strong></a>:</p><p><a href=\"/glossary#address\"><strong>address</strong></a>:</p><p><a href=\"/glossary#\"><strong>amount</strong></a>: 10.12</p><p><a href=\"/glossary#balance\"><strong>balance</strong></a>: 10</p><p><a href=\"/glossary#\"><strong>branch_id</strong></a>: DERBY6</p><p><a href=\"/glossary#\"><strong>currency</strong></a>: EUR</p><p><a href=\"/glossary#\"><strong>label</strong></a>: My Account</p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#\"><strong>payment_system</strong></a>: SEPA</p><p><a href=\"/glossary#product_code\"><strong>product_code</strong></a>: 1234BW</p><p><a href=\"/glossary#scheme\"><strong>scheme</strong></a>: OBP</p><p><a href=\"/glossary#settlement_accounts\"><strong>settlement_accounts</strong></a>:</p><p><a href=\"/glossary#type\"><strong>type</strong></a>:</p><p><a href=\"/glossary#\"><strong>value</strong></a>: 5987953</p><p><a href=\"/glossary#\">product_instance_code</a>: product_instance_code</p>",
+    "operationId": "OBPv4.0.0-getSettlementAccounts",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/SettlementAccountsJson"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "Bank"
+    ],
+    "summary": "Create Settlement Account",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Create a new settlement account at a bank.</p><p>The created settlement account id will be the concatenation of the payment system and the account currency.<br />For examples: SEPA_SETTLEMENT_ACCOUNT_EUR, CARD_SETTLEMENT_ACCOUNT_USD</p><p>By default, when you create a new bank, two settlements accounts are created automatically: OBP_DEFAULT_INCOMING_ACCOUNT_ID and OBP_DEFAULT_OUTGOING_ACCOUNT_ID<br />Those two accounts have EUR as default currency.</p><p>If you want to create default settlement account for a specific currency, you can fill the <code>payment_system</code> field with the <code>DEFAULT</code> value.</p><p>When a transaction is saved in OBP through the mapped connector, OBP-API look for the account to save the double-entry transaction.<br />If no OBP account can be found from the counterparty, the double-entry transaction will be saved on a bank settlement account.<br />- First, the mapped connector looks for a settlement account specific to the payment system and currency. E.g SEPA_SETTLEMENT_ACCOUNT_EUR.<br />- If we don't find any specific settlement account with the payment system, we look for a default settlement account for the counterparty currency. E.g DEFAULT_SETTLEMENT_ACCOUNT_EUR.<br />- Else, we select one of the two OBP default settlement accounts (OBP_DEFAULT_INCOMING_ACCOUNT_ID/OBP_DEFAULT_OUTGOING_ACCOUNT_ID) according to the transaction direction.</p><p>If the POST body USER_ID <em>is</em> specified, the logged in user must have the Role CanCreateAccount. Once created, the Account will be owned by the User specified by USER_ID.</p><p>If the POST body USER_ID is <em>not</em> specified, the account will be owned by the logged in User.</p><p>Note: The Amount MUST be zero.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#account_routings\"><strong>account_routings</strong></a>:</p><p><a href=\"/glossary#address\"><strong>address</strong></a>:</p><p><a href=\"/glossary#\"><strong>amount</strong></a>: 10.12</p><p><a href=\"/glossary#balance\"><strong>balance</strong></a>: 10</p><p><a href=\"/glossary#\"><strong>branch_id</strong></a>: DERBY6</p><p><a href=\"/glossary#\"><strong>currency</strong></a>: EUR</p><p><a href=\"/glossary#\"><strong>label</strong></a>: My Account</p><p><a href=\"/glossary#\"><strong>payment_system</strong></a>: SEPA</p><p><a href=\"/glossary#scheme\"><strong>scheme</strong></a>: OBP</p><p><a href=\"/glossary#\"><strong>user_id</strong></a>: 9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#account_attribute_id\"><strong>account_attribute_id</strong></a>:</p><p><a href=\"/glossary#account_attributes\"><strong>account_attributes</strong></a>:</p><p><a href=\"/glossary#\"><strong>account_id</strong></a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#account_routings\"><strong>account_routings</strong></a>:</p><p><a href=\"/glossary#address\"><strong>address</strong></a>:</p><p><a href=\"/glossary#\"><strong>amount</strong></a>: 10.12</p><p><a href=\"/glossary#balance\"><strong>balance</strong></a>: 10</p><p><a href=\"/glossary#\"><strong>branch_id</strong></a>: DERBY6</p><p><a href=\"/glossary#\"><strong>currency</strong></a>: EUR</p><p><a href=\"/glossary#\"><strong>label</strong></a>: My Account</p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#\"><strong>payment_system</strong></a>: SEPA</p><p><a href=\"/glossary#product_code\"><strong>product_code</strong></a>: 1234BW</p><p><a href=\"/glossary#scheme\"><strong>scheme</strong></a>: OBP</p><p><a href=\"/glossary#type\"><strong>type</strong></a>:</p><p><a href=\"/glossary#\"><strong>user_id</strong></a>: 9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1</p><p><a href=\"/glossary#\"><strong>value</strong></a>: 5987953</p><p><a href=\"/glossary#\">product_instance_code</a>: product_instance_code</p>",
+    "operationId": "OBPv4.0.0-createSettlementAccount",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "SettlementAccountRequestJson object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/SettlementAccountRequestJson"
+        }
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/SettlementAccountResponseJson"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorInvalidJsonFormat"
+        }
+      }
+    }
+  }
+}

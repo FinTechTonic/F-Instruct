@@ -1,0 +1,21 @@
+{
+  "required": [
+    "id",
+    "provider",
+    "username"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "123"
+    },
+    "provider": {
+      "type": "string",
+      "example": "http://127.0.0.1:8080"
+    },
+    "username": {
+      "type": "string",
+      "example": "felixsmith"
+    }
+  }
+}

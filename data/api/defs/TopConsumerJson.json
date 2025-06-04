@@ -1,0 +1,27 @@
+{
+  "required": [
+    "count",
+    "consumer_id",
+    "app_name",
+    "developer_email"
+  ],
+  "properties": {
+    "count": {
+      "type": "integer",
+      "format": "int32",
+      "example": "7076"
+    },
+    "consumer_id": {
+      "type": "string",
+      "example": "7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    },
+    "app_name": {
+      "type": "string",
+      "example": "Api Explorer"
+    },
+    "developer_email": {
+      "type": "string",
+      "example": "felixsmith@example.com"
+    }
+  }
+}

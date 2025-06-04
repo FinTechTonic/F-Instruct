@@ -1,0 +1,11 @@
+{
+  "required": [
+    "legal_name"
+  ],
+  "properties": {
+    "legal_name": {
+      "type": "string",
+      "example": "Eveline Tripman"
+    }
+  }
+}

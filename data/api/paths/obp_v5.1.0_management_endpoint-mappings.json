@@ -1,0 +1,290 @@
+{
+  "get": {
+    "tags": [
+      "Endpoint-Mapping"
+    ],
+    "summary": "Get all Endpoint Mappings",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get all Endpoint Mappings.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p>",
+    "operationId": "OBPv4.0.0-getAllEndpointMappings",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "type": "object",
+          "required": [
+            "endpoint-mappings"
+          ],
+          "properties": {
+            "endpoint-mappings": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "operation_id": {
+                    "type": "string",
+                    "example": "OBPv4.0.0-dynamicEndpoint_POST_account"
+                  },
+                  "request_mapping": {
+                    "type": "object",
+                    "properties": {}
+                  },
+                  "response_mapping": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "object",
+                        "properties": {
+                          "entity": {
+                            "type": "string",
+                            "example": "FooBar"
+                          },
+                          "field": {
+                            "type": "string",
+                            "example": "name"
+                          },
+                          "query": {
+                            "type": "string",
+                            "example": "number"
+                          }
+                        },
+                        "required": [
+                          "entity",
+                          "field",
+                          "query"
+                        ]
+                      },
+                      "balance": {
+                        "type": "object",
+                        "properties": {
+                          "entity": {
+                            "type": "string",
+                            "example": "FashionBrand"
+                          },
+                          "field": {
+                            "type": "string",
+                            "example": "number"
+                          },
+                          "query": {
+                            "type": "string",
+                            "example": "number"
+                          }
+                        },
+                        "required": [
+                          "entity",
+                          "field",
+                          "query"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "balance"
+                    ]
+                  },
+                  "endpoint_mapping_id": {
+                    "type": "string",
+                    "example": "b4e0352a-9a0f-4bfa-b30b-9003aa467f50"
+                  }
+                },
+                "required": [
+                  "operation_id",
+                  "request_mapping",
+                  "response_mapping",
+                  "endpoint_mapping_id"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "Endpoint-Mapping"
+    ],
+    "summary": "Create Endpoint Mapping",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Create an Endpoint Mapping.</p><p>Note: at moment only support the dynamic endpoints</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p>",
+    "operationId": "OBPv4.0.0-createEndpointMapping",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "JObject object that needs to be added.",
+        "required": true,
+        "schema": {
+          "type": "object",
+          "properties": {
+            "operation_id": {
+              "type": "string",
+              "example": "OBPv4.0.0-dynamicEndpoint_POST_account"
+            },
+            "request_mapping": {
+              "type": "object",
+              "properties": {}
+            },
+            "response_mapping": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "object",
+                  "properties": {
+                    "entity": {
+                      "type": "string",
+                      "example": "FooBar"
+                    },
+                    "field": {
+                      "type": "string",
+                      "example": "name"
+                    },
+                    "query": {
+                      "type": "string",
+                      "example": "number"
+                    }
+                  },
+                  "required": [
+                    "entity",
+                    "field",
+                    "query"
+                  ]
+                },
+                "balance": {
+                  "type": "object",
+                  "properties": {
+                    "entity": {
+                      "type": "string",
+                      "example": "FashionBrand"
+                    },
+                    "field": {
+                      "type": "string",
+                      "example": "number"
+                    },
+                    "query": {
+                      "type": "string",
+                      "example": "number"
+                    }
+                  },
+                  "required": [
+                    "entity",
+                    "field",
+                    "query"
+                  ]
+                }
+              },
+              "required": [
+                "name",
+                "balance"
+              ]
+            }
+          },
+          "required": [
+            "operation_id",
+            "request_mapping",
+            "response_mapping"
+          ]
+        }
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "operation_id": {
+              "type": "string",
+              "example": "OBPv4.0.0-dynamicEndpoint_POST_account"
+            },
+            "request_mapping": {
+              "type": "object",
+              "properties": {}
+            },
+            "response_mapping": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "object",
+                  "properties": {
+                    "entity": {
+                      "type": "string",
+                      "example": "FooBar"
+                    },
+                    "field": {
+                      "type": "string",
+                      "example": "name"
+                    },
+                    "query": {
+                      "type": "string",
+                      "example": "number"
+                    }
+                  },
+                  "required": [
+                    "entity",
+                    "field",
+                    "query"
+                  ]
+                },
+                "balance": {
+                  "type": "object",
+                  "properties": {
+                    "entity": {
+                      "type": "string",
+                      "example": "FashionBrand"
+                    },
+                    "field": {
+                      "type": "string",
+                      "example": "number"
+                    },
+                    "query": {
+                      "type": "string",
+                      "example": "number"
+                    }
+                  },
+                  "required": [
+                    "entity",
+                    "field",
+                    "query"
+                  ]
+                }
+              },
+              "required": [
+                "name",
+                "balance"
+              ]
+            }
+          },
+          "required": [
+            "operation_id",
+            "request_mapping",
+            "response_mapping"
+          ]
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

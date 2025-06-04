@@ -1,0 +1,16 @@
+{
+  "required": [
+    "property",
+    "value"
+  ],
+  "properties": {
+    "property": {
+      "type": "string",
+      "example": "default"
+    },
+    "value": {
+      "type": "string",
+      "example": "8080"
+    }
+  }
+}

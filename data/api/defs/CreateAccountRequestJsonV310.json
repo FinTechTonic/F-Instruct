@@ -1,0 +1,37 @@
+{
+  "required": [
+    "branch_id",
+    "account_routings",
+    "label",
+    "balance",
+    "user_id",
+    "product_code"
+  ],
+  "properties": {
+    "branch_id": {
+      "type": "string",
+      "example": "DERBY6"
+    },
+    "account_routings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AccountRoutingJsonV121"
+      }
+    },
+    "label": {
+      "type": "string",
+      "example": "My Account"
+    },
+    "balance": {
+      "$ref": "#/definitions/AmountOfMoneyJsonV121"
+    },
+    "user_id": {
+      "type": "string",
+      "example": "9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+    },
+    "product_code": {
+      "type": "string",
+      "example": "1234BW"
+    }
+  }
+}

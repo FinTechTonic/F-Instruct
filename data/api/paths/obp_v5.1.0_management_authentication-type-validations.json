@@ -1,0 +1,42 @@
+{
+  "get": {
+    "tags": [
+      "Authentication-Type-Validation"
+    ],
+    "summary": "Get all Authentication Type Validations",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get all Authentication Type Validations.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>JSON response body fields:</strong></p>",
+    "operationId": "OBPv4.0.0-getAllAuthenticationTypeValidations",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "type": "object",
+          "required": [
+            "authentication_types_validations"
+          ],
+          "properties": {
+            "authentication_types_validations": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/JsonAuthTypeValidation"
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

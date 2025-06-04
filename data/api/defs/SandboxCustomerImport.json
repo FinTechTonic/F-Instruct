@@ -1,0 +1,16 @@
+{
+  "required": [
+    "name",
+    "number"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "James Brown"
+    },
+    "number": {
+      "type": "string",
+      "example": "698761728934"
+    }
+  }
+}

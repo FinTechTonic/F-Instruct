@@ -1,0 +1,16 @@
+{
+  "required": [
+    "balance_type",
+    "balance_amount"
+  ],
+  "properties": {
+    "balance_type": {
+      "type": "string",
+      "example": "openingBooked"
+    },
+    "balance_amount": {
+      "type": "string",
+      "example": "50.89"
+    }
+  }
+}

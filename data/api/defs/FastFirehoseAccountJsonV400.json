@@ -1,0 +1,56 @@
+{
+  "required": [
+    "number",
+    "account_attributes",
+    "account_routings",
+    "label",
+    "owners",
+    "balance",
+    "product_code",
+    "bank_id",
+    "id"
+  ],
+  "properties": {
+    "number": {
+      "type": "string",
+      "example": ""
+    },
+    "account_attributes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/FastFirehoseAttributes"
+      }
+    },
+    "account_routings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/FastFirehoseRoutings"
+      }
+    },
+    "label": {
+      "type": "string",
+      "example": "My Account"
+    },
+    "owners": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/FastFirehoseOwners"
+      }
+    },
+    "balance": {
+      "$ref": "#/definitions/AmountOfMoneyJsonV121"
+    },
+    "product_code": {
+      "type": "string",
+      "example": "1234BW"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "id": {
+      "type": "string",
+      "example": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0"
+    }
+  }
+}

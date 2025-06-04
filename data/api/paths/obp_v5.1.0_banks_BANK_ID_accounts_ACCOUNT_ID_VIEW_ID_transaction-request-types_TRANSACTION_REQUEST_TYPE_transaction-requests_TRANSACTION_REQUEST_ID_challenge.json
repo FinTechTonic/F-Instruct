@@ -1,0 +1,78 @@
+{
+  "post": {
+    "tags": [
+      "Transaction-Request",
+      "Payment Initiation Service (PIS)",
+      "PSD2"
+    ],
+    "summary": "Answer Transaction Request Challenge",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>In Sandbox mode, any string that can be converted to a positive integer will be accepted as an answer.</p><p>This endpoint totally depends on createTransactionRequest, it need get the following data from createTransactionRequest response body.</p><p>1)<code>TRANSACTION_REQUEST_TYPE</code> : is the same as createTransactionRequest request URL .</p><p>2)<code>TRANSACTION_REQUEST_ID</code> : is the <code>id</code> field in createTransactionRequest response body.</p><p>3) <code>id</code> :  is <code>challenge.id</code> field in createTransactionRequest response body.</p><p>4) <code>answer</code> : must be <code>123</code> in case that Strong Customer Authentication method for OTP challenge is dummy.<br />For instance: SANDBOX_TAN_OTP_INSTRUCTION_TRANSPORT=dummy<br />Possible values are dummy,email and sms<br />In CBS mode, the answer can be got by phone message or other SCA methods.</p><p>Note that each Transaction Request Type can have its own OTP_INSTRUCTION_TRANSPORT method.<br />OTP_INSTRUCTION_TRANSPORT methods are set in Props. See sample.props.template for instructions.</p><p>Single or Multiple authorisations</p><p>OBP allows single or multi party authorisations.</p><p>Single party authorisation:</p><p>In the case that only one person needs to authorise i.e. answer a security challenge we have the following change of state of a <code>transaction request</code>:<br />INITIATED =&gt; COMPLETED</p><p>Multiparty authorisation:</p><p>In the case that multiple parties (n persons) need to authorise a transaction request i.e. answer security challenges, we have the followings state flow for a <code>transaction request</code>:<br />INITIATED =&gt; NEXT_CHALLENGE_PENDING =&gt; ... =&gt; NEXT_CHALLENGE_PENDING =&gt; COMPLETED</p><p>The security challenge is bound to a user i.e. in the case of a correct answer but the user is different than expected the challenge will fail.</p><p>Rule for calculating number of security challenges:<br />If Product Account attribute REQUIRED_CHALLENGE_ANSWERS=N then create N challenges<br />(one for every user that has a View where permission &quot;can_add_transaction_request_to_any_account&quot;=true)<br />In the case REQUIRED_CHALLENGE_ANSWERS is not defined as an account attribute, the default number of security challenges created is one.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Account.account_id\">ACCOUNT_ID</a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#\">TRANSACTION_REQUEST_ID</a>: 8138a7e4-6d02-40e3-a129-0b2bf89de9f1</p><p><a href=\"/glossary#\">TRANSACTION_REQUEST_TYPE</a>: SEPA</p><p><a href=\"/glossary#this_view_id\">VIEW_ID</a>: owner</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#answer\"><strong>answer</strong></a>:</p><p><a href=\"/glossary#id\"><strong>id</strong></a>: d8839721-ad8f-45dd-9f78-2080414b93f9</p><p><a href=\"/glossary#\">additional_information</a>: additional_information</p><p><a href=\"/glossary#\">reason_code</a>: reason_code</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#Account\"><strong>account</strong></a>:</p><p><a href=\"/glossary#\"><strong>account_id</strong></a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#\"><strong>agent_number</strong></a>: 5987953</p><p><a href=\"/glossary#allowed_attempts\"><strong>allowed_attempts</strong></a>: 5</p><p><a href=\"/glossary#\"><strong>amount</strong></a>: 10.12</p><p><a href=\"/glossary#bank_code\"><strong>bank_code</strong></a>: CGHZ</p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#branch_number\"><strong>branch_number</strong></a>:</p><p><a href=\"/glossary#challenge\"><strong>challenge</strong></a>:</p><p><a href=\"/glossary#challenge_type\"><strong>challenge_type</strong></a>:</p><p><a href=\"/glossary#charge\"><strong>charge</strong></a>:</p><p><a href=\"/glossary#\"><strong>counterparty_id</strong></a>: 9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#creditoraccount\"><strong>creditorAccount</strong></a>:</p><p><a href=\"/glossary#creditorname\"><strong>creditorName</strong></a>:</p><p><a href=\"/glossary#\"><strong>currency</strong></a>: EUR</p><p><a href=\"/glossary#\"><strong>date_of_birth</strong></a>: 2018-03-09</p><p><a href=\"/glossary#debtoraccount\"><strong>debtorAccount</strong></a>:</p><p><a href=\"/glossary#description\"><strong>description</strong></a>: Description of the object. Maximum length is 2000. It can be any characters here.</p><p><a href=\"/glossary#details\"><strong>details</strong></a>:</p><p><a href=\"/glossary#end_date\"><strong>end_date</strong></a>:</p><p><a href=\"/glossary#from\"><strong>from</strong></a>:</p><p><a href=\"/glossary#future_date\"><strong>future_date</strong></a>: 20200127</p><p><a href=\"/glossary#\"><strong>iban</strong></a>: DE91 1000 0000 0123 4567 89</p><p><a href=\"/glossary#id\"><strong>id</strong></a>: d8839721-ad8f-45dd-9f78-2080414b93f9</p><p><a href=\"/glossary#instructedamount\"><strong>instructedAmount</strong></a>: 100</p><p><a href=\"/glossary#kyc_document\"><strong>kyc_document</strong></a>:</p><p><a href=\"/glossary#\"><strong>legal_name</strong></a>: Eveline Tripman</p><p><a href=\"/glossary#message\"><strong>message</strong></a>: 123456</p><p><a href=\"/glossary#mobile_phone_number\"><strong>mobile_phone_number</strong></a>: +49 30 901820</p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#nickname\"><strong>nickname</strong></a>:</p><p><a href=\"/glossary#number\"><strong>number</strong></a>:</p><p><a href=\"/glossary#\"><strong>otherAccountRoutingAddress</strong></a>: otherAccountRoutingAddress</p><p><a href=\"/glossary#\"><strong>otherAccountRoutingScheme</strong></a>: otherAccountRoutingScheme</p><p><a href=\"/glossary#\"><strong>otherAccountSecondaryRoutingAddress</strong></a>: otherAccountSecondaryRoutingAddress</p><p><a href=\"/glossary#\"><strong>otherAccountSecondaryRoutingScheme</strong></a>: otherAccountSecondaryRoutingScheme</p><p><a href=\"/glossary#\"><strong>otherBankRoutingAddress</strong></a>: otherBankRoutingAddress</p><p><a href=\"/glossary#\"><strong>otherBankRoutingScheme</strong></a>: otherBankRoutingScheme</p><p><a href=\"/glossary#\"><strong>otherBranchRoutingAddress</strong></a>: otherBranchRoutingAddress</p><p><a href=\"/glossary#\"><strong>otherBranchRoutingScheme</strong></a>: otherBranchRoutingScheme</p><p><a href=\"/glossary#\"><strong>start_date</strong></a>: 2020-01-27</p><p><a href=\"/glossary#status\"><strong>status</strong></a>:</p><p><a href=\"/glossary#summary\"><strong>summary</strong></a>:</p><p><a href=\"/glossary#to\"><strong>to</strong></a>:</p><p><a href=\"/glossary#transaction_ids\"><strong>transaction_ids</strong></a>:</p><p><a href=\"/glossary#transfer_type\"><strong>transfer_type</strong></a>:</p><p><a href=\"/glossary#type\"><strong>type</strong></a>:</p><p><a href=\"/glossary#\"><strong>value</strong></a>: 5987953</p><p><a href=\"/glossary#\">to_agent</a>: to_agent</p><p><a href=\"/glossary#to_counterparty\">to_counterparty</a>:</p><p><a href=\"/glossary#to_sandbox_tan\">to_sandbox_tan</a>:</p><p><a href=\"/glossary#to_sepa\">to_sepa</a>:</p><p><a href=\"/glossary#to_sepa_credit_transfers\">to_sepa_credit_transfers</a>:</p><p><a href=\"/glossary#\">to_simple</a>: to_simple</p><p><a href=\"/glossary#to_transfer_to_account\">to_transfer_to_account</a>:</p><p><a href=\"/glossary#to_transfer_to_atm\">to_transfer_to_atm</a>:</p><p><a href=\"/glossary#to_transfer_to_phone\">to_transfer_to_phone</a>:</p>",
+    "operationId": "OBPv4.0.0-answerTransactionRequestChallenge",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "ChallengeAnswerJson400 object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/ChallengeAnswerJson400"
+        }
+      },
+      {
+        "in": "path",
+        "name": "TRANSACTION_REQUEST_ID",
+        "description": "The transaction request id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "TRANSACTION_REQUEST_TYPE",
+        "description": "The transaction request type",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "VIEW_ID",
+        "description": "The view id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "ACCOUNT_ID",
+        "description": "The account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/TransactionRequestWithChargeJSON210"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

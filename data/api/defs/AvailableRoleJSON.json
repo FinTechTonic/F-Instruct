@@ -1,0 +1,16 @@
+{
+  "required": [
+    "role",
+    "requires_bank_id"
+  ],
+  "properties": {
+    "role": {
+      "type": "string",
+      "example": "CanCreateBranch"
+    },
+    "requires_bank_id": {
+      "type": "boolean",
+      "example": "true"
+    }
+  }
+}

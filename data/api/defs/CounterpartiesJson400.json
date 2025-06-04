@@ -1,0 +1,13 @@
+{
+  "required": [
+    "counterparties"
+  ],
+  "properties": {
+    "counterparties": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/CounterpartyJson400"
+      }
+    }
+  }
+}

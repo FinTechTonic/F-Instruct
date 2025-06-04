@@ -1,0 +1,14 @@
+{
+  "required": [
+    "account_routing"
+  ],
+  "properties": {
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "account_routing": {
+      "$ref": "#/definitions/AccountRoutingJsonV121"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "required": [
+    "role_name",
+    "bank_id"
+  ],
+  "properties": {
+    "role_name": {
+      "type": "string",
+      "example": ""
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    }
+  }
+}

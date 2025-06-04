@@ -1,0 +1,16 @@
+{
+  "required": [
+    "name",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "country_iso"
+    },
+    "value": {
+      "type": "string",
+      "example": ""
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "post": {
+    "tags": [
+      "Product"
+    ],
+    "summary": "Create Product Fee",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Create Product Fee</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#product_code\">PRODUCT_CODE</a>: 1234BW</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#\"><strong>amount</strong></a>: 10.12</p><p><a href=\"/glossary#\"><strong>currency</strong></a>: EUR</p><p><a href=\"/glossary#frequency\"><strong>frequency</strong></a>: DAILY</p><p><a href=\"/glossary#is_active\"><strong>is_active</strong></a>: false</p><p><a href=\"/glossary#more_info\"><strong>more_info</strong></a>: More information about this fee</p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#type\"><strong>type</strong></a>:</p><p><a href=\"/glossary#\"><strong>value</strong></a>: 5987953</p><p><a href=\"/glossary#product_fee_id\">product_fee_id</a>: 696hlAHLFKUHE37469287634</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>amount</strong></a>: 10.12</p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#\"><strong>currency</strong></a>: EUR</p><p><a href=\"/glossary#frequency\"><strong>frequency</strong></a>: DAILY</p><p><a href=\"/glossary#is_active\"><strong>is_active</strong></a>: false</p><p><a href=\"/glossary#more_info\"><strong>more_info</strong></a>: More information about this fee</p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#product_code\"><strong>product_code</strong></a>: 1234BW</p><p><a href=\"/glossary#product_fee_id\"><strong>product_fee_id</strong></a>: 696hlAHLFKUHE37469287634</p><p><a href=\"/glossary#type\"><strong>type</strong></a>:</p><p><a href=\"/glossary#\"><strong>value</strong></a>: 5987953</p>",
+    "operationId": "OBPv4.0.0-createProductFee",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "ProductFeeJsonV400 object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/ProductFeeJsonV400"
+        }
+      },
+      {
+        "in": "path",
+        "name": "PRODUCT_CODE",
+        "description": "the product code",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/ProductFeeResponseJsonV400"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

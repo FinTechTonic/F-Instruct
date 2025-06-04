@@ -1,0 +1,13 @@
+{
+  "required": [
+    "images"
+  ],
+  "properties": {
+    "images": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/TransactionImageJSON"
+      }
+    }
+  }
+}

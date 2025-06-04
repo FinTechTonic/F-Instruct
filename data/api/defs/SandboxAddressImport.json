@@ -1,0 +1,46 @@
+{
+  "required": [
+    "city",
+    "line_2",
+    "state",
+    "post_code",
+    "county",
+    "country_code",
+    "line_3",
+    "line_1"
+  ],
+  "properties": {
+    "city": {
+      "type": "string",
+      "example": "Ashbourne"
+    },
+    "line_2": {
+      "type": "string",
+      "example": "Rosy Place"
+    },
+    "state": {
+      "type": "string",
+      "example": ""
+    },
+    "post_code": {
+      "type": "string",
+      "example": "WHY RU4"
+    },
+    "county": {
+      "type": "string",
+      "example": "Derbyshire"
+    },
+    "country_code": {
+      "type": "string",
+      "example": "UK"
+    },
+    "line_3": {
+      "type": "string",
+      "example": "Sunny Village"
+    },
+    "line_1": {
+      "type": "string",
+      "example": "5 Some Street"
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "required": [
+    "allows",
+    "expires_date",
+    "networks",
+    "issue_number",
+    "replacement",
+    "enabled",
+    "collected",
+    "technology",
+    "cancelled",
+    "bank_id",
+    "pin_reset",
+    "serial_number",
+    "account",
+    "valid_from_date",
+    "bank_card_number",
+    "name_on_card",
+    "posted",
+    "on_hot_list"
+  ],
+  "properties": {
+    "allows": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "expires_date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "networks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "issue_number": {
+      "type": "string",
+      "example": "1"
+    },
+    "replacement": {
+      "$ref": "#/definitions/ReplacementJSON"
+    },
+    "enabled": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "collected": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "technology": {
+      "type": "string",
+      "example": "String"
+    },
+    "cancelled": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "pin_reset": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/PinResetJSON"
+      }
+    },
+    "serial_number": {
+      "type": "string",
+      "example": "1324234"
+    },
+    "account": {
+      "$ref": "#/definitions/AccountJSON"
+    },
+    "valid_from_date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "bank_card_number": {
+      "type": "string",
+      "example": "364435172576215"
+    },
+    "name_on_card": {
+      "type": "string",
+      "example": "String"
+    },
+    "posted": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "on_hot_list": {
+      "type": "boolean",
+      "example": "true"
+    }
+  }
+}

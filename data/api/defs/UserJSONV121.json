@@ -1,0 +1,21 @@
+{
+  "required": [
+    "id",
+    "provider",
+    "display_name"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "5995d6a2-01b3-423c-a173-5481df49bdaf"
+    },
+    "provider": {
+      "type": "string",
+      "example": "http://127.0.0.1:8080"
+    },
+    "display_name": {
+      "type": "string",
+      "example": "OBP"
+    }
+  }
+}

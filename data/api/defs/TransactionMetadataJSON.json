@@ -1,0 +1,36 @@
+{
+  "required": [
+    "narrative",
+    "tags",
+    "where",
+    "images",
+    "comments"
+  ],
+  "properties": {
+    "narrative": {
+      "type": "string",
+      "example": "NONE"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/TransactionTagJSON"
+      }
+    },
+    "where": {
+      "$ref": "#/definitions/LocationJSONV121"
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/TransactionImageJSON"
+      }
+    },
+    "comments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/TransactionCommentJSON"
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "get": {
+    "tags": [
+      "API"
+    ],
+    "summary": "Get Suggested Session Timeout",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Returns information about:</p><ul><li>Suggested session timeout in case of a user inactivity</li></ul><p>User Authentication is Optional. The User need not be logged in.</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>timeout_in_seconds</strong></a>: timeout_in_seconds</p>",
+    "operationId": "OBPv5.1.0-suggestedSessionTimeout",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/SuggestedSessionTimeoutV510"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUnknownError"
+        }
+      }
+    }
+  }
+}

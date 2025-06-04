@@ -1,0 +1,21 @@
+{
+  "required": [
+    "name",
+    "type",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "OVERDRAFT_START_DATE"
+    },
+    "type": {
+      "type": "string",
+      "example": "DOUBLE"
+    },
+    "value": {
+      "type": "string",
+      "example": "2012-04-23"
+    }
+  }
+}

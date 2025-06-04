@@ -1,0 +1,14 @@
+{
+  "properties": {
+    "calls_made": {
+      "type": "integer",
+      "format": "int64",
+      "example": "-1"
+    },
+    "reset_in_seconds": {
+      "type": "integer",
+      "format": "int64",
+      "example": "-1"
+    }
+  }
+}

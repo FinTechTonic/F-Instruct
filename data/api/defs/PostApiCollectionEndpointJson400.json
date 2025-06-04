@@ -1,0 +1,11 @@
+{
+  "required": [
+    "operation_id"
+  ],
+  "properties": {
+    "operation_id": {
+      "type": "string",
+      "example": "OBPv4.0.0-getBanks"
+    }
+  }
+}

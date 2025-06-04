@@ -1,0 +1,11 @@
+{
+  "required": [
+    "hours"
+  ],
+  "properties": {
+    "hours": {
+      "type": "string",
+      "example": "M-TH 8:30-3:30, F 9-5"
+    }
+  }
+}

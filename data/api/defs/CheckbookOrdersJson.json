@@ -1,0 +1,17 @@
+{
+  "required": [
+    "account",
+    "orders"
+  ],
+  "properties": {
+    "account": {
+      "$ref": "#/definitions/AccountV310Json"
+    },
+    "orders": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/OrderJson"
+      }
+    }
+  }
+}

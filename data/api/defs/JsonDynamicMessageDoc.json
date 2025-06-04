@@ -1,0 +1,73 @@
+{
+  "required": [
+    "outbound_avro_schema",
+    "inbound_avro_schema",
+    "adapter_implementation",
+    "description",
+    "process",
+    "outbound_topic",
+    "method_body",
+    "message_format",
+    "example_outbound_message",
+    "inbound_topic",
+    "example_inbound_message",
+    "programming_lang"
+  ],
+  "properties": {
+    "outbound_avro_schema": {
+      "type": "string",
+      "example": ""
+    },
+    "inbound_avro_schema": {
+      "type": "string",
+      "example": ""
+    },
+    "adapter_implementation": {
+      "type": "string",
+      "example": ""
+    },
+    "dynamic_message_doc_id": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string",
+      "example": "Description of the object. Maximum length is 2000. It can be any characters here."
+    },
+    "process": {
+      "type": "string",
+      "example": "obp.getBank"
+    },
+    "outbound_topic": {
+      "type": "string",
+      "example": ""
+    },
+    "method_body": {
+      "type": "string",
+      "example": "%20%20%20%20%20%20Future.successful%28%0A%20%20%20%20%20%20%20%20Full%28%28BankCommons%28%0A%20%20%20%20%20%20%20%20%20%20BankId%28%22Hello%20bank%20id%22%29%2C%0A%20%20%20%20%20%20%20%20%20%20%221%22%2C%0A%20%20%20%20%20%20%20%20%20%20%221%22%2C%0A%20%20%20%20%20%20%20%20%20%20%221%22%2C%0A%20%20%20%20%20%20%20%20%20%20%221%22%2C%0A%20%20%20%20%20%20%20%20%20%20%221%22%2C%0A%20%20%20%20%20%20%20%20%20%20%221%22%2C%0A%20%20%20%20%20%20%20%20%20%20%221%22%2C%0A%20%20%20%20%20%20%20%20%20%20%228%22%0A%20%20%20%20%20%20%20%20%29%2C%20None%29%29%0A%20%20%20%20%20%20%29"
+    },
+    "message_format": {
+      "type": "string",
+      "example": ""
+    },
+    "example_outbound_message": {
+      "type": "object",
+      "properties": {}
+    },
+    "inbound_topic": {
+      "type": "string",
+      "example": ""
+    },
+    "example_inbound_message": {
+      "type": "object",
+      "properties": {}
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "programming_lang": {
+      "type": "string",
+      "example": "Scala"
+    }
+  }
+}

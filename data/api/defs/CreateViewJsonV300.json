@@ -1,0 +1,43 @@
+{
+  "required": [
+    "name",
+    "description",
+    "is_public",
+    "hide_metadata_if_alias_used",
+    "which_alias_to_use",
+    "metadata_view",
+    "allowed_actions"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "_test"
+    },
+    "description": {
+      "type": "string",
+      "example": "This view is for family"
+    },
+    "is_public": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "hide_metadata_if_alias_used": {
+      "type": "boolean",
+      "example": "false"
+    },
+    "which_alias_to_use": {
+      "type": "string",
+      "example": "family"
+    },
+    "metadata_view": {
+      "type": "string",
+      "example": "_test"
+    },
+    "allowed_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

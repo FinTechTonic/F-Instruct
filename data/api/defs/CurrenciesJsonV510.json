@@ -1,0 +1,13 @@
+{
+  "required": [
+    "currencies"
+  ],
+  "properties": {
+    "currencies": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/CurrencyJsonV510"
+      }
+    }
+  }
+}

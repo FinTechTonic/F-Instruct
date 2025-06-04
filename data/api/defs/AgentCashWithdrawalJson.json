@@ -1,0 +1,16 @@
+{
+  "required": [
+    "bank_id",
+    "agent_number"
+  ],
+  "properties": {
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "agent_number": {
+      "type": "string",
+      "example": "5987953"
+    }
+  }
+}

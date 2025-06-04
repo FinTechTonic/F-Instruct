@@ -1,0 +1,138 @@
+{
+  "delete": {
+    "tags": [
+      "Authentication-Type-Validation"
+    ],
+    "summary": "Delete an Authentication Type Validation",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Delete an Authentication Type Validation by operation_id.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#\">OPERATION_ID</a>: OBPv4.0.0-getBanks</p><p><strong>JSON response body fields:</strong></p>",
+    "operationId": "OBPv4.0.0-deleteAuthenticationTypeValidation",
+    "parameters": [],
+    "responses": {
+      "204": {
+        "description": "Success",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "get": {
+    "tags": [
+      "Authentication-Type-Validation"
+    ],
+    "summary": "Get an Authentication Type Validation",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get an Authentication Type Validation by operation_id.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#\">OPERATION_ID</a>: OBPv4.0.0-getBanks</p><p><strong>JSON response body fields:</strong></p>",
+    "operationId": "OBPv4.0.0-getAuthenticationTypeValidation",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/JsonAuthTypeValidation"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorInvalidJsonFormat"
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "Authentication-Type-Validation"
+    ],
+    "summary": "Create an Authentication Type Validation",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Create an Authentication Type Validation.</p><p>Please supply allowed authentication types.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#\">OPERATION_ID</a>: OBPv4.0.0-getBanks</p><p><strong>JSON request body fields:</strong></p><p><strong>JSON response body fields:</strong></p>",
+    "operationId": "OBPv4.0.0-createAuthenticationTypeValidation",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "$colon$colon object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/NotSupportedYet"
+        }
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/JsonAuthTypeValidation"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "put": {
+    "tags": [
+      "Authentication-Type-Validation"
+    ],
+    "summary": "Update an Authentication Type Validation",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Update an Authentication Type Validation.</p><p>Please supply allowed authentication types.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#\">OPERATION_ID</a>: OBPv4.0.0-getBanks</p><p><strong>JSON response body fields:</strong></p>",
+    "operationId": "OBPv4.0.0-updateAuthenticationTypeValidation",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "$colon$colon object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/NotSupportedYet"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/JsonAuthTypeValidation"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "required": [
+    "public_alias",
+    "image_URL",
+    "physical_location",
+    "private_alias",
+    "URL",
+    "more_info",
+    "corporate_location",
+    "open_corporates_URL"
+  ],
+  "properties": {
+    "public_alias": {
+      "type": "string",
+      "example": "NONE"
+    },
+    "image_URL": {
+      "type": "string",
+      "example": "www.openbankproject.com"
+    },
+    "physical_location": {
+      "$ref": "#/definitions/LocationJSONV121"
+    },
+    "private_alias": {
+      "type": "string",
+      "example": "NONE"
+    },
+    "URL": {
+      "type": "string",
+      "example": "www.openbankproject.com"
+    },
+    "more_info": {
+      "type": "string",
+      "example": "www.openbankproject.com"
+    },
+    "corporate_location": {
+      "$ref": "#/definitions/LocationJSONV121"
+    },
+    "open_corporates_URL": {
+      "type": "string",
+      "example": "www.openbankproject.com"
+    }
+  }
+}

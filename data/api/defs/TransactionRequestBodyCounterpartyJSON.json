@@ -1,0 +1,34 @@
+{
+  "required": [
+    "description",
+    "to",
+    "charge_policy",
+    "value"
+  ],
+  "properties": {
+    "description": {
+      "type": "string",
+      "example": "A description for the transaction to the counterparty"
+    },
+    "future_date": {
+      "type": "string",
+      "example": "20200127"
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/TransactionRequestAttributeJsonV400"
+      }
+    },
+    "to": {
+      "$ref": "#/definitions/CounterpartyIdJson"
+    },
+    "charge_policy": {
+      "type": "string",
+      "example": "SHARED"
+    },
+    "value": {
+      "$ref": "#/definitions/AmountOfMoneyJsonV121"
+    }
+  }
+}

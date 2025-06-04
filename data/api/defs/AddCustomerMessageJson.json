@@ -1,0 +1,21 @@
+{
+  "required": [
+    "message",
+    "from_department",
+    "from_person"
+  ],
+  "properties": {
+    "message": {
+      "type": "string",
+      "example": "String"
+    },
+    "from_department": {
+      "type": "string",
+      "example": "String"
+    },
+    "from_person": {
+      "type": "string",
+      "example": "String"
+    }
+  }
+}

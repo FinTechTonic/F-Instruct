@@ -1,0 +1,11 @@
+{
+  "required": [
+    "code"
+  ],
+  "properties": {
+    "code": {
+      "type": "string",
+      "example": "println%28%22hello%22%29"
+    }
+  }
+}

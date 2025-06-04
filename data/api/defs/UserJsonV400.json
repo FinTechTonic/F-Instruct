@@ -1,0 +1,59 @@
+{
+  "required": [
+    "provider",
+    "email",
+    "username",
+    "is_deleted",
+    "provider_id",
+    "user_id",
+    "is_locked",
+    "entitlements"
+  ],
+  "properties": {
+    "provider": {
+      "type": "string",
+      "example": "http://127.0.0.1:8080"
+    },
+    "email": {
+      "type": "string",
+      "example": "felixsmith@example.com"
+    },
+    "username": {
+      "type": "string",
+      "example": "felixsmith"
+    },
+    "is_deleted": {
+      "type": "boolean",
+      "example": "false"
+    },
+    "provider_id": {
+      "type": "string",
+      "example": "Chris"
+    },
+    "user_id": {
+      "type": "string",
+      "example": "9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+    },
+    "views": {
+      "$ref": "#/definitions/ViewsJSON300"
+    },
+    "is_locked": {
+      "type": "boolean",
+      "example": "false"
+    },
+    "entitlements": {
+      "$ref": "#/definitions/EntitlementJSONs"
+    },
+    "last_marketing_agreement_signed_date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "agreements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/UserAgreementJson"
+      }
+    }
+  }
+}

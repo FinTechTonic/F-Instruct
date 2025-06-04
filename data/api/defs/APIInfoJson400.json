@@ -1,0 +1,53 @@
+{
+  "required": [
+    "local_identity_provider",
+    "resource_docs_requires_role",
+    "hostname",
+    "version_status",
+    "version",
+    "hosted_at",
+    "connector",
+    "energy_source",
+    "hosted_by",
+    "git_commit"
+  ],
+  "properties": {
+    "local_identity_provider": {
+      "type": "string",
+      "example": "String"
+    },
+    "resource_docs_requires_role": {
+      "type": "boolean",
+      "example": "false"
+    },
+    "hostname": {
+      "type": "string",
+      "example": "String"
+    },
+    "version_status": {
+      "type": "string",
+      "example": "String"
+    },
+    "version": {
+      "type": "string",
+      "example": "String"
+    },
+    "hosted_at": {
+      "$ref": "#/definitions/HostedAt400"
+    },
+    "connector": {
+      "type": "string",
+      "example": "String"
+    },
+    "energy_source": {
+      "$ref": "#/definitions/EnergySource400"
+    },
+    "hosted_by": {
+      "$ref": "#/definitions/HostedBy400"
+    },
+    "git_commit": {
+      "type": "string",
+      "example": "String"
+    }
+  }
+}

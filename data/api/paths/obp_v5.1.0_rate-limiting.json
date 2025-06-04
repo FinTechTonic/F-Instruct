@@ -1,0 +1,32 @@
+{
+  "get": {
+    "tags": [
+      "API",
+      "Rate-Limits"
+    ],
+    "summary": "Get Rate Limiting Info",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get information about the Rate Limiting setup on this OBP Instance such as:</p><p>Is rate limiting enabled and active?<br />What backend is used to keep track of the API calls (e.g. REDIS).</p><p>Note: Rate limiting can be set at the Consumer level and also for anonymous calls.</p><p>See the consumer rate limits / call limits endpoints.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#enabled\"><strong>enabled</strong></a>: false</p><p><a href=\"/glossary#is_active\"><strong>is_active</strong></a>: false</p><p><a href=\"/glossary#service_available\"><strong>service_available</strong></a>:</p><p><a href=\"/glossary#technology\"><strong>technology</strong></a>: technology1</p>",
+    "operationId": "OBPv3.1.0-getRateLimitingInfo",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/RateLimitingInfoV310"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUnknownError"
+        }
+      }
+    }
+  }
+}

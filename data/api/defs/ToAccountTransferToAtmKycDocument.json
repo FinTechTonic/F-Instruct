@@ -1,0 +1,16 @@
+{
+  "required": [
+    "type",
+    "number"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "example": "String"
+    },
+    "number": {
+      "type": "string",
+      "example": "String"
+    }
+  }
+}

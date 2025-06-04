@@ -1,0 +1,13 @@
+{
+  "required": [
+    "banks"
+  ],
+  "properties": {
+    "banks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/BankJson400"
+      }
+    }
+  }
+}

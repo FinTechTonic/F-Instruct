@@ -1,0 +1,35 @@
+{
+  "required": [
+    "name",
+    "account_attribute_id",
+    "product_code",
+    "type",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "OVERDRAFT_START_DATE"
+    },
+    "account_attribute_id": {
+      "type": "string",
+      "example": "613c83ea-80f9-4560-8404-b9cd4ec42a7f"
+    },
+    "product_code": {
+      "type": "string",
+      "example": "1234BW"
+    },
+    "contract_code": {
+      "type": "string",
+      "example": "LKJL98769F"
+    },
+    "type": {
+      "type": "string",
+      "example": "DATE_WITH_DAY"
+    },
+    "value": {
+      "type": "string",
+      "example": "2012-04-23"
+    }
+  }
+}

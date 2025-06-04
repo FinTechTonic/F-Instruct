@@ -1,0 +1,11 @@
+{
+  "required": [
+    "link"
+  ],
+  "properties": {
+    "link": {
+      "type": "string",
+      "example": "127.0.0.1:8080/user_mgt/logout"
+    }
+  }
+}

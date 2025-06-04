@@ -1,0 +1,13 @@
+{
+  "required": [
+    "settlement_accounts"
+  ],
+  "properties": {
+    "settlement_accounts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/SettlementAccountJson"
+      }
+    }
+  }
+}

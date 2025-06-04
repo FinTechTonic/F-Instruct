@@ -1,0 +1,36 @@
+{
+  "required": [
+    "subject_domain_name",
+    "not_before",
+    "issuer_domain_name",
+    "not_after"
+  ],
+  "properties": {
+    "subject_domain_name": {
+      "type": "string",
+      "example": "OID.2.5.4.41=VPN, EMAILADDRESS=admin@tesobe.com, CN=TESOBE CA, OU=TESOBE Operations, O=TESOBE, L=Berlin, ST=Berlin, C=DE"
+    },
+    "not_before": {
+      "type": "string",
+      "example": "2022-04-01T10:13:00.000Z"
+    },
+    "roles_info": {
+      "type": "string",
+      "example": "PEM Encoded Certificate does not contain PSD2 roles."
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "issuer_domain_name": {
+      "type": "string",
+      "example": "CN=localhost, O=TESOBE GmbH, ST=Berlin, C=DE"
+    },
+    "not_after": {
+      "type": "string",
+      "example": "2032-04-01T10:13:00.000Z"
+    }
+  }
+}

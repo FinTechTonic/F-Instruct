@@ -1,0 +1,42 @@
+{
+  "get": {
+    "tags": [
+      "JSON-Schema-Validation"
+    ],
+    "summary": "Get all JSON Schema Validations",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get all JSON Schema Validations.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>$schema</strong></a>: $schema</p><p><a href=\"/glossary#\"><strong>additionalProperties</strong></a>: additionalProperties</p><p><a href=\"/glossary#description\"><strong>description</strong></a>: Description of the object. Maximum length is 2000. It can be any characters here.</p><p><a href=\"/glossary#\"><strong>examples</strong></a>: examples</p><p><a href=\"/glossary#\"><strong>json_schema</strong></a>: json_schema</p><p><a href=\"/glossary#\"><strong>maxLength</strong></a>: maxLength</p><p><a href=\"/glossary#\"><strong>minLength</strong></a>: minLength</p><p><a href=\"/glossary#\"><strong>operation_id</strong></a>: OBPv4.0.0-getBanks</p><p><a href=\"/glossary#\"><strong>properties</strong></a>: properties</p><p><a href=\"/glossary#\"><strong>required</strong></a>: required</p><p><a href=\"/glossary#\"><strong>title</strong></a>: Dr.</p><p><a href=\"/glossary#type\"><strong>type</strong></a>:</p><p><a href=\"/glossary#\"><strong>xxx_id</strong></a>: xxx_id</p>",
+    "operationId": "OBPv4.0.0-getAllJsonSchemaValidations",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "type": "object",
+          "required": [
+            "json_schema_validations"
+          ],
+          "properties": {
+            "json_schema_validations": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/JsonValidationV400"
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

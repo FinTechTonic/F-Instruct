@@ -1,0 +1,21 @@
+{
+  "required": [
+    "card_type",
+    "card_description",
+    "use_type"
+  ],
+  "properties": {
+    "card_type": {
+      "type": "string",
+      "example": "5"
+    },
+    "card_description": {
+      "type": "string",
+      "example": "good"
+    },
+    "use_type": {
+      "type": "string",
+      "example": "3"
+    }
+  }
+}

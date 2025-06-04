@@ -1,0 +1,119 @@
+{
+  "get": {
+    "tags": [
+      "Counterparty",
+      "Payment Initiation Service (PIS)",
+      "PSD2",
+      "Counterparty-Metadata"
+    ],
+    "summary": "Get Counterparty by Id (Explicit)",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>This endpoint returns a single Counterparty on an Account View specified by its COUNTERPARTY_ID:</p><p>For a general introduction to Counterparties in OBP, see <a href=\"/glossary#Counterparties\">here</a></p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Account.account_id\">ACCOUNT_ID</a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#\">COUNTERPARTY_ID</a>: 9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#this_view_id\">VIEW_ID</a>: owner</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#bespoke\"><strong>bespoke</strong></a>:</p><p><a href=\"/glossary#corporate_location\"><strong>corporate_location</strong></a>: 10</p><p><a href=\"/glossary#\"><strong>counterparty_id</strong></a>: 9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#created_by_user_id\"><strong>created_by_user_id</strong></a>:</p><p><a href=\"/glossary#\"><strong>currency</strong></a>: EUR</p><p><a href=\"/glossary#\"><strong>date</strong></a>: 2020-01-27</p><p><a href=\"/glossary#description\"><strong>description</strong></a>: Description of the object. Maximum length is 2000. It can be any characters here.</p><p><a href=\"/glossary#id\"><strong>id</strong></a>: d8839721-ad8f-45dd-9f78-2080414b93f9</p><p><a href=\"/glossary#image_url\"><strong>image_url</strong></a>:</p><p><a href=\"/glossary#\"><strong>is_beneficiary</strong></a>: false</p><p><a href=\"/glossary#\"><strong>key</strong></a>: CustomerNumber</p><p><a href=\"/glossary#latitude\"><strong>latitude</strong></a>: 38.8951</p><p><a href=\"/glossary#longitude\"><strong>longitude</strong></a>: -77.0364</p><p><a href=\"/glossary#metadata\"><strong>metadata</strong></a>:</p><p><a href=\"/glossary#more_info\"><strong>more_info</strong></a>: More information about this fee</p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#open_corporates_url\"><strong>open_corporates_url</strong></a>:</p><p><a href=\"/glossary#other_account_routing_address\"><strong>other_account_routing_address</strong></a>:</p><p><a href=\"/glossary#other_account_routing_scheme\"><strong>other_account_routing_scheme</strong></a>:</p><p><a href=\"/glossary#other_account_secondary_routing_address\"><strong>other_account_secondary_routing_address</strong></a>:</p><p><a href=\"/glossary#other_account_secondary_routing_scheme\"><strong>other_account_secondary_routing_scheme</strong></a>:</p><p><a href=\"/glossary#other_bank_routing_address\"><strong>other_bank_routing_address</strong></a>:</p><p><a href=\"/glossary#other_bank_routing_scheme\"><strong>other_bank_routing_scheme</strong></a>:</p><p><a href=\"/glossary#other_branch_routing_address\"><strong>other_branch_routing_address</strong></a>:</p><p><a href=\"/glossary#other_branch_routing_scheme\"><strong>other_branch_routing_scheme</strong></a>:</p><p><a href=\"/glossary#physical_location\"><strong>physical_location</strong></a>:</p><p><a href=\"/glossary#private_alias\"><strong>private_alias</strong></a>:</p><p><a href=\"/glossary#provider\"><strong>provider</strong></a>: ETHEREUM</p><p><a href=\"/glossary#public_alias\"><strong>public_alias</strong></a>:</p><p><a href=\"/glossary#this_account_id\"><strong>this_account_id</strong></a>:</p><p><a href=\"/glossary#this_bank_id\"><strong>this_bank_id</strong></a>:</p><p><a href=\"/glossary#this_view_id\"><strong>this_view_id</strong></a>:</p><p><a href=\"/glossary#\"><strong>url</strong></a>: <a href=\"http://www.example.com/id-docs/123/image.png\">http://www.example.com/id-docs/123/image.png</a></p><p><a href=\"/glossary#User\"><strong>user</strong></a>:</p><p><a href=\"/glossary#\"><strong>username</strong></a>: felixsmith</p><p><a href=\"/glossary#\"><strong>value</strong></a>: 5987953</p>",
+    "operationId": "OBPv4.0.0-getExplicitCounterpartyById",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "COUNTERPARTY_ID",
+        "description": "the counterparty id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "VIEW_ID",
+        "description": "The view id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "ACCOUNT_ID",
+        "description": "The account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/CounterpartyWithMetadataJson400"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "Counterparty",
+      "Account"
+    ],
+    "summary": "Delete Counterparty (Explicit)",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>This endpoint deletes the Counterparty on the Account / View specified by the COUNTERPARTY_ID.<br />It also deletes any related Counterparty Metadata.</p><p>The User calling this endpoint must have access to the View specified in the URL and that View must have the permission <code>can_delete_counterparty</code>.</p><p>For a general introduction to Counterparties in OBP see <a href=\"/glossary#Counterparties\">here</a></p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Account.account_id\">ACCOUNT_ID</a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#\">COUNTERPARTY_ID</a>: 9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#this_view_id\">VIEW_ID</a>: owner</p><p><strong>JSON request body fields:</strong></p><p><strong>JSON response body fields:</strong></p>",
+    "operationId": "OBPv4.0.0-deleteExplicitCounterparty",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "COUNTERPARTY_ID",
+        "description": "the counterparty id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "VIEW_ID",
+        "description": "The view id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "ACCOUNT_ID",
+        "description": "The account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success"
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

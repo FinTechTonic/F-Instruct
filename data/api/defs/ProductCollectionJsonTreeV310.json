@@ -1,0 +1,18 @@
+{
+  "required": [
+    "collection_code",
+    "products"
+  ],
+  "properties": {
+    "collection_code": {
+      "type": "string",
+      "example": "A"
+    },
+    "products": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ProductJsonV310"
+      }
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "delete": {
+    "tags": [
+      "Dynamic-Endpoint-Manage",
+      "API"
+    ],
+    "summary": " Delete Bank Level Dynamic Endpoint",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Delete a Bank Level DynamicEndpoint specified by DYNAMIC_ENDPOINT_ID.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p>",
+    "operationId": "OBPv4.0.0-deleteBankLevelDynamicEndpoint",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "204": {
+        "description": "Success"
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorBankNotFound"
+        }
+      }
+    }
+  },
+  "get": {
+    "tags": [
+      "Dynamic-Endpoint-Manage",
+      "API"
+    ],
+    "summary": " Get Bank Level Dynamic Endpoint",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get a Bank Level Dynamic Endpoint.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p>",
+    "operationId": "OBPv4.0.0-getBankLevelDynamicEndpoint",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "user_id": {
+              "type": "string",
+              "example": "9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+            },
+            "dynamic_endpoint_id": {
+              "type": "string",
+              "example": "dynamic-endpoint-id"
+            },
+            "swagger_string": {
+              "type": "object",
+              "properties": {
+                "swagger": {
+                  "type": "string",
+                  "example": "2.0"
+                }
+              },
+              "required": [
+                "swagger"
+              ]
+            }
+          },
+          "required": [
+            "user_id",
+            "dynamic_endpoint_id",
+            "swagger_string"
+          ]
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorBankNotFound"
+        }
+      }
+    }
+  }
+}

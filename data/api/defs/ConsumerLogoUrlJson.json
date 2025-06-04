@@ -1,0 +1,11 @@
+{
+  "required": [
+    "logo_url"
+  ],
+  "properties": {
+    "logo_url": {
+      "type": "string",
+      "example": "http://localhost:8888"
+    }
+  }
+}

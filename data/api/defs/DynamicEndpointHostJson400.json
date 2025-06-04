@@ -1,0 +1,11 @@
+{
+  "required": [
+    "host"
+  ],
+  "properties": {
+    "host": {
+      "type": "string",
+      "example": "dynamic_entity"
+    }
+  }
+}

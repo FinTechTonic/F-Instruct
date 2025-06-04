@@ -1,0 +1,23 @@
+{
+  "required": [
+    "username",
+    "provider",
+    "views"
+  ],
+  "properties": {
+    "username": {
+      "type": "string",
+      "example": "felixsmith"
+    },
+    "provider": {
+      "type": "string",
+      "example": "dauth.ETHEREUM"
+    },
+    "views": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/PostViewJsonV400"
+      }
+    }
+  }
+}

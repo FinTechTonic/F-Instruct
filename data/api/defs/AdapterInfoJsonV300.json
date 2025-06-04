@@ -1,0 +1,26 @@
+{
+  "required": [
+    "name",
+    "version",
+    "git_commit",
+    "date"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "String"
+    },
+    "version": {
+      "type": "string",
+      "example": "String"
+    },
+    "git_commit": {
+      "type": "string",
+      "example": "String"
+    },
+    "date": {
+      "type": "string",
+      "example": "2013-01-21T23:08:00Z"
+    }
+  }
+}

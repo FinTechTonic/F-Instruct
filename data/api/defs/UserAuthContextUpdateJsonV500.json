@@ -1,0 +1,36 @@
+{
+  "required": [
+    "user_auth_context_update_id",
+    "user_id",
+    "key",
+    "status",
+    "consumer_id",
+    "value"
+  ],
+  "properties": {
+    "user_auth_context_update_id": {
+      "type": "string",
+      "example": "613c83ea-80f9-4560-8404-b9cd4ec42a7f"
+    },
+    "user_id": {
+      "type": "string",
+      "example": "9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+    },
+    "key": {
+      "type": "string",
+      "example": "CUSTOMER_NUMBER"
+    },
+    "status": {
+      "type": "string",
+      "example": "INITIATED"
+    },
+    "consumer_id": {
+      "type": "string",
+      "example": "7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    },
+    "value": {
+      "type": "string",
+      "example": "78987432"
+    }
+  }
+}

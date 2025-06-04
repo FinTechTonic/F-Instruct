@@ -1,0 +1,89 @@
+{
+  "required": [
+    "request_verb",
+    "request_url"
+  ],
+  "properties": {
+    "request_verb": {
+      "type": "string",
+      "example": "POST"
+    },
+    "request_url": {
+      "type": "string",
+      "example": "/my_user/MY_USER_ID"
+    },
+    "example_request_body": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Jhon"
+        },
+        "age": {
+          "type": "integer",
+          "format": "int32",
+          "example": "12"
+        },
+        "hobby": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "coding"
+          }
+        },
+        "_optional_fields_": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "hobby"
+          }
+        }
+      },
+      "required": [
+        "name",
+        "age",
+        "hobby",
+        "_optional_fields_"
+      ]
+    },
+    "success_response_body": {
+      "type": "object",
+      "properties": {
+        "my_user_id": {
+          "type": "string",
+          "example": "some_id_value"
+        },
+        "name": {
+          "type": "string",
+          "example": "Jhon"
+        },
+        "age": {
+          "type": "integer",
+          "format": "int32",
+          "example": "12"
+        },
+        "hobby": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "coding"
+          }
+        },
+        "_optional_fields_": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "hobby"
+          }
+        }
+      },
+      "required": [
+        "my_user_id",
+        "name",
+        "age",
+        "hobby",
+        "_optional_fields_"
+      ]
+    }
+  }
+}

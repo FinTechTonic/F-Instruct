@@ -1,0 +1,13 @@
+{
+  "required": [
+    "tax_residence"
+  ],
+  "properties": {
+    "tax_residence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/TaxResidenceV310"
+      }
+    }
+  }
+}

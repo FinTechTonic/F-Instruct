@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "message": {
+      "type": "string",
+      "example": "OBP-10023: obp_sort_direction parameter can only take two values: DESC or ASC!"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "required": [
+    "id",
+    "name"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "ODbL-1.0"
+    },
+    "name": {
+      "type": "string",
+      "example": "Open Database License"
+    }
+  }
+}

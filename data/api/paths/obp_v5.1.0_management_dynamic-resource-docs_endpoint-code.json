@@ -1,0 +1,41 @@
+{
+  "post": {
+    "tags": [
+      "Dynamic-Resource-Doc"
+    ],
+    "summary": "Create Dynamic Resource Doc endpoint code",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Create a Dynamic Resource Doc endpoint code.</p><p>copy the response and past to PractiseEndpoint, So you can have the benefits of<br />auto compilation and debug</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#code\"><strong>code</strong></a>: 125</p>",
+    "operationId": "OBPv4.0.0-buildDynamicEndpointTemplate",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "ResourceDocFragment object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/ResourceDocFragment"
+        }
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/JsonCodeTemplateJson"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

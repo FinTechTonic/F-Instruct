@@ -1,0 +1,21 @@
+{
+  "required": [
+    "id",
+    "short_name",
+    "is_public"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "1"
+    },
+    "short_name": {
+      "type": "string",
+      "example": "HHH"
+    },
+    "is_public": {
+      "type": "boolean",
+      "example": "true"
+    }
+  }
+}

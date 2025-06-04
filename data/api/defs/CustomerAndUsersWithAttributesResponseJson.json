@@ -1,0 +1,17 @@
+{
+  "required": [
+    "customer",
+    "users"
+  ],
+  "properties": {
+    "customer": {
+      "$ref": "#/definitions/CustomerJsonV310"
+    },
+    "users": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/UserWithAttributesResponseJson"
+      }
+    }
+  }
+}

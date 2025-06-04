@@ -1,0 +1,62 @@
+{
+  "get": {
+    "tags": [
+      "Transaction-Request",
+      "Payment Initiation Service (PIS)",
+      "PSD2"
+    ],
+    "summary": "Get Transaction Request",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Returns transaction request for transaction specified by TRANSACTION_REQUEST_ID and for account specified by ACCOUNT_ID at bank specified by BANK_ID.</p><p>The VIEW_ID specified must be 'owner' and the user must have access to this view.</p><p>Version 2.0.0 now returns charge information.</p><p>Transaction Requests serve to initiate transactions that may or may not proceed. They contain information including:</p><ul><li>Transaction Request Id</li><li>Type</li><li>Status (INITIATED, COMPLETED)</li><li>Challenge (in order to confirm the request)</li><li>From Bank / Account</li><li>Details including Currency, Value, Description and other initiation information specific to each type. (Could potentialy include a list of future transactions.)</li><li>Related Transactions</li></ul><p>PSD2 Context: PSD2 requires transparency of charges to the customer.<br />This endpoint provides the charge that would be applied if the Transaction Request proceeds - and a record of that charge there after.<br />The customer can proceed with the Transaction by answering the security challenge.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Account.account_id\">ACCOUNT_ID</a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#\">TRANSACTION_REQUEST_ID</a>: 8138a7e4-6d02-40e3-a129-0b2bf89de9f1</p><p><a href=\"/glossary#this_view_id\">VIEW_ID</a>: owner</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#Account\"><strong>account</strong></a>:</p><p><a href=\"/glossary#\"><strong>account_id</strong></a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#\"><strong>agent_number</strong></a>: 5987953</p><p><a href=\"/glossary#allowed_attempts\"><strong>allowed_attempts</strong></a>: 5</p><p><a href=\"/glossary#\"><strong>amount</strong></a>: 10.12</p><p><a href=\"/glossary#bank_code\"><strong>bank_code</strong></a>: CGHZ</p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#branch_number\"><strong>branch_number</strong></a>:</p><p><a href=\"/glossary#challenge\"><strong>challenge</strong></a>:</p><p><a href=\"/glossary#challenge_type\"><strong>challenge_type</strong></a>:</p><p><a href=\"/glossary#charge\"><strong>charge</strong></a>:</p><p><a href=\"/glossary#\"><strong>counterparty_id</strong></a>: 9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#creditoraccount\"><strong>creditorAccount</strong></a>:</p><p><a href=\"/glossary#creditorname\"><strong>creditorName</strong></a>:</p><p><a href=\"/glossary#\"><strong>currency</strong></a>: EUR</p><p><a href=\"/glossary#\"><strong>date_of_birth</strong></a>: 2018-03-09</p><p><a href=\"/glossary#debtoraccount\"><strong>debtorAccount</strong></a>:</p><p><a href=\"/glossary#description\"><strong>description</strong></a>: Description of the object. Maximum length is 2000. It can be any characters here.</p><p><a href=\"/glossary#details\"><strong>details</strong></a>:</p><p><a href=\"/glossary#end_date\"><strong>end_date</strong></a>:</p><p><a href=\"/glossary#from\"><strong>from</strong></a>:</p><p><a href=\"/glossary#future_date\"><strong>future_date</strong></a>: 20200127</p><p><a href=\"/glossary#\"><strong>iban</strong></a>: DE91 1000 0000 0123 4567 89</p><p><a href=\"/glossary#id\"><strong>id</strong></a>: d8839721-ad8f-45dd-9f78-2080414b93f9</p><p><a href=\"/glossary#instructedamount\"><strong>instructedAmount</strong></a>: 100</p><p><a href=\"/glossary#kyc_document\"><strong>kyc_document</strong></a>:</p><p><a href=\"/glossary#\"><strong>legal_name</strong></a>: Eveline Tripman</p><p><a href=\"/glossary#message\"><strong>message</strong></a>: 123456</p><p><a href=\"/glossary#mobile_phone_number\"><strong>mobile_phone_number</strong></a>: +49 30 901820</p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#nickname\"><strong>nickname</strong></a>:</p><p><a href=\"/glossary#number\"><strong>number</strong></a>:</p><p><a href=\"/glossary#\"><strong>otherAccountRoutingAddress</strong></a>: otherAccountRoutingAddress</p><p><a href=\"/glossary#\"><strong>otherAccountRoutingScheme</strong></a>: otherAccountRoutingScheme</p><p><a href=\"/glossary#\"><strong>otherAccountSecondaryRoutingAddress</strong></a>: otherAccountSecondaryRoutingAddress</p><p><a href=\"/glossary#\"><strong>otherAccountSecondaryRoutingScheme</strong></a>: otherAccountSecondaryRoutingScheme</p><p><a href=\"/glossary#\"><strong>otherBankRoutingAddress</strong></a>: otherBankRoutingAddress</p><p><a href=\"/glossary#\"><strong>otherBankRoutingScheme</strong></a>: otherBankRoutingScheme</p><p><a href=\"/glossary#\"><strong>otherBranchRoutingAddress</strong></a>: otherBranchRoutingAddress</p><p><a href=\"/glossary#\"><strong>otherBranchRoutingScheme</strong></a>: otherBranchRoutingScheme</p><p><a href=\"/glossary#\"><strong>start_date</strong></a>: 2020-01-27</p><p><a href=\"/glossary#status\"><strong>status</strong></a>:</p><p><a href=\"/glossary#summary\"><strong>summary</strong></a>:</p><p><a href=\"/glossary#to\"><strong>to</strong></a>:</p><p><a href=\"/glossary#transaction_ids\"><strong>transaction_ids</strong></a>:</p><p><a href=\"/glossary#transfer_type\"><strong>transfer_type</strong></a>:</p><p><a href=\"/glossary#type\"><strong>type</strong></a>:</p><p><a href=\"/glossary#\"><strong>value</strong></a>: 5987953</p><p><a href=\"/glossary#\">to_agent</a>: to_agent</p><p><a href=\"/glossary#to_counterparty\">to_counterparty</a>:</p><p><a href=\"/glossary#to_sandbox_tan\">to_sandbox_tan</a>:</p><p><a href=\"/glossary#to_sepa\">to_sepa</a>:</p><p><a href=\"/glossary#to_sepa_credit_transfers\">to_sepa_credit_transfers</a>:</p><p><a href=\"/glossary#\">to_simple</a>: to_simple</p><p><a href=\"/glossary#to_transfer_to_account\">to_transfer_to_account</a>:</p><p><a href=\"/glossary#to_transfer_to_atm\">to_transfer_to_atm</a>:</p><p><a href=\"/glossary#to_transfer_to_phone\">to_transfer_to_phone</a>:</p>",
+    "operationId": "OBPv4.0.0-getTransactionRequest",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "TRANSACTION_REQUEST_ID",
+        "description": "The transaction request id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "VIEW_ID",
+        "description": "The view id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "ACCOUNT_ID",
+        "description": "The account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/TransactionRequestWithChargeJSON210"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

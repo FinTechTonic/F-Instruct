@@ -1,0 +1,11 @@
+{
+  "required": [
+    "value"
+  ],
+  "properties": {
+    "value": {
+      "type": "boolean",
+      "example": "true"
+    }
+  }
+}

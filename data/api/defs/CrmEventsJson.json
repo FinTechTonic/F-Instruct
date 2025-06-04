@@ -1,0 +1,13 @@
+{
+  "required": [
+    "crm_events"
+  ],
+  "properties": {
+    "crm_events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/CrmEventJson"
+      }
+    }
+  }
+}

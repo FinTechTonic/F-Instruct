@@ -1,0 +1,10 @@
+{
+  "required": [
+    "query"
+  ],
+  "properties": {
+    "query": {
+      "$ref": "#/definitions/ElasticSearchQuery"
+    }
+  }
+}

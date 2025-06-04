@@ -1,0 +1,15 @@
+{
+  "required": [
+    "value",
+    "charge"
+  ],
+  "properties": {
+    "value": {
+      "type": "string",
+      "example": "10"
+    },
+    "charge": {
+      "$ref": "#/definitions/TransactionRequestChargeJsonV140"
+    }
+  }
+}

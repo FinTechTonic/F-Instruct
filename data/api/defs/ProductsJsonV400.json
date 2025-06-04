@@ -1,0 +1,13 @@
+{
+  "required": [
+    "products"
+  ],
+  "properties": {
+    "products": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ProductJsonV400"
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "get": {
+    "tags": [
+      "Dynamic-Entity-Manage",
+      "API"
+    ],
+    "summary": "Get My Dynamic Entities",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get all my Dynamic Entities.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p>",
+    "operationId": "OBPv4.0.0-getMyDynamicEntities",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "type": "object",
+          "required": [
+            "dynamic_entities"
+          ],
+          "properties": {
+            "dynamic_entities": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DynamicEntityFooBar"
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

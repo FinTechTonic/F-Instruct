@@ -1,0 +1,31 @@
+{
+  "required": [
+    "entitlement_request_id",
+    "role_name",
+    "bank_id",
+    "user",
+    "created"
+  ],
+  "properties": {
+    "entitlement_request_id": {
+      "type": "string",
+      "example": "6fb17583-1e49-4435-bb74-a14fe0996723"
+    },
+    "role_name": {
+      "type": "string",
+      "example": "CanQueryOtherUser"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "user": {
+      "$ref": "#/definitions/UserJsonV200"
+    },
+    "created": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "required": [
+    "atm_id",
+    "services"
+  ],
+  "properties": {
+    "atm_id": {
+      "type": "string",
+      "example": "atme-9a0f-4bfa-b30b-9003aa467f51"
+    },
+    "services": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

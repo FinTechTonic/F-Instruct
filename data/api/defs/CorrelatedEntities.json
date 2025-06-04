@@ -1,0 +1,13 @@
+{
+  "required": [
+    "correlated_entities"
+  ],
+  "properties": {
+    "correlated_entities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/CustomerAndUsersWithAttributesResponseJson"
+      }
+    }
+  }
+}

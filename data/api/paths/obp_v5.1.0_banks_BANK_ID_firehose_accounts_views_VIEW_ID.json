@@ -1,0 +1,48 @@
+{
+  "get": {
+    "tags": [
+      "Account",
+      "Account-Firehose",
+      "FirehoseData"
+    ],
+    "summary": "Get Firehose Accounts at Bank",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get Accounts which have a firehose view assigned to them.</p><p>This endpoint allows bulk access to accounts.</p><p>Requires the CanUseFirehoseAtAnyBank Role</p><p>To be shown on the list, each Account must have a firehose View linked to it.</p><p>A firehose view has is_firehose = true</p><p>For VIEW_ID try 'owner'</p><p>optional request parameters for filter with attributes<br />URL params example:<br />/banks/some-bank-id/firehose/accounts/views/owner?&amp;limit=50&amp;offset=1</p><p>to invalid Browser cache, add timestamp query parameter as follow, the parameter name must be <code>_timestamp_</code><br />URL params example:<br /><code>/banks/some-bank-id/firehose/accounts/views/owner?&amp;limit=50&amp;offset=1&amp;_timestamp_=1596762180358</code></p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#this_view_id\">VIEW_ID</a>: owner</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#account_routings\"><strong>account_routings</strong></a>:</p><p><a href=\"/glossary#account_rules\"><strong>account_rules</strong></a>:</p><p><a href=\"/glossary#accounts\"><strong>accounts</strong></a>:</p><p><a href=\"/glossary#address\"><strong>address</strong></a>:</p><p><a href=\"/glossary#\"><strong>amount</strong></a>: 10.12</p><p><a href=\"/glossary#balance\"><strong>balance</strong></a>: 10</p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#\"><strong>currency</strong></a>: EUR</p><p><a href=\"/glossary#display_name\"><strong>display_name</strong></a>:</p><p><a href=\"/glossary#id\"><strong>id</strong></a>: d8839721-ad8f-45dd-9f78-2080414b93f9</p><p><a href=\"/glossary#\"><strong>label</strong></a>: My Account</p><p><a href=\"/glossary#number\"><strong>number</strong></a>:</p><p><a href=\"/glossary#owners\"><strong>owners</strong></a>:</p><p><a href=\"/glossary#product_code\"><strong>product_code</strong></a>: 1234BW</p><p><a href=\"/glossary#provider\"><strong>provider</strong></a>: ETHEREUM</p><p><a href=\"/glossary#scheme\"><strong>scheme</strong></a>: OBP</p><p><a href=\"/glossary#\"><strong>value</strong></a>: 5987953</p><p><a href=\"/glossary#account_attributes\">account_attributes</a>:</p>",
+    "operationId": "OBPv4.0.0-getFirehoseAccountsAtOneBank",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "VIEW_ID",
+        "description": "The view id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/ModeratedFirehoseAccountsJsonV400"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorBankNotFound"
+        }
+      }
+    }
+  }
+}

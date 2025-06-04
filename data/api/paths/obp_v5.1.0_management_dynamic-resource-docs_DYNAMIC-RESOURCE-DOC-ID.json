@@ -1,0 +1,99 @@
+{
+  "delete": {
+    "tags": [
+      "Dynamic-Resource-Doc"
+    ],
+    "summary": "Delete Dynamic Resource Doc",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Delete a Dynamic Resource Doc.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>JSON response body fields:</strong></p>",
+    "operationId": "OBPv4.0.0-deleteDynamicResourceDoc",
+    "parameters": [],
+    "responses": {
+      "204": {
+        "description": "Success",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "get": {
+    "tags": [
+      "Dynamic-Resource-Doc"
+    ],
+    "summary": "Get Dynamic Resource Doc by Id",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get a Dynamic Resource Doc by DYNAMIC-RESOURCE-DOC-ID.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#description\"><strong>description</strong></a>: Description of the object. Maximum length is 2000. It can be any characters here.</p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#roles\"><strong>roles</strong></a>: CanCreateMyUser</p><p><a href=\"/glossary#summary\"><strong>summary</strong></a>:</p><p><a href=\"/glossary#tags\"><strong>tags</strong></a>: Create-My-User</p>",
+    "operationId": "OBPv4.0.0-getDynamicResourceDoc",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/JsonDynamicResourceDoc"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "put": {
+    "tags": [
+      "Dynamic-Resource-Doc"
+    ],
+    "summary": "Update Dynamic Resource Doc",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Update a Dynamic Resource Doc.</p><p>The connector_method_body is URL-encoded format String</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#description\"><strong>description</strong></a>: Description of the object. Maximum length is 2000. It can be any characters here.</p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#roles\"><strong>roles</strong></a>: CanCreateMyUser</p><p><a href=\"/glossary#summary\"><strong>summary</strong></a>:</p><p><a href=\"/glossary#tags\"><strong>tags</strong></a>: Create-My-User</p>",
+    "operationId": "OBPv4.0.0-updateDynamicResourceDoc",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "JsonDynamicResourceDoc object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/JsonDynamicResourceDoc"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/JsonDynamicResourceDoc"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

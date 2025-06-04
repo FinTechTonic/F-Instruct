@@ -1,0 +1,17 @@
+{
+  "required": [
+    "group",
+    "suggested_order"
+  ],
+  "properties": {
+    "group": {
+      "type": "string",
+      "example": "CORE"
+    },
+    "suggested_order": {
+      "type": "integer",
+      "format": "int32",
+      "example": "3"
+    }
+  }
+}

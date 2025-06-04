@@ -1,0 +1,13 @@
+{
+  "required": [
+    "links"
+  ],
+  "properties": {
+    "links": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/CustomerAccountLinkJson"
+      }
+    }
+  }
+}

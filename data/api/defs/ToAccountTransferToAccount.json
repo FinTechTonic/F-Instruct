@@ -1,0 +1,25 @@
+{
+  "required": [
+    "name",
+    "bank_code",
+    "branch_number",
+    "account"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "String"
+    },
+    "bank_code": {
+      "type": "string",
+      "example": "String"
+    },
+    "branch_number": {
+      "type": "string",
+      "example": "String"
+    },
+    "account": {
+      "$ref": "#/definitions/ToAccountTransferToAccountAccount"
+    }
+  }
+}

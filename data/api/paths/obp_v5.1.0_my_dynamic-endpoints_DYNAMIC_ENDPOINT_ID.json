@@ -1,0 +1,29 @@
+{
+  "delete": {
+    "tags": [
+      "Dynamic-Endpoint-Manage",
+      "API"
+    ],
+    "summary": "Delete My Dynamic Endpoint",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Delete a DynamicEndpoint specified by DYNAMIC_ENDPOINT_ID.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p>",
+    "operationId": "OBPv4.0.0-deleteMyDynamicEndpoint",
+    "parameters": [],
+    "responses": {
+      "204": {
+        "description": "Success"
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

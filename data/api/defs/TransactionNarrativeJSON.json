@@ -1,0 +1,11 @@
+{
+  "required": [
+    "narrative"
+  ],
+  "properties": {
+    "narrative": {
+      "type": "string",
+      "example": "narative"
+    }
+  }
+}

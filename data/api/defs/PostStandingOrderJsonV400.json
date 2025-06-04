@@ -1,0 +1,45 @@
+{
+  "required": [
+    "date_starts",
+    "customer_id",
+    "user_id",
+    "amount",
+    "counterparty_id",
+    "when"
+  ],
+  "properties": {
+    "date_starts": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "customer_id": {
+      "type": "string",
+      "example": "7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    },
+    "date_signed": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "user_id": {
+      "type": "string",
+      "example": "9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+    },
+    "amount": {
+      "$ref": "#/definitions/AmountOfMoneyJsonV121"
+    },
+    "date_expires": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "counterparty_id": {
+      "type": "string",
+      "example": "9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    },
+    "when": {
+      "$ref": "#/definitions/When"
+    }
+  }
+}

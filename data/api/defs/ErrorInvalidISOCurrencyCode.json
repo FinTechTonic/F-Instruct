@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "message": {
+      "type": "string",
+      "example": "OBP-10003: Invalid Currency Value. It should be three letters ISO Currency Code. "
+    }
+  }
+}

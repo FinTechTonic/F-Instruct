@@ -1,0 +1,26 @@
+{
+  "required": [
+    "entitlement_id",
+    "role_name",
+    "bank_id",
+    "user_id"
+  ],
+  "properties": {
+    "entitlement_id": {
+      "type": "string",
+      "example": ""
+    },
+    "role_name": {
+      "type": "string",
+      "example": ""
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "user_id": {
+      "type": "string",
+      "example": "9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "required": [
+    "requested_date",
+    "reason_requested"
+  ],
+  "properties": {
+    "requested_date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "reason_requested": {
+      "type": "string",
+      "example": "FORGOT"
+    }
+  }
+}

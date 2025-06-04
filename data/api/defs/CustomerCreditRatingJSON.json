@@ -1,0 +1,16 @@
+{
+  "required": [
+    "rating",
+    "source"
+  ],
+  "properties": {
+    "rating": {
+      "type": "string",
+      "example": "OBP"
+    },
+    "source": {
+      "type": "string",
+      "example": "OBP"
+    }
+  }
+}

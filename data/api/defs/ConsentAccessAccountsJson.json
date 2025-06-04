@@ -1,0 +1,23 @@
+{
+  "properties": {
+    "msisdn": {
+      "type": "string"
+    },
+    "maskedPan": {
+      "type": "string"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "pan": {
+      "type": "string"
+    },
+    "iban": {
+      "type": "string",
+      "example": "DE91 1000 0000 0123 4567 89"
+    },
+    "bban": {
+      "type": "string"
+    }
+  }
+}

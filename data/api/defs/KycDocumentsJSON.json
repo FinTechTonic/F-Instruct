@@ -1,0 +1,13 @@
+{
+  "required": [
+    "documents"
+  ],
+  "properties": {
+    "documents": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/KycDocumentJSON"
+      }
+    }
+  }
+}

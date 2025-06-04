@@ -1,0 +1,13 @@
+{
+  "required": [
+    "entitlement_requests"
+  ],
+  "properties": {
+    "entitlement_requests": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/EntitlementRequestJSON"
+      }
+    }
+  }
+}

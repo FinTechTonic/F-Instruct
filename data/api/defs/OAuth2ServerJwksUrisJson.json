@@ -1,0 +1,13 @@
+{
+  "required": [
+    "jwks_uris"
+  ],
+  "properties": {
+    "jwks_uris": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/OAuth2ServerJWKURIJson"
+      }
+    }
+  }
+}

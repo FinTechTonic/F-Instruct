@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "message": {
+      "type": "string",
+      "example": "OBP-30001: Bank not found. Please specify a valid value for BANK_ID."
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "required": [
+    "bank_id",
+    "endpoint_tag_id",
+    "operation_id",
+    "tag_name"
+  ],
+  "properties": {
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "endpoint_tag_id": {
+      "type": "string",
+      "example": "7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    },
+    "operation_id": {
+      "type": "string",
+      "example": "OBPv4.0.0-getBanks"
+    },
+    "tag_name": {
+      "type": "string",
+      "example": "BankAccountTag1"
+    }
+  }
+}

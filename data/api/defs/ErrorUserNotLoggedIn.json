@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "message": {
+      "type": "string",
+      "example": "OBP-20001: User not logged in. Authentication is required!"
+    }
+  }
+}

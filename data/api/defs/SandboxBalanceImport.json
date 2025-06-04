@@ -1,0 +1,16 @@
+{
+  "required": [
+    "currency",
+    "amount"
+  ],
+  "properties": {
+    "currency": {
+      "type": "string",
+      "example": "EUR"
+    },
+    "amount": {
+      "type": "string",
+      "example": "1000.00"
+    }
+  }
+}

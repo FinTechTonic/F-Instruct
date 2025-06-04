@@ -1,0 +1,12 @@
+{
+  "required": [
+    "secret_key"
+  ],
+  "properties": {
+    "secret_key": {
+      "type": "integer",
+      "format": "int64",
+      "example": "5819479115482092878"
+    }
+  }
+}

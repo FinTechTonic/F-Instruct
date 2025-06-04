@@ -1,0 +1,13 @@
+{
+  "required": [
+    "checks"
+  ],
+  "properties": {
+    "checks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/KycCheckJSON"
+      }
+    }
+  }
+}

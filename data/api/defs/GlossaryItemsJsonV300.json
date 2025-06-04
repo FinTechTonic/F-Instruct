@@ -1,0 +1,13 @@
+{
+  "required": [
+    "glossary_items"
+  ],
+  "properties": {
+    "glossary_items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/GlossaryItemJsonV300"
+      }
+    }
+  }
+}

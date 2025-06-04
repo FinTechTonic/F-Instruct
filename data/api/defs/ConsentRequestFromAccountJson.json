@@ -1,0 +1,18 @@
+{
+  "required": [
+    "bank_routing",
+    "account_routing",
+    "branch_routing"
+  ],
+  "properties": {
+    "bank_routing": {
+      "$ref": "#/definitions/BankRoutingJsonV121"
+    },
+    "account_routing": {
+      "$ref": "#/definitions/AccountRoutingJsonV121"
+    },
+    "branch_routing": {
+      "$ref": "#/definitions/BranchRoutingJsonV141"
+    }
+  }
+}

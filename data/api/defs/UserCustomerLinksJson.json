@@ -1,0 +1,13 @@
+{
+  "required": [
+    "user_customer_links"
+  ],
+  "properties": {
+    "user_customer_links": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/UserCustomerLinkJson"
+      }
+    }
+  }
+}

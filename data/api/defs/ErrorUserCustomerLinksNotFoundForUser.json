@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "message": {
+      "type": "string",
+      "example": "OBP-30008: User Customer Link not found by USER_ID"
+    }
+  }
+}

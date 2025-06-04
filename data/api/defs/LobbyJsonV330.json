@@ -1,0 +1,55 @@
+{
+  "required": [
+    "sunday",
+    "tuesday",
+    "wednesday",
+    "monday",
+    "friday",
+    "thursday",
+    "saturday"
+  ],
+  "properties": {
+    "sunday": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/OpeningTimesV300"
+      }
+    },
+    "tuesday": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/OpeningTimesV300"
+      }
+    },
+    "wednesday": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/OpeningTimesV300"
+      }
+    },
+    "monday": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/OpeningTimesV300"
+      }
+    },
+    "friday": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/OpeningTimesV300"
+      }
+    },
+    "thursday": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/OpeningTimesV300"
+      }
+    },
+    "saturday": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/OpeningTimesV300"
+      }
+    }
+  }
+}

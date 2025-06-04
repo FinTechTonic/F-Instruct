@@ -1,0 +1,11 @@
+{
+  "required": [
+    "image_URL"
+  ],
+  "properties": {
+    "image_URL": {
+      "type": "string",
+      "example": "String"
+    }
+  }
+}

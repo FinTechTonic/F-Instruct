@@ -1,0 +1,122 @@
+{
+  "delete": {
+    "tags": [
+      "Dynamic-Resource-Doc"
+    ],
+    "summary": "Delete Bank Level Dynamic Resource Doc",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Delete a Bank Level Dynamic Resource Doc.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON response body fields:</strong></p>",
+    "operationId": "OBPv4.0.0-deleteBankLevelDynamicResourceDoc",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "204": {
+        "description": "Success",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorBankNotFound"
+        }
+      }
+    }
+  },
+  "get": {
+    "tags": [
+      "Dynamic-Resource-Doc"
+    ],
+    "summary": "Get Bank Level Dynamic Resource Doc by Id",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get a Bank Level Dynamic Resource Doc by DYNAMIC-RESOURCE-DOC-ID.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#description\"><strong>description</strong></a>: Description of the object. Maximum length is 2000. It can be any characters here.</p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#roles\"><strong>roles</strong></a>: CanCreateMyUser</p><p><a href=\"/glossary#summary\"><strong>summary</strong></a>:</p><p><a href=\"/glossary#tags\"><strong>tags</strong></a>: Create-My-User</p>",
+    "operationId": "OBPv4.0.0-getBankLevelDynamicResourceDoc",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/JsonDynamicResourceDoc"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorBankNotFound"
+        }
+      }
+    }
+  },
+  "put": {
+    "tags": [
+      "Dynamic-Resource-Doc"
+    ],
+    "summary": "Update Bank Level Dynamic Resource Doc",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Update a Bank Level Dynamic Resource Doc.</p><p>The connector_method_body is URL-encoded format String</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#description\"><strong>description</strong></a>: Description of the object. Maximum length is 2000. It can be any characters here.</p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#roles\"><strong>roles</strong></a>: CanCreateMyUser</p><p><a href=\"/glossary#summary\"><strong>summary</strong></a>:</p><p><a href=\"/glossary#tags\"><strong>tags</strong></a>: Create-My-User</p>",
+    "operationId": "OBPv4.0.0-updateBankLevelDynamicResourceDoc",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "JsonDynamicResourceDoc object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/JsonDynamicResourceDoc"
+        }
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/JsonDynamicResourceDoc"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorBankNotFound"
+        }
+      }
+    }
+  }
+}

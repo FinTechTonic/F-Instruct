@@ -1,0 +1,16 @@
+{
+  "required": [
+    "domain",
+    "tax_number"
+  ],
+  "properties": {
+    "domain": {
+      "type": "string",
+      "example": "Enter some domain"
+    },
+    "tax_number": {
+      "type": "string",
+      "example": "Enter some number"
+    }
+  }
+}

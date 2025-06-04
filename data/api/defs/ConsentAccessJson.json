@@ -1,0 +1,28 @@
+{
+  "properties": {
+    "allPsd2": {
+      "type": "string"
+    },
+    "balances": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ConsentAccessAccountsJson"
+      }
+    },
+    "availableAccounts": {
+      "type": "string"
+    },
+    "transactions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ConsentAccessAccountsJson"
+      }
+    },
+    "accounts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ConsentAccessAccountsJson"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "required": [
+    "id",
+    "bank_routing",
+    "account_routings",
+    "holders"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "String"
+    },
+    "bank_routing": {
+      "$ref": "#/definitions/BankRoutingJsonV121"
+    },
+    "account_routings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AccountRoutingJsonV121"
+      }
+    },
+    "holders": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AccountHolderJSON"
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "required": [
+    "name",
+    "is_active",
+    "product_code",
+    "more_info",
+    "bank_id",
+    "product_fee_id",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "ACCOUNT_MANAGEMENT_FEE"
+    },
+    "is_active": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "product_code": {
+      "type": "string",
+      "example": "1234BW"
+    },
+    "more_info": {
+      "type": "string",
+      "example": "More information about this fee"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "product_fee_id": {
+      "type": "string",
+      "example": "696hlAHLFKUHE37469287634"
+    },
+    "value": {
+      "$ref": "#/definitions/ProductFeeValueJsonV400"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "get": {
+    "tags": [
+      "API"
+    ],
+    "summary": "Get the Call Context of a current call",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get the Call Context of the current call.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>JSON response body fields:</strong></p>",
+    "operationId": "OBPv4.0.0-getCallContext",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success"
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

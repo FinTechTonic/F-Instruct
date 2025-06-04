@@ -1,0 +1,17 @@
+{
+  "required": [
+    "function_name",
+    "ttl_in_seconds"
+  ],
+  "properties": {
+    "function_name": {
+      "type": "string",
+      "example": "getBanks"
+    },
+    "ttl_in_seconds": {
+      "type": "integer",
+      "format": "int32",
+      "example": "5"
+    }
+  }
+}

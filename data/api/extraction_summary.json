@@ -1,0 +1,11 @@
+{
+  "total_endpoints": 403,
+  "total_definitions": 582,
+  "api_version": "v5.1.0",
+  "extracted_files": {
+    "manifest": "openapi_manifest.json",
+    "endpoints_directory": "paths/",
+    "definitions_directory": "defs/",
+    "endpoints_by_tag": "endpoints_by_tag.json"
+  }
+}

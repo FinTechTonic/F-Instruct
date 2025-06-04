@@ -1,0 +1,31 @@
+{
+  "required": [
+    "highest_education_attained",
+    "employment_status",
+    "face_image",
+    "dependants",
+    "relationship_status"
+  ],
+  "properties": {
+    "highest_education_attained": {
+      "type": "string",
+      "example": "Master"
+    },
+    "employment_status": {
+      "type": "string",
+      "example": "worker"
+    },
+    "face_image": {
+      "$ref": "#/definitions/CustomerFaceImageJson"
+    },
+    "dependants": {
+      "type": "integer",
+      "format": "int32",
+      "example": "1"
+    },
+    "relationship_status": {
+      "type": "string",
+      "example": "single"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "required": [
+    "name",
+    "is_active",
+    "description",
+    "attribute_definition_id",
+    "alias",
+    "bank_id",
+    "can_be_seen_on_views",
+    "category",
+    "type"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "SPECIAL_TAX_NUMBER"
+    },
+    "is_active": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "description": {
+      "type": "string",
+      "example": "description"
+    },
+    "attribute_definition_id": {
+      "type": "string",
+      "example": "9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+    },
+    "alias": {
+      "type": "string",
+      "example": "STRING"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "can_be_seen_on_views": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "category": {
+      "type": "string",
+      "example": "Card"
+    },
+    "type": {
+      "type": "string",
+      "example": "STRING"
+    }
+  }
+}

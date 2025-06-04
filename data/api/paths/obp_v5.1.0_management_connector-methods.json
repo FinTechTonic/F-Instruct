@@ -1,0 +1,81 @@
+{
+  "get": {
+    "tags": [
+      "Connector-Method"
+    ],
+    "summary": "Get all Connector Methods",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get all Connector Methods.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>JSON response body fields:</strong></p>",
+    "operationId": "OBPv4.0.0-getAllConnectorMethods",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "type": "object",
+          "required": [
+            "connectors_methods"
+          ],
+          "properties": {
+            "connectors_methods": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/JsonConnectorMethod"
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "Connector-Method"
+    ],
+    "summary": "Create Connector Method",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Create an internal connector.</p><p>The method_body is URL-encoded format String</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>JSON request body fields:</strong></p><p><strong>JSON response body fields:</strong></p>",
+    "operationId": "OBPv4.0.0-createConnectorMethod",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "JsonConnectorMethod object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/JsonConnectorMethod"
+        }
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/JsonConnectorMethod"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

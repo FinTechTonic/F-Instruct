@@ -1,0 +1,33 @@
+{
+  "required": [
+    "number",
+    "account_routings",
+    "label",
+    "bank_id",
+    "id"
+  ],
+  "properties": {
+    "number": {
+      "type": "string",
+      "example": "123"
+    },
+    "account_routings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AccountRoutingJsonV121"
+      }
+    },
+    "label": {
+      "type": "string",
+      "example": "My Account"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "123"
+    },
+    "id": {
+      "type": "string",
+      "example": "7b97bd26-583b-4c3b-8282-55ea9d934aad"
+    }
+  }
+}

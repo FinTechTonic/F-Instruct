@@ -1,0 +1,28 @@
+{
+  "required": [
+    "label",
+    "type",
+    "branch_id",
+    "account_routings"
+  ],
+  "properties": {
+    "label": {
+      "type": "string",
+      "example": "Label"
+    },
+    "type": {
+      "type": "string",
+      "example": "CURRENT"
+    },
+    "branch_id": {
+      "type": "string",
+      "example": "1234"
+    },
+    "account_routings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AccountRoutingJsonV121"
+      }
+    }
+  }
+}

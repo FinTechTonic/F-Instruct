@@ -1,0 +1,61 @@
+{
+  "required": [
+    "created_by_user_id",
+    "app_type",
+    "description",
+    "enabled",
+    "client_certificate",
+    "redirect_url",
+    "company",
+    "developer_email",
+    "app_name",
+    "created"
+  ],
+  "properties": {
+    "created_by_user_id": {
+      "type": "string",
+      "example": "createdby"
+    },
+    "app_type": {
+      "type": "string",
+      "example": "Test"
+    },
+    "description": {
+      "type": "string",
+      "example": "Description"
+    },
+    "enabled": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "client_certificate": {
+      "type": "string",
+      "example": "-----BEGIN CERTIFICATE-----\nclient_certificate_content\n-----END CERTIFICATE-----"
+    },
+    "redirect_url": {
+      "type": "string",
+      "example": "redirecturl"
+    },
+    "logo_url": {
+      "type": "string",
+      "example": "logoUrl"
+    },
+    "company": {
+      "type": "string",
+      "example": "company"
+    },
+    "developer_email": {
+      "type": "string",
+      "example": "some@email.com"
+    },
+    "app_name": {
+      "type": "string",
+      "example": "Test"
+    },
+    "created": {
+      "type": "string",
+      "format": "date",
+      "example": "2025-05-26T10:28:44Z"
+    }
+  }
+}

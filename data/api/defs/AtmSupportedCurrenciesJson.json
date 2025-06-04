@@ -1,0 +1,18 @@
+{
+  "required": [
+    "atm_id",
+    "supported_currencies"
+  ],
+  "properties": {
+    "atm_id": {
+      "type": "string",
+      "example": "atme-9a0f-4bfa-b30b-9003aa467f51"
+    },
+    "supported_currencies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

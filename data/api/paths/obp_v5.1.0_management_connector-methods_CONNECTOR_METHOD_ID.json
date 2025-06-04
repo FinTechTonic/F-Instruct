@@ -1,0 +1,70 @@
+{
+  "get": {
+    "tags": [
+      "Connector-Method"
+    ],
+    "summary": "Get Connector Method by Id",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get an internal connector by CONNECTOR_METHOD_ID.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#\">CONNECTOR_METHOD_ID</a>: ace0352a-9a0f-4bfa-b30b-9003aa467f51</p><p><strong>JSON response body fields:</strong></p>",
+    "operationId": "OBPv4.0.0-getConnectorMethod",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/JsonConnectorMethod"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "put": {
+    "tags": [
+      "Connector-Method"
+    ],
+    "summary": "Update Connector Method",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Update an internal connector.</p><p>The method_body is URL-encoded format String</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#\">CONNECTOR_METHOD_ID</a>: ace0352a-9a0f-4bfa-b30b-9003aa467f51</p><p><strong>JSON response body fields:</strong></p>",
+    "operationId": "OBPv4.0.0-updateConnectorMethod",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "JsonConnectorMethodMethodBody object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/JsonConnectorMethodMethodBody"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/JsonConnectorMethod"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

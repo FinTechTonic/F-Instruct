@@ -1,0 +1,253 @@
+{
+  "delete": {
+    "tags": [
+      "Counterparty-Metadata",
+      "Counterparty"
+    ],
+    "summary": "Delete Counterparty Private Alias",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Deletes the private alias of the other account OTHER_ACCOUNT_ID.</p><p>User Authentication is Optional. The User need not be logged in.<br />Authentication is required if the view is not public.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Account.account_id\">ACCOUNT_ID</a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#other_account_id\">OTHER_ACCOUNT_ID</a>:</p><p><a href=\"/glossary#this_view_id\">VIEW_ID</a>: owner</p><p><strong>JSON response body fields:</strong></p>",
+    "operationId": "OBPv1.2.1-deleteCounterpartyPrivateAlias",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "OTHER_ACCOUNT_ID",
+        "description": "The other account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "VIEW_ID",
+        "description": "The view id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "ACCOUNT_ID",
+        "description": "The account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "204": {
+        "description": "Success"
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorBankAccountNotFound"
+        }
+      }
+    }
+  },
+  "get": {
+    "tags": [
+      "Counterparty-Metadata",
+      "Counterparty"
+    ],
+    "summary": "Get Other Account Private Alias",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Returns the private alias of the other account OTHER_ACCOUNT_ID.</p><p>User Authentication is Optional. The User need not be logged in.<br />Authentication is required if the view is not public.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Account.account_id\">ACCOUNT_ID</a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#other_account_id\">OTHER_ACCOUNT_ID</a>:</p><p><a href=\"/glossary#this_view_id\">VIEW_ID</a>: owner</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#alias\"><strong>alias</strong></a>:</p>",
+    "operationId": "OBPv1.2.1-getOtherAccountPrivateAlias",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "OTHER_ACCOUNT_ID",
+        "description": "The other account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "VIEW_ID",
+        "description": "The view id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "ACCOUNT_ID",
+        "description": "The account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/AliasJSON"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorBankAccountNotFound"
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "Counterparty-Metadata",
+      "Counterparty"
+    ],
+    "summary": "Create Other Account Private Alias",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Creates a private alias for the other account OTHER_ACCOUNT_ID.</p><p>User Authentication is Optional. The User need not be logged in.<br />Authentication is required if the view is not public.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Account.account_id\">ACCOUNT_ID</a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#other_account_id\">OTHER_ACCOUNT_ID</a>:</p><p><a href=\"/glossary#this_view_id\">VIEW_ID</a>: owner</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#alias\"><strong>alias</strong></a>:</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#success\"><strong>success</strong></a>:</p>",
+    "operationId": "OBPv1.2.1-addOtherAccountPrivateAlias",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "AliasJSON object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/AliasJSON"
+        }
+      },
+      {
+        "in": "path",
+        "name": "OTHER_ACCOUNT_ID",
+        "description": "The other account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "VIEW_ID",
+        "description": "The view id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "ACCOUNT_ID",
+        "description": "The account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/SuccessMessage"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorBankAccountNotFound"
+        }
+      }
+    }
+  },
+  "put": {
+    "tags": [
+      "Counterparty-Metadata",
+      "Counterparty"
+    ],
+    "summary": "Update Counterparty Private Alias",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Updates the private alias of the counterparty (AKA other account) OTHER_ACCOUNT_ID.</p><p>User Authentication is Optional. The User need not be logged in.<br />Authentication is required if the view is not public.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Account.account_id\">ACCOUNT_ID</a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#other_account_id\">OTHER_ACCOUNT_ID</a>:</p><p><a href=\"/glossary#this_view_id\">VIEW_ID</a>: owner</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#success\"><strong>success</strong></a>:</p>",
+    "operationId": "OBPv1.2.1-updateCounterpartyPrivateAlias",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "AliasJSON object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/AliasJSON"
+        }
+      },
+      {
+        "in": "path",
+        "name": "OTHER_ACCOUNT_ID",
+        "description": "The other account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "VIEW_ID",
+        "description": "The view id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "ACCOUNT_ID",
+        "description": "The account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/SuccessMessage"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorBankAccountNotFound"
+        }
+      }
+    }
+  }
+}

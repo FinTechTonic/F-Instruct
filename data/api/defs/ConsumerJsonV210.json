@@ -1,0 +1,57 @@
+{
+  "required": [
+    "created_by_user_id",
+    "app_type",
+    "description",
+    "created_by_user",
+    "enabled",
+    "redirect_url",
+    "developer_email",
+    "consumer_id",
+    "app_name",
+    "created"
+  ],
+  "properties": {
+    "created_by_user_id": {
+      "type": "string",
+      "example": "9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+    },
+    "app_type": {
+      "type": "string",
+      "example": "Web"
+    },
+    "description": {
+      "type": "string",
+      "example": "Account Management"
+    },
+    "created_by_user": {
+      "$ref": "#/definitions/ResourceUserJSON"
+    },
+    "enabled": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "redirect_url": {
+      "type": "string",
+      "example": "www.openbankproject.com"
+    },
+    "developer_email": {
+      "type": "string",
+      "example": "felixsmith@example.com"
+    },
+    "consumer_id": {
+      "type": "integer",
+      "format": "int64",
+      "example": "1213"
+    },
+    "app_name": {
+      "type": "string",
+      "example": "SOFI"
+    },
+    "created": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    }
+  }
+}

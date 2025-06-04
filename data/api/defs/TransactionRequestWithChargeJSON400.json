@@ -1,0 +1,65 @@
+{
+  "required": [
+    "start_date",
+    "id",
+    "end_date",
+    "status",
+    "from",
+    "details",
+    "charge",
+    "type",
+    "transaction_ids",
+    "challenges"
+  ],
+  "properties": {
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/BankAttributeBankResponseJsonV400"
+      }
+    },
+    "id": {
+      "type": "string",
+      "example": "4050046c-63b3-4868-8a22-14b4181d33a6"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "status": {
+      "type": "string",
+      "example": "COMPLETED"
+    },
+    "from": {
+      "$ref": "#/definitions/TransactionRequestAccountJsonV140"
+    },
+    "details": {
+      "$ref": "#/definitions/TransactionRequestBodyAllTypes"
+    },
+    "charge": {
+      "$ref": "#/definitions/TransactionRequestChargeJsonV200"
+    },
+    "type": {
+      "type": "string",
+      "example": "SANDBOX_TAN"
+    },
+    "transaction_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "challenges": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ChallengeJsonV400"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "required": [
+    "answer"
+  ],
+  "properties": {
+    "answer": {
+      "type": "string",
+      "example": "12345678"
+    }
+  }
+}

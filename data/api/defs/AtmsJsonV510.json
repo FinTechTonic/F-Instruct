@@ -1,0 +1,13 @@
+{
+  "required": [
+    "atms"
+  ],
+  "properties": {
+    "atms": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AtmJsonV510"
+      }
+    }
+  }
+}

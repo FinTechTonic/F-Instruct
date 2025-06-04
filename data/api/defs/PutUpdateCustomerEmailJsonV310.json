@@ -1,0 +1,11 @@
+{
+  "required": [
+    "email"
+  ],
+  "properties": {
+    "email": {
+      "type": "string",
+      "example": "marko@tesobe.com"
+    }
+  }
+}

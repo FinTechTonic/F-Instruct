@@ -1,0 +1,13 @@
+{
+  "required": [
+    "location_categories"
+  ],
+  "properties": {
+    "location_categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "required": [
+    "name",
+    "type",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "SPECIAL_TAX_NUMBER"
+    },
+    "type": {
+      "type": "string",
+      "example": "STRING"
+    },
+    "value": {
+      "type": "string",
+      "example": "123456789"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "required": [
+    "is_valid"
+  ],
+  "properties": {
+    "is_valid": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "details": {
+      "$ref": "#/definitions/IbanDetailsJsonV400"
+    }
+  }
+}

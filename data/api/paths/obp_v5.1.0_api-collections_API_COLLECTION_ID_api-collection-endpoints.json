@@ -1,0 +1,31 @@
+{
+  "get": {
+    "tags": [
+      "Api-Collection"
+    ],
+    "summary": "Get Api Collection Endpoints",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get Api Collection Endpoints By API_COLLECTION_ID.</p><p>User Authentication is Optional. The User need not be logged in.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#\">API_COLLECTION_ID</a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>api_collection_endpoint_id</strong></a>: 8uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#\"><strong>api_collection_endpoints</strong></a>: api_collection_endpoints</p><p><a href=\"/glossary#\"><strong>api_collection_id</strong></a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#\"><strong>operation_id</strong></a>: OBPv4.0.0-getBanks</p>",
+    "operationId": "OBPv4.0.0-getApiCollectionEndpoints",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/ApiCollectionEndpointsJson400"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUnknownError"
+        }
+      }
+    }
+  }
+}

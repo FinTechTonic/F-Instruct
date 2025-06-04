@@ -1,0 +1,13 @@
+{
+  "required": [
+    "other_accounts"
+  ],
+  "properties": {
+    "other_accounts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/OtherAccountJsonV300"
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "required": [
+    "is_active",
+    "customer_id",
+    "user_id",
+    "date_inserted",
+    "user_customer_link_id"
+  ],
+  "properties": {
+    "is_active": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "customer_id": {
+      "type": "string",
+      "example": "7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    },
+    "user_id": {
+      "type": "string",
+      "example": "9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+    },
+    "date_inserted": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "user_customer_link_id": {
+      "type": "string",
+      "example": "9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+    }
+  }
+}

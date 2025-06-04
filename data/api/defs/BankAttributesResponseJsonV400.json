@@ -1,0 +1,13 @@
+{
+  "required": [
+    "bank_attributes"
+  ],
+  "properties": {
+    "bank_attributes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/BankAttributeResponseJsonV400"
+      }
+    }
+  }
+}

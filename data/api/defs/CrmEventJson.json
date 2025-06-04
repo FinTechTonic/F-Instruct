@@ -1,0 +1,58 @@
+{
+  "required": [
+    "channel",
+    "customer_name",
+    "result",
+    "customer_number",
+    "bank_id",
+    "id",
+    "scheduled_date",
+    "category",
+    "detail",
+    "actual_date"
+  ],
+  "properties": {
+    "channel": {
+      "type": "string",
+      "example": "String"
+    },
+    "customer_name": {
+      "type": "string",
+      "example": "String"
+    },
+    "result": {
+      "type": "string",
+      "example": "String"
+    },
+    "customer_number": {
+      "type": "string",
+      "example": "5987953"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "id": {
+      "type": "string",
+      "example": "5995d6a2-01b3-423c-a173-5481df49bdaf"
+    },
+    "scheduled_date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "category": {
+      "type": "string",
+      "example": "String"
+    },
+    "detail": {
+      "type": "string",
+      "example": "String"
+    },
+    "actual_date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    }
+  }
+}

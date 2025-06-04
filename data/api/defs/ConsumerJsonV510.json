@@ -1,0 +1,73 @@
+{
+  "required": [
+    "app_type",
+    "description",
+    "certificate_pem",
+    "created_by_user",
+    "enabled",
+    "consumer_key",
+    "redirect_url",
+    "company",
+    "developer_email",
+    "consumer_id",
+    "app_name",
+    "created"
+  ],
+  "properties": {
+    "app_type": {
+      "type": "string",
+      "example": "Web"
+    },
+    "description": {
+      "type": "string",
+      "example": "Description of the object. Maximum length is 2000. It can be any characters here."
+    },
+    "certificate_pem": {
+      "type": "string",
+      "example": "-----BEGIN CERTIFICATE-----\nMIIFIjCCBAqgAwIBAgIIX3qsz7QQxngwDQYJKoZIhvcNAQELBQAwgZ8xCzAJBgNV\r\nBAYTAkRFMQ8wDQYDVQQIEwZCZXJsaW4xDzANBgNVBAcTBkJlcmxpbjEPMA0GA1UE\r\nChMGVEVTT0JFMRowGAYDVQQLExFURVNPQkUgT3BlcmF0aW9uczESMBAGA1UEAxMJ\r\nVEVTT0JFIENBMR8wHQYJKoZIhvcNAQkBFhBhZG1pbkB0ZXNvYmUuY29tMQwwCgYD\r\nVQQpEwNWUE4wHhcNMjMwNzE3MDg0MDAwWhcNMjQwNzE3MDg0MDAwWjCBizELMAkG\r\nA1UEBhMCREUxDzANBgNVBAgTBkJlcmxpbjEPMA0GA1UEBxMGQmVybGluMRQwEgYD\r\nVQQKEwtUZXNvYmUgR21iSDEPMA0GA1UECxMGc3lzb3BzMRIwEAYDVQQDEwlsb2Nh\r\nbGhvc3QxHzAdBgkqhkiG9w0BCQEWEGFkbWluQHRlc29iZS5jb20wggEiMA0GCSqG\r\nSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCwxGuWUN1H0d0IeYPYWdLA0I/5BXx4DLO6\r\nzfi1GGJlF8BIXRN0VTJckIY9C3J1RnXDs6p6ufA01iHe1PQdL6VzfcaC3j+jUSgV\r\n1z9ybEUPyUwq3PCCxqoVI9n8yh+O6FDn3dvu/9Q2NtBpJHUBDCLf7OO9TgsFU2sE\r\nMys+Hw5DuuX5n5OQ2VIwH+qlMTQnd+yw5y8FKHqAZT5hE60lF/x6sQnwi58hLGRW\r\nSqo/548c2ZpoeWtnyY1I6PyR7zUYGuhruLY8gVFfLE+610u/lj2wYTXMxntpV+tV\r\nralLFRMhvbqZXW/EpuDb/pEbCnLDNDxq5NarLVDzcHs7VhT9MPChAgMBAAGjggFy\r\nMIIBbjATBgNVHSUEDDAKBggrBgEFBQcDAjAaBgNVHREEEzARgglsb2NhbGhvc3SH\r\nBH8AAAEwggEGBggrBgEFBQcBAwSB+TCB9jAIBgYEAI5GAQEwOAYGBACORgEFMC4w\r\nLBYhaHR0cHM6Ly9leGFtcGxlLm9yZy9wa2lkaXNjbG9zdXJlEwdleGFtcGxlMIGI\r\nBgYEAIGYJwIwfjBMMBEGBwQAgZgnAQMMBlBTUF9BSTARBgcEAIGYJwEBDAZQU1Bf\r\nQVMwEQYHBACBmCcBAgwGUFNQX1BJMBEGBwQAgZgnAQQMBlBTUF9JQwwlRHVtbXkg\r\nRmluYW5jaWFsIFN1cGVydmlzaW9uIEF1dGhvcml0eQwHWFgtREZTQTAlBgYEAI5G\r\nAQYwGwYHBACORgEGAQYHBACORgEGAgYHBACORgEGAzARBglghkgBhvhCAQEEBAMC\r\nB4AwHgYJYIZIAYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0ZTANBgkqhkiG9w0BAQsF\r\nAAOCAQEAKTS7exS9A7rWJLRzWrlHoTu68Avm5g9Dz1GKjgt8rnvj3D21SE14Rf5p\r\n0JWHYH4SiCdnh8Tx+IA7o0TmPJ1JRfAXR3i/5R7TJi/HrnqL+V7SIx2Cuq/hkZEU\r\nAhVs07nnvHURcrlQGwcfn4TbgpCURpCPpYZlNsYySb6BS6I4qFaadHGqMTyEkphV\r\nwfXyB3brmzxj9V4Qgp0t+s/uFuFirWyIayRc9nSSC7vuNVYvib2Kim4y8kvuWpA4\r\nZ51+fFOmBqCqpmwfAADNgDsLJiA/741eBflVd/ZUeAzgOjMCMIaDGlwiwZlePKT7\r\n553GtfsGxZMf05oqfUrQEQfJaU+/+Q==\n-----END CERTIFICATE-----\n"
+    },
+    "created_by_user": {
+      "$ref": "#/definitions/ResourceUserJSON"
+    },
+    "enabled": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "consumer_key": {
+      "type": "string",
+      "example": "bwf0ykmwoirip1yjxcn15wnhuyxcziwgtcoaildq"
+    },
+    "certificate_info": {
+      "$ref": "#/definitions/CertificateInfoJsonV510"
+    },
+    "redirect_url": {
+      "type": "string",
+      "example": "https://apisandbox.openbankproject.com"
+    },
+    "logo_url": {
+      "type": "string",
+      "example": "https://apisandbox.openbankproject.com/logo"
+    },
+    "company": {
+      "type": "string",
+      "example": "Tesobe GmbH"
+    },
+    "developer_email": {
+      "type": "string",
+      "example": "felixsmith@example.com"
+    },
+    "consumer_id": {
+      "type": "string",
+      "example": "7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    },
+    "app_name": {
+      "type": "string",
+      "example": "appNameBank"
+    },
+    "created": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    }
+  }
+}

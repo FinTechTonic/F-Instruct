@@ -1,0 +1,21 @@
+{
+  "required": [
+    "name",
+    "type",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "HOUSE_RENT"
+    },
+    "type": {
+      "type": "string",
+      "example": "DATE_WITH_DAY"
+    },
+    "value": {
+      "type": "string",
+      "example": "123456789"
+    }
+  }
+}

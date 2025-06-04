@@ -1,0 +1,10 @@
+{
+  "required": [
+    "where"
+  ],
+  "properties": {
+    "where": {
+      "$ref": "#/definitions/LocationPlainJSON"
+    }
+  }
+}

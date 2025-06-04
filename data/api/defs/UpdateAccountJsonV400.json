@@ -1,0 +1,11 @@
+{
+  "required": [
+    "label"
+  ],
+  "properties": {
+    "label": {
+      "type": "string",
+      "example": "updated label"
+    }
+  }
+}

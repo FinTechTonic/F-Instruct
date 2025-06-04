@@ -1,0 +1,44 @@
+{
+  "required": [
+    "public_alias",
+    "physical_location",
+    "image_url",
+    "private_alias",
+    "url",
+    "more_info",
+    "corporate_location",
+    "open_corporates_url"
+  ],
+  "properties": {
+    "public_alias": {
+      "type": "string",
+      "example": "String"
+    },
+    "physical_location": {
+      "$ref": "#/definitions/LocationJsonV210"
+    },
+    "image_url": {
+      "type": "string",
+      "example": "String"
+    },
+    "private_alias": {
+      "type": "string",
+      "example": "String"
+    },
+    "url": {
+      "type": "string",
+      "example": "String"
+    },
+    "more_info": {
+      "type": "string",
+      "example": "String"
+    },
+    "corporate_location": {
+      "$ref": "#/definitions/LocationJsonV210"
+    },
+    "open_corporates_url": {
+      "type": "string",
+      "example": "String"
+    }
+  }
+}

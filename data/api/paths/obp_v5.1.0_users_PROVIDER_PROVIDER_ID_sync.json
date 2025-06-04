@@ -1,0 +1,46 @@
+{
+  "post": {
+    "tags": [
+      "User"
+    ],
+    "summary": "Sync User",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>The endpoint is used to create or sync an OBP User with User from an external identity provider.<br />PROVIDER is the host of the provider e.g. a Keycloak Host.<br />PROVIDER_ID is the unique identifier for the User at the PROVIDER.<br />At the end of the process, a User will exist in OBP with the Account Access records defined by the CBS.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#provider\">PROVIDER</a>: ETHEREUM</p><p><a href=\"/glossary#provider_id\">PROVIDER_ID</a>:</p><p><strong>JSON request body fields:</strong></p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#duration_time\"><strong>duration_time</strong></a>: 60</p>",
+    "operationId": "OBPv5.1.0-syncExternalUser",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "PROVIDER",
+        "description": "the user PROVIDER",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "PROVIDER_ID",
+        "description": "The provider id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/RefreshUserJson"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

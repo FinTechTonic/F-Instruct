@@ -1,0 +1,21 @@
+{
+  "required": [
+    "domain",
+    "tax_number",
+    "tax_residence_id"
+  ],
+  "properties": {
+    "domain": {
+      "type": "string",
+      "example": "Enter some domain"
+    },
+    "tax_number": {
+      "type": "string",
+      "example": "Enter some number"
+    },
+    "tax_residence_id": {
+      "type": "string",
+      "example": "902ba3bb-dedd-45e7-9319-2fd3f2cd98a1"
+    }
+  }
+}

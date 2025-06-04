@@ -1,0 +1,62 @@
+{
+  "required": [
+    "product_code",
+    "contract_code"
+  ],
+  "properties": {
+    "form_of_payment": {
+      "type": "string"
+    },
+    "maturity_date": {
+      "type": "string"
+    },
+    "renewal_date": {
+      "type": "string"
+    },
+    "interest_rate": {
+      "type": "string"
+    },
+    "instrument_status_code": {
+      "type": "string"
+    },
+    "product_description": {
+      "type": "string"
+    },
+    "issuance_amount": {
+      "type": "string"
+    },
+    "term": {
+      "type": "string"
+    },
+    "is_substituted": {
+      "type": "string"
+    },
+    "opening_date": {
+      "type": "string"
+    },
+    "payment_method": {
+      "type": "string",
+      "example": "cache"
+    },
+    "product_code": {
+      "type": "string",
+      "example": "787LOW"
+    },
+    "branch_code": {
+      "type": "string"
+    },
+    "contract_code": {
+      "type": "string",
+      "example": "LKJL98769F"
+    },
+    "instrument_status_definition": {
+      "type": "string"
+    },
+    "cancellation_date": {
+      "type": "string"
+    },
+    "interest_amount": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "required": [
+    "user_attributes"
+  ],
+  "properties": {
+    "user_attributes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/UserAttributeResponseJsonV400"
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "required": [
+    "name",
+    "more_info_url",
+    "super_family",
+    "code",
+    "bank_id",
+    "meta",
+    "category",
+    "family"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "product 1"
+    },
+    "more_info_url": {
+      "type": "string",
+      "example": "www.example.com/index1"
+    },
+    "super_family": {
+      "type": "string",
+      "example": "sup fam 1"
+    },
+    "code": {
+      "type": "string",
+      "example": "prd1"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "bank1"
+    },
+    "meta": {
+      "$ref": "#/definitions/SandboxMetaImport"
+    },
+    "category": {
+      "type": "string",
+      "example": "cat1"
+    },
+    "family": {
+      "type": "string",
+      "example": "fam1"
+    }
+  }
+}

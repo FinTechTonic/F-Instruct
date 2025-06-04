@@ -1,0 +1,13 @@
+{
+  "required": [
+    "permissions"
+  ],
+  "properties": {
+    "permissions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/PermissionJSON"
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "message": {
+      "type": "string",
+      "example": "OBP-10005: Invalid Date Format. Could not convert value to a Date."
+    }
+  }
+}

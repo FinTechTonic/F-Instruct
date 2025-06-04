@@ -1,0 +1,35 @@
+{
+  "required": [
+    "provider",
+    "email",
+    "username",
+    "provider_id",
+    "user_id",
+    "entitlements"
+  ],
+  "properties": {
+    "provider": {
+      "type": "string",
+      "example": "http://127.0.0.1:8080"
+    },
+    "email": {
+      "type": "string",
+      "example": "felixsmith@example.com"
+    },
+    "username": {
+      "type": "string",
+      "example": "felixsmith"
+    },
+    "provider_id": {
+      "type": "string",
+      "example": "Chris"
+    },
+    "user_id": {
+      "type": "string",
+      "example": "9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+    },
+    "entitlements": {
+      "$ref": "#/definitions/EntitlementJSONs"
+    }
+  }
+}

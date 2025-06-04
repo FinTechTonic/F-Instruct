@@ -1,0 +1,58 @@
+{
+  "required": [
+    "city",
+    "line_2",
+    "state",
+    "tags",
+    "postcode",
+    "county",
+    "country_code",
+    "status",
+    "line_3",
+    "line_1"
+  ],
+  "properties": {
+    "city": {
+      "type": "string",
+      "example": "Berlin"
+    },
+    "line_2": {
+      "type": "string",
+      "example": "The Place"
+    },
+    "state": {
+      "type": "string",
+      "example": "Brandenburg"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "postcode": {
+      "type": "string",
+      "example": "13359"
+    },
+    "county": {
+      "type": "string",
+      "example": ""
+    },
+    "country_code": {
+      "type": "string",
+      "example": "DE"
+    },
+    "status": {
+      "type": "string",
+      "example": "OK"
+    },
+    "line_3": {
+      "type": "string",
+      "example": "The Hill"
+    },
+    "line_1": {
+      "type": "string",
+      "example": "No 1 the Road"
+    }
+  }
+}

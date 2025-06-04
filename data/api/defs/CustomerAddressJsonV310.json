@@ -1,0 +1,74 @@
+{
+  "required": [
+    "city",
+    "line_2",
+    "customer_id",
+    "state",
+    "insert_date",
+    "tags",
+    "customer_address_id",
+    "postcode",
+    "county",
+    "country_code",
+    "status",
+    "line_3",
+    "line_1"
+  ],
+  "properties": {
+    "city": {
+      "type": "string",
+      "example": "Berlin"
+    },
+    "line_2": {
+      "type": "string",
+      "example": "The Place"
+    },
+    "customer_id": {
+      "type": "string",
+      "example": "7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    },
+    "state": {
+      "type": "string",
+      "example": "Brandenburg"
+    },
+    "insert_date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "customer_address_id": {
+      "type": "string",
+      "example": "5995d6a2-01b3-423c-a173-5481df49bdaf"
+    },
+    "postcode": {
+      "type": "string",
+      "example": "13359"
+    },
+    "county": {
+      "type": "string",
+      "example": ""
+    },
+    "country_code": {
+      "type": "string",
+      "example": "DE"
+    },
+    "status": {
+      "type": "string",
+      "example": "OK"
+    },
+    "line_3": {
+      "type": "string",
+      "example": "The Hill"
+    },
+    "line_1": {
+      "type": "string",
+      "example": "No 1 the Road"
+    }
+  }
+}

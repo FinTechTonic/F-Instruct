@@ -1,0 +1,25 @@
+{
+  "required": [
+    "name",
+    "type",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "OVERDRAFT_START_DATE"
+    },
+    "type": {
+      "type": "string",
+      "example": "DATE_WITH_DAY"
+    },
+    "value": {
+      "type": "string",
+      "example": "2012-04-23"
+    },
+    "product_instance_code": {
+      "type": "string",
+      "example": "LKJL98769F"
+    }
+  }
+}

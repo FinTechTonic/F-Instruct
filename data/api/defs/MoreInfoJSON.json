@@ -1,0 +1,11 @@
+{
+  "required": [
+    "more_info"
+  ],
+  "properties": {
+    "more_info": {
+      "type": "string",
+      "example": "String"
+    }
+  }
+}

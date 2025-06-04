@@ -1,0 +1,32 @@
+{
+  "required": [
+    "allowed_attempts",
+    "user_id",
+    "id",
+    "link",
+    "challenge_type"
+  ],
+  "properties": {
+    "allowed_attempts": {
+      "type": "integer",
+      "format": "int32",
+      "example": "3"
+    },
+    "user_id": {
+      "type": "string",
+      "example": "9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+    },
+    "id": {
+      "type": "string",
+      "example": "2fg8a7e4-6d02-40e3-a129-0b2bf89de8ub"
+    },
+    "link": {
+      "type": "string",
+      "example": "/obp/v4.0.0/banks/BANK_ID/accounts/ACCOUNT_ID/VIEW_ID/transaction-request-types/TRANSACTION_REQUEST_TYPE/transaction-requests/TRANSACTION_REQUEST_ID/challenge"
+    },
+    "challenge_type": {
+      "type": "string",
+      "example": "OBP_TRANSACTION_REQUEST_CHALLENGE"
+    }
+  }
+}

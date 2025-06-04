@@ -1,0 +1,42 @@
+{
+  "required": [
+    "description",
+    "value"
+  ],
+  "properties": {
+    "to_transfer_to_phone": {
+      "$ref": "#/definitions/TransactionRequestTransferToPhone"
+    },
+    "description": {
+      "type": "string",
+      "example": "Description of the object. Maximum length is 2000. It can be any characters here."
+    },
+    "to_transfer_to_atm": {
+      "$ref": "#/definitions/TransactionRequestTransferToAtm"
+    },
+    "to_counterparty": {
+      "$ref": "#/definitions/TransactionRequestCounterpartyId"
+    },
+    "to_agent": {
+      "$ref": "#/definitions/TransactionRequestAgentCashWithdrawal"
+    },
+    "to_sepa_credit_transfers": {
+      "$ref": "#/definitions/SepaCreditTransfers"
+    },
+    "to_simple": {
+      "$ref": "#/definitions/TransactionRequestSimple"
+    },
+    "to_sepa": {
+      "$ref": "#/definitions/TransactionRequestIban"
+    },
+    "to_transfer_to_account": {
+      "$ref": "#/definitions/TransactionRequestTransferToAccount"
+    },
+    "value": {
+      "$ref": "#/definitions/AmountOfMoney"
+    },
+    "to_sandbox_tan": {
+      "$ref": "#/definitions/TransactionRequestAccount"
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "get": {
+    "tags": [
+      "Documentation",
+      "API"
+    ],
+    "summary": "Get scanned API Versions",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get all the scanned API Versions.</p><p>User Authentication is Optional. The User need not be logged in.</p><p><strong>JSON response body fields:</strong></p>",
+    "operationId": "OBPv4.0.0-getScannedApiVersions",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "type": "object",
+          "required": [
+            "scanned_api_versions"
+          ],
+          "properties": {
+            "scanned_api_versions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "urlPrefix": {
+                    "type": "string",
+                    "example": "obp"
+                  },
+                  "apiStandard": {
+                    "type": "string",
+                    "example": "obp"
+                  },
+                  "apiShortVersion": {
+                    "type": "string",
+                    "example": "v3.1.0"
+                  },
+                  "API_VERSION": {
+                    "type": "string",
+                    "example": "v3.1.0"
+                  }
+                },
+                "required": [
+                  "urlPrefix",
+                  "apiStandard",
+                  "apiShortVersion",
+                  "API_VERSION"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUnknownError"
+        }
+      }
+    }
+  }
+}

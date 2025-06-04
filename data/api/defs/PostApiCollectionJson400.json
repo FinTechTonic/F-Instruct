@@ -1,0 +1,20 @@
+{
+  "required": [
+    "api_collection_name",
+    "is_sharable"
+  ],
+  "properties": {
+    "api_collection_name": {
+      "type": "string",
+      "example": "Favourites"
+    },
+    "is_sharable": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "description": {
+      "type": "string",
+      "example": "Description of the object. Maximum length is 2000. It can be any characters here."
+    }
+  }
+}

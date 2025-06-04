@@ -1,0 +1,50 @@
+{
+  "required": [
+    "description",
+    "to",
+    "transaction_id",
+    "transaction_request_type",
+    "completed",
+    "charge_policy",
+    "from",
+    "value",
+    "posted"
+  ],
+  "properties": {
+    "description": {
+      "type": "string",
+      "example": "this is for work"
+    },
+    "to": {
+      "$ref": "#/definitions/HistoricalTransactionAccountJsonV310"
+    },
+    "transaction_id": {
+      "type": "string",
+      "example": "2fg8a7e4-6d02-40e3-a129-0b2bf89de8ub"
+    },
+    "transaction_request_type": {
+      "type": "string",
+      "example": "SANDBOX_TAN"
+    },
+    "completed": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T01:01:01Z"
+    },
+    "charge_policy": {
+      "type": "string",
+      "example": "SHARED"
+    },
+    "from": {
+      "$ref": "#/definitions/HistoricalTransactionAccountJsonV310"
+    },
+    "value": {
+      "$ref": "#/definitions/AmountOfMoneyJsonV121"
+    },
+    "posted": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T01:01:01Z"
+    }
+  }
+}

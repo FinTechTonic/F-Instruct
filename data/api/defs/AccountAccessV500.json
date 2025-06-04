@@ -1,0 +1,15 @@
+{
+  "required": [
+    "account_routing",
+    "view_id"
+  ],
+  "properties": {
+    "account_routing": {
+      "$ref": "#/definitions/AccountRoutingJsonV121"
+    },
+    "view_id": {
+      "type": "string",
+      "example": "owner"
+    }
+  }
+}

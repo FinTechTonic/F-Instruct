@@ -1,0 +1,53 @@
+{
+  "get": {
+    "tags": [
+      "FX"
+    ],
+    "summary": "Get Current FxRate",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get the latest FX rate specified by BANK_ID, FROM_CURRENCY_CODE and TO_CURRENCY_CODE</p><p>OBP may try different sources of FX rate information depending on the Connector in operation.</p><p>For example we want to convert EUR =&gt; USD:</p><p>OBP will:<br />1st try - Connector (database, core banking system or external FX service)<br />2nd try part 1 - fallbackexchangerates/eur.json<br />2nd try part 2 - fallbackexchangerates/usd.json (the inverse rate is used)<br />3rd try - Hardcoded map of FX rates.</p><p><img src=\"https://user-images.githubusercontent.com/485218/60005085-1eded600-966e-11e9-96fb-798b102d9ad0.png\" alt=\"FX Flow\" /></p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#from_currency_code\">FROM_CURRENCY_CODE</a>:</p><p><a href=\"/glossary#to_currency_code\">TO_CURRENCY_CODE</a>: EUR</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#conversion_value\"><strong>conversion_value</strong></a>: 100</p><p><a href=\"/glossary#effective_date\"><strong>effective_date</strong></a>: 2020-01-27</p><p><a href=\"/glossary#from_currency_code\"><strong>from_currency_code</strong></a>:</p><p><a href=\"/glossary#inverse_conversion_value\"><strong>inverse_conversion_value</strong></a>: 50</p><p><a href=\"/glossary#to_currency_code\"><strong>to_currency_code</strong></a>: EUR</p>",
+    "operationId": "OBPv2.2.0-getCurrentFxRate",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "TO_CURRENCY_CODE",
+        "description": "The to currency code",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "FROM_CURRENCY_CODE",
+        "description": "The from currency code",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/FXRateJsonV220"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorInvalidISOCurrencyCode"
+        }
+      }
+    }
+  }
+}

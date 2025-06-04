@@ -1,0 +1,63 @@
+{
+  "put": {
+    "tags": [
+      "KYC",
+      "Customer"
+    ],
+    "summary": "Add KYC Document",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Add a KYC document for the customer specified by CUSTOMER_ID. KYC Documents contain the document type (e.g. passport), place of issue, expiry etc.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#Customer.customer_id\">CUSTOMER_ID</a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#kyc_document_id\">KYC_DOCUMENT_ID</a>:</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#\"><strong>customer_id</strong></a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#\"><strong>customer_number</strong></a>: 5987953</p><p><a href=\"/glossary#\"><strong>expiry_date</strong></a>: 2021-01-27</p><p><a href=\"/glossary#id\"><strong>id</strong></a>: d8839721-ad8f-45dd-9f78-2080414b93f9</p><p><a href=\"/glossary#\"><strong>issue_date</strong></a>: 2020-01-27</p><p><a href=\"/glossary#issue_place\"><strong>issue_place</strong></a>:</p><p><a href=\"/glossary#number\"><strong>number</strong></a>:</p><p><a href=\"/glossary#type\"><strong>type</strong></a>:</p>",
+    "operationId": "OBPv2.0.0-addKycDocument",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "PostKycDocumentJSON object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/PostKycDocumentJSON"
+        }
+      },
+      {
+        "in": "path",
+        "name": "KYC_DOCUMENT_ID",
+        "description": "The kyc document id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "CUSTOMER_ID",
+        "description": "The customer id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/KycDocumentJSON"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

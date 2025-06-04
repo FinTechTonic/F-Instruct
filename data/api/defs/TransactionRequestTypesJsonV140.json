@@ -1,0 +1,13 @@
+{
+  "required": [
+    "transaction_request_types"
+  ],
+  "properties": {
+    "transaction_request_types": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/TransactionRequestTypeJsonV140"
+      }
+    }
+  }
+}

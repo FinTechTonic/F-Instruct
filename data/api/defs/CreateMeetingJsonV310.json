@@ -1,0 +1,33 @@
+{
+  "required": [
+    "provider_id",
+    "creator",
+    "invitees",
+    "date",
+    "purpose_id"
+  ],
+  "properties": {
+    "provider_id": {
+      "type": "string",
+      "example": "Chris"
+    },
+    "creator": {
+      "$ref": "#/definitions/ContactDetailsJson"
+    },
+    "invitees": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/InviteeJson"
+      }
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T01:01:01Z"
+    },
+    "purpose_id": {
+      "type": "string",
+      "example": "String, eg: onboarding"
+    }
+  }
+}

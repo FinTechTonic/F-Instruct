@@ -1,0 +1,39 @@
+{
+  "required": [
+    "per_month_call_limit",
+    "per_week_call_limit",
+    "per_hour_call_limit",
+    "per_second_call_limit",
+    "per_minute_call_limit",
+    "per_day_call_limit"
+  ],
+  "properties": {
+    "current_state": {
+      "$ref": "#/definitions/RedisCallLimitJson"
+    },
+    "per_month_call_limit": {
+      "type": "string",
+      "example": "-1"
+    },
+    "per_week_call_limit": {
+      "type": "string",
+      "example": "-1"
+    },
+    "per_hour_call_limit": {
+      "type": "string",
+      "example": "-1"
+    },
+    "per_second_call_limit": {
+      "type": "string",
+      "example": "-1"
+    },
+    "per_minute_call_limit": {
+      "type": "string",
+      "example": "-1"
+    },
+    "per_day_call_limit": {
+      "type": "string",
+      "example": "-1"
+    }
+  }
+}

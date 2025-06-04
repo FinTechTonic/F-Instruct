@@ -1,0 +1,15 @@
+{
+  "required": [
+    "summary",
+    "value"
+  ],
+  "properties": {
+    "summary": {
+      "type": "string",
+      "example": "Rent the flat"
+    },
+    "value": {
+      "$ref": "#/definitions/AmountOfMoneyJsonV121"
+    }
+  }
+}

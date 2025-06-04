@@ -1,0 +1,15 @@
+{
+  "required": [
+    "operation_id",
+    "json_schema"
+  ],
+  "properties": {
+    "operation_id": {
+      "type": "string",
+      "example": "OBPv4.0.0-createXxx"
+    },
+    "json_schema": {
+      "$ref": "#/definitions/JsonSchemaV400"
+    }
+  }
+}

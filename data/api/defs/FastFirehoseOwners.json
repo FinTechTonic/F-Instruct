@@ -1,0 +1,21 @@
+{
+  "required": [
+    "user_id",
+    "provider",
+    "user_name"
+  ],
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "example": "b27327a2-a822-41e5-a909-0150da688939"
+    },
+    "provider": {
+      "type": "string",
+      "example": "https://finx22openplatform.fintech-galaxy.com,user_name:synth_user_1_54891"
+    },
+    "user_name": {
+      "type": "string",
+      "example": ""
+    }
+  }
+}

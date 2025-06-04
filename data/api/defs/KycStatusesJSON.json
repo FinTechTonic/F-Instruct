@@ -1,0 +1,13 @@
+{
+  "required": [
+    "statuses"
+  ],
+  "properties": {
+    "statuses": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/KycStatusJSON"
+      }
+    }
+  }
+}

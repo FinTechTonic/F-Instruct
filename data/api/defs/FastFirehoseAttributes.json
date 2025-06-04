@@ -1,0 +1,21 @@
+{
+  "required": [
+    "type",
+    "code",
+    "value"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "example": "INTEGER"
+    },
+    "code": {
+      "type": "string",
+      "example": "Loan1"
+    },
+    "value": {
+      "type": "string",
+      "example": "0"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "required": [
+    "id",
+    "allowed_attempts",
+    "challenge_type"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "be1a183d-b301-4b83-b855-5eeffdd3526f"
+    },
+    "allowed_attempts": {
+      "type": "integer",
+      "format": "int32",
+      "example": "3"
+    },
+    "challenge_type": {
+      "type": "string",
+      "example": "SANDBOX_TAN"
+    }
+  }
+}

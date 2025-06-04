@@ -1,0 +1,26 @@
+{
+  "required": [
+    "transaction_request_attribute_id",
+    "name",
+    "type",
+    "value"
+  ],
+  "properties": {
+    "transaction_request_attribute_id": {
+      "type": "string",
+      "example": "7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    },
+    "name": {
+      "type": "string",
+      "example": "HOUSE_RENT"
+    },
+    "type": {
+      "type": "string",
+      "example": "STRING"
+    },
+    "value": {
+      "type": "string",
+      "example": "123456789"
+    }
+  }
+}

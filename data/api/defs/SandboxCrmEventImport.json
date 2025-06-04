@@ -1,0 +1,40 @@
+{
+  "required": [
+    "channel",
+    "bank_id",
+    "id",
+    "customer",
+    "category",
+    "detail",
+    "actual_date"
+  ],
+  "properties": {
+    "channel": {
+      "type": "string",
+      "example": "Phone"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "bank1"
+    },
+    "id": {
+      "type": "string",
+      "example": "ASDFHJ47YKJH"
+    },
+    "customer": {
+      "$ref": "#/definitions/SandboxCustomerImport"
+    },
+    "category": {
+      "type": "string",
+      "example": "Call"
+    },
+    "detail": {
+      "type": "string",
+      "example": "Check mortgage"
+    },
+    "actual_date": {
+      "type": "string",
+      "example": "1100-01-01T01:01:01.000Z"
+    }
+  }
+}

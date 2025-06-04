@@ -1,0 +1,39 @@
+{
+  "required": [
+    "inverse_conversion_value",
+    "to_currency_code",
+    "effective_date",
+    "conversion_value",
+    "bank_id",
+    "from_currency_code"
+  ],
+  "properties": {
+    "inverse_conversion_value": {
+      "type": "number",
+      "format": "double",
+      "example": "0.8800454103431737"
+    },
+    "to_currency_code": {
+      "type": "string",
+      "example": "USD"
+    },
+    "effective_date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "conversion_value": {
+      "type": "number",
+      "format": "double",
+      "example": "1.136305"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "from_currency_code": {
+      "type": "string",
+      "example": "EUR"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "required": [
+    "this_account",
+    "id",
+    "details",
+    "metadata",
+    "other_account",
+    "transaction_attributes"
+  ],
+  "properties": {
+    "this_account": {
+      "$ref": "#/definitions/ThisAccountJsonV300"
+    },
+    "id": {
+      "type": "string",
+      "example": "String"
+    },
+    "details": {
+      "$ref": "#/definitions/TransactionDetailsJSON"
+    },
+    "metadata": {
+      "$ref": "#/definitions/TransactionMetadataJSON"
+    },
+    "other_account": {
+      "$ref": "#/definitions/OtherAccountJsonV300"
+    },
+    "transaction_attributes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/TransactionAttributeResponseJson"
+      }
+    }
+  }
+}

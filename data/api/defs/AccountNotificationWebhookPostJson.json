@@ -1,0 +1,21 @@
+{
+  "required": [
+    "url",
+    "http_method",
+    "http_protocol"
+  ],
+  "properties": {
+    "url": {
+      "type": "string",
+      "example": "https://localhost.openbankproject.com"
+    },
+    "http_method": {
+      "type": "string",
+      "example": "POST"
+    },
+    "http_protocol": {
+      "type": "string",
+      "example": "HTTP/1.1"
+    }
+  }
+}

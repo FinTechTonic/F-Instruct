@@ -1,0 +1,23 @@
+{
+  "required": [
+    "debtorAccount",
+    "instructedAmount",
+    "creditorAccount",
+    "creditorName"
+  ],
+  "properties": {
+    "debtorAccount": {
+      "$ref": "#/definitions/PaymentAccount"
+    },
+    "instructedAmount": {
+      "$ref": "#/definitions/AmountOfMoneyJsonV121"
+    },
+    "creditorAccount": {
+      "$ref": "#/definitions/PaymentAccount"
+    },
+    "creditorName": {
+      "type": "string",
+      "example": "John Miles"
+    }
+  }
+}

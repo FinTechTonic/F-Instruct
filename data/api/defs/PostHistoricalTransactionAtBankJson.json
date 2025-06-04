@@ -1,0 +1,45 @@
+{
+  "required": [
+    "description",
+    "to_account_id",
+    "completed",
+    "charge_policy",
+    "from_account_id",
+    "type",
+    "value",
+    "posted"
+  ],
+  "properties": {
+    "description": {
+      "type": "string",
+      "example": "this is for work"
+    },
+    "to_account_id": {
+      "type": "string",
+      "example": ""
+    },
+    "completed": {
+      "type": "string",
+      "example": "1100-01-01T01:01:01Z"
+    },
+    "charge_policy": {
+      "type": "string",
+      "example": "SHARED"
+    },
+    "from_account_id": {
+      "type": "string",
+      "example": ""
+    },
+    "type": {
+      "type": "string",
+      "example": "SANDBOX_TAN"
+    },
+    "value": {
+      "$ref": "#/definitions/AmountOfMoneyJsonV121"
+    },
+    "posted": {
+      "type": "string",
+      "example": "1100-01-01T01:01:01Z"
+    }
+  }
+}

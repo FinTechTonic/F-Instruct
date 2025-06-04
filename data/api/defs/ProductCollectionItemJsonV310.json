@@ -1,0 +1,11 @@
+{
+  "required": [
+    "member_product_code"
+  ],
+  "properties": {
+    "member_product_code": {
+      "type": "string",
+      "example": "A"
+    }
+  }
+}

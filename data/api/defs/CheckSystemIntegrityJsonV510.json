@@ -1,0 +1,14 @@
+{
+  "required": [
+    "success"
+  ],
+  "properties": {
+    "success": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "debug_info": {
+      "type": "string"
+    }
+  }
+}

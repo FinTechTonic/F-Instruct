@@ -1,0 +1,33 @@
+{
+  "required": [
+    "bank_code"
+  ],
+  "properties": {
+    "bank_routings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/BankRoutingJsonV121"
+      }
+    },
+    "website": {
+      "type": "string",
+      "example": "www.openbankproject.com"
+    },
+    "full_name": {
+      "type": "string",
+      "example": "full name string"
+    },
+    "logo": {
+      "type": "string",
+      "example": "logo url"
+    },
+    "id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "bank_code": {
+      "type": "string",
+      "example": "CGHZ"
+    }
+  }
+}

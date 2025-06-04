@@ -1,0 +1,23 @@
+{
+  "required": [
+    "username",
+    "provider",
+    "roles"
+  ],
+  "properties": {
+    "username": {
+      "type": "string",
+      "example": "felixsmith"
+    },
+    "provider": {
+      "type": "string",
+      "example": "dauth.ETHEREUM"
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/CreateEntitlementJSON"
+      }
+    }
+  }
+}

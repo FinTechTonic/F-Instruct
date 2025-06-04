@@ -1,0 +1,16 @@
+{
+  "required": [
+    "account_webhook_id",
+    "is_active"
+  ],
+  "properties": {
+    "account_webhook_id": {
+      "type": "string",
+      "example": "fc23a7e2-7dd2-4bdf-a0b4-ae31232a4762"
+    },
+    "is_active": {
+      "type": "string",
+      "example": "true"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "get": {
+    "tags": [
+      "Metric",
+      "API"
+    ],
+    "summary": "Get Metrics",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get API metrics rows. These are records of each REST API call.</p><p>require CanReadMetrics role</p><p>Filters Part 1.<em>filtering</em> (no wilde cards etc.) parameters to GET /management/metrics</p><p>You can filter by the following fields by applying url parameters</p><p>eg: /management/metrics?from_date=1100-01-01T01:01:01.000Z&amp;to_date=1100-01-01T01:01:01.000Z&amp;limit=50&amp;offset=2</p><p>1 from_date e.g.:from_date=1100-01-01T01:01:01.000Z Defaults to the Unix Epoch i.e. Thu Jan 01 00:00:00 UTC 1970</p><p>2 to_date e.g.:to_date=1100-01-01T01:01:01.000Z Defaults to a far future date i.e. Sat Jan 01 00:00:00 UTC 4000</p><p>Note: it is recommended you send a valid from_date (e.g. 5 seconds ago) and to_date (now + 1 second) if you want to get the latest records<br />Otherwise you may receive stale cached results.</p><p>3 limit (for pagination: defaults to 50)  eg:limit=200</p><p>4 offset (for pagination: zero index, defaults to 0) eg: offset=10</p><p>5 sort_by (defaults to date field) eg: sort_by=date<br />possible values:<br />&quot;url&quot;,<br />&quot;date&quot;,<br />&quot;user_name&quot;,<br />&quot;app_name&quot;,<br />&quot;developer_email&quot;,<br />&quot;implemented_by_partial_function&quot;,<br />&quot;implemented_in_version&quot;,<br />&quot;consumer_id&quot;,<br />&quot;verb&quot;</p><p>6 direction (defaults to date desc) eg: direction=desc</p><p>eg: /management/metrics?from_date=1100-01-01T01:01:01.000Z&amp;to_date=1100-01-01T01:01:<a href=\"&#x6d;&#97;&#x69;&#108;&#x74;o&#58;&#x30;1.0&#48;0&#x5a;&#38;&#x6c;&#105;m&#x69;&#x74;&#61;&#x31;0&#x30;0&#48;&#x26;&#x6f;&#x66;&#x66;s&#101;&#116;=&#48;&#38;&#97;n&#x6f;&#110;&#x3d;&#x66;&#x61;l&#115;&#x65;&amp;a&#x70;&#112;&#x5f;&#110;a&#109;e&#61;&#x54;&#101;&#97;&#x74;&#65;p&#112;&#x26;i&#x6d;p&#x6c;&#101;&#109;&#x65;&#x6e;&#116;&#x65;d&#x5f;&#105;&#110;_&#x76;&#x65;r&#115;&#x69;&#111;&#110;=&#x76;2&#x2e;&#x31;&#x2e;0&#38;v&#x65;&#114;b&#x3d;&#x50;&#x4f;&#x53;&#x54;&#x26;&#x75;&#115;&#101;&#x72;&#x5f;&#x69;&#100;&#x3d;&#99;7&#x62;&#x36;c&#98;&#x34;&#55;&#45;&#99;b9&#54;&#x2d;&#52;4&#52;&#49;&#45;&#x38;&#x38;&#x30;&#49;&#x2d;&#51;&#53;&#x62;5&#x37;&#x34;&#53;&#x36;&#x37;&#x35;&#51;&#x61;&#x26;&#117;&#115;&#x65;r&#95;&#x6e;&#97;&#x6d;&#x65;=&#115;u&#115;&#97;&#x6e;&#46;&#117;&#x6b;&#46;&#50;&#x39;&#x40;e&#x78;a&#109;&#112;&#108;e&#x2e;&#99;&#111;&#x6d;\">&#48;1&#x2e;0&#x30;&#x30;&#x5a;&amp;l&#105;m&#x69;t&#x3d;&#49;&#48;&#48;&#48;&#x30;&amp;&#111;&#102;f&#x73;&#x65;&#x74;=&#x30;&#38;&#97;n&#x6f;&#110;&#61;&#102;&#x61;&#x6c;s&#x65;&#x26;&#x61;p&#x70;&#95;&#x6e;&#x61;&#109;e&#x3d;&#84;&#101;&#x61;&#116;&#65;p&#x70;&#x26;&#105;mp&#108;e&#109;&#x65;n&#x74;&#x65;&#x64;&#95;&#x69;&#110;&#x5f;&#118;&#101;&#x72;&#x73;&#x69;&#111;&#110;=&#x76;&#50;&#x2e;&#x31;&#x2e;&#48;&#x26;&#x76;e&#114;&#x62;&#x3d;P&#x4f;&#x53;&#x54;&amp;&#x75;&#x73;&#x65;&#x72;&#95;&#105;&#x64;=&#x63;&#55;&#x62;&#54;&#x63;&#x62;4&#x37;&#x2d;&#99;&#x62;&#x39;&#54;&#45;&#52;&#52;&#x34;&#49;&#x2d;&#x38;&#56;&#48;&#49;&#x2d;&#51;5&#98;&#x35;&#55;&#52;&#53;&#54;&#55;&#x35;&#51;&#x61;&#x26;&#x75;&#x73;&#101;&#x72;&#95;&#x6e;&#x61;&#109;&#x65;=su&#x73;&#x61;&#x6e;&#46;&#117;&#107;&#x2e;&#50;&#57;&#x40;&#x65;&#x78;a&#x6d;&#x70;&#x6c;&#101;&#46;&#99;&#x6f;&#x6d;</a>&amp;consumer_id=78</p><p>Other filters:</p><p>7 consumer_id  (if null ignore)</p><p>8 user_id (if null ignore)</p><p>9 anon (if null ignore) only support two value : true (return where user_id is null.) or false (return where user_id is not null.)</p><p>10 url (if null ignore), note: can not contain '&amp;'.</p><p>11 app_name (if null ignore)</p><p>12 implemented_by_partial_function (if null ignore),</p><p>13 implemented_in_version (if null ignore)</p><p>14 verb (if null ignore)</p><p>15 correlation_id (if null ignore)</p><p>16 duration (if null ignore) non digit chars will be silently omitted</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#app_name\"><strong>app_name</strong></a>: appNameBank</p><p><a href=\"/glossary#\"><strong>consumer_id</strong></a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#\"><strong>correlation_id</strong></a>: 1flssoftxq0cr1nssr68u0mioj</p><p><a href=\"/glossary#\"><strong>date</strong></a>: 2020-01-27</p><p><a href=\"/glossary#developer_email\"><strong>developer_email</strong></a>:</p><p><a href=\"/glossary#duration\"><strong>duration</strong></a>: 5.123</p><p><a href=\"/glossary#implemented_by_partial_function\"><strong>implemented_by_partial_function</strong></a>:</p><p><a href=\"/glossary#implemented_in_version\"><strong>implemented_in_version</strong></a>:</p><p><a href=\"/glossary#metrics\"><strong>metrics</strong></a>:</p><p><a href=\"/glossary#\"><strong>response_body</strong></a>: response_body</p><p><a href=\"/glossary#\"><strong>source_ip</strong></a>: source_ip</p><p><a href=\"/glossary#\"><strong>target_ip</strong></a>: target_ip</p><p><a href=\"/glossary#\"><strong>url</strong></a>: <a href=\"http://www.example.com/id-docs/123/image.png\">http://www.example.com/id-docs/123/image.png</a></p><p><a href=\"/glossary#\"><strong>user_id</strong></a>: 9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1</p><p><a href=\"/glossary#\"><strong>user_name</strong></a>: felixsmith</p><p><a href=\"/glossary#verb\"><strong>verb</strong></a>:</p>",
+    "operationId": "OBPv5.1.0-getMetrics",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/MetricsJsonV510"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

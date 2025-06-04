@@ -1,0 +1,11 @@
+{
+  "required": [
+    "success"
+  ],
+  "properties": {
+    "success": {
+      "type": "string",
+      "example": "Success"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "get": {
+    "tags": [
+      "Consumer"
+    ],
+    "summary": "Get Consumers (logged in User)",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get the Consumers for logged in User.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#app_name\"><strong>app_name</strong></a>: appNameBank</p><p><a href=\"/glossary#app_type\"><strong>app_type</strong></a>: Web</p><p><a href=\"/glossary#\"><strong>consumer_id</strong></a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#consumers\"><strong>consumers</strong></a>:</p><p><a href=\"/glossary#created\"><strong>created</strong></a>:</p><p><a href=\"/glossary#created_by_user\"><strong>created_by_user</strong></a>:</p><p><a href=\"/glossary#description\"><strong>description</strong></a>: Description of the object. Maximum length is 2000. It can be any characters here.</p><p><a href=\"/glossary#developer_email\"><strong>developer_email</strong></a>:</p><p><a href=\"/glossary#\"><strong>email</strong></a>: <a href=\"ma&#x69;l&#116;&#111;&#58;&#102;&#101;l&#x69;x&#x73;m&#x69;&#x74;&#104;&#64;&#101;&#x78;&#x61;&#109;&#112;&#108;&#101;&#46;&#99;&#x6f;&#109;\">&#102;&#101;&#108;&#x69;&#120;sm&#x69;t&#104;&#64;&#x65;&#x78;am&#112;&#x6c;e.c&#x6f;&#x6d;</a></p><p><a href=\"/glossary#enabled\"><strong>enabled</strong></a>: false</p><p><a href=\"/glossary#provider\"><strong>provider</strong></a>: ETHEREUM</p><p><a href=\"/glossary#provider_id\"><strong>provider_id</strong></a>:</p><p><a href=\"/glossary#redirect_url\"><strong>redirect_url</strong></a>: <a href=\"https://apisandbox.openbankproject.com\">https://apisandbox.openbankproject.com</a></p><p><a href=\"/glossary#\"><strong>user_id</strong></a>: 9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1</p><p><a href=\"/glossary#\"><strong>username</strong></a>: felixsmith</p>",
+    "operationId": "OBPv3.1.0-getConsumersForCurrentUser",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/ConsumersJsonV310"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

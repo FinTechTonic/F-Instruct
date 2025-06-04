@@ -1,0 +1,10 @@
+{
+  "required": [
+    "credit_limit"
+  ],
+  "properties": {
+    "credit_limit": {
+      "$ref": "#/definitions/AmountOfMoney"
+    }
+  }
+}

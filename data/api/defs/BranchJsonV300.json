@@ -1,0 +1,70 @@
+{
+  "required": [
+    "name",
+    "phone_number",
+    "location",
+    "branch_type",
+    "branch_routing",
+    "drive_up",
+    "more_info",
+    "bank_id",
+    "id",
+    "meta",
+    "lobby",
+    "accessibleFeatures",
+    "address",
+    "is_accessible"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "Branch by the Lake"
+    },
+    "phone_number": {
+      "type": "string",
+      "example": "+381631954907"
+    },
+    "location": {
+      "$ref": "#/definitions/LocationJsonV140"
+    },
+    "branch_type": {
+      "type": "string",
+      "example": "Full service store"
+    },
+    "branch_routing": {
+      "$ref": "#/definitions/BranchRoutingJsonV141"
+    },
+    "drive_up": {
+      "$ref": "#/definitions/DriveUpJsonV330"
+    },
+    "more_info": {
+      "type": "string",
+      "example": "short walk to the lake from here"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "bank-id-123"
+    },
+    "id": {
+      "type": "string",
+      "example": "branch-id-123"
+    },
+    "meta": {
+      "$ref": "#/definitions/MetaJsonV140"
+    },
+    "lobby": {
+      "$ref": "#/definitions/LobbyJsonV330"
+    },
+    "accessibleFeatures": {
+      "type": "string",
+      "example": "wheelchair, atm usuable by the visually impaired"
+    },
+    "address": {
+      "$ref": "#/definitions/AddressJsonV300"
+    },
+    "is_accessible": {
+      "type": "string",
+      "example": "true"
+    }
+  }
+}

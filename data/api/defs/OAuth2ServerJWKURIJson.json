@@ -1,0 +1,11 @@
+{
+  "required": [
+    "jwks_uri"
+  ],
+  "properties": {
+    "jwks_uri": {
+      "type": "string",
+      "example": "https://www.googleapis.com/oauth2/v3/certs"
+    }
+  }
+}

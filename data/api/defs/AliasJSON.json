@@ -1,0 +1,11 @@
+{
+  "required": [
+    "alias"
+  ],
+  "properties": {
+    "alias": {
+      "type": "string",
+      "example": "String"
+    }
+  }
+}

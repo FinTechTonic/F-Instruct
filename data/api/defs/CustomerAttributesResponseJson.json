@@ -1,0 +1,13 @@
+{
+  "required": [
+    "customer_attributes"
+  ],
+  "properties": {
+    "customer_attributes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/CustomerAttributeResponseJsonV300"
+      }
+    }
+  }
+}

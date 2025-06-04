@@ -1,0 +1,13 @@
+{
+  "required": [
+    "top_consumers"
+  ],
+  "properties": {
+    "top_consumers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/TopConsumerJson"
+      }
+    }
+  }
+}

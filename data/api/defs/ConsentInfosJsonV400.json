@@ -1,0 +1,13 @@
+{
+  "required": [
+    "consents"
+  ],
+  "properties": {
+    "consents": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ConsentInfoJsonV400"
+      }
+    }
+  }
+}

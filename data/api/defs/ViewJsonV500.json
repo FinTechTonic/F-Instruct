@@ -1,0 +1,433 @@
+{
+  "required": [
+    "can_see_transaction_start_date",
+    "can_add_url",
+    "can_add_where_tag",
+    "can_see_transaction_this_bank_account",
+    "can_grant_access_to_views",
+    "can_see_bank_account_owners",
+    "can_see_bank_routing_address",
+    "can_see_private_alias",
+    "can_edit_owner_comment",
+    "is_system",
+    "can_see_other_account_national_identifier",
+    "can_see_bank_routing_scheme",
+    "can_see_public_alias",
+    "can_see_physical_location",
+    "can_see_owner_comment",
+    "can_see_bank_account_iban",
+    "can_see_corporate_location",
+    "can_see_bank_account_number",
+    "can_see_other_account_bank_name",
+    "description",
+    "can_see_bank_account_routing_scheme",
+    "can_see_transaction_other_bank_account",
+    "can_delete_corporate_location",
+    "can_see_comments",
+    "can_see_bank_account_bank_name",
+    "can_add_more_info",
+    "can_create_direct_debit",
+    "can_see_other_account_number",
+    "can_see_other_account_swift_bic",
+    "can_add_open_corporates_url",
+    "can_see_other_account_kind",
+    "can_add_transaction_request_to_own_account",
+    "can_delete_physical_location",
+    "can_see_bank_account_label",
+    "can_see_transaction_currency",
+    "is_public",
+    "can_see_transaction_finish_date",
+    "can_see_bank_account_routing_address",
+    "can_add_tag",
+    "can_see_images",
+    "can_query_available_funds",
+    "can_see_bank_account_credit_limit",
+    "can_see_bank_account_currency",
+    "hide_metadata_if_alias_used",
+    "can_delete_where_tag",
+    "alias",
+    "can_add_image_url",
+    "can_add_comment",
+    "can_see_image_url",
+    "id",
+    "can_create_standing_order",
+    "can_see_bank_account_national_identifier",
+    "can_add_counterparty",
+    "can_add_transaction_request_to_any_account",
+    "can_revoke_access_to_views",
+    "can_see_tags",
+    "can_see_open_corporates_url",
+    "short_name",
+    "can_delete_tag",
+    "can_see_other_account_routing_scheme",
+    "can_see_more_info",
+    "can_see_transaction_metadata",
+    "can_delete_comment",
+    "can_see_where_tag",
+    "can_add_private_alias",
+    "can_add_public_alias",
+    "can_see_bank_account_swift_bic",
+    "can_add_image",
+    "can_see_transaction_type",
+    "can_see_other_account_routing_address",
+    "can_see_other_account_iban",
+    "can_add_physical_location",
+    "can_add_corporate_location",
+    "can_delete_image",
+    "can_see_url",
+    "can_see_bank_account_balance",
+    "can_see_other_bank_routing_address",
+    "can_see_transaction_balance",
+    "metadata_view",
+    "can_see_transaction_amount",
+    "can_see_other_account_metadata",
+    "can_see_bank_account_type",
+    "can_see_other_bank_routing_scheme",
+    "can_see_transaction_description"
+  ],
+  "properties": {
+    "can_see_transaction_start_date": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_add_url": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_add_where_tag": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_transaction_this_bank_account": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_grant_access_to_views": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "can_see_bank_account_owners": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_bank_routing_address": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_private_alias": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_edit_owner_comment": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "is_system": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_other_account_national_identifier": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_bank_routing_scheme": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_public_alias": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_physical_location": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_owner_comment": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_bank_account_iban": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_corporate_location": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_bank_account_number": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_other_account_bank_name": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "description": {
+      "type": "string",
+      "example": "description"
+    },
+    "can_see_bank_account_routing_scheme": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_transaction_other_bank_account": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_delete_corporate_location": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_comments": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_bank_account_bank_name": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_add_more_info": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_create_direct_debit": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_other_account_number": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_other_account_swift_bic": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_add_open_corporates_url": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_other_account_kind": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_add_transaction_request_to_own_account": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_delete_physical_location": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_bank_account_label": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_transaction_currency": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "is_public": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_transaction_finish_date": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_bank_account_routing_address": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_add_tag": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_images": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_query_available_funds": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_bank_account_credit_limit": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_bank_account_currency": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "hide_metadata_if_alias_used": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_delete_where_tag": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "alias": {
+      "type": "string",
+      "example": "No"
+    },
+    "can_add_image_url": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_add_comment": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_image_url": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "id": {
+      "type": "string",
+      "example": "1234"
+    },
+    "can_create_standing_order": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_bank_account_national_identifier": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_add_counterparty": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_add_transaction_request_to_any_account": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_revoke_access_to_views": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "can_see_tags": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_open_corporates_url": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "short_name": {
+      "type": "string",
+      "example": "short_name"
+    },
+    "can_delete_tag": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_other_account_routing_scheme": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_more_info": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_transaction_metadata": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_delete_comment": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_where_tag": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_add_private_alias": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "is_firehose": {
+      "type": "boolean"
+    },
+    "can_add_public_alias": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_bank_account_swift_bic": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_add_image": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_transaction_type": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_other_account_routing_address": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_other_account_iban": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_add_physical_location": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_add_corporate_location": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_delete_image": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_url": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_bank_account_balance": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_other_bank_routing_address": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_transaction_balance": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "metadata_view": {
+      "type": "string",
+      "example": "owner"
+    },
+    "can_see_transaction_amount": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_other_account_metadata": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_bank_account_type": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_other_bank_routing_scheme": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_see_transaction_description": {
+      "type": "boolean",
+      "example": "true"
+    }
+  }
+}

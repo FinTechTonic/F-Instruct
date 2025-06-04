@@ -1,0 +1,55 @@
+{
+  "required": [
+    "bank_routings",
+    "city",
+    "postcode",
+    "branch",
+    "country",
+    "attributes",
+    "bank",
+    "address",
+    "phone"
+  ],
+  "properties": {
+    "bank_routings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/BankRoutingJsonV121"
+      }
+    },
+    "city": {
+      "type": "string",
+      "example": "Frankfurt am Main"
+    },
+    "postcode": {
+      "type": "string",
+      "example": "60311"
+    },
+    "branch": {
+      "type": "string",
+      "example": ""
+    },
+    "country": {
+      "type": "string",
+      "example": "Germany"
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AttributeJsonV400"
+      }
+    },
+    "bank": {
+      "type": "string",
+      "example": "Societe Generale"
+    },
+    "address": {
+      "type": "string",
+      "example": "Neue mainzer strasse 46-50"
+    },
+    "phone": {
+      "type": "string",
+      "example": ""
+    }
+  }
+}

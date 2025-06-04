@@ -1,0 +1,18 @@
+{
+  "required": [
+    "parent_product_code",
+    "children_product_codes"
+  ],
+  "properties": {
+    "parent_product_code": {
+      "type": "string",
+      "example": "A"
+    },
+    "children_product_codes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

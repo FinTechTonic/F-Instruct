@@ -1,0 +1,33 @@
+{
+  "required": [
+    "date_activated",
+    "customer_number",
+    "date_added",
+    "type",
+    "handle"
+  ],
+  "properties": {
+    "date_activated": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "customer_number": {
+      "type": "string",
+      "example": "5987953"
+    },
+    "date_added": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "type": {
+      "type": "string",
+      "example": "PlaceholderString"
+    },
+    "handle": {
+      "type": "string",
+      "example": "PlaceholderString"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "required": [
+    "customer_number",
+    "ok",
+    "date"
+  ],
+  "properties": {
+    "customer_number": {
+      "type": "string",
+      "example": "5987953"
+    },
+    "ok": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    }
+  }
+}

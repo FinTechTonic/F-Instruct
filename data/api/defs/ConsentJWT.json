@@ -1,0 +1,81 @@
+{
+  "required": [
+    "nbf",
+    "request_headers",
+    "jti",
+    "exp",
+    "createdByUserId",
+    "views",
+    "entitlements",
+    "iat",
+    "sub",
+    "aud",
+    "iss"
+  ],
+  "properties": {
+    "nbf": {
+      "type": "integer",
+      "format": "int64",
+      "example": "60"
+    },
+    "name": {
+      "type": "string",
+      "example": "ACCOUNT_MANAGEMENT_FEE"
+    },
+    "email": {
+      "type": "string",
+      "example": "felixsmith@example.com"
+    },
+    "request_headers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/HTTPParam"
+      }
+    },
+    "jti": {
+      "type": "string",
+      "example": "String"
+    },
+    "exp": {
+      "type": "integer",
+      "format": "int64",
+      "example": "60"
+    },
+    "createdByUserId": {
+      "type": "string",
+      "example": "9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+    },
+    "views": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ConsentView"
+      }
+    },
+    "entitlements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Role"
+      }
+    },
+    "iat": {
+      "type": "integer",
+      "format": "int64",
+      "example": "60"
+    },
+    "sub": {
+      "type": "string",
+      "example": "felixsmith"
+    },
+    "aud": {
+      "type": "string",
+      "example": "String"
+    },
+    "iss": {
+      "type": "string",
+      "example": "String"
+    },
+    "access": {
+      "$ref": "#/definitions/ConsentAccessJson"
+    }
+  }
+}

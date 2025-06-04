@@ -1,0 +1,21 @@
+{
+  "required": [
+    "agent_id",
+    "legal_name",
+    "agent_number"
+  ],
+  "properties": {
+    "agent_id": {
+      "type": "string",
+      "example": "7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    },
+    "legal_name": {
+      "type": "string",
+      "example": "Eveline Tripman"
+    },
+    "agent_number": {
+      "type": "string",
+      "example": "5987953"
+    }
+  }
+}

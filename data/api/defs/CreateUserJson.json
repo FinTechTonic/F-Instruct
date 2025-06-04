@@ -1,0 +1,31 @@
+{
+  "required": [
+    "first_name",
+    "email",
+    "username",
+    "last_name",
+    "password"
+  ],
+  "properties": {
+    "first_name": {
+      "type": "string",
+      "example": "Simon"
+    },
+    "email": {
+      "type": "string",
+      "example": "felixsmith@example.com"
+    },
+    "username": {
+      "type": "string",
+      "example": "felixsmith"
+    },
+    "last_name": {
+      "type": "string",
+      "example": "Redfern"
+    },
+    "password": {
+      "type": "string",
+      "example": "String"
+    }
+  }
+}

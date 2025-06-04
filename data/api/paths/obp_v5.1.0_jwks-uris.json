@@ -1,0 +1,31 @@
+{
+  "get": {
+    "tags": [
+      "API"
+    ],
+    "summary": "Get JSON Web Key (JWK) URIs",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get the OAuth2 server's public JSON Web Key (JWK) URIs.<br />It is required by client applications to validate ID tokens, self-contained access tokens and other issued objects.</p><p>User Authentication is Optional. The User need not be logged in.</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#jwks_uri\"><strong>jwks_uri</strong></a>:</p><p><a href=\"/glossary#jwks_uris\"><strong>jwks_uris</strong></a>:</p>",
+    "operationId": "OBPv3.1.0-getOAuth2ServerJWKsURIs",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/OAuth2ServerJwksUrisJson"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUnknownError"
+        }
+      }
+    }
+  }
+}

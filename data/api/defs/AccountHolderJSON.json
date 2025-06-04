@@ -1,0 +1,16 @@
+{
+  "required": [
+    "name",
+    "is_alias"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "OBP"
+    },
+    "is_alias": {
+      "type": "boolean",
+      "example": "true"
+    }
+  }
+}

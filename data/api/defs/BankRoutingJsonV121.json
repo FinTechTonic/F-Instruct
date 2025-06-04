@@ -1,0 +1,16 @@
+{
+  "required": [
+    "scheme",
+    "address"
+  ],
+  "properties": {
+    "scheme": {
+      "type": "string",
+      "example": "OBP"
+    },
+    "address": {
+      "type": "string",
+      "example": "gh.29.uk"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "get": {
+    "tags": [
+      "Product"
+    ],
+    "summary": "Get Product Tree",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Returns information about a particular financial product specified by BANK_ID and PRODUCT_CODE<br />and it's parent product(s) recursively as specified by parent_product_code.</p><p>Each product includes the following information.</p><ul><li>Name</li><li>Code</li><li>Parent Product Code</li><li>Category</li><li>Family</li><li>Super Family</li><li>More info URL</li><li>Description</li><li>Terms and Conditions</li><li>License: The licence under which this product data is released. Licence can be an Open Data licence such as Open Data Commons Public Domain Dedication and License (PDDL) or Copyright etc.</li></ul><p>User Authentication is Optional. The User need not be logged in.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#product_code\">PRODUCT_CODE</a>: 1234BW</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#category\"><strong>category</strong></a>:</p><p><a href=\"/glossary#code\"><strong>code</strong></a>: 125</p><p><a href=\"/glossary#description\"><strong>description</strong></a>: Description of the object. Maximum length is 2000. It can be any characters here.</p><p><a href=\"/glossary#details\"><strong>details</strong></a>:</p><p><a href=\"/glossary#family\"><strong>family</strong></a>:</p><p><a href=\"/glossary#id\"><strong>id</strong></a>: d8839721-ad8f-45dd-9f78-2080414b93f9</p><p><a href=\"/glossary#license\"><strong>license</strong></a>:</p><p><a href=\"/glossary#meta\"><strong>meta</strong></a>:</p><p><a href=\"/glossary#more_info_url\"><strong>more_info_url</strong></a>: <a href=\"http://www.example.com/abc\">www.example.com/abc</a></p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#super_family\"><strong>super_family</strong></a>:</p><p><a href=\"/glossary#parent_product\">parent_product</a>:</p>",
+    "operationId": "OBPv3.1.0-getProductTree",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "PRODUCT_CODE",
+        "description": "the product code",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/ProductTreeJsonV310"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorProductNotFoundByProductCode"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "required": [
+    "bank_routings",
+    "website",
+    "full_name",
+    "logo",
+    "id",
+    "short_name"
+  ],
+  "properties": {
+    "bank_routings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/BankRoutingJsonV121"
+      }
+    },
+    "website": {
+      "type": "string",
+      "example": "www.openbankproject.com"
+    },
+    "full_name": {
+      "type": "string",
+      "example": "full_name"
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/BankAttributeBankResponseJsonV400"
+      }
+    },
+    "logo": {
+      "type": "string",
+      "example": "logo"
+    },
+    "id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "short_name": {
+      "type": "string",
+      "example": "short_name "
+    }
+  }
+}

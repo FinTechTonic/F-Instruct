@@ -1,0 +1,31 @@
+{
+  "get": {
+    "tags": [
+      "User"
+    ],
+    "summary": "Get My Spaces",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get My Spaces.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>bank_ids</strong></a>: bank_ids</p>",
+    "operationId": "OBPv4.0.0-getMySpaces",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/MySpaces"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

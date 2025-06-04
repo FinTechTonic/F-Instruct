@@ -1,0 +1,23 @@
+{
+  "required": [
+    "username",
+    "bad_attempts_since_last_success_or_reset",
+    "last_failure_date"
+  ],
+  "properties": {
+    "username": {
+      "type": "string",
+      "example": "felixsmith"
+    },
+    "bad_attempts_since_last_success_or_reset": {
+      "type": "integer",
+      "format": "int32",
+      "example": "0"
+    },
+    "last_failure_date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T01:01:01Z"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "required": [
+    "name",
+    "is_active",
+    "description",
+    "alias",
+    "can_be_seen_on_views",
+    "category",
+    "type"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "SPECIAL_TAX_NUMBER"
+    },
+    "is_active": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "description": {
+      "type": "string",
+      "example": "description"
+    },
+    "alias": {
+      "type": "string",
+      "example": "STRING"
+    },
+    "can_be_seen_on_views": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "category": {
+      "type": "string",
+      "example": "Card"
+    },
+    "type": {
+      "type": "string",
+      "example": "STRING"
+    }
+  }
+}

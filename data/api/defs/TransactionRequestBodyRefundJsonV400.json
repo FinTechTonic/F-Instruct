@@ -1,0 +1,25 @@
+{
+  "required": [
+    "description",
+    "refund",
+    "value"
+  ],
+  "properties": {
+    "description": {
+      "type": "string",
+      "example": "A refund description. "
+    },
+    "refund": {
+      "$ref": "#/definitions/RefundJson"
+    },
+    "to": {
+      "$ref": "#/definitions/TransactionRequestRefundTo"
+    },
+    "from": {
+      "$ref": "#/definitions/TransactionRequestRefundFrom"
+    },
+    "value": {
+      "$ref": "#/definitions/AmountOfMoneyJsonV121"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "required": [
+    "description",
+    "to",
+    "charge_policy",
+    "value"
+  ],
+  "properties": {
+    "description": {
+      "type": "string",
+      "example": "This is a SEPA Transaction Request"
+    },
+    "future_date": {
+      "type": "string",
+      "example": "20200127"
+    },
+    "to": {
+      "$ref": "#/definitions/IbanJson"
+    },
+    "charge_policy": {
+      "type": "string",
+      "example": "SHARED"
+    },
+    "value": {
+      "$ref": "#/definitions/AmountOfMoneyJsonV121"
+    },
+    "reasons": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/TransactionRequestReasonJsonV400"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "required": [
+    "redirect_url"
+  ],
+  "properties": {
+    "redirect_url": {
+      "type": "string",
+      "example": "http://localhost:8888"
+    }
+  }
+}

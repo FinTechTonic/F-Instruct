@@ -1,0 +1,39 @@
+{
+  "required": [
+    "description",
+    "minLength",
+    "type",
+    "example",
+    "maxLength"
+  ],
+  "properties": {
+    "description": {
+      "type": "string",
+      "example": "description of **name** field, can be markdown text."
+    },
+    "minLength": {
+      "type": "integer",
+      "format": "int32",
+      "example": "3"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "number",
+        "integer",
+        "boolean",
+        "string",
+        "DATE_WITH_DAY"
+      ]
+    },
+    "example": {
+      "type": "string",
+      "example": "James Brown"
+    },
+    "maxLength": {
+      "type": "integer",
+      "format": "int32",
+      "example": "20"
+    }
+  }
+}

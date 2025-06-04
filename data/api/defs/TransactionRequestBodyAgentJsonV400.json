@@ -1,0 +1,28 @@
+{
+  "required": [
+    "description",
+    "to",
+    "charge_policy",
+    "value"
+  ],
+  "properties": {
+    "description": {
+      "type": "string",
+      "example": "Description of the object. Maximum length is 2000. It can be any characters here."
+    },
+    "future_date": {
+      "type": "string",
+      "example": "20200127"
+    },
+    "to": {
+      "$ref": "#/definitions/AgentCashWithdrawalJson"
+    },
+    "charge_policy": {
+      "type": "string",
+      "example": "SHARED"
+    },
+    "value": {
+      "$ref": "#/definitions/AmountOfMoneyJsonV121"
+    }
+  }
+}

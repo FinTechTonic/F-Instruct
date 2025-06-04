@@ -1,0 +1,15 @@
+{
+  "required": [
+    "contact_details",
+    "status"
+  ],
+  "properties": {
+    "contact_details": {
+      "$ref": "#/definitions/ContactDetailsJson"
+    },
+    "status": {
+      "type": "string",
+      "example": "String, eg: Good"
+    }
+  }
+}

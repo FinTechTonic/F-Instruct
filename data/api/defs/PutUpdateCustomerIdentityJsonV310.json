@@ -1,0 +1,27 @@
+{
+  "required": [
+    "legal_name",
+    "date_of_birth",
+    "title",
+    "name_suffix"
+  ],
+  "properties": {
+    "legal_name": {
+      "type": "string",
+      "example": "Eveline Tripman"
+    },
+    "date_of_birth": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "title": {
+      "type": "string",
+      "example": "Dr."
+    },
+    "name_suffix": {
+      "type": "string",
+      "example": "Sr"
+    }
+  }
+}

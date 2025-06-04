@@ -1,0 +1,13 @@
+{
+  "required": [
+    "meetings"
+  ],
+  "properties": {
+    "meetings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/MeetingJsonV310"
+      }
+    }
+  }
+}

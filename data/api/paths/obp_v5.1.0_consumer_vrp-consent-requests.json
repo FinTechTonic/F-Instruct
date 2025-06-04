@@ -1,0 +1,43 @@
+{
+  "post": {
+    "tags": [
+      "Consent",
+      "VRP",
+      "Transaction-Request"
+    ],
+    "summary": "Create Consent Request VRP",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>This endpoint is used to begin the process of creating a consent that may be used for Variable Recurring Payments (VRPs).</p><p>VRPs are useful in situations when a beneficiary needs to be paid different amounts on a regular basis.</p><p>Once granted, the consent allows its holder to initiate multiple Transaction Requests to the Counterparty defined in this endpoint as long as the<br />Counterparty Limits linked to this particular consent are respected.</p><p>Client, Consumer or Application Authentication is mandatory for this endpoint.</p><p>i.e. the caller of this endpoint is the API Client, Consumer or Application rather than a specific User.</p><p>At the end of the process the following objects are created in OBP or connected backend systems:<br />- An automatically generated View which controls access.<br />- A Counterparty that is the Beneficiary of the Variable Recurring Payments. The Counterparty specifies the Bank Account number or other routing address.<br />- Limits for the Counterparty which constrain the amount of money that can be sent to it in various periods (yearly, monthly, weekly).</p><p>The Account holder may modify the Counterparty or Limits e.g. to increase or decrease the maximum possible payment amounts or the frequencey of the payments.</p><p>In the case of a public client we use the client_id and private key to obtain an access token, otherwise we use the client_id and client_secret.<br />The obtained access token is used in the HTTP Authorization header of the request as follows:</p><p>Example:<br />Authorization: Bearer eXtneO-THbQtn3zvK_kQtXXfvOZyZFdBCItlPDbR2Bk.dOWqtXCtFX-tqGTVR0YrIjvAolPIVg7GZ-jz83y6nA0</p><p>After successfully creating the VRP consent request, you need to call the <code>Create Consent By CONSENT_REQUEST_ID</code> endpoint to finalize the consent using the CONSENT_REQUEST_ID returned by this endpoint.</p><p>Application Access is Required. The Application must be authenticated.</p><p>User Authentication is Optional. The User need not be logged in.</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#account_routing\"><strong>account_routing</strong></a>:</p><p><a href=\"/glossary#address\"><strong>address</strong></a>:</p><p><a href=\"/glossary#bank_routing\"><strong>bank_routing</strong></a>:</p><p><a href=\"/glossary#branch_routing\"><strong>branch_routing</strong></a>:</p><p><a href=\"/glossary#\"><strong>counterparty_name</strong></a>: John Smith Ltd.</p><p><a href=\"/glossary#\"><strong>currency</strong></a>: EUR</p><p><a href=\"/glossary#\"><strong>from_account</strong></a>: from_account</p><p><a href=\"/glossary#\"><strong>limit</strong></a>: 100</p><p><a href=\"/glossary#max_monthly_amount\"><strong>max_monthly_amount</strong></a>: 10000.11</p><p><a href=\"/glossary#max_number_of_monthly_transactions\"><strong>max_number_of_monthly_transactions</strong></a>: 10</p><p><a href=\"/glossary#max_number_of_transactions\"><strong>max_number_of_transactions</strong></a>: 100</p><p><a href=\"/glossary#max_number_of_yearly_transactions\"><strong>max_number_of_yearly_transactions</strong></a>: 100</p><p><a href=\"/glossary#max_single_amount\"><strong>max_single_amount</strong></a>: 1000.11</p><p><a href=\"/glossary#max_total_amount\"><strong>max_total_amount</strong></a>: 10000.12</p><p><a href=\"/glossary#max_yearly_amount\"><strong>max_yearly_amount</strong></a>: 12000.11</p><p><a href=\"/glossary#scheme\"><strong>scheme</strong></a>: OBP</p><p><a href=\"/glossary#\"><strong>to_account</strong></a>: to_account</p><p><a href=\"/glossary#\">email</a>: <a href=\"&#x6d;&#97;&#105;&#108;&#x74;o&#58;fe&#x6c;&#105;&#x78;&#115;&#x6d;&#105;&#x74;h&#x40;&#101;&#x78;&#97;&#109;&#112;&#x6c;&#x65;&#x2e;&#x63;&#111;m\">fe&#108;&#105;&#120;sm&#105;&#116;&#x68;@&#101;x&#x61;&#x6d;&#x70;&#x6c;&#101;.&#99;&#111;&#x6d;</a></p><p><a href=\"/glossary#phone_number\">phone_number</a>:</p><p><a href=\"/glossary#time_to_live\">time_to_live</a>:</p><p><a href=\"/glossary#valid_from\">valid_from</a>: 2020-01-27</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#consent_request_id\"><strong>consent_request_id</strong></a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#\"><strong>consumer_id</strong></a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#payload\"><strong>payload</strong></a>: payload</p>",
+    "operationId": "OBPv5.1.0-createVRPConsentRequest",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "PostVRPConsentRequestJsonV510 object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/PostVRPConsentRequestJsonV510"
+        }
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/ConsentRequestResponseJson"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorInvalidJsonFormat"
+        }
+      }
+    }
+  }
+}

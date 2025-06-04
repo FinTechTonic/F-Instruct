@@ -1,0 +1,11 @@
+{
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "account_number": {
+      "type": "string",
+      "example": "123456-AVB"
+    }
+  }
+}

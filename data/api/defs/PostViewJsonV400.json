@@ -1,0 +1,16 @@
+{
+  "required": [
+    "view_id",
+    "is_system"
+  ],
+  "properties": {
+    "view_id": {
+      "type": "string",
+      "example": "owner"
+    },
+    "is_system": {
+      "type": "boolean",
+      "example": "true"
+    }
+  }
+}

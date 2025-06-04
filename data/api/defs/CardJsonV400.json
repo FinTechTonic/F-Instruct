@@ -1,0 +1,41 @@
+{
+  "required": [
+    "expiry_year",
+    "cvv",
+    "expiry_month",
+    "brand",
+    "card_number",
+    "name_on_card",
+    "card_type"
+  ],
+  "properties": {
+    "expiry_year": {
+      "type": "string",
+      "example": "2023"
+    },
+    "cvv": {
+      "type": "string",
+      "example": "123"
+    },
+    "expiry_month": {
+      "type": "string",
+      "example": "01"
+    },
+    "brand": {
+      "type": "string",
+      "example": "Visa"
+    },
+    "card_number": {
+      "type": "string",
+      "example": "364435172576215"
+    },
+    "name_on_card": {
+      "type": "string",
+      "example": "SusanSmith"
+    },
+    "card_type": {
+      "type": "string",
+      "example": "Credit"
+    }
+  }
+}

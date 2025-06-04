@@ -1,0 +1,44 @@
+{
+  "required": [
+    "max_total_amount_status",
+    "max_number_of_monthly_transactions_status",
+    "max_monthly_amount_status",
+    "max_yearly_amount_status",
+    "currency_status",
+    "max_number_of_transactions_status",
+    "max_number_of_yearly_transactions_status"
+  ],
+  "properties": {
+    "max_total_amount_status": {
+      "type": "string",
+      "example": "10000.12"
+    },
+    "max_number_of_monthly_transactions_status": {
+      "type": "integer",
+      "format": "int32",
+      "example": "10"
+    },
+    "max_monthly_amount_status": {
+      "type": "string",
+      "example": "1000.11"
+    },
+    "max_yearly_amount_status": {
+      "type": "string",
+      "example": "12000.11"
+    },
+    "currency_status": {
+      "type": "string",
+      "example": "EUR"
+    },
+    "max_number_of_transactions_status": {
+      "type": "integer",
+      "format": "int32",
+      "example": "100"
+    },
+    "max_number_of_yearly_transactions_status": {
+      "type": "integer",
+      "format": "int32",
+      "example": "100"
+    }
+  }
+}

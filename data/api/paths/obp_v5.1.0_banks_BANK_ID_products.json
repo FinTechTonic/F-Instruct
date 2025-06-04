@@ -1,0 +1,39 @@
+{
+  "get": {
+    "tags": [
+      "Product"
+    ],
+    "summary": "Get Products",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Returns information about the financial products offered by a bank specified by BANK_ID including:</p><ul><li>Name</li><li>Code</li><li>Parent Product Code</li><li>More info URL</li><li>Terms And Conditions URL</li><li>Description</li><li>Terms and Conditions</li><li>License the data under this endpoint is released under</li></ul><p>Can filter with attributes name and values.<br />URL params example: /banks/some-bank-id/products?&amp;limit=50&amp;offset=1</p><p>User Authentication is Optional. The User need not be logged in.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#description\"><strong>description</strong></a>: Description of the object. Maximum length is 2000. It can be any characters here.</p><p><a href=\"/glossary#id\"><strong>id</strong></a>: d8839721-ad8f-45dd-9f78-2080414b93f9</p><p><a href=\"/glossary#license\"><strong>license</strong></a>:</p><p><a href=\"/glossary#meta\"><strong>meta</strong></a>:</p><p><a href=\"/glossary#more_info_url\"><strong>more_info_url</strong></a>: <a href=\"http://www.example.com/abc\">www.example.com/abc</a></p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#parent_product_code\"><strong>parent_product_code</strong></a>: 787LOW</p><p><a href=\"/glossary#product_code\"><strong>product_code</strong></a>: 1234BW</p><p><a href=\"/glossary#products\"><strong>products</strong></a>:</p><p><a href=\"/glossary#\"><strong>terms_and_conditions_url</strong></a>: <a href=\"http://www.example.com/xyz\">www.example.com/xyz</a></p><p><a href=\"/glossary#attributes\">attributes</a>: attribute value in form of (name, value)</p><p><a href=\"/glossary#\">fees</a>: fees</p>",
+    "operationId": "OBPv4.0.0-getProducts",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/ProductsJsonV400"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorBankNotFound"
+        }
+      }
+    }
+  }
+}

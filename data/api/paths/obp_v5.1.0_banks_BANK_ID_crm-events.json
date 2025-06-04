@@ -1,0 +1,39 @@
+{
+  "get": {
+    "tags": [
+      "Customer"
+    ],
+    "summary": "Get CRM Events",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#actual_date\"><strong>actual_date</strong></a>: 2020-01-27</p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#category\"><strong>category</strong></a>:</p><p><a href=\"/glossary#channel\"><strong>channel</strong></a>:</p><p><a href=\"/glossary#crm_events\"><strong>crm_events</strong></a>:</p><p><a href=\"/glossary#customer_name\"><strong>customer_name</strong></a>:</p><p><a href=\"/glossary#\"><strong>customer_number</strong></a>: 5987953</p><p><a href=\"/glossary#detail\"><strong>detail</strong></a>:</p><p><a href=\"/glossary#id\"><strong>id</strong></a>: d8839721-ad8f-45dd-9f78-2080414b93f9</p><p><a href=\"/glossary#result\"><strong>result</strong></a>:</p><p><a href=\"/glossary#scheduled_date\"><strong>scheduled_date</strong></a>: 2020-01-27</p>",
+    "operationId": "OBPv1.4.0-getCrmEvents",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/CrmEventsJson"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

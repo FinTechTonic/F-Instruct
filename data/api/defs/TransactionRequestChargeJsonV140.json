@@ -1,0 +1,15 @@
+{
+  "required": [
+    "summary",
+    "value"
+  ],
+  "properties": {
+    "summary": {
+      "type": "string",
+      "example": "The bank fixed charge"
+    },
+    "value": {
+      "$ref": "#/definitions/AmountOfMoneyJsonV121"
+    }
+  }
+}

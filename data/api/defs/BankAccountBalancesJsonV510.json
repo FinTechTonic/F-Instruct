@@ -1,0 +1,13 @@
+{
+  "required": [
+    "balances"
+  ],
+  "properties": {
+    "balances": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/BankAccountBalanceResponseJsonV510"
+      }
+    }
+  }
+}

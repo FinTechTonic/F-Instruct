@@ -1,0 +1,38 @@
+{
+  "required": [
+    "description",
+    "allowed_permissions",
+    "is_public",
+    "hide_metadata_if_alias_used",
+    "which_alias_to_use",
+    "metadata_view"
+  ],
+  "properties": {
+    "description": {
+      "type": "string",
+      "example": "This view is for the owner for the account."
+    },
+    "allowed_permissions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "is_public": {
+      "type": "boolean",
+      "example": "false"
+    },
+    "hide_metadata_if_alias_used": {
+      "type": "boolean",
+      "example": "false"
+    },
+    "which_alias_to_use": {
+      "type": "string",
+      "example": "public"
+    },
+    "metadata_view": {
+      "type": "string",
+      "example": ""
+    }
+  }
+}

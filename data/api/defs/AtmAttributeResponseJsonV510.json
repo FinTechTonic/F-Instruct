@@ -1,0 +1,40 @@
+{
+  "required": [
+    "name",
+    "atm_id",
+    "bank_id",
+    "type",
+    "atm_attribute_id",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "ACCOUNT_MANAGEMENT_FEE"
+    },
+    "is_active": {
+      "type": "boolean",
+      "example": "false"
+    },
+    "atm_id": {
+      "type": "string",
+      "example": "atme-9a0f-4bfa-b30b-9003aa467f51"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "type": {
+      "type": "string",
+      "example": ""
+    },
+    "atm_attribute_id": {
+      "type": "string",
+      "example": "xxaf2a-9a0f-4bfa-b30b-9003aa467f51"
+    },
+    "value": {
+      "type": "string",
+      "example": "5987953"
+    }
+  }
+}

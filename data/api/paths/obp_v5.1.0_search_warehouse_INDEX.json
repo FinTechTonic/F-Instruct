@@ -1,0 +1,48 @@
+{
+  "post": {
+    "tags": [
+      "Data-Warehouse"
+    ],
+    "summary": "Data Warehouse Search",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Search the data warehouse and get row level results.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p>CanSearchWarehouse entitlement is required. You can request the Role below.</p><p>Elastic (search) is used in the background. See links below for syntax.</p><p>Examples of usage:</p><p>POST /search/warehouse/THE_INDEX_YOU_WANT_TO_USE</p><p>POST /search/warehouse/INDEX1,INDEX2</p><p>POST /search/warehouse/ALL</p><p>{ Any valid elasticsearch query DSL in the body }</p><p><a href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html\">Elasticsearch query DSL</a></p><p><a href=\"https://www.elastic.co/guide/en/elasticsearch/reference/6.2/search-request-body.html\">Elastic simple query</a></p><p><a href=\"https://www.elastic.co/guide/en/elasticsearch/reference/6.2/search-aggregations.html\">Elastic aggregations</a></p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#index\">INDEX</a>:</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#match_all\"><strong>match_all</strong></a>:</p><p><a href=\"/glossary#query\"><strong>query</strong></a>:</p><p><a href=\"/glossary#none\">none</a>:</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#none\">none</a>:</p>",
+    "operationId": "OBPv3.0.0-dataWarehouseSearch",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "ElasticSearchJsonV300 object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/ElasticSearchJsonV300"
+        }
+      },
+      {
+        "in": "path",
+        "name": "INDEX",
+        "description": "the elastic search index",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/EmptyElasticSearch"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "required": [
+    "shortCode",
+    "description",
+    "id",
+    "charge",
+    "bankId",
+    "summary"
+  ],
+  "properties": {
+    "shortCode": {
+      "type": "string",
+      "example": "80080"
+    },
+    "description": {
+      "type": "string",
+      "example": "This is the sandbox mode, charging litter money."
+    },
+    "id": {
+      "$ref": "#/definitions/TransactionTypeId"
+    },
+    "charge": {
+      "$ref": "#/definitions/AmountOfMoney"
+    },
+    "bankId": {
+      "$ref": "#/definitions/BankId"
+    },
+    "summary": {
+      "type": "string",
+      "example": "SANDBOX_TAN"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "required": [
+    "number",
+    "customer_number",
+    "issue_date",
+    "type",
+    "issue_place",
+    "expiry_date"
+  ],
+  "properties": {
+    "number": {
+      "type": "string",
+      "example": "12345"
+    },
+    "customer_number": {
+      "type": "string",
+      "example": "5987953"
+    },
+    "issue_date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "type": {
+      "type": "string",
+      "example": "passport"
+    },
+    "issue_place": {
+      "type": "string",
+      "example": "Berlin"
+    },
+    "expiry_date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    }
+  }
+}

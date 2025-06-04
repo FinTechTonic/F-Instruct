@@ -1,0 +1,62 @@
+{
+  "required": [
+    "crm_events",
+    "users",
+    "products",
+    "banks",
+    "branches",
+    "transactions",
+    "accounts",
+    "atms"
+  ],
+  "properties": {
+    "crm_events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/SandboxCrmEventImport"
+      }
+    },
+    "users": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/SandboxUserImport"
+      }
+    },
+    "products": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/SandboxProductImport"
+      }
+    },
+    "banks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/SandboxBankImport"
+      }
+    },
+    "branches": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/SandboxBranchImport"
+      }
+    },
+    "transactions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/SandboxTransactionImport"
+      }
+    },
+    "accounts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/SandboxAccountImport"
+      }
+    },
+    "atms": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/SandboxAtmImport"
+      }
+    }
+  }
+}

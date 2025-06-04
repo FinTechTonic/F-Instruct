@@ -1,0 +1,11 @@
+{
+  "required": [
+    "branch_id"
+  ],
+  "properties": {
+    "branch_id": {
+      "type": "string",
+      "example": "123"
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "required": [
+    "other_account_routing_address",
+    "other_account_routing_scheme",
+    "created_by_user_id",
+    "name",
+    "other_account_secondary_routing_address",
+    "is_beneficiary",
+    "description",
+    "other_branch_routing_address",
+    "bespoke",
+    "other_bank_routing_scheme",
+    "other_branch_routing_scheme",
+    "this_account_id",
+    "this_view_id",
+    "currency",
+    "metadata",
+    "other_bank_routing_address",
+    "this_bank_id",
+    "counterparty_id",
+    "other_account_secondary_routing_scheme"
+  ],
+  "properties": {
+    "other_account_routing_address": {
+      "type": "string",
+      "example": "36f8a9e6-c2b1-407a-8bd0-421b7119307e"
+    },
+    "other_account_routing_scheme": {
+      "type": "string",
+      "example": "OBP"
+    },
+    "created_by_user_id": {
+      "type": "string",
+      "example": "9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+    },
+    "name": {
+      "type": "string",
+      "example": "CounterpartyName"
+    },
+    "other_account_secondary_routing_address": {
+      "type": "string",
+      "example": "DE89370400440532013000"
+    },
+    "is_beneficiary": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "description": {
+      "type": "string",
+      "example": "My landlord"
+    },
+    "other_branch_routing_address": {
+      "type": "string",
+      "example": "12f8a9e6-c2b1-407a-8bd0-421b7119307e"
+    },
+    "bespoke": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/PostCounterpartyBespokeJson"
+      }
+    },
+    "other_bank_routing_scheme": {
+      "type": "string",
+      "example": "OBP"
+    },
+    "other_branch_routing_scheme": {
+      "type": "string",
+      "example": "OBP"
+    },
+    "this_account_id": {
+      "type": "string",
+      "example": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0"
+    },
+    "this_view_id": {
+      "type": "string",
+      "example": "owner"
+    },
+    "currency": {
+      "type": "string",
+      "example": "EUR"
+    },
+    "metadata": {
+      "$ref": "#/definitions/CounterpartyMetadataJson"
+    },
+    "other_bank_routing_address": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "this_bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "counterparty_id": {
+      "type": "string",
+      "example": "9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    },
+    "other_account_secondary_routing_scheme": {
+      "type": "string",
+      "example": "IBAN"
+    }
+  }
+}

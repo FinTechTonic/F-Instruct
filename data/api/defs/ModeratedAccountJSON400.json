@@ -1,0 +1,70 @@
+{
+  "required": [
+    "number",
+    "account_attributes",
+    "views_available",
+    "tags",
+    "account_routings",
+    "label",
+    "owners",
+    "balance",
+    "product_code",
+    "bank_id",
+    "id"
+  ],
+  "properties": {
+    "number": {
+      "type": "string",
+      "example": "123"
+    },
+    "account_attributes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AccountAttributeResponseJson"
+      }
+    },
+    "views_available": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ViewJSONV121"
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AccountTagJSON"
+      }
+    },
+    "account_routings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AccountRoutingJsonV121"
+      }
+    },
+    "label": {
+      "type": "string",
+      "example": "NoneLabel"
+    },
+    "owners": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/UserJSONV121"
+      }
+    },
+    "balance": {
+      "$ref": "#/definitions/AmountOfMoneyJsonV121"
+    },
+    "product_code": {
+      "type": "string",
+      "example": "1234BW"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "id": {
+      "type": "string",
+      "example": "5995d6a2-01b3-423c-a173-5481df49bdaf"
+    }
+  }
+}

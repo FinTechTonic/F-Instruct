@@ -1,0 +1,53 @@
+{
+  "required": [
+    "number",
+    "customer_id",
+    "customer_number",
+    "issue_date",
+    "bank_id",
+    "id",
+    "type",
+    "issue_place",
+    "expiry_date"
+  ],
+  "properties": {
+    "number": {
+      "type": "string",
+      "example": "PlaceholderString"
+    },
+    "customer_id": {
+      "type": "string",
+      "example": "7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    },
+    "customer_number": {
+      "type": "string",
+      "example": "5987953"
+    },
+    "issue_date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "id": {
+      "type": "string",
+      "example": "PlaceholderString"
+    },
+    "type": {
+      "type": "string",
+      "example": "PlaceholderString"
+    },
+    "issue_place": {
+      "type": "string",
+      "example": "PlaceholderString"
+    },
+    "expiry_date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    }
+  }
+}

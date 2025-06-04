@@ -1,0 +1,57 @@
+{
+  "post": {
+    "tags": [
+      "Customer-Message",
+      "Customer",
+      "Person"
+    ],
+    "summary": "Create Customer Message",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Create a message for the customer specified by CUSTOMER_ID</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#Customer.customer_id\">CUSTOMER_ID</a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#from_department\"><strong>from_department</strong></a>: Open Bank</p><p><a href=\"/glossary#from_person\"><strong>from_person</strong></a>: Tom</p><p><a href=\"/glossary#message\"><strong>message</strong></a>: 123456</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#success\"><strong>success</strong></a>:</p>",
+    "operationId": "OBPv1.4.0-addCustomerMessage",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "AddCustomerMessageJson object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/AddCustomerMessageJson"
+        }
+      },
+      {
+        "in": "path",
+        "name": "CUSTOMER_ID",
+        "description": "The customer id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/SuccessMessage"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

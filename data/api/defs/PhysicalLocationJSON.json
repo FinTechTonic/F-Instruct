@@ -1,0 +1,10 @@
+{
+  "required": [
+    "physical_location"
+  ],
+  "properties": {
+    "physical_location": {
+      "$ref": "#/definitions/LocationPlainJSON"
+    }
+  }
+}

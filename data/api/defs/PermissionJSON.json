@@ -1,0 +1,17 @@
+{
+  "required": [
+    "user",
+    "views"
+  ],
+  "properties": {
+    "user": {
+      "$ref": "#/definitions/UserJSONV121"
+    },
+    "views": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ViewJSONV121"
+      }
+    }
+  }
+}

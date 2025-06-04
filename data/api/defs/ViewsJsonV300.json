@@ -1,0 +1,13 @@
+{
+  "required": [
+    "views"
+  ],
+  "properties": {
+    "views": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ViewJsonV300"
+      }
+    }
+  }
+}

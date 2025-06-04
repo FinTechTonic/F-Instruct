@@ -1,0 +1,16 @@
+{
+  "required": [
+    "opening_time",
+    "closing_time"
+  ],
+  "properties": {
+    "opening_time": {
+      "type": "string",
+      "example": "10:00"
+    },
+    "closing_time": {
+      "type": "string",
+      "example": "18:00"
+    }
+  }
+}

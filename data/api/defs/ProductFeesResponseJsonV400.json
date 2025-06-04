@@ -1,0 +1,13 @@
+{
+  "required": [
+    "product_fees"
+  ],
+  "properties": {
+    "product_fees": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ProductFeeResponseJsonV400"
+      }
+    }
+  }
+}

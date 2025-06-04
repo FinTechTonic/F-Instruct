@@ -1,0 +1,18 @@
+{
+  "required": [
+    "require_scopes_for_all_roles",
+    "require_scopes_for_listed_roles"
+  ],
+  "properties": {
+    "require_scopes_for_all_roles": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "require_scopes_for_listed_roles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

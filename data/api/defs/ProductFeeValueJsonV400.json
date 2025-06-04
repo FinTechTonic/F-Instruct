@@ -1,0 +1,27 @@
+{
+  "required": [
+    "currency",
+    "amount",
+    "frequency",
+    "type"
+  ],
+  "properties": {
+    "currency": {
+      "type": "string",
+      "example": "EUR"
+    },
+    "amount": {
+      "type": "string",
+      "format": "double",
+      "example": "10.12"
+    },
+    "frequency": {
+      "type": "string",
+      "example": "DAILY"
+    },
+    "type": {
+      "type": "string",
+      "example": ""
+    }
+  }
+}

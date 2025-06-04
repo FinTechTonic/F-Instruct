@@ -1,0 +1,22 @@
+{
+  "required": [
+    "count",
+    "Implemented_by_partial_function",
+    "implemented_in_version"
+  ],
+  "properties": {
+    "count": {
+      "type": "integer",
+      "format": "int32",
+      "example": "7076"
+    },
+    "Implemented_by_partial_function": {
+      "type": "string",
+      "example": "getBanks"
+    },
+    "implemented_in_version": {
+      "type": "string",
+      "example": "v1.2.1"
+    }
+  }
+}

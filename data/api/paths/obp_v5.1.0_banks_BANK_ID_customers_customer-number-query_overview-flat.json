@@ -1,0 +1,49 @@
+{
+  "post": {
+    "tags": [
+      "Customer",
+      "KYC"
+    ],
+    "summary": "Get Customer Overview Flat",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Gets the Customer Overview Flat specified by customer_number and bank_code.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#\"><strong>customer_number</strong></a>: 5987953</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#account_attribute_id\"><strong>account_attribute_id</strong></a>:</p><p><a href=\"/glossary#account_attributes\"><strong>account_attributes</strong></a>:</p><p><a href=\"/glossary#\"><strong>account_id</strong></a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#account_routings\"><strong>account_routings</strong></a>:</p><p><a href=\"/glossary#accounts\"><strong>accounts</strong></a>:</p><p><a href=\"/glossary#address\"><strong>address</strong></a>:</p><p><a href=\"/glossary#\"><strong>amount</strong></a>: 10.12</p><p><a href=\"/glossary#balance\"><strong>balance</strong></a>: 10</p><p><a href=\"/glossary#\"><strong>bank_id</strong></a>: gh.29.uk</p><p><a href=\"/glossary#\"><strong>branch_id</strong></a>: DERBY6</p><p><a href=\"/glossary#\"><strong>contract_code</strong></a>: contract_code</p><p><a href=\"/glossary#\"><strong>currency</strong></a>: EUR</p><p><a href=\"/glossary#\"><strong>customer_attribute_id</strong></a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#customer_attributes\"><strong>customer_attributes</strong></a>:</p><p><a href=\"/glossary#\"><strong>customer_id</strong></a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#\"><strong>customer_number</strong></a>: 5987953</p><p><a href=\"/glossary#\"><strong>date_of_birth</strong></a>: 2018-03-09</p><p><a href=\"/glossary#\"><strong>email</strong></a>: <a href=\"m&#97;&#105;l&#116;&#111;&#x3a;&#x66;&#101;&#x6c;&#x69;&#120;s&#109;i&#x74;&#x68;&#64;&#101;&#120;&#97;m&#x70;&#108;&#x65;.&#99;&#x6f;&#109;\">&#102;e&#x6c;&#105;&#x78;s&#109;i&#x74;&#x68;@&#101;&#120;&#x61;&#109;&#x70;&#x6c;e&#46;&#99;&#111;&#109;</a></p><p><a href=\"/glossary#\"><strong>label</strong></a>: My Account</p><p><a href=\"/glossary#\"><strong>legal_name</strong></a>: Eveline Tripman</p><p><a href=\"/glossary#mobile_phone_number\"><strong>mobile_phone_number</strong></a>: +49 30 901820</p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#\"><strong>name_suffix</strong></a>: Sr</p><p><a href=\"/glossary#product_code\"><strong>product_code</strong></a>: 1234BW</p><p><a href=\"/glossary#scheme\"><strong>scheme</strong></a>: OBP</p><p><a href=\"/glossary#\"><strong>title</strong></a>: Dr.</p><p><a href=\"/glossary#type\"><strong>type</strong></a>:</p><p><a href=\"/glossary#\"><strong>value</strong></a>: 5987953</p><p><a href=\"/glossary#\">branch_code</a>: branch_code</p><p><a href=\"/glossary#\">cancellation_date</a>: cancellation_date</p><p><a href=\"/glossary#\"><strong>contract_code</strong></a>: contract_code</p><p><a href=\"/glossary#\">contracts</a>: contracts</p><p><a href=\"/glossary#\">form_of_payment</a>: form_of_payment</p><p><a href=\"/glossary#\">instrument_status_code</a>: instrument_status_code</p><p><a href=\"/glossary#\">instrument_status_definition</a>: instrument_status_definition</p><p><a href=\"/glossary#\">interest_amount</a>: interest_amount</p><p><a href=\"/glossary#\">interest_rate</a>: interest_rate</p><p><a href=\"/glossary#\">is_substituted</a>: is_substituted</p><p><a href=\"/glossary#\">issuance_amount</a>: issuance_amount</p><p><a href=\"/glossary#\">maturity_date</a>: maturity_date</p><p><a href=\"/glossary#\">opening_date</a>: opening_date</p><p><a href=\"/glossary#\">payment_method</a>: payment_method</p><p><a href=\"/glossary#\">product_description</a>: product_description</p><p><a href=\"/glossary#\">renewal_date</a>: renewal_date</p><p><a href=\"/glossary#\">term</a>: term</p>",
+    "operationId": "OBPv5.0.0-getCustomerOverviewFlat",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "PostCustomerOverviewJsonV500 object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/PostCustomerOverviewJsonV500"
+        }
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/CustomerOverviewFlatJsonV500"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

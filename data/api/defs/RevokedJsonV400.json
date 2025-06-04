@@ -1,0 +1,11 @@
+{
+  "required": [
+    "revoked"
+  ],
+  "properties": {
+    "revoked": {
+      "type": "boolean",
+      "example": "true"
+    }
+  }
+}

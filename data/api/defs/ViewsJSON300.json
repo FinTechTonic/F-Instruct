@@ -1,0 +1,13 @@
+{
+  "required": [
+    "list"
+  ],
+  "properties": {
+    "list": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ViewJSON300"
+      }
+    }
+  }
+}

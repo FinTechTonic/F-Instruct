@@ -1,0 +1,11 @@
+{
+  "required": [
+    "iban"
+  ],
+  "properties": {
+    "iban": {
+      "type": "string",
+      "example": "123"
+    }
+  }
+}

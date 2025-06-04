@@ -1,0 +1,39 @@
+{
+  "required": [
+    "name",
+    "location",
+    "bank_id",
+    "id",
+    "meta",
+    "address"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "Genel Müdürlük"
+    },
+    "location": {
+      "$ref": "#/definitions/SandboxLocationImport"
+    },
+    "driveUp": {
+      "$ref": "#/definitions/SandboxDriveUpImport"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "bank1"
+    },
+    "id": {
+      "type": "string",
+      "example": "branch1"
+    },
+    "meta": {
+      "$ref": "#/definitions/SandboxMetaImport"
+    },
+    "lobby": {
+      "$ref": "#/definitions/SandboxLobbyImport"
+    },
+    "address": {
+      "$ref": "#/definitions/SandboxAddressImport"
+    }
+  }
+}

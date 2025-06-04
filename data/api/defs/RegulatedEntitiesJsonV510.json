@@ -1,0 +1,13 @@
+{
+  "required": [
+    "entities"
+  ],
+  "properties": {
+    "entities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/RegulatedEntityJsonV510"
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "required": [
+    "accounts"
+  ],
+  "properties": {
+    "accounts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AccountBalanceJsonV400"
+      }
+    }
+  }
+}

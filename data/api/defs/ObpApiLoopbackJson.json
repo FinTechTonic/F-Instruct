@@ -1,0 +1,21 @@
+{
+  "required": [
+    "connector_version",
+    "git_commit",
+    "duration_time"
+  ],
+  "properties": {
+    "connector_version": {
+      "type": "string",
+      "example": "rest_vMar2019"
+    },
+    "git_commit": {
+      "type": "string",
+      "example": "f0acd4be14cdcb94be3433ec95c1ad65228812a0"
+    },
+    "duration_time": {
+      "type": "string",
+      "example": "10 ms"
+    }
+  }
+}

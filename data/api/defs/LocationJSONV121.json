@@ -1,0 +1,28 @@
+{
+  "required": [
+    "latitude",
+    "longitude",
+    "date",
+    "user"
+  ],
+  "properties": {
+    "latitude": {
+      "type": "number",
+      "format": "double",
+      "example": "1.231"
+    },
+    "longitude": {
+      "type": "number",
+      "format": "double",
+      "example": "1.231"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "user": {
+      "$ref": "#/definitions/UserJSONV121"
+    }
+  }
+}

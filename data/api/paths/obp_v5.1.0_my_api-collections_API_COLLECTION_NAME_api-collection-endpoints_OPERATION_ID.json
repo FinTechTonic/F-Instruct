@@ -1,0 +1,60 @@
+{
+  "delete": {
+    "tags": [
+      "Api-Collection"
+    ],
+    "summary": "Delete My Api Collection Endpoint",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>glossary-item-not-found</p><p>Delete Api Collection Endpoint By OPERATION_ID</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#\">API_COLLECTION_NAME</a>: Favourites</p><p><a href=\"/glossary#\">OPERATION_ID</a>: OBPv4.0.0-getBanks</p><p><strong>JSON response body fields:</strong></p>",
+    "operationId": "OBPv4.0.0-deleteMyApiCollectionEndpoint",
+    "parameters": [],
+    "responses": {
+      "204": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/Full"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "get": {
+    "tags": [
+      "Api-Collection"
+    ],
+    "summary": "Get My Api Collection Endpoint",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get Api Collection Endpoint By API_COLLECTION_NAME and OPERATION_ID.</p><p>User Authentication is Optional. The User need not be logged in.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#\">API_COLLECTION_NAME</a>: Favourites</p><p><a href=\"/glossary#\">OPERATION_ID</a>: OBPv4.0.0-getBanks</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>api_collection_endpoint_id</strong></a>: 8uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#\"><strong>api_collection_id</strong></a>: 7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh</p><p><a href=\"/glossary#\"><strong>operation_id</strong></a>: OBPv4.0.0-getBanks</p>",
+    "operationId": "OBPv4.0.0-getMyApiCollectionEndpoint",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/ApiCollectionEndpointJson400"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotFoundByUserId"
+        }
+      }
+    }
+  }
+}

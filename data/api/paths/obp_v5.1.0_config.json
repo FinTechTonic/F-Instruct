@@ -1,0 +1,31 @@
+{
+  "get": {
+    "tags": [
+      "API"
+    ],
+    "summary": "Get API Configuration",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Returns information about:</p><ul><li>The default bank_id</li><li>Akka configuration</li><li>Elastic Search configuration</li><li>Cached functions</li></ul><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#akka\"><strong>akka</strong></a>:</p><p><a href=\"/glossary#cache\"><strong>cache</strong></a>:</p><p><a href=\"/glossary#elastic_search\"><strong>elastic_search</strong></a>:</p><p><a href=\"/glossary#function_name\"><strong>function_name</strong></a>:</p><p><a href=\"/glossary#log_level\"><strong>log_level</strong></a>:</p><p><a href=\"/glossary#metrics\"><strong>metrics</strong></a>:</p><p><a href=\"/glossary#ports\"><strong>ports</strong></a>:</p><p><a href=\"/glossary#property\"><strong>property</strong></a>:</p><p><a href=\"/glossary#require_scopes_for_all_roles\"><strong>require_scopes_for_all_roles</strong></a>:</p><p><a href=\"/glossary#require_scopes_for_listed_roles\"><strong>require_scopes_for_listed_roles</strong></a>: false</p><p><a href=\"/glossary#scopes\"><strong>scopes</strong></a>:</p><p><a href=\"/glossary#ttl_in_seconds\"><strong>ttl_in_seconds</strong></a>:</p><p><a href=\"/glossary#\"><strong>value</strong></a>: 5987953</p><p><a href=\"/glossary#warehouse\"><strong>warehouse</strong></a>:</p><p><a href=\"/glossary#\">remote_data_secret_matched</a>: remote_data_secret_matched</p>",
+    "operationId": "OBPv3.1.0-config",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/ConfigurationJSON"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

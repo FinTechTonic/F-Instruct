@@ -1,0 +1,52 @@
+{
+  "required": [
+    "customer_id",
+    "url",
+    "customer_number",
+    "bank_id",
+    "id",
+    "date",
+    "relates_to_kyc_document_id",
+    "relates_to_kyc_check_id",
+    "type"
+  ],
+  "properties": {
+    "customer_id": {
+      "type": "string",
+      "example": "PlaceholderString"
+    },
+    "url": {
+      "type": "string",
+      "example": "PlaceholderString"
+    },
+    "customer_number": {
+      "type": "string",
+      "example": "5987953"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "id": {
+      "type": "string",
+      "example": "PlaceholderString"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    },
+    "relates_to_kyc_document_id": {
+      "type": "string",
+      "example": "PlaceholderString"
+    },
+    "relates_to_kyc_check_id": {
+      "type": "string",
+      "example": "PlaceholderString"
+    },
+    "type": {
+      "type": "string",
+      "example": "PlaceholderString"
+    }
+  }
+}

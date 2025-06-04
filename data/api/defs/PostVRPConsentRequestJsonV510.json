@@ -1,0 +1,32 @@
+{
+  "required": [
+    "from_account",
+    "to_account"
+  ],
+  "properties": {
+    "phone_number": {
+      "type": "string",
+      "example": "+44 07972 444 876"
+    },
+    "time_to_live": {
+      "type": "integer",
+      "format": "int64",
+      "example": "3600"
+    },
+    "email": {
+      "type": "string",
+      "example": "felixsmith@example.com"
+    },
+    "from_account": {
+      "$ref": "#/definitions/ConsentRequestFromAccountJson"
+    },
+    "valid_from": {
+      "type": "string",
+      "format": "date",
+      "example": "2025-05-26T10:28:44Z"
+    },
+    "to_account": {
+      "$ref": "#/definitions/ConsentRequestToAccountJson"
+    }
+  }
+}

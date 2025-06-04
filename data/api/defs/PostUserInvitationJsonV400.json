@@ -1,0 +1,36 @@
+{
+  "required": [
+    "first_name",
+    "email",
+    "country",
+    "purpose",
+    "company",
+    "last_name"
+  ],
+  "properties": {
+    "first_name": {
+      "type": "string",
+      "example": "Tom"
+    },
+    "email": {
+      "type": "string",
+      "example": "felixsmith@example.com"
+    },
+    "country": {
+      "type": "string",
+      "example": "Germany"
+    },
+    "purpose": {
+      "type": "string",
+      "example": "DEVELOPER"
+    },
+    "company": {
+      "type": "string",
+      "example": "Tesobe GmbH"
+    },
+    "last_name": {
+      "type": "string",
+      "example": "Smith"
+    }
+  }
+}

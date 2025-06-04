@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "message": {
+      "type": "string",
+      "example": "OBP-20006: User is missing one or more roles: "
+    }
+  }
+}

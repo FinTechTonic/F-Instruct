@@ -1,0 +1,51 @@
+{
+  "required": [
+    "created_by_user_id",
+    "is_active",
+    "url",
+    "trigger_name",
+    "http_protocol",
+    "account_webhook_id",
+    "http_method",
+    "bank_id",
+    "account_id"
+  ],
+  "properties": {
+    "created_by_user_id": {
+      "type": "string",
+      "example": "9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+    },
+    "is_active": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "url": {
+      "type": "string",
+      "example": "https://localhost.openbankproject.com"
+    },
+    "trigger_name": {
+      "type": "string",
+      "example": "OnBalanceChange"
+    },
+    "http_protocol": {
+      "type": "string",
+      "example": "HTTP/1.1"
+    },
+    "account_webhook_id": {
+      "type": "string",
+      "example": "613c83ea-80f9-4560-8404-b9cd4ec42a7f"
+    },
+    "http_method": {
+      "type": "string",
+      "example": "POST"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "account_id": {
+      "type": "string",
+      "example": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0"
+    }
+  }
+}

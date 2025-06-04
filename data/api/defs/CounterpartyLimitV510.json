@@ -1,0 +1,74 @@
+{
+  "required": [
+    "counterparty_limit_id",
+    "max_monthly_amount",
+    "max_number_of_monthly_transactions",
+    "max_single_amount",
+    "view_id",
+    "bank_id",
+    "account_id",
+    "max_number_of_transactions",
+    "currency",
+    "max_number_of_yearly_transactions",
+    "max_yearly_amount",
+    "counterparty_id",
+    "max_total_amount"
+  ],
+  "properties": {
+    "counterparty_limit_id": {
+      "type": "string",
+      "example": "abc9a7e4-6d02-40e3-a129-0b2bf89de9b1"
+    },
+    "max_monthly_amount": {
+      "type": "string",
+      "example": "10000.11"
+    },
+    "max_number_of_monthly_transactions": {
+      "type": "integer",
+      "format": "int32",
+      "example": "10"
+    },
+    "max_single_amount": {
+      "type": "string",
+      "example": "1000.11"
+    },
+    "view_id": {
+      "type": "string",
+      "example": "owner"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "account_id": {
+      "type": "string",
+      "example": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0"
+    },
+    "max_number_of_transactions": {
+      "type": "integer",
+      "format": "int32",
+      "example": "100"
+    },
+    "currency": {
+      "type": "string",
+      "example": "EUR"
+    },
+    "max_number_of_yearly_transactions": {
+      "type": "integer",
+      "format": "int32",
+      "example": "100"
+    },
+    "max_yearly_amount": {
+      "type": "string",
+      "example": "12000.11"
+    },
+    "counterparty_id": {
+      "type": "string",
+      "example": "9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    },
+    "max_total_amount": {
+      "type": "string",
+      "example": "10000.12"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "required": [
+    "balance_id",
+    "balance_amount",
+    "bank_id",
+    "account_id",
+    "balance_type"
+  ],
+  "properties": {
+    "balance_id": {
+      "type": "string",
+      "example": "7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh"
+    },
+    "balance_amount": {
+      "type": "string",
+      "example": "50.89"
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "account_id": {
+      "type": "string",
+      "example": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0"
+    },
+    "balance_type": {
+      "type": "string",
+      "example": "openingBooked"
+    }
+  }
+}

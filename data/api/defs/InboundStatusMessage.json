@@ -1,0 +1,31 @@
+{
+  "required": [
+    "source",
+    "text",
+    "errorCode",
+    "status"
+  ],
+  "properties": {
+    "duration": {
+      "type": "string",
+      "format": "double",
+      "example": "5.123"
+    },
+    "source": {
+      "type": "string",
+      "example": ""
+    },
+    "text": {
+      "type": "string",
+      "example": ""
+    },
+    "errorCode": {
+      "type": "string",
+      "example": ""
+    },
+    "status": {
+      "type": "string",
+      "example": ""
+    }
+  }
+}

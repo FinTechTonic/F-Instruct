@@ -1,0 +1,31 @@
+{
+  "get": {
+    "tags": [
+      "API"
+    ],
+    "summary": "Get API Info (root)",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Returns information about:</p><ul><li>API version</li><li>Hosted by information</li><li>Hosted at information</li><li>Energy source information</li><li>Git Commit</li></ul><p>User Authentication is Optional. The User need not be logged in.</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#Connector\"><strong>connector</strong></a>: connector</p><p><a href=\"/glossary#\"><strong>email</strong></a>: <a href=\"&#109;a&#105;&#x6c;&#x74;&#111;&#58;f&#101;&#x6c;&#105;&#120;&#115;&#109;&#105;&#x74;h&#x40;&#x65;x&#x61;&#109;&#112;&#x6c;&#x65;&#x2e;&#x63;&#111;m\">&#x66;&#x65;&#108;&#x69;x&#x73;&#x6d;&#x69;t&#x68;&#64;&#x65;x&#97;&#x6d;&#112;&#108;&#101;.c&#x6f;&#109;</a></p><p><a href=\"/glossary#energy_source\"><strong>energy_source</strong></a>:</p><p><a href=\"/glossary#\"><strong>git_commit</strong></a>: 59623811dd8a41f6ffe67be46954eee11913dc28</p><p><a href=\"/glossary#hosted_at\"><strong>hosted_at</strong></a>:</p><p><a href=\"/glossary#hosted_by\"><strong>hosted_by</strong></a>:</p><p><a href=\"/glossary#\"><strong>hostname</strong></a>: hostname</p><p><a href=\"/glossary#\"><strong>local_identity_provider</strong></a>: local_identity_provider</p><p><a href=\"/glossary#organisation\"><strong>organisation</strong></a>:</p><p><a href=\"/glossary#organisation_website\"><strong>organisation_website</strong></a>:</p><p><a href=\"/glossary#phone\"><strong>phone</strong></a>:</p><p><a href=\"/glossary#\"><strong>resource_docs_requires_role</strong></a>: resource_docs_requires_role</p><p><a href=\"/glossary#version\"><strong>version</strong></a>:</p><p><a href=\"/glossary#version_status\"><strong>version_status</strong></a>:</p>",
+    "operationId": "OBPv5.1.0-root",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/APIInfoJson400"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUnknownError"
+        }
+      }
+    }
+  }
+}

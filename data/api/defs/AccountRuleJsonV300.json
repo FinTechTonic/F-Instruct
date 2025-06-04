@@ -1,0 +1,16 @@
+{
+  "required": [
+    "scheme",
+    "value"
+  ],
+  "properties": {
+    "scheme": {
+      "type": "string",
+      "example": "OVERDRAFT"
+    },
+    "value": {
+      "type": "string",
+      "example": "10"
+    }
+  }
+}

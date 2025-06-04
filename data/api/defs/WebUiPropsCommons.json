@@ -1,0 +1,19 @@
+{
+  "required": [
+    "name",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "webui_api_explorer_url"
+    },
+    "value": {
+      "type": "string",
+      "example": "https://apiexplorer.openbankproject.com"
+    },
+    "web_ui_props_id": {
+      "type": "string"
+    }
+  }
+}

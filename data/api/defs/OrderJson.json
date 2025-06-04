@@ -1,0 +1,10 @@
+{
+  "required": [
+    "order"
+  ],
+  "properties": {
+    "order": {
+      "$ref": "#/definitions/OrderObjectJson"
+    }
+  }
+}

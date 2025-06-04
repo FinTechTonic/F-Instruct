@@ -1,0 +1,73 @@
+{
+  "required": [
+    "other_account_routing_address",
+    "other_account_routing_scheme",
+    "name",
+    "other_account_secondary_routing_address",
+    "is_beneficiary",
+    "description",
+    "other_branch_routing_address",
+    "bespoke",
+    "other_bank_routing_scheme",
+    "other_branch_routing_scheme",
+    "currency",
+    "other_bank_routing_address",
+    "other_account_secondary_routing_scheme"
+  ],
+  "properties": {
+    "other_account_routing_address": {
+      "type": "string",
+      "example": "36f8a9e6-c2b1-407a-8bd0-421b7119307e"
+    },
+    "other_account_routing_scheme": {
+      "type": "string",
+      "example": "OBP"
+    },
+    "name": {
+      "type": "string",
+      "example": "CounterpartyName"
+    },
+    "other_account_secondary_routing_address": {
+      "type": "string",
+      "example": "DE89370400440532013000"
+    },
+    "is_beneficiary": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "description": {
+      "type": "string",
+      "example": "My landlord"
+    },
+    "other_branch_routing_address": {
+      "type": "string",
+      "example": "12f8a9e6-c2b1-407a-8bd0-421b7119307e"
+    },
+    "bespoke": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/PostCounterpartyBespokeJson"
+      }
+    },
+    "other_bank_routing_scheme": {
+      "type": "string",
+      "example": "OBP"
+    },
+    "other_branch_routing_scheme": {
+      "type": "string",
+      "example": "OBP"
+    },
+    "currency": {
+      "type": "string",
+      "example": "EUR"
+    },
+    "other_bank_routing_address": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "other_account_secondary_routing_scheme": {
+      "type": "string",
+      "example": "IBAN"
+    }
+  }
+}

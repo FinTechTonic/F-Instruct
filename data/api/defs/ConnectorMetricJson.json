@@ -1,0 +1,33 @@
+{
+  "required": [
+    "connector_name",
+    "duration",
+    "function_name",
+    "correlation_id",
+    "date"
+  ],
+  "properties": {
+    "connector_name": {
+      "type": "string",
+      "example": "mapper"
+    },
+    "duration": {
+      "type": "integer",
+      "format": "int64",
+      "example": "1000"
+    },
+    "function_name": {
+      "type": "string",
+      "example": "getBanks"
+    },
+    "correlation_id": {
+      "type": "string",
+      "example": "12345"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "example": "1100-01-01T00:00:00Z"
+    }
+  }
+}

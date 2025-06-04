@@ -1,0 +1,90 @@
+{
+  "get": {
+    "tags": [
+      "User"
+    ],
+    "summary": "Get User Lock Status",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get User Login Status.<br />User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#provider\">PROVIDER</a>: ETHEREUM</p><p><a href=\"/glossary#\">USERNAME</a>: felixsmith</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#bad_attempts_since_last_success_or_reset\"><strong>bad_attempts_since_last_success_or_reset</strong></a>:</p><p><a href=\"/glossary#last_failure_date\"><strong>last_failure_date</strong></a>: 2020-01-27</p><p><a href=\"/glossary#\"><strong>username</strong></a>: felixsmith</p>",
+    "operationId": "OBPv5.1.0-getUserLockStatus",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "PROVIDER",
+        "description": "the user PROVIDER",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "USERNAME",
+        "description": "the user name",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/BadLoginStatusJson"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "put": {
+    "tags": [
+      "User"
+    ],
+    "summary": "Unlock the user",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Unlock a User.</p><p>(Perhaps the user was locked due to multiple failed login attempts)</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#provider\">PROVIDER</a>: ETHEREUM</p><p><a href=\"/glossary#\">USERNAME</a>: felixsmith</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#bad_attempts_since_last_success_or_reset\"><strong>bad_attempts_since_last_success_or_reset</strong></a>:</p><p><a href=\"/glossary#last_failure_date\"><strong>last_failure_date</strong></a>: 2020-01-27</p><p><a href=\"/glossary#\"><strong>username</strong></a>: felixsmith</p>",
+    "operationId": "OBPv5.1.0-unlockUserByProviderAndUsername",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "PROVIDER",
+        "description": "the user PROVIDER",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "USERNAME",
+        "description": "the user name",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/BadLoginStatusJson"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  }
+}

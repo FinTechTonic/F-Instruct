@@ -1,0 +1,39 @@
+{
+  "post": {
+    "tags": [
+      "User"
+    ],
+    "summary": "Refresh User",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>The endpoint is used for updating the accounts, views, account holders for the user.<br />As to the Json body, you can leave it as Empty.<br />This call will get data from backend, no need to prepare the json body in api side.</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#User.user_id\">USER_ID</a>: 9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1</p><p><strong>JSON request body fields:</strong></p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#duration_time\"><strong>duration_time</strong></a>: 60</p>",
+    "operationId": "OBPv3.1.0-refreshUser",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "USER_ID",
+        "description": "The user id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/RefreshUserJson"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserHasMissingRoles"
+        }
+      }
+    }
+  }
+}

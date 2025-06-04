@@ -1,0 +1,10 @@
+{
+  "required": [
+    "corporate_location"
+  ],
+  "properties": {
+    "corporate_location": {
+      "$ref": "#/definitions/LocationPlainJSON"
+    }
+  }
+}

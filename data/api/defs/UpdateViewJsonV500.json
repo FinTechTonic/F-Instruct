@@ -1,0 +1,54 @@
+{
+  "required": [
+    "description",
+    "is_public",
+    "hide_metadata_if_alias_used",
+    "which_alias_to_use",
+    "metadata_view",
+    "allowed_actions"
+  ],
+  "properties": {
+    "can_grant_access_to_views": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "description": {
+      "type": "string",
+      "example": "this is for family"
+    },
+    "is_public": {
+      "type": "boolean",
+      "example": "false"
+    },
+    "hide_metadata_if_alias_used": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "can_revoke_access_to_views": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "which_alias_to_use": {
+      "type": "string",
+      "example": "family"
+    },
+    "is_firehose": {
+      "type": "boolean",
+      "example": "false"
+    },
+    "metadata_view": {
+      "type": "string",
+      "example": "owner"
+    },
+    "allowed_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

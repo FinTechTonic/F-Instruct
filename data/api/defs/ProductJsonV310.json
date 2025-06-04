@@ -1,0 +1,66 @@
+{
+  "required": [
+    "name",
+    "description",
+    "more_info_url",
+    "super_family",
+    "code",
+    "bank_id",
+    "meta",
+    "details",
+    "category",
+    "family",
+    "parent_product_code"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "product name"
+    },
+    "description": {
+      "type": "string",
+      "example": "Description"
+    },
+    "more_info_url": {
+      "type": "string",
+      "example": "www.example.com/prod1/more-info.html"
+    },
+    "super_family": {
+      "type": "string",
+      "example": "super family"
+    },
+    "code": {
+      "type": "string",
+      "example": "1234BW"
+    },
+    "product_attributes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ProductAttributeResponseWithoutBankIdJson"
+      }
+    },
+    "bank_id": {
+      "type": "string",
+      "example": "gh.29.uk"
+    },
+    "meta": {
+      "$ref": "#/definitions/MetaJsonV140"
+    },
+    "details": {
+      "type": "string",
+      "example": "Details"
+    },
+    "category": {
+      "type": "string",
+      "example": "category"
+    },
+    "family": {
+      "type": "string",
+      "example": "family"
+    },
+    "parent_product_code": {
+      "type": "string",
+      "example": "parent"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "required": [
+    "cards"
+  ],
+  "properties": {
+    "cards": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/PhysicalCardJsonV310"
+      }
+    }
+  }
+}

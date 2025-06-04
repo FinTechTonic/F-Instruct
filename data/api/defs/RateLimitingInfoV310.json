@@ -1,0 +1,26 @@
+{
+  "required": [
+    "enabled",
+    "technology",
+    "service_available",
+    "is_active"
+  ],
+  "properties": {
+    "enabled": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "technology": {
+      "type": "string",
+      "example": "REDIS"
+    },
+    "service_available": {
+      "type": "boolean",
+      "example": "true"
+    },
+    "is_active": {
+      "type": "boolean",
+      "example": "true"
+    }
+  }
+}

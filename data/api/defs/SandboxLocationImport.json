@@ -1,0 +1,18 @@
+{
+  "required": [
+    "latitude",
+    "longitude"
+  ],
+  "properties": {
+    "latitude": {
+      "type": "number",
+      "format": "double",
+      "example": "52.556198"
+    },
+    "longitude": {
+      "type": "number",
+      "format": "double",
+      "example": "13.384099"
+    }
+  }
+}

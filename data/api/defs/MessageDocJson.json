@@ -1,0 +1,93 @@
+{
+  "required": [
+    "adapter_implementation",
+    "example_inbound_message",
+    "description",
+    "process",
+    "message_format",
+    "example_outbound_message",
+    "dependent_endpoints"
+  ],
+  "properties": {
+    "adapter_implementation": {
+      "$ref": "#/definitions/AdapterImplementationJson"
+    },
+    "outboundAvroSchema": {
+      "type": "object",
+      "properties": {
+        "jsonString": {
+          "type": "string",
+          "example": "{}"
+        }
+      },
+      "required": [
+        "jsonString"
+      ]
+    },
+    "example_inbound_message": {
+      "type": "object",
+      "properties": {
+        "jsonString": {
+          "type": "string",
+          "example": "{}"
+        }
+      },
+      "required": [
+        "jsonString"
+      ]
+    },
+    "inboundAvroSchema": {
+      "type": "object",
+      "properties": {
+        "jsonString": {
+          "type": "string",
+          "example": "{}"
+        }
+      },
+      "required": [
+        "jsonString"
+      ]
+    },
+    "requiredFieldInfo": {
+      "$ref": "#/definitions/FieldNameApiVersions"
+    },
+    "description": {
+      "type": "string",
+      "example": "get Banks"
+    },
+    "process": {
+      "type": "string",
+      "example": "getAccounts"
+    },
+    "message_format": {
+      "type": "string",
+      "example": "rest_vMar2019"
+    },
+    "example_outbound_message": {
+      "type": "object",
+      "properties": {
+        "jsonString": {
+          "type": "string",
+          "example": "{}"
+        }
+      },
+      "required": [
+        "jsonString"
+      ]
+    },
+    "dependent_endpoints": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/EndpointInfo"
+      }
+    },
+    "outbound_topic": {
+      "type": "string",
+      "example": "to.obp.api.1.caseclass.OutboundGetAccounts"
+    },
+    "inbound_topic": {
+      "type": "string",
+      "example": "from.obp.api.1.to.adapter.mf.caseclass.OutboundGetAccounts"
+    }
+  }
+}

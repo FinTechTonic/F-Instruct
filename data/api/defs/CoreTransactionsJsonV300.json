@@ -1,0 +1,13 @@
+{
+  "required": [
+    "transactions"
+  ],
+  "properties": {
+    "transactions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/CoreTransactionJsonV300"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "required": [
+    "is_active",
+    "url",
+    "trigger_name",
+    "http_protocol",
+    "http_method",
+    "account_id"
+  ],
+  "properties": {
+    "is_active": {
+      "type": "string",
+      "example": "true"
+    },
+    "url": {
+      "type": "string",
+      "example": "https://localhost.openbankproject.com"
+    },
+    "trigger_name": {
+      "type": "string",
+      "example": "OnBalanceChange"
+    },
+    "http_protocol": {
+      "type": "string",
+      "example": "HTTP/1.1"
+    },
+    "http_method": {
+      "type": "string",
+      "example": "POST"
+    },
+    "account_id": {
+      "type": "string",
+      "example": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0"
+    }
+  }
+}

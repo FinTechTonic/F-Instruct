@@ -1,0 +1,16 @@
+{
+  "required": [
+    "markdown",
+    "html"
+  ],
+  "properties": {
+    "markdown": {
+      "type": "string",
+      "example": "String"
+    },
+    "html": {
+      "type": "string",
+      "example": "String"
+    }
+  }
+}

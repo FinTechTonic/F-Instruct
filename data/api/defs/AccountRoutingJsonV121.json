@@ -1,0 +1,16 @@
+{
+  "required": [
+    "scheme",
+    "address"
+  ],
+  "properties": {
+    "scheme": {
+      "type": "string",
+      "example": "OBP"
+    },
+    "address": {
+      "type": "string",
+      "example": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0"
+    }
+  }
+}

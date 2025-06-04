@@ -1,0 +1,86 @@
+{
+  "get": {
+    "tags": [
+      "User-Invitation"
+    ],
+    "summary": "Get User Invitations",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get User Invitations</p><p>User Authentication is Required. The User must be logged in. The Application must also be authenticated.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#company\"><strong>company</strong></a>: Tesobe GmbH</p><p><a href=\"/glossary#country\"><strong>country</strong></a>: Germany</p><p><a href=\"/glossary#\"><strong>email</strong></a>: <a href=\"&#109;a&#x69;&#x6c;&#116;&#111;&#x3a;&#102;&#101;&#108;&#105;x&#115;&#x6d;&#x69;&#116;&#x68;&#x40;&#x65;x&#x61;&#109;&#x70;l&#x65;&#46;co&#x6d;\">&#x66;e&#x6c;&#x69;&#120;&#x73;&#109;it&#x68;&#x40;&#101;&#120;&#97;&#109;p&#x6c;&#x65;.&#99;&#111;&#x6d;</a></p><p><a href=\"/glossary#first_name\"><strong>first_name</strong></a>: Tom</p><p><a href=\"/glossary#last_name\"><strong>last_name</strong></a>: Smith</p><p><a href=\"/glossary#purpose\"><strong>purpose</strong></a>: DEVELOPER</p><p><a href=\"/glossary#status\"><strong>status</strong></a>:</p>",
+    "operationId": "OBPv4.0.0-getUserInvitations",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/UserInvitationJsonV400"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorUserNotLoggedIn"
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "User-Invitation",
+      "KYC"
+    ],
+    "summary": "Get User Invitation Information",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get User Invitation Information.</p><p>User Authentication is Optional. The User need not be logged in.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><strong>JSON request body fields:</strong></p><p><a href=\"/glossary#\"><strong>secret_key</strong></a>: secret_key</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#company\"><strong>company</strong></a>: Tesobe GmbH</p><p><a href=\"/glossary#country\"><strong>country</strong></a>: Germany</p><p><a href=\"/glossary#\"><strong>email</strong></a>: <a href=\"m&#x61;&#x69;&#x6c;t&#x6f;&#58;&#102;e&#x6c;&#x69;&#120;&#115;&#109;&#105;&#116;&#x68;&#x40;&#101;&#120;&#x61;&#109;&#112;&#x6c;&#x65;.&#99;&#x6f;m\">&#102;&#x65;&#108;&#105;&#x78;&#x73;&#109;&#105;t&#x68;@&#x65;&#120;&#x61;&#x6d;p&#108;&#101;&#x2e;&#99;&#x6f;&#x6d;</a></p><p><a href=\"/glossary#first_name\"><strong>first_name</strong></a>: Tom</p><p><a href=\"/glossary#last_name\"><strong>last_name</strong></a>: Smith</p><p><a href=\"/glossary#purpose\"><strong>purpose</strong></a>: DEVELOPER</p><p><a href=\"/glossary#status\"><strong>status</strong></a>:</p>",
+    "operationId": "OBPv4.0.0-getUserInvitationAnonymous",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "PostUserInvitationAnonymousJsonV400 object that needs to be added.",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/PostUserInvitationAnonymousJsonV400"
+        }
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/UserInvitationJsonV400"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorBankNotFound"
+        }
+      }
+    }
+  }
+}

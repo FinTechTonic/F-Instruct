@@ -1,0 +1,13 @@
+{
+  "required": [
+    "users"
+  ],
+  "properties": {
+    "users": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/UserJsonV400"
+      }
+    }
+  }
+}

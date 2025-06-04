@@ -1,0 +1,61 @@
+{
+  "get": {
+    "tags": [
+      "Transaction",
+      "Counterparty"
+    ],
+    "summary": "Get Other Account of Transaction",
+    "security": [
+      {
+        "directLogin": [],
+        "gatewayLogin": []
+      }
+    ],
+    "description": "<p>Get other account of a transaction.<br />Returns details of the other party involved in the transaction, moderated by the <a href=\"#1_2_1-getViewsForBankAccount\">view</a> (VIEW_ID).<br />Authentication via OAuth is required if the view is not public.</p><p>User Authentication is Optional. The User need not be logged in.</p><p><strong>URL Parameters:</strong></p><p><a href=\"/glossary#Account.account_id\">ACCOUNT_ID</a>: 8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0</p><p><a href=\"/glossary#Bank.bank_id\">BANK_ID</a>: gh.29.uk</p><p><a href=\"/glossary#transaction_ids\">TRANSACTION_ID</a>: 2fg8a7e4-6d02-40e3-a129-0b2bf89de8ub</p><p><a href=\"/glossary#this_view_id\">VIEW_ID</a>: owner</p><p><strong>JSON response body fields:</strong></p><p><a href=\"/glossary#\"><strong>IBAN</strong></a>: DE91 1000 0000 0123 4567 89</p><p><a href=\"/glossary#\"><strong>URL</strong></a>: <a href=\"http://www.example.com/id-docs/123/image.png\">http://www.example.com/id-docs/123/image.png</a></p><p><a href=\"/glossary#Bank\"><strong>bank</strong></a>:</p><p><a href=\"/glossary#corporate_location\"><strong>corporate_location</strong></a>: 10</p><p><a href=\"/glossary#\"><strong>date</strong></a>: 2020-01-27</p><p><a href=\"/glossary#display_name\"><strong>display_name</strong></a>:</p><p><a href=\"/glossary#holder\"><strong>holder</strong></a>:</p><p><a href=\"/glossary#id\"><strong>id</strong></a>: d8839721-ad8f-45dd-9f78-2080414b93f9</p><p><a href=\"/glossary#image_url\"><strong>image_URL</strong></a>:</p><p><a href=\"/glossary#is_alias\"><strong>is_alias</strong></a>:</p><p><a href=\"/glossary#kind\"><strong>kind</strong></a>:</p><p><a href=\"/glossary#latitude\"><strong>latitude</strong></a>: 38.8951</p><p><a href=\"/glossary#longitude\"><strong>longitude</strong></a>: -77.0364</p><p><a href=\"/glossary#metadata\"><strong>metadata</strong></a>:</p><p><a href=\"/glossary#more_info\"><strong>more_info</strong></a>: More information about this fee</p><p><a href=\"/glossary#name\"><strong>name</strong></a>: ACCOUNT_MANAGEMENT_FEE</p><p><a href=\"/glossary#national_identifier\"><strong>national_identifier</strong></a>:</p><p><a href=\"/glossary#number\"><strong>number</strong></a>:</p><p><a href=\"/glossary#open_corporates_url\"><strong>open_corporates_URL</strong></a>:</p><p><a href=\"/glossary#physical_location\"><strong>physical_location</strong></a>:</p><p><a href=\"/glossary#private_alias\"><strong>private_alias</strong></a>:</p><p><a href=\"/glossary#provider\"><strong>provider</strong></a>: ETHEREUM</p><p><a href=\"/glossary#public_alias\"><strong>public_alias</strong></a>:</p><p><a href=\"/glossary#swift_bic\"><strong>swift_bic</strong></a>:</p><p><a href=\"/glossary#User\"><strong>user</strong></a>:</p>",
+    "operationId": "OBPv1.2.1-getOtherAccountForTransaction",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "TRANSACTION_ID",
+        "description": "The transaction id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "VIEW_ID",
+        "description": "The view id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "ACCOUNT_ID",
+        "description": "The account id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "path",
+        "name": "BANK_ID",
+        "description": "The bank id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "schema": {
+          "$ref": "#/definitions/OtherAccountJSON"
+        }
+      },
+      "400": {
+        "description": "Error",
+        "schema": {
+          "$ref": "#/definitions/ErrorBankAccountNotFound"
+        }
+      }
+    }
+  }
+}

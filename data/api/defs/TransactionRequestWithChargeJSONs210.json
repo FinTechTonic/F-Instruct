@@ -1,0 +1,13 @@
+{
+  "required": [
+    "transaction_requests_with_charges"
+  ],
+  "properties": {
+    "transaction_requests_with_charges": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/TransactionRequestWithChargeJSON210"
+      }
+    }
+  }
+}
