@@ -160,11 +160,10 @@ async def compute_embeddings(pages, client, model, batch_size=10, checkpoint_int
     processed_tokens = 0
     for p in pages:
         worker_id = "main"
-        # Display full Page.text for context.
         logger.info("<%s> : <%s> : Embedding page text: %s", worker_id, int(p.page_id), p.text)
         result = await client.embeddings(model=model, prompt=p.text)
         emb_raw = result.get("embedding")
-        if emb_raw is None or emb_raw == "null":
+        if emb_raw is None or (isinstance(emb_raw, str) and emb_raw.strip() == "null"):
             emb = []
         elif isinstance(emb_raw, str):
             try:
@@ -173,7 +172,6 @@ async def compute_embeddings(pages, client, model, batch_size=10, checkpoint_int
                 emb = emb_raw
         else:
             emb = emb_raw
-        # Truncate float array display to its first three values, if applicable.
         if isinstance(emb, list) and len(emb) > 3:
             emb_display = emb[:3]
         else:
@@ -181,7 +179,8 @@ async def compute_embeddings(pages, client, model, batch_size=10, checkpoint_int
         logger.info("<%s> : <%s> : Embedding result: %s", worker_id, int(p.page_id), repr(emb_display))
         processed_pages += 1
         processed_tokens += p.token_size
-        results.append((p, emb))
+        p.embedding = emb
+        results.append(p)
         logger.info("<%s> : <%s> : Processed page %d/%d", worker_id, int(p.page_id), processed_pages, total_pages)
         if processed_pages % checkpoint_interval == 0:
             elapsed = time.time() - start_time
@@ -189,14 +188,12 @@ async def compute_embeddings(pages, client, model, batch_size=10, checkpoint_int
             eta = (total_tokens - processed_tokens) / avg_tokens_per_sec if avg_tokens_per_sec > 0 else float('inf')
             logger.info("Telemetry: %d/%d pages processed. ETA: %.1fs, Throughput: %.1f tokens/s", processed_pages, total_pages, eta, avg_tokens_per_sec)
             if output_dir:
-                df_db = assemble_dataframe([pg for pg, _ in results])
+                df_db = assemble_dataframe(results)
                 save_database(df_db, output_dir, is_checkpoint=True, page_offset=page_offset, page_length=page_length)
-    for page, emb in results:
-        page.embedding = emb
     elapsed_total = time.time() - start_time
     avg_tokens_per_sec = processed_tokens / elapsed_total if elapsed_total > 0 else 0
     logger.info("Final summary: Processed %d/%d pages. Total tokens: %d, Average throughput: %.1f tokens/s", processed_pages, total_pages, total_tokens, avg_tokens_per_sec)
-    return [pg for pg, _ in results]
+    return results
 
 def assemble_dataframe(pages):
     rows = [{"page_id": p.page_id, "doc_title": p.doc_title, "chunk_id": p.chunk_id,
@@ -246,16 +243,16 @@ def parse_arguments():
     parser = argparse.ArgumentParser(description="Build a searchable vector database from financial documents.")
     parser.add_argument("-i", "--input", required=True, help="Path to data.parquet file")
     parser.add_argument("-o", "--output", required=True, help="Output directory for vector database and generated examples")
-    parser.add_argument("-m", "--model", required=True, help="Ollama model to use for embeddings (e.g., 'phi4')")
+    parser.add_argument("-m", "--model", required=True, help="Ollama model to use for embeddings (e.g., 'llama3.1:latest')")
     parser.add_argument("--max-pairs", type=int, default=1000, help="Maximum number of training pairs to generate (default: 1000)")
     parser.add_argument("--max-tokens", type=int, default=4096, help="Maximum tokens per document for embeddings (default: 4096)")
-    parser.add_argument("--page-size", type=int, default=512, help="Page size in tokens (default: 2048)")
+    parser.add_argument("--page-size", type=int, default=512, help="Page size in tokens (default: 512)")
     parser.add_argument("--api", required=True, help="Path to the OpenBank API directory with extracted files")
     parser.add_argument("--api-limit", type=int, default=1000, help="Maximum number of API examples to generate (default: 1000)")
-    parser.add_argument("--checkpoint-interval", type=int, default=100, help="Telemetry checkpoint interval (default: 100)")
-    parser.add_argument("--overlap", type=int, default=10, help="Number of chunks to overlap between documents (default: 10)")
-    parser.add_argument("--batch-size", type=int, default=1, help="Batch size for asynchronous embeddings (default: 10)")
-    parser.add_argument("--page-offset", type=int, default=0, help="Offset in pages array (default: 0)")
+    parser.add_argument("--checkpoint-interval", type=int, default=500, help="Telemetry checkpoint interval (default: 500)")
+    parser.add_argument("--overlap", type=int, default=1, help="Number of chunks to overlap between documents (default: 1)")
+    parser.add_argument("--batch-size", type=int, default=1, help="Batch size for asynchronous embeddings (default: 1)")
+    parser.add_argument("--page-offset", type=int, default=0, help="Offset in pages array (default: 0 means no limit)")
     parser.add_argument("--page-length", type=int, default=0, help="Number of pages to process (default: 0 means no limit)")
     return parser.parse_args()
 
