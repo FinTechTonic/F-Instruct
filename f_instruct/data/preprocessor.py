@@ -136,9 +136,30 @@ def count_tokens(text, model_name="gpt-3.5-turbo"):
     tokens = encoder.encode(text)
     return len(tokens)
 
+def pre_clean_text(text):
+    text = re.sub(r'\|\s*\n\s*\|', ' ', text)
+    text = re.sub(r'<br\s*/?>', ' ', text)
+    text_lines = text.splitlines()
+    filtered_lines = [line for line in text_lines if not re.match(r'^\s*[\-\| ]+$', line)]
+    text = "\n".join(filtered_lines)
+    text = re.sub(r'!\[\]\([^)]*\)', '', text)
+    text = re.sub(r'-{3,}', ' ', text)
+    text = re.sub(r'\|+', ' ', text)
+    return text
+
+def clean_text(text):
+    text = re.sub(r'<br\s*/?>', ' ', text)
+    text = re.sub(r'-{3,}', ' ', text)
+    text = re.sub(r'\|+', ' ', text)
+    text = re.sub(r'\s+', ' ', text)
+    text = text.replace("\n", " ").replace("\t", " ")
+    text = re.sub(r'!\[\]\([^)]*\)', '', text)
+    return text.strip()
+
 def process_markdown_file(file_path, global_chunk_id):
     file_name = os.path.basename(file_path)
     markdown_text = read_markdown_file(file_path)
+    markdown_text = pre_clean_text(markdown_text)
     title = extract_title_from_filename(file_name)
     document_id = generate_document_id()
     classifier_code = generate_classifier_code(title)
@@ -147,12 +168,13 @@ def process_markdown_file(file_path, global_chunk_id):
     for i, chunk_details in enumerate(text_chunks):
         current_chunk_id = global_chunk_id
         global_chunk_id += 1
-        token_count = count_tokens(chunk_details["text"])
+        cleaned_text = clean_text(chunk_details["text"])
+        token_count = count_tokens(cleaned_text)
         chunks_data.append({
             "chunk_id": current_chunk_id,
             "document_id": document_id,
             "chunk_index": i,
-            "text": chunk_details["text"],
+            "text": cleaned_text,
             "title": title,
             "source_name": file_name,
             "classifier_code": classifier_code,
