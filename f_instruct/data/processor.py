@@ -16,7 +16,8 @@ from ollama import AsyncClient
 from tqdm import tqdm
 import threading
 
-logging.basicConfig(stream=sys.stdout, level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+logging.basicConfig(stream=sys.stdout, level=logging.INFO, 
+                    format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
 def signal_handler(sig, frame):
@@ -65,10 +66,12 @@ class Page:
         self.embedding = embedding
 
 def create_metadata_dict(chunk_row, all_chunk_ids, is_first_chunk, is_last_chunk, actual_text_tokens, total_tokens_val, num_context_chunks):
-    return {"title": chunk_row.get("title", ""),
-            "chunk_id": chunk_row.get("chunk_id", None),
-            "ahead": max(0, len(all_chunk_ids)//2),
-            "behind": max(0, len(all_chunk_ids) - (len(all_chunk_ids)//2) - 1)}
+    return {
+        "title": chunk_row.get("title", ""),
+        "chunk_id": chunk_row.get("chunk_id", None),
+        "ahead": max(0, len(all_chunk_ids)//2),
+        "behind": max(0, len(all_chunk_ids) - (len(all_chunk_ids)//2) - 1)
+    }
 
 def get_chunk_context(df, chunk_id, page_size=2048):
     if chunk_id not in df.index:
@@ -123,7 +126,9 @@ def create_page(df, next_chunk_id, page_size=2048):
     if context_text:
         token_size = count_tokens(context_text)
         meta["token_size"] = token_size
-        return Page(page_id=meta["chunk_id"], text=context_text, chunk_id=meta["chunk_id"], doc_title=meta["title"], ahead=meta["ahead"], behind=meta["behind"], token_size=token_size)
+        return Page(page_id=meta["chunk_id"], text=context_text, chunk_id=meta["chunk_id"],
+                    doc_title=meta["title"], ahead=meta["ahead"], behind=meta["behind"],
+                    token_size=token_size)
     return None
 
 def load_data(input_file, page_size=2048, overlap=10):
@@ -155,7 +160,8 @@ async def compute_embeddings(pages, client, model, batch_size=10, checkpoint_int
     processed_tokens = 0
     for p in pages:
         worker_id = "main"
-        logger.info("<%s> : <%s> : Embedding page text (first 100 chars): %s", worker_id, int(p.page_id), p.text[:100])
+        # Display full Page.text for context.
+        logger.info("<%s> : <%s> : Embedding page text: %s", worker_id, int(p.page_id), p.text)
         result = await client.embeddings(model=model, prompt=p.text)
         emb_raw = result.get("embedding")
         if emb_raw is None or emb_raw == "null":
@@ -167,7 +173,12 @@ async def compute_embeddings(pages, client, model, batch_size=10, checkpoint_int
                 emb = emb_raw
         else:
             emb = emb_raw
-        logger.info("<%s> : <%s> : Embedding result: %s", worker_id, int(p.page_id), str(emb)[:100])
+        # Truncate float array display to its first three values, if applicable.
+        if isinstance(emb, list) and len(emb) > 3:
+            emb_display = emb[:3]
+        else:
+            emb_display = emb
+        logger.info("<%s> : <%s> : Embedding result: %s", worker_id, int(p.page_id), repr(emb_display))
         processed_pages += 1
         processed_tokens += p.token_size
         results.append((p, emb))
@@ -188,7 +199,9 @@ async def compute_embeddings(pages, client, model, batch_size=10, checkpoint_int
     return [pg for pg, _ in results]
 
 def assemble_dataframe(pages):
-    rows = [{"page_id": p.page_id, "doc_title": p.doc_title, "chunk_id": p.chunk_id, "ahead": p.ahead, "behind": p.behind, "token_size": p.token_size, "text": p.text, "embedding": json.dumps(p.embedding)} for p in pages]
+    rows = [{"page_id": p.page_id, "doc_title": p.doc_title, "chunk_id": p.chunk_id,
+             "ahead": p.ahead, "behind": p.behind, "token_size": p.token_size,
+             "text": p.text, "embedding": json.dumps(p.embedding)} for p in pages]
     return pd.DataFrame(rows)
 
 def save_database(df_db, output_dir, is_checkpoint=False, page_offset=None, page_length=None):
@@ -215,12 +228,19 @@ def save_database(df_db, output_dir, is_checkpoint=False, page_offset=None, page
 
 def run_pipeline(args):
     pages = load_data(args.input, args.page_size, args.overlap)
-    pages = pages[args.page_offset: args.page_offset + args.page_length]
+    if args.page_length == 0:
+        pages = pages[args.page_offset:]
+    else:
+        pages = pages[args.page_offset: args.page_offset + args.page_length]
     output_dir = ensure_directory(args.output, "database")
     client = AsyncClient()
-    pages = asyncio.run(compute_embeddings(pages, client, args.model, args.batch_size, args.checkpoint_interval, output_dir, page_offset=args.page_offset, page_length=args.page_length))
-    df_db = assemble_dataframe(pages)
-    save_database(df_db, output_dir, is_checkpoint=False, page_offset=args.page_offset, page_length=args.page_length)
+    pages = asyncio.run(compute_embeddings(pages, client, args.model, args.batch_size, args.checkpoint_interval, output_dir,
+                                            page_offset=args.page_offset, page_length=args.page_length))
+    if pages:
+        df_db = assemble_dataframe(pages)
+        save_database(df_db, output_dir, is_checkpoint=False, page_offset=args.page_offset, page_length=args.page_length)
+    else:
+        logger.info("No pages processed. Nothing to save.")
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Build a searchable vector database from financial documents.")
@@ -229,14 +249,14 @@ def parse_arguments():
     parser.add_argument("-m", "--model", required=True, help="Ollama model to use for embeddings (e.g., 'phi4')")
     parser.add_argument("--max-pairs", type=int, default=1000, help="Maximum number of training pairs to generate (default: 1000)")
     parser.add_argument("--max-tokens", type=int, default=4096, help="Maximum tokens per document for embeddings (default: 4096)")
-    parser.add_argument("--page-size", type=int, default=2048, help="Page size in tokens (default: 2048)")
+    parser.add_argument("--page-size", type=int, default=512, help="Page size in tokens (default: 2048)")
     parser.add_argument("--api", required=True, help="Path to the OpenBank API directory with extracted files")
     parser.add_argument("--api-limit", type=int, default=1000, help="Maximum number of API examples to generate (default: 1000)")
     parser.add_argument("--checkpoint-interval", type=int, default=100, help="Telemetry checkpoint interval (default: 100)")
     parser.add_argument("--overlap", type=int, default=10, help="Number of chunks to overlap between documents (default: 10)")
-    parser.add_argument("--batch-size", type=int, default=10, help="Batch size for asynchronous embeddings (default: 10)")
+    parser.add_argument("--batch-size", type=int, default=1, help="Batch size for asynchronous embeddings (default: 10)")
     parser.add_argument("--page-offset", type=int, default=0, help="Offset in pages array (default: 0)")
-    parser.add_argument("--page-length", type=int, default=500, help="Number of pages to process (default: 500)")
+    parser.add_argument("--page-length", type=int, default=0, help="Number of pages to process (default: 0 means no limit)")
     return parser.parse_args()
 
 def main():
