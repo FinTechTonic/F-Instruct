@@ -30,7 +30,7 @@ except ImportError:
     sys.exit(1)
 
 # Import our prompts dictionary
-from ..templates import PROMPTS
+from ..f_instruct.templates import PROMPTS
 
 # Create console
 console = Console()
