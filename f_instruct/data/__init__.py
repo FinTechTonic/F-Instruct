@@ -2,10 +2,9 @@ from __future__ import annotations
 
 from .converter import ingest_data
 from .preprocessor import preprocess_data
-from ..._.processor_old import process_financial_data
+# TODO add .processor script api
 
 __all__ = [
-    "ingest_data", 
+    "ingest_data",
     "preprocess_data",
-    "process_financial_data"
 ]
